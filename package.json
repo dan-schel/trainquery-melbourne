@@ -5,7 +5,22 @@
     "tsx": "4.21.0"
   },
   "scripts": {
-    "dev": "tsx index.ts",
+    "dev": "tsx watch --clear-screen=false index.ts",
+    "dev-corequery-demo-app": "tsx watch --clear-screen=false --exclude ../node_modules index.ts",
     "start": "tsx index.ts"
+  },
+  "corequeryDemoApp": {
+    "scripts": {
+      "dev": "dev-corequery-demo-app",
+      "start": "start"
+    },
+    "environmentVariables": [
+      {
+        "name": "DATABASE_URL"
+      },
+      {
+        "name": "VTAR_KEY"
+      }
+    ]
   }
 }
