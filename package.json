@@ -1,7 +1,7 @@
 {
   "type": "module",
   "dependencies": {
-    "corequery": "0.1.3",
+    "corequery": "0.1.4",
     "tsx": "4.21.0"
   },
   "scripts": {
