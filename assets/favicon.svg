@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
   <style>
-    .top { fill: rgb(0, 165, 202); }
-    .bottom { fill: rgb(162, 54, 227); }
+    .top { fill: rgba(97, 131, 40, 1); }
+    .bottom { fill: rgba(184, 44, 140, 1); }
     .inner { fill: white; }
     .outer { fill: black; }
     @media (prefers-color-scheme: dark) {
