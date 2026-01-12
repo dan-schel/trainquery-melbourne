@@ -14,7 +14,7 @@ const stopsCsvSchema = z.object({
   platform_code: z.string().optional(),
 });
 
-// export type StopsCsv = z.infer<typeof stopsCsvSchema>;
+export type StopsCsv = z.infer<typeof stopsCsvSchema>;
 
 export const STOPS_CSV: GtfsFile<typeof stopsCsvSchema> = {
   filePath: "stops.txt",
