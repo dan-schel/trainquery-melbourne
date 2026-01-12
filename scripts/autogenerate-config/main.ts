@@ -1,14 +1,13 @@
 import { env } from "./env";
 import { withGtfsData } from "./utils/with-gtfs-data";
-import { readStops } from "./read-stops";
+import { AutogenerationContext } from "./autogeneration-context";
+import { autogenerateConfig } from "./autogenerate-config";
 
 async function main() {
-  const checkMode = process.argv.includes("--check");
-
-  await withGtfsData(env.RELAY_KEY, async ({ regionalDir, suburbanDir }) => {
-    const stops = await readStops(regionalDir, suburbanDir);
-
-    console.log(stops);
+  await withGtfsData(env.RELAY_KEY, async ({ suburbanDir, regionalDir }) => {
+    const checkMode = process.argv.includes("--check");
+    const ctx = new AutogenerationContext(checkMode, suburbanDir, regionalDir);
+    await autogenerateConfig(ctx);
   });
 }
 
