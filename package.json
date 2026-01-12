@@ -3,8 +3,8 @@
   "dependencies": {
     "@dan-schel/js-utils": "4.5.5",
     "@eslint/js": "9.39.2",
-    "@vitest/coverage-v8": "4.0.16",
     "@types/node": "25.0.3",
+    "@vitest/coverage-v8": "4.0.16",
     "corequery": "0.1.13",
     "dotenv": "17.2.3",
     "eslint": "9.39.2",
@@ -13,6 +13,7 @@
     "knip": "5.80.2",
     "prettier": "3.7.4",
     "tsx": "4.21.0",
+    "typescript": "5.9.3",
     "typescript-eslint": "8.52.0",
     "vitest": "4.0.16",
     "zod": "4.3.4"
