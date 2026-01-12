@@ -4,8 +4,9 @@ import { AutogenerationContext } from "./autogeneration-context";
 import { autogenerateConfig } from "./autogenerate-config";
 import { readGtfs } from "./gtfs/read-gtfs";
 import { stAlbansStationNamePatch } from "./patches/st-albans-station-name";
+import { trimStationNamesPatch } from "./patches/trim-station-names";
 
-const patches = [stAlbansStationNamePatch];
+const patches = [trimStationNamesPatch, stAlbansStationNamePatch];
 
 async function main() {
   const checkMode = process.argv.includes("--check");
@@ -13,7 +14,9 @@ async function main() {
 
   const ctx = new AutogenerationContext(checkMode, gtfsData);
 
-  patches.forEach(async (patch) => await ctx.applyPatch(patch));
+  for (const patch of patches) {
+    await ctx.applyPatch(patch);
+  }
 
   await autogenerateConfig(ctx);
 }

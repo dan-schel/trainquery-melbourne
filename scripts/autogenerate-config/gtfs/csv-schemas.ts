@@ -1,8 +1,5 @@
 import z from "zod";
-import {
-  booleanIntegerStringSchema,
-  floatStringSchema,
-} from "../utils/schema-utils";
+import { floatStringSchema } from "../utils/schema-utils";
 
 export const stopsCsvSchema = z
   .object({
@@ -13,7 +10,7 @@ export const stopsCsvSchema = z
     stop_url: z.string(),
     location_type: z.string(),
     parent_station: z.string(),
-    wheelchair_boarding: booleanIntegerStringSchema,
+    wheelchair_boarding: z.string(),
     level_id: z.string(),
     platform_code: z.string().optional(),
   })

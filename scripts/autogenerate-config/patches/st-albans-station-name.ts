@@ -3,6 +3,11 @@ import { GtfsDataPatch } from "../patch";
 export const stAlbansStationNamePatch: GtfsDataPatch = {
   type: "gtfs-data",
 
+  isNeeded: async (input) =>
+    input.suburban.stops.some(
+      (stop) => stop.stop_name === "St Albans Railway Station (St Albans)",
+    ),
+
   func: async (input) => ({
     ...input,
     suburban: {
@@ -14,9 +19,4 @@ export const stAlbansStationNamePatch: GtfsDataPatch = {
       ),
     },
   }),
-
-  isNeeded: async (input) =>
-    input.suburban.stops.some(
-      (stop) => stop.stop_name === "St Albans Railway Station (St Albans)",
-    ),
 };
