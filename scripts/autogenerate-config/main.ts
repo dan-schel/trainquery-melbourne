@@ -5,8 +5,13 @@ import { autogenerateConfig } from "./autogenerate-config";
 import { readGtfs } from "./gtfs/read-gtfs";
 import { stAlbansStationNamePatch } from "./patches/st-albans-station-name";
 import { trimStationNamesPatch } from "./patches/trim-station-names";
+import { jolimontStationNamePatch } from "./patches/jolimont-station-name";
 
-const patches = [trimStationNamesPatch, stAlbansStationNamePatch];
+const patches = [
+  trimStationNamesPatch,
+  jolimontStationNamePatch,
+  stAlbansStationNamePatch,
+];
 
 async function main() {
   const checkMode = process.argv.includes("--check");
