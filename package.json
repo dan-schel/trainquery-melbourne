@@ -1,0 +1,45 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@dan-schel/js-utils": "4.5.5",
+    "@eslint/js": "9.39.2",
+    "@types/node": "25.0.3",
+    "@vitest/coverage-v8": "4.0.16",
+    "corequery": "0.1.13",
+    "dotenv": "17.2.3",
+    "eslint": "9.39.2",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-prettier": "5.5.4",
+    "knip": "5.80.2",
+    "prettier": "3.7.4",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.52.0",
+    "vitest": "4.0.16",
+    "zod": "4.3.4"
+  },
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false src/index.ts",
+    "dev-corequery-demo-app": "tsx watch --clear-screen=false --exclude ../node_modules src/index.ts",
+    "start": "tsx src/index.ts",
+    "lint": "tsc -p tsconfig.json --noEmit && eslint . --max-warnings 0 && knip",
+    "test": "vitest --run",
+    "test-coverage": "vitest --run --coverage",
+    "format": "prettier --write .",
+    "format-check": "prettier --check ."
+  },
+  "corequeryDemoApp": {
+    "scripts": {
+      "dev": "dev-corequery-demo-app",
+      "start": "start"
+    },
+    "environmentVariables": [
+      {
+        "name": "DATABASE_URL"
+      },
+      {
+        "name": "VTAR_KEY"
+      }
+    ]
+  }
+}
