@@ -60,3 +60,5 @@ jobs:
         run: npm ci
       - name: Run confgen
         run: npm run confgen-check
+        env:
+          RELAY_KEY: ${{ secrets.RELAY_KEY }}
