@@ -1,13 +1,15 @@
 import { AutogenerationContext } from "./autogeneration-context";
 import { parseStops } from "./parse-stops";
-import { IdList } from "./utils/id-list";
+import { IdList } from "./source-code/id-list";
 
 export const STOP_IDS_PATH = "./src/ids/stop-ids.ts";
 
 export async function autogenerateConfig(
   ctx: AutogenerationContext,
 ): Promise<void> {
+  // TODO: Move to ctx.
   const stopIds = await IdList.parse(STOP_IDS_PATH);
+
   const stops = await parseStops(ctx);
 
   for (const stop of stops) {
@@ -23,5 +25,7 @@ export async function autogenerateConfig(
     }
   }
 
+  // TODO: Have ctx do this automatically when everything in this function is
+  // done.
   await ctx.output(STOP_IDS_PATH, stopIds.asOutput());
 }
