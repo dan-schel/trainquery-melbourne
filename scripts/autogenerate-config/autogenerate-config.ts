@@ -23,5 +23,5 @@ export async function autogenerateConfig(
     }
   }
 
-  ctx.output(STOP_IDS_PATH, stopIds.asOutput());
+  await ctx.output(STOP_IDS_PATH, stopIds.asOutput());
 }

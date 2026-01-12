@@ -50,6 +50,9 @@ async function download(
   const response = await fetch(url, { headers: headers });
 
   await new Promise<void>((resolve, reject) => {
+    if (!response.ok) {
+      throw new Error(`Got ${response.status} when downloading "${url}".`);
+    }
     if (response.body == null) {
       throw new Error(`Failed to download "${url}".`);
     }
