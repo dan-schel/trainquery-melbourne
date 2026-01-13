@@ -86,14 +86,14 @@ export class IdList {
 
     for (const line of lines) {
       const match = line.match(
-        /^(\/\/ \[REMOVED\] )?export const ([A-Z_]+) = ([0-9]+); \/\/(.+)$/,
+        /^(\/\/ \[REMOVED\] )?export const ([A-Z_]+) = ([0-9]+); \/\/ (.+)$/,
       );
       if (match == null) throw new Error(`Invalid line in ID list: ${line}`);
 
       const isActive = match[1] == null;
       const constantName = match[2];
       const id = parseIntThrow(match[3]);
-      const name = match[3];
+      const name = match[4];
 
       const existing = entries.find((e) => e.name === name);
       if (existing != null) throw new Error(`Found ${name} twice.`);
