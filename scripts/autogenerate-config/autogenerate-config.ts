@@ -1,21 +1,49 @@
 import { AutogenerationContext } from "./autogeneration-context";
-import { parseStops } from "./parse-stops";
+import { ParsedStop, parseStops } from "./parse-stops";
 
-export async function autogenerateConfig(
-  ctx: AutogenerationContext,
-): Promise<void> {
+export type ParsedStopWithId = ParsedStop & {
+  readonly id: number;
+  readonly constantName: string;
+};
+
+export function autogenerateConfig(ctx: AutogenerationContext) {
   const stops = parseStops(ctx);
+  const stopsWithIds = assignStopIds(ctx, stops);
+  deactivateMissingStops(ctx, stops);
+}
+
+function assignStopIds(
+  ctx: AutogenerationContext,
+  stops: ParsedStop[],
+): ParsedStopWithId[] {
+  const result: ParsedStopWithId[] = [];
 
   for (const stop of stops) {
-    if (!ctx.stopIds.has(stop.constantName)) {
-      ctx.stopIds.add(stop.constantName);
-    }
+    const entry = ctx.stopIds.get(stop.name) ?? ctx.stopIds.add(stop.name);
+
+    if (!entry.isActive) ctx.stopIds.reactivate(stop.name);
+
+    result.push({
+      ...stop,
+      id: entry.id,
+      constantName: entry.constantName,
+    });
   }
 
-  const activeConstants = ctx.stopIds.entries().filter(([, v]) => v.isActive);
-  for (const [constantName] of activeConstants) {
-    if (!stops.some((stop) => stop.constantName === constantName)) {
-      ctx.stopIds.deactivate(constantName);
+  return result;
+}
+
+function deactivateMissingStops(
+  ctx: AutogenerationContext,
+  stops: ParsedStop[],
+) {
+  const activeEntries = ctx.stopIds.entries.filter((x) => x.isActive);
+
+  for (const entry of activeEntries) {
+    const matchingStop = stops.find((s) => s.name === entry.name);
+
+    if (matchingStop == null) {
+      ctx.stopIds.deactivate(entry.name);
     }
   }
 }

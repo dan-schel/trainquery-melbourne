@@ -20,10 +20,11 @@ const patches = [
 
 async function main() {
   const ctx = await buildContext();
-  await autogenerateConfig(ctx);
 
-  await output(STOP_IDS_PATH, ctx.stopIds.asOutput(), ctx.checkMode);
-  await output(LINE_IDS_PATH, ctx.lineIds.asOutput(), ctx.checkMode);
+  autogenerateConfig(ctx);
+
+  await output(STOP_IDS_PATH, ctx.stopIds.toCode(), ctx.checkMode);
+  await output(LINE_IDS_PATH, ctx.lineIds.toCode(), ctx.checkMode);
 }
 
 async function buildContext(): Promise<AutogenerationContext> {
@@ -32,8 +33,8 @@ async function buildContext(): Promise<AutogenerationContext> {
   const gtfsData = await withGtfsFiles(env.RELAY_KEY, readGtfs);
   const patchedGtfsData = await patchGtfsData(gtfsData);
 
-  const stopIds = await IdList.parse(STOP_IDS_PATH);
-  const lineIds = await IdList.parse(LINE_IDS_PATH);
+  const stopIds = IdList.fromCode(await fsp.readFile(STOP_IDS_PATH, "utf-8"));
+  const lineIds = IdList.fromCode(await fsp.readFile(LINE_IDS_PATH, "utf-8"));
 
   return new AutogenerationContext(
     checkMode,
