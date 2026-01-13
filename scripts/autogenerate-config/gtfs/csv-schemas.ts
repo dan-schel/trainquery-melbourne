@@ -16,6 +16,7 @@ export const stopsCsvSchema = z
   })
   .readonly();
 
-export type StopsCsv = readonly z.infer<typeof stopsCsvSchema>[];
+export type StopsCsvRow = z.infer<typeof stopsCsvSchema>;
+export type StopsCsv = readonly StopsCsvRow[];
 
 // Add other schemas for the other files here as needed.

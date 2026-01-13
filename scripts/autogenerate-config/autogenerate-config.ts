@@ -10,18 +10,18 @@ export async function autogenerateConfig(
   // TODO: Move to ctx.
   const stopIds = await IdList.parse(STOP_IDS_PATH);
 
-  const stops = await parseStops(ctx);
+  const stops = parseStops(ctx);
 
   for (const stop of stops) {
-    const constName = IdList.constantize(stop.name);
-    if (!stopIds.has(constName)) {
-      stopIds.add(constName);
+    if (!stopIds.has(stop.constantName)) {
+      stopIds.add(stop.constantName);
     }
   }
 
-  for (const id of stopIds.entries().filter(([, v]) => v.isActive)) {
-    if (!stops.some((stop) => IdList.constantize(stop.name) === id[0])) {
-      stopIds.deactivate(id[0]);
+  const activeConstants = stopIds.entries().filter(([, v]) => v.isActive);
+  for (const [constantName] of activeConstants) {
+    if (!stops.some((stop) => stop.constantName === constantName)) {
+      stopIds.deactivate(constantName);
     }
   }
 
