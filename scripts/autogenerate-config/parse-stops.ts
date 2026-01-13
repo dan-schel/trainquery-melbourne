@@ -1,4 +1,3 @@
-import { unique } from "@dan-schel/js-utils";
 import { AutogenerationContext } from "./autogeneration-context";
 import { StopsCsvRow } from "./gtfs/csv-schemas";
 import { IdList } from "./source-code/id-list";
@@ -13,8 +12,11 @@ export function parseStops(ctx: AutogenerationContext) {
   ];
 
   const tree = buildTree(allRows);
-  const uniqueStations = unique(tree, (a, b) => a.stop_id === b.stop_id);
-  return uniqueStations.map((station) => processStation(station, allRows));
+
+  // Everything at the top level of the tree (i.e. a stop without parents) is a
+  // station. Under each station are its platforms and other marked locations
+  // (entrances, "decision points", etc.).
+  return tree.map((station) => processStation(station));
 }
 
 function buildTree(allRows: StopsCsvRow[]): StopsCsvTree {
@@ -39,7 +41,7 @@ function buildTree(allRows: StopsCsvRow[]): StopsCsvTree {
   return Array.from(tree.values()).filter((n) => n.parent_station === "");
 }
 
-function processStation(station: StopsCsvRow, allRows: StopsCsvRow[]) {
+function processStation(station: StopsCsvTreeNode) {
   const name = station.stop_name.replace(/( Railway)? Station$/, "");
   const constantName = IdList.constantize(name);
 
