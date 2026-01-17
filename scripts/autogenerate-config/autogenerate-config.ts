@@ -10,6 +10,17 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
   const stops = parseStops(ctx);
   const stopsWithIds = assignStopIds(ctx, stops);
   deactivateMissingStops(ctx, stops);
+
+  for (const stop of stopsWithIds) {
+    ctx.stops.add({
+      id: stop.id,
+      name: stop.name,
+      urlPath: "",
+      tags: [],
+      location: null,
+      positions: [],
+    });
+  }
 }
 
 function assignStopIds(

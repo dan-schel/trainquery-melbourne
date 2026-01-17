@@ -8,9 +8,11 @@ import { trimStationNamesPatch } from "./patches/trim-station-names";
 import { jolimontStationNamePatch } from "./patches/jolimont-station-name";
 import { IdList } from "./source-code/id-list";
 import fsp from "fs/promises";
+import { StopList } from "./source-code/stop-list";
 
 const STOP_IDS_PATH = "./src/ids/stop-ids.ts";
 const LINE_IDS_PATH = "./src/ids/line-ids.ts";
+const STOPS_PATH = "./src/data/stops.ts";
 
 const patches = [
   trimStationNamesPatch,
@@ -25,6 +27,7 @@ async function main() {
 
   await output(STOP_IDS_PATH, ctx.stopIds.toCode(), ctx.checkMode);
   await output(LINE_IDS_PATH, ctx.lineIds.toCode(), ctx.checkMode);
+  await output(STOPS_PATH, ctx.stops.toCode(), ctx.checkMode);
 }
 
 async function buildContext(): Promise<AutogenerationContext> {
@@ -35,12 +38,14 @@ async function buildContext(): Promise<AutogenerationContext> {
 
   const stopIds = IdList.fromCode(await fsp.readFile(STOP_IDS_PATH, "utf-8"));
   const lineIds = IdList.fromCode(await fsp.readFile(LINE_IDS_PATH, "utf-8"));
+  const stops = StopList.fromCode(await fsp.readFile(STOPS_PATH, "utf-8"));
 
   return new AutogenerationContext(
     checkMode,
     patchedGtfsData,
     stopIds,
     lineIds,
+    stops,
   );
 }
 

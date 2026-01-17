@@ -12,7 +12,7 @@ export class IdList {
   private _highestId: number;
 
   constructor(entries: IdListEntry[]) {
-    this._entries = entries;
+    this._entries = [...entries];
     this._highestId = entries.reduce((acc, x) => Math.max(acc, x.id), 0);
   }
 
