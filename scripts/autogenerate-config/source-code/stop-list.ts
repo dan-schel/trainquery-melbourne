@@ -42,10 +42,13 @@ export class StopList {
   }
 
   toCode() {
-    const entries = this._entries.map((e) => e.sourceCode).join("\n\n");
+    const entries = this._entries
+      .sort((a, b) => a.id - b.id)
+      .map((e) => e.sourceCode)
+      .join("\n\n");
 
     return (
-      `import { StopConfig } from "corequery";\n` +
+      `import { type StopConfig } from "corequery";\n` +
       `import * as stop from "../ids/stop-ids.js";\n` +
       `\n` +
       `${entries}\n`
@@ -84,7 +87,7 @@ export class StopList {
         );
       });
 
-      return `[\n  ${x.map((y) => `${y},\n  `)}  ]`;
+      return `[\n${x.map((y) => `    ${y},\n`)}  ]`;
     }
 
     return (
