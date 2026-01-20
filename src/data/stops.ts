@@ -70,8 +70,7 @@ export const ALBURY: StopConfig = {
     latitude: -36.0850459,
     longitude: 146.9243814,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const ALPHINGTON: StopConfig = {
@@ -142,8 +141,7 @@ export const ARARAT: StopConfig = {
     latitude: -37.28224082,
     longitude: 142.93691176,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const ARDEER: StopConfig = {
@@ -155,8 +153,7 @@ export const ARDEER: StopConfig = {
     latitude: -37.78306529,
     longitude: 144.80218807,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const ARMADALE: StopConfig = {
@@ -273,8 +270,7 @@ export const AVENEL: StopConfig = {
     latitude: -36.89364778,
     longitude: 145.22951498,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const BACCHUS_MARSH: StopConfig = {
@@ -286,8 +282,7 @@ export const BACCHUS_MARSH: StopConfig = {
     latitude: -37.68757821,
     longitude: 144.43678516,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const BAIRNSDALE: StopConfig = {
@@ -299,8 +294,7 @@ export const BAIRNSDALE: StopConfig = {
     latitude: -37.82872043,
     longitude: 147.62761375,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const BALACLAVA: StopConfig = {
@@ -333,8 +327,7 @@ export const BALLAN: StopConfig = {
     latitude: -37.60429951,
     longitude: 144.22544803,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const BALLARAT: StopConfig = {
@@ -346,8 +339,7 @@ export const BALLARAT: StopConfig = {
     latitude: -37.55879148,
     longitude: 143.85945743,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const BATMAN: StopConfig = {
@@ -439,8 +431,7 @@ export const BEAUFORT: StopConfig = {
     latitude: -37.42762724,
     longitude: 143.38238116,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const BELGRAVE: StopConfig = {
@@ -494,8 +485,7 @@ export const BENALLA: StopConfig = {
     latitude: -36.54455031,
     longitude: 145.98391505,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const BENDIGO: StopConfig = {
@@ -507,8 +497,7 @@ export const BENDIGO: StopConfig = {
     latitude: -36.76566973,
     longitude: 144.28300893,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const BENTLEIGH: StopConfig = {
@@ -566,8 +555,7 @@ export const BIRREGURRA: StopConfig = {
     latitude: -38.32880781,
     longitude: 143.78362521,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const BITTERN: StopConfig = {
@@ -709,8 +697,7 @@ export const BROADFORD: StopConfig = {
     latitude: -37.20720049,
     longitude: 145.0430079,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const BROADMEADOWS: StopConfig = {
@@ -764,8 +751,7 @@ export const BUNYIP: StopConfig = {
     latitude: -38.09910771,
     longitude: 145.72075749,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const BURNLEY: StopConfig = {
@@ -852,8 +838,7 @@ export const CAMPERDOWN: StopConfig = {
     latitude: -38.22890091,
     longitude: 143.1509278,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const CANTERBURY: StopConfig = {
@@ -932,8 +917,7 @@ export const CAROLINE_SPRINGS: StopConfig = {
     latitude: -37.76612649,
     longitude: 144.73573715,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const CARRUM: StopConfig = {
@@ -966,8 +950,7 @@ export const CASTLEMAINE: StopConfig = {
     latitude: -37.06284167,
     longitude: 144.21397878,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const CAULFIELD: StopConfig = {
@@ -979,8 +962,7 @@ export const CAULFIELD: StopConfig = {
     latitude: -37.87745946,
     longitude: 145.04252478,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const CHATHAM: StopConfig = {
@@ -1063,8 +1045,7 @@ export const CHILTERN: StopConfig = {
     latitude: -36.15563663,
     longitude: 146.61137475,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const CLARKEFIELD: StopConfig = {
@@ -1076,8 +1057,7 @@ export const CLARKEFIELD: StopConfig = {
     latitude: -37.48349769,
     longitude: 144.74537264,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const CLAYTON: StopConfig = {
@@ -1089,8 +1069,7 @@ export const CLAYTON: StopConfig = {
     latitude: -37.92468255,
     longitude: 145.12053436,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const CLIFTON_HILL: StopConfig = {
@@ -1123,8 +1102,7 @@ export const CLUNES: StopConfig = {
     latitude: -37.30301059,
     longitude: 143.78208969,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const COBBLEBANK: StopConfig = {
@@ -1136,8 +1114,7 @@ export const COBBLEBANK: StopConfig = {
     latitude: -37.71254554,
     longitude: 144.60410782,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const COBURG: StopConfig = {
@@ -1170,8 +1147,7 @@ export const COLAC: StopConfig = {
     latitude: -38.34337792,
     longitude: 143.58665305,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const COLLINGWOOD: StopConfig = {
@@ -1225,8 +1201,7 @@ export const CORIO: StopConfig = {
     latitude: -38.07283126,
     longitude: 144.37976842,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const CRAIGIEBURN: StopConfig = {
@@ -1238,8 +1213,7 @@ export const CRAIGIEBURN: StopConfig = {
     latitude: -37.6019248,
     longitude: 144.94330601,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const CRANBOURNE: StopConfig = {
@@ -1272,8 +1246,7 @@ export const CRESWICK: StopConfig = {
     latitude: -37.42460539,
     longitude: 143.88812365,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const CRIB_POINT: StopConfig = {
@@ -1344,8 +1317,7 @@ export const DANDENONG: StopConfig = {
     latitude: -37.98996792,
     longitude: 145.20972537,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const DAREBIN: StopConfig = {
@@ -1399,8 +1371,7 @@ export const DEER_PARK: StopConfig = {
     latitude: -37.77728102,
     longitude: 144.77108058,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const DENNIS: StopConfig = {
@@ -1475,8 +1446,7 @@ export const DINGEE: StopConfig = {
     latitude: -36.36923291,
     longitude: 144.23112034,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const DONNYBROOK: StopConfig = {
@@ -1488,8 +1458,7 @@ export const DONNYBROOK: StopConfig = {
     latitude: -37.54202766,
     longitude: 144.97020358,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const DROUIN: StopConfig = {
@@ -1501,8 +1470,7 @@ export const DROUIN: StopConfig = {
     latitude: -38.1364519,
     longitude: 145.85594693,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const EAGLEHAWK: StopConfig = {
@@ -1514,8 +1482,7 @@ export const EAGLEHAWK: StopConfig = {
     latitude: -36.71852539,
     longitude: 144.2483799,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const EAGLEMONT: StopConfig = {
@@ -1615,8 +1582,7 @@ export const ECHUCA: StopConfig = {
     latitude: -36.13098223,
     longitude: 144.75345866,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const EDITHVALE: StopConfig = {
@@ -1649,8 +1615,7 @@ export const ELMORE: StopConfig = {
     latitude: -36.49502002,
     longitude: 144.60775752,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const ELSTERNWICK: StopConfig = {
@@ -1725,8 +1690,7 @@ export const EPSOM: StopConfig = {
     latitude: -36.70628781,
     longitude: 144.3210526,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const ESSENDON: StopConfig = {
@@ -1738,8 +1702,7 @@ export const ESSENDON: StopConfig = {
     latitude: -37.7560117,
     longitude: 144.9161975,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const EUROA: StopConfig = {
@@ -1751,8 +1714,7 @@ export const EUROA: StopConfig = {
     latitude: -36.74918387,
     longitude: 145.56802043,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const FAIRFIELD: StopConfig = {
@@ -1898,8 +1860,7 @@ export const FLINDERS_STREET: StopConfig = {
     latitude: -37.81830513,
     longitude: 144.96696435,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const FOOTSCRAY: StopConfig = {
@@ -1911,8 +1872,7 @@ export const FOOTSCRAY: StopConfig = {
     latitude: -37.80141343,
     longitude: 144.90202006,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const FRANKSTON: StopConfig = {
@@ -1991,8 +1951,7 @@ export const GARFIELD: StopConfig = {
     latitude: -38.09103062,
     longitude: 145.67422472,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const GEELONG: StopConfig = {
@@ -2004,8 +1963,7 @@ export const GEELONG: StopConfig = {
     latitude: -38.14470898,
     longitude: 144.3549152,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const GINIFER: StopConfig = {
@@ -2038,8 +1996,7 @@ export const GISBORNE: StopConfig = {
     latitude: -37.4588255,
     longitude: 144.59872157,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const GLEN_IRIS: StopConfig = {
@@ -2185,8 +2142,7 @@ export const GOORNONG: StopConfig = {
     latitude: -36.61518327,
     longitude: 144.50347417,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const GOWRIE: StopConfig = {
@@ -2387,8 +2343,7 @@ export const HEATHCOTE_JUNCTION: StopConfig = {
     latitude: -37.37172322,
     longitude: 145.02824986,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const HEATHERDALE: StopConfig = {
@@ -2732,8 +2687,7 @@ export const KANGAROO_FLAT: StopConfig = {
     latitude: -36.79483364,
     longitude: 144.24899016,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const KEILOR_PLAINS: StopConfig = {
@@ -2808,8 +2762,7 @@ export const KERANG: StopConfig = {
     latitude: -35.73312162,
     longitude: 143.92442509,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const KILMORE_EAST: StopConfig = {
@@ -2821,8 +2774,7 @@ export const KILMORE_EAST: StopConfig = {
     latitude: -37.29321027,
     longitude: 144.98356599,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const KOOYONG: StopConfig = {
@@ -2855,8 +2807,7 @@ export const KYNETON: StopConfig = {
     latitude: -37.25827885,
     longitude: 144.45060159,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const LABURNUM: StopConfig = {
@@ -2910,8 +2861,7 @@ export const LARA: StopConfig = {
     latitude: -38.02242764,
     longitude: 144.41440429,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const LAVERTON: StopConfig = {
@@ -2986,8 +2936,7 @@ export const LITTLE_RIVER: StopConfig = {
     latitude: -37.96292909,
     longitude: 144.49848487,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const LONGWARRY: StopConfig = {
@@ -2999,8 +2948,7 @@ export const LONGWARRY: StopConfig = {
     latitude: -38.11099211,
     longitude: 145.76686029,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const LYNBROOK: StopConfig = {
@@ -3054,8 +3002,7 @@ export const MACEDON: StopConfig = {
     latitude: -37.42357331,
     longitude: 144.56139685,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const MACLEOD: StopConfig = {
@@ -3092,8 +3039,7 @@ export const MALMSBURY: StopConfig = {
     latitude: -37.18974032,
     longitude: 144.37532317,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const MALVERN: StopConfig = {
@@ -3134,8 +3080,7 @@ export const MARSHALL: StopConfig = {
     latitude: -38.198549,
     longitude: 144.35505671,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const MARYBOROUGH: StopConfig = {
@@ -3147,8 +3092,7 @@ export const MARYBOROUGH: StopConfig = {
     latitude: -37.05090849,
     longitude: 143.74240234,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const MCKINNON: StopConfig = {
@@ -3214,8 +3158,7 @@ export const MELTON: StopConfig = {
     latitude: -37.70347382,
     longitude: 144.57209861,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const MENTONE: StopConfig = {
@@ -3416,8 +3359,7 @@ export const MOE: StopConfig = {
     latitude: -38.17689039,
     longitude: 146.26054896,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const MONTMORENCY: StopConfig = {
@@ -3517,8 +3459,7 @@ export const MOOROOPNA: StopConfig = {
     latitude: -36.39912828,
     longitude: 145.35821484,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const MORDIALLOC: StopConfig = {
@@ -3589,8 +3530,7 @@ export const MORWELL: StopConfig = {
     latitude: -38.23674592,
     longitude: 146.39677567,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const MOUNT_WAVERLEY: StopConfig = {
@@ -3623,8 +3563,7 @@ export const MURCHISON_EAST: StopConfig = {
     latitude: -36.61314794,
     longitude: 145.24063556,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const MURRUMBEENA: StopConfig = {
@@ -3657,8 +3596,7 @@ export const NAGAMBIE: StopConfig = {
     latitude: -36.7854641,
     longitude: 145.16035666,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const NAR_NAR_GOON: StopConfig = {
@@ -3670,8 +3608,7 @@ export const NAR_NAR_GOON: StopConfig = {
     latitude: -38.08159155,
     longitude: 145.57166573,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const NARRE_WARREN: StopConfig = {
@@ -3788,8 +3725,7 @@ export const NORTH_GEELONG: StopConfig = {
     latitude: -38.12268295,
     longitude: 144.35231162,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const NORTH_MELBOURNE: StopConfig = {
@@ -3859,8 +3795,7 @@ export const NORTH_SHORE: StopConfig = {
     latitude: -38.09837714,
     longitude: 144.36532142,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const NORTH_WILLIAMSTOWN: StopConfig = {
@@ -4182,8 +4117,7 @@ export const PYRAMID: StopConfig = {
     latitude: -36.0534147,
     longitude: 144.11332145,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const REGENT: StopConfig = {
@@ -4237,8 +4171,7 @@ export const RICHMOND: StopConfig = {
     latitude: -37.82407446,
     longitude: 144.99016426,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const RIDDELLS_CREEK: StopConfig = {
@@ -4250,8 +4183,7 @@ export const RIDDELLS_CREEK: StopConfig = {
     latitude: -37.46512379,
     longitude: 144.67983071,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const RINGWOOD: StopConfig = {
@@ -4351,8 +4283,7 @@ export const ROCHESTER: StopConfig = {
     latitude: -36.3623605,
     longitude: 144.69868134,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const ROCKBANK: StopConfig = {
@@ -4364,8 +4295,7 @@ export const ROCKBANK: StopConfig = {
     latitude: -37.72926127,
     longitude: 144.65063148,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const ROSANNA: StopConfig = {
@@ -4398,8 +4328,7 @@ export const ROSEDALE: StopConfig = {
     latitude: -38.15640367,
     longitude: 146.78696637,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const ROXBURGH_PARK: StopConfig = {
@@ -4495,8 +4424,7 @@ export const SALE: StopConfig = {
     latitude: -38.10310272,
     longitude: 147.05480513,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const SANDOWN_PARK: StopConfig = {
@@ -4605,8 +4533,7 @@ export const SEYMOUR: StopConfig = {
     latitude: -37.02472873,
     longitude: 145.13772862,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const SHEPPARTON: StopConfig = {
@@ -4618,8 +4545,7 @@ export const SHEPPARTON: StopConfig = {
     latitude: -36.38379101,
     longitude: 145.40649749,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const SHERWOOD_PARK: StopConfig = {
@@ -4631,8 +4557,7 @@ export const SHERWOOD_PARK: StopConfig = {
     latitude: -38.38638239,
     longitude: 142.53884888,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const SHOWGROUNDS: StopConfig = {
@@ -4678,8 +4603,7 @@ export const SOUTH_GEELONG: StopConfig = {
     latitude: -38.15865863,
     longitude: 144.35898705,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const SOUTH_KENSINGTON: StopConfig = {
@@ -4853,8 +4777,7 @@ export const SPRINGHURST: StopConfig = {
     latitude: -36.18627209,
     longitude: 146.47042552,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const SPRINGVALE: StopConfig = {
@@ -4925,8 +4848,7 @@ export const STRATFORD: StopConfig = {
     latitude: -37.96704739,
     longitude: 147.08146945,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const STRATHMORE: StopConfig = {
@@ -4959,8 +4881,7 @@ export const SUNBURY: StopConfig = {
     latitude: -37.57928396,
     longitude: 144.72798098,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const SUNSHINE: StopConfig = {
@@ -4972,8 +4893,7 @@ export const SUNSHINE: StopConfig = {
     latitude: -37.78853633,
     longitude: 144.8328782,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const SWAN_HILL: StopConfig = {
@@ -4985,8 +4905,7 @@ export const SWAN_HILL: StopConfig = {
     latitude: -35.34111357,
     longitude: 143.56234321,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const SYNDAL: StopConfig = {
@@ -5019,8 +4938,7 @@ export const TALBOT: StopConfig = {
     latitude: -37.17289923,
     longitude: 143.70564034,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const TALLAROOK: StopConfig = {
@@ -5032,8 +4950,7 @@ export const TALLAROOK: StopConfig = {
     latitude: -37.09233454,
     longitude: 145.10299728,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const TARNEIT: StopConfig = {
@@ -5045,8 +4962,7 @@ export const TARNEIT: StopConfig = {
     latitude: -37.83215468,
     longitude: 144.69448757,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const TECOMA: StopConfig = {
@@ -5075,8 +4991,7 @@ export const TERANG: StopConfig = {
     latitude: -38.23621199,
     longitude: 142.91147221,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const THOMASTOWN: StopConfig = {
@@ -5193,8 +5108,7 @@ export const TRAFALGAR: StopConfig = {
     latitude: -38.2072423,
     longitude: 146.15477284,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const TRARALGON: StopConfig = {
@@ -5206,8 +5120,7 @@ export const TRARALGON: StopConfig = {
     latitude: -38.19888494,
     longitude: 146.53788212,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const TYABB: StopConfig = {
@@ -5236,8 +5149,7 @@ export const TYNONG: StopConfig = {
     latitude: -38.08499626,
     longitude: 145.6282343,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const UPFIELD: StopConfig = {
@@ -5329,8 +5241,7 @@ export const VIOLET_TOWN: StopConfig = {
     latitude: -36.63881606,
     longitude: 145.71592345,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const WALLAN: StopConfig = {
@@ -5342,8 +5253,7 @@ export const WALLAN: StopConfig = {
     latitude: -37.41653632,
     longitude: 145.00535827,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const WANDONG: StopConfig = {
@@ -5355,8 +5265,7 @@ export const WANDONG: StopConfig = {
     latitude: -37.3546771,
     longitude: 145.02641544,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const WANGARATTA: StopConfig = {
@@ -5368,8 +5277,7 @@ export const WANGARATTA: StopConfig = {
     latitude: -36.35515492,
     longitude: 146.31702684,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const WARRAGUL: StopConfig = {
@@ -5381,8 +5289,7 @@ export const WARRAGUL: StopConfig = {
     latitude: -38.16483276,
     longitude: 145.93265719,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const WARRNAMBOOL: StopConfig = {
@@ -5394,8 +5301,7 @@ export const WARRNAMBOOL: StopConfig = {
     latitude: -38.38501396,
     longitude: 142.47554504,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const WATERGARDENS: StopConfig = {
@@ -5407,8 +5313,7 @@ export const WATERGARDENS: StopConfig = {
     latitude: -37.70111071,
     longitude: 144.77418099,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const WATSONIA: StopConfig = {
@@ -5458,8 +5363,7 @@ export const WAURN_PONDS: StopConfig = {
     latitude: -38.21580573,
     longitude: 144.30683114,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const WENDOUREE: StopConfig = {
@@ -5471,8 +5375,7 @@ export const WENDOUREE: StopConfig = {
     latitude: -37.53997217,
     longitude: 143.82121077,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const WERRIBEE: StopConfig = {
@@ -5702,8 +5605,7 @@ export const WINCHELSEA: StopConfig = {
     latitude: -38.24013506,
     longitude: 143.98413389,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const WINDSOR: StopConfig = {
@@ -5736,8 +5638,7 @@ export const WODONGA: StopConfig = {
     latitude: -36.10584513,
     longitude: 146.87126565,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const WOODEND: StopConfig = {
@@ -5749,8 +5650,7 @@ export const WOODEND: StopConfig = {
     latitude: -37.35879859,
     longitude: 144.52589012,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const WYNDHAM_VALE: StopConfig = {
@@ -5762,8 +5662,7 @@ export const WYNDHAM_VALE: StopConfig = {
     latitude: -37.87252742,
     longitude: 144.60835702,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const YARRAGON: StopConfig = {
@@ -5775,8 +5674,7 @@ export const YARRAGON: StopConfig = {
     latitude: -38.20315754,
     longitude: 146.0630628,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const YARRAMAN: StopConfig = {
@@ -5830,8 +5728,7 @@ export const HUNTLY: StopConfig = {
     latitude: -36.66584794,
     longitude: 144.36982046,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const RAYWOOD: StopConfig = {
@@ -5843,8 +5740,7 @@ export const RAYWOOD: StopConfig = {
     latitude: -36.53195927,
     longitude: 144.20116104,
   },
-  positions: [
-  ],
+  positions: [],
 };
 
 export const UNION: StopConfig = {

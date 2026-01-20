@@ -18,6 +18,30 @@ async function main() {
       pwaMaskable192PngPath: "assets/pwa-maskable-192x192.png",
       pwaMaskable512PngPath: "assets/pwa-maskable-512x512.png",
     },
+
+    // <TODO>
+    // TODO: Everything below here.
+    stops: [],
+    lines: [],
+    terminology: {
+      stop: "station",
+      line: "line",
+      stopPosition: "platform",
+    },
+    landingPage: {
+      primaryMarkdown: "",
+    },
+    footer: {
+      footerMessageMarkdown: "",
+    },
+    aboutPage: {
+      primaryMarkdown: "",
+      dataSources: [],
+    },
+    linesPage: {
+      sections: [],
+    },
+    // </TODO>
   }));
 
   await trainquery.start();

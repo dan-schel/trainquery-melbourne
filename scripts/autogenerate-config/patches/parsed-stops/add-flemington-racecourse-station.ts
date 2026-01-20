@@ -16,11 +16,9 @@ export const addFlemingtonRacecourseStationPatch =
       platforms: [{ platformCode: "1" }, { platformCode: "2" }],
 
       gtfsIds: [
-        { id: "vic:rail:RCE", platformCode: null },
-        { id: "15524", platformCode: "1" },
-        { id: "15525", platformCode: "2" },
+        { id: "vic:rail:RCE", type: "parent", platformCode: null },
+        { id: "15524", type: "train", platformCode: "1" },
+        { id: "15525", type: "train", platformCode: "2" },
       ],
-
-      replacementBusGtfsIds: [],
     },
   });

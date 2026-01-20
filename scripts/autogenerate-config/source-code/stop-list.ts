@@ -74,6 +74,8 @@ export class StopList {
     }
 
     function stringifyPositions(): string {
+      if (config.positions.length === 0) return "[]";
+
       const x = config.positions.map((p) => {
         const positionId = ctx.positionIds.requireById(p.stopPositionId);
 

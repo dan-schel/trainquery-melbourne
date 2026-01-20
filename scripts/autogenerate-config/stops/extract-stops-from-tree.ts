@@ -3,23 +3,24 @@ import {
   type StopsCsvTreeNode,
 } from "./build-stops-csv-tree.js";
 
-const replacementBusPlatformCode = "Replacement bus";
+const replacementBusCode = "Replacement bus";
+
+type ParsedPlatform = {
+  readonly platformCode: string;
+};
+
+type ParsedGtfsId = {
+  readonly id: string;
+  readonly type: "parent" | "train" | "replacement-bus";
+  readonly platformCode: string | null;
+};
 
 export type ParsedStop = {
   readonly name: string;
   readonly latitude: number;
   readonly longitude: number;
-
-  readonly platforms: readonly {
-    readonly platformCode: string;
-  }[];
-
-  readonly gtfsIds: readonly {
-    readonly id: string;
-    readonly platformCode: string | null;
-  }[];
-
-  readonly replacementBusGtfsIds: readonly string[];
+  readonly platforms: readonly ParsedPlatform[];
+  readonly gtfsIds: readonly ParsedGtfsId[];
 };
 
 export function extractStopsFromTree(tree: StopsCsvTree): ParsedStop[] {
@@ -36,7 +37,7 @@ function parseStop(station: StopsCsvTreeNode): ParsedStop {
   // - Add V/Line platforms.
 
   const platforms = parsePlatforms(station);
-  const { gtfsIds, replacementBusGtfsIds } = parseGtfsIds(station);
+  const gtfsIds = parseGtfsIds(station);
 
   return {
     name: station.stop_name,
@@ -44,39 +45,32 @@ function parseStop(station: StopsCsvTreeNode): ParsedStop {
     longitude: station.stop_lon,
     platforms,
     gtfsIds,
-    replacementBusGtfsIds,
   };
 }
 
-function parsePlatforms(station: StopsCsvTreeNode) {
+function parsePlatforms(station: StopsCsvTreeNode): ParsedPlatform[] {
   type TreeNodeWithPlatformCode = StopsCsvTreeNode & { platform_code: string };
 
   return station.children
     .filter((c): c is TreeNodeWithPlatformCode => isPresent(c.platform_code))
-    .filter((c) => c.platform_code !== replacementBusPlatformCode)
+    .filter((c) => c.platform_code !== replacementBusCode)
     .map((platform) => ({ platformCode: platform.platform_code }));
 }
 
-function parseGtfsIds(station: StopsCsvTreeNode) {
-  const primaryGtfsId = { id: station.stop_id, platformCode: null };
+function parseGtfsIds(station: StopsCsvTreeNode): ParsedGtfsId[] {
+  const primaryGtfsId: ParsedGtfsId = {
+    id: station.stop_id,
+    type: "parent",
+    platformCode: null,
+  };
 
-  const childGtfsIds = station.children.map((c) => ({
+  const childGtfsIds: ParsedGtfsId[] = station.children.map((c) => ({
     id: c.stop_id,
+    type: c.platform_code === replacementBusCode ? "replacement-bus" : "train",
     platformCode: isPresent(c.platform_code) ? c.platform_code : null,
   }));
 
-  const platformGtfsIds = childGtfsIds.filter(
-    (c) => c.platformCode !== replacementBusPlatformCode,
-  );
-
-  const replacementBusGtfsIds = childGtfsIds
-    .filter((c) => c.platformCode === replacementBusPlatformCode)
-    .map((c) => c.id);
-
-  return {
-    gtfsIds: [primaryGtfsId, ...platformGtfsIds],
-    replacementBusGtfsIds,
-  };
+  return [primaryGtfsId, ...childGtfsIds];
 }
 
 function isPresent(str: string | null | undefined): str is string {
