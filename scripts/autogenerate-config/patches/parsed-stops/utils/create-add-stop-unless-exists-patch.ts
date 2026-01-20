@@ -18,11 +18,6 @@ export function createAddStopUnlessExistsPatch({
   throwIfAlreadyExists = true,
 }: CreateAddStopUnlessExistsPatchArgs): Patch<ParsedStop[]> {
   return (stops) => {
-    // TODO: Add it if it doesn't exist.
-    // TODO: If it does exist, throw if throwIfAlreadyExists is true, but
-    // otherwise compare the available stop to the one the patch would add to
-    // ensure the patch remains up-to-date.
-
     const existingById = stops.find((s) =>
       s.gtfsIds.some((g) => g.id === expectedGtfsId),
     );
@@ -42,7 +37,10 @@ export function createAddStopUnlessExistsPatch({
       const existingStr = `"${existing.name}" (${idsStr})`;
       throw new Error(`Not patching in ${stop.name}, found ${existingStr}.`);
     } else if (JSON.stringify(existing) !== JSON.stringify(stop)) {
-      throw new Error(`Patch for ${stop.name} is outdated.`);
+      const existingStr = JSON.stringify(existing, null, 2);
+      const actualStr = JSON.stringify(stop, null, 2);
+      const diff = `Patch:\n${existingStr}\n\nActual:\n${actualStr}`;
+      throw new Error(`Patch for ${stop.name} is outdated.\n\n${diff}`);
     }
 
     return stops;

@@ -31,11 +31,6 @@ export function extractStopsFromTree(tree: StopsCsvTree): ParsedStop[] {
 }
 
 function parseStop(station: StopsCsvTreeNode): ParsedStop {
-  // TODO: GTFS Data patches:
-  // - Remove rows without platform codes unless they're parent rows
-  // - Remove replacement bus platforms
-  // - Add V/Line platforms.
-
   const platforms = parsePlatforms(station);
   const gtfsIds = parseGtfsIds(station);
 
