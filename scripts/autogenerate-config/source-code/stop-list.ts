@@ -64,7 +64,6 @@ export class StopList {
 
     function stringifyLocation(): string {
       if (config.location == null) return "null";
-
       return `{ latitude: ${config.location.latitude}, longitude: ${config.location.longitude} }`;
     }
 
