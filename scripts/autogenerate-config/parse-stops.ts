@@ -6,6 +6,9 @@ type StopsCsvTree = readonly StopsCsvTreeNode[];
 
 export type ParsedStop = {
   readonly name: string;
+  readonly urlPath: string;
+  readonly latitude: number;
+  readonly longitude: number;
 };
 
 export function parseStops(ctx: AutogenerationContext) {
@@ -46,8 +49,14 @@ function buildTree(allRows: StopsCsvRow[]): StopsCsvTree {
 
 function parseStop(station: StopsCsvTreeNode): ParsedStop {
   const name = station.stop_name.replace(/( Railway)? Station$/, "");
+  const urlPath = name.toLowerCase().replace(/[^a-z]/g, "");
 
   // TODO: Parse platforms.
 
-  return { name };
+  return {
+    name,
+    urlPath,
+    latitude: station.stop_lat,
+    longitude: station.stop_lon,
+  };
 }

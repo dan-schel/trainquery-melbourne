@@ -15,9 +15,12 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
     ctx.stops.add({
       id: stop.id,
       name: stop.name,
-      urlPath: "",
+      urlPath: stop.urlPath,
       tags: [],
-      location: null,
+      location: {
+        latitude: stop.latitude,
+        longitude: stop.longitude,
+      },
       positions: [],
     });
   }

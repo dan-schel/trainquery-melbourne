@@ -72,7 +72,7 @@ export class StopList {
       return (
         `{\n` +
         `    latitude: ${config.location.latitude},\n` +
-        `    longitude: ${config.location.longitude} }\n` +
+        `    longitude: ${config.location.longitude},\n` +
         `  }`
       );
     }
@@ -97,7 +97,7 @@ export class StopList {
       `  tags: ${JSON.stringify(config.tags)},\n` +
       `  urlPath: ${JSON.stringify(config.urlPath)},\n` +
       `  location: ${stringifyLocation()},\n` +
-      `  positions: ${stringifyPositions()}\n` +
+      `  positions: ${stringifyPositions()},\n` +
       `};`
     );
   }
