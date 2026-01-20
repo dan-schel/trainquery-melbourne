@@ -50,6 +50,7 @@ export class StopList {
     return (
       `import { type StopConfig } from "corequery";\n` +
       `import * as stop from "../ids/stop-ids.js";\n` +
+      `import * as position from "../ids/stop-position-ids.js";\n` +
       `\n` +
       `${entries}\n`
     );
@@ -74,10 +75,12 @@ export class StopList {
 
     function stringifyPositions(): string {
       const x = config.positions.map((p) => {
+        const positionId = ctx.positionIds.requireById(p.stopPositionId);
+
         return (
           `{\n` +
           `      name: ${JSON.stringify(p.name)},\n` +
-          `      stopPositionId: ${p.stopPositionId},\n` + // TODO: Use const.
+          `      stopPositionId: position.${positionId.constantName},\n` +
           `    }`
         );
       });
@@ -87,7 +90,7 @@ export class StopList {
 
     return (
       `export const ${stopId.constantName}: StopConfig = {\n` +
-      `  id: stop.${stopId.constantName},\n` + // TODO: Use const.
+      `  id: stop.${stopId.constantName},\n` +
       `  name: ${JSON.stringify(config.name)},\n` +
       `  tags: ${JSON.stringify(config.tags)},\n` +
       `  urlPath: ${JSON.stringify(config.urlPath)},\n` +

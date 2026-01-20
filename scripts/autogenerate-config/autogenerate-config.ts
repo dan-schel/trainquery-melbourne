@@ -1,4 +1,5 @@
 import { AutogenerationContext } from "./autogeneration-context.js";
+import { assignPositionIds } from "./stops/assign-position-ids.js";
 import { assignUrlPaths } from "./stops/assign-url-paths.js";
 import { parseStops } from "./stops/parse-stops.js";
 import { syncStopIds } from "./stops/sync-stop-ids.js";
@@ -7,8 +8,9 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
   const stops = parseStops(ctx);
   const stopsWithIds = syncStopIds(ctx, stops);
   const stopsWithUrlPaths = assignUrlPaths(stopsWithIds);
+  const stopsWithPositionIds = assignPositionIds(ctx, stopsWithUrlPaths);
 
-  for (const stop of stopsWithUrlPaths) {
+  for (const stop of stopsWithPositionIds) {
     ctx.stops.add(ctx, {
       id: stop.id,
       name: stop.name,
@@ -20,7 +22,7 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
       },
       positions: stop.platforms.map((platform) => ({
         name: platform.platformCode,
-        stopPositionId: 1, // TODO: Fix this.
+        stopPositionId: platform.positionId,
       })),
     });
   }
