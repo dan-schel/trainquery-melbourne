@@ -5,7 +5,7 @@ export const AIRCRAFT: StopConfig = {
   id: 1,
   name: "Aircraft",
   tags: [],
-  urlPath: "aircraftrailwaystation",
+  urlPath: "aircraft",
   location: {
     latitude: -37.86660595,
     longitude: 144.76080944,
@@ -18,7 +18,7 @@ export const ALAMEIN: StopConfig = {
   id: 2,
   name: "Alamein",
   tags: [],
-  urlPath: "alameinrailwaystation",
+  urlPath: "alamein",
   location: {
     latitude: -37.86832039,
     longitude: 145.07965567,
@@ -31,7 +31,7 @@ export const ALBION: StopConfig = {
   id: 3,
   name: "Albion",
   tags: [],
-  urlPath: "albionrailwaystation",
+  urlPath: "albion",
   location: {
     latitude: -37.77765281,
     longitude: 144.82470361,
@@ -44,7 +44,7 @@ export const ALBURY: StopConfig = {
   id: 4,
   name: "Albury",
   tags: [],
-  urlPath: "alburyrailwaystation",
+  urlPath: "albury",
   location: {
     latitude: -36.0850459,
     longitude: 146.9243814,
@@ -57,7 +57,7 @@ export const ALPHINGTON: StopConfig = {
   id: 5,
   name: "Alphington",
   tags: [],
-  urlPath: "alphingtonrailwaystation",
+  urlPath: "alphington",
   location: {
     latitude: -37.77839363,
     longitude: 145.03125493,
@@ -70,7 +70,7 @@ export const ALTONA: StopConfig = {
   id: 6,
   name: "Altona",
   tags: [],
-  urlPath: "altonarailwaystation",
+  urlPath: "altona",
   location: {
     latitude: -37.8671476,
     longitude: 144.82964474,
@@ -83,7 +83,7 @@ export const ANSTEY: StopConfig = {
   id: 7,
   name: "Anstey",
   tags: [],
-  urlPath: "ansteyrailwaystation",
+  urlPath: "anstey",
   location: {
     latitude: -37.76124203,
     longitude: 144.96068404,
@@ -96,7 +96,7 @@ export const ARARAT: StopConfig = {
   id: 8,
   name: "Ararat",
   tags: [],
-  urlPath: "araratrailwaystation",
+  urlPath: "ararat",
   location: {
     latitude: -37.28224082,
     longitude: 142.93691176,
@@ -109,7 +109,7 @@ export const ARDEER: StopConfig = {
   id: 9,
   name: "Ardeer",
   tags: [],
-  urlPath: "ardeerrailwaystation",
+  urlPath: "ardeer",
   location: {
     latitude: -37.78306529,
     longitude: 144.80218807,
@@ -122,7 +122,7 @@ export const ARMADALE: StopConfig = {
   id: 10,
   name: "Armadale",
   tags: [],
-  urlPath: "armadalerailwaystation",
+  urlPath: "armadale",
   location: {
     latitude: -37.85645238,
     longitude: 145.01932554,
@@ -135,7 +135,7 @@ export const ASCOT_VALE: StopConfig = {
   id: 11,
   name: "Ascot Vale",
   tags: [],
-  urlPath: "ascotvalerailwaystation",
+  urlPath: "ascotvale",
   location: {
     latitude: -37.77530609,
     longitude: 144.92182074,
@@ -148,7 +148,7 @@ export const ASHBURTON: StopConfig = {
   id: 12,
   name: "Ashburton",
   tags: [],
-  urlPath: "ashburtonrailwaystation",
+  urlPath: "ashburton",
   location: {
     latitude: -37.86196753,
     longitude: 145.08134376,
@@ -161,7 +161,7 @@ export const ASPENDALE: StopConfig = {
   id: 13,
   name: "Aspendale",
   tags: [],
-  urlPath: "aspendalerailwaystation",
+  urlPath: "aspendale",
   location: {
     latitude: -38.02722019,
     longitude: 145.10214962,
@@ -174,7 +174,7 @@ export const AUBURN: StopConfig = {
   id: 14,
   name: "Auburn",
   tags: [],
-  urlPath: "auburnrailwaystation",
+  urlPath: "auburn",
   location: {
     latitude: -37.82239831,
     longitude: 145.04584366,
@@ -187,7 +187,7 @@ export const AVENEL: StopConfig = {
   id: 15,
   name: "Avenel",
   tags: [],
-  urlPath: "avenelrailwaystation",
+  urlPath: "avenel",
   location: {
     latitude: -36.89364778,
     longitude: 145.22951498,
@@ -200,7 +200,7 @@ export const BACCHUS_MARSH: StopConfig = {
   id: 16,
   name: "Bacchus Marsh",
   tags: [],
-  urlPath: "bacchusmarshrailwaystation",
+  urlPath: "bacchusmarsh",
   location: {
     latitude: -37.68757821,
     longitude: 144.43678516,
@@ -213,7 +213,7 @@ export const BAIRNSDALE: StopConfig = {
   id: 17,
   name: "Bairnsdale",
   tags: [],
-  urlPath: "bairnsdalerailwaystation",
+  urlPath: "bairnsdale",
   location: {
     latitude: -37.82872043,
     longitude: 147.62761375,
@@ -226,7 +226,7 @@ export const BALACLAVA: StopConfig = {
   id: 18,
   name: "Balaclava",
   tags: [],
-  urlPath: "balaclavarailwaystation",
+  urlPath: "balaclava",
   location: {
     latitude: -37.86948773,
     longitude: 144.9935121,
@@ -239,7 +239,7 @@ export const BALLAN: StopConfig = {
   id: 19,
   name: "Ballan",
   tags: [],
-  urlPath: "ballanrailwaystation",
+  urlPath: "ballan",
   location: {
     latitude: -37.60429951,
     longitude: 144.22544803,
@@ -252,7 +252,7 @@ export const BALLARAT: StopConfig = {
   id: 20,
   name: "Ballarat",
   tags: [],
-  urlPath: "ballaratrailwaystation",
+  urlPath: "ballarat",
   location: {
     latitude: -37.55879148,
     longitude: 143.85945743,
@@ -265,7 +265,7 @@ export const BATMAN: StopConfig = {
   id: 21,
   name: "Batman",
   tags: [],
-  urlPath: "batmanrailwaystation",
+  urlPath: "batman",
   location: {
     latitude: -37.73352285,
     longitude: 144.96284055,
@@ -278,7 +278,7 @@ export const BAXTER: StopConfig = {
   id: 22,
   name: "Baxter",
   tags: [],
-  urlPath: "baxterrailwaystation",
+  urlPath: "baxter",
   location: {
     latitude: -38.19404306,
     longitude: 145.16052609,
@@ -291,7 +291,7 @@ export const BAYSWATER: StopConfig = {
   id: 23,
   name: "Bayswater",
   tags: [],
-  urlPath: "bayswaterrailwaystation",
+  urlPath: "bayswater",
   location: {
     latitude: -37.84173004,
     longitude: 145.26813639,
@@ -304,7 +304,7 @@ export const BEACONSFIELD: StopConfig = {
   id: 24,
   name: "Beaconsfield",
   tags: [],
-  urlPath: "beaconsfieldrailwaystation",
+  urlPath: "beaconsfield",
   location: {
     latitude: -38.05083135,
     longitude: 145.36607374,
@@ -317,7 +317,7 @@ export const BEAUFORT: StopConfig = {
   id: 25,
   name: "Beaufort",
   tags: [],
-  urlPath: "beaufortrailwaystation",
+  urlPath: "beaufort",
   location: {
     latitude: -37.42762724,
     longitude: 143.38238116,
@@ -330,7 +330,7 @@ export const BELGRAVE: StopConfig = {
   id: 26,
   name: "Belgrave",
   tags: [],
-  urlPath: "belgraverailwaystation",
+  urlPath: "belgrave",
   location: {
     latitude: -37.9091021,
     longitude: 145.35529128,
@@ -343,7 +343,7 @@ export const BELL: StopConfig = {
   id: 27,
   name: "Bell",
   tags: [],
-  urlPath: "bellrailwaystation",
+  urlPath: "bell",
   location: {
     latitude: -37.74556212,
     longitude: 145.00015503,
@@ -356,7 +356,7 @@ export const BENALLA: StopConfig = {
   id: 28,
   name: "Benalla",
   tags: [],
-  urlPath: "benallarailwaystation",
+  urlPath: "benalla",
   location: {
     latitude: -36.54455031,
     longitude: 145.98391505,
@@ -369,7 +369,7 @@ export const BENDIGO: StopConfig = {
   id: 29,
   name: "Bendigo",
   tags: [],
-  urlPath: "bendigorailwaystation",
+  urlPath: "bendigo",
   location: {
     latitude: -36.76566973,
     longitude: 144.28300893,
@@ -382,7 +382,7 @@ export const BENTLEIGH: StopConfig = {
   id: 30,
   name: "Bentleigh",
   tags: [],
-  urlPath: "bentleighrailwaystation",
+  urlPath: "bentleigh",
   location: {
     latitude: -37.91742457,
     longitude: 145.03699513,
@@ -395,7 +395,7 @@ export const BERWICK: StopConfig = {
   id: 31,
   name: "Berwick",
   tags: [],
-  urlPath: "berwickrailwaystation",
+  urlPath: "berwick",
   location: {
     latitude: -38.03998037,
     longitude: 145.34541666,
@@ -408,7 +408,7 @@ export const BIRREGURRA: StopConfig = {
   id: 32,
   name: "Birregurra",
   tags: [],
-  urlPath: "birregurrarailwaystation",
+  urlPath: "birregurra",
   location: {
     latitude: -38.32880781,
     longitude: 143.78362521,
@@ -421,7 +421,7 @@ export const BITTERN: StopConfig = {
   id: 33,
   name: "Bittern",
   tags: [],
-  urlPath: "bitternrailwaystation",
+  urlPath: "bittern",
   location: {
     latitude: -38.33739032,
     longitude: 145.17802653,
@@ -434,7 +434,7 @@ export const BLACKBURN: StopConfig = {
   id: 34,
   name: "Blackburn",
   tags: [],
-  urlPath: "blackburnrailwaystation",
+  urlPath: "blackburn",
   location: {
     latitude: -37.82007075,
     longitude: 145.15001354,
@@ -447,7 +447,7 @@ export const BONBEACH: StopConfig = {
   id: 35,
   name: "Bonbeach",
   tags: [],
-  urlPath: "bonbeachrailwaystation",
+  urlPath: "bonbeach",
   location: {
     latitude: -38.06547485,
     longitude: 145.1201058,
@@ -460,7 +460,7 @@ export const BORONIA: StopConfig = {
   id: 36,
   name: "Boronia",
   tags: [],
-  urlPath: "boroniarailwaystation",
+  urlPath: "boronia",
   location: {
     latitude: -37.86040238,
     longitude: 145.28470457,
@@ -473,7 +473,7 @@ export const BOX_HILL: StopConfig = {
   id: 37,
   name: "Box Hill",
   tags: [],
-  urlPath: "boxhillrailwaystation",
+  urlPath: "boxhill",
   location: {
     latitude: -37.81922165,
     longitude: 145.12142893,
@@ -486,7 +486,7 @@ export const BRIGHTON_BEACH: StopConfig = {
   id: 38,
   name: "Brighton Beach",
   tags: [],
-  urlPath: "brightonbeachrailwaystation",
+  urlPath: "brightonbeach",
   location: {
     latitude: -37.92648432,
     longitude: 144.98915355,
@@ -499,7 +499,7 @@ export const BROADFORD: StopConfig = {
   id: 39,
   name: "Broadford",
   tags: [],
-  urlPath: "broadfordrailwaystation",
+  urlPath: "broadford",
   location: {
     latitude: -37.20720049,
     longitude: 145.0430079,
@@ -512,7 +512,7 @@ export const BROADMEADOWS: StopConfig = {
   id: 40,
   name: "Broadmeadows",
   tags: [],
-  urlPath: "broadmeadowsrailwaystation",
+  urlPath: "broadmeadows",
   location: {
     latitude: -37.68304926,
     longitude: 144.91961322,
@@ -525,7 +525,7 @@ export const BRUNSWICK: StopConfig = {
   id: 41,
   name: "Brunswick",
   tags: [],
-  urlPath: "brunswickrailwaystation",
+  urlPath: "brunswick",
   location: {
     latitude: -37.76772055,
     longitude: 144.95958654,
@@ -538,7 +538,7 @@ export const BUNYIP: StopConfig = {
   id: 42,
   name: "Bunyip",
   tags: [],
-  urlPath: "bunyiprailwaystation",
+  urlPath: "bunyip",
   location: {
     latitude: -38.09910771,
     longitude: 145.72075749,
@@ -551,7 +551,7 @@ export const BURNLEY: StopConfig = {
   id: 43,
   name: "Burnley",
   tags: [],
-  urlPath: "burnleyrailwaystation",
+  urlPath: "burnley",
   location: {
     latitude: -37.82756022,
     longitude: 145.00755515,
@@ -564,7 +564,7 @@ export const BURWOOD: StopConfig = {
   id: 44,
   name: "Burwood",
   tags: [],
-  urlPath: "burwoodrailwaystation",
+  urlPath: "burwood",
   location: {
     latitude: -37.85156328,
     longitude: 145.08051107,
@@ -577,7 +577,7 @@ export const CAMBERWELL: StopConfig = {
   id: 45,
   name: "Camberwell",
   tags: [],
-  urlPath: "camberwellrailwaystation",
+  urlPath: "camberwell",
   location: {
     latitude: -37.82656714,
     longitude: 145.05869718,
@@ -590,7 +590,7 @@ export const CAMPERDOWN: StopConfig = {
   id: 46,
   name: "Camperdown",
   tags: [],
-  urlPath: "camperdownrailwaystation",
+  urlPath: "camperdown",
   location: {
     latitude: -38.22890091,
     longitude: 143.1509278,
@@ -603,7 +603,7 @@ export const CANTERBURY: StopConfig = {
   id: 47,
   name: "Canterbury",
   tags: [],
-  urlPath: "canterburyrailwaystation",
+  urlPath: "canterbury",
   location: {
     latitude: -37.82448518,
     longitude: 145.08122424,
@@ -616,7 +616,7 @@ export const CARDINIA_ROAD: StopConfig = {
   id: 48,
   name: "Cardinia Road",
   tags: [],
-  urlPath: "cardiniaroadrailwaystation",
+  urlPath: "cardiniaroad",
   location: {
     latitude: -38.07129047,
     longitude: 145.43779101,
@@ -629,7 +629,7 @@ export const CARNEGIE: StopConfig = {
   id: 49,
   name: "Carnegie",
   tags: [],
-  urlPath: "carnegierailwaystation",
+  urlPath: "carnegie",
   location: {
     latitude: -37.88624148,
     longitude: 145.05857506,
@@ -642,7 +642,7 @@ export const CAROLINE_SPRINGS: StopConfig = {
   id: 50,
   name: "Caroline Springs",
   tags: [],
-  urlPath: "carolinespringsrailwaystation",
+  urlPath: "carolinesprings",
   location: {
     latitude: -37.76612649,
     longitude: 144.73573715,
@@ -655,7 +655,7 @@ export const CARRUM: StopConfig = {
   id: 51,
   name: "Carrum",
   tags: [],
-  urlPath: "carrumrailwaystation",
+  urlPath: "carrum",
   location: {
     latitude: -38.07653027,
     longitude: 145.1228096,
@@ -668,7 +668,7 @@ export const CASTLEMAINE: StopConfig = {
   id: 52,
   name: "Castlemaine",
   tags: [],
-  urlPath: "castlemainerailwaystation",
+  urlPath: "castlemaine",
   location: {
     latitude: -37.06284167,
     longitude: 144.21397878,
@@ -681,7 +681,7 @@ export const CAULFIELD: StopConfig = {
   id: 53,
   name: "Caulfield",
   tags: [],
-  urlPath: "caulfieldrailwaystation",
+  urlPath: "caulfield",
   location: {
     latitude: -37.87745946,
     longitude: 145.04252478,
@@ -694,7 +694,7 @@ export const CHATHAM: StopConfig = {
   id: 54,
   name: "Chatham",
   tags: [],
-  urlPath: "chathamrailwaystation",
+  urlPath: "chatham",
   location: {
     latitude: -37.82429952,
     longitude: 145.08864793,
@@ -707,7 +707,7 @@ export const CHELSEA: StopConfig = {
   id: 55,
   name: "Chelsea",
   tags: [],
-  urlPath: "chelsearailwaystation",
+  urlPath: "chelsea",
   location: {
     latitude: -38.05329032,
     longitude: 145.1166795,
@@ -720,7 +720,7 @@ export const CHELTENHAM: StopConfig = {
   id: 56,
   name: "Cheltenham",
   tags: [],
-  urlPath: "cheltenhamrailwaystation",
+  urlPath: "cheltenham",
   location: {
     latitude: -37.96664989,
     longitude: 145.05455793,
@@ -733,7 +733,7 @@ export const CHILTERN: StopConfig = {
   id: 57,
   name: "Chiltern",
   tags: [],
-  urlPath: "chilternrailwaystation",
+  urlPath: "chiltern",
   location: {
     latitude: -36.15563663,
     longitude: 146.61137475,
@@ -746,7 +746,7 @@ export const CLARKEFIELD: StopConfig = {
   id: 58,
   name: "Clarkefield",
   tags: [],
-  urlPath: "clarkefieldrailwaystation",
+  urlPath: "clarkefield",
   location: {
     latitude: -37.48349769,
     longitude: 144.74537264,
@@ -759,7 +759,7 @@ export const CLAYTON: StopConfig = {
   id: 59,
   name: "Clayton",
   tags: [],
-  urlPath: "claytonrailwaystation",
+  urlPath: "clayton",
   location: {
     latitude: -37.92468255,
     longitude: 145.12053436,
@@ -772,7 +772,7 @@ export const CLIFTON_HILL: StopConfig = {
   id: 60,
   name: "Clifton Hill",
   tags: [],
-  urlPath: "cliftonhillrailwaystation",
+  urlPath: "cliftonhill",
   location: {
     latitude: -37.78865745,
     longitude: 144.9954167,
@@ -785,7 +785,7 @@ export const CLUNES: StopConfig = {
   id: 61,
   name: "Clunes",
   tags: [],
-  urlPath: "clunesrailwaystation",
+  urlPath: "clunes",
   location: {
     latitude: -37.30301059,
     longitude: 143.78208969,
@@ -798,7 +798,7 @@ export const COBBLEBANK: StopConfig = {
   id: 62,
   name: "Cobblebank",
   tags: [],
-  urlPath: "cobblebankrailwaystation",
+  urlPath: "cobblebank",
   location: {
     latitude: -37.71254554,
     longitude: 144.60410782,
@@ -811,7 +811,7 @@ export const COBURG: StopConfig = {
   id: 63,
   name: "Coburg",
   tags: [],
-  urlPath: "coburgrailwaystation",
+  urlPath: "coburg",
   location: {
     latitude: -37.74234502,
     longitude: 144.96333634,
@@ -824,7 +824,7 @@ export const COLAC: StopConfig = {
   id: 64,
   name: "Colac",
   tags: [],
-  urlPath: "colacrailwaystation",
+  urlPath: "colac",
   location: {
     latitude: -38.34337792,
     longitude: 143.58665305,
@@ -837,7 +837,7 @@ export const COLLINGWOOD: StopConfig = {
   id: 65,
   name: "Collingwood",
   tags: [],
-  urlPath: "collingwoodrailwaystation",
+  urlPath: "collingwood",
   location: {
     latitude: -37.80452593,
     longitude: 144.99374967,
@@ -850,7 +850,7 @@ export const COOLAROO: StopConfig = {
   id: 66,
   name: "Coolaroo",
   tags: [],
-  urlPath: "coolaroorailwaystation",
+  urlPath: "coolaroo",
   location: {
     latitude: -37.66111042,
     longitude: 144.92604123,
@@ -863,7 +863,7 @@ export const CORIO: StopConfig = {
   id: 67,
   name: "Corio",
   tags: [],
-  urlPath: "coriorailwaystation",
+  urlPath: "corio",
   location: {
     latitude: -38.07283126,
     longitude: 144.37976842,
@@ -876,7 +876,7 @@ export const CRAIGIEBURN: StopConfig = {
   id: 68,
   name: "Craigieburn",
   tags: [],
-  urlPath: "craigieburnrailwaystation",
+  urlPath: "craigieburn",
   location: {
     latitude: -37.6019248,
     longitude: 144.94330601,
@@ -889,7 +889,7 @@ export const CRANBOURNE: StopConfig = {
   id: 69,
   name: "Cranbourne",
   tags: [],
-  urlPath: "cranbournerailwaystation",
+  urlPath: "cranbourne",
   location: {
     latitude: -38.09953731,
     longitude: 145.28059898,
@@ -902,7 +902,7 @@ export const CRESWICK: StopConfig = {
   id: 70,
   name: "Creswick",
   tags: [],
-  urlPath: "creswickrailwaystation",
+  urlPath: "creswick",
   location: {
     latitude: -37.42460539,
     longitude: 143.88812365,
@@ -915,7 +915,7 @@ export const CRIB_POINT: StopConfig = {
   id: 71,
   name: "Crib Point",
   tags: [],
-  urlPath: "cribpointrailwaystation",
+  urlPath: "cribpoint",
   location: {
     latitude: -38.36612338,
     longitude: 145.20404332,
@@ -928,7 +928,7 @@ export const CROXTON: StopConfig = {
   id: 72,
   name: "Croxton",
   tags: [],
-  urlPath: "croxtonrailwaystation",
+  urlPath: "croxton",
   location: {
     latitude: -37.764101,
     longitude: 144.99705619,
@@ -941,7 +941,7 @@ export const CROYDON: StopConfig = {
   id: 73,
   name: "Croydon",
   tags: [],
-  urlPath: "croydonrailwaystation",
+  urlPath: "croydon",
   location: {
     latitude: -37.79530018,
     longitude: 145.28048737,
@@ -954,7 +954,7 @@ export const DANDENONG: StopConfig = {
   id: 74,
   name: "Dandenong",
   tags: [],
-  urlPath: "dandenongrailwaystation",
+  urlPath: "dandenong",
   location: {
     latitude: -37.98996792,
     longitude: 145.20972537,
@@ -967,7 +967,7 @@ export const DAREBIN: StopConfig = {
   id: 75,
   name: "Darebin",
   tags: [],
-  urlPath: "darebinrailwaystation",
+  urlPath: "darebin",
   location: {
     latitude: -37.77496341,
     longitude: 145.03847598,
@@ -980,7 +980,7 @@ export const DARLING: StopConfig = {
   id: 76,
   name: "Darling",
   tags: [],
-  urlPath: "darlingrailwaystation",
+  urlPath: "darling",
   location: {
     latitude: -37.86895684,
     longitude: 145.06295083,
@@ -993,7 +993,7 @@ export const DEER_PARK: StopConfig = {
   id: 77,
   name: "Deer Park",
   tags: [],
-  urlPath: "deerparkrailwaystation",
+  urlPath: "deerpark",
   location: {
     latitude: -37.77728102,
     longitude: 144.77108058,
@@ -1006,7 +1006,7 @@ export const DENNIS: StopConfig = {
   id: 78,
   name: "Dennis",
   tags: [],
-  urlPath: "dennisrailwaystation",
+  urlPath: "dennis",
   location: {
     latitude: -37.77918729,
     longitude: 145.00824163,
@@ -1019,7 +1019,7 @@ export const DIAMOND_CREEK: StopConfig = {
   id: 79,
   name: "Diamond Creek",
   tags: [],
-  urlPath: "diamondcreekrailwaystation",
+  urlPath: "diamondcreek",
   location: {
     latitude: -37.67337905,
     longitude: 145.15853819,
@@ -1032,7 +1032,7 @@ export const DIGGERS_REST: StopConfig = {
   id: 80,
   name: "Diggers Rest",
   tags: [],
-  urlPath: "diggersrestrailwaystation",
+  urlPath: "diggersrest",
   location: {
     latitude: -37.62696051,
     longitude: 144.71982218,
@@ -1045,7 +1045,7 @@ export const DINGEE: StopConfig = {
   id: 81,
   name: "Dingee",
   tags: [],
-  urlPath: "dingeerailwaystation",
+  urlPath: "dingee",
   location: {
     latitude: -36.36923291,
     longitude: 144.23112034,
@@ -1058,7 +1058,7 @@ export const DONNYBROOK: StopConfig = {
   id: 82,
   name: "Donnybrook",
   tags: [],
-  urlPath: "donnybrookrailwaystation",
+  urlPath: "donnybrook",
   location: {
     latitude: -37.54202766,
     longitude: 144.97020358,
@@ -1071,7 +1071,7 @@ export const DROUIN: StopConfig = {
   id: 83,
   name: "Drouin",
   tags: [],
-  urlPath: "drouinrailwaystation",
+  urlPath: "drouin",
   location: {
     latitude: -38.1364519,
     longitude: 145.85594693,
@@ -1084,7 +1084,7 @@ export const EAGLEHAWK: StopConfig = {
   id: 84,
   name: "Eaglehawk",
   tags: [],
-  urlPath: "eaglehawkrailwaystation",
+  urlPath: "eaglehawk",
   location: {
     latitude: -36.71852539,
     longitude: 144.2483799,
@@ -1097,7 +1097,7 @@ export const EAGLEMONT: StopConfig = {
   id: 85,
   name: "Eaglemont",
   tags: [],
-  urlPath: "eaglemontrailwaystation",
+  urlPath: "eaglemont",
   location: {
     latitude: -37.76358553,
     longitude: 145.05394269,
@@ -1110,7 +1110,7 @@ export const EAST_CAMBERWELL: StopConfig = {
   id: 86,
   name: "East Camberwell",
   tags: [],
-  urlPath: "eastcamberwellrailwaystation",
+  urlPath: "eastcamberwell",
   location: {
     latitude: -37.82589419,
     longitude: 145.06819025,
@@ -1123,7 +1123,7 @@ export const EAST_MALVERN: StopConfig = {
   id: 87,
   name: "East Malvern",
   tags: [],
-  urlPath: "eastmalvernrailwaystation",
+  urlPath: "eastmalvern",
   location: {
     latitude: -37.87692101,
     longitude: 145.06939324,
@@ -1136,7 +1136,7 @@ export const EAST_RICHMOND: StopConfig = {
   id: 88,
   name: "East Richmond",
   tags: [],
-  urlPath: "eastrichmondrailwaystation",
+  urlPath: "eastrichmond",
   location: {
     latitude: -37.82639995,
     longitude: 144.99706569,
@@ -1149,7 +1149,7 @@ export const ECHUCA: StopConfig = {
   id: 89,
   name: "Echuca",
   tags: [],
-  urlPath: "echucarailwaystation",
+  urlPath: "echuca",
   location: {
     latitude: -36.13098223,
     longitude: 144.75345866,
@@ -1162,7 +1162,7 @@ export const EDITHVALE: StopConfig = {
   id: 90,
   name: "Edithvale",
   tags: [],
-  urlPath: "edithvalerailwaystation",
+  urlPath: "edithvale",
   location: {
     latitude: -38.03653574,
     longitude: 145.10758338,
@@ -1175,7 +1175,7 @@ export const ELMORE: StopConfig = {
   id: 91,
   name: "Elmore",
   tags: [],
-  urlPath: "elmorerailwaystation",
+  urlPath: "elmore",
   location: {
     latitude: -36.49502002,
     longitude: 144.60775752,
@@ -1188,7 +1188,7 @@ export const ELSTERNWICK: StopConfig = {
   id: 92,
   name: "Elsternwick",
   tags: [],
-  urlPath: "elsternwickrailwaystation",
+  urlPath: "elsternwick",
   location: {
     latitude: -37.88475311,
     longitude: 145.00089787,
@@ -1201,7 +1201,7 @@ export const ELTHAM: StopConfig = {
   id: 93,
   name: "Eltham",
   tags: [],
-  urlPath: "elthamrailwaystation",
+  urlPath: "eltham",
   location: {
     latitude: -37.71354967,
     longitude: 145.14782202,
@@ -1214,7 +1214,7 @@ export const EPPING: StopConfig = {
   id: 94,
   name: "Epping",
   tags: [],
-  urlPath: "eppingrailwaystation",
+  urlPath: "epping",
   location: {
     latitude: -37.65217784,
     longitude: 145.03107934,
@@ -1227,7 +1227,7 @@ export const EPSOM: StopConfig = {
   id: 95,
   name: "Epsom",
   tags: [],
-  urlPath: "epsomrailwaystation",
+  urlPath: "epsom",
   location: {
     latitude: -36.70628781,
     longitude: 144.3210526,
@@ -1240,7 +1240,7 @@ export const ESSENDON: StopConfig = {
   id: 96,
   name: "Essendon",
   tags: [],
-  urlPath: "essendonrailwaystation",
+  urlPath: "essendon",
   location: {
     latitude: -37.7560117,
     longitude: 144.9161975,
@@ -1253,7 +1253,7 @@ export const EUROA: StopConfig = {
   id: 97,
   name: "Euroa",
   tags: [],
-  urlPath: "euroarailwaystation",
+  urlPath: "euroa",
   location: {
     latitude: -36.74918387,
     longitude: 145.56802043,
@@ -1266,7 +1266,7 @@ export const FAIRFIELD: StopConfig = {
   id: 98,
   name: "Fairfield",
   tags: [],
-  urlPath: "fairfieldrailwaystation",
+  urlPath: "fairfield",
   location: {
     latitude: -37.77917126,
     longitude: 145.0169053,
@@ -1279,7 +1279,7 @@ export const FAWKNER: StopConfig = {
   id: 99,
   name: "Fawkner",
   tags: [],
-  urlPath: "fawknerrailwaystation",
+  urlPath: "fawkner",
   location: {
     latitude: -37.71462129,
     longitude: 144.96054503,
@@ -1292,7 +1292,7 @@ export const FERNTREE_GULLY: StopConfig = {
   id: 100,
   name: "Ferntree Gully",
   tags: [],
-  urlPath: "ferntreegullyrailwaystation",
+  urlPath: "ferntreegully",
   location: {
     latitude: -37.88169799,
     longitude: 145.29525126,
@@ -1305,7 +1305,7 @@ export const FLAGSTAFF: StopConfig = {
   id: 101,
   name: "Flagstaff",
   tags: [],
-  urlPath: "flagstaffrailwaystation",
+  urlPath: "flagstaff",
   location: {
     latitude: -37.8119815,
     longitude: 144.95566511,
@@ -1318,7 +1318,7 @@ export const FLEMINGTON_BRIDGE: StopConfig = {
   id: 102,
   name: "Flemington Bridge",
   tags: [],
-  urlPath: "flemingtonbridgerailwaystation",
+  urlPath: "flemingtonbridge",
   location: {
     latitude: -37.78813995,
     longitude: 144.93932328,
@@ -1331,7 +1331,7 @@ export const FLEMINGTON_RACECOURSE: StopConfig = {
   id: 103,
   name: "Flemington Racecourse",
   tags: [],
-  urlPath: "flemingtonracecourserailwaystation",
+  urlPath: "flemingtonracecourse",
   location: {
     latitude: -37.78721073,
     longitude: 144.90757709,
@@ -1344,7 +1344,7 @@ export const FLINDERS_STREET: StopConfig = {
   id: 104,
   name: "Flinders Street",
   tags: [],
-  urlPath: "flindersstreetrailwaystation",
+  urlPath: "flindersstreet",
   location: {
     latitude: -37.81830513,
     longitude: 144.96696435,
@@ -1357,7 +1357,7 @@ export const FOOTSCRAY: StopConfig = {
   id: 105,
   name: "Footscray",
   tags: [],
-  urlPath: "footscrayrailwaystation",
+  urlPath: "footscray",
   location: {
     latitude: -37.80141343,
     longitude: 144.90202006,
@@ -1370,7 +1370,7 @@ export const FRANKSTON: StopConfig = {
   id: 106,
   name: "Frankston",
   tags: [],
-  urlPath: "frankstonrailwaystation",
+  urlPath: "frankston",
   location: {
     latitude: -38.14299007,
     longitude: 145.12616228,
@@ -1383,7 +1383,7 @@ export const GARDENVALE: StopConfig = {
   id: 107,
   name: "Gardenvale",
   tags: [],
-  urlPath: "gardenvalerailwaystation",
+  urlPath: "gardenvale",
   location: {
     latitude: -37.89669508,
     longitude: 145.00416843,
@@ -1396,7 +1396,7 @@ export const GARDINER: StopConfig = {
   id: 108,
   name: "Gardiner",
   tags: [],
-  urlPath: "gardinerrailwaystation",
+  urlPath: "gardiner",
   location: {
     latitude: -37.85327908,
     longitude: 145.05165466,
@@ -1409,7 +1409,7 @@ export const GARFIELD: StopConfig = {
   id: 109,
   name: "Garfield",
   tags: [],
-  urlPath: "garfieldrailwaystation",
+  urlPath: "garfield",
   location: {
     latitude: -38.09103062,
     longitude: 145.67422472,
@@ -1422,7 +1422,7 @@ export const GEELONG: StopConfig = {
   id: 110,
   name: "Geelong",
   tags: [],
-  urlPath: "geelongrailwaystation",
+  urlPath: "geelong",
   location: {
     latitude: -38.14470898,
     longitude: 144.3549152,
@@ -1435,7 +1435,7 @@ export const GINIFER: StopConfig = {
   id: 111,
   name: "Ginifer",
   tags: [],
-  urlPath: "giniferrailwaystation",
+  urlPath: "ginifer",
   location: {
     latitude: -37.76008529,
     longitude: 144.81135895,
@@ -1448,7 +1448,7 @@ export const GISBORNE: StopConfig = {
   id: 112,
   name: "Gisborne",
   tags: [],
-  urlPath: "gisbornerailwaystation",
+  urlPath: "gisborne",
   location: {
     latitude: -37.4588255,
     longitude: 144.59872157,
@@ -1461,7 +1461,7 @@ export const GLEN_IRIS: StopConfig = {
   id: 113,
   name: "Glen Iris",
   tags: [],
-  urlPath: "glenirisrailwaystation",
+  urlPath: "gleniris",
   location: {
     latitude: -37.85930842,
     longitude: 145.0582249,
@@ -1474,7 +1474,7 @@ export const GLEN_WAVERLEY: StopConfig = {
   id: 114,
   name: "Glen Waverley",
   tags: [],
-  urlPath: "glenwaverleyrailwaystation",
+  urlPath: "glenwaverley",
   location: {
     latitude: -37.87950407,
     longitude: 145.16205755,
@@ -1487,7 +1487,7 @@ export const GLENBERVIE: StopConfig = {
   id: 115,
   name: "Glenbervie",
   tags: [],
-  urlPath: "glenbervierailwaystation",
+  urlPath: "glenbervie",
   location: {
     latitude: -37.74720985,
     longitude: 144.92093868,
@@ -1500,7 +1500,7 @@ export const GLENFERRIE: StopConfig = {
   id: 116,
   name: "Glenferrie",
   tags: [],
-  urlPath: "glenferrierailwaystation",
+  urlPath: "glenferrie",
   location: {
     latitude: -37.82146682,
     longitude: 145.03643883,
@@ -1513,7 +1513,7 @@ export const GLEN_HUNTLY: StopConfig = {
   id: 117,
   name: "Glen Huntly",
   tags: [],
-  urlPath: "glenhuntlyrailwaystation",
+  urlPath: "glenhuntly",
   location: {
     latitude: -37.88971946,
     longitude: 145.04222285,
@@ -1526,7 +1526,7 @@ export const GLENROY: StopConfig = {
   id: 118,
   name: "Glenroy",
   tags: [],
-  urlPath: "glenroyrailwaystation",
+  urlPath: "glenroy",
   location: {
     latitude: -37.70453633,
     longitude: 144.9172204,
@@ -1539,7 +1539,7 @@ export const GOORNONG: StopConfig = {
   id: 119,
   name: "Goornong",
   tags: [],
-  urlPath: "goornongrailwaystation",
+  urlPath: "goornong",
   location: {
     latitude: -36.61518327,
     longitude: 144.50347417,
@@ -1552,7 +1552,7 @@ export const GOWRIE: StopConfig = {
   id: 120,
   name: "Gowrie",
   tags: [],
-  urlPath: "gowrierailwaystation",
+  urlPath: "gowrie",
   location: {
     latitude: -37.700678,
     longitude: 144.95887432,
@@ -1565,7 +1565,7 @@ export const GREENSBOROUGH: StopConfig = {
   id: 121,
   name: "Greensborough",
   tags: [],
-  urlPath: "greensboroughrailwaystation",
+  urlPath: "greensborough",
   location: {
     latitude: -37.70371477,
     longitude: 145.10793589,
@@ -1578,7 +1578,7 @@ export const HALLAM: StopConfig = {
   id: 122,
   name: "Hallam",
   tags: [],
-  urlPath: "hallamrailwaystation",
+  urlPath: "hallam",
   location: {
     latitude: -38.01774038,
     longitude: 145.2697768,
@@ -1591,7 +1591,7 @@ export const HAMPTON: StopConfig = {
   id: 123,
   name: "Hampton",
   tags: [],
-  urlPath: "hamptonrailwaystation",
+  urlPath: "hampton",
   location: {
     latitude: -37.9379864,
     longitude: 145.00150445,
@@ -1604,7 +1604,7 @@ export const HARTWELL: StopConfig = {
   id: 124,
   name: "Hartwell",
   tags: [],
-  urlPath: "hartwellrailwaystation",
+  urlPath: "hartwell",
   location: {
     latitude: -37.84398457,
     longitude: 145.07555959,
@@ -1617,7 +1617,7 @@ export const HASTINGS: StopConfig = {
   id: 125,
   name: "Hastings",
   tags: [],
-  urlPath: "hastingsrailwaystation",
+  urlPath: "hastings",
   location: {
     latitude: -38.30565853,
     longitude: 145.18597988,
@@ -1630,7 +1630,7 @@ export const HAWKSBURN: StopConfig = {
   id: 126,
   name: "Hawksburn",
   tags: [],
-  urlPath: "hawksburnrailwaystation",
+  urlPath: "hawksburn",
   location: {
     latitude: -37.84458683,
     longitude: 145.00190352,
@@ -1643,7 +1643,7 @@ export const HAWKSTOWE: StopConfig = {
   id: 127,
   name: "Hawkstowe",
   tags: [],
-  urlPath: "hawkstowerailwaystation",
+  urlPath: "hawkstowe",
   location: {
     latitude: -37.62297489,
     longitude: 145.09729471,
@@ -1656,7 +1656,7 @@ export const HAWTHORN: StopConfig = {
   id: 128,
   name: "Hawthorn",
   tags: [],
-  urlPath: "hawthornrailwaystation",
+  urlPath: "hawthorn",
   location: {
     latitude: -37.82182601,
     longitude: 145.02289866,
@@ -1669,7 +1669,7 @@ export const HEATHCOTE_JUNCTION: StopConfig = {
   id: 129,
   name: "Heathcote Junction",
   tags: [],
-  urlPath: "heathcotejunctionrailwaystation",
+  urlPath: "heathcotejunction",
   location: {
     latitude: -37.37172322,
     longitude: 145.02824986,
@@ -1682,7 +1682,7 @@ export const HEATHERDALE: StopConfig = {
   id: 130,
   name: "Heatherdale",
   tags: [],
-  urlPath: "heatherdalerailwaystation",
+  urlPath: "heatherdale",
   location: {
     latitude: -37.8188232,
     longitude: 145.21397044,
@@ -1695,7 +1695,7 @@ export const HEATHMONT: StopConfig = {
   id: 131,
   name: "Heathmont",
   tags: [],
-  urlPath: "heathmontrailwaystation",
+  urlPath: "heathmont",
   location: {
     latitude: -37.82832227,
     longitude: 145.24455538,
@@ -1708,7 +1708,7 @@ export const HEIDELBERG: StopConfig = {
   id: 132,
   name: "Heidelberg",
   tags: [],
-  urlPath: "heidelbergrailwaystation",
+  urlPath: "heidelberg",
   location: {
     latitude: -37.75707293,
     longitude: 145.06068552,
@@ -1721,7 +1721,7 @@ export const HEYINGTON: StopConfig = {
   id: 133,
   name: "Heyington",
   tags: [],
-  urlPath: "heyingtonrailwaystation",
+  urlPath: "heyington",
   location: {
     latitude: -37.83465462,
     longitude: 145.02264711,
@@ -1734,7 +1734,7 @@ export const HIGHETT: StopConfig = {
   id: 134,
   name: "Highett",
   tags: [],
-  urlPath: "highettrailwaystation",
+  urlPath: "highett",
   location: {
     latitude: -37.948425,
     longitude: 145.0418718,
@@ -1747,7 +1747,7 @@ export const HOLMESGLEN: StopConfig = {
   id: 135,
   name: "Holmesglen",
   tags: [],
-  urlPath: "holmesglenrailwaystation",
+  urlPath: "holmesglen",
   location: {
     latitude: -37.87440222,
     longitude: 145.09066203,
@@ -1760,7 +1760,7 @@ export const HOPPERS_CROSSING: StopConfig = {
   id: 136,
   name: "Hoppers Crossing",
   tags: [],
-  urlPath: "hopperscrossingrailwaystation",
+  urlPath: "hopperscrossing",
   location: {
     latitude: -37.88338025,
     longitude: 144.70074704,
@@ -1773,7 +1773,7 @@ export const HUGHESDALE: StopConfig = {
   id: 137,
   name: "Hughesdale",
   tags: [],
-  urlPath: "hughesdalerailwaystation",
+  urlPath: "hughesdale",
   location: {
     latitude: -37.89419074,
     longitude: 145.07618607,
@@ -1786,7 +1786,7 @@ export const HUNTINGDALE: StopConfig = {
   id: 138,
   name: "Huntingdale",
   tags: [],
-  urlPath: "huntingdalerailwaystation",
+  urlPath: "huntingdale",
   location: {
     latitude: -37.91101734,
     longitude: 145.10236432,
@@ -1799,7 +1799,7 @@ export const HURSTBRIDGE: StopConfig = {
   id: 139,
   name: "Hurstbridge",
   tags: [],
-  urlPath: "hurstbridgerailwaystation",
+  urlPath: "hurstbridge",
   location: {
     latitude: -37.63939817,
     longitude: 145.19201689,
@@ -1812,7 +1812,7 @@ export const IVANHOE: StopConfig = {
   id: 140,
   name: "Ivanhoe",
   tags: [],
-  urlPath: "ivanhoerailwaystation",
+  urlPath: "ivanhoe",
   location: {
     latitude: -37.76889674,
     longitude: 145.04542519,
@@ -1825,7 +1825,7 @@ export const JACANA: StopConfig = {
   id: 141,
   name: "Jacana",
   tags: [],
-  urlPath: "jacanarailwaystation",
+  urlPath: "jacana",
   location: {
     latitude: -37.69513079,
     longitude: 144.91585052,
@@ -1838,7 +1838,7 @@ export const JEWELL: StopConfig = {
   id: 142,
   name: "Jewell",
   tags: [],
-  urlPath: "jewellrailwaystation",
+  urlPath: "jewell",
   location: {
     latitude: -37.77498702,
     longitude: 144.95871691,
@@ -1851,7 +1851,7 @@ export const JOLIMONT: StopConfig = {
   id: 143,
   name: "Jolimont",
   tags: [],
-  urlPath: "jolimontrailwaystation",
+  urlPath: "jolimont",
   location: {
     latitude: -37.81652702,
     longitude: 144.98409834,
@@ -1864,7 +1864,7 @@ export const JORDANVILLE: StopConfig = {
   id: 144,
   name: "Jordanville",
   tags: [],
-  urlPath: "jordanvillerailwaystation",
+  urlPath: "jordanville",
   location: {
     latitude: -37.87360339,
     longitude: 145.11209016,
@@ -1877,7 +1877,7 @@ export const KANANOOK: StopConfig = {
   id: 145,
   name: "Kananook",
   tags: [],
-  urlPath: "kananookrailwaystation",
+  urlPath: "kananook",
   location: {
     latitude: -38.12175231,
     longitude: 145.13537493,
@@ -1890,7 +1890,7 @@ export const KANGAROO_FLAT: StopConfig = {
   id: 146,
   name: "Kangaroo Flat",
   tags: [],
-  urlPath: "kangarooflatrailwaystation",
+  urlPath: "kangarooflat",
   location: {
     latitude: -36.79483364,
     longitude: 144.24899016,
@@ -1903,7 +1903,7 @@ export const KEILOR_PLAINS: StopConfig = {
   id: 147,
   name: "Keilor Plains",
   tags: [],
-  urlPath: "keilorplainsrailwaystation",
+  urlPath: "keilorplains",
   location: {
     latitude: -37.72927934,
     longitude: 144.79373807,
@@ -1916,7 +1916,7 @@ export const KENSINGTON: StopConfig = {
   id: 148,
   name: "Kensington",
   tags: [],
-  urlPath: "kensingtonrailwaystation",
+  urlPath: "kensington",
   location: {
     latitude: -37.79378022,
     longitude: 144.93052444,
@@ -1929,7 +1929,7 @@ export const KEON_PARK: StopConfig = {
   id: 149,
   name: "Keon Park",
   tags: [],
-  urlPath: "keonparkrailwaystation",
+  urlPath: "keonpark",
   location: {
     latitude: -37.69487012,
     longitude: 145.01188382,
@@ -1942,7 +1942,7 @@ export const KERANG: StopConfig = {
   id: 150,
   name: "Kerang",
   tags: [],
-  urlPath: "kerangrailwaystation",
+  urlPath: "kerang",
   location: {
     latitude: -35.73312162,
     longitude: 143.92442509,
@@ -1955,7 +1955,7 @@ export const KILMORE_EAST: StopConfig = {
   id: 151,
   name: "Kilmore East",
   tags: [],
-  urlPath: "kilmoreeaststation",
+  urlPath: "kilmoreeast",
   location: {
     latitude: -37.29321027,
     longitude: 144.98356599,
@@ -1968,7 +1968,7 @@ export const KOOYONG: StopConfig = {
   id: 152,
   name: "Kooyong",
   tags: [],
-  urlPath: "kooyongrailwaystation",
+  urlPath: "kooyong",
   location: {
     latitude: -37.83992894,
     longitude: 145.03355161,
@@ -1981,7 +1981,7 @@ export const KYNETON: StopConfig = {
   id: 153,
   name: "Kyneton",
   tags: [],
-  urlPath: "kynetonrailwaystation",
+  urlPath: "kyneton",
   location: {
     latitude: -37.25827885,
     longitude: 144.45060159,
@@ -1994,7 +1994,7 @@ export const LABURNUM: StopConfig = {
   id: 154,
   name: "Laburnum",
   tags: [],
-  urlPath: "laburnumrailwaystation",
+  urlPath: "laburnum",
   location: {
     latitude: -37.82078023,
     longitude: 145.14070271,
@@ -2007,7 +2007,7 @@ export const LALOR: StopConfig = {
   id: 155,
   name: "Lalor",
   tags: [],
-  urlPath: "lalorrailwaystation",
+  urlPath: "lalor",
   location: {
     latitude: -37.66585075,
     longitude: 145.01719317,
@@ -2020,7 +2020,7 @@ export const LARA: StopConfig = {
   id: 156,
   name: "Lara",
   tags: [],
-  urlPath: "lararailwaystation",
+  urlPath: "lara",
   location: {
     latitude: -38.02242764,
     longitude: 144.41440429,
@@ -2033,7 +2033,7 @@ export const LAVERTON: StopConfig = {
   id: 157,
   name: "Laverton",
   tags: [],
-  urlPath: "lavertonrailwaystation",
+  urlPath: "laverton",
   location: {
     latitude: -37.86369404,
     longitude: 144.77261667,
@@ -2046,7 +2046,7 @@ export const LEAWARRA: StopConfig = {
   id: 158,
   name: "Leawarra",
   tags: [],
-  urlPath: "leawarrarailwaystation",
+  urlPath: "leawarra",
   location: {
     latitude: -38.152034,
     longitude: 145.13953396,
@@ -2059,7 +2059,7 @@ export const LILYDALE: StopConfig = {
   id: 159,
   name: "Lilydale",
   tags: [],
-  urlPath: "lilydalerailwaystation",
+  urlPath: "lilydale",
   location: {
     latitude: -37.75721264,
     longitude: 145.34582227,
@@ -2072,7 +2072,7 @@ export const LITTLE_RIVER: StopConfig = {
   id: 160,
   name: "Little River",
   tags: [],
-  urlPath: "littleriverrailwaystation",
+  urlPath: "littleriver",
   location: {
     latitude: -37.96292909,
     longitude: 144.49848487,
@@ -2085,7 +2085,7 @@ export const LONGWARRY: StopConfig = {
   id: 161,
   name: "Longwarry",
   tags: [],
-  urlPath: "longwarryrailwaystation",
+  urlPath: "longwarry",
   location: {
     latitude: -38.11099211,
     longitude: 145.76686029,
@@ -2098,7 +2098,7 @@ export const LYNBROOK: StopConfig = {
   id: 162,
   name: "Lynbrook",
   tags: [],
-  urlPath: "lynbrookrailwaystation",
+  urlPath: "lynbrook",
   location: {
     latitude: -38.05734985,
     longitude: 145.24925211,
@@ -2111,7 +2111,7 @@ export const MACAULAY: StopConfig = {
   id: 163,
   name: "Macaulay",
   tags: [],
-  urlPath: "macaulayrailwaystation",
+  urlPath: "macaulay",
   location: {
     latitude: -37.79426673,
     longitude: 144.93616633,
@@ -2124,7 +2124,7 @@ export const MACEDON: StopConfig = {
   id: 164,
   name: "Macedon",
   tags: [],
-  urlPath: "macedonrailwaystation",
+  urlPath: "macedon",
   location: {
     latitude: -37.42357331,
     longitude: 144.56139685,
@@ -2137,7 +2137,7 @@ export const MACLEOD: StopConfig = {
   id: 165,
   name: "Macleod",
   tags: [],
-  urlPath: "macleodrailwaystation",
+  urlPath: "macleod",
   location: {
     latitude: -37.7260123,
     longitude: 145.06914332,
@@ -2150,7 +2150,7 @@ export const MALMSBURY: StopConfig = {
   id: 166,
   name: "Malmsbury",
   tags: [],
-  urlPath: "malmsburyrailwaystation",
+  urlPath: "malmsbury",
   location: {
     latitude: -37.18974032,
     longitude: 144.37532317,
@@ -2163,7 +2163,7 @@ export const MALVERN: StopConfig = {
   id: 167,
   name: "Malvern",
   tags: [],
-  urlPath: "malvernrailwaystation",
+  urlPath: "malvern",
   location: {
     latitude: -37.8662533,
     longitude: 145.02929394,
@@ -2176,7 +2176,7 @@ export const MARSHALL: StopConfig = {
   id: 168,
   name: "Marshall",
   tags: [],
-  urlPath: "marshallrailwaystation",
+  urlPath: "marshall",
   location: {
     latitude: -38.198549,
     longitude: 144.35505671,
@@ -2189,7 +2189,7 @@ export const MARYBOROUGH: StopConfig = {
   id: 169,
   name: "Maryborough",
   tags: [],
-  urlPath: "maryboroughrailwaystation",
+  urlPath: "maryborough",
   location: {
     latitude: -37.05090849,
     longitude: 143.74240234,
@@ -2202,7 +2202,7 @@ export const MCKINNON: StopConfig = {
   id: 170,
   name: "McKinnon",
   tags: [],
-  urlPath: "mckinnonrailwaystation",
+  urlPath: "mckinnon",
   location: {
     latitude: -37.91030903,
     longitude: 145.03829897,
@@ -2215,7 +2215,7 @@ export const MELBOURNE_CENTRAL: StopConfig = {
   id: 171,
   name: "Melbourne Central",
   tags: [],
-  urlPath: "melbournecentralrailwaystation",
+  urlPath: "melbournecentral",
   location: {
     latitude: -37.80993896,
     longitude: 144.96260489,
@@ -2228,7 +2228,7 @@ export const MELTON: StopConfig = {
   id: 172,
   name: "Melton",
   tags: [],
-  urlPath: "meltonrailwaystation",
+  urlPath: "melton",
   location: {
     latitude: -37.70347382,
     longitude: 144.57209861,
@@ -2241,7 +2241,7 @@ export const MENTONE: StopConfig = {
   id: 173,
   name: "Mentone",
   tags: [],
-  urlPath: "mentonerailwaystation",
+  urlPath: "mentone",
   location: {
     latitude: -37.98277704,
     longitude: 145.06580232,
@@ -2254,7 +2254,7 @@ export const MERINDA_PARK: StopConfig = {
   id: 174,
   name: "Merinda Park",
   tags: [],
-  urlPath: "merindaparkrailwaystation",
+  urlPath: "merindapark",
   location: {
     latitude: -38.07900048,
     longitude: 145.26351137,
@@ -2267,7 +2267,7 @@ export const MERLYNSTON: StopConfig = {
   id: 175,
   name: "Merlynston",
   tags: [],
-  urlPath: "merlynstonrailwaystation",
+  urlPath: "merlynston",
   location: {
     latitude: -37.72093389,
     longitude: 144.96131355,
@@ -2280,7 +2280,7 @@ export const MERNDA: StopConfig = {
   id: 176,
   name: "Mernda",
   tags: [],
-  urlPath: "merndarailwaystation",
+  urlPath: "mernda",
   location: {
     latitude: -37.60254907,
     longitude: 145.10095293,
@@ -2293,7 +2293,7 @@ export const MERRI: StopConfig = {
   id: 177,
   name: "Merri",
   tags: [],
-  urlPath: "merrirailwaystation",
+  urlPath: "merri",
   location: {
     latitude: -37.77784668,
     longitude: 144.99297248,
@@ -2306,7 +2306,7 @@ export const MIDDLE_BRIGHTON: StopConfig = {
   id: 178,
   name: "Middle Brighton",
   tags: [],
-  urlPath: "middlebrightonrailwaystation",
+  urlPath: "middlebrighton",
   location: {
     latitude: -37.91513441,
     longitude: 144.99629909,
@@ -2319,7 +2319,7 @@ export const MIDDLE_FOOTSCRAY: StopConfig = {
   id: 179,
   name: "Middle Footscray",
   tags: [],
-  urlPath: "middlefootscrayrailwaystation",
+  urlPath: "middlefootscray",
   location: {
     latitude: -37.8025047,
     longitude: 144.89147208,
@@ -2332,7 +2332,7 @@ export const MIDDLE_GORGE: StopConfig = {
   id: 180,
   name: "Middle Gorge",
   tags: [],
-  urlPath: "middlegorgerailwaystation",
+  urlPath: "middlegorge",
   location: {
     latitude: -37.64403391,
     longitude: 145.09212201,
@@ -2345,7 +2345,7 @@ export const MITCHAM: StopConfig = {
   id: 181,
   name: "Mitcham",
   tags: [],
-  urlPath: "mitchamrailwaystation",
+  urlPath: "mitcham",
   location: {
     latitude: -37.81816668,
     longitude: 145.19220824,
@@ -2358,7 +2358,7 @@ export const MOE: StopConfig = {
   id: 182,
   name: "Moe",
   tags: [],
-  urlPath: "moerailwaystation",
+  urlPath: "moe",
   location: {
     latitude: -38.17689039,
     longitude: 146.26054896,
@@ -2371,7 +2371,7 @@ export const MONTMORENCY: StopConfig = {
   id: 184,
   name: "Montmorency",
   tags: [],
-  urlPath: "montmorencyrailwaystation",
+  urlPath: "montmorency",
   location: {
     latitude: -37.71529624,
     longitude: 145.12151574,
@@ -2384,7 +2384,7 @@ export const MOONEE_PONDS: StopConfig = {
   id: 185,
   name: "Moonee Ponds",
   tags: [],
-  urlPath: "mooneepondsrailwaystation",
+  urlPath: "mooneeponds",
   location: {
     latitude: -37.76570666,
     longitude: 144.9191607,
@@ -2397,7 +2397,7 @@ export const MOORABBIN: StopConfig = {
   id: 186,
   name: "Moorabbin",
   tags: [],
-  urlPath: "moorabbinrailwaystation",
+  urlPath: "moorabbin",
   location: {
     latitude: -37.93447096,
     longitude: 145.03676929,
@@ -2410,7 +2410,7 @@ export const MOOROOLBARK: StopConfig = {
   id: 187,
   name: "Mooroolbark",
   tags: [],
-  urlPath: "mooroolbarkrailwaystation",
+  urlPath: "mooroolbark",
   location: {
     latitude: -37.78474883,
     longitude: 145.3124024,
@@ -2423,7 +2423,7 @@ export const MOOROOPNA: StopConfig = {
   id: 188,
   name: "Mooroopna",
   tags: [],
-  urlPath: "mooroopnarailwaystation",
+  urlPath: "mooroopna",
   location: {
     latitude: -36.39912828,
     longitude: 145.35821484,
@@ -2436,7 +2436,7 @@ export const MORDIALLOC: StopConfig = {
   id: 189,
   name: "Mordialloc",
   tags: [],
-  urlPath: "mordiallocrailwaystation",
+  urlPath: "mordialloc",
   location: {
     latitude: -38.00658295,
     longitude: 145.08765936,
@@ -2449,7 +2449,7 @@ export const MORELAND: StopConfig = {
   id: 190,
   name: "Moreland",
   tags: [],
-  urlPath: "morelandrailwaystation",
+  urlPath: "moreland",
   location: {
     latitude: -37.75448484,
     longitude: 144.96182303,
@@ -2462,7 +2462,7 @@ export const MORRADOO: StopConfig = {
   id: 191,
   name: "Morradoo",
   tags: [],
-  urlPath: "morradoorailwaystation",
+  urlPath: "morradoo",
   location: {
     latitude: -38.35403334,
     longitude: 145.18960249,
@@ -2475,7 +2475,7 @@ export const MORWELL: StopConfig = {
   id: 192,
   name: "Morwell",
   tags: [],
-  urlPath: "morwellrailwaystation",
+  urlPath: "morwell",
   location: {
     latitude: -38.23674592,
     longitude: 146.39677567,
@@ -2488,7 +2488,7 @@ export const MOUNT_WAVERLEY: StopConfig = {
   id: 193,
   name: "Mount Waverley",
   tags: [],
-  urlPath: "mountwaverleyrailwaystation",
+  urlPath: "mountwaverley",
   location: {
     latitude: -37.87526408,
     longitude: 145.1280441,
@@ -2501,7 +2501,7 @@ export const MURCHISON_EAST: StopConfig = {
   id: 194,
   name: "Murchison East",
   tags: [],
-  urlPath: "murchisoneastrailwaystation",
+  urlPath: "murchisoneast",
   location: {
     latitude: -36.61314794,
     longitude: 145.24063556,
@@ -2514,7 +2514,7 @@ export const MURRUMBEENA: StopConfig = {
   id: 195,
   name: "Murrumbeena",
   tags: [],
-  urlPath: "murrumbeenarailwaystation",
+  urlPath: "murrumbeena",
   location: {
     latitude: -37.89019832,
     longitude: 145.06737487,
@@ -2527,7 +2527,7 @@ export const NAGAMBIE: StopConfig = {
   id: 196,
   name: "Nagambie",
   tags: [],
-  urlPath: "nagambierailwaystation",
+  urlPath: "nagambie",
   location: {
     latitude: -36.7854641,
     longitude: 145.16035666,
@@ -2540,7 +2540,7 @@ export const NAR_NAR_GOON: StopConfig = {
   id: 197,
   name: "Nar Nar Goon",
   tags: [],
-  urlPath: "narnargoonrailwaystation",
+  urlPath: "narnargoon",
   location: {
     latitude: -38.08159155,
     longitude: 145.57166573,
@@ -2553,7 +2553,7 @@ export const NARRE_WARREN: StopConfig = {
   id: 198,
   name: "Narre Warren",
   tags: [],
-  urlPath: "narrewarrenrailwaystation",
+  urlPath: "narrewarren",
   location: {
     latitude: -38.02777361,
     longitude: 145.303993,
@@ -2566,7 +2566,7 @@ export const NEWMARKET: StopConfig = {
   id: 199,
   name: "Newmarket",
   tags: [],
-  urlPath: "newmarketrailwaystation",
+  urlPath: "newmarket",
   location: {
     latitude: -37.78732767,
     longitude: 144.92897847,
@@ -2579,7 +2579,7 @@ export const NEWPORT: StopConfig = {
   id: 200,
   name: "Newport",
   tags: [],
-  urlPath: "newportrailwaystation",
+  urlPath: "newport",
   location: {
     latitude: -37.84272637,
     longitude: 144.8835883,
@@ -2592,7 +2592,7 @@ export const NOBLE_PARK: StopConfig = {
   id: 201,
   name: "Noble Park",
   tags: [],
-  urlPath: "nobleparkrailwaystation",
+  urlPath: "noblepark",
   location: {
     latitude: -37.96661867,
     longitude: 145.17632482,
@@ -2605,7 +2605,7 @@ export const NORTH_BRIGHTON: StopConfig = {
   id: 202,
   name: "North Brighton",
   tags: [],
-  urlPath: "northbrightonrailwaystation",
+  urlPath: "northbrighton",
   location: {
     latitude: -37.90478832,
     longitude: 145.00261908,
@@ -2618,7 +2618,7 @@ export const NORTH_GEELONG: StopConfig = {
   id: 203,
   name: "North Geelong",
   tags: [],
-  urlPath: "northgeelongrailwaystation",
+  urlPath: "northgeelong",
   location: {
     latitude: -38.12268295,
     longitude: 144.35231162,
@@ -2631,7 +2631,7 @@ export const NORTH_MELBOURNE: StopConfig = {
   id: 204,
   name: "North Melbourne",
   tags: [],
-  urlPath: "northmelbournerailwaystation",
+  urlPath: "northmelbourne",
   location: {
     latitude: -37.80630984,
     longitude: 144.94151017,
@@ -2644,7 +2644,7 @@ export const NORTH_RICHMOND: StopConfig = {
   id: 205,
   name: "North Richmond",
   tags: [],
-  urlPath: "northrichmondrailwaystation",
+  urlPath: "northrichmond",
   location: {
     latitude: -37.81039836,
     longitude: 144.99250026,
@@ -2657,7 +2657,7 @@ export const NORTH_SHORE: StopConfig = {
   id: 206,
   name: "North Shore",
   tags: [],
-  urlPath: "northshorerailwaystation",
+  urlPath: "northshore",
   location: {
     latitude: -38.09837714,
     longitude: 144.36532142,
@@ -2670,7 +2670,7 @@ export const NORTH_WILLIAMSTOWN: StopConfig = {
   id: 207,
   name: "North Williamstown",
   tags: [],
-  urlPath: "northwilliamstownrailwaystation",
+  urlPath: "northwilliamstown",
   location: {
     latitude: -37.85733348,
     longitude: 144.88906947,
@@ -2683,7 +2683,7 @@ export const NORTHCOTE: StopConfig = {
   id: 208,
   name: "Northcote",
   tags: [],
-  urlPath: "northcoterailwaystation",
+  urlPath: "northcote",
   location: {
     latitude: -37.76986537,
     longitude: 144.99527721,
@@ -2696,7 +2696,7 @@ export const NUNAWADING: StopConfig = {
   id: 209,
   name: "Nunawading",
   tags: [],
-  urlPath: "nunawadingrailwaystation",
+  urlPath: "nunawading",
   location: {
     latitude: -37.82061218,
     longitude: 145.1748915,
@@ -2709,7 +2709,7 @@ export const OAK_PARK: StopConfig = {
   id: 210,
   name: "Oak Park",
   tags: [],
-  urlPath: "oakparkrailwaystation",
+  urlPath: "oakpark",
   location: {
     latitude: -37.71794973,
     longitude: 144.92151877,
@@ -2722,7 +2722,7 @@ export const OAKLEIGH: StopConfig = {
   id: 211,
   name: "Oakleigh",
   tags: [],
-  urlPath: "oakleighrailwaystation",
+  urlPath: "oakleigh",
   location: {
     latitude: -37.90037214,
     longitude: 145.08830787,
@@ -2735,7 +2735,7 @@ export const OFFICER: StopConfig = {
   id: 212,
   name: "Officer",
   tags: [],
-  urlPath: "officerrailwaystation",
+  urlPath: "officer",
   location: {
     latitude: -38.06614572,
     longitude: 145.41098723,
@@ -2748,7 +2748,7 @@ export const ORMOND: StopConfig = {
   id: 213,
   name: "Ormond",
   tags: [],
-  urlPath: "ormondrailwaystation",
+  urlPath: "ormond",
   location: {
     latitude: -37.90321167,
     longitude: 145.03961342,
@@ -2761,7 +2761,7 @@ export const PAKENHAM: StopConfig = {
   id: 214,
   name: "Pakenham",
   tags: [],
-  urlPath: "pakenhamrailwaystation",
+  urlPath: "pakenham",
   location: {
     latitude: -38.08061397,
     longitude: 145.48637907,
@@ -2774,7 +2774,7 @@ export const PARKDALE: StopConfig = {
   id: 215,
   name: "Parkdale",
   tags: [],
-  urlPath: "parkdalerailwaystation",
+  urlPath: "parkdale",
   location: {
     latitude: -37.99307882,
     longitude: 145.07632682,
@@ -2787,7 +2787,7 @@ export const PARLIAMENT: StopConfig = {
   id: 216,
   name: "Parliament",
   tags: [],
-  urlPath: "parliamentrailwaystation",
+  urlPath: "parliament",
   location: {
     latitude: -37.811337,
     longitude: 144.973119,
@@ -2800,7 +2800,7 @@ export const PASCOE_VALE: StopConfig = {
   id: 217,
   name: "Pascoe Vale",
   tags: [],
-  urlPath: "pascoevalerailwaystation",
+  urlPath: "pascoevale",
   location: {
     latitude: -37.73075596,
     longitude: 144.92819562,
@@ -2813,7 +2813,7 @@ export const PATTERSON: StopConfig = {
   id: 218,
   name: "Patterson",
   tags: [],
-  urlPath: "pattersonrailwaystation",
+  urlPath: "patterson",
   location: {
     latitude: -37.92514919,
     longitude: 145.03547003,
@@ -2826,7 +2826,7 @@ export const PRAHRAN: StopConfig = {
   id: 219,
   name: "Prahran",
   tags: [],
-  urlPath: "prahranrailwaystation",
+  urlPath: "prahran",
   location: {
     latitude: -37.84951848,
     longitude: 144.98985992,
@@ -2839,7 +2839,7 @@ export const PRESTON: StopConfig = {
   id: 220,
   name: "Preston",
   tags: [],
-  urlPath: "prestonrailwaystation",
+  urlPath: "preston",
   location: {
     latitude: -37.73867424,
     longitude: 145.00052198,
@@ -2852,7 +2852,7 @@ export const PYRAMID: StopConfig = {
   id: 221,
   name: "Pyramid",
   tags: [],
-  urlPath: "pyramidrailwaystation",
+  urlPath: "pyramid",
   location: {
     latitude: -36.0534147,
     longitude: 144.11332145,
@@ -2865,7 +2865,7 @@ export const REGENT: StopConfig = {
   id: 222,
   name: "Regent",
   tags: [],
-  urlPath: "regentrailwaystation",
+  urlPath: "regent",
   location: {
     latitude: -37.72840277,
     longitude: 145.00277256,
@@ -2878,7 +2878,7 @@ export const RESERVOIR: StopConfig = {
   id: 223,
   name: "Reservoir",
   tags: [],
-  urlPath: "reservoirrailwaystation",
+  urlPath: "reservoir",
   location: {
     latitude: -37.71688492,
     longitude: 145.00699582,
@@ -2891,7 +2891,7 @@ export const RICHMOND: StopConfig = {
   id: 224,
   name: "Richmond",
   tags: [],
-  urlPath: "richmondrailwaystation",
+  urlPath: "richmond",
   location: {
     latitude: -37.82407446,
     longitude: 144.99016426,
@@ -2904,7 +2904,7 @@ export const RIDDELLS_CREEK: StopConfig = {
   id: 225,
   name: "Riddells Creek",
   tags: [],
-  urlPath: "riddellscreekrailwaystation",
+  urlPath: "riddellscreek",
   location: {
     latitude: -37.46512379,
     longitude: 144.67983071,
@@ -2917,7 +2917,7 @@ export const RINGWOOD: StopConfig = {
   id: 226,
   name: "Ringwood",
   tags: [],
-  urlPath: "ringwoodrailwaystation",
+  urlPath: "ringwood",
   location: {
     latitude: -37.81588648,
     longitude: 145.22896846,
@@ -2930,7 +2930,7 @@ export const RINGWOOD_EAST: StopConfig = {
   id: 227,
   name: "Ringwood East",
   tags: [],
-  urlPath: "ringwoodeastrailwaystation",
+  urlPath: "ringwoodeast",
   location: {
     latitude: -37.81196804,
     longitude: 145.25019091,
@@ -2943,7 +2943,7 @@ export const RIPPONLEA: StopConfig = {
   id: 228,
   name: "Ripponlea",
   tags: [],
-  urlPath: "ripponlearailwaystation",
+  urlPath: "ripponlea",
   location: {
     latitude: -37.87596086,
     longitude: 144.99525782,
@@ -2956,7 +2956,7 @@ export const RIVERSDALE: StopConfig = {
   id: 229,
   name: "Riversdale",
   tags: [],
-  urlPath: "riversdalerailwaystation",
+  urlPath: "riversdale",
   location: {
     latitude: -37.83150543,
     longitude: 145.06964598,
@@ -2969,7 +2969,7 @@ export const ROCHESTER: StopConfig = {
   id: 230,
   name: "Rochester",
   tags: [],
-  urlPath: "rochesterrailwaystation",
+  urlPath: "rochester",
   location: {
     latitude: -36.3623605,
     longitude: 144.69868134,
@@ -2982,7 +2982,7 @@ export const ROCKBANK: StopConfig = {
   id: 231,
   name: "Rockbank",
   tags: [],
-  urlPath: "rockbankrailwaystation",
+  urlPath: "rockbank",
   location: {
     latitude: -37.72926127,
     longitude: 144.65063148,
@@ -2995,7 +2995,7 @@ export const ROSANNA: StopConfig = {
   id: 232,
   name: "Rosanna",
   tags: [],
-  urlPath: "rosannarailwaystation",
+  urlPath: "rosanna",
   location: {
     latitude: -37.7428786,
     longitude: 145.06614029,
@@ -3008,7 +3008,7 @@ export const ROSEDALE: StopConfig = {
   id: 233,
   name: "Rosedale",
   tags: [],
-  urlPath: "rosedalerailwaystation",
+  urlPath: "rosedale",
   location: {
     latitude: -38.15640367,
     longitude: 146.78696637,
@@ -3021,7 +3021,7 @@ export const ROXBURGH_PARK: StopConfig = {
   id: 234,
   name: "Roxburgh Park",
   tags: [],
-  urlPath: "roxburghparkrailwaystation",
+  urlPath: "roxburghpark",
   location: {
     latitude: -37.63823121,
     longitude: 144.93540368,
@@ -3034,7 +3034,7 @@ export const ROYAL_PARK: StopConfig = {
   id: 235,
   name: "Royal Park",
   tags: [],
-  urlPath: "royalparkrailwaystation",
+  urlPath: "royalpark",
   location: {
     latitude: -37.78119293,
     longitude: 144.95230127,
@@ -3047,7 +3047,7 @@ export const RUSHALL: StopConfig = {
   id: 236,
   name: "Rushall",
   tags: [],
-  urlPath: "rushallrailwaystation",
+  urlPath: "rushall",
   location: {
     latitude: -37.78321711,
     longitude: 144.99240708,
@@ -3060,7 +3060,7 @@ export const RUTHVEN: StopConfig = {
   id: 237,
   name: "Ruthven",
   tags: [],
-  urlPath: "ruthvenrailwaystation",
+  urlPath: "ruthven",
   location: {
     latitude: -37.70789754,
     longitude: 145.00951662,
@@ -3073,7 +3073,7 @@ export const SALE: StopConfig = {
   id: 238,
   name: "Sale",
   tags: [],
-  urlPath: "salerailwaystation",
+  urlPath: "sale",
   location: {
     latitude: -38.10310272,
     longitude: 147.05480513,
@@ -3086,7 +3086,7 @@ export const SANDOWN_PARK: StopConfig = {
   id: 239,
   name: "Sandown Park",
   tags: [],
-  urlPath: "sandownparkrailwaystation",
+  urlPath: "sandownpark",
   location: {
     latitude: -37.95648655,
     longitude: 145.16282634,
@@ -3099,7 +3099,7 @@ export const SANDRINGHAM: StopConfig = {
   id: 240,
   name: "Sandringham",
   tags: [],
-  urlPath: "sandringhamrailwaystation",
+  urlPath: "sandringham",
   location: {
     latitude: -37.95033018,
     longitude: 145.00456136,
@@ -3112,7 +3112,7 @@ export const SEAFORD: StopConfig = {
   id: 241,
   name: "Seaford",
   tags: [],
-  urlPath: "seafordrailwaystation",
+  urlPath: "seaford",
   location: {
     latitude: -38.10402104,
     longitude: 145.1282304,
@@ -3125,7 +3125,7 @@ export const SEAHOLME: StopConfig = {
   id: 242,
   name: "Seaholme",
   tags: [],
-  urlPath: "seaholmerailwaystation",
+  urlPath: "seaholme",
   location: {
     latitude: -37.86784231,
     longitude: 144.84095773,
@@ -3138,7 +3138,7 @@ export const SEDDON: StopConfig = {
   id: 243,
   name: "Seddon",
   tags: [],
-  urlPath: "seddonrailwaystation",
+  urlPath: "seddon",
   location: {
     latitude: -37.80900514,
     longitude: 144.89567157,
@@ -3151,7 +3151,7 @@ export const SEYMOUR: StopConfig = {
   id: 244,
   name: "Seymour",
   tags: [],
-  urlPath: "seymourrailwaystation",
+  urlPath: "seymour",
   location: {
     latitude: -37.02472873,
     longitude: 145.13772862,
@@ -3164,7 +3164,7 @@ export const SHEPPARTON: StopConfig = {
   id: 245,
   name: "Shepparton",
   tags: [],
-  urlPath: "sheppartonrailwaystation",
+  urlPath: "shepparton",
   location: {
     latitude: -36.38379101,
     longitude: 145.40649749,
@@ -3177,7 +3177,7 @@ export const SHERWOOD_PARK: StopConfig = {
   id: 246,
   name: "Sherwood Park",
   tags: [],
-  urlPath: "sherwoodparkrailwaystation",
+  urlPath: "sherwoodpark",
   location: {
     latitude: -38.38638239,
     longitude: 142.53884888,
@@ -3190,7 +3190,7 @@ export const SOMERVILLE: StopConfig = {
   id: 248,
   name: "Somerville",
   tags: [],
-  urlPath: "somervillerailwaystation",
+  urlPath: "somerville",
   location: {
     latitude: -38.22534196,
     longitude: 145.17624492,
@@ -3203,7 +3203,7 @@ export const SOUTH_GEELONG: StopConfig = {
   id: 249,
   name: "South Geelong",
   tags: [],
-  urlPath: "southgeelongrailwaystation",
+  urlPath: "southgeelong",
   location: {
     latitude: -38.15865863,
     longitude: 144.35898705,
@@ -3216,7 +3216,7 @@ export const SOUTH_KENSINGTON: StopConfig = {
   id: 250,
   name: "South Kensington",
   tags: [],
-  urlPath: "southkensingtonrailwaystation",
+  urlPath: "southkensington",
   location: {
     latitude: -37.79953087,
     longitude: 144.92546901,
@@ -3229,7 +3229,7 @@ export const SOUTH_MORANG: StopConfig = {
   id: 251,
   name: "South Morang",
   tags: [],
-  urlPath: "southmorangrailwaystation",
+  urlPath: "southmorang",
   location: {
     latitude: -37.64905033,
     longitude: 145.06701257,
@@ -3242,7 +3242,7 @@ export const SOUTH_YARRA: StopConfig = {
   id: 252,
   name: "South Yarra",
   tags: [],
-  urlPath: "southyarrarailwaystation",
+  urlPath: "southyarra",
   location: {
     latitude: -37.83844935,
     longitude: 144.99234221,
@@ -3255,7 +3255,7 @@ export const SOUTHERN_CROSS: StopConfig = {
   id: 253,
   name: "Southern Cross",
   tags: [],
-  urlPath: "southerncrossrailwaystation",
+  urlPath: "southerncross",
   location: {
     latitude: -37.8186631,
     longitude: 144.95277706,
@@ -3268,7 +3268,7 @@ export const SOUTHLAND: StopConfig = {
   id: 254,
   name: "Southland",
   tags: [],
-  urlPath: "southlandrailwaystation",
+  urlPath: "southland",
   location: {
     latitude: -37.95813507,
     longitude: 145.04864786,
@@ -3281,7 +3281,7 @@ export const SPOTSWOOD: StopConfig = {
   id: 255,
   name: "Spotswood",
   tags: [],
-  urlPath: "spotswoodrailwaystation",
+  urlPath: "spotswood",
   location: {
     latitude: -37.83063888,
     longitude: 144.88593345,
@@ -3294,7 +3294,7 @@ export const SPRINGHURST: StopConfig = {
   id: 256,
   name: "Springhurst",
   tags: [],
-  urlPath: "springhurstrailwaystation",
+  urlPath: "springhurst",
   location: {
     latitude: -36.18627209,
     longitude: 146.47042552,
@@ -3307,7 +3307,7 @@ export const SPRINGVALE: StopConfig = {
   id: 257,
   name: "Springvale",
   tags: [],
-  urlPath: "springvalerailwaystation",
+  urlPath: "springvale",
   location: {
     latitude: -37.94950878,
     longitude: 145.15345183,
@@ -3320,7 +3320,7 @@ export const ST_ALBANS: StopConfig = {
   id: 258,
   name: "St Albans",
   tags: [],
-  urlPath: "stalbansrailwaystation",
+  urlPath: "stalbans",
   location: {
     latitude: -37.74486131,
     longitude: 144.80005045,
@@ -3333,7 +3333,7 @@ export const STONY_POINT: StopConfig = {
   id: 259,
   name: "Stony Point",
   tags: [],
-  urlPath: "stonypointrailwaystation",
+  urlPath: "stonypoint",
   location: {
     latitude: -38.37423454,
     longitude: 145.22183746,
@@ -3346,7 +3346,7 @@ export const STRATFORD: StopConfig = {
   id: 260,
   name: "Stratford",
   tags: [],
-  urlPath: "stratfordrailwaystation",
+  urlPath: "stratford",
   location: {
     latitude: -37.96704739,
     longitude: 147.08146945,
@@ -3359,7 +3359,7 @@ export const STRATHMORE: StopConfig = {
   id: 261,
   name: "Strathmore",
   tags: [],
-  urlPath: "strathmorerailwaystation",
+  urlPath: "strathmore",
   location: {
     latitude: -37.74359132,
     longitude: 144.92731571,
@@ -3372,7 +3372,7 @@ export const SUNBURY: StopConfig = {
   id: 262,
   name: "Sunbury",
   tags: [],
-  urlPath: "sunburyrailwaystation",
+  urlPath: "sunbury",
   location: {
     latitude: -37.57928396,
     longitude: 144.72798098,
@@ -3385,7 +3385,7 @@ export const SUNSHINE: StopConfig = {
   id: 263,
   name: "Sunshine",
   tags: [],
-  urlPath: "sunshinerailwaystation",
+  urlPath: "sunshine",
   location: {
     latitude: -37.78853633,
     longitude: 144.8328782,
@@ -3398,7 +3398,7 @@ export const SWAN_HILL: StopConfig = {
   id: 265,
   name: "Swan Hill",
   tags: [],
-  urlPath: "swanhillrailwaystation",
+  urlPath: "swanhill",
   location: {
     latitude: -35.34111357,
     longitude: 143.56234321,
@@ -3411,7 +3411,7 @@ export const SYNDAL: StopConfig = {
   id: 266,
   name: "Syndal",
   tags: [],
-  urlPath: "syndalrailwaystation",
+  urlPath: "syndal",
   location: {
     latitude: -37.87622062,
     longitude: 145.14978071,
@@ -3424,7 +3424,7 @@ export const TALBOT: StopConfig = {
   id: 267,
   name: "Talbot",
   tags: [],
-  urlPath: "talbotrailwaystation",
+  urlPath: "talbot",
   location: {
     latitude: -37.17289923,
     longitude: 143.70564034,
@@ -3437,7 +3437,7 @@ export const TALLAROOK: StopConfig = {
   id: 268,
   name: "Tallarook",
   tags: [],
-  urlPath: "tallarookrailwaystation",
+  urlPath: "tallarook",
   location: {
     latitude: -37.09233454,
     longitude: 145.10299728,
@@ -3450,7 +3450,7 @@ export const TARNEIT: StopConfig = {
   id: 269,
   name: "Tarneit",
   tags: [],
-  urlPath: "tarneitrailwaystation",
+  urlPath: "tarneit",
   location: {
     latitude: -37.83215468,
     longitude: 144.69448757,
@@ -3463,7 +3463,7 @@ export const TECOMA: StopConfig = {
   id: 270,
   name: "Tecoma",
   tags: [],
-  urlPath: "tecomarailwaystation",
+  urlPath: "tecoma",
   location: {
     latitude: -37.90811849,
     longitude: 145.34299458,
@@ -3476,7 +3476,7 @@ export const TERANG: StopConfig = {
   id: 271,
   name: "Terang",
   tags: [],
-  urlPath: "terangrailwaystation",
+  urlPath: "terang",
   location: {
     latitude: -38.23621199,
     longitude: 142.91147221,
@@ -3489,7 +3489,7 @@ export const THOMASTOWN: StopConfig = {
   id: 272,
   name: "Thomastown",
   tags: [],
-  urlPath: "thomastownrailwaystation",
+  urlPath: "thomastown",
   location: {
     latitude: -37.68033809,
     longitude: 145.01427887,
@@ -3502,7 +3502,7 @@ export const THORNBURY: StopConfig = {
   id: 273,
   name: "Thornbury",
   tags: [],
-  urlPath: "thornburyrailwaystation",
+  urlPath: "thornbury",
   location: {
     latitude: -37.75505179,
     longitude: 144.99857152,
@@ -3515,7 +3515,7 @@ export const TOORAK: StopConfig = {
   id: 274,
   name: "Toorak",
   tags: [],
-  urlPath: "toorakrailwaystation",
+  urlPath: "toorak",
   location: {
     latitude: -37.85077381,
     longitude: 145.01390858,
@@ -3528,7 +3528,7 @@ export const TOORONGA: StopConfig = {
   id: 275,
   name: "Tooronga",
   tags: [],
-  urlPath: "toorongarailwaystation",
+  urlPath: "tooronga",
   location: {
     latitude: -37.84936553,
     longitude: 145.04173374,
@@ -3541,7 +3541,7 @@ export const TOTTENHAM: StopConfig = {
   id: 276,
   name: "Tottenham",
   tags: [],
-  urlPath: "tottenhamrailwaystation",
+  urlPath: "tottenham",
   location: {
     latitude: -37.7992509,
     longitude: 144.86294494,
@@ -3554,7 +3554,7 @@ export const TRAFALGAR: StopConfig = {
   id: 277,
   name: "Trafalgar",
   tags: [],
-  urlPath: "trafalgarrailwaystation",
+  urlPath: "trafalgar",
   location: {
     latitude: -38.2072423,
     longitude: 146.15477284,
@@ -3567,7 +3567,7 @@ export const TRARALGON: StopConfig = {
   id: 278,
   name: "Traralgon",
   tags: [],
-  urlPath: "traralgonrailwaystation",
+  urlPath: "traralgon",
   location: {
     latitude: -38.19888494,
     longitude: 146.53788212,
@@ -3580,7 +3580,7 @@ export const TYABB: StopConfig = {
   id: 279,
   name: "Tyabb",
   tags: [],
-  urlPath: "tyabbrailwaystation",
+  urlPath: "tyabb",
   location: {
     latitude: -38.259815,
     longitude: 145.18640071,
@@ -3593,7 +3593,7 @@ export const TYNONG: StopConfig = {
   id: 280,
   name: "Tynong",
   tags: [],
-  urlPath: "tynongrailwaystation",
+  urlPath: "tynong",
   location: {
     latitude: -38.08499626,
     longitude: 145.6282343,
@@ -3606,7 +3606,7 @@ export const UPFIELD: StopConfig = {
   id: 281,
   name: "Upfield",
   tags: [],
-  urlPath: "upfieldrailwaystation",
+  urlPath: "upfield",
   location: {
     latitude: -37.66607779,
     longitude: 144.94673994,
@@ -3619,7 +3619,7 @@ export const UPPER_FERNTREE_GULLY: StopConfig = {
   id: 282,
   name: "Upper Ferntree Gully",
   tags: [],
-  urlPath: "upperferntreegullyrailwaystation",
+  urlPath: "upperferntreegully",
   location: {
     latitude: -37.8926717,
     longitude: 145.30753019,
@@ -3632,7 +3632,7 @@ export const UPWEY: StopConfig = {
   id: 283,
   name: "Upwey",
   tags: [],
-  urlPath: "upweyrailwaystation",
+  urlPath: "upwey",
   location: {
     latitude: -37.90369097,
     longitude: 145.33133336,
@@ -3645,7 +3645,7 @@ export const VICTORIA_PARK: StopConfig = {
   id: 284,
   name: "Victoria Park",
   tags: [],
-  urlPath: "victoriaparkrailwaystation",
+  urlPath: "victoriapark",
   location: {
     latitude: -37.79915782,
     longitude: 144.99445143,
@@ -3658,7 +3658,7 @@ export const VIOLET_TOWN: StopConfig = {
   id: 285,
   name: "Violet Town",
   tags: [],
-  urlPath: "violettownrailwaystation",
+  urlPath: "violettown",
   location: {
     latitude: -36.63881606,
     longitude: 145.71592345,
@@ -3671,7 +3671,7 @@ export const WALLAN: StopConfig = {
   id: 286,
   name: "Wallan",
   tags: [],
-  urlPath: "wallanrailwaystation",
+  urlPath: "wallan",
   location: {
     latitude: -37.41653632,
     longitude: 145.00535827,
@@ -3684,7 +3684,7 @@ export const WANDONG: StopConfig = {
   id: 287,
   name: "Wandong",
   tags: [],
-  urlPath: "wandongrailwaystation",
+  urlPath: "wandong",
   location: {
     latitude: -37.3546771,
     longitude: 145.02641544,
@@ -3697,7 +3697,7 @@ export const WANGARATTA: StopConfig = {
   id: 288,
   name: "Wangaratta",
   tags: [],
-  urlPath: "wangarattarailwaystation",
+  urlPath: "wangaratta",
   location: {
     latitude: -36.35515492,
     longitude: 146.31702684,
@@ -3710,7 +3710,7 @@ export const WARRAGUL: StopConfig = {
   id: 289,
   name: "Warragul",
   tags: [],
-  urlPath: "warragulrailwaystation",
+  urlPath: "warragul",
   location: {
     latitude: -38.16483276,
     longitude: 145.93265719,
@@ -3723,7 +3723,7 @@ export const WARRNAMBOOL: StopConfig = {
   id: 290,
   name: "Warrnambool",
   tags: [],
-  urlPath: "warrnamboolrailwaystation",
+  urlPath: "warrnambool",
   location: {
     latitude: -38.38501396,
     longitude: 142.47554504,
@@ -3736,7 +3736,7 @@ export const WATERGARDENS: StopConfig = {
   id: 291,
   name: "Watergardens",
   tags: [],
-  urlPath: "watergardensrailwaystation",
+  urlPath: "watergardens",
   location: {
     latitude: -37.70111071,
     longitude: 144.77418099,
@@ -3749,7 +3749,7 @@ export const WATSONIA: StopConfig = {
   id: 292,
   name: "Watsonia",
   tags: [],
-  urlPath: "watsoniarailwaystation",
+  urlPath: "watsonia",
   location: {
     latitude: -37.71095798,
     longitude: 145.08379338,
@@ -3762,7 +3762,7 @@ export const WATTLE_GLEN: StopConfig = {
   id: 293,
   name: "Wattle Glen",
   tags: [],
-  urlPath: "wattleglenrailwaystation",
+  urlPath: "wattleglen",
   location: {
     latitude: -37.66396792,
     longitude: 145.18161453,
@@ -3775,7 +3775,7 @@ export const WAURN_PONDS: StopConfig = {
   id: 294,
   name: "Waurn Ponds",
   tags: [],
-  urlPath: "waurnpondsrailwaystation",
+  urlPath: "waurnponds",
   location: {
     latitude: -38.21580573,
     longitude: 144.30683114,
@@ -3788,7 +3788,7 @@ export const WENDOUREE: StopConfig = {
   id: 295,
   name: "Wendouree",
   tags: [],
-  urlPath: "wendoureerailwaystation",
+  urlPath: "wendouree",
   location: {
     latitude: -37.53997217,
     longitude: 143.82121077,
@@ -3801,7 +3801,7 @@ export const WERRIBEE: StopConfig = {
   id: 296,
   name: "Werribee",
   tags: [],
-  urlPath: "werribeerailwaystation",
+  urlPath: "werribee",
   location: {
     latitude: -37.89937805,
     longitude: 144.66111801,
@@ -3814,7 +3814,7 @@ export const WEST_FOOTSCRAY: StopConfig = {
   id: 297,
   name: "West Footscray",
   tags: [],
-  urlPath: "westfootscrayrailwaystation",
+  urlPath: "westfootscray",
   location: {
     latitude: -37.80180266,
     longitude: 144.88398479,
@@ -3827,7 +3827,7 @@ export const WEST_RICHMOND: StopConfig = {
   id: 298,
   name: "West Richmond",
   tags: [],
-  urlPath: "westrichmondrailwaystation",
+  urlPath: "westrichmond",
   location: {
     latitude: -37.81494896,
     longitude: 144.99142278,
@@ -3840,7 +3840,7 @@ export const WESTALL: StopConfig = {
   id: 299,
   name: "Westall",
   tags: [],
-  urlPath: "westallrailwaystation",
+  urlPath: "westall",
   location: {
     latitude: -37.93847284,
     longitude: 145.13881033,
@@ -3853,7 +3853,7 @@ export const WESTGARTH: StopConfig = {
   id: 300,
   name: "Westgarth",
   tags: [],
-  urlPath: "westgarthrailwaystation",
+  urlPath: "westgarth",
   location: {
     latitude: -37.7806207,
     longitude: 144.99923319,
@@ -3866,7 +3866,7 @@ export const WESTONA: StopConfig = {
   id: 301,
   name: "Westona",
   tags: [],
-  urlPath: "westonarailwaystation",
+  urlPath: "westona",
   location: {
     latitude: -37.86516348,
     longitude: 144.81349356,
@@ -3879,7 +3879,7 @@ export const WILLIAMS_LANDING: StopConfig = {
   id: 302,
   name: "Williams Landing",
   tags: [],
-  urlPath: "williamslandingrailwaystation",
+  urlPath: "williamslanding",
   location: {
     latitude: -37.86986533,
     longitude: 144.74744472,
@@ -3892,7 +3892,7 @@ export const WILLIAMSTOWN: StopConfig = {
   id: 303,
   name: "Williamstown",
   tags: [],
-  urlPath: "williamstownrailwaystation",
+  urlPath: "williamstown",
   location: {
     latitude: -37.86775292,
     longitude: 144.90532331,
@@ -3905,7 +3905,7 @@ export const WILLIAMSTOWN_BEACH: StopConfig = {
   id: 304,
   name: "Williamstown Beach",
   tags: [],
-  urlPath: "williamstownbeachrailwaystation",
+  urlPath: "williamstownbeach",
   location: {
     latitude: -37.86398189,
     longitude: 144.89448368,
@@ -3918,7 +3918,7 @@ export const WILLISON: StopConfig = {
   id: 305,
   name: "Willison",
   tags: [],
-  urlPath: "willisonrailwaystation",
+  urlPath: "willison",
   location: {
     latitude: -37.83571565,
     longitude: 145.07029756,
@@ -3931,7 +3931,7 @@ export const WINCHELSEA: StopConfig = {
   id: 306,
   name: "Winchelsea",
   tags: [],
-  urlPath: "winchelsearailwaystation",
+  urlPath: "winchelsea",
   location: {
     latitude: -38.24013506,
     longitude: 143.98413389,
@@ -3944,7 +3944,7 @@ export const WINDSOR: StopConfig = {
   id: 307,
   name: "Windsor",
   tags: [],
-  urlPath: "windsorrailwaystation",
+  urlPath: "windsor",
   location: {
     latitude: -37.85605308,
     longitude: 144.99203517,
@@ -3957,7 +3957,7 @@ export const WODONGA: StopConfig = {
   id: 308,
   name: "Wodonga",
   tags: [],
-  urlPath: "wodongarailwaystation",
+  urlPath: "wodonga",
   location: {
     latitude: -36.10584513,
     longitude: 146.87126565,
@@ -3970,7 +3970,7 @@ export const WOODEND: StopConfig = {
   id: 309,
   name: "Woodend",
   tags: [],
-  urlPath: "woodendrailwaystation",
+  urlPath: "woodend",
   location: {
     latitude: -37.35879859,
     longitude: 144.52589012,
@@ -3983,7 +3983,7 @@ export const WYNDHAM_VALE: StopConfig = {
   id: 310,
   name: "Wyndham Vale",
   tags: [],
-  urlPath: "wyndhamvalerailwaystation",
+  urlPath: "wyndhamvale",
   location: {
     latitude: -37.87252742,
     longitude: 144.60835702,
@@ -3996,7 +3996,7 @@ export const YARRAGON: StopConfig = {
   id: 311,
   name: "Yarragon",
   tags: [],
-  urlPath: "yarragonrailwaystation",
+  urlPath: "yarragon",
   location: {
     latitude: -38.20315754,
     longitude: 146.0630628,
@@ -4009,7 +4009,7 @@ export const YARRAMAN: StopConfig = {
   id: 312,
   name: "Yarraman",
   tags: [],
-  urlPath: "yarramanrailwaystation",
+  urlPath: "yarraman",
   location: {
     latitude: -37.97825454,
     longitude: 145.19160028,
@@ -4022,7 +4022,7 @@ export const YARRAVILLE: StopConfig = {
   id: 313,
   name: "Yarraville",
   tags: [],
-  urlPath: "yarravillerailwaystation",
+  urlPath: "yarraville",
   location: {
     latitude: -37.81585044,
     longitude: 144.88993371,
@@ -4035,7 +4035,7 @@ export const HUNTLY: StopConfig = {
   id: 314,
   name: "Huntly",
   tags: [],
-  urlPath: "huntlyrailwaystation",
+  urlPath: "huntly",
   location: {
     latitude: -36.66584794,
     longitude: 144.36982046,
@@ -4048,7 +4048,7 @@ export const RAYWOOD: StopConfig = {
   id: 315,
   name: "Raywood",
   tags: [],
-  urlPath: "raywoodrailwaystation",
+  urlPath: "raywood",
   location: {
     latitude: -36.53195927,
     longitude: 144.20116104,
@@ -4061,7 +4061,7 @@ export const UNION: StopConfig = {
   id: 316,
   name: "Union",
   tags: [],
-  urlPath: "unionrailwaystation",
+  urlPath: "union",
   location: {
     latitude: -37.82315506,
     longitude: 145.10034527,
@@ -4074,7 +4074,7 @@ export const EAST_PAKENHAM: StopConfig = {
   id: 317,
   name: "East Pakenham",
   tags: [],
-  urlPath: "eastpakenhamrailwaystation",
+  urlPath: "eastpakenham",
   location: {
     latitude: -38.08441136,
     longitude: 145.50635689,
@@ -4087,7 +4087,7 @@ export const ANZAC: StopConfig = {
   id: 318,
   name: "Anzac",
   tags: [],
-  urlPath: "anzacrailwaystation",
+  urlPath: "anzac",
   location: {
     latitude: -37.83331103,
     longitude: 144.97279042,
@@ -4100,7 +4100,7 @@ export const TOWN_HALL: StopConfig = {
   id: 319,
   name: "Town Hall",
   tags: [],
-  urlPath: "townhallrailwaystation",
+  urlPath: "townhall",
   location: {
     latitude: -37.81699161,
     longitude: 144.96709126,
@@ -4113,7 +4113,7 @@ export const STATE_LIBRARY: StopConfig = {
   id: 320,
   name: "State Library",
   tags: [],
-  urlPath: "statelibraryrailwaystation",
+  urlPath: "statelibrary",
   location: {
     latitude: -37.80943693,
     longitude: 144.9632775,
@@ -4126,7 +4126,7 @@ export const PARKVILLE: StopConfig = {
   id: 321,
   name: "Parkville",
   tags: [],
-  urlPath: "parkvillerailwaystation",
+  urlPath: "parkville",
   location: {
     latitude: -37.79987386,
     longitude: 144.95954246,
@@ -4139,7 +4139,7 @@ export const ARDEN: StopConfig = {
   id: 322,
   name: "Arden",
   tags: [],
-  urlPath: "ardenrailwaystation",
+  urlPath: "arden",
   location: {
     latitude: -37.80122194,
     longitude: 144.94120851,
