@@ -37,10 +37,21 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
           ? assignPositionId(ctx, gtfsId.platformCode)
           : null;
 
-      ctx.stopGtdsIds.add(gtfsId.id, {
+      const value = {
         stopId: stop.id,
         positionId: positionId?.positionId ?? null,
-      });
+      };
+
+      const comment =
+        gtfsId.type === "parent"
+          ? "Parent"
+          : gtfsId.type === "replacement-bus"
+            ? "Replacement bus"
+            : gtfsId.platformCode != null
+              ? `Platform ${gtfsId.platformCode}`
+              : null;
+
+      ctx.stopGtdsIds.add(gtfsId.id, value, stop.name, comment);
     }
   }
 }

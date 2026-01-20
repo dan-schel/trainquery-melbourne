@@ -33,3 +33,4 @@ export const PLATFORM_15A = 82; // 15A
 export const PLATFORM_15B = 83; // 15B
 export const PLATFORM_16A = 84; // 16A
 export const PLATFORM_16B = 85; // 16B
+export const REPLACEMENT_BUS = 86; // REPLACEMENT BUS
