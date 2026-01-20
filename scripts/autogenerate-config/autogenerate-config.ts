@@ -1,5 +1,6 @@
 import { AutogenerationContext } from "./autogeneration-context";
-import { ParsedStop, parseStops } from "./parse-stops";
+import { ParsedStop } from "./stops/extract-stops-from-tree";
+import { parseStops } from "./stops/parse-stops";
 
 export type ParsedStopWithId = ParsedStop & {
   readonly id: number;
