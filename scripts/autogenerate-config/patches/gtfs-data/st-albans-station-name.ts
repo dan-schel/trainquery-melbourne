@@ -1,4 +1,4 @@
-import { createReplaceStopNamePatch } from "./utils/replace-stop-name.js";
+import { createReplaceStopNamePatch } from "./utils/create-replace-stop-name-patch.js";
 
 export const stAlbansStationNamePatch = createReplaceStopNamePatch({
   id: "vic:rail:SAB",

@@ -5,6 +5,7 @@ import {
 
 export type ParsedStop = {
   readonly name: string;
+  readonly gtfsId: string;
   readonly latitude: number;
   readonly longitude: number;
 };
@@ -21,6 +22,7 @@ function parseStop(station: StopsCsvTreeNode): ParsedStop {
 
   return {
     name: station.stop_name,
+    gtfsId: station.stop_id,
     latitude: station.stop_lat,
     longitude: station.stop_lon,
   };

@@ -1,19 +1,11 @@
-import { type GtfsData, readGtfs } from "./read-gtfs.js";
+import { readGtfs } from "./read-gtfs.js";
 import { withGtfsFiles } from "./with-gtfs-files.js";
-import { applyPatches, type Patch } from "../patches/patch.js";
-import { jolimontStationNamePatch } from "../patches/gtfs-data/jolimont-station-name.js";
-import { springhurstStationNamePatch } from "../patches/gtfs-data/springhurst-station-name.js";
-import { stAlbansStationNamePatch } from "../patches/gtfs-data/st-albans-station-name.js";
-
-const patches: Patch<GtfsData>[] = [
-  jolimontStationNamePatch,
-  stAlbansStationNamePatch,
-  springhurstStationNamePatch,
-];
+import { applyPatches } from "../patches/patch.js";
+import { gtfsDataPatches } from "../patches/gtfs-data/index.js";
 
 export async function parseGtfs(relayKey: string) {
   const gtfsData = await withGtfsFiles(relayKey, readGtfs);
-  const patchedGtfsData = applyPatches(gtfsData, patches);
+  const patchedGtfsData = applyPatches(gtfsData, gtfsDataPatches);
 
   return patchedGtfsData;
 }
