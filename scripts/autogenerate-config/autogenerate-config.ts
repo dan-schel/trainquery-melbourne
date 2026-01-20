@@ -1,5 +1,8 @@
 import { AutogenerationContext } from "./autogeneration-context.js";
-import { assignPositionIds } from "./stops/assign-position-ids.js";
+import {
+  assignPositionId,
+  assignPositionIds,
+} from "./stops/assign-position-ids.js";
 import { assignUrlPaths } from "./stops/assign-url-paths.js";
 import { parseStops } from "./stops/parse-stops.js";
 import { syncStopIds } from "./stops/sync-stop-ids.js";
@@ -25,5 +28,19 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
         stopPositionId: platform.positionId,
       })),
     });
+  }
+
+  for (const stop of stopsWithPositionIds) {
+    for (const gtfsId of stop.gtfsIds) {
+      const positionId =
+        gtfsId.platformCode != null
+          ? assignPositionId(ctx, gtfsId.platformCode)
+          : null;
+
+      ctx.stopGtdsIds.add(gtfsId.id, {
+        stopId: stop.id,
+        positionId: positionId?.positionId ?? null,
+      });
+    }
   }
 }

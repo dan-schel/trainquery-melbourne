@@ -1,11 +1,13 @@
 import { AutogenerationContext } from "../autogeneration-context.js";
 import { type ParsedStop } from "./extract-stops-from-tree.js";
 
+export type AssignedPositionId = {
+  readonly positionId: number;
+  readonly constantName: string;
+};
+
 export type WithPlatformIds<T extends ParsedStop> = Omit<T, "platforms"> & {
-  readonly platforms: (T["platforms"][number] & {
-    readonly positionId: number;
-    readonly constantName: string;
-  })[];
+  readonly platforms: (T["platforms"][number] & AssignedPositionId)[];
 };
 
 export function assignPositionIds<T extends ParsedStop>(
@@ -21,18 +23,25 @@ function assignPositionIdsToStop<T extends ParsedStop>(
 ): WithPlatformIds<T> {
   return {
     ...stop,
-    platforms: stop.platforms.map((platform) => {
-      const name = generateNameFromPlatformCode(platform.platformCode);
-      const entry = ctx.positionIds.get(name) ?? ctx.positionIds.add(name);
+    platforms: stop.platforms.map((platform) => ({
+      platformCode: platform.platformCode,
+      ...assignPositionId(ctx, platform.platformCode),
+    })),
+  };
+}
 
-      if (!entry.isActive) ctx.stopIds.reactivate(stop.name);
+export function assignPositionId(
+  ctx: AutogenerationContext,
+  platformCode: string,
+): AssignedPositionId {
+  const name = generateNameFromPlatformCode(platformCode);
+  const entry = ctx.positionIds.get(name) ?? ctx.positionIds.add(name);
 
-      return {
-        platformCode: platform.platformCode,
-        positionId: entry.id,
-        constantName: entry.constantName,
-      };
-    }),
+  if (!entry.isActive) ctx.stopIds.reactivate(name);
+
+  return {
+    positionId: entry.id,
+    constantName: entry.constantName,
   };
 }
 

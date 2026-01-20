@@ -10,6 +10,7 @@ const LINE_IDS_PATH = "./src/ids/line-ids.ts";
 const ROUTE_IDS_PATH = "./src/ids/route-ids.ts";
 const STOP_POSITION_IDS_PATH = "./src/ids/stop-position-ids.ts";
 const STOPS_PATH = "./src/data/stops.ts";
+const STOP_GTFS_IDS_PATH = "./src/data/stop-gtfs-ids.ts";
 
 async function main() {
   const ctx = new AutogenerationContext(
@@ -28,6 +29,7 @@ async function main() {
   await output(ROUTE_IDS_PATH, ctx.routeIds.toCode(), ctx.checkMode);
   await output(STOP_POSITION_IDS_PATH, ctx.positionIds.toCode(), ctx.checkMode);
   await output(STOPS_PATH, ctx.stops.toCode(), ctx.checkMode);
+  await output(STOP_GTFS_IDS_PATH, ctx.stopGtdsIds.toCode(), ctx.checkMode);
 }
 
 async function output(filePath: string, content: string, checkMode: boolean) {

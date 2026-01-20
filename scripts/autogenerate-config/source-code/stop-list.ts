@@ -10,8 +10,8 @@ type StopListEntry = {
 export class StopList {
   private _entries: StopListEntry[];
 
-  constructor(entries: StopListEntry[]) {
-    this._entries = [...entries];
+  constructor() {
+    this._entries = [];
   }
 
   get entries() {
