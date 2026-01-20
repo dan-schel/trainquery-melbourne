@@ -962,7 +962,24 @@ export const CAULFIELD: StopConfig = {
     latitude: -37.87745946,
     longitude: 145.04252478,
   },
-  positions: [],
+  positions: [
+    {
+      name: "1",
+      stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
+    },
+    {
+      name: "3",
+      stopPositionId: position.PLATFORM_3,
+    },
+    {
+      name: "4",
+      stopPositionId: position.PLATFORM_4,
+    },
+  ],
 };
 
 export const CHATHAM: StopConfig = {
@@ -1069,7 +1086,16 @@ export const CLAYTON: StopConfig = {
     latitude: -37.92468255,
     longitude: 145.12053436,
   },
-  positions: [],
+  positions: [
+    {
+      name: "1",
+      stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
+    },
+  ],
 };
 
 export const CLIFTON_HILL: StopConfig = {
@@ -1213,7 +1239,16 @@ export const CRAIGIEBURN: StopConfig = {
     latitude: -37.6019248,
     longitude: 144.94330601,
   },
-  positions: [],
+  positions: [
+    {
+      name: "1",
+      stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
+    },
+  ],
 };
 
 export const CRANBOURNE: StopConfig = {
@@ -1317,7 +1352,20 @@ export const DANDENONG: StopConfig = {
     latitude: -37.98996792,
     longitude: 145.20972537,
   },
-  positions: [],
+  positions: [
+    {
+      name: "1",
+      stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
+    },
+    {
+      name: "3",
+      stopPositionId: position.PLATFORM_3,
+    },
+  ],
 };
 
 export const DAREBIN: StopConfig = {
@@ -1702,7 +1750,20 @@ export const ESSENDON: StopConfig = {
     latitude: -37.7560117,
     longitude: 144.9161975,
   },
-  positions: [],
+  positions: [
+    {
+      name: "1",
+      stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
+    },
+    {
+      name: "3",
+      stopPositionId: position.PLATFORM_3,
+    },
+  ],
 };
 
 export const EUROA: StopConfig = {
@@ -1860,7 +1921,56 @@ export const FLINDERS_STREET: StopConfig = {
     latitude: -37.81830513,
     longitude: 144.96696435,
   },
-  positions: [],
+  positions: [
+    {
+      name: "1",
+      stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
+    },
+    {
+      name: "3",
+      stopPositionId: position.PLATFORM_3,
+    },
+    {
+      name: "4",
+      stopPositionId: position.PLATFORM_4,
+    },
+    {
+      name: "5",
+      stopPositionId: position.PLATFORM_5,
+    },
+    {
+      name: "6",
+      stopPositionId: position.PLATFORM_6,
+    },
+    {
+      name: "7",
+      stopPositionId: position.PLATFORM_7,
+    },
+    {
+      name: "13",
+      stopPositionId: position.PLATFORM_13,
+    },
+    {
+      name: "12",
+      stopPositionId: position.PLATFORM_12,
+    },
+    {
+      name: "10",
+      stopPositionId: position.PLATFORM_10,
+    },
+    {
+      name: "9",
+      stopPositionId: position.PLATFORM_9,
+    },
+    {
+      name: "8",
+      stopPositionId: position.PLATFORM_8,
+    },
+  ],
 };
 
 export const FOOTSCRAY: StopConfig = {
@@ -1872,7 +1982,32 @@ export const FOOTSCRAY: StopConfig = {
     latitude: -37.80141343,
     longitude: 144.90202006,
   },
-  positions: [],
+  positions: [
+    {
+      name: "1",
+      stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
+    },
+    {
+      name: "3",
+      stopPositionId: position.PLATFORM_3,
+    },
+    {
+      name: "4",
+      stopPositionId: position.PLATFORM_4,
+    },
+    {
+      name: "5",
+      stopPositionId: position.PLATFORM_5,
+    },
+    {
+      name: "6",
+      stopPositionId: position.PLATFORM_6,
+    },
+  ],
 };
 
 export const FRANKSTON: StopConfig = {
@@ -4171,7 +4306,48 @@ export const RICHMOND: StopConfig = {
     latitude: -37.82407446,
     longitude: 144.99016426,
   },
-  positions: [],
+  positions: [
+    {
+      name: "1",
+      stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
+    },
+    {
+      name: "3",
+      stopPositionId: position.PLATFORM_3,
+    },
+    {
+      name: "4",
+      stopPositionId: position.PLATFORM_4,
+    },
+    {
+      name: "5",
+      stopPositionId: position.PLATFORM_5,
+    },
+    {
+      name: "6",
+      stopPositionId: position.PLATFORM_6,
+    },
+    {
+      name: "7",
+      stopPositionId: position.PLATFORM_7,
+    },
+    {
+      name: "8",
+      stopPositionId: position.PLATFORM_8,
+    },
+    {
+      name: "9",
+      stopPositionId: position.PLATFORM_9,
+    },
+    {
+      name: "10",
+      stopPositionId: position.PLATFORM_10,
+    },
+  ],
 };
 
 export const RIDDELLS_CREEK: StopConfig = {
@@ -4881,7 +5057,16 @@ export const SUNBURY: StopConfig = {
     latitude: -37.57928396,
     longitude: 144.72798098,
   },
-  positions: [],
+  positions: [
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
+    },
+    {
+      name: "1",
+      stopPositionId: position.PLATFORM_1,
+    },
+  ],
 };
 
 export const SUNSHINE: StopConfig = {
@@ -4893,7 +5078,24 @@ export const SUNSHINE: StopConfig = {
     latitude: -37.78853633,
     longitude: 144.8328782,
   },
-  positions: [],
+  positions: [
+    {
+      name: "1",
+      stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
+    },
+    {
+      name: "3",
+      stopPositionId: position.PLATFORM_3,
+    },
+    {
+      name: "4",
+      stopPositionId: position.PLATFORM_4,
+    },
+  ],
 };
 
 export const SWAN_HILL: StopConfig = {
@@ -5313,7 +5515,20 @@ export const WATERGARDENS: StopConfig = {
     latitude: -37.70111071,
     longitude: 144.77418099,
   },
-  positions: [],
+  positions: [
+    {
+      name: "1",
+      stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
+    },
+    {
+      name: "3",
+      stopPositionId: position.PLATFORM_3,
+    },
+  ],
 };
 
 export const WATSONIA: StopConfig = {
