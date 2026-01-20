@@ -6,10 +6,13 @@ import {
   extractStopsFromTree,
   type ParsedStop,
 } from "./extract-stops-from-tree.js";
+import { mergeRootsOfAllSubfeeds } from "./merge-roots-of-all-subfeeds.js";
 
 export function parseStops(ctx: AutogenerationContext): ParsedStop[] {
-  const tree = buildStopsCsvTree(ctx);
-  const stops = extractStopsFromTree(tree);
+  const suburbanTree = buildStopsCsvTree(ctx.gtfsData.suburban.stops);
+  const regionalTree = buildStopsCsvTree(ctx.gtfsData.regional.stops);
+  const unifiedTree = mergeRootsOfAllSubfeeds([suburbanTree, regionalTree]);
+  const stops = extractStopsFromTree(unifiedTree);
   const patchedStops = applyPatches(stops, parsedStopsPatches);
 
   return patchedStops;

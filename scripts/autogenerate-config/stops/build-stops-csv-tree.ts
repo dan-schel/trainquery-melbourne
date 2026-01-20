@@ -1,25 +1,11 @@
-import { AutogenerationContext } from "../autogeneration-context.js";
-import { type StopsCsvRow } from "../gtfs/csv-schemas.js";
+import { type StopsCsv, type StopsCsvRow } from "../gtfs/csv-schemas.js";
 
 export type StopsCsvTreeNode = StopsCsvRow & {
   readonly children: StopsCsvTree;
 };
 export type StopsCsvTree = readonly StopsCsvTreeNode[];
 
-export function buildStopsCsvTree(ctx: AutogenerationContext): StopsCsvTree {
-  // This assumes that the GTFS data from both subfeeds uses the same stop IDs
-  // for the parent stations, so that platforms from both subfeeds get grouped
-  // correctly under their parent stations.
-  const allRows = [
-    ...ctx.gtfsData.suburban.stops,
-    ...ctx.gtfsData.regional.stops,
-  ];
-
-  const tree = arrangeRowsIntoTree(allRows);
-  return tree;
-}
-
-function arrangeRowsIntoTree(allRows: StopsCsvRow[]): StopsCsvTree {
+export function buildStopsCsvTree(allRows: StopsCsv): StopsCsvTree {
   type MutableStopsCsvTreeNode = StopsCsvRow & {
     readonly children: MutableStopsCsvTreeNode[];
   };
