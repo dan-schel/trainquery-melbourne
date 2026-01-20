@@ -1,3 +1,4 @@
+import { numberWiseSort } from "../utils/number-wise-sort.js";
 import {
   type StopsCsvTree,
   type StopsCsvTreeNode,
@@ -93,6 +94,9 @@ function compareGtfsIds(a: ParsedGtfsId, b: ParsedGtfsId): number {
   return a.id.localeCompare(b.id);
 }
 
-function numberWiseSort(a: string, b: string): number {
-  return a.localeCompare(b, undefined, { numeric: true });
+export function platformSortOrder(
+  a: ParsedPlatform,
+  b: ParsedPlatform,
+): number {
+  return numberWiseSort(a.platformCode, b.platformCode);
 }

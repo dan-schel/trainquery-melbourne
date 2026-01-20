@@ -1,7 +1,12 @@
-import { type ParsedStop } from "../../stops/extract-stops-from-tree.js";
+import {
+  platformSortOrder,
+  type ParsedStop,
+} from "../../stops/extract-stops-from-tree.js";
 import { type Patch } from "../patch.js";
 
-const regionalPlatforms = {
+type PlatformMapping = Readonly<Record<string, readonly string[]>>;
+
+const regionalPlatforms: PlatformMapping = {
   Albury: ["2"],
   Ararat: ["2"],
   Ardeer: ["1", "2"],
@@ -97,7 +102,7 @@ const regionalPlatforms = {
   Yarragon: ["1", "2"],
 };
 
-const additionalSuburbanPlatforms = {
+const additionalSuburbanPlatforms: PlatformMapping = {
   Berwick: [],
   Broadmeadows: ["3"],
   Caulfield: [],
@@ -138,6 +143,58 @@ const additionalSuburbanPlatforms = {
 };
 
 export const addRegionalPlatformsPatch: Patch<ParsedStop[]> = (stops) => {
-  // TODO: Everything.
-  return stops;
+  const regionalKeys = Object.keys(regionalPlatforms);
+  const suburbanKeys = Object.keys(additionalSuburbanPlatforms);
+  const allKeys = [...regionalKeys, ...suburbanKeys];
+  const invalidKey = allKeys.find((k) => !stops.some((s) => s.name === k));
+  if (invalidKey != null) throw new Error(`No stop called "${invalidKey}".`);
+
+  return stops.map((stop) => {
+    const platformCodes = regionalPlatforms[stop.name];
+    const additionalPlatformCodes = additionalSuburbanPlatforms[stop.name];
+
+    if (platformCodes != null && additionalPlatformCodes != null) {
+      throw new Error(`${stop.name} present in both lists.`);
+    } else if (platformCodes != null) {
+      return replacePlatformCodes(stop, platformCodes);
+    } else if (additionalPlatformCodes != null) {
+      return addPlatformCodes(stop, additionalPlatformCodes);
+    } else {
+      return stop;
+    }
+  });
 };
+
+function replacePlatformCodes(
+  stop: ParsedStop,
+  platformCodes: readonly string[],
+): ParsedStop {
+  const hasPlatforms = stop.platforms.length > 0;
+  if (hasPlatforms) throw new Error(`${stop.name} already has platforms.`);
+
+  return {
+    ...stop,
+    platforms: platformCodes
+      .map((p) => ({ platformCode: p }))
+      .sort(platformSortOrder),
+  };
+}
+
+function addPlatformCodes(
+  stop: ParsedStop,
+  platformCodes: readonly string[],
+): ParsedStop {
+  const platforms = [...stop.platforms];
+
+  for (const code of platformCodes) {
+    const existing = platforms.some((p) => p.platformCode === code);
+    if (existing) throw new Error(`${stop.name} already has platform ${code}.`);
+
+    platforms.push({ platformCode: code });
+  }
+
+  return {
+    ...stop,
+    platforms: platforms.sort(platformSortOrder),
+  };
+}
