@@ -7,27 +7,27 @@ import { parseGtfs } from "./gtfs/parse-gtfs.js";
 
 const STOP_IDS_PATH = "./src/ids/stop-ids.ts";
 const LINE_IDS_PATH = "./src/ids/line-ids.ts";
+const ROUTE_IDS_PATH = "./src/ids/route-ids.ts";
+const STOP_POSITION_IDS_PATH = "./src/ids/stop-position-ids.ts";
 const STOPS_PATH = "./src/data/stops.ts";
 
 async function main() {
-  const ctx = await buildContext();
+  const ctx = new AutogenerationContext(
+    process.argv.includes("--check"),
+    await parseGtfs(env.RELAY_KEY),
+    IdList.fromCode(await fsp.readFile(STOP_IDS_PATH, "utf-8")),
+    IdList.fromCode(await fsp.readFile(LINE_IDS_PATH, "utf-8")),
+    IdList.fromCode(await fsp.readFile(ROUTE_IDS_PATH, "utf-8")),
+    IdList.fromCode(await fsp.readFile(STOP_POSITION_IDS_PATH, "utf-8")),
+  );
 
   autogenerateConfig(ctx);
 
   await output(STOP_IDS_PATH, ctx.stopIds.toCode(), ctx.checkMode);
   await output(LINE_IDS_PATH, ctx.lineIds.toCode(), ctx.checkMode);
+  await output(ROUTE_IDS_PATH, ctx.routeIds.toCode(), ctx.checkMode);
+  await output(STOP_POSITION_IDS_PATH, ctx.positionIds.toCode(), ctx.checkMode);
   await output(STOPS_PATH, ctx.stops.toCode(), ctx.checkMode);
-}
-
-async function buildContext(): Promise<AutogenerationContext> {
-  const checkMode = process.argv.includes("--check");
-
-  const gtfsData = await parseGtfs(env.RELAY_KEY);
-
-  const stopIds = IdList.fromCode(await fsp.readFile(STOP_IDS_PATH, "utf-8"));
-  const lineIds = IdList.fromCode(await fsp.readFile(LINE_IDS_PATH, "utf-8"));
-
-  return new AutogenerationContext(checkMode, gtfsData, stopIds, lineIds);
 }
 
 async function output(filePath: string, content: string, checkMode: boolean) {

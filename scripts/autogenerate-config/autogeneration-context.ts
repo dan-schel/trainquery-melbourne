@@ -10,6 +10,8 @@ export class AutogenerationContext {
     readonly gtfsData: GtfsData,
     readonly stopIds: IdList,
     readonly lineIds: IdList,
+    readonly routeIds: IdList,
+    readonly positionIds: IdList,
   ) {
     this.stops = new StopList([]);
   }

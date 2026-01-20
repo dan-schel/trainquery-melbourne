@@ -96,7 +96,7 @@ export class IdList {
 
     for (const line of lines) {
       const match = line.match(
-        /^(\/\/ \[REMOVED\] )?export const ([A-Z_]+) = ([0-9]+); \/\/ (.+)$/,
+        /^(\/\/ \[REMOVED\] )?export const ([A-Z0-9_]+) = ([0-9]+); \/\/ (.+)$/,
       );
       if (match == null) throw new Error(`Invalid line in ID list: ${line}`);
 
