@@ -1,7 +1,7 @@
-import { StopsCsv, stopsCsvSchema } from "./csv-schemas";
-import { readCsv } from "../utils/read-csv";
+import { type StopsCsv, stopsCsvSchema } from "./csv-schemas.js";
+import { readCsv } from "../utils/read-csv.js";
 import path from "path";
-import { GtfsDirectories } from "./with-gtfs-files";
+import { type GtfsDirectories } from "./with-gtfs-files.js";
 
 export type GtfsData = {
   readonly suburban: GtfsFeed;

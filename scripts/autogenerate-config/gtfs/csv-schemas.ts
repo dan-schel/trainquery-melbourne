@@ -1,5 +1,5 @@
 import z from "zod";
-import { floatStringSchema } from "../utils/schema-utils";
+import { floatStringSchema } from "../utils/schema-utils.js";
 
 export const stopsCsvSchema = z
   .object({

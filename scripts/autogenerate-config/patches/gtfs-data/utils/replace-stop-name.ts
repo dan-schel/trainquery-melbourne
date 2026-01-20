@@ -1,5 +1,5 @@
-import { GtfsData } from "../../../gtfs/read-gtfs";
-import { Patch } from "../../patch";
+import { type GtfsData } from "../../../gtfs/read-gtfs.js";
+import { type Patch } from "../../patch.js";
 
 type CreateReplaceStopNamePatchArgs = {
   readonly id: string;

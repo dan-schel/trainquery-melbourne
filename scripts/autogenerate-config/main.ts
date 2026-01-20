@@ -1,10 +1,10 @@
-import { env } from "./env";
-import { AutogenerationContext } from "./autogeneration-context";
-import { autogenerateConfig } from "./autogenerate-config";
-import { IdList } from "./source-code/id-list";
+import { env } from "./env.js";
+import { AutogenerationContext } from "./autogeneration-context.js";
+import { autogenerateConfig } from "./autogenerate-config.js";
+import { IdList } from "./source-code/id-list.js";
 import fsp from "fs/promises";
-import { StopList } from "./source-code/stop-list";
-import { parseGtfs } from "./gtfs/parse-gtfs";
+import { StopList } from "./source-code/stop-list.js";
+import { parseGtfs } from "./gtfs/parse-gtfs.js";
 
 const STOP_IDS_PATH = "./src/ids/stop-ids.ts";
 const LINE_IDS_PATH = "./src/ids/line-ids.ts";
@@ -13,7 +13,7 @@ const STOPS_PATH = "./src/data/stops.ts";
 async function main() {
   const ctx = await buildContext();
 
-  await autogenerateConfig(ctx);
+  autogenerateConfig(ctx);
 
   await output(STOP_IDS_PATH, ctx.stopIds.toCode(), ctx.checkMode);
   await output(LINE_IDS_PATH, ctx.lineIds.toCode(), ctx.checkMode);

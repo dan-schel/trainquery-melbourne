@@ -1,5 +1,5 @@
-import { StopConfig } from "corequery";
-import { IdList } from "./id-list";
+import { type StopConfig } from "corequery";
+import { IdList } from "./id-list.js";
 
 type StopListEntry = {
   readonly id: number;

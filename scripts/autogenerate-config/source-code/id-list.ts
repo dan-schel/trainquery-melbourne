@@ -91,9 +91,12 @@ export class IdList {
       if (match == null) throw new Error(`Invalid line in ID list: ${line}`);
 
       const isActive = match[1] == null;
-      const constantName = match[2];
-      const id = parseIntThrow(match[3]);
-      const name = match[4];
+      const constantName = match[2] ?? "";
+      const id = parseIntThrow(match[3] ?? "");
+      const name = match[4] ?? "";
+
+      if (constantName === "") throw new Error(`No constant name: "${line}".`);
+      if (name === "") throw new Error(`No name: "${line}".`);
 
       const existing = entries.find((e) => e.name === name);
       if (existing != null) throw new Error(`Found ${name} twice.`);

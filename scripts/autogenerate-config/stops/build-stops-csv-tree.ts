@@ -1,5 +1,5 @@
-import { AutogenerationContext } from "../autogeneration-context";
-import { StopsCsvRow } from "../gtfs/csv-schemas";
+import { AutogenerationContext } from "../autogeneration-context.js";
+import { type StopsCsvRow } from "../gtfs/csv-schemas.js";
 
 export type StopsCsvTreeNode = StopsCsvRow & {
   readonly children: StopsCsvTree;

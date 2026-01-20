@@ -1,6 +1,6 @@
-import { GtfsData } from "./gtfs/read-gtfs";
-import { IdList } from "./source-code/id-list";
-import { StopList } from "./source-code/stop-list";
+import { type GtfsData } from "./gtfs/read-gtfs.js";
+import { IdList } from "./source-code/id-list.js";
+import { StopList } from "./source-code/stop-list.js";
 
 export class AutogenerationContext {
   constructor(

@@ -1,7 +1,7 @@
 import path from "path";
-import { withTemporaryDirectory } from "../utils/with-temporary-directory";
-import { download } from "../utils/download";
-import { extractZip } from "../utils/extract-zip";
+import { withTemporaryDirectory } from "../utils/with-temporary-directory.js";
+import { download } from "../utils/download.js";
+import { extractZip } from "../utils/extract-zip.js";
 
 const gtfsUrl = "https://vtar.trainquery.com/gtfs.zip";
 

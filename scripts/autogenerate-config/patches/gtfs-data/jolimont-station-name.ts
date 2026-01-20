@@ -1,4 +1,4 @@
-import { createReplaceStopNamePatch } from "./utils/replace-stop-name";
+import { createReplaceStopNamePatch } from "./utils/replace-stop-name.js";
 
 export const jolimontStationNamePatch = createReplaceStopNamePatch({
   id: "vic:rail:JLI",

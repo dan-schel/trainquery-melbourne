@@ -1,18 +1,14 @@
-import { AutogenerationContext } from "./autogeneration-context";
-import { ParsedStop } from "./stops/extract-stops-from-tree";
-import { parseStops } from "./stops/parse-stops";
-
-export type ParsedStopWithId = ParsedStop & {
-  readonly id: number;
-  readonly constantName: string;
-};
+import { AutogenerationContext } from "./autogeneration-context.js";
+import { assignUrlPaths } from "./stops/assign-url-paths.js";
+import { parseStops } from "./stops/parse-stops.js";
+import { syncStopIds } from "./stops/sync-stop-ids.js";
 
 export function autogenerateConfig(ctx: AutogenerationContext) {
   const stops = parseStops(ctx);
-  const stopsWithIds = assignStopIds(ctx, stops);
-  deactivateMissingStops(ctx, stops);
+  const stopsWithIds = syncStopIds(ctx, stops);
+  const stopsWithUrlPaths = assignUrlPaths(stopsWithIds);
 
-  for (const stop of stopsWithIds) {
+  for (const stop of stopsWithUrlPaths) {
     ctx.stops.add({
       id: stop.id,
       name: stop.name,
@@ -24,41 +20,5 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
       },
       positions: [],
     });
-  }
-}
-
-function assignStopIds(
-  ctx: AutogenerationContext,
-  stops: ParsedStop[],
-): ParsedStopWithId[] {
-  const result: ParsedStopWithId[] = [];
-
-  for (const stop of stops) {
-    const entry = ctx.stopIds.get(stop.name) ?? ctx.stopIds.add(stop.name);
-
-    if (!entry.isActive) ctx.stopIds.reactivate(stop.name);
-
-    result.push({
-      ...stop,
-      id: entry.id,
-      constantName: entry.constantName,
-    });
-  }
-
-  return result;
-}
-
-function deactivateMissingStops(
-  ctx: AutogenerationContext,
-  stops: ParsedStop[],
-) {
-  const activeEntries = ctx.stopIds.entries.filter((x) => x.isActive);
-
-  for (const entry of activeEntries) {
-    const matchingStop = stops.find((s) => s.name === entry.name);
-
-    if (matchingStop == null) {
-      ctx.stopIds.deactivate(entry.name);
-    }
   }
 }

@@ -1,9 +1,9 @@
-import { GtfsData, readGtfs } from "./read-gtfs";
-import { withGtfsFiles } from "./with-gtfs-files";
-import { applyPatches, Patch } from "../patches/patch";
-import { jolimontStationNamePatch } from "../patches/gtfs-data/jolimont-station-name";
-import { springhurstStationNamePatch } from "../patches/gtfs-data/springhurst-station-name";
-import { stAlbansStationNamePatch } from "../patches/gtfs-data/st-albans-station-name";
+import { type GtfsData, readGtfs } from "./read-gtfs.js";
+import { withGtfsFiles } from "./with-gtfs-files.js";
+import { applyPatches, type Patch } from "../patches/patch.js";
+import { jolimontStationNamePatch } from "../patches/gtfs-data/jolimont-station-name.js";
+import { springhurstStationNamePatch } from "../patches/gtfs-data/springhurst-station-name.js";
+import { stAlbansStationNamePatch } from "../patches/gtfs-data/st-albans-station-name.js";
 
 const patches: Patch<GtfsData>[] = [
   jolimontStationNamePatch,

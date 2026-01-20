@@ -1,8 +1,10 @@
-import { StopsCsvTree, StopsCsvTreeNode } from "./build-stops-csv-tree";
+import {
+  type StopsCsvTree,
+  type StopsCsvTreeNode,
+} from "./build-stops-csv-tree.js";
 
 export type ParsedStop = {
   readonly name: string;
-  readonly urlPath: string;
   readonly latitude: number;
   readonly longitude: number;
 };
@@ -19,16 +21,7 @@ function parseStop(station: StopsCsvTreeNode): ParsedStop {
 
   return {
     name: station.stop_name,
-    urlPath: generateUrlPath(station.stop_name),
     latitude: station.stop_lat,
     longitude: station.stop_lon,
   };
-}
-
-function generateUrlPath(name: string): string {
-  const lowercased = name.toLowerCase();
-
-  if (!/^[a-z ]$/g.test(lowercased)) throw new Error(`Tricky name: ${name}`);
-
-  return lowercased.replaceAll(" ", "");
 }
