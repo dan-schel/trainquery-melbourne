@@ -65,29 +65,20 @@ export class StopList {
     function stringifyLocation(): string {
       if (config.location == null) return "null";
 
-      return (
-        `{\n` +
-        `    latitude: ${config.location.latitude},\n` +
-        `    longitude: ${config.location.longitude},\n` +
-        `  }`
-      );
+      return `{ latitude: ${config.location.latitude}, longitude: ${config.location.longitude} }`;
     }
 
     function stringifyPositions(): string {
-      if (config.positions.length === 0) return "[]";
-
       const x = config.positions.map((p) => {
         const positionId = ctx.positionIds.requireById(p.stopPositionId);
-
-        return (
-          `{\n` +
-          `      name: ${JSON.stringify(p.name)},\n` +
-          `      stopPositionId: position.${positionId.constantName},\n` +
-          `    }`
-        );
+        return `{ stopPositionId: position.${positionId.constantName}, name: ${JSON.stringify(p.name)} }`;
       });
 
-      return `[\n${x.map((y) => `    ${y},\n`).join("")}  ]`;
+      if (x.length > 1) {
+        return `[\n${x.map((y) => `    ${y},\n`).join("")}  ]`;
+      } else {
+        return `[${x.map((y) => `${y}`).join(", ")}]`;
+      }
     }
 
     return (

@@ -7,19 +7,10 @@ export const AIRCRAFT: StopConfig = {
   name: "Aircraft",
   tags: [],
   urlPath: "aircraft",
-  location: {
-    latitude: -37.86660595,
-    longitude: 144.76080944,
-  },
+  location: { latitude: -37.86660595, longitude: 144.76080944 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -28,16 +19,8 @@ export const ALAMEIN: StopConfig = {
   name: "Alamein",
   tags: [],
   urlPath: "alamein",
-  location: {
-    latitude: -37.86832039,
-    longitude: 145.07965567,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.86832039, longitude: 145.07965567 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const ALBION: StopConfig = {
@@ -45,19 +28,10 @@ export const ALBION: StopConfig = {
   name: "Albion",
   tags: [],
   urlPath: "albion",
-  location: {
-    latitude: -37.77765281,
-    longitude: 144.82470361,
-  },
+  location: { latitude: -37.77765281, longitude: 144.82470361 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -66,16 +40,8 @@ export const ALBURY: StopConfig = {
   name: "Albury",
   tags: [],
   urlPath: "albury",
-  location: {
-    latitude: -36.0850459,
-    longitude: 146.9243814,
-  },
-  positions: [
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-  ],
+  location: { latitude: -36.0850459, longitude: 146.9243814 },
+  positions: [{ stopPositionId: position.PLATFORM_2, name: "2" }],
 };
 
 export const ALPHINGTON: StopConfig = {
@@ -83,19 +49,10 @@ export const ALPHINGTON: StopConfig = {
   name: "Alphington",
   tags: [],
   urlPath: "alphington",
-  location: {
-    latitude: -37.77839363,
-    longitude: 145.03125493,
-  },
+  location: { latitude: -37.77839363, longitude: 145.03125493 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -104,16 +61,8 @@ export const ALTONA: StopConfig = {
   name: "Altona",
   tags: [],
   urlPath: "altona",
-  location: {
-    latitude: -37.8671476,
-    longitude: 144.82964474,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.8671476, longitude: 144.82964474 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const ANSTEY: StopConfig = {
@@ -121,19 +70,10 @@ export const ANSTEY: StopConfig = {
   name: "Anstey",
   tags: [],
   urlPath: "anstey",
-  location: {
-    latitude: -37.76124203,
-    longitude: 144.96068404,
-  },
+  location: { latitude: -37.76124203, longitude: 144.96068404 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -142,16 +82,8 @@ export const ARARAT: StopConfig = {
   name: "Ararat",
   tags: [],
   urlPath: "ararat",
-  location: {
-    latitude: -37.28224082,
-    longitude: 142.93691176,
-  },
-  positions: [
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-  ],
+  location: { latitude: -37.28224082, longitude: 142.93691176 },
+  positions: [{ stopPositionId: position.PLATFORM_2, name: "2" }],
 };
 
 export const ARDEER: StopConfig = {
@@ -159,19 +91,10 @@ export const ARDEER: StopConfig = {
   name: "Ardeer",
   tags: [],
   urlPath: "ardeer",
-  location: {
-    latitude: -37.78306529,
-    longitude: 144.80218807,
-  },
+  location: { latitude: -37.78306529, longitude: 144.80218807 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -180,19 +103,10 @@ export const ARMADALE: StopConfig = {
   name: "Armadale",
   tags: [],
   urlPath: "armadale",
-  location: {
-    latitude: -37.85645238,
-    longitude: 145.01932554,
-  },
+  location: { latitude: -37.85645238, longitude: 145.01932554 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -201,19 +115,10 @@ export const ASCOT_VALE: StopConfig = {
   name: "Ascot Vale",
   tags: [],
   urlPath: "ascotvale",
-  location: {
-    latitude: -37.77530609,
-    longitude: 144.92182074,
-  },
+  location: { latitude: -37.77530609, longitude: 144.92182074 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -222,16 +127,8 @@ export const ASHBURTON: StopConfig = {
   name: "Ashburton",
   tags: [],
   urlPath: "ashburton",
-  location: {
-    latitude: -37.86196753,
-    longitude: 145.08134376,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.86196753, longitude: 145.08134376 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const ASPENDALE: StopConfig = {
@@ -239,19 +136,10 @@ export const ASPENDALE: StopConfig = {
   name: "Aspendale",
   tags: [],
   urlPath: "aspendale",
-  location: {
-    latitude: -38.02722019,
-    longitude: 145.10214962,
-  },
+  location: { latitude: -38.02722019, longitude: 145.10214962 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -260,23 +148,11 @@ export const AUBURN: StopConfig = {
   name: "Auburn",
   tags: [],
   urlPath: "auburn",
-  location: {
-    latitude: -37.82239831,
-    longitude: 145.04584366,
-  },
+  location: { latitude: -37.82239831, longitude: 145.04584366 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -285,19 +161,10 @@ export const AVENEL: StopConfig = {
   name: "Avenel",
   tags: [],
   urlPath: "avenel",
-  location: {
-    latitude: -36.89364778,
-    longitude: 145.22951498,
-  },
+  location: { latitude: -36.89364778, longitude: 145.22951498 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -306,19 +173,10 @@ export const BACCHUS_MARSH: StopConfig = {
   name: "Bacchus Marsh",
   tags: [],
   urlPath: "bacchusmarsh",
-  location: {
-    latitude: -37.68757821,
-    longitude: 144.43678516,
-  },
+  location: { latitude: -37.68757821, longitude: 144.43678516 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -327,16 +185,8 @@ export const BAIRNSDALE: StopConfig = {
   name: "Bairnsdale",
   tags: [],
   urlPath: "bairnsdale",
-  location: {
-    latitude: -37.82872043,
-    longitude: 147.62761375,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.82872043, longitude: 147.62761375 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const BALACLAVA: StopConfig = {
@@ -344,19 +194,10 @@ export const BALACLAVA: StopConfig = {
   name: "Balaclava",
   tags: [],
   urlPath: "balaclava",
-  location: {
-    latitude: -37.86948773,
-    longitude: 144.9935121,
-  },
+  location: { latitude: -37.86948773, longitude: 144.9935121 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -365,19 +206,10 @@ export const BALLAN: StopConfig = {
   name: "Ballan",
   tags: [],
   urlPath: "ballan",
-  location: {
-    latitude: -37.60429951,
-    longitude: 144.22544803,
-  },
+  location: { latitude: -37.60429951, longitude: 144.22544803 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -386,19 +218,10 @@ export const BALLARAT: StopConfig = {
   name: "Ballarat",
   tags: [],
   urlPath: "ballarat",
-  location: {
-    latitude: -37.55879148,
-    longitude: 143.85945743,
-  },
+  location: { latitude: -37.55879148, longitude: 143.85945743 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -407,19 +230,10 @@ export const BATMAN: StopConfig = {
   name: "Batman",
   tags: [],
   urlPath: "batman",
-  location: {
-    latitude: -37.73352285,
-    longitude: 144.96284055,
-  },
+  location: { latitude: -37.73352285, longitude: 144.96284055 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -428,16 +242,8 @@ export const BAXTER: StopConfig = {
   name: "Baxter",
   tags: [],
   urlPath: "baxter",
-  location: {
-    latitude: -38.19404306,
-    longitude: 145.16052609,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.19404306, longitude: 145.16052609 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const BAYSWATER: StopConfig = {
@@ -445,19 +251,10 @@ export const BAYSWATER: StopConfig = {
   name: "Bayswater",
   tags: [],
   urlPath: "bayswater",
-  location: {
-    latitude: -37.84173004,
-    longitude: 145.26813639,
-  },
+  location: { latitude: -37.84173004, longitude: 145.26813639 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -466,19 +263,10 @@ export const BEACONSFIELD: StopConfig = {
   name: "Beaconsfield",
   tags: [],
   urlPath: "beaconsfield",
-  location: {
-    latitude: -38.05083135,
-    longitude: 145.36607374,
-  },
+  location: { latitude: -38.05083135, longitude: 145.36607374 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -487,16 +275,8 @@ export const BEAUFORT: StopConfig = {
   name: "Beaufort",
   tags: [],
   urlPath: "beaufort",
-  location: {
-    latitude: -37.42762724,
-    longitude: 143.38238116,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.42762724, longitude: 143.38238116 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const BELGRAVE: StopConfig = {
@@ -504,19 +284,10 @@ export const BELGRAVE: StopConfig = {
   name: "Belgrave",
   tags: [],
   urlPath: "belgrave",
-  location: {
-    latitude: -37.9091021,
-    longitude: 145.35529128,
-  },
+  location: { latitude: -37.9091021, longitude: 145.35529128 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -525,19 +296,10 @@ export const BELL: StopConfig = {
   name: "Bell",
   tags: [],
   urlPath: "bell",
-  location: {
-    latitude: -37.74556212,
-    longitude: 145.00015503,
-  },
+  location: { latitude: -37.74556212, longitude: 145.00015503 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -546,16 +308,8 @@ export const BENALLA: StopConfig = {
   name: "Benalla",
   tags: [],
   urlPath: "benalla",
-  location: {
-    latitude: -36.54455031,
-    longitude: 145.98391505,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.54455031, longitude: 145.98391505 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const BENDIGO: StopConfig = {
@@ -563,19 +317,10 @@ export const BENDIGO: StopConfig = {
   name: "Bendigo",
   tags: [],
   urlPath: "bendigo",
-  location: {
-    latitude: -36.76566973,
-    longitude: 144.28300893,
-  },
+  location: { latitude: -36.76566973, longitude: 144.28300893 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -584,23 +329,11 @@ export const BENTLEIGH: StopConfig = {
   name: "Bentleigh",
   tags: [],
   urlPath: "bentleigh",
-  location: {
-    latitude: -37.91742457,
-    longitude: 145.03699513,
-  },
+  location: { latitude: -37.91742457, longitude: 145.03699513 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -609,19 +342,10 @@ export const BERWICK: StopConfig = {
   name: "Berwick",
   tags: [],
   urlPath: "berwick",
-  location: {
-    latitude: -38.03998037,
-    longitude: 145.34541666,
-  },
+  location: { latitude: -38.03998037, longitude: 145.34541666 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -630,16 +354,8 @@ export const BIRREGURRA: StopConfig = {
   name: "Birregurra",
   tags: [],
   urlPath: "birregurra",
-  location: {
-    latitude: -38.32880781,
-    longitude: 143.78362521,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.32880781, longitude: 143.78362521 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const BITTERN: StopConfig = {
@@ -647,16 +363,8 @@ export const BITTERN: StopConfig = {
   name: "Bittern",
   tags: [],
   urlPath: "bittern",
-  location: {
-    latitude: -38.33739032,
-    longitude: 145.17802653,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.33739032, longitude: 145.17802653 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const BLACKBURN: StopConfig = {
@@ -664,23 +372,11 @@ export const BLACKBURN: StopConfig = {
   name: "Blackburn",
   tags: [],
   urlPath: "blackburn",
-  location: {
-    latitude: -37.82007075,
-    longitude: 145.15001354,
-  },
+  location: { latitude: -37.82007075, longitude: 145.15001354 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -689,19 +385,10 @@ export const BONBEACH: StopConfig = {
   name: "Bonbeach",
   tags: [],
   urlPath: "bonbeach",
-  location: {
-    latitude: -38.06547485,
-    longitude: 145.1201058,
-  },
+  location: { latitude: -38.06547485, longitude: 145.1201058 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -710,19 +397,10 @@ export const BORONIA: StopConfig = {
   name: "Boronia",
   tags: [],
   urlPath: "boronia",
-  location: {
-    latitude: -37.86040238,
-    longitude: 145.28470457,
-  },
+  location: { latitude: -37.86040238, longitude: 145.28470457 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -731,23 +409,11 @@ export const BOX_HILL: StopConfig = {
   name: "Box Hill",
   tags: [],
   urlPath: "boxhill",
-  location: {
-    latitude: -37.81922165,
-    longitude: 145.12142893,
-  },
+  location: { latitude: -37.81922165, longitude: 145.12142893 },
   positions: [
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
-      name: "4",
-      stopPositionId: position.PLATFORM_4,
-    },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
   ],
 };
 
@@ -756,19 +422,10 @@ export const BRIGHTON_BEACH: StopConfig = {
   name: "Brighton Beach",
   tags: [],
   urlPath: "brightonbeach",
-  location: {
-    latitude: -37.92648432,
-    longitude: 144.98915355,
-  },
+  location: { latitude: -37.92648432, longitude: 144.98915355 },
   positions: [
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -777,19 +434,10 @@ export const BROADFORD: StopConfig = {
   name: "Broadford",
   tags: [],
   urlPath: "broadford",
-  location: {
-    latitude: -37.20720049,
-    longitude: 145.0430079,
-  },
+  location: { latitude: -37.20720049, longitude: 145.0430079 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -798,23 +446,11 @@ export const BROADMEADOWS: StopConfig = {
   name: "Broadmeadows",
   tags: [],
   urlPath: "broadmeadows",
-  location: {
-    latitude: -37.68304926,
-    longitude: 144.91961322,
-  },
+  location: { latitude: -37.68304926, longitude: 144.91961322 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -823,19 +459,10 @@ export const BRUNSWICK: StopConfig = {
   name: "Brunswick",
   tags: [],
   urlPath: "brunswick",
-  location: {
-    latitude: -37.76772055,
-    longitude: 144.95958654,
-  },
+  location: { latitude: -37.76772055, longitude: 144.95958654 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -844,19 +471,10 @@ export const BUNYIP: StopConfig = {
   name: "Bunyip",
   tags: [],
   urlPath: "bunyip",
-  location: {
-    latitude: -38.09910771,
-    longitude: 145.72075749,
-  },
+  location: { latitude: -38.09910771, longitude: 145.72075749 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -865,27 +483,12 @@ export const BURNLEY: StopConfig = {
   name: "Burnley",
   tags: [],
   urlPath: "burnley",
-  location: {
-    latitude: -37.82756022,
-    longitude: 145.00755515,
-  },
+  location: { latitude: -37.82756022, longitude: 145.00755515 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
-      name: "4",
-      stopPositionId: position.PLATFORM_4,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
   ],
 };
 
@@ -894,19 +497,10 @@ export const BURWOOD: StopConfig = {
   name: "Burwood",
   tags: [],
   urlPath: "burwood",
-  location: {
-    latitude: -37.85156328,
-    longitude: 145.08051107,
-  },
+  location: { latitude: -37.85156328, longitude: 145.08051107 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -915,23 +509,11 @@ export const CAMBERWELL: StopConfig = {
   name: "Camberwell",
   tags: [],
   urlPath: "camberwell",
-  location: {
-    latitude: -37.82656714,
-    longitude: 145.05869718,
-  },
+  location: { latitude: -37.82656714, longitude: 145.05869718 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -940,16 +522,8 @@ export const CAMPERDOWN: StopConfig = {
   name: "Camperdown",
   tags: [],
   urlPath: "camperdown",
-  location: {
-    latitude: -38.22890091,
-    longitude: 143.1509278,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.22890091, longitude: 143.1509278 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const CANTERBURY: StopConfig = {
@@ -957,23 +531,11 @@ export const CANTERBURY: StopConfig = {
   name: "Canterbury",
   tags: [],
   urlPath: "canterbury",
-  location: {
-    latitude: -37.82448518,
-    longitude: 145.08122424,
-  },
+  location: { latitude: -37.82448518, longitude: 145.08122424 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -982,19 +544,10 @@ export const CARDINIA_ROAD: StopConfig = {
   name: "Cardinia Road",
   tags: [],
   urlPath: "cardiniaroad",
-  location: {
-    latitude: -38.07129047,
-    longitude: 145.43779101,
-  },
+  location: { latitude: -38.07129047, longitude: 145.43779101 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1003,19 +556,10 @@ export const CARNEGIE: StopConfig = {
   name: "Carnegie",
   tags: [],
   urlPath: "carnegie",
-  location: {
-    latitude: -37.88624148,
-    longitude: 145.05857506,
-  },
+  location: { latitude: -37.88624148, longitude: 145.05857506 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1024,19 +568,10 @@ export const CAROLINE_SPRINGS: StopConfig = {
   name: "Caroline Springs",
   tags: [],
   urlPath: "carolinesprings",
-  location: {
-    latitude: -37.76612649,
-    longitude: 144.73573715,
-  },
+  location: { latitude: -37.76612649, longitude: 144.73573715 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1045,19 +580,10 @@ export const CARRUM: StopConfig = {
   name: "Carrum",
   tags: [],
   urlPath: "carrum",
-  location: {
-    latitude: -38.07653027,
-    longitude: 145.1228096,
-  },
+  location: { latitude: -38.07653027, longitude: 145.1228096 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1066,19 +592,10 @@ export const CASTLEMAINE: StopConfig = {
   name: "Castlemaine",
   tags: [],
   urlPath: "castlemaine",
-  location: {
-    latitude: -37.06284167,
-    longitude: 144.21397878,
-  },
+  location: { latitude: -37.06284167, longitude: 144.21397878 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1087,27 +604,12 @@ export const CAULFIELD: StopConfig = {
   name: "Caulfield",
   tags: [],
   urlPath: "caulfield",
-  location: {
-    latitude: -37.87745946,
-    longitude: 145.04252478,
-  },
+  location: { latitude: -37.87745946, longitude: 145.04252478 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
-      name: "4",
-      stopPositionId: position.PLATFORM_4,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
   ],
 };
 
@@ -1116,23 +618,11 @@ export const CHATHAM: StopConfig = {
   name: "Chatham",
   tags: [],
   urlPath: "chatham",
-  location: {
-    latitude: -37.82429952,
-    longitude: 145.08864793,
-  },
+  location: { latitude: -37.82429952, longitude: 145.08864793 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -1141,19 +631,10 @@ export const CHELSEA: StopConfig = {
   name: "Chelsea",
   tags: [],
   urlPath: "chelsea",
-  location: {
-    latitude: -38.05329032,
-    longitude: 145.1166795,
-  },
+  location: { latitude: -38.05329032, longitude: 145.1166795 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1162,23 +643,11 @@ export const CHELTENHAM: StopConfig = {
   name: "Cheltenham",
   tags: [],
   urlPath: "cheltenham",
-  location: {
-    latitude: -37.96664989,
-    longitude: 145.05455793,
-  },
+  location: { latitude: -37.96664989, longitude: 145.05455793 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -1187,19 +656,10 @@ export const CHILTERN: StopConfig = {
   name: "Chiltern",
   tags: [],
   urlPath: "chiltern",
-  location: {
-    latitude: -36.15563663,
-    longitude: 146.61137475,
-  },
+  location: { latitude: -36.15563663, longitude: 146.61137475 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1208,19 +668,10 @@ export const CLARKEFIELD: StopConfig = {
   name: "Clarkefield",
   tags: [],
   urlPath: "clarkefield",
-  location: {
-    latitude: -37.48349769,
-    longitude: 144.74537264,
-  },
+  location: { latitude: -37.48349769, longitude: 144.74537264 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1229,19 +680,10 @@ export const CLAYTON: StopConfig = {
   name: "Clayton",
   tags: [],
   urlPath: "clayton",
-  location: {
-    latitude: -37.92468255,
-    longitude: 145.12053436,
-  },
+  location: { latitude: -37.92468255, longitude: 145.12053436 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1250,19 +692,10 @@ export const CLIFTON_HILL: StopConfig = {
   name: "Clifton Hill",
   tags: [],
   urlPath: "cliftonhill",
-  location: {
-    latitude: -37.78865745,
-    longitude: 144.9954167,
-  },
+  location: { latitude: -37.78865745, longitude: 144.9954167 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1271,16 +704,8 @@ export const CLUNES: StopConfig = {
   name: "Clunes",
   tags: [],
   urlPath: "clunes",
-  location: {
-    latitude: -37.30301059,
-    longitude: 143.78208969,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.30301059, longitude: 143.78208969 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const COBBLEBANK: StopConfig = {
@@ -1288,19 +713,10 @@ export const COBBLEBANK: StopConfig = {
   name: "Cobblebank",
   tags: [],
   urlPath: "cobblebank",
-  location: {
-    latitude: -37.71254554,
-    longitude: 144.60410782,
-  },
+  location: { latitude: -37.71254554, longitude: 144.60410782 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1309,19 +725,10 @@ export const COBURG: StopConfig = {
   name: "Coburg",
   tags: [],
   urlPath: "coburg",
-  location: {
-    latitude: -37.74234502,
-    longitude: 144.96333634,
-  },
+  location: { latitude: -37.74234502, longitude: 144.96333634 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1330,16 +737,8 @@ export const COLAC: StopConfig = {
   name: "Colac",
   tags: [],
   urlPath: "colac",
-  location: {
-    latitude: -38.34337792,
-    longitude: 143.58665305,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.34337792, longitude: 143.58665305 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const COLLINGWOOD: StopConfig = {
@@ -1347,19 +746,10 @@ export const COLLINGWOOD: StopConfig = {
   name: "Collingwood",
   tags: [],
   urlPath: "collingwood",
-  location: {
-    latitude: -37.80452593,
-    longitude: 144.99374967,
-  },
+  location: { latitude: -37.80452593, longitude: 144.99374967 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1368,19 +758,10 @@ export const COOLAROO: StopConfig = {
   name: "Coolaroo",
   tags: [],
   urlPath: "coolaroo",
-  location: {
-    latitude: -37.66111042,
-    longitude: 144.92604123,
-  },
+  location: { latitude: -37.66111042, longitude: 144.92604123 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1389,19 +770,10 @@ export const CORIO: StopConfig = {
   name: "Corio",
   tags: [],
   urlPath: "corio",
-  location: {
-    latitude: -38.07283126,
-    longitude: 144.37976842,
-  },
+  location: { latitude: -38.07283126, longitude: 144.37976842 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1410,19 +782,10 @@ export const CRAIGIEBURN: StopConfig = {
   name: "Craigieburn",
   tags: [],
   urlPath: "craigieburn",
-  location: {
-    latitude: -37.6019248,
-    longitude: 144.94330601,
-  },
+  location: { latitude: -37.6019248, longitude: 144.94330601 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1431,19 +794,10 @@ export const CRANBOURNE: StopConfig = {
   name: "Cranbourne",
   tags: [],
   urlPath: "cranbourne",
-  location: {
-    latitude: -38.09953731,
-    longitude: 145.28059898,
-  },
+  location: { latitude: -38.09953731, longitude: 145.28059898 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1452,16 +806,8 @@ export const CRESWICK: StopConfig = {
   name: "Creswick",
   tags: [],
   urlPath: "creswick",
-  location: {
-    latitude: -37.42460539,
-    longitude: 143.88812365,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.42460539, longitude: 143.88812365 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const CRIB_POINT: StopConfig = {
@@ -1469,16 +815,8 @@ export const CRIB_POINT: StopConfig = {
   name: "Crib Point",
   tags: [],
   urlPath: "cribpoint",
-  location: {
-    latitude: -38.36612338,
-    longitude: 145.20404332,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.36612338, longitude: 145.20404332 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const CROXTON: StopConfig = {
@@ -1486,19 +824,10 @@ export const CROXTON: StopConfig = {
   name: "Croxton",
   tags: [],
   urlPath: "croxton",
-  location: {
-    latitude: -37.764101,
-    longitude: 144.99705619,
-  },
+  location: { latitude: -37.764101, longitude: 144.99705619 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1507,19 +836,10 @@ export const CROYDON: StopConfig = {
   name: "Croydon",
   tags: [],
   urlPath: "croydon",
-  location: {
-    latitude: -37.79530018,
-    longitude: 145.28048737,
-  },
+  location: { latitude: -37.79530018, longitude: 145.28048737 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1528,23 +848,11 @@ export const DANDENONG: StopConfig = {
   name: "Dandenong",
   tags: [],
   urlPath: "dandenong",
-  location: {
-    latitude: -37.98996792,
-    longitude: 145.20972537,
-  },
+  location: { latitude: -37.98996792, longitude: 145.20972537 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -1553,19 +861,10 @@ export const DAREBIN: StopConfig = {
   name: "Darebin",
   tags: [],
   urlPath: "darebin",
-  location: {
-    latitude: -37.77496341,
-    longitude: 145.03847598,
-  },
+  location: { latitude: -37.77496341, longitude: 145.03847598 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1574,19 +873,10 @@ export const DARLING: StopConfig = {
   name: "Darling",
   tags: [],
   urlPath: "darling",
-  location: {
-    latitude: -37.86895684,
-    longitude: 145.06295083,
-  },
+  location: { latitude: -37.86895684, longitude: 145.06295083 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1595,19 +885,10 @@ export const DEER_PARK: StopConfig = {
   name: "Deer Park",
   tags: [],
   urlPath: "deerpark",
-  location: {
-    latitude: -37.77728102,
-    longitude: 144.77108058,
-  },
+  location: { latitude: -37.77728102, longitude: 144.77108058 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1616,19 +897,10 @@ export const DENNIS: StopConfig = {
   name: "Dennis",
   tags: [],
   urlPath: "dennis",
-  location: {
-    latitude: -37.77918729,
-    longitude: 145.00824163,
-  },
+  location: { latitude: -37.77918729, longitude: 145.00824163 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1637,19 +909,10 @@ export const DIAMOND_CREEK: StopConfig = {
   name: "Diamond Creek",
   tags: [],
   urlPath: "diamondcreek",
-  location: {
-    latitude: -37.67337905,
-    longitude: 145.15853819,
-  },
+  location: { latitude: -37.67337905, longitude: 145.15853819 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1658,19 +921,10 @@ export const DIGGERS_REST: StopConfig = {
   name: "Diggers Rest",
   tags: [],
   urlPath: "diggersrest",
-  location: {
-    latitude: -37.62696051,
-    longitude: 144.71982218,
-  },
+  location: { latitude: -37.62696051, longitude: 144.71982218 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1679,16 +933,8 @@ export const DINGEE: StopConfig = {
   name: "Dingee",
   tags: [],
   urlPath: "dingee",
-  location: {
-    latitude: -36.36923291,
-    longitude: 144.23112034,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.36923291, longitude: 144.23112034 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const DONNYBROOK: StopConfig = {
@@ -1696,19 +942,10 @@ export const DONNYBROOK: StopConfig = {
   name: "Donnybrook",
   tags: [],
   urlPath: "donnybrook",
-  location: {
-    latitude: -37.54202766,
-    longitude: 144.97020358,
-  },
+  location: { latitude: -37.54202766, longitude: 144.97020358 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1717,19 +954,10 @@ export const DROUIN: StopConfig = {
   name: "Drouin",
   tags: [],
   urlPath: "drouin",
-  location: {
-    latitude: -38.1364519,
-    longitude: 145.85594693,
-  },
+  location: { latitude: -38.1364519, longitude: 145.85594693 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1738,16 +966,8 @@ export const EAGLEHAWK: StopConfig = {
   name: "Eaglehawk",
   tags: [],
   urlPath: "eaglehawk",
-  location: {
-    latitude: -36.71852539,
-    longitude: 144.2483799,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.71852539, longitude: 144.2483799 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const EAGLEMONT: StopConfig = {
@@ -1755,19 +975,10 @@ export const EAGLEMONT: StopConfig = {
   name: "Eaglemont",
   tags: [],
   urlPath: "eaglemont",
-  location: {
-    latitude: -37.76358553,
-    longitude: 145.05394269,
-  },
+  location: { latitude: -37.76358553, longitude: 145.05394269 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1776,23 +987,11 @@ export const EAST_CAMBERWELL: StopConfig = {
   name: "East Camberwell",
   tags: [],
   urlPath: "eastcamberwell",
-  location: {
-    latitude: -37.82589419,
-    longitude: 145.06819025,
-  },
+  location: { latitude: -37.82589419, longitude: 145.06819025 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -1801,19 +1000,10 @@ export const EAST_MALVERN: StopConfig = {
   name: "East Malvern",
   tags: [],
   urlPath: "eastmalvern",
-  location: {
-    latitude: -37.87692101,
-    longitude: 145.06939324,
-  },
+  location: { latitude: -37.87692101, longitude: 145.06939324 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1822,19 +1012,10 @@ export const EAST_RICHMOND: StopConfig = {
   name: "East Richmond",
   tags: [],
   urlPath: "eastrichmond",
-  location: {
-    latitude: -37.82639995,
-    longitude: 144.99706569,
-  },
+  location: { latitude: -37.82639995, longitude: 144.99706569 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1843,16 +1024,8 @@ export const ECHUCA: StopConfig = {
   name: "Echuca",
   tags: [],
   urlPath: "echuca",
-  location: {
-    latitude: -36.13098223,
-    longitude: 144.75345866,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.13098223, longitude: 144.75345866 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const EDITHVALE: StopConfig = {
@@ -1860,19 +1033,10 @@ export const EDITHVALE: StopConfig = {
   name: "Edithvale",
   tags: [],
   urlPath: "edithvale",
-  location: {
-    latitude: -38.03653574,
-    longitude: 145.10758338,
-  },
+  location: { latitude: -38.03653574, longitude: 145.10758338 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1881,16 +1045,8 @@ export const ELMORE: StopConfig = {
   name: "Elmore",
   tags: [],
   urlPath: "elmore",
-  location: {
-    latitude: -36.49502002,
-    longitude: 144.60775752,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.49502002, longitude: 144.60775752 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const ELSTERNWICK: StopConfig = {
@@ -1898,19 +1054,10 @@ export const ELSTERNWICK: StopConfig = {
   name: "Elsternwick",
   tags: [],
   urlPath: "elsternwick",
-  location: {
-    latitude: -37.88475311,
-    longitude: 145.00089787,
-  },
+  location: { latitude: -37.88475311, longitude: 145.00089787 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1919,19 +1066,10 @@ export const ELTHAM: StopConfig = {
   name: "Eltham",
   tags: [],
   urlPath: "eltham",
-  location: {
-    latitude: -37.71354967,
-    longitude: 145.14782202,
-  },
+  location: { latitude: -37.71354967, longitude: 145.14782202 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1940,19 +1078,10 @@ export const EPPING: StopConfig = {
   name: "Epping",
   tags: [],
   urlPath: "epping",
-  location: {
-    latitude: -37.65217784,
-    longitude: 145.03107934,
-  },
+  location: { latitude: -37.65217784, longitude: 145.03107934 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -1961,16 +1090,8 @@ export const EPSOM: StopConfig = {
   name: "Epsom",
   tags: [],
   urlPath: "epsom",
-  location: {
-    latitude: -36.70628781,
-    longitude: 144.3210526,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.70628781, longitude: 144.3210526 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const ESSENDON: StopConfig = {
@@ -1978,23 +1099,11 @@ export const ESSENDON: StopConfig = {
   name: "Essendon",
   tags: [],
   urlPath: "essendon",
-  location: {
-    latitude: -37.7560117,
-    longitude: 144.9161975,
-  },
+  location: { latitude: -37.7560117, longitude: 144.9161975 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -2003,19 +1112,10 @@ export const EUROA: StopConfig = {
   name: "Euroa",
   tags: [],
   urlPath: "euroa",
-  location: {
-    latitude: -36.74918387,
-    longitude: 145.56802043,
-  },
+  location: { latitude: -36.74918387, longitude: 145.56802043 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2024,19 +1124,10 @@ export const FAIRFIELD: StopConfig = {
   name: "Fairfield",
   tags: [],
   urlPath: "fairfield",
-  location: {
-    latitude: -37.77917126,
-    longitude: 145.0169053,
-  },
+  location: { latitude: -37.77917126, longitude: 145.0169053 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2045,19 +1136,10 @@ export const FAWKNER: StopConfig = {
   name: "Fawkner",
   tags: [],
   urlPath: "fawkner",
-  location: {
-    latitude: -37.71462129,
-    longitude: 144.96054503,
-  },
+  location: { latitude: -37.71462129, longitude: 144.96054503 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2066,19 +1148,10 @@ export const FERNTREE_GULLY: StopConfig = {
   name: "Ferntree Gully",
   tags: [],
   urlPath: "ferntreegully",
-  location: {
-    latitude: -37.88169799,
-    longitude: 145.29525126,
-  },
+  location: { latitude: -37.88169799, longitude: 145.29525126 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2087,27 +1160,12 @@ export const FLAGSTAFF: StopConfig = {
   name: "Flagstaff",
   tags: [],
   urlPath: "flagstaff",
-  location: {
-    latitude: -37.8119815,
-    longitude: 144.95566511,
-  },
+  location: { latitude: -37.8119815, longitude: 144.95566511 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
-      name: "4",
-      stopPositionId: position.PLATFORM_4,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
   ],
 };
 
@@ -2116,19 +1174,10 @@ export const FLEMINGTON_BRIDGE: StopConfig = {
   name: "Flemington Bridge",
   tags: [],
   urlPath: "flemingtonbridge",
-  location: {
-    latitude: -37.78813995,
-    longitude: 144.93932328,
-  },
+  location: { latitude: -37.78813995, longitude: 144.93932328 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2137,19 +1186,10 @@ export const FLEMINGTON_RACECOURSE: StopConfig = {
   name: "Flemington Racecourse",
   tags: [],
   urlPath: "flemingtonracecourse",
-  location: {
-    latitude: -37.78721073,
-    longitude: 144.90757709,
-  },
+  location: { latitude: -37.78721073, longitude: 144.90757709 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2158,63 +1198,21 @@ export const FLINDERS_STREET: StopConfig = {
   name: "Flinders Street",
   tags: [],
   urlPath: "flindersstreet",
-  location: {
-    latitude: -37.81830513,
-    longitude: 144.96696435,
-  },
+  location: { latitude: -37.81830513, longitude: 144.96696435 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
-      name: "4",
-      stopPositionId: position.PLATFORM_4,
-    },
-    {
-      name: "5",
-      stopPositionId: position.PLATFORM_5,
-    },
-    {
-      name: "6",
-      stopPositionId: position.PLATFORM_6,
-    },
-    {
-      name: "7",
-      stopPositionId: position.PLATFORM_7,
-    },
-    {
-      name: "8",
-      stopPositionId: position.PLATFORM_8,
-    },
-    {
-      name: "9",
-      stopPositionId: position.PLATFORM_9,
-    },
-    {
-      name: "10",
-      stopPositionId: position.PLATFORM_10,
-    },
-    {
-      name: "12",
-      stopPositionId: position.PLATFORM_12,
-    },
-    {
-      name: "13",
-      stopPositionId: position.PLATFORM_13,
-    },
-    {
-      name: "14",
-      stopPositionId: position.PLATFORM_14,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
+    { stopPositionId: position.PLATFORM_5, name: "5" },
+    { stopPositionId: position.PLATFORM_6, name: "6" },
+    { stopPositionId: position.PLATFORM_7, name: "7" },
+    { stopPositionId: position.PLATFORM_8, name: "8" },
+    { stopPositionId: position.PLATFORM_9, name: "9" },
+    { stopPositionId: position.PLATFORM_10, name: "10" },
+    { stopPositionId: position.PLATFORM_12, name: "12" },
+    { stopPositionId: position.PLATFORM_13, name: "13" },
+    { stopPositionId: position.PLATFORM_14, name: "14" },
   ],
 };
 
@@ -2223,35 +1221,14 @@ export const FOOTSCRAY: StopConfig = {
   name: "Footscray",
   tags: [],
   urlPath: "footscray",
-  location: {
-    latitude: -37.80141343,
-    longitude: 144.90202006,
-  },
+  location: { latitude: -37.80141343, longitude: 144.90202006 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
-      name: "4",
-      stopPositionId: position.PLATFORM_4,
-    },
-    {
-      name: "5",
-      stopPositionId: position.PLATFORM_5,
-    },
-    {
-      name: "6",
-      stopPositionId: position.PLATFORM_6,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
+    { stopPositionId: position.PLATFORM_5, name: "5" },
+    { stopPositionId: position.PLATFORM_6, name: "6" },
   ],
 };
 
@@ -2260,23 +1237,11 @@ export const FRANKSTON: StopConfig = {
   name: "Frankston",
   tags: [],
   urlPath: "frankston",
-  location: {
-    latitude: -38.14299007,
-    longitude: 145.12616228,
-  },
+  location: { latitude: -38.14299007, longitude: 145.12616228 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -2285,19 +1250,10 @@ export const GARDENVALE: StopConfig = {
   name: "Gardenvale",
   tags: [],
   urlPath: "gardenvale",
-  location: {
-    latitude: -37.89669508,
-    longitude: 145.00416843,
-  },
+  location: { latitude: -37.89669508, longitude: 145.00416843 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2306,19 +1262,10 @@ export const GARDINER: StopConfig = {
   name: "Gardiner",
   tags: [],
   urlPath: "gardiner",
-  location: {
-    latitude: -37.85327908,
-    longitude: 145.05165466,
-  },
+  location: { latitude: -37.85327908, longitude: 145.05165466 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2327,19 +1274,10 @@ export const GARFIELD: StopConfig = {
   name: "Garfield",
   tags: [],
   urlPath: "garfield",
-  location: {
-    latitude: -38.09103062,
-    longitude: 145.67422472,
-  },
+  location: { latitude: -38.09103062, longitude: 145.67422472 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2348,23 +1286,11 @@ export const GEELONG: StopConfig = {
   name: "Geelong",
   tags: [],
   urlPath: "geelong",
-  location: {
-    latitude: -38.14470898,
-    longitude: 144.3549152,
-  },
+  location: { latitude: -38.14470898, longitude: 144.3549152 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -2373,19 +1299,10 @@ export const GINIFER: StopConfig = {
   name: "Ginifer",
   tags: [],
   urlPath: "ginifer",
-  location: {
-    latitude: -37.76008529,
-    longitude: 144.81135895,
-  },
+  location: { latitude: -37.76008529, longitude: 144.81135895 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2394,19 +1311,10 @@ export const GISBORNE: StopConfig = {
   name: "Gisborne",
   tags: [],
   urlPath: "gisborne",
-  location: {
-    latitude: -37.4588255,
-    longitude: 144.59872157,
-  },
+  location: { latitude: -37.4588255, longitude: 144.59872157 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2415,19 +1323,10 @@ export const GLEN_IRIS: StopConfig = {
   name: "Glen Iris",
   tags: [],
   urlPath: "gleniris",
-  location: {
-    latitude: -37.85930842,
-    longitude: 145.0582249,
-  },
+  location: { latitude: -37.85930842, longitude: 145.0582249 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2436,19 +1335,10 @@ export const GLEN_WAVERLEY: StopConfig = {
   name: "Glen Waverley",
   tags: [],
   urlPath: "glenwaverley",
-  location: {
-    latitude: -37.87950407,
-    longitude: 145.16205755,
-  },
+  location: { latitude: -37.87950407, longitude: 145.16205755 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2457,19 +1347,10 @@ export const GLENBERVIE: StopConfig = {
   name: "Glenbervie",
   tags: [],
   urlPath: "glenbervie",
-  location: {
-    latitude: -37.74720985,
-    longitude: 144.92093868,
-  },
+  location: { latitude: -37.74720985, longitude: 144.92093868 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2478,23 +1359,11 @@ export const GLENFERRIE: StopConfig = {
   name: "Glenferrie",
   tags: [],
   urlPath: "glenferrie",
-  location: {
-    latitude: -37.82146682,
-    longitude: 145.03643883,
-  },
+  location: { latitude: -37.82146682, longitude: 145.03643883 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -2503,23 +1372,11 @@ export const GLEN_HUNTLY: StopConfig = {
   name: "Glen Huntly",
   tags: [],
   urlPath: "glenhuntly",
-  location: {
-    latitude: -37.88971946,
-    longitude: 145.04222285,
-  },
+  location: { latitude: -37.88971946, longitude: 145.04222285 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -2528,19 +1385,10 @@ export const GLENROY: StopConfig = {
   name: "Glenroy",
   tags: [],
   urlPath: "glenroy",
-  location: {
-    latitude: -37.70453633,
-    longitude: 144.9172204,
-  },
+  location: { latitude: -37.70453633, longitude: 144.9172204 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2549,16 +1397,8 @@ export const GOORNONG: StopConfig = {
   name: "Goornong",
   tags: [],
   urlPath: "goornong",
-  location: {
-    latitude: -36.61518327,
-    longitude: 144.50347417,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.61518327, longitude: 144.50347417 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const GOWRIE: StopConfig = {
@@ -2566,19 +1406,10 @@ export const GOWRIE: StopConfig = {
   name: "Gowrie",
   tags: [],
   urlPath: "gowrie",
-  location: {
-    latitude: -37.700678,
-    longitude: 144.95887432,
-  },
+  location: { latitude: -37.700678, longitude: 144.95887432 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2587,19 +1418,10 @@ export const GREENSBOROUGH: StopConfig = {
   name: "Greensborough",
   tags: [],
   urlPath: "greensborough",
-  location: {
-    latitude: -37.70371477,
-    longitude: 145.10793589,
-  },
+  location: { latitude: -37.70371477, longitude: 145.10793589 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2608,19 +1430,10 @@ export const HALLAM: StopConfig = {
   name: "Hallam",
   tags: [],
   urlPath: "hallam",
-  location: {
-    latitude: -38.01774038,
-    longitude: 145.2697768,
-  },
+  location: { latitude: -38.01774038, longitude: 145.2697768 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2629,19 +1442,10 @@ export const HAMPTON: StopConfig = {
   name: "Hampton",
   tags: [],
   urlPath: "hampton",
-  location: {
-    latitude: -37.9379864,
-    longitude: 145.00150445,
-  },
+  location: { latitude: -37.9379864, longitude: 145.00150445 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2650,19 +1454,10 @@ export const HARTWELL: StopConfig = {
   name: "Hartwell",
   tags: [],
   urlPath: "hartwell",
-  location: {
-    latitude: -37.84398457,
-    longitude: 145.07555959,
-  },
+  location: { latitude: -37.84398457, longitude: 145.07555959 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2671,16 +1466,8 @@ export const HASTINGS: StopConfig = {
   name: "Hastings",
   tags: [],
   urlPath: "hastings",
-  location: {
-    latitude: -38.30565853,
-    longitude: 145.18597988,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.30565853, longitude: 145.18597988 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const HAWKSBURN: StopConfig = {
@@ -2688,19 +1475,10 @@ export const HAWKSBURN: StopConfig = {
   name: "Hawksburn",
   tags: [],
   urlPath: "hawksburn",
-  location: {
-    latitude: -37.84458683,
-    longitude: 145.00190352,
-  },
+  location: { latitude: -37.84458683, longitude: 145.00190352 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2709,19 +1487,10 @@ export const HAWKSTOWE: StopConfig = {
   name: "Hawkstowe",
   tags: [],
   urlPath: "hawkstowe",
-  location: {
-    latitude: -37.62297489,
-    longitude: 145.09729471,
-  },
+  location: { latitude: -37.62297489, longitude: 145.09729471 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2730,23 +1499,11 @@ export const HAWTHORN: StopConfig = {
   name: "Hawthorn",
   tags: [],
   urlPath: "hawthorn",
-  location: {
-    latitude: -37.82182601,
-    longitude: 145.02289866,
-  },
+  location: { latitude: -37.82182601, longitude: 145.02289866 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -2755,19 +1512,10 @@ export const HEATHCOTE_JUNCTION: StopConfig = {
   name: "Heathcote Junction",
   tags: [],
   urlPath: "heathcotejunction",
-  location: {
-    latitude: -37.37172322,
-    longitude: 145.02824986,
-  },
+  location: { latitude: -37.37172322, longitude: 145.02824986 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2776,19 +1524,10 @@ export const HEATHERDALE: StopConfig = {
   name: "Heatherdale",
   tags: [],
   urlPath: "heatherdale",
-  location: {
-    latitude: -37.8188232,
-    longitude: 145.21397044,
-  },
+  location: { latitude: -37.8188232, longitude: 145.21397044 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2797,19 +1536,10 @@ export const HEATHMONT: StopConfig = {
   name: "Heathmont",
   tags: [],
   urlPath: "heathmont",
-  location: {
-    latitude: -37.82832227,
-    longitude: 145.24455538,
-  },
+  location: { latitude: -37.82832227, longitude: 145.24455538 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2818,19 +1548,10 @@ export const HEIDELBERG: StopConfig = {
   name: "Heidelberg",
   tags: [],
   urlPath: "heidelberg",
-  location: {
-    latitude: -37.75707293,
-    longitude: 145.06068552,
-  },
+  location: { latitude: -37.75707293, longitude: 145.06068552 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2839,19 +1560,10 @@ export const HEYINGTON: StopConfig = {
   name: "Heyington",
   tags: [],
   urlPath: "heyington",
-  location: {
-    latitude: -37.83465462,
-    longitude: 145.02264711,
-  },
+  location: { latitude: -37.83465462, longitude: 145.02264711 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2860,19 +1572,10 @@ export const HIGHETT: StopConfig = {
   name: "Highett",
   tags: [],
   urlPath: "highett",
-  location: {
-    latitude: -37.948425,
-    longitude: 145.0418718,
-  },
+  location: { latitude: -37.948425, longitude: 145.0418718 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2881,19 +1584,10 @@ export const HOLMESGLEN: StopConfig = {
   name: "Holmesglen",
   tags: [],
   urlPath: "holmesglen",
-  location: {
-    latitude: -37.87440222,
-    longitude: 145.09066203,
-  },
+  location: { latitude: -37.87440222, longitude: 145.09066203 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2902,19 +1596,10 @@ export const HOPPERS_CROSSING: StopConfig = {
   name: "Hoppers Crossing",
   tags: [],
   urlPath: "hopperscrossing",
-  location: {
-    latitude: -37.88338025,
-    longitude: 144.70074704,
-  },
+  location: { latitude: -37.88338025, longitude: 144.70074704 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2923,19 +1608,10 @@ export const HUGHESDALE: StopConfig = {
   name: "Hughesdale",
   tags: [],
   urlPath: "hughesdale",
-  location: {
-    latitude: -37.89419074,
-    longitude: 145.07618607,
-  },
+  location: { latitude: -37.89419074, longitude: 145.07618607 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2944,19 +1620,10 @@ export const HUNTINGDALE: StopConfig = {
   name: "Huntingdale",
   tags: [],
   urlPath: "huntingdale",
-  location: {
-    latitude: -37.91101734,
-    longitude: 145.10236432,
-  },
+  location: { latitude: -37.91101734, longitude: 145.10236432 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -2965,16 +1632,8 @@ export const HURSTBRIDGE: StopConfig = {
   name: "Hurstbridge",
   tags: [],
   urlPath: "hurstbridge",
-  location: {
-    latitude: -37.63939817,
-    longitude: 145.19201689,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.63939817, longitude: 145.19201689 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const IVANHOE: StopConfig = {
@@ -2982,19 +1641,10 @@ export const IVANHOE: StopConfig = {
   name: "Ivanhoe",
   tags: [],
   urlPath: "ivanhoe",
-  location: {
-    latitude: -37.76889674,
-    longitude: 145.04542519,
-  },
+  location: { latitude: -37.76889674, longitude: 145.04542519 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3003,19 +1653,10 @@ export const JACANA: StopConfig = {
   name: "Jacana",
   tags: [],
   urlPath: "jacana",
-  location: {
-    latitude: -37.69513079,
-    longitude: 144.91585052,
-  },
+  location: { latitude: -37.69513079, longitude: 144.91585052 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3024,19 +1665,10 @@ export const JEWELL: StopConfig = {
   name: "Jewell",
   tags: [],
   urlPath: "jewell",
-  location: {
-    latitude: -37.77498702,
-    longitude: 144.95871691,
-  },
+  location: { latitude: -37.77498702, longitude: 144.95871691 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3045,19 +1677,10 @@ export const JOLIMONT: StopConfig = {
   name: "Jolimont",
   tags: [],
   urlPath: "jolimont",
-  location: {
-    latitude: -37.81652702,
-    longitude: 144.98409834,
-  },
+  location: { latitude: -37.81652702, longitude: 144.98409834 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3066,19 +1689,10 @@ export const JORDANVILLE: StopConfig = {
   name: "Jordanville",
   tags: [],
   urlPath: "jordanville",
-  location: {
-    latitude: -37.87360339,
-    longitude: 145.11209016,
-  },
+  location: { latitude: -37.87360339, longitude: 145.11209016 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3087,19 +1701,10 @@ export const KANANOOK: StopConfig = {
   name: "Kananook",
   tags: [],
   urlPath: "kananook",
-  location: {
-    latitude: -38.12175231,
-    longitude: 145.13537493,
-  },
+  location: { latitude: -38.12175231, longitude: 145.13537493 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3108,19 +1713,10 @@ export const KANGAROO_FLAT: StopConfig = {
   name: "Kangaroo Flat",
   tags: [],
   urlPath: "kangarooflat",
-  location: {
-    latitude: -36.79483364,
-    longitude: 144.24899016,
-  },
+  location: { latitude: -36.79483364, longitude: 144.24899016 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3129,19 +1725,10 @@ export const KEILOR_PLAINS: StopConfig = {
   name: "Keilor Plains",
   tags: [],
   urlPath: "keilorplains",
-  location: {
-    latitude: -37.72927934,
-    longitude: 144.79373807,
-  },
+  location: { latitude: -37.72927934, longitude: 144.79373807 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3150,19 +1737,10 @@ export const KENSINGTON: StopConfig = {
   name: "Kensington",
   tags: [],
   urlPath: "kensington",
-  location: {
-    latitude: -37.79378022,
-    longitude: 144.93052444,
-  },
+  location: { latitude: -37.79378022, longitude: 144.93052444 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3171,19 +1749,10 @@ export const KEON_PARK: StopConfig = {
   name: "Keon Park",
   tags: [],
   urlPath: "keonpark",
-  location: {
-    latitude: -37.69487012,
-    longitude: 145.01188382,
-  },
+  location: { latitude: -37.69487012, longitude: 145.01188382 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3192,16 +1761,8 @@ export const KERANG: StopConfig = {
   name: "Kerang",
   tags: [],
   urlPath: "kerang",
-  location: {
-    latitude: -35.73312162,
-    longitude: 143.92442509,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -35.73312162, longitude: 143.92442509 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const KILMORE_EAST: StopConfig = {
@@ -3209,19 +1770,10 @@ export const KILMORE_EAST: StopConfig = {
   name: "Kilmore East",
   tags: [],
   urlPath: "kilmoreeast",
-  location: {
-    latitude: -37.29321027,
-    longitude: 144.98356599,
-  },
+  location: { latitude: -37.29321027, longitude: 144.98356599 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3230,19 +1782,10 @@ export const KOOYONG: StopConfig = {
   name: "Kooyong",
   tags: [],
   urlPath: "kooyong",
-  location: {
-    latitude: -37.83992894,
-    longitude: 145.03355161,
-  },
+  location: { latitude: -37.83992894, longitude: 145.03355161 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3251,19 +1794,10 @@ export const KYNETON: StopConfig = {
   name: "Kyneton",
   tags: [],
   urlPath: "kyneton",
-  location: {
-    latitude: -37.25827885,
-    longitude: 144.45060159,
-  },
+  location: { latitude: -37.25827885, longitude: 144.45060159 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3272,19 +1806,10 @@ export const LABURNUM: StopConfig = {
   name: "Laburnum",
   tags: [],
   urlPath: "laburnum",
-  location: {
-    latitude: -37.82078023,
-    longitude: 145.14070271,
-  },
+  location: { latitude: -37.82078023, longitude: 145.14070271 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3293,19 +1818,10 @@ export const LALOR: StopConfig = {
   name: "Lalor",
   tags: [],
   urlPath: "lalor",
-  location: {
-    latitude: -37.66585075,
-    longitude: 145.01719317,
-  },
+  location: { latitude: -37.66585075, longitude: 145.01719317 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3314,19 +1830,10 @@ export const LARA: StopConfig = {
   name: "Lara",
   tags: [],
   urlPath: "lara",
-  location: {
-    latitude: -38.02242764,
-    longitude: 144.41440429,
-  },
+  location: { latitude: -38.02242764, longitude: 144.41440429 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3335,23 +1842,11 @@ export const LAVERTON: StopConfig = {
   name: "Laverton",
   tags: [],
   urlPath: "laverton",
-  location: {
-    latitude: -37.86369404,
-    longitude: 144.77261667,
-  },
+  location: { latitude: -37.86369404, longitude: 144.77261667 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -3360,16 +1855,8 @@ export const LEAWARRA: StopConfig = {
   name: "Leawarra",
   tags: [],
   urlPath: "leawarra",
-  location: {
-    latitude: -38.152034,
-    longitude: 145.13953396,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.152034, longitude: 145.13953396 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const LILYDALE: StopConfig = {
@@ -3377,19 +1864,10 @@ export const LILYDALE: StopConfig = {
   name: "Lilydale",
   tags: [],
   urlPath: "lilydale",
-  location: {
-    latitude: -37.75721264,
-    longitude: 145.34582227,
-  },
+  location: { latitude: -37.75721264, longitude: 145.34582227 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3398,19 +1876,10 @@ export const LITTLE_RIVER: StopConfig = {
   name: "Little River",
   tags: [],
   urlPath: "littleriver",
-  location: {
-    latitude: -37.96292909,
-    longitude: 144.49848487,
-  },
+  location: { latitude: -37.96292909, longitude: 144.49848487 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3419,19 +1888,10 @@ export const LONGWARRY: StopConfig = {
   name: "Longwarry",
   tags: [],
   urlPath: "longwarry",
-  location: {
-    latitude: -38.11099211,
-    longitude: 145.76686029,
-  },
+  location: { latitude: -38.11099211, longitude: 145.76686029 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3440,19 +1900,10 @@ export const LYNBROOK: StopConfig = {
   name: "Lynbrook",
   tags: [],
   urlPath: "lynbrook",
-  location: {
-    latitude: -38.05734985,
-    longitude: 145.24925211,
-  },
+  location: { latitude: -38.05734985, longitude: 145.24925211 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3461,19 +1912,10 @@ export const MACAULAY: StopConfig = {
   name: "Macaulay",
   tags: [],
   urlPath: "macaulay",
-  location: {
-    latitude: -37.79426673,
-    longitude: 144.93616633,
-  },
+  location: { latitude: -37.79426673, longitude: 144.93616633 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3482,19 +1924,10 @@ export const MACEDON: StopConfig = {
   name: "Macedon",
   tags: [],
   urlPath: "macedon",
-  location: {
-    latitude: -37.42357331,
-    longitude: 144.56139685,
-  },
+  location: { latitude: -37.42357331, longitude: 144.56139685 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3503,23 +1936,11 @@ export const MACLEOD: StopConfig = {
   name: "Macleod",
   tags: [],
   urlPath: "macleod",
-  location: {
-    latitude: -37.7260123,
-    longitude: 145.06914332,
-  },
+  location: { latitude: -37.7260123, longitude: 145.06914332 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -3528,16 +1949,8 @@ export const MALMSBURY: StopConfig = {
   name: "Malmsbury",
   tags: [],
   urlPath: "malmsbury",
-  location: {
-    latitude: -37.18974032,
-    longitude: 144.37532317,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.18974032, longitude: 144.37532317 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const MALVERN: StopConfig = {
@@ -3545,27 +1958,12 @@ export const MALVERN: StopConfig = {
   name: "Malvern",
   tags: [],
   urlPath: "malvern",
-  location: {
-    latitude: -37.8662533,
-    longitude: 145.02929394,
-  },
+  location: { latitude: -37.8662533, longitude: 145.02929394 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
-      name: "4",
-      stopPositionId: position.PLATFORM_4,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
   ],
 };
 
@@ -3574,19 +1972,10 @@ export const MARSHALL: StopConfig = {
   name: "Marshall",
   tags: [],
   urlPath: "marshall",
-  location: {
-    latitude: -38.198549,
-    longitude: 144.35505671,
-  },
+  location: { latitude: -38.198549, longitude: 144.35505671 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3595,16 +1984,8 @@ export const MARYBOROUGH: StopConfig = {
   name: "Maryborough",
   tags: [],
   urlPath: "maryborough",
-  location: {
-    latitude: -37.05090849,
-    longitude: 143.74240234,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.05090849, longitude: 143.74240234 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const MCKINNON: StopConfig = {
@@ -3612,23 +1993,11 @@ export const MCKINNON: StopConfig = {
   name: "McKinnon",
   tags: [],
   urlPath: "mckinnon",
-  location: {
-    latitude: -37.91030903,
-    longitude: 145.03829897,
-  },
+  location: { latitude: -37.91030903, longitude: 145.03829897 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -3637,27 +2006,12 @@ export const MELBOURNE_CENTRAL: StopConfig = {
   name: "Melbourne Central",
   tags: [],
   urlPath: "melbournecentral",
-  location: {
-    latitude: -37.80993896,
-    longitude: 144.96260489,
-  },
+  location: { latitude: -37.80993896, longitude: 144.96260489 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
-      name: "4",
-      stopPositionId: position.PLATFORM_4,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
   ],
 };
 
@@ -3666,19 +2020,10 @@ export const MELTON: StopConfig = {
   name: "Melton",
   tags: [],
   urlPath: "melton",
-  location: {
-    latitude: -37.70347382,
-    longitude: 144.57209861,
-  },
+  location: { latitude: -37.70347382, longitude: 144.57209861 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3687,19 +2032,10 @@ export const MENTONE: StopConfig = {
   name: "Mentone",
   tags: [],
   urlPath: "mentone",
-  location: {
-    latitude: -37.98277704,
-    longitude: 145.06580232,
-  },
+  location: { latitude: -37.98277704, longitude: 145.06580232 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3708,19 +2044,10 @@ export const MERINDA_PARK: StopConfig = {
   name: "Merinda Park",
   tags: [],
   urlPath: "merindapark",
-  location: {
-    latitude: -38.07900048,
-    longitude: 145.26351137,
-  },
+  location: { latitude: -38.07900048, longitude: 145.26351137 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3729,19 +2056,10 @@ export const MERLYNSTON: StopConfig = {
   name: "Merlynston",
   tags: [],
   urlPath: "merlynston",
-  location: {
-    latitude: -37.72093389,
-    longitude: 144.96131355,
-  },
+  location: { latitude: -37.72093389, longitude: 144.96131355 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3750,19 +2068,10 @@ export const MERNDA: StopConfig = {
   name: "Mernda",
   tags: [],
   urlPath: "mernda",
-  location: {
-    latitude: -37.60254907,
-    longitude: 145.10095293,
-  },
+  location: { latitude: -37.60254907, longitude: 145.10095293 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3771,19 +2080,10 @@ export const MERRI: StopConfig = {
   name: "Merri",
   tags: [],
   urlPath: "merri",
-  location: {
-    latitude: -37.77784668,
-    longitude: 144.99297248,
-  },
+  location: { latitude: -37.77784668, longitude: 144.99297248 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3792,19 +2092,10 @@ export const MIDDLE_BRIGHTON: StopConfig = {
   name: "Middle Brighton",
   tags: [],
   urlPath: "middlebrighton",
-  location: {
-    latitude: -37.91513441,
-    longitude: 144.99629909,
-  },
+  location: { latitude: -37.91513441, longitude: 144.99629909 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3813,19 +2104,10 @@ export const MIDDLE_FOOTSCRAY: StopConfig = {
   name: "Middle Footscray",
   tags: [],
   urlPath: "middlefootscray",
-  location: {
-    latitude: -37.8025047,
-    longitude: 144.89147208,
-  },
+  location: { latitude: -37.8025047, longitude: 144.89147208 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3834,19 +2116,10 @@ export const MIDDLE_GORGE: StopConfig = {
   name: "Middle Gorge",
   tags: [],
   urlPath: "middlegorge",
-  location: {
-    latitude: -37.64403391,
-    longitude: 145.09212201,
-  },
+  location: { latitude: -37.64403391, longitude: 145.09212201 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3855,19 +2128,10 @@ export const MITCHAM: StopConfig = {
   name: "Mitcham",
   tags: [],
   urlPath: "mitcham",
-  location: {
-    latitude: -37.81816668,
-    longitude: 145.19220824,
-  },
+  location: { latitude: -37.81816668, longitude: 145.19220824 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3876,16 +2140,8 @@ export const MOE: StopConfig = {
   name: "Moe",
   tags: [],
   urlPath: "moe",
-  location: {
-    latitude: -38.17689039,
-    longitude: 146.26054896,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.17689039, longitude: 146.26054896 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const MONTMORENCY: StopConfig = {
@@ -3893,19 +2149,10 @@ export const MONTMORENCY: StopConfig = {
   name: "Montmorency",
   tags: [],
   urlPath: "montmorency",
-  location: {
-    latitude: -37.71529624,
-    longitude: 145.12151574,
-  },
+  location: { latitude: -37.71529624, longitude: 145.12151574 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3914,19 +2161,10 @@ export const MOONEE_PONDS: StopConfig = {
   name: "Moonee Ponds",
   tags: [],
   urlPath: "mooneeponds",
-  location: {
-    latitude: -37.76570666,
-    longitude: 144.9191607,
-  },
+  location: { latitude: -37.76570666, longitude: 144.9191607 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3935,23 +2173,11 @@ export const MOORABBIN: StopConfig = {
   name: "Moorabbin",
   tags: [],
   urlPath: "moorabbin",
-  location: {
-    latitude: -37.93447096,
-    longitude: 145.03676929,
-  },
+  location: { latitude: -37.93447096, longitude: 145.03676929 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -3960,19 +2186,10 @@ export const MOOROOLBARK: StopConfig = {
   name: "Mooroolbark",
   tags: [],
   urlPath: "mooroolbark",
-  location: {
-    latitude: -37.78474883,
-    longitude: 145.3124024,
-  },
+  location: { latitude: -37.78474883, longitude: 145.3124024 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -3981,16 +2198,8 @@ export const MOOROOPNA: StopConfig = {
   name: "Mooroopna",
   tags: [],
   urlPath: "mooroopna",
-  location: {
-    latitude: -36.39912828,
-    longitude: 145.35821484,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.39912828, longitude: 145.35821484 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const MORDIALLOC: StopConfig = {
@@ -3998,19 +2207,10 @@ export const MORDIALLOC: StopConfig = {
   name: "Mordialloc",
   tags: [],
   urlPath: "mordialloc",
-  location: {
-    latitude: -38.00658295,
-    longitude: 145.08765936,
-  },
+  location: { latitude: -38.00658295, longitude: 145.08765936 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4019,19 +2219,10 @@ export const MORELAND: StopConfig = {
   name: "Moreland",
   tags: [],
   urlPath: "moreland",
-  location: {
-    latitude: -37.75448484,
-    longitude: 144.96182303,
-  },
+  location: { latitude: -37.75448484, longitude: 144.96182303 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4040,16 +2231,8 @@ export const MORRADOO: StopConfig = {
   name: "Morradoo",
   tags: [],
   urlPath: "morradoo",
-  location: {
-    latitude: -38.35403334,
-    longitude: 145.18960249,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.35403334, longitude: 145.18960249 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const MORWELL: StopConfig = {
@@ -4057,19 +2240,10 @@ export const MORWELL: StopConfig = {
   name: "Morwell",
   tags: [],
   urlPath: "morwell",
-  location: {
-    latitude: -38.23674592,
-    longitude: 146.39677567,
-  },
+  location: { latitude: -38.23674592, longitude: 146.39677567 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4078,19 +2252,10 @@ export const MOUNT_WAVERLEY: StopConfig = {
   name: "Mount Waverley",
   tags: [],
   urlPath: "mountwaverley",
-  location: {
-    latitude: -37.87526408,
-    longitude: 145.1280441,
-  },
+  location: { latitude: -37.87526408, longitude: 145.1280441 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4099,16 +2264,8 @@ export const MURCHISON_EAST: StopConfig = {
   name: "Murchison East",
   tags: [],
   urlPath: "murchisoneast",
-  location: {
-    latitude: -36.61314794,
-    longitude: 145.24063556,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.61314794, longitude: 145.24063556 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const MURRUMBEENA: StopConfig = {
@@ -4116,19 +2273,10 @@ export const MURRUMBEENA: StopConfig = {
   name: "Murrumbeena",
   tags: [],
   urlPath: "murrumbeena",
-  location: {
-    latitude: -37.89019832,
-    longitude: 145.06737487,
-  },
+  location: { latitude: -37.89019832, longitude: 145.06737487 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4137,16 +2285,8 @@ export const NAGAMBIE: StopConfig = {
   name: "Nagambie",
   tags: [],
   urlPath: "nagambie",
-  location: {
-    latitude: -36.7854641,
-    longitude: 145.16035666,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.7854641, longitude: 145.16035666 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const NAR_NAR_GOON: StopConfig = {
@@ -4154,19 +2294,10 @@ export const NAR_NAR_GOON: StopConfig = {
   name: "Nar Nar Goon",
   tags: [],
   urlPath: "narnargoon",
-  location: {
-    latitude: -38.08159155,
-    longitude: 145.57166573,
-  },
+  location: { latitude: -38.08159155, longitude: 145.57166573 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4175,19 +2306,10 @@ export const NARRE_WARREN: StopConfig = {
   name: "Narre Warren",
   tags: [],
   urlPath: "narrewarren",
-  location: {
-    latitude: -38.02777361,
-    longitude: 145.303993,
-  },
+  location: { latitude: -38.02777361, longitude: 145.303993 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4196,19 +2318,10 @@ export const NEWMARKET: StopConfig = {
   name: "Newmarket",
   tags: [],
   urlPath: "newmarket",
-  location: {
-    latitude: -37.78732767,
-    longitude: 144.92897847,
-  },
+  location: { latitude: -37.78732767, longitude: 144.92897847 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4217,19 +2330,10 @@ export const NEWPORT: StopConfig = {
   name: "Newport",
   tags: [],
   urlPath: "newport",
-  location: {
-    latitude: -37.84272637,
-    longitude: 144.8835883,
-  },
+  location: { latitude: -37.84272637, longitude: 144.8835883 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4238,19 +2342,10 @@ export const NOBLE_PARK: StopConfig = {
   name: "Noble Park",
   tags: [],
   urlPath: "noblepark",
-  location: {
-    latitude: -37.96661867,
-    longitude: 145.17632482,
-  },
+  location: { latitude: -37.96661867, longitude: 145.17632482 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4259,19 +2354,10 @@ export const NORTH_BRIGHTON: StopConfig = {
   name: "North Brighton",
   tags: [],
   urlPath: "northbrighton",
-  location: {
-    latitude: -37.90478832,
-    longitude: 145.00261908,
-  },
+  location: { latitude: -37.90478832, longitude: 145.00261908 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4280,19 +2366,10 @@ export const NORTH_GEELONG: StopConfig = {
   name: "North Geelong",
   tags: [],
   urlPath: "northgeelong",
-  location: {
-    latitude: -38.12268295,
-    longitude: 144.35231162,
-  },
+  location: { latitude: -38.12268295, longitude: 144.35231162 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4301,35 +2378,14 @@ export const NORTH_MELBOURNE: StopConfig = {
   name: "North Melbourne",
   tags: [],
   urlPath: "northmelbourne",
-  location: {
-    latitude: -37.80630984,
-    longitude: 144.94151017,
-  },
+  location: { latitude: -37.80630984, longitude: 144.94151017 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
-      name: "4",
-      stopPositionId: position.PLATFORM_4,
-    },
-    {
-      name: "5",
-      stopPositionId: position.PLATFORM_5,
-    },
-    {
-      name: "6",
-      stopPositionId: position.PLATFORM_6,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
+    { stopPositionId: position.PLATFORM_5, name: "5" },
+    { stopPositionId: position.PLATFORM_6, name: "6" },
   ],
 };
 
@@ -4338,19 +2394,10 @@ export const NORTH_RICHMOND: StopConfig = {
   name: "North Richmond",
   tags: [],
   urlPath: "northrichmond",
-  location: {
-    latitude: -37.81039836,
-    longitude: 144.99250026,
-  },
+  location: { latitude: -37.81039836, longitude: 144.99250026 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4359,19 +2406,10 @@ export const NORTH_SHORE: StopConfig = {
   name: "North Shore",
   tags: [],
   urlPath: "northshore",
-  location: {
-    latitude: -38.09837714,
-    longitude: 144.36532142,
-  },
+  location: { latitude: -38.09837714, longitude: 144.36532142 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4380,19 +2418,10 @@ export const NORTH_WILLIAMSTOWN: StopConfig = {
   name: "North Williamstown",
   tags: [],
   urlPath: "northwilliamstown",
-  location: {
-    latitude: -37.85733348,
-    longitude: 144.88906947,
-  },
+  location: { latitude: -37.85733348, longitude: 144.88906947 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4401,19 +2430,10 @@ export const NORTHCOTE: StopConfig = {
   name: "Northcote",
   tags: [],
   urlPath: "northcote",
-  location: {
-    latitude: -37.76986537,
-    longitude: 144.99527721,
-  },
+  location: { latitude: -37.76986537, longitude: 144.99527721 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4422,19 +2442,10 @@ export const NUNAWADING: StopConfig = {
   name: "Nunawading",
   tags: [],
   urlPath: "nunawading",
-  location: {
-    latitude: -37.82061218,
-    longitude: 145.1748915,
-  },
+  location: { latitude: -37.82061218, longitude: 145.1748915 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4443,19 +2454,10 @@ export const OAK_PARK: StopConfig = {
   name: "Oak Park",
   tags: [],
   urlPath: "oakpark",
-  location: {
-    latitude: -37.71794973,
-    longitude: 144.92151877,
-  },
+  location: { latitude: -37.71794973, longitude: 144.92151877 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4464,19 +2466,10 @@ export const OAKLEIGH: StopConfig = {
   name: "Oakleigh",
   tags: [],
   urlPath: "oakleigh",
-  location: {
-    latitude: -37.90037214,
-    longitude: 145.08830787,
-  },
+  location: { latitude: -37.90037214, longitude: 145.08830787 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4485,19 +2478,10 @@ export const OFFICER: StopConfig = {
   name: "Officer",
   tags: [],
   urlPath: "officer",
-  location: {
-    latitude: -38.06614572,
-    longitude: 145.41098723,
-  },
+  location: { latitude: -38.06614572, longitude: 145.41098723 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4506,23 +2490,11 @@ export const ORMOND: StopConfig = {
   name: "Ormond",
   tags: [],
   urlPath: "ormond",
-  location: {
-    latitude: -37.90321167,
-    longitude: 145.03961342,
-  },
+  location: { latitude: -37.90321167, longitude: 145.03961342 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -4531,19 +2503,10 @@ export const PAKENHAM: StopConfig = {
   name: "Pakenham",
   tags: [],
   urlPath: "pakenham",
-  location: {
-    latitude: -38.08061397,
-    longitude: 145.48637907,
-  },
+  location: { latitude: -38.08061397, longitude: 145.48637907 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4552,19 +2515,10 @@ export const PARKDALE: StopConfig = {
   name: "Parkdale",
   tags: [],
   urlPath: "parkdale",
-  location: {
-    latitude: -37.99307882,
-    longitude: 145.07632682,
-  },
+  location: { latitude: -37.99307882, longitude: 145.07632682 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4573,27 +2527,12 @@ export const PARLIAMENT: StopConfig = {
   name: "Parliament",
   tags: [],
   urlPath: "parliament",
-  location: {
-    latitude: -37.811337,
-    longitude: 144.973119,
-  },
+  location: { latitude: -37.811337, longitude: 144.973119 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
-      name: "4",
-      stopPositionId: position.PLATFORM_4,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
   ],
 };
 
@@ -4602,19 +2541,10 @@ export const PASCOE_VALE: StopConfig = {
   name: "Pascoe Vale",
   tags: [],
   urlPath: "pascoevale",
-  location: {
-    latitude: -37.73075596,
-    longitude: 144.92819562,
-  },
+  location: { latitude: -37.73075596, longitude: 144.92819562 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4623,23 +2553,11 @@ export const PATTERSON: StopConfig = {
   name: "Patterson",
   tags: [],
   urlPath: "patterson",
-  location: {
-    latitude: -37.92514919,
-    longitude: 145.03547003,
-  },
+  location: { latitude: -37.92514919, longitude: 145.03547003 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -4648,19 +2566,10 @@ export const PRAHRAN: StopConfig = {
   name: "Prahran",
   tags: [],
   urlPath: "prahran",
-  location: {
-    latitude: -37.84951848,
-    longitude: 144.98985992,
-  },
+  location: { latitude: -37.84951848, longitude: 144.98985992 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4669,19 +2578,10 @@ export const PRESTON: StopConfig = {
   name: "Preston",
   tags: [],
   urlPath: "preston",
-  location: {
-    latitude: -37.73867424,
-    longitude: 145.00052198,
-  },
+  location: { latitude: -37.73867424, longitude: 145.00052198 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4690,16 +2590,8 @@ export const PYRAMID: StopConfig = {
   name: "Pyramid",
   tags: [],
   urlPath: "pyramid",
-  location: {
-    latitude: -36.0534147,
-    longitude: 144.11332145,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.0534147, longitude: 144.11332145 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const REGENT: StopConfig = {
@@ -4707,19 +2599,10 @@ export const REGENT: StopConfig = {
   name: "Regent",
   tags: [],
   urlPath: "regent",
-  location: {
-    latitude: -37.72840277,
-    longitude: 145.00277256,
-  },
+  location: { latitude: -37.72840277, longitude: 145.00277256 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4728,19 +2611,10 @@ export const RESERVOIR: StopConfig = {
   name: "Reservoir",
   tags: [],
   urlPath: "reservoir",
-  location: {
-    latitude: -37.71688492,
-    longitude: 145.00699582,
-  },
+  location: { latitude: -37.71688492, longitude: 145.00699582 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4749,51 +2623,18 @@ export const RICHMOND: StopConfig = {
   name: "Richmond",
   tags: [],
   urlPath: "richmond",
-  location: {
-    latitude: -37.82407446,
-    longitude: 144.99016426,
-  },
+  location: { latitude: -37.82407446, longitude: 144.99016426 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
-      name: "4",
-      stopPositionId: position.PLATFORM_4,
-    },
-    {
-      name: "5",
-      stopPositionId: position.PLATFORM_5,
-    },
-    {
-      name: "6",
-      stopPositionId: position.PLATFORM_6,
-    },
-    {
-      name: "7",
-      stopPositionId: position.PLATFORM_7,
-    },
-    {
-      name: "8",
-      stopPositionId: position.PLATFORM_8,
-    },
-    {
-      name: "9",
-      stopPositionId: position.PLATFORM_9,
-    },
-    {
-      name: "10",
-      stopPositionId: position.PLATFORM_10,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
+    { stopPositionId: position.PLATFORM_5, name: "5" },
+    { stopPositionId: position.PLATFORM_6, name: "6" },
+    { stopPositionId: position.PLATFORM_7, name: "7" },
+    { stopPositionId: position.PLATFORM_8, name: "8" },
+    { stopPositionId: position.PLATFORM_9, name: "9" },
+    { stopPositionId: position.PLATFORM_10, name: "10" },
   ],
 };
 
@@ -4802,19 +2643,10 @@ export const RIDDELLS_CREEK: StopConfig = {
   name: "Riddells Creek",
   tags: [],
   urlPath: "riddellscreek",
-  location: {
-    latitude: -37.46512379,
-    longitude: 144.67983071,
-  },
+  location: { latitude: -37.46512379, longitude: 144.67983071 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4823,23 +2655,11 @@ export const RINGWOOD: StopConfig = {
   name: "Ringwood",
   tags: [],
   urlPath: "ringwood",
-  location: {
-    latitude: -37.81588648,
-    longitude: 145.22896846,
-  },
+  location: { latitude: -37.81588648, longitude: 145.22896846 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -4848,19 +2668,10 @@ export const RINGWOOD_EAST: StopConfig = {
   name: "Ringwood East",
   tags: [],
   urlPath: "ringwoodeast",
-  location: {
-    latitude: -37.81196804,
-    longitude: 145.25019091,
-  },
+  location: { latitude: -37.81196804, longitude: 145.25019091 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4869,19 +2680,10 @@ export const RIPPONLEA: StopConfig = {
   name: "Ripponlea",
   tags: [],
   urlPath: "ripponlea",
-  location: {
-    latitude: -37.87596086,
-    longitude: 144.99525782,
-  },
+  location: { latitude: -37.87596086, longitude: 144.99525782 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4890,19 +2692,10 @@ export const RIVERSDALE: StopConfig = {
   name: "Riversdale",
   tags: [],
   urlPath: "riversdale",
-  location: {
-    latitude: -37.83150543,
-    longitude: 145.06964598,
-  },
+  location: { latitude: -37.83150543, longitude: 145.06964598 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4911,16 +2704,8 @@ export const ROCHESTER: StopConfig = {
   name: "Rochester",
   tags: [],
   urlPath: "rochester",
-  location: {
-    latitude: -36.3623605,
-    longitude: 144.69868134,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.3623605, longitude: 144.69868134 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const ROCKBANK: StopConfig = {
@@ -4928,19 +2713,10 @@ export const ROCKBANK: StopConfig = {
   name: "Rockbank",
   tags: [],
   urlPath: "rockbank",
-  location: {
-    latitude: -37.72926127,
-    longitude: 144.65063148,
-  },
+  location: { latitude: -37.72926127, longitude: 144.65063148 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4949,19 +2725,10 @@ export const ROSANNA: StopConfig = {
   name: "Rosanna",
   tags: [],
   urlPath: "rosanna",
-  location: {
-    latitude: -37.7428786,
-    longitude: 145.06614029,
-  },
+  location: { latitude: -37.7428786, longitude: 145.06614029 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -4970,16 +2737,8 @@ export const ROSEDALE: StopConfig = {
   name: "Rosedale",
   tags: [],
   urlPath: "rosedale",
-  location: {
-    latitude: -38.15640367,
-    longitude: 146.78696637,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.15640367, longitude: 146.78696637 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const ROXBURGH_PARK: StopConfig = {
@@ -4987,19 +2746,10 @@ export const ROXBURGH_PARK: StopConfig = {
   name: "Roxburgh Park",
   tags: [],
   urlPath: "roxburghpark",
-  location: {
-    latitude: -37.63823121,
-    longitude: 144.93540368,
-  },
+  location: { latitude: -37.63823121, longitude: 144.93540368 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5008,19 +2758,10 @@ export const ROYAL_PARK: StopConfig = {
   name: "Royal Park",
   tags: [],
   urlPath: "royalpark",
-  location: {
-    latitude: -37.78119293,
-    longitude: 144.95230127,
-  },
+  location: { latitude: -37.78119293, longitude: 144.95230127 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5029,19 +2770,10 @@ export const RUSHALL: StopConfig = {
   name: "Rushall",
   tags: [],
   urlPath: "rushall",
-  location: {
-    latitude: -37.78321711,
-    longitude: 144.99240708,
-  },
+  location: { latitude: -37.78321711, longitude: 144.99240708 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5050,19 +2782,10 @@ export const RUTHVEN: StopConfig = {
   name: "Ruthven",
   tags: [],
   urlPath: "ruthven",
-  location: {
-    latitude: -37.70789754,
-    longitude: 145.00951662,
-  },
+  location: { latitude: -37.70789754, longitude: 145.00951662 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5071,16 +2794,8 @@ export const SALE: StopConfig = {
   name: "Sale",
   tags: [],
   urlPath: "sale",
-  location: {
-    latitude: -38.10310272,
-    longitude: 147.05480513,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.10310272, longitude: 147.05480513 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const SANDOWN_PARK: StopConfig = {
@@ -5088,19 +2803,10 @@ export const SANDOWN_PARK: StopConfig = {
   name: "Sandown Park",
   tags: [],
   urlPath: "sandownpark",
-  location: {
-    latitude: -37.95648655,
-    longitude: 145.16282634,
-  },
+  location: { latitude: -37.95648655, longitude: 145.16282634 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5109,16 +2815,8 @@ export const SANDRINGHAM: StopConfig = {
   name: "Sandringham",
   tags: [],
   urlPath: "sandringham",
-  location: {
-    latitude: -37.95033018,
-    longitude: 145.00456136,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.95033018, longitude: 145.00456136 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const SEAFORD: StopConfig = {
@@ -5126,19 +2824,10 @@ export const SEAFORD: StopConfig = {
   name: "Seaford",
   tags: [],
   urlPath: "seaford",
-  location: {
-    latitude: -38.10402104,
-    longitude: 145.1282304,
-  },
+  location: { latitude: -38.10402104, longitude: 145.1282304 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5147,16 +2836,8 @@ export const SEAHOLME: StopConfig = {
   name: "Seaholme",
   tags: [],
   urlPath: "seaholme",
-  location: {
-    latitude: -37.86784231,
-    longitude: 144.84095773,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.86784231, longitude: 144.84095773 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const SEDDON: StopConfig = {
@@ -5164,19 +2845,10 @@ export const SEDDON: StopConfig = {
   name: "Seddon",
   tags: [],
   urlPath: "seddon",
-  location: {
-    latitude: -37.80900514,
-    longitude: 144.89567157,
-  },
+  location: { latitude: -37.80900514, longitude: 144.89567157 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5185,23 +2857,11 @@ export const SEYMOUR: StopConfig = {
   name: "Seymour",
   tags: [],
   urlPath: "seymour",
-  location: {
-    latitude: -37.02472873,
-    longitude: 145.13772862,
-  },
+  location: { latitude: -37.02472873, longitude: 145.13772862 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -5210,16 +2870,8 @@ export const SHEPPARTON: StopConfig = {
   name: "Shepparton",
   tags: [],
   urlPath: "shepparton",
-  location: {
-    latitude: -36.38379101,
-    longitude: 145.40649749,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.38379101, longitude: 145.40649749 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const SHERWOOD_PARK: StopConfig = {
@@ -5227,16 +2879,8 @@ export const SHERWOOD_PARK: StopConfig = {
   name: "Sherwood Park",
   tags: [],
   urlPath: "sherwoodpark",
-  location: {
-    latitude: -38.38638239,
-    longitude: 142.53884888,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.38638239, longitude: 142.53884888 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const SHOWGROUNDS: StopConfig = {
@@ -5244,16 +2888,8 @@ export const SHOWGROUNDS: StopConfig = {
   name: "Showgrounds",
   tags: [],
   urlPath: "showgrounds",
-  location: {
-    latitude: -37.7833933,
-    longitude: 144.9149124,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.7833933, longitude: 144.9149124 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const SOMERVILLE: StopConfig = {
@@ -5261,16 +2897,8 @@ export const SOMERVILLE: StopConfig = {
   name: "Somerville",
   tags: [],
   urlPath: "somerville",
-  location: {
-    latitude: -38.22534196,
-    longitude: 145.17624492,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.22534196, longitude: 145.17624492 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const SOUTH_GEELONG: StopConfig = {
@@ -5278,19 +2906,10 @@ export const SOUTH_GEELONG: StopConfig = {
   name: "South Geelong",
   tags: [],
   urlPath: "southgeelong",
-  location: {
-    latitude: -38.15865863,
-    longitude: 144.35898705,
-  },
+  location: { latitude: -38.15865863, longitude: 144.35898705 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5299,19 +2918,10 @@ export const SOUTH_KENSINGTON: StopConfig = {
   name: "South Kensington",
   tags: [],
   urlPath: "southkensington",
-  location: {
-    latitude: -37.79953087,
-    longitude: 144.92546901,
-  },
+  location: { latitude: -37.79953087, longitude: 144.92546901 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5320,19 +2930,10 @@ export const SOUTH_MORANG: StopConfig = {
   name: "South Morang",
   tags: [],
   urlPath: "southmorang",
-  location: {
-    latitude: -37.64905033,
-    longitude: 145.06701257,
-  },
+  location: { latitude: -37.64905033, longitude: 145.06701257 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5341,35 +2942,14 @@ export const SOUTH_YARRA: StopConfig = {
   name: "South Yarra",
   tags: [],
   urlPath: "southyarra",
-  location: {
-    latitude: -37.83844935,
-    longitude: 144.99234221,
-  },
+  location: { latitude: -37.83844935, longitude: 144.99234221 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
-      name: "4",
-      stopPositionId: position.PLATFORM_4,
-    },
-    {
-      name: "5",
-      stopPositionId: position.PLATFORM_5,
-    },
-    {
-      name: "6",
-      stopPositionId: position.PLATFORM_6,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
+    { stopPositionId: position.PLATFORM_5, name: "5" },
+    { stopPositionId: position.PLATFORM_6, name: "6" },
   ],
 };
 
@@ -5378,119 +2958,35 @@ export const SOUTHERN_CROSS: StopConfig = {
   name: "Southern Cross",
   tags: [],
   urlPath: "southerncross",
-  location: {
-    latitude: -37.8186631,
-    longitude: 144.95277706,
-  },
+  location: { latitude: -37.8186631, longitude: 144.95277706 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2A",
-      stopPositionId: position.PLATFORM_2A,
-    },
-    {
-      name: "2B",
-      stopPositionId: position.PLATFORM_2B,
-    },
-    {
-      name: "3A",
-      stopPositionId: position.PLATFORM_3A,
-    },
-    {
-      name: "3B",
-      stopPositionId: position.PLATFORM_3B,
-    },
-    {
-      name: "4A",
-      stopPositionId: position.PLATFORM_4A,
-    },
-    {
-      name: "4B",
-      stopPositionId: position.PLATFORM_4B,
-    },
-    {
-      name: "5A",
-      stopPositionId: position.PLATFORM_5A,
-    },
-    {
-      name: "5B",
-      stopPositionId: position.PLATFORM_5B,
-    },
-    {
-      name: "6A",
-      stopPositionId: position.PLATFORM_6A,
-    },
-    {
-      name: "6B",
-      stopPositionId: position.PLATFORM_6B,
-    },
-    {
-      name: "7A",
-      stopPositionId: position.PLATFORM_7A,
-    },
-    {
-      name: "7B",
-      stopPositionId: position.PLATFORM_7B,
-    },
-    {
-      name: "8",
-      stopPositionId: position.PLATFORM_8,
-    },
-    {
-      name: "8A",
-      stopPositionId: position.PLATFORM_8A,
-    },
-    {
-      name: "8B",
-      stopPositionId: position.PLATFORM_8B,
-    },
-    {
-      name: "8S",
-      stopPositionId: position.PLATFORM_8S,
-    },
-    {
-      name: "9",
-      stopPositionId: position.PLATFORM_9,
-    },
-    {
-      name: "10",
-      stopPositionId: position.PLATFORM_10,
-    },
-    {
-      name: "11",
-      stopPositionId: position.PLATFORM_11,
-    },
-    {
-      name: "12",
-      stopPositionId: position.PLATFORM_12,
-    },
-    {
-      name: "13",
-      stopPositionId: position.PLATFORM_13,
-    },
-    {
-      name: "14",
-      stopPositionId: position.PLATFORM_14,
-    },
-    {
-      name: "15A",
-      stopPositionId: position.PLATFORM_15A,
-    },
-    {
-      name: "15B",
-      stopPositionId: position.PLATFORM_15B,
-    },
-    {
-      name: "16A",
-      stopPositionId: position.PLATFORM_16A,
-    },
-    {
-      name: "16B",
-      stopPositionId: position.PLATFORM_16B,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2A, name: "2A" },
+    { stopPositionId: position.PLATFORM_2B, name: "2B" },
+    { stopPositionId: position.PLATFORM_3A, name: "3A" },
+    { stopPositionId: position.PLATFORM_3B, name: "3B" },
+    { stopPositionId: position.PLATFORM_4A, name: "4A" },
+    { stopPositionId: position.PLATFORM_4B, name: "4B" },
+    { stopPositionId: position.PLATFORM_5A, name: "5A" },
+    { stopPositionId: position.PLATFORM_5B, name: "5B" },
+    { stopPositionId: position.PLATFORM_6A, name: "6A" },
+    { stopPositionId: position.PLATFORM_6B, name: "6B" },
+    { stopPositionId: position.PLATFORM_7A, name: "7A" },
+    { stopPositionId: position.PLATFORM_7B, name: "7B" },
+    { stopPositionId: position.PLATFORM_8, name: "8" },
+    { stopPositionId: position.PLATFORM_8A, name: "8A" },
+    { stopPositionId: position.PLATFORM_8B, name: "8B" },
+    { stopPositionId: position.PLATFORM_8S, name: "8S" },
+    { stopPositionId: position.PLATFORM_9, name: "9" },
+    { stopPositionId: position.PLATFORM_10, name: "10" },
+    { stopPositionId: position.PLATFORM_11, name: "11" },
+    { stopPositionId: position.PLATFORM_12, name: "12" },
+    { stopPositionId: position.PLATFORM_13, name: "13" },
+    { stopPositionId: position.PLATFORM_14, name: "14" },
+    { stopPositionId: position.PLATFORM_15A, name: "15A" },
+    { stopPositionId: position.PLATFORM_15B, name: "15B" },
+    { stopPositionId: position.PLATFORM_16A, name: "16A" },
+    { stopPositionId: position.PLATFORM_16B, name: "16B" },
   ],
 };
 
@@ -5499,19 +2995,10 @@ export const SOUTHLAND: StopConfig = {
   name: "Southland",
   tags: [],
   urlPath: "southland",
-  location: {
-    latitude: -37.95813507,
-    longitude: 145.04864786,
-  },
+  location: { latitude: -37.95813507, longitude: 145.04864786 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5520,19 +3007,10 @@ export const SPOTSWOOD: StopConfig = {
   name: "Spotswood",
   tags: [],
   urlPath: "spotswood",
-  location: {
-    latitude: -37.83063888,
-    longitude: 144.88593345,
-  },
+  location: { latitude: -37.83063888, longitude: 144.88593345 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5541,19 +3019,10 @@ export const SPRINGHURST: StopConfig = {
   name: "Springhurst",
   tags: [],
   urlPath: "springhurst",
-  location: {
-    latitude: -36.18627209,
-    longitude: 146.47042552,
-  },
+  location: { latitude: -36.18627209, longitude: 146.47042552 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5562,19 +3031,10 @@ export const SPRINGVALE: StopConfig = {
   name: "Springvale",
   tags: [],
   urlPath: "springvale",
-  location: {
-    latitude: -37.94950878,
-    longitude: 145.15345183,
-  },
+  location: { latitude: -37.94950878, longitude: 145.15345183 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5583,19 +3043,10 @@ export const ST_ALBANS: StopConfig = {
   name: "St Albans",
   tags: [],
   urlPath: "stalbans",
-  location: {
-    latitude: -37.74486131,
-    longitude: 144.80005045,
-  },
+  location: { latitude: -37.74486131, longitude: 144.80005045 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5604,16 +3055,8 @@ export const STONY_POINT: StopConfig = {
   name: "Stony Point",
   tags: [],
   urlPath: "stonypoint",
-  location: {
-    latitude: -38.37423454,
-    longitude: 145.22183746,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.37423454, longitude: 145.22183746 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const STRATFORD: StopConfig = {
@@ -5621,16 +3064,8 @@ export const STRATFORD: StopConfig = {
   name: "Stratford",
   tags: [],
   urlPath: "stratford",
-  location: {
-    latitude: -37.96704739,
-    longitude: 147.08146945,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.96704739, longitude: 147.08146945 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const STRATHMORE: StopConfig = {
@@ -5638,19 +3073,10 @@ export const STRATHMORE: StopConfig = {
   name: "Strathmore",
   tags: [],
   urlPath: "strathmore",
-  location: {
-    latitude: -37.74359132,
-    longitude: 144.92731571,
-  },
+  location: { latitude: -37.74359132, longitude: 144.92731571 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5659,19 +3085,10 @@ export const SUNBURY: StopConfig = {
   name: "Sunbury",
   tags: [],
   urlPath: "sunbury",
-  location: {
-    latitude: -37.57928396,
-    longitude: 144.72798098,
-  },
+  location: { latitude: -37.57928396, longitude: 144.72798098 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5680,27 +3097,12 @@ export const SUNSHINE: StopConfig = {
   name: "Sunshine",
   tags: [],
   urlPath: "sunshine",
-  location: {
-    latitude: -37.78853633,
-    longitude: 144.8328782,
-  },
+  location: { latitude: -37.78853633, longitude: 144.8328782 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
-      name: "4",
-      stopPositionId: position.PLATFORM_4,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
   ],
 };
 
@@ -5709,16 +3111,8 @@ export const SWAN_HILL: StopConfig = {
   name: "Swan Hill",
   tags: [],
   urlPath: "swanhill",
-  location: {
-    latitude: -35.34111357,
-    longitude: 143.56234321,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -35.34111357, longitude: 143.56234321 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const SYNDAL: StopConfig = {
@@ -5726,19 +3120,10 @@ export const SYNDAL: StopConfig = {
   name: "Syndal",
   tags: [],
   urlPath: "syndal",
-  location: {
-    latitude: -37.87622062,
-    longitude: 145.14978071,
-  },
+  location: { latitude: -37.87622062, longitude: 145.14978071 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5747,16 +3132,8 @@ export const TALBOT: StopConfig = {
   name: "Talbot",
   tags: [],
   urlPath: "talbot",
-  location: {
-    latitude: -37.17289923,
-    longitude: 143.70564034,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.17289923, longitude: 143.70564034 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const TALLAROOK: StopConfig = {
@@ -5764,19 +3141,10 @@ export const TALLAROOK: StopConfig = {
   name: "Tallarook",
   tags: [],
   urlPath: "tallarook",
-  location: {
-    latitude: -37.09233454,
-    longitude: 145.10299728,
-  },
+  location: { latitude: -37.09233454, longitude: 145.10299728 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5785,19 +3153,10 @@ export const TARNEIT: StopConfig = {
   name: "Tarneit",
   tags: [],
   urlPath: "tarneit",
-  location: {
-    latitude: -37.83215468,
-    longitude: 144.69448757,
-  },
+  location: { latitude: -37.83215468, longitude: 144.69448757 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5806,16 +3165,8 @@ export const TECOMA: StopConfig = {
   name: "Tecoma",
   tags: [],
   urlPath: "tecoma",
-  location: {
-    latitude: -37.90811849,
-    longitude: 145.34299458,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.90811849, longitude: 145.34299458 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const TERANG: StopConfig = {
@@ -5823,16 +3174,8 @@ export const TERANG: StopConfig = {
   name: "Terang",
   tags: [],
   urlPath: "terang",
-  location: {
-    latitude: -38.23621199,
-    longitude: 142.91147221,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.23621199, longitude: 142.91147221 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const THOMASTOWN: StopConfig = {
@@ -5840,19 +3183,10 @@ export const THOMASTOWN: StopConfig = {
   name: "Thomastown",
   tags: [],
   urlPath: "thomastown",
-  location: {
-    latitude: -37.68033809,
-    longitude: 145.01427887,
-  },
+  location: { latitude: -37.68033809, longitude: 145.01427887 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5861,19 +3195,10 @@ export const THORNBURY: StopConfig = {
   name: "Thornbury",
   tags: [],
   urlPath: "thornbury",
-  location: {
-    latitude: -37.75505179,
-    longitude: 144.99857152,
-  },
+  location: { latitude: -37.75505179, longitude: 144.99857152 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5882,19 +3207,10 @@ export const TOORAK: StopConfig = {
   name: "Toorak",
   tags: [],
   urlPath: "toorak",
-  location: {
-    latitude: -37.85077381,
-    longitude: 145.01390858,
-  },
+  location: { latitude: -37.85077381, longitude: 145.01390858 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5903,19 +3219,10 @@ export const TOORONGA: StopConfig = {
   name: "Tooronga",
   tags: [],
   urlPath: "tooronga",
-  location: {
-    latitude: -37.84936553,
-    longitude: 145.04173374,
-  },
+  location: { latitude: -37.84936553, longitude: 145.04173374 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5924,19 +3231,10 @@ export const TOTTENHAM: StopConfig = {
   name: "Tottenham",
   tags: [],
   urlPath: "tottenham",
-  location: {
-    latitude: -37.7992509,
-    longitude: 144.86294494,
-  },
+  location: { latitude: -37.7992509, longitude: 144.86294494 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5945,19 +3243,10 @@ export const TRAFALGAR: StopConfig = {
   name: "Trafalgar",
   tags: [],
   urlPath: "trafalgar",
-  location: {
-    latitude: -38.2072423,
-    longitude: 146.15477284,
-  },
+  location: { latitude: -38.2072423, longitude: 146.15477284 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5966,19 +3255,10 @@ export const TRARALGON: StopConfig = {
   name: "Traralgon",
   tags: [],
   urlPath: "traralgon",
-  location: {
-    latitude: -38.19888494,
-    longitude: 146.53788212,
-  },
+  location: { latitude: -38.19888494, longitude: 146.53788212 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -5987,16 +3267,8 @@ export const TYABB: StopConfig = {
   name: "Tyabb",
   tags: [],
   urlPath: "tyabb",
-  location: {
-    latitude: -38.259815,
-    longitude: 145.18640071,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.259815, longitude: 145.18640071 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const TYNONG: StopConfig = {
@@ -6004,19 +3276,10 @@ export const TYNONG: StopConfig = {
   name: "Tynong",
   tags: [],
   urlPath: "tynong",
-  location: {
-    latitude: -38.08499626,
-    longitude: 145.6282343,
-  },
+  location: { latitude: -38.08499626, longitude: 145.6282343 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6025,16 +3288,8 @@ export const UPFIELD: StopConfig = {
   name: "Upfield",
   tags: [],
   urlPath: "upfield",
-  location: {
-    latitude: -37.66607779,
-    longitude: 144.94673994,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.66607779, longitude: 144.94673994 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const UPPER_FERNTREE_GULLY: StopConfig = {
@@ -6042,19 +3297,10 @@ export const UPPER_FERNTREE_GULLY: StopConfig = {
   name: "Upper Ferntree Gully",
   tags: [],
   urlPath: "upperferntreegully",
-  location: {
-    latitude: -37.8926717,
-    longitude: 145.30753019,
-  },
+  location: { latitude: -37.8926717, longitude: 145.30753019 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6063,19 +3309,10 @@ export const UPWEY: StopConfig = {
   name: "Upwey",
   tags: [],
   urlPath: "upwey",
-  location: {
-    latitude: -37.90369097,
-    longitude: 145.33133336,
-  },
+  location: { latitude: -37.90369097, longitude: 145.33133336 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6084,19 +3321,10 @@ export const VICTORIA_PARK: StopConfig = {
   name: "Victoria Park",
   tags: [],
   urlPath: "victoriapark",
-  location: {
-    latitude: -37.79915782,
-    longitude: 144.99445143,
-  },
+  location: { latitude: -37.79915782, longitude: 144.99445143 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6105,19 +3333,10 @@ export const VIOLET_TOWN: StopConfig = {
   name: "Violet Town",
   tags: [],
   urlPath: "violettown",
-  location: {
-    latitude: -36.63881606,
-    longitude: 145.71592345,
-  },
+  location: { latitude: -36.63881606, longitude: 145.71592345 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6126,19 +3345,10 @@ export const WALLAN: StopConfig = {
   name: "Wallan",
   tags: [],
   urlPath: "wallan",
-  location: {
-    latitude: -37.41653632,
-    longitude: 145.00535827,
-  },
+  location: { latitude: -37.41653632, longitude: 145.00535827 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6147,19 +3357,10 @@ export const WANDONG: StopConfig = {
   name: "Wandong",
   tags: [],
   urlPath: "wandong",
-  location: {
-    latitude: -37.3546771,
-    longitude: 145.02641544,
-  },
+  location: { latitude: -37.3546771, longitude: 145.02641544 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6168,16 +3369,8 @@ export const WANGARATTA: StopConfig = {
   name: "Wangaratta",
   tags: [],
   urlPath: "wangaratta",
-  location: {
-    latitude: -36.35515492,
-    longitude: 146.31702684,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.35515492, longitude: 146.31702684 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const WARRAGUL: StopConfig = {
@@ -6185,19 +3378,10 @@ export const WARRAGUL: StopConfig = {
   name: "Warragul",
   tags: [],
   urlPath: "warragul",
-  location: {
-    latitude: -38.16483276,
-    longitude: 145.93265719,
-  },
+  location: { latitude: -38.16483276, longitude: 145.93265719 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6206,16 +3390,8 @@ export const WARRNAMBOOL: StopConfig = {
   name: "Warrnambool",
   tags: [],
   urlPath: "warrnambool",
-  location: {
-    latitude: -38.38501396,
-    longitude: 142.47554504,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.38501396, longitude: 142.47554504 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const WATERGARDENS: StopConfig = {
@@ -6223,23 +3399,11 @@ export const WATERGARDENS: StopConfig = {
   name: "Watergardens",
   tags: [],
   urlPath: "watergardens",
-  location: {
-    latitude: -37.70111071,
-    longitude: 144.77418099,
-  },
+  location: { latitude: -37.70111071, longitude: 144.77418099 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -6248,19 +3412,10 @@ export const WATSONIA: StopConfig = {
   name: "Watsonia",
   tags: [],
   urlPath: "watsonia",
-  location: {
-    latitude: -37.71095798,
-    longitude: 145.08379338,
-  },
+  location: { latitude: -37.71095798, longitude: 145.08379338 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6269,16 +3424,8 @@ export const WATTLE_GLEN: StopConfig = {
   name: "Wattle Glen",
   tags: [],
   urlPath: "wattleglen",
-  location: {
-    latitude: -37.66396792,
-    longitude: 145.18161453,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.66396792, longitude: 145.18161453 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const WAURN_PONDS: StopConfig = {
@@ -6286,19 +3433,10 @@ export const WAURN_PONDS: StopConfig = {
   name: "Waurn Ponds",
   tags: [],
   urlPath: "waurnponds",
-  location: {
-    latitude: -38.21580573,
-    longitude: 144.30683114,
-  },
+  location: { latitude: -38.21580573, longitude: 144.30683114 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6307,19 +3445,10 @@ export const WENDOUREE: StopConfig = {
   name: "Wendouree",
   tags: [],
   urlPath: "wendouree",
-  location: {
-    latitude: -37.53997217,
-    longitude: 143.82121077,
-  },
+  location: { latitude: -37.53997217, longitude: 143.82121077 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6328,23 +3457,11 @@ export const WERRIBEE: StopConfig = {
   name: "Werribee",
   tags: [],
   urlPath: "werribee",
-  location: {
-    latitude: -37.89937805,
-    longitude: 144.66111801,
-  },
+  location: { latitude: -37.89937805, longitude: 144.66111801 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -6353,23 +3470,11 @@ export const WEST_FOOTSCRAY: StopConfig = {
   name: "West Footscray",
   tags: [],
   urlPath: "westfootscray",
-  location: {
-    latitude: -37.80180266,
-    longitude: 144.88398479,
-  },
+  location: { latitude: -37.80180266, longitude: 144.88398479 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -6378,19 +3483,10 @@ export const WEST_RICHMOND: StopConfig = {
   name: "West Richmond",
   tags: [],
   urlPath: "westrichmond",
-  location: {
-    latitude: -37.81494896,
-    longitude: 144.99142278,
-  },
+  location: { latitude: -37.81494896, longitude: 144.99142278 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6399,23 +3495,11 @@ export const WESTALL: StopConfig = {
   name: "Westall",
   tags: [],
   urlPath: "westall",
-  location: {
-    latitude: -37.93847284,
-    longitude: 145.13881033,
-  },
+  location: { latitude: -37.93847284, longitude: 145.13881033 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -6424,19 +3508,10 @@ export const WESTGARTH: StopConfig = {
   name: "Westgarth",
   tags: [],
   urlPath: "westgarth",
-  location: {
-    latitude: -37.7806207,
-    longitude: 144.99923319,
-  },
+  location: { latitude: -37.7806207, longitude: 144.99923319 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6445,19 +3520,10 @@ export const WESTONA: StopConfig = {
   name: "Westona",
   tags: [],
   urlPath: "westona",
-  location: {
-    latitude: -37.86516348,
-    longitude: 144.81349356,
-  },
+  location: { latitude: -37.86516348, longitude: 144.81349356 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6466,19 +3532,10 @@ export const WILLIAMS_LANDING: StopConfig = {
   name: "Williams Landing",
   tags: [],
   urlPath: "williamslanding",
-  location: {
-    latitude: -37.86986533,
-    longitude: 144.74744472,
-  },
+  location: { latitude: -37.86986533, longitude: 144.74744472 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6487,16 +3544,8 @@ export const WILLIAMSTOWN: StopConfig = {
   name: "Williamstown",
   tags: [],
   urlPath: "williamstown",
-  location: {
-    latitude: -37.86775292,
-    longitude: 144.90532331,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -37.86775292, longitude: 144.90532331 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const WILLIAMSTOWN_BEACH: StopConfig = {
@@ -6504,19 +3553,10 @@ export const WILLIAMSTOWN_BEACH: StopConfig = {
   name: "Williamstown Beach",
   tags: [],
   urlPath: "williamstownbeach",
-  location: {
-    latitude: -37.86398189,
-    longitude: 144.89448368,
-  },
+  location: { latitude: -37.86398189, longitude: 144.89448368 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6525,19 +3565,10 @@ export const WILLISON: StopConfig = {
   name: "Willison",
   tags: [],
   urlPath: "willison",
-  location: {
-    latitude: -37.83571565,
-    longitude: 145.07029756,
-  },
+  location: { latitude: -37.83571565, longitude: 145.07029756 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6546,16 +3577,8 @@ export const WINCHELSEA: StopConfig = {
   name: "Winchelsea",
   tags: [],
   urlPath: "winchelsea",
-  location: {
-    latitude: -38.24013506,
-    longitude: 143.98413389,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -38.24013506, longitude: 143.98413389 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const WINDSOR: StopConfig = {
@@ -6563,19 +3586,10 @@ export const WINDSOR: StopConfig = {
   name: "Windsor",
   tags: [],
   urlPath: "windsor",
-  location: {
-    latitude: -37.85605308,
-    longitude: 144.99203517,
-  },
+  location: { latitude: -37.85605308, longitude: 144.99203517 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6584,16 +3598,8 @@ export const WODONGA: StopConfig = {
   name: "Wodonga",
   tags: [],
   urlPath: "wodonga",
-  location: {
-    latitude: -36.10584513,
-    longitude: 146.87126565,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.10584513, longitude: 146.87126565 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const WOODEND: StopConfig = {
@@ -6601,19 +3607,10 @@ export const WOODEND: StopConfig = {
   name: "Woodend",
   tags: [],
   urlPath: "woodend",
-  location: {
-    latitude: -37.35879859,
-    longitude: 144.52589012,
-  },
+  location: { latitude: -37.35879859, longitude: 144.52589012 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6622,19 +3619,10 @@ export const WYNDHAM_VALE: StopConfig = {
   name: "Wyndham Vale",
   tags: [],
   urlPath: "wyndhamvale",
-  location: {
-    latitude: -37.87252742,
-    longitude: 144.60835702,
-  },
+  location: { latitude: -37.87252742, longitude: 144.60835702 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6643,19 +3631,10 @@ export const YARRAGON: StopConfig = {
   name: "Yarragon",
   tags: [],
   urlPath: "yarragon",
-  location: {
-    latitude: -38.20315754,
-    longitude: 146.0630628,
-  },
+  location: { latitude: -38.20315754, longitude: 146.0630628 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6664,19 +3643,10 @@ export const YARRAMAN: StopConfig = {
   name: "Yarraman",
   tags: [],
   urlPath: "yarraman",
-  location: {
-    latitude: -37.97825454,
-    longitude: 145.19160028,
-  },
+  location: { latitude: -37.97825454, longitude: 145.19160028 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6685,19 +3655,10 @@ export const YARRAVILLE: StopConfig = {
   name: "Yarraville",
   tags: [],
   urlPath: "yarraville",
-  location: {
-    latitude: -37.81585044,
-    longitude: 144.88993371,
-  },
+  location: { latitude: -37.81585044, longitude: 144.88993371 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6706,16 +3667,8 @@ export const HUNTLY: StopConfig = {
   name: "Huntly",
   tags: [],
   urlPath: "huntly",
-  location: {
-    latitude: -36.66584794,
-    longitude: 144.36982046,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.66584794, longitude: 144.36982046 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const RAYWOOD: StopConfig = {
@@ -6723,16 +3676,8 @@ export const RAYWOOD: StopConfig = {
   name: "Raywood",
   tags: [],
   urlPath: "raywood",
-  location: {
-    latitude: -36.53195927,
-    longitude: 144.20116104,
-  },
-  positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-  ],
+  location: { latitude: -36.53195927, longitude: 144.20116104 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const UNION: StopConfig = {
@@ -6740,23 +3685,11 @@ export const UNION: StopConfig = {
   name: "Union",
   tags: [],
   urlPath: "union",
-  location: {
-    latitude: -37.82315506,
-    longitude: 145.10034527,
-  },
+  location: { latitude: -37.82315506, longitude: 145.10034527 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -6765,19 +3698,10 @@ export const EAST_PAKENHAM: StopConfig = {
   name: "East Pakenham",
   tags: [],
   urlPath: "eastpakenham",
-  location: {
-    latitude: -38.08441136,
-    longitude: 145.50635689,
-  },
+  location: { latitude: -38.08441136, longitude: 145.50635689 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6786,19 +3710,10 @@ export const ANZAC: StopConfig = {
   name: "Anzac",
   tags: [],
   urlPath: "anzac",
-  location: {
-    latitude: -37.83331103,
-    longitude: 144.97279042,
-  },
+  location: { latitude: -37.83331103, longitude: 144.97279042 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6807,19 +3722,10 @@ export const TOWN_HALL: StopConfig = {
   name: "Town Hall",
   tags: [],
   urlPath: "townhall",
-  location: {
-    latitude: -37.81699161,
-    longitude: 144.96709126,
-  },
+  location: { latitude: -37.81699161, longitude: 144.96709126 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6828,19 +3734,10 @@ export const STATE_LIBRARY: StopConfig = {
   name: "State Library",
   tags: [],
   urlPath: "statelibrary",
-  location: {
-    latitude: -37.80943693,
-    longitude: 144.9632775,
-  },
+  location: { latitude: -37.80943693, longitude: 144.9632775 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6849,19 +3746,10 @@ export const PARKVILLE: StopConfig = {
   name: "Parkville",
   tags: [],
   urlPath: "parkville",
-  location: {
-    latitude: -37.79987386,
-    longitude: 144.95954246,
-  },
+  location: { latitude: -37.79987386, longitude: 144.95954246 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
 
@@ -6870,18 +3758,9 @@ export const ARDEN: StopConfig = {
   name: "Arden",
   tags: [],
   urlPath: "arden",
-  location: {
-    latitude: -37.80122194,
-    longitude: 144.94120851,
-  },
+  location: { latitude: -37.80122194, longitude: 144.94120851 },
   positions: [
-    {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
-    },
-    {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
 };
