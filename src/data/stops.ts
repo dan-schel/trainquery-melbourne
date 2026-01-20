@@ -3186,6 +3186,19 @@ export const SHERWOOD_PARK: StopConfig = {
   ],
 };
 
+export const SHOWGROUNDS: StopConfig = {
+  id: 247,
+  name: "Showgrounds",
+  tags: [],
+  urlPath: "showgrounds",
+  location: {
+    latitude: -37.7833933,
+    longitude: 144.9149124,
+  },
+  positions: [
+  ],
+};
+
 export const SOMERVILLE: StopConfig = {
   id: 248,
   name: "Somerville",
