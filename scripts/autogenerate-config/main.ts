@@ -9,6 +9,7 @@ import { jolimontStationNamePatch } from "./patches/jolimont-station-name";
 import { IdList } from "./source-code/id-list";
 import fsp from "fs/promises";
 import { StopList } from "./source-code/stop-list";
+import { springhurstStationNamePatch } from "./patches/springhurst-station-name";
 
 const STOP_IDS_PATH = "./src/ids/stop-ids.ts";
 const LINE_IDS_PATH = "./src/ids/line-ids.ts";
@@ -18,6 +19,7 @@ const patches = [
   trimStationNamesPatch,
   jolimontStationNamePatch,
   stAlbansStationNamePatch,
+  springhurstStationNamePatch,
 ];
 
 async function main() {

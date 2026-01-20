@@ -12,10 +12,7 @@ export const jolimontStationNamePatch: GtfsDataPatch = {
       ...input.suburban,
       stops: input.suburban.stops.map((stop) =>
         /Jolimont-MCG/g.test(stop.stop_name)
-          ? {
-              ...stop,
-              stop_name: stop.stop_name.replace(/Jolimont-MCG/g, "Jolimont"),
-            }
+          ? { ...stop, stop_name: "Jolimont" }
           : stop,
       ),
     },
