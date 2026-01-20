@@ -1,5 +1,5 @@
 import { type StopConfig } from "corequery";
-import { IdList } from "./id-list.js";
+import type { AutogenerationContext } from "../autogeneration-context.js";
 
 type StopListEntry = {
   readonly id: number;
@@ -28,14 +28,14 @@ export class StopList {
     return existing;
   }
 
-  add(config: StopConfig) {
+  add(ctx: AutogenerationContext, config: StopConfig) {
     const existing = this.get(config.name);
     if (existing != null) throw new Error(`Already has "${config.name}".`);
 
     const entry: StopListEntry = {
       id: config.id,
       name: config.name,
-      sourceCode: StopList.generateSourceCode(config),
+      sourceCode: StopList._generateSourceCode(ctx, config),
     };
     this._entries.push(entry);
     return entry;
@@ -55,16 +55,11 @@ export class StopList {
     );
   }
 
-  static fromCode(text: string) {
-    const entries: StopListEntry[] = [];
-
-    // TODO: Everything.
-
-    return new StopList(entries);
-  }
-
-  static generateSourceCode(config: StopConfig): string {
-    const constantName = IdList.constantize(config.name);
+  private static _generateSourceCode(
+    ctx: AutogenerationContext,
+    config: StopConfig,
+  ): string {
+    const stopId = ctx.stopIds.requireById(config.id);
 
     function stringifyLocation(): string {
       if (config.location == null) return "null";
@@ -91,8 +86,8 @@ export class StopList {
     }
 
     return (
-      `export const ${constantName}: StopConfig = {\n` +
-      `  id: ${config.id},\n` + // TODO: Use const.
+      `export const ${stopId.constantName}: StopConfig = {\n` +
+      `  id: stop.${stopId.constantName},\n` + // TODO: Use const.
       `  name: ${JSON.stringify(config.name)},\n` +
       `  tags: ${JSON.stringify(config.tags)},\n` +
       `  urlPath: ${JSON.stringify(config.urlPath)},\n` +

@@ -24,9 +24,19 @@ export class IdList {
     return this._entries.find((e) => e.name === name) ?? null;
   }
 
+  getById(id: number) {
+    return this._entries.find((e) => e.id === id) ?? null;
+  }
+
   require(name: string) {
     const existing = this.get(name);
     if (existing == null) throw new Error(`No entry for "${name}".`);
+    return existing;
+  }
+
+  requireById(id: number) {
+    const existing = this.getById(id);
+    if (existing == null) throw new Error(`No entry for ID ${id}.`);
     return existing;
   }
 

@@ -9,7 +9,7 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
   const stopsWithUrlPaths = assignUrlPaths(stopsWithIds);
 
   for (const stop of stopsWithUrlPaths) {
-    ctx.stops.add({
+    ctx.stops.add(ctx, {
       id: stop.id,
       name: stop.name,
       urlPath: stop.urlPath,

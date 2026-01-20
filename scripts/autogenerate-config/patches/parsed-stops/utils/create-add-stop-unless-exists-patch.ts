@@ -23,18 +23,23 @@ export function createAddStopUnlessExistsPatch({
     // otherwise compare the available stop to the one the patch would add to
     // ensure the patch remains up-to-date.
 
-    const existingById = stops.find((s) => s.gtfsId === expectedGtfsId);
+    const existingById = stops.find((s) =>
+      s.gtfsIds.some((g) => g.id === expectedGtfsId),
+    );
+
     const existingByName = stops.find((s) =>
       typeof expectedName === "string"
         ? s.name === expectedName
         : expectedName.test(s.name),
     );
+
     const existing = existingById ?? existingByName;
 
     if (existing == null) {
       return [...stops, stop];
     } else if (throwIfAlreadyExists) {
-      const existingStr = `"${existing.name}" (${existing.gtfsId})`;
+      const idsStr = existing.gtfsIds.map((g) => `"${g.id}"`).join(", ");
+      const existingStr = `"${existing.name}" (${idsStr})`;
       throw new Error(`Not patching in ${stop.name}, found ${existingStr}.`);
     } else if (JSON.stringify(existing) !== JSON.stringify(stop)) {
       throw new Error(`Patch for ${stop.name} is outdated.`);

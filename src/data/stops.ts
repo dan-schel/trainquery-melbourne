@@ -2,7 +2,7 @@ import { type StopConfig } from "corequery";
 import * as stop from "../ids/stop-ids.js";
 
 export const AIRCRAFT: StopConfig = {
-  id: 1,
+  id: stop.AIRCRAFT,
   name: "Aircraft",
   tags: [],
   urlPath: "aircraft",
@@ -27,7 +27,7 @@ export const AIRCRAFT: StopConfig = {
 };
 
 export const ALAMEIN: StopConfig = {
-  id: 2,
+  id: stop.ALAMEIN,
   name: "Alamein",
   tags: [],
   urlPath: "alamein",
@@ -48,7 +48,7 @@ export const ALAMEIN: StopConfig = {
 };
 
 export const ALBION: StopConfig = {
-  id: 3,
+  id: stop.ALBION,
   name: "Albion",
   tags: [],
   urlPath: "albion",
@@ -69,7 +69,7 @@ export const ALBION: StopConfig = {
 };
 
 export const ALBURY: StopConfig = {
-  id: 4,
+  id: stop.ALBURY,
   name: "Albury",
   tags: [],
   urlPath: "albury",
@@ -82,7 +82,7 @@ export const ALBURY: StopConfig = {
 };
 
 export const ALPHINGTON: StopConfig = {
-  id: 5,
+  id: stop.ALPHINGTON,
   name: "Alphington",
   tags: [],
   urlPath: "alphington",
@@ -107,7 +107,7 @@ export const ALPHINGTON: StopConfig = {
 };
 
 export const ALTONA: StopConfig = {
-  id: 6,
+  id: stop.ALTONA,
   name: "Altona",
   tags: [],
   urlPath: "altona",
@@ -128,7 +128,7 @@ export const ALTONA: StopConfig = {
 };
 
 export const ANSTEY: StopConfig = {
-  id: 7,
+  id: stop.ANSTEY,
   name: "Anstey",
   tags: [],
   urlPath: "anstey",
@@ -149,7 +149,7 @@ export const ANSTEY: StopConfig = {
 };
 
 export const ARARAT: StopConfig = {
-  id: 8,
+  id: stop.ARARAT,
   name: "Ararat",
   tags: [],
   urlPath: "ararat",
@@ -162,7 +162,7 @@ export const ARARAT: StopConfig = {
 };
 
 export const ARDEER: StopConfig = {
-  id: 9,
+  id: stop.ARDEER,
   name: "Ardeer",
   tags: [],
   urlPath: "ardeer",
@@ -175,7 +175,7 @@ export const ARDEER: StopConfig = {
 };
 
 export const ARMADALE: StopConfig = {
-  id: 10,
+  id: stop.ARMADALE,
   name: "Armadale",
   tags: [],
   urlPath: "armadale",
@@ -196,7 +196,7 @@ export const ARMADALE: StopConfig = {
 };
 
 export const ASCOT_VALE: StopConfig = {
-  id: 11,
+  id: stop.ASCOT_VALE,
   name: "Ascot Vale",
   tags: [],
   urlPath: "ascotvale",
@@ -217,7 +217,7 @@ export const ASCOT_VALE: StopConfig = {
 };
 
 export const ASHBURTON: StopConfig = {
-  id: 12,
+  id: stop.ASHBURTON,
   name: "Ashburton",
   tags: [],
   urlPath: "ashburton",
@@ -234,7 +234,7 @@ export const ASHBURTON: StopConfig = {
 };
 
 export const ASPENDALE: StopConfig = {
-  id: 13,
+  id: stop.ASPENDALE,
   name: "Aspendale",
   tags: [],
   urlPath: "aspendale",
@@ -259,7 +259,7 @@ export const ASPENDALE: StopConfig = {
 };
 
 export const AUBURN: StopConfig = {
-  id: 14,
+  id: stop.AUBURN,
   name: "Auburn",
   tags: [],
   urlPath: "auburn",
@@ -284,7 +284,7 @@ export const AUBURN: StopConfig = {
 };
 
 export const AVENEL: StopConfig = {
-  id: 15,
+  id: stop.AVENEL,
   name: "Avenel",
   tags: [],
   urlPath: "avenel",
@@ -297,7 +297,7 @@ export const AVENEL: StopConfig = {
 };
 
 export const BACCHUS_MARSH: StopConfig = {
-  id: 16,
+  id: stop.BACCHUS_MARSH,
   name: "Bacchus Marsh",
   tags: [],
   urlPath: "bacchusmarsh",
@@ -310,7 +310,7 @@ export const BACCHUS_MARSH: StopConfig = {
 };
 
 export const BAIRNSDALE: StopConfig = {
-  id: 17,
+  id: stop.BAIRNSDALE,
   name: "Bairnsdale",
   tags: [],
   urlPath: "bairnsdale",
@@ -323,7 +323,7 @@ export const BAIRNSDALE: StopConfig = {
 };
 
 export const BALACLAVA: StopConfig = {
-  id: 18,
+  id: stop.BALACLAVA,
   name: "Balaclava",
   tags: [],
   urlPath: "balaclava",
@@ -348,7 +348,7 @@ export const BALACLAVA: StopConfig = {
 };
 
 export const BALLAN: StopConfig = {
-  id: 19,
+  id: stop.BALLAN,
   name: "Ballan",
   tags: [],
   urlPath: "ballan",
@@ -361,7 +361,7 @@ export const BALLAN: StopConfig = {
 };
 
 export const BALLARAT: StopConfig = {
-  id: 20,
+  id: stop.BALLARAT,
   name: "Ballarat",
   tags: [],
   urlPath: "ballarat",
@@ -374,7 +374,7 @@ export const BALLARAT: StopConfig = {
 };
 
 export const BATMAN: StopConfig = {
-  id: 21,
+  id: stop.BATMAN,
   name: "Batman",
   tags: [],
   urlPath: "batman",
@@ -395,7 +395,7 @@ export const BATMAN: StopConfig = {
 };
 
 export const BAXTER: StopConfig = {
-  id: 22,
+  id: stop.BAXTER,
   name: "Baxter",
   tags: [],
   urlPath: "baxter",
@@ -412,7 +412,7 @@ export const BAXTER: StopConfig = {
 };
 
 export const BAYSWATER: StopConfig = {
-  id: 23,
+  id: stop.BAYSWATER,
   name: "Bayswater",
   tags: [],
   urlPath: "bayswater",
@@ -433,7 +433,7 @@ export const BAYSWATER: StopConfig = {
 };
 
 export const BEACONSFIELD: StopConfig = {
-  id: 24,
+  id: stop.BEACONSFIELD,
   name: "Beaconsfield",
   tags: [],
   urlPath: "beaconsfield",
@@ -458,7 +458,7 @@ export const BEACONSFIELD: StopConfig = {
 };
 
 export const BEAUFORT: StopConfig = {
-  id: 25,
+  id: stop.BEAUFORT,
   name: "Beaufort",
   tags: [],
   urlPath: "beaufort",
@@ -471,7 +471,7 @@ export const BEAUFORT: StopConfig = {
 };
 
 export const BELGRAVE: StopConfig = {
-  id: 26,
+  id: stop.BELGRAVE,
   name: "Belgrave",
   tags: [],
   urlPath: "belgrave",
@@ -492,7 +492,7 @@ export const BELGRAVE: StopConfig = {
 };
 
 export const BELL: StopConfig = {
-  id: 27,
+  id: stop.BELL,
   name: "Bell",
   tags: [],
   urlPath: "bell",
@@ -517,7 +517,7 @@ export const BELL: StopConfig = {
 };
 
 export const BENALLA: StopConfig = {
-  id: 28,
+  id: stop.BENALLA,
   name: "Benalla",
   tags: [],
   urlPath: "benalla",
@@ -530,7 +530,7 @@ export const BENALLA: StopConfig = {
 };
 
 export const BENDIGO: StopConfig = {
-  id: 29,
+  id: stop.BENDIGO,
   name: "Bendigo",
   tags: [],
   urlPath: "bendigo",
@@ -543,7 +543,7 @@ export const BENDIGO: StopConfig = {
 };
 
 export const BENTLEIGH: StopConfig = {
-  id: 30,
+  id: stop.BENTLEIGH,
   name: "Bentleigh",
   tags: [],
   urlPath: "bentleigh",
@@ -568,7 +568,7 @@ export const BENTLEIGH: StopConfig = {
 };
 
 export const BERWICK: StopConfig = {
-  id: 31,
+  id: stop.BERWICK,
   name: "Berwick",
   tags: [],
   urlPath: "berwick",
@@ -593,7 +593,7 @@ export const BERWICK: StopConfig = {
 };
 
 export const BIRREGURRA: StopConfig = {
-  id: 32,
+  id: stop.BIRREGURRA,
   name: "Birregurra",
   tags: [],
   urlPath: "birregurra",
@@ -606,7 +606,7 @@ export const BIRREGURRA: StopConfig = {
 };
 
 export const BITTERN: StopConfig = {
-  id: 33,
+  id: stop.BITTERN,
   name: "Bittern",
   tags: [],
   urlPath: "bittern",
@@ -623,7 +623,7 @@ export const BITTERN: StopConfig = {
 };
 
 export const BLACKBURN: StopConfig = {
-  id: 34,
+  id: stop.BLACKBURN,
   name: "Blackburn",
   tags: [],
   urlPath: "blackburn",
@@ -652,7 +652,7 @@ export const BLACKBURN: StopConfig = {
 };
 
 export const BONBEACH: StopConfig = {
-  id: 35,
+  id: stop.BONBEACH,
   name: "Bonbeach",
   tags: [],
   urlPath: "bonbeach",
@@ -677,7 +677,7 @@ export const BONBEACH: StopConfig = {
 };
 
 export const BORONIA: StopConfig = {
-  id: 36,
+  id: stop.BORONIA,
   name: "Boronia",
   tags: [],
   urlPath: "boronia",
@@ -698,7 +698,7 @@ export const BORONIA: StopConfig = {
 };
 
 export const BOX_HILL: StopConfig = {
-  id: 37,
+  id: stop.BOX_HILL,
   name: "Box Hill",
   tags: [],
   urlPath: "boxhill",
@@ -727,7 +727,7 @@ export const BOX_HILL: StopConfig = {
 };
 
 export const BRIGHTON_BEACH: StopConfig = {
-  id: 38,
+  id: stop.BRIGHTON_BEACH,
   name: "Brighton Beach",
   tags: [],
   urlPath: "brightonbeach",
@@ -748,7 +748,7 @@ export const BRIGHTON_BEACH: StopConfig = {
 };
 
 export const BROADFORD: StopConfig = {
-  id: 39,
+  id: stop.BROADFORD,
   name: "Broadford",
   tags: [],
   urlPath: "broadford",
@@ -761,7 +761,7 @@ export const BROADFORD: StopConfig = {
 };
 
 export const BROADMEADOWS: StopConfig = {
-  id: 40,
+  id: stop.BROADMEADOWS,
   name: "Broadmeadows",
   tags: [],
   urlPath: "broadmeadows",
@@ -782,7 +782,7 @@ export const BROADMEADOWS: StopConfig = {
 };
 
 export const BRUNSWICK: StopConfig = {
-  id: 41,
+  id: stop.BRUNSWICK,
   name: "Brunswick",
   tags: [],
   urlPath: "brunswick",
@@ -803,7 +803,7 @@ export const BRUNSWICK: StopConfig = {
 };
 
 export const BUNYIP: StopConfig = {
-  id: 42,
+  id: stop.BUNYIP,
   name: "Bunyip",
   tags: [],
   urlPath: "bunyip",
@@ -816,7 +816,7 @@ export const BUNYIP: StopConfig = {
 };
 
 export const BURNLEY: StopConfig = {
-  id: 43,
+  id: stop.BURNLEY,
   name: "Burnley",
   tags: [],
   urlPath: "burnley",
@@ -849,7 +849,7 @@ export const BURNLEY: StopConfig = {
 };
 
 export const BURWOOD: StopConfig = {
-  id: 44,
+  id: stop.BURWOOD,
   name: "Burwood",
   tags: [],
   urlPath: "burwood",
@@ -874,7 +874,7 @@ export const BURWOOD: StopConfig = {
 };
 
 export const CAMBERWELL: StopConfig = {
-  id: 45,
+  id: stop.CAMBERWELL,
   name: "Camberwell",
   tags: [],
   urlPath: "camberwell",
@@ -903,7 +903,7 @@ export const CAMBERWELL: StopConfig = {
 };
 
 export const CAMPERDOWN: StopConfig = {
-  id: 46,
+  id: stop.CAMPERDOWN,
   name: "Camperdown",
   tags: [],
   urlPath: "camperdown",
@@ -916,7 +916,7 @@ export const CAMPERDOWN: StopConfig = {
 };
 
 export const CANTERBURY: StopConfig = {
-  id: 47,
+  id: stop.CANTERBURY,
   name: "Canterbury",
   tags: [],
   urlPath: "canterbury",
@@ -941,7 +941,7 @@ export const CANTERBURY: StopConfig = {
 };
 
 export const CARDINIA_ROAD: StopConfig = {
-  id: 48,
+  id: stop.CARDINIA_ROAD,
   name: "Cardinia Road",
   tags: [],
   urlPath: "cardiniaroad",
@@ -966,7 +966,7 @@ export const CARDINIA_ROAD: StopConfig = {
 };
 
 export const CARNEGIE: StopConfig = {
-  id: 49,
+  id: stop.CARNEGIE,
   name: "Carnegie",
   tags: [],
   urlPath: "carnegie",
@@ -991,7 +991,7 @@ export const CARNEGIE: StopConfig = {
 };
 
 export const CAROLINE_SPRINGS: StopConfig = {
-  id: 50,
+  id: stop.CAROLINE_SPRINGS,
   name: "Caroline Springs",
   tags: [],
   urlPath: "carolinesprings",
@@ -1004,7 +1004,7 @@ export const CAROLINE_SPRINGS: StopConfig = {
 };
 
 export const CARRUM: StopConfig = {
-  id: 51,
+  id: stop.CARRUM,
   name: "Carrum",
   tags: [],
   urlPath: "carrum",
@@ -1025,7 +1025,7 @@ export const CARRUM: StopConfig = {
 };
 
 export const CASTLEMAINE: StopConfig = {
-  id: 52,
+  id: stop.CASTLEMAINE,
   name: "Castlemaine",
   tags: [],
   urlPath: "castlemaine",
@@ -1038,7 +1038,7 @@ export const CASTLEMAINE: StopConfig = {
 };
 
 export const CAULFIELD: StopConfig = {
-  id: 53,
+  id: stop.CAULFIELD,
   name: "Caulfield",
   tags: [],
   urlPath: "caulfield",
@@ -1051,7 +1051,7 @@ export const CAULFIELD: StopConfig = {
 };
 
 export const CHATHAM: StopConfig = {
-  id: 54,
+  id: stop.CHATHAM,
   name: "Chatham",
   tags: [],
   urlPath: "chatham",
@@ -1076,7 +1076,7 @@ export const CHATHAM: StopConfig = {
 };
 
 export const CHELSEA: StopConfig = {
-  id: 55,
+  id: stop.CHELSEA,
   name: "Chelsea",
   tags: [],
   urlPath: "chelsea",
@@ -1101,7 +1101,7 @@ export const CHELSEA: StopConfig = {
 };
 
 export const CHELTENHAM: StopConfig = {
-  id: 56,
+  id: stop.CHELTENHAM,
   name: "Cheltenham",
   tags: [],
   urlPath: "cheltenham",
@@ -1130,7 +1130,7 @@ export const CHELTENHAM: StopConfig = {
 };
 
 export const CHILTERN: StopConfig = {
-  id: 57,
+  id: stop.CHILTERN,
   name: "Chiltern",
   tags: [],
   urlPath: "chiltern",
@@ -1143,7 +1143,7 @@ export const CHILTERN: StopConfig = {
 };
 
 export const CLARKEFIELD: StopConfig = {
-  id: 58,
+  id: stop.CLARKEFIELD,
   name: "Clarkefield",
   tags: [],
   urlPath: "clarkefield",
@@ -1156,7 +1156,7 @@ export const CLARKEFIELD: StopConfig = {
 };
 
 export const CLAYTON: StopConfig = {
-  id: 59,
+  id: stop.CLAYTON,
   name: "Clayton",
   tags: [],
   urlPath: "clayton",
@@ -1169,7 +1169,7 @@ export const CLAYTON: StopConfig = {
 };
 
 export const CLIFTON_HILL: StopConfig = {
-  id: 60,
+  id: stop.CLIFTON_HILL,
   name: "Clifton Hill",
   tags: [],
   urlPath: "cliftonhill",
@@ -1194,7 +1194,7 @@ export const CLIFTON_HILL: StopConfig = {
 };
 
 export const CLUNES: StopConfig = {
-  id: 61,
+  id: stop.CLUNES,
   name: "Clunes",
   tags: [],
   urlPath: "clunes",
@@ -1207,7 +1207,7 @@ export const CLUNES: StopConfig = {
 };
 
 export const COBBLEBANK: StopConfig = {
-  id: 62,
+  id: stop.COBBLEBANK,
   name: "Cobblebank",
   tags: [],
   urlPath: "cobblebank",
@@ -1220,7 +1220,7 @@ export const COBBLEBANK: StopConfig = {
 };
 
 export const COBURG: StopConfig = {
-  id: 63,
+  id: stop.COBURG,
   name: "Coburg",
   tags: [],
   urlPath: "coburg",
@@ -1241,7 +1241,7 @@ export const COBURG: StopConfig = {
 };
 
 export const COLAC: StopConfig = {
-  id: 64,
+  id: stop.COLAC,
   name: "Colac",
   tags: [],
   urlPath: "colac",
@@ -1254,7 +1254,7 @@ export const COLAC: StopConfig = {
 };
 
 export const COLLINGWOOD: StopConfig = {
-  id: 65,
+  id: stop.COLLINGWOOD,
   name: "Collingwood",
   tags: [],
   urlPath: "collingwood",
@@ -1279,7 +1279,7 @@ export const COLLINGWOOD: StopConfig = {
 };
 
 export const COOLAROO: StopConfig = {
-  id: 66,
+  id: stop.COOLAROO,
   name: "Coolaroo",
   tags: [],
   urlPath: "coolaroo",
@@ -1300,7 +1300,7 @@ export const COOLAROO: StopConfig = {
 };
 
 export const CORIO: StopConfig = {
-  id: 67,
+  id: stop.CORIO,
   name: "Corio",
   tags: [],
   urlPath: "corio",
@@ -1313,7 +1313,7 @@ export const CORIO: StopConfig = {
 };
 
 export const CRAIGIEBURN: StopConfig = {
-  id: 68,
+  id: stop.CRAIGIEBURN,
   name: "Craigieburn",
   tags: [],
   urlPath: "craigieburn",
@@ -1326,7 +1326,7 @@ export const CRAIGIEBURN: StopConfig = {
 };
 
 export const CRANBOURNE: StopConfig = {
-  id: 69,
+  id: stop.CRANBOURNE,
   name: "Cranbourne",
   tags: [],
   urlPath: "cranbourne",
@@ -1351,7 +1351,7 @@ export const CRANBOURNE: StopConfig = {
 };
 
 export const CRESWICK: StopConfig = {
-  id: 70,
+  id: stop.CRESWICK,
   name: "Creswick",
   tags: [],
   urlPath: "creswick",
@@ -1364,7 +1364,7 @@ export const CRESWICK: StopConfig = {
 };
 
 export const CRIB_POINT: StopConfig = {
-  id: 71,
+  id: stop.CRIB_POINT,
   name: "Crib Point",
   tags: [],
   urlPath: "cribpoint",
@@ -1381,7 +1381,7 @@ export const CRIB_POINT: StopConfig = {
 };
 
 export const CROXTON: StopConfig = {
-  id: 72,
+  id: stop.CROXTON,
   name: "Croxton",
   tags: [],
   urlPath: "croxton",
@@ -1406,7 +1406,7 @@ export const CROXTON: StopConfig = {
 };
 
 export const CROYDON: StopConfig = {
-  id: 73,
+  id: stop.CROYDON,
   name: "Croydon",
   tags: [],
   urlPath: "croydon",
@@ -1427,7 +1427,7 @@ export const CROYDON: StopConfig = {
 };
 
 export const DANDENONG: StopConfig = {
-  id: 74,
+  id: stop.DANDENONG,
   name: "Dandenong",
   tags: [],
   urlPath: "dandenong",
@@ -1440,7 +1440,7 @@ export const DANDENONG: StopConfig = {
 };
 
 export const DAREBIN: StopConfig = {
-  id: 75,
+  id: stop.DAREBIN,
   name: "Darebin",
   tags: [],
   urlPath: "darebin",
@@ -1465,7 +1465,7 @@ export const DAREBIN: StopConfig = {
 };
 
 export const DARLING: StopConfig = {
-  id: 76,
+  id: stop.DARLING,
   name: "Darling",
   tags: [],
   urlPath: "darling",
@@ -1486,7 +1486,7 @@ export const DARLING: StopConfig = {
 };
 
 export const DEER_PARK: StopConfig = {
-  id: 77,
+  id: stop.DEER_PARK,
   name: "Deer Park",
   tags: [],
   urlPath: "deerpark",
@@ -1499,7 +1499,7 @@ export const DEER_PARK: StopConfig = {
 };
 
 export const DENNIS: StopConfig = {
-  id: 78,
+  id: stop.DENNIS,
   name: "Dennis",
   tags: [],
   urlPath: "dennis",
@@ -1524,7 +1524,7 @@ export const DENNIS: StopConfig = {
 };
 
 export const DIAMOND_CREEK: StopConfig = {
-  id: 79,
+  id: stop.DIAMOND_CREEK,
   name: "Diamond Creek",
   tags: [],
   urlPath: "diamondcreek",
@@ -1549,7 +1549,7 @@ export const DIAMOND_CREEK: StopConfig = {
 };
 
 export const DIGGERS_REST: StopConfig = {
-  id: 80,
+  id: stop.DIGGERS_REST,
   name: "Diggers Rest",
   tags: [],
   urlPath: "diggersrest",
@@ -1570,7 +1570,7 @@ export const DIGGERS_REST: StopConfig = {
 };
 
 export const DINGEE: StopConfig = {
-  id: 81,
+  id: stop.DINGEE,
   name: "Dingee",
   tags: [],
   urlPath: "dingee",
@@ -1583,7 +1583,7 @@ export const DINGEE: StopConfig = {
 };
 
 export const DONNYBROOK: StopConfig = {
-  id: 82,
+  id: stop.DONNYBROOK,
   name: "Donnybrook",
   tags: [],
   urlPath: "donnybrook",
@@ -1596,7 +1596,7 @@ export const DONNYBROOK: StopConfig = {
 };
 
 export const DROUIN: StopConfig = {
-  id: 83,
+  id: stop.DROUIN,
   name: "Drouin",
   tags: [],
   urlPath: "drouin",
@@ -1609,7 +1609,7 @@ export const DROUIN: StopConfig = {
 };
 
 export const EAGLEHAWK: StopConfig = {
-  id: 84,
+  id: stop.EAGLEHAWK,
   name: "Eaglehawk",
   tags: [],
   urlPath: "eaglehawk",
@@ -1622,7 +1622,7 @@ export const EAGLEHAWK: StopConfig = {
 };
 
 export const EAGLEMONT: StopConfig = {
-  id: 85,
+  id: stop.EAGLEMONT,
   name: "Eaglemont",
   tags: [],
   urlPath: "eaglemont",
@@ -1647,7 +1647,7 @@ export const EAGLEMONT: StopConfig = {
 };
 
 export const EAST_CAMBERWELL: StopConfig = {
-  id: 86,
+  id: stop.EAST_CAMBERWELL,
   name: "East Camberwell",
   tags: [],
   urlPath: "eastcamberwell",
@@ -1676,7 +1676,7 @@ export const EAST_CAMBERWELL: StopConfig = {
 };
 
 export const EAST_MALVERN: StopConfig = {
-  id: 87,
+  id: stop.EAST_MALVERN,
   name: "East Malvern",
   tags: [],
   urlPath: "eastmalvern",
@@ -1697,7 +1697,7 @@ export const EAST_MALVERN: StopConfig = {
 };
 
 export const EAST_RICHMOND: StopConfig = {
-  id: 88,
+  id: stop.EAST_RICHMOND,
   name: "East Richmond",
   tags: [],
   urlPath: "eastrichmond",
@@ -1722,7 +1722,7 @@ export const EAST_RICHMOND: StopConfig = {
 };
 
 export const ECHUCA: StopConfig = {
-  id: 89,
+  id: stop.ECHUCA,
   name: "Echuca",
   tags: [],
   urlPath: "echuca",
@@ -1735,7 +1735,7 @@ export const ECHUCA: StopConfig = {
 };
 
 export const EDITHVALE: StopConfig = {
-  id: 90,
+  id: stop.EDITHVALE,
   name: "Edithvale",
   tags: [],
   urlPath: "edithvale",
@@ -1760,7 +1760,7 @@ export const EDITHVALE: StopConfig = {
 };
 
 export const ELMORE: StopConfig = {
-  id: 91,
+  id: stop.ELMORE,
   name: "Elmore",
   tags: [],
   urlPath: "elmore",
@@ -1773,7 +1773,7 @@ export const ELMORE: StopConfig = {
 };
 
 export const ELSTERNWICK: StopConfig = {
-  id: 92,
+  id: stop.ELSTERNWICK,
   name: "Elsternwick",
   tags: [],
   urlPath: "elsternwick",
@@ -1798,7 +1798,7 @@ export const ELSTERNWICK: StopConfig = {
 };
 
 export const ELTHAM: StopConfig = {
-  id: 93,
+  id: stop.ELTHAM,
   name: "Eltham",
   tags: [],
   urlPath: "eltham",
@@ -1823,7 +1823,7 @@ export const ELTHAM: StopConfig = {
 };
 
 export const EPPING: StopConfig = {
-  id: 94,
+  id: stop.EPPING,
   name: "Epping",
   tags: [],
   urlPath: "epping",
@@ -1848,7 +1848,7 @@ export const EPPING: StopConfig = {
 };
 
 export const EPSOM: StopConfig = {
-  id: 95,
+  id: stop.EPSOM,
   name: "Epsom",
   tags: [],
   urlPath: "epsom",
@@ -1861,7 +1861,7 @@ export const EPSOM: StopConfig = {
 };
 
 export const ESSENDON: StopConfig = {
-  id: 96,
+  id: stop.ESSENDON,
   name: "Essendon",
   tags: [],
   urlPath: "essendon",
@@ -1874,7 +1874,7 @@ export const ESSENDON: StopConfig = {
 };
 
 export const EUROA: StopConfig = {
-  id: 97,
+  id: stop.EUROA,
   name: "Euroa",
   tags: [],
   urlPath: "euroa",
@@ -1887,7 +1887,7 @@ export const EUROA: StopConfig = {
 };
 
 export const FAIRFIELD: StopConfig = {
-  id: 98,
+  id: stop.FAIRFIELD,
   name: "Fairfield",
   tags: [],
   urlPath: "fairfield",
@@ -1912,7 +1912,7 @@ export const FAIRFIELD: StopConfig = {
 };
 
 export const FAWKNER: StopConfig = {
-  id: 99,
+  id: stop.FAWKNER,
   name: "Fawkner",
   tags: [],
   urlPath: "fawkner",
@@ -1933,7 +1933,7 @@ export const FAWKNER: StopConfig = {
 };
 
 export const FERNTREE_GULLY: StopConfig = {
-  id: 100,
+  id: stop.FERNTREE_GULLY,
   name: "Ferntree Gully",
   tags: [],
   urlPath: "ferntreegully",
@@ -1954,7 +1954,7 @@ export const FERNTREE_GULLY: StopConfig = {
 };
 
 export const FLAGSTAFF: StopConfig = {
-  id: 101,
+  id: stop.FLAGSTAFF,
   name: "Flagstaff",
   tags: [],
   urlPath: "flagstaff",
@@ -1987,7 +1987,7 @@ export const FLAGSTAFF: StopConfig = {
 };
 
 export const FLEMINGTON_BRIDGE: StopConfig = {
-  id: 102,
+  id: stop.FLEMINGTON_BRIDGE,
   name: "Flemington Bridge",
   tags: [],
   urlPath: "flemingtonbridge",
@@ -2008,7 +2008,7 @@ export const FLEMINGTON_BRIDGE: StopConfig = {
 };
 
 export const FLEMINGTON_RACECOURSE: StopConfig = {
-  id: 103,
+  id: stop.FLEMINGTON_RACECOURSE,
   name: "Flemington Racecourse",
   tags: [],
   urlPath: "flemingtonracecourse",
@@ -2029,7 +2029,7 @@ export const FLEMINGTON_RACECOURSE: StopConfig = {
 };
 
 export const FLINDERS_STREET: StopConfig = {
-  id: 104,
+  id: stop.FLINDERS_STREET,
   name: "Flinders Street",
   tags: [],
   urlPath: "flindersstreet",
@@ -2042,7 +2042,7 @@ export const FLINDERS_STREET: StopConfig = {
 };
 
 export const FOOTSCRAY: StopConfig = {
-  id: 105,
+  id: stop.FOOTSCRAY,
   name: "Footscray",
   tags: [],
   urlPath: "footscray",
@@ -2055,7 +2055,7 @@ export const FOOTSCRAY: StopConfig = {
 };
 
 export const FRANKSTON: StopConfig = {
-  id: 106,
+  id: stop.FRANKSTON,
   name: "Frankston",
   tags: [],
   urlPath: "frankston",
@@ -2084,7 +2084,7 @@ export const FRANKSTON: StopConfig = {
 };
 
 export const GARDENVALE: StopConfig = {
-  id: 107,
+  id: stop.GARDENVALE,
   name: "Gardenvale",
   tags: [],
   urlPath: "gardenvale",
@@ -2105,7 +2105,7 @@ export const GARDENVALE: StopConfig = {
 };
 
 export const GARDINER: StopConfig = {
-  id: 108,
+  id: stop.GARDINER,
   name: "Gardiner",
   tags: [],
   urlPath: "gardiner",
@@ -2126,7 +2126,7 @@ export const GARDINER: StopConfig = {
 };
 
 export const GARFIELD: StopConfig = {
-  id: 109,
+  id: stop.GARFIELD,
   name: "Garfield",
   tags: [],
   urlPath: "garfield",
@@ -2139,7 +2139,7 @@ export const GARFIELD: StopConfig = {
 };
 
 export const GEELONG: StopConfig = {
-  id: 110,
+  id: stop.GEELONG,
   name: "Geelong",
   tags: [],
   urlPath: "geelong",
@@ -2152,7 +2152,7 @@ export const GEELONG: StopConfig = {
 };
 
 export const GINIFER: StopConfig = {
-  id: 111,
+  id: stop.GINIFER,
   name: "Ginifer",
   tags: [],
   urlPath: "ginifer",
@@ -2173,7 +2173,7 @@ export const GINIFER: StopConfig = {
 };
 
 export const GISBORNE: StopConfig = {
-  id: 112,
+  id: stop.GISBORNE,
   name: "Gisborne",
   tags: [],
   urlPath: "gisborne",
@@ -2186,7 +2186,7 @@ export const GISBORNE: StopConfig = {
 };
 
 export const GLEN_IRIS: StopConfig = {
-  id: 113,
+  id: stop.GLEN_IRIS,
   name: "Glen Iris",
   tags: [],
   urlPath: "gleniris",
@@ -2207,7 +2207,7 @@ export const GLEN_IRIS: StopConfig = {
 };
 
 export const GLEN_WAVERLEY: StopConfig = {
-  id: 114,
+  id: stop.GLEN_WAVERLEY,
   name: "Glen Waverley",
   tags: [],
   urlPath: "glenwaverley",
@@ -2232,7 +2232,7 @@ export const GLEN_WAVERLEY: StopConfig = {
 };
 
 export const GLENBERVIE: StopConfig = {
-  id: 115,
+  id: stop.GLENBERVIE,
   name: "Glenbervie",
   tags: [],
   urlPath: "glenbervie",
@@ -2253,7 +2253,7 @@ export const GLENBERVIE: StopConfig = {
 };
 
 export const GLENFERRIE: StopConfig = {
-  id: 116,
+  id: stop.GLENFERRIE,
   name: "Glenferrie",
   tags: [],
   urlPath: "glenferrie",
@@ -2282,7 +2282,7 @@ export const GLENFERRIE: StopConfig = {
 };
 
 export const GLEN_HUNTLY: StopConfig = {
-  id: 117,
+  id: stop.GLEN_HUNTLY,
   name: "Glen Huntly",
   tags: [],
   urlPath: "glenhuntly",
@@ -2307,7 +2307,7 @@ export const GLEN_HUNTLY: StopConfig = {
 };
 
 export const GLENROY: StopConfig = {
-  id: 118,
+  id: stop.GLENROY,
   name: "Glenroy",
   tags: [],
   urlPath: "glenroy",
@@ -2332,7 +2332,7 @@ export const GLENROY: StopConfig = {
 };
 
 export const GOORNONG: StopConfig = {
-  id: 119,
+  id: stop.GOORNONG,
   name: "Goornong",
   tags: [],
   urlPath: "goornong",
@@ -2345,7 +2345,7 @@ export const GOORNONG: StopConfig = {
 };
 
 export const GOWRIE: StopConfig = {
-  id: 120,
+  id: stop.GOWRIE,
   name: "Gowrie",
   tags: [],
   urlPath: "gowrie",
@@ -2366,7 +2366,7 @@ export const GOWRIE: StopConfig = {
 };
 
 export const GREENSBOROUGH: StopConfig = {
-  id: 121,
+  id: stop.GREENSBOROUGH,
   name: "Greensborough",
   tags: [],
   urlPath: "greensborough",
@@ -2391,7 +2391,7 @@ export const GREENSBOROUGH: StopConfig = {
 };
 
 export const HALLAM: StopConfig = {
-  id: 122,
+  id: stop.HALLAM,
   name: "Hallam",
   tags: [],
   urlPath: "hallam",
@@ -2416,7 +2416,7 @@ export const HALLAM: StopConfig = {
 };
 
 export const HAMPTON: StopConfig = {
-  id: 123,
+  id: stop.HAMPTON,
   name: "Hampton",
   tags: [],
   urlPath: "hampton",
@@ -2437,7 +2437,7 @@ export const HAMPTON: StopConfig = {
 };
 
 export const HARTWELL: StopConfig = {
-  id: 124,
+  id: stop.HARTWELL,
   name: "Hartwell",
   tags: [],
   urlPath: "hartwell",
@@ -2458,7 +2458,7 @@ export const HARTWELL: StopConfig = {
 };
 
 export const HASTINGS: StopConfig = {
-  id: 125,
+  id: stop.HASTINGS,
   name: "Hastings",
   tags: [],
   urlPath: "hastings",
@@ -2475,7 +2475,7 @@ export const HASTINGS: StopConfig = {
 };
 
 export const HAWKSBURN: StopConfig = {
-  id: 126,
+  id: stop.HAWKSBURN,
   name: "Hawksburn",
   tags: [],
   urlPath: "hawksburn",
@@ -2496,7 +2496,7 @@ export const HAWKSBURN: StopConfig = {
 };
 
 export const HAWKSTOWE: StopConfig = {
-  id: 127,
+  id: stop.HAWKSTOWE,
   name: "Hawkstowe",
   tags: [],
   urlPath: "hawkstowe",
@@ -2521,7 +2521,7 @@ export const HAWKSTOWE: StopConfig = {
 };
 
 export const HAWTHORN: StopConfig = {
-  id: 128,
+  id: stop.HAWTHORN,
   name: "Hawthorn",
   tags: [],
   urlPath: "hawthorn",
@@ -2546,7 +2546,7 @@ export const HAWTHORN: StopConfig = {
 };
 
 export const HEATHCOTE_JUNCTION: StopConfig = {
-  id: 129,
+  id: stop.HEATHCOTE_JUNCTION,
   name: "Heathcote Junction",
   tags: [],
   urlPath: "heathcotejunction",
@@ -2559,7 +2559,7 @@ export const HEATHCOTE_JUNCTION: StopConfig = {
 };
 
 export const HEATHERDALE: StopConfig = {
-  id: 130,
+  id: stop.HEATHERDALE,
   name: "Heatherdale",
   tags: [],
   urlPath: "heatherdale",
@@ -2584,7 +2584,7 @@ export const HEATHERDALE: StopConfig = {
 };
 
 export const HEATHMONT: StopConfig = {
-  id: 131,
+  id: stop.HEATHMONT,
   name: "Heathmont",
   tags: [],
   urlPath: "heathmont",
@@ -2605,7 +2605,7 @@ export const HEATHMONT: StopConfig = {
 };
 
 export const HEIDELBERG: StopConfig = {
-  id: 132,
+  id: stop.HEIDELBERG,
   name: "Heidelberg",
   tags: [],
   urlPath: "heidelberg",
@@ -2630,7 +2630,7 @@ export const HEIDELBERG: StopConfig = {
 };
 
 export const HEYINGTON: StopConfig = {
-  id: 133,
+  id: stop.HEYINGTON,
   name: "Heyington",
   tags: [],
   urlPath: "heyington",
@@ -2655,7 +2655,7 @@ export const HEYINGTON: StopConfig = {
 };
 
 export const HIGHETT: StopConfig = {
-  id: 134,
+  id: stop.HIGHETT,
   name: "Highett",
   tags: [],
   urlPath: "highett",
@@ -2676,7 +2676,7 @@ export const HIGHETT: StopConfig = {
 };
 
 export const HOLMESGLEN: StopConfig = {
-  id: 135,
+  id: stop.HOLMESGLEN,
   name: "Holmesglen",
   tags: [],
   urlPath: "holmesglen",
@@ -2697,7 +2697,7 @@ export const HOLMESGLEN: StopConfig = {
 };
 
 export const HOPPERS_CROSSING: StopConfig = {
-  id: 136,
+  id: stop.HOPPERS_CROSSING,
   name: "Hoppers Crossing",
   tags: [],
   urlPath: "hopperscrossing",
@@ -2722,7 +2722,7 @@ export const HOPPERS_CROSSING: StopConfig = {
 };
 
 export const HUGHESDALE: StopConfig = {
-  id: 137,
+  id: stop.HUGHESDALE,
   name: "Hughesdale",
   tags: [],
   urlPath: "hughesdale",
@@ -2747,7 +2747,7 @@ export const HUGHESDALE: StopConfig = {
 };
 
 export const HUNTINGDALE: StopConfig = {
-  id: 138,
+  id: stop.HUNTINGDALE,
   name: "Huntingdale",
   tags: [],
   urlPath: "huntingdale",
@@ -2772,7 +2772,7 @@ export const HUNTINGDALE: StopConfig = {
 };
 
 export const HURSTBRIDGE: StopConfig = {
-  id: 139,
+  id: stop.HURSTBRIDGE,
   name: "Hurstbridge",
   tags: [],
   urlPath: "hurstbridge",
@@ -2793,7 +2793,7 @@ export const HURSTBRIDGE: StopConfig = {
 };
 
 export const IVANHOE: StopConfig = {
-  id: 140,
+  id: stop.IVANHOE,
   name: "Ivanhoe",
   tags: [],
   urlPath: "ivanhoe",
@@ -2818,7 +2818,7 @@ export const IVANHOE: StopConfig = {
 };
 
 export const JACANA: StopConfig = {
-  id: 141,
+  id: stop.JACANA,
   name: "Jacana",
   tags: [],
   urlPath: "jacana",
@@ -2839,7 +2839,7 @@ export const JACANA: StopConfig = {
 };
 
 export const JEWELL: StopConfig = {
-  id: 142,
+  id: stop.JEWELL,
   name: "Jewell",
   tags: [],
   urlPath: "jewell",
@@ -2860,7 +2860,7 @@ export const JEWELL: StopConfig = {
 };
 
 export const JOLIMONT: StopConfig = {
-  id: 143,
+  id: stop.JOLIMONT,
   name: "Jolimont",
   tags: [],
   urlPath: "jolimont",
@@ -2885,7 +2885,7 @@ export const JOLIMONT: StopConfig = {
 };
 
 export const JORDANVILLE: StopConfig = {
-  id: 144,
+  id: stop.JORDANVILLE,
   name: "Jordanville",
   tags: [],
   urlPath: "jordanville",
@@ -2906,7 +2906,7 @@ export const JORDANVILLE: StopConfig = {
 };
 
 export const KANANOOK: StopConfig = {
-  id: 145,
+  id: stop.KANANOOK,
   name: "Kananook",
   tags: [],
   urlPath: "kananook",
@@ -2927,7 +2927,7 @@ export const KANANOOK: StopConfig = {
 };
 
 export const KANGAROO_FLAT: StopConfig = {
-  id: 146,
+  id: stop.KANGAROO_FLAT,
   name: "Kangaroo Flat",
   tags: [],
   urlPath: "kangarooflat",
@@ -2940,7 +2940,7 @@ export const KANGAROO_FLAT: StopConfig = {
 };
 
 export const KEILOR_PLAINS: StopConfig = {
-  id: 147,
+  id: stop.KEILOR_PLAINS,
   name: "Keilor Plains",
   tags: [],
   urlPath: "keilorplains",
@@ -2961,7 +2961,7 @@ export const KEILOR_PLAINS: StopConfig = {
 };
 
 export const KENSINGTON: StopConfig = {
-  id: 148,
+  id: stop.KENSINGTON,
   name: "Kensington",
   tags: [],
   urlPath: "kensington",
@@ -2982,7 +2982,7 @@ export const KENSINGTON: StopConfig = {
 };
 
 export const KEON_PARK: StopConfig = {
-  id: 149,
+  id: stop.KEON_PARK,
   name: "Keon Park",
   tags: [],
   urlPath: "keonpark",
@@ -3007,7 +3007,7 @@ export const KEON_PARK: StopConfig = {
 };
 
 export const KERANG: StopConfig = {
-  id: 150,
+  id: stop.KERANG,
   name: "Kerang",
   tags: [],
   urlPath: "kerang",
@@ -3020,7 +3020,7 @@ export const KERANG: StopConfig = {
 };
 
 export const KILMORE_EAST: StopConfig = {
-  id: 151,
+  id: stop.KILMORE_EAST,
   name: "Kilmore East",
   tags: [],
   urlPath: "kilmoreeast",
@@ -3033,7 +3033,7 @@ export const KILMORE_EAST: StopConfig = {
 };
 
 export const KOOYONG: StopConfig = {
-  id: 152,
+  id: stop.KOOYONG,
   name: "Kooyong",
   tags: [],
   urlPath: "kooyong",
@@ -3054,7 +3054,7 @@ export const KOOYONG: StopConfig = {
 };
 
 export const KYNETON: StopConfig = {
-  id: 153,
+  id: stop.KYNETON,
   name: "Kyneton",
   tags: [],
   urlPath: "kyneton",
@@ -3067,7 +3067,7 @@ export const KYNETON: StopConfig = {
 };
 
 export const LABURNUM: StopConfig = {
-  id: 154,
+  id: stop.LABURNUM,
   name: "Laburnum",
   tags: [],
   urlPath: "laburnum",
@@ -3092,7 +3092,7 @@ export const LABURNUM: StopConfig = {
 };
 
 export const LALOR: StopConfig = {
-  id: 155,
+  id: stop.LALOR,
   name: "Lalor",
   tags: [],
   urlPath: "lalor",
@@ -3117,7 +3117,7 @@ export const LALOR: StopConfig = {
 };
 
 export const LARA: StopConfig = {
-  id: 156,
+  id: stop.LARA,
   name: "Lara",
   tags: [],
   urlPath: "lara",
@@ -3130,7 +3130,7 @@ export const LARA: StopConfig = {
 };
 
 export const LAVERTON: StopConfig = {
-  id: 157,
+  id: stop.LAVERTON,
   name: "Laverton",
   tags: [],
   urlPath: "laverton",
@@ -3159,7 +3159,7 @@ export const LAVERTON: StopConfig = {
 };
 
 export const LEAWARRA: StopConfig = {
-  id: 158,
+  id: stop.LEAWARRA,
   name: "Leawarra",
   tags: [],
   urlPath: "leawarra",
@@ -3176,7 +3176,7 @@ export const LEAWARRA: StopConfig = {
 };
 
 export const LILYDALE: StopConfig = {
-  id: 159,
+  id: stop.LILYDALE,
   name: "Lilydale",
   tags: [],
   urlPath: "lilydale",
@@ -3197,7 +3197,7 @@ export const LILYDALE: StopConfig = {
 };
 
 export const LITTLE_RIVER: StopConfig = {
-  id: 160,
+  id: stop.LITTLE_RIVER,
   name: "Little River",
   tags: [],
   urlPath: "littleriver",
@@ -3210,7 +3210,7 @@ export const LITTLE_RIVER: StopConfig = {
 };
 
 export const LONGWARRY: StopConfig = {
-  id: 161,
+  id: stop.LONGWARRY,
   name: "Longwarry",
   tags: [],
   urlPath: "longwarry",
@@ -3223,7 +3223,7 @@ export const LONGWARRY: StopConfig = {
 };
 
 export const LYNBROOK: StopConfig = {
-  id: 162,
+  id: stop.LYNBROOK,
   name: "Lynbrook",
   tags: [],
   urlPath: "lynbrook",
@@ -3248,7 +3248,7 @@ export const LYNBROOK: StopConfig = {
 };
 
 export const MACAULAY: StopConfig = {
-  id: 163,
+  id: stop.MACAULAY,
   name: "Macaulay",
   tags: [],
   urlPath: "macaulay",
@@ -3269,7 +3269,7 @@ export const MACAULAY: StopConfig = {
 };
 
 export const MACEDON: StopConfig = {
-  id: 164,
+  id: stop.MACEDON,
   name: "Macedon",
   tags: [],
   urlPath: "macedon",
@@ -3282,7 +3282,7 @@ export const MACEDON: StopConfig = {
 };
 
 export const MACLEOD: StopConfig = {
-  id: 165,
+  id: stop.MACLEOD,
   name: "Macleod",
   tags: [],
   urlPath: "macleod",
@@ -3311,7 +3311,7 @@ export const MACLEOD: StopConfig = {
 };
 
 export const MALMSBURY: StopConfig = {
-  id: 166,
+  id: stop.MALMSBURY,
   name: "Malmsbury",
   tags: [],
   urlPath: "malmsbury",
@@ -3324,7 +3324,7 @@ export const MALMSBURY: StopConfig = {
 };
 
 export const MALVERN: StopConfig = {
-  id: 167,
+  id: stop.MALVERN,
   name: "Malvern",
   tags: [],
   urlPath: "malvern",
@@ -3353,7 +3353,7 @@ export const MALVERN: StopConfig = {
 };
 
 export const MARSHALL: StopConfig = {
-  id: 168,
+  id: stop.MARSHALL,
   name: "Marshall",
   tags: [],
   urlPath: "marshall",
@@ -3366,7 +3366,7 @@ export const MARSHALL: StopConfig = {
 };
 
 export const MARYBOROUGH: StopConfig = {
-  id: 169,
+  id: stop.MARYBOROUGH,
   name: "Maryborough",
   tags: [],
   urlPath: "maryborough",
@@ -3379,7 +3379,7 @@ export const MARYBOROUGH: StopConfig = {
 };
 
 export const MCKINNON: StopConfig = {
-  id: 170,
+  id: stop.MCKINNON,
   name: "McKinnon",
   tags: [],
   urlPath: "mckinnon",
@@ -3404,7 +3404,7 @@ export const MCKINNON: StopConfig = {
 };
 
 export const MELBOURNE_CENTRAL: StopConfig = {
-  id: 171,
+  id: stop.MELBOURNE_CENTRAL,
   name: "Melbourne Central",
   tags: [],
   urlPath: "melbournecentral",
@@ -3437,7 +3437,7 @@ export const MELBOURNE_CENTRAL: StopConfig = {
 };
 
 export const MELTON: StopConfig = {
-  id: 172,
+  id: stop.MELTON,
   name: "Melton",
   tags: [],
   urlPath: "melton",
@@ -3450,7 +3450,7 @@ export const MELTON: StopConfig = {
 };
 
 export const MENTONE: StopConfig = {
-  id: 173,
+  id: stop.MENTONE,
   name: "Mentone",
   tags: [],
   urlPath: "mentone",
@@ -3471,7 +3471,7 @@ export const MENTONE: StopConfig = {
 };
 
 export const MERINDA_PARK: StopConfig = {
-  id: 174,
+  id: stop.MERINDA_PARK,
   name: "Merinda Park",
   tags: [],
   urlPath: "merindapark",
@@ -3496,7 +3496,7 @@ export const MERINDA_PARK: StopConfig = {
 };
 
 export const MERLYNSTON: StopConfig = {
-  id: 175,
+  id: stop.MERLYNSTON,
   name: "Merlynston",
   tags: [],
   urlPath: "merlynston",
@@ -3517,7 +3517,7 @@ export const MERLYNSTON: StopConfig = {
 };
 
 export const MERNDA: StopConfig = {
-  id: 176,
+  id: stop.MERNDA,
   name: "Mernda",
   tags: [],
   urlPath: "mernda",
@@ -3542,7 +3542,7 @@ export const MERNDA: StopConfig = {
 };
 
 export const MERRI: StopConfig = {
-  id: 177,
+  id: stop.MERRI,
   name: "Merri",
   tags: [],
   urlPath: "merri",
@@ -3567,7 +3567,7 @@ export const MERRI: StopConfig = {
 };
 
 export const MIDDLE_BRIGHTON: StopConfig = {
-  id: 178,
+  id: stop.MIDDLE_BRIGHTON,
   name: "Middle Brighton",
   tags: [],
   urlPath: "middlebrighton",
@@ -3588,7 +3588,7 @@ export const MIDDLE_BRIGHTON: StopConfig = {
 };
 
 export const MIDDLE_FOOTSCRAY: StopConfig = {
-  id: 179,
+  id: stop.MIDDLE_FOOTSCRAY,
   name: "Middle Footscray",
   tags: [],
   urlPath: "middlefootscray",
@@ -3609,7 +3609,7 @@ export const MIDDLE_FOOTSCRAY: StopConfig = {
 };
 
 export const MIDDLE_GORGE: StopConfig = {
-  id: 180,
+  id: stop.MIDDLE_GORGE,
   name: "Middle Gorge",
   tags: [],
   urlPath: "middlegorge",
@@ -3634,7 +3634,7 @@ export const MIDDLE_GORGE: StopConfig = {
 };
 
 export const MITCHAM: StopConfig = {
-  id: 181,
+  id: stop.MITCHAM,
   name: "Mitcham",
   tags: [],
   urlPath: "mitcham",
@@ -3659,7 +3659,7 @@ export const MITCHAM: StopConfig = {
 };
 
 export const MOE: StopConfig = {
-  id: 182,
+  id: stop.MOE,
   name: "Moe",
   tags: [],
   urlPath: "moe",
@@ -3672,7 +3672,7 @@ export const MOE: StopConfig = {
 };
 
 export const MONTMORENCY: StopConfig = {
-  id: 184,
+  id: stop.MONTMORENCY,
   name: "Montmorency",
   tags: [],
   urlPath: "montmorency",
@@ -3697,7 +3697,7 @@ export const MONTMORENCY: StopConfig = {
 };
 
 export const MOONEE_PONDS: StopConfig = {
-  id: 185,
+  id: stop.MOONEE_PONDS,
   name: "Moonee Ponds",
   tags: [],
   urlPath: "mooneeponds",
@@ -3722,7 +3722,7 @@ export const MOONEE_PONDS: StopConfig = {
 };
 
 export const MOORABBIN: StopConfig = {
-  id: 186,
+  id: stop.MOORABBIN,
   name: "Moorabbin",
   tags: [],
   urlPath: "moorabbin",
@@ -3751,7 +3751,7 @@ export const MOORABBIN: StopConfig = {
 };
 
 export const MOOROOLBARK: StopConfig = {
-  id: 187,
+  id: stop.MOOROOLBARK,
   name: "Mooroolbark",
   tags: [],
   urlPath: "mooroolbark",
@@ -3772,7 +3772,7 @@ export const MOOROOLBARK: StopConfig = {
 };
 
 export const MOOROOPNA: StopConfig = {
-  id: 188,
+  id: stop.MOOROOPNA,
   name: "Mooroopna",
   tags: [],
   urlPath: "mooroopna",
@@ -3785,7 +3785,7 @@ export const MOOROOPNA: StopConfig = {
 };
 
 export const MORDIALLOC: StopConfig = {
-  id: 189,
+  id: stop.MORDIALLOC,
   name: "Mordialloc",
   tags: [],
   urlPath: "mordialloc",
@@ -3806,7 +3806,7 @@ export const MORDIALLOC: StopConfig = {
 };
 
 export const MORELAND: StopConfig = {
-  id: 190,
+  id: stop.MORELAND,
   name: "Moreland",
   tags: [],
   urlPath: "moreland",
@@ -3827,7 +3827,7 @@ export const MORELAND: StopConfig = {
 };
 
 export const MORRADOO: StopConfig = {
-  id: 191,
+  id: stop.MORRADOO,
   name: "Morradoo",
   tags: [],
   urlPath: "morradoo",
@@ -3844,7 +3844,7 @@ export const MORRADOO: StopConfig = {
 };
 
 export const MORWELL: StopConfig = {
-  id: 192,
+  id: stop.MORWELL,
   name: "Morwell",
   tags: [],
   urlPath: "morwell",
@@ -3857,7 +3857,7 @@ export const MORWELL: StopConfig = {
 };
 
 export const MOUNT_WAVERLEY: StopConfig = {
-  id: 193,
+  id: stop.MOUNT_WAVERLEY,
   name: "Mount Waverley",
   tags: [],
   urlPath: "mountwaverley",
@@ -3882,7 +3882,7 @@ export const MOUNT_WAVERLEY: StopConfig = {
 };
 
 export const MURCHISON_EAST: StopConfig = {
-  id: 194,
+  id: stop.MURCHISON_EAST,
   name: "Murchison East",
   tags: [],
   urlPath: "murchisoneast",
@@ -3895,7 +3895,7 @@ export const MURCHISON_EAST: StopConfig = {
 };
 
 export const MURRUMBEENA: StopConfig = {
-  id: 195,
+  id: stop.MURRUMBEENA,
   name: "Murrumbeena",
   tags: [],
   urlPath: "murrumbeena",
@@ -3920,7 +3920,7 @@ export const MURRUMBEENA: StopConfig = {
 };
 
 export const NAGAMBIE: StopConfig = {
-  id: 196,
+  id: stop.NAGAMBIE,
   name: "Nagambie",
   tags: [],
   urlPath: "nagambie",
@@ -3933,7 +3933,7 @@ export const NAGAMBIE: StopConfig = {
 };
 
 export const NAR_NAR_GOON: StopConfig = {
-  id: 197,
+  id: stop.NAR_NAR_GOON,
   name: "Nar Nar Goon",
   tags: [],
   urlPath: "narnargoon",
@@ -3946,7 +3946,7 @@ export const NAR_NAR_GOON: StopConfig = {
 };
 
 export const NARRE_WARREN: StopConfig = {
-  id: 198,
+  id: stop.NARRE_WARREN,
   name: "Narre Warren",
   tags: [],
   urlPath: "narrewarren",
@@ -3971,7 +3971,7 @@ export const NARRE_WARREN: StopConfig = {
 };
 
 export const NEWMARKET: StopConfig = {
-  id: 199,
+  id: stop.NEWMARKET,
   name: "Newmarket",
   tags: [],
   urlPath: "newmarket",
@@ -3996,7 +3996,7 @@ export const NEWMARKET: StopConfig = {
 };
 
 export const NEWPORT: StopConfig = {
-  id: 200,
+  id: stop.NEWPORT,
   name: "Newport",
   tags: [],
   urlPath: "newport",
@@ -4021,7 +4021,7 @@ export const NEWPORT: StopConfig = {
 };
 
 export const NOBLE_PARK: StopConfig = {
-  id: 201,
+  id: stop.NOBLE_PARK,
   name: "Noble Park",
   tags: [],
   urlPath: "noblepark",
@@ -4046,7 +4046,7 @@ export const NOBLE_PARK: StopConfig = {
 };
 
 export const NORTH_BRIGHTON: StopConfig = {
-  id: 202,
+  id: stop.NORTH_BRIGHTON,
   name: "North Brighton",
   tags: [],
   urlPath: "northbrighton",
@@ -4071,7 +4071,7 @@ export const NORTH_BRIGHTON: StopConfig = {
 };
 
 export const NORTH_GEELONG: StopConfig = {
-  id: 203,
+  id: stop.NORTH_GEELONG,
   name: "North Geelong",
   tags: [],
   urlPath: "northgeelong",
@@ -4084,7 +4084,7 @@ export const NORTH_GEELONG: StopConfig = {
 };
 
 export const NORTH_MELBOURNE: StopConfig = {
-  id: 204,
+  id: stop.NORTH_MELBOURNE,
   name: "North Melbourne",
   tags: [],
   urlPath: "northmelbourne",
@@ -4121,7 +4121,7 @@ export const NORTH_MELBOURNE: StopConfig = {
 };
 
 export const NORTH_RICHMOND: StopConfig = {
-  id: 205,
+  id: stop.NORTH_RICHMOND,
   name: "North Richmond",
   tags: [],
   urlPath: "northrichmond",
@@ -4146,7 +4146,7 @@ export const NORTH_RICHMOND: StopConfig = {
 };
 
 export const NORTH_SHORE: StopConfig = {
-  id: 206,
+  id: stop.NORTH_SHORE,
   name: "North Shore",
   tags: [],
   urlPath: "northshore",
@@ -4159,7 +4159,7 @@ export const NORTH_SHORE: StopConfig = {
 };
 
 export const NORTH_WILLIAMSTOWN: StopConfig = {
-  id: 207,
+  id: stop.NORTH_WILLIAMSTOWN,
   name: "North Williamstown",
   tags: [],
   urlPath: "northwilliamstown",
@@ -4180,7 +4180,7 @@ export const NORTH_WILLIAMSTOWN: StopConfig = {
 };
 
 export const NORTHCOTE: StopConfig = {
-  id: 208,
+  id: stop.NORTHCOTE,
   name: "Northcote",
   tags: [],
   urlPath: "northcote",
@@ -4205,7 +4205,7 @@ export const NORTHCOTE: StopConfig = {
 };
 
 export const NUNAWADING: StopConfig = {
-  id: 209,
+  id: stop.NUNAWADING,
   name: "Nunawading",
   tags: [],
   urlPath: "nunawading",
@@ -4230,7 +4230,7 @@ export const NUNAWADING: StopConfig = {
 };
 
 export const OAK_PARK: StopConfig = {
-  id: 210,
+  id: stop.OAK_PARK,
   name: "Oak Park",
   tags: [],
   urlPath: "oakpark",
@@ -4251,7 +4251,7 @@ export const OAK_PARK: StopConfig = {
 };
 
 export const OAKLEIGH: StopConfig = {
-  id: 211,
+  id: stop.OAKLEIGH,
   name: "Oakleigh",
   tags: [],
   urlPath: "oakleigh",
@@ -4276,7 +4276,7 @@ export const OAKLEIGH: StopConfig = {
 };
 
 export const OFFICER: StopConfig = {
-  id: 212,
+  id: stop.OFFICER,
   name: "Officer",
   tags: [],
   urlPath: "officer",
@@ -4301,7 +4301,7 @@ export const OFFICER: StopConfig = {
 };
 
 export const ORMOND: StopConfig = {
-  id: 213,
+  id: stop.ORMOND,
   name: "Ormond",
   tags: [],
   urlPath: "ormond",
@@ -4326,7 +4326,7 @@ export const ORMOND: StopConfig = {
 };
 
 export const PAKENHAM: StopConfig = {
-  id: 214,
+  id: stop.PAKENHAM,
   name: "Pakenham",
   tags: [],
   urlPath: "pakenham",
@@ -4351,7 +4351,7 @@ export const PAKENHAM: StopConfig = {
 };
 
 export const PARKDALE: StopConfig = {
-  id: 215,
+  id: stop.PARKDALE,
   name: "Parkdale",
   tags: [],
   urlPath: "parkdale",
@@ -4372,7 +4372,7 @@ export const PARKDALE: StopConfig = {
 };
 
 export const PARLIAMENT: StopConfig = {
-  id: 216,
+  id: stop.PARLIAMENT,
   name: "Parliament",
   tags: [],
   urlPath: "parliament",
@@ -4401,7 +4401,7 @@ export const PARLIAMENT: StopConfig = {
 };
 
 export const PASCOE_VALE: StopConfig = {
-  id: 217,
+  id: stop.PASCOE_VALE,
   name: "Pascoe Vale",
   tags: [],
   urlPath: "pascoevale",
@@ -4422,7 +4422,7 @@ export const PASCOE_VALE: StopConfig = {
 };
 
 export const PATTERSON: StopConfig = {
-  id: 218,
+  id: stop.PATTERSON,
   name: "Patterson",
   tags: [],
   urlPath: "patterson",
@@ -4447,7 +4447,7 @@ export const PATTERSON: StopConfig = {
 };
 
 export const PRAHRAN: StopConfig = {
-  id: 219,
+  id: stop.PRAHRAN,
   name: "Prahran",
   tags: [],
   urlPath: "prahran",
@@ -4472,7 +4472,7 @@ export const PRAHRAN: StopConfig = {
 };
 
 export const PRESTON: StopConfig = {
-  id: 220,
+  id: stop.PRESTON,
   name: "Preston",
   tags: [],
   urlPath: "preston",
@@ -4497,7 +4497,7 @@ export const PRESTON: StopConfig = {
 };
 
 export const PYRAMID: StopConfig = {
-  id: 221,
+  id: stop.PYRAMID,
   name: "Pyramid",
   tags: [],
   urlPath: "pyramid",
@@ -4510,7 +4510,7 @@ export const PYRAMID: StopConfig = {
 };
 
 export const REGENT: StopConfig = {
-  id: 222,
+  id: stop.REGENT,
   name: "Regent",
   tags: [],
   urlPath: "regent",
@@ -4535,7 +4535,7 @@ export const REGENT: StopConfig = {
 };
 
 export const RESERVOIR: StopConfig = {
-  id: 223,
+  id: stop.RESERVOIR,
   name: "Reservoir",
   tags: [],
   urlPath: "reservoir",
@@ -4560,7 +4560,7 @@ export const RESERVOIR: StopConfig = {
 };
 
 export const RICHMOND: StopConfig = {
-  id: 224,
+  id: stop.RICHMOND,
   name: "Richmond",
   tags: [],
   urlPath: "richmond",
@@ -4573,7 +4573,7 @@ export const RICHMOND: StopConfig = {
 };
 
 export const RIDDELLS_CREEK: StopConfig = {
-  id: 225,
+  id: stop.RIDDELLS_CREEK,
   name: "Riddells Creek",
   tags: [],
   urlPath: "riddellscreek",
@@ -4586,7 +4586,7 @@ export const RIDDELLS_CREEK: StopConfig = {
 };
 
 export const RINGWOOD: StopConfig = {
-  id: 226,
+  id: stop.RINGWOOD,
   name: "Ringwood",
   tags: [],
   urlPath: "ringwood",
@@ -4615,7 +4615,7 @@ export const RINGWOOD: StopConfig = {
 };
 
 export const RINGWOOD_EAST: StopConfig = {
-  id: 227,
+  id: stop.RINGWOOD_EAST,
   name: "Ringwood East",
   tags: [],
   urlPath: "ringwoodeast",
@@ -4636,7 +4636,7 @@ export const RINGWOOD_EAST: StopConfig = {
 };
 
 export const RIPPONLEA: StopConfig = {
-  id: 228,
+  id: stop.RIPPONLEA,
   name: "Ripponlea",
   tags: [],
   urlPath: "ripponlea",
@@ -4661,7 +4661,7 @@ export const RIPPONLEA: StopConfig = {
 };
 
 export const RIVERSDALE: StopConfig = {
-  id: 229,
+  id: stop.RIVERSDALE,
   name: "Riversdale",
   tags: [],
   urlPath: "riversdale",
@@ -4686,7 +4686,7 @@ export const RIVERSDALE: StopConfig = {
 };
 
 export const ROCHESTER: StopConfig = {
-  id: 230,
+  id: stop.ROCHESTER,
   name: "Rochester",
   tags: [],
   urlPath: "rochester",
@@ -4699,7 +4699,7 @@ export const ROCHESTER: StopConfig = {
 };
 
 export const ROCKBANK: StopConfig = {
-  id: 231,
+  id: stop.ROCKBANK,
   name: "Rockbank",
   tags: [],
   urlPath: "rockbank",
@@ -4712,7 +4712,7 @@ export const ROCKBANK: StopConfig = {
 };
 
 export const ROSANNA: StopConfig = {
-  id: 232,
+  id: stop.ROSANNA,
   name: "Rosanna",
   tags: [],
   urlPath: "rosanna",
@@ -4737,7 +4737,7 @@ export const ROSANNA: StopConfig = {
 };
 
 export const ROSEDALE: StopConfig = {
-  id: 233,
+  id: stop.ROSEDALE,
   name: "Rosedale",
   tags: [],
   urlPath: "rosedale",
@@ -4750,7 +4750,7 @@ export const ROSEDALE: StopConfig = {
 };
 
 export const ROXBURGH_PARK: StopConfig = {
-  id: 234,
+  id: stop.ROXBURGH_PARK,
   name: "Roxburgh Park",
   tags: [],
   urlPath: "roxburghpark",
@@ -4771,7 +4771,7 @@ export const ROXBURGH_PARK: StopConfig = {
 };
 
 export const ROYAL_PARK: StopConfig = {
-  id: 235,
+  id: stop.ROYAL_PARK,
   name: "Royal Park",
   tags: [],
   urlPath: "royalpark",
@@ -4792,7 +4792,7 @@ export const ROYAL_PARK: StopConfig = {
 };
 
 export const RUSHALL: StopConfig = {
-  id: 236,
+  id: stop.RUSHALL,
   name: "Rushall",
   tags: [],
   urlPath: "rushall",
@@ -4817,7 +4817,7 @@ export const RUSHALL: StopConfig = {
 };
 
 export const RUTHVEN: StopConfig = {
-  id: 237,
+  id: stop.RUTHVEN,
   name: "Ruthven",
   tags: [],
   urlPath: "ruthven",
@@ -4842,7 +4842,7 @@ export const RUTHVEN: StopConfig = {
 };
 
 export const SALE: StopConfig = {
-  id: 238,
+  id: stop.SALE,
   name: "Sale",
   tags: [],
   urlPath: "sale",
@@ -4855,7 +4855,7 @@ export const SALE: StopConfig = {
 };
 
 export const SANDOWN_PARK: StopConfig = {
-  id: 239,
+  id: stop.SANDOWN_PARK,
   name: "Sandown Park",
   tags: [],
   urlPath: "sandownpark",
@@ -4880,7 +4880,7 @@ export const SANDOWN_PARK: StopConfig = {
 };
 
 export const SANDRINGHAM: StopConfig = {
-  id: 240,
+  id: stop.SANDRINGHAM,
   name: "Sandringham",
   tags: [],
   urlPath: "sandringham",
@@ -4901,7 +4901,7 @@ export const SANDRINGHAM: StopConfig = {
 };
 
 export const SEAFORD: StopConfig = {
-  id: 241,
+  id: stop.SEAFORD,
   name: "Seaford",
   tags: [],
   urlPath: "seaford",
@@ -4922,7 +4922,7 @@ export const SEAFORD: StopConfig = {
 };
 
 export const SEAHOLME: StopConfig = {
-  id: 242,
+  id: stop.SEAHOLME,
   name: "Seaholme",
   tags: [],
   urlPath: "seaholme",
@@ -4943,7 +4943,7 @@ export const SEAHOLME: StopConfig = {
 };
 
 export const SEDDON: StopConfig = {
-  id: 243,
+  id: stop.SEDDON,
   name: "Seddon",
   tags: [],
   urlPath: "seddon",
@@ -4964,7 +4964,7 @@ export const SEDDON: StopConfig = {
 };
 
 export const SEYMOUR: StopConfig = {
-  id: 244,
+  id: stop.SEYMOUR,
   name: "Seymour",
   tags: [],
   urlPath: "seymour",
@@ -4977,7 +4977,7 @@ export const SEYMOUR: StopConfig = {
 };
 
 export const SHEPPARTON: StopConfig = {
-  id: 245,
+  id: stop.SHEPPARTON,
   name: "Shepparton",
   tags: [],
   urlPath: "shepparton",
@@ -4990,7 +4990,7 @@ export const SHEPPARTON: StopConfig = {
 };
 
 export const SHERWOOD_PARK: StopConfig = {
-  id: 246,
+  id: stop.SHERWOOD_PARK,
   name: "Sherwood Park",
   tags: [],
   urlPath: "sherwoodpark",
@@ -5003,7 +5003,7 @@ export const SHERWOOD_PARK: StopConfig = {
 };
 
 export const SHOWGROUNDS: StopConfig = {
-  id: 247,
+  id: stop.SHOWGROUNDS,
   name: "Showgrounds",
   tags: [],
   urlPath: "showgrounds",
@@ -5020,7 +5020,7 @@ export const SHOWGROUNDS: StopConfig = {
 };
 
 export const SOMERVILLE: StopConfig = {
-  id: 248,
+  id: stop.SOMERVILLE,
   name: "Somerville",
   tags: [],
   urlPath: "somerville",
@@ -5037,7 +5037,7 @@ export const SOMERVILLE: StopConfig = {
 };
 
 export const SOUTH_GEELONG: StopConfig = {
-  id: 249,
+  id: stop.SOUTH_GEELONG,
   name: "South Geelong",
   tags: [],
   urlPath: "southgeelong",
@@ -5050,7 +5050,7 @@ export const SOUTH_GEELONG: StopConfig = {
 };
 
 export const SOUTH_KENSINGTON: StopConfig = {
-  id: 250,
+  id: stop.SOUTH_KENSINGTON,
   name: "South Kensington",
   tags: [],
   urlPath: "southkensington",
@@ -5071,7 +5071,7 @@ export const SOUTH_KENSINGTON: StopConfig = {
 };
 
 export const SOUTH_MORANG: StopConfig = {
-  id: 251,
+  id: stop.SOUTH_MORANG,
   name: "South Morang",
   tags: [],
   urlPath: "southmorang",
@@ -5096,7 +5096,7 @@ export const SOUTH_MORANG: StopConfig = {
 };
 
 export const SOUTH_YARRA: StopConfig = {
-  id: 252,
+  id: stop.SOUTH_YARRA,
   name: "South Yarra",
   tags: [],
   urlPath: "southyarra",
@@ -5137,7 +5137,7 @@ export const SOUTH_YARRA: StopConfig = {
 };
 
 export const SOUTHERN_CROSS: StopConfig = {
-  id: 253,
+  id: stop.SOUTHERN_CROSS,
   name: "Southern Cross",
   tags: [],
   urlPath: "southerncross",
@@ -5178,7 +5178,7 @@ export const SOUTHERN_CROSS: StopConfig = {
 };
 
 export const SOUTHLAND: StopConfig = {
-  id: 254,
+  id: stop.SOUTHLAND,
   name: "Southland",
   tags: [],
   urlPath: "southland",
@@ -5199,7 +5199,7 @@ export const SOUTHLAND: StopConfig = {
 };
 
 export const SPOTSWOOD: StopConfig = {
-  id: 255,
+  id: stop.SPOTSWOOD,
   name: "Spotswood",
   tags: [],
   urlPath: "spotswood",
@@ -5220,7 +5220,7 @@ export const SPOTSWOOD: StopConfig = {
 };
 
 export const SPRINGHURST: StopConfig = {
-  id: 256,
+  id: stop.SPRINGHURST,
   name: "Springhurst",
   tags: [],
   urlPath: "springhurst",
@@ -5233,7 +5233,7 @@ export const SPRINGHURST: StopConfig = {
 };
 
 export const SPRINGVALE: StopConfig = {
-  id: 257,
+  id: stop.SPRINGVALE,
   name: "Springvale",
   tags: [],
   urlPath: "springvale",
@@ -5258,7 +5258,7 @@ export const SPRINGVALE: StopConfig = {
 };
 
 export const ST_ALBANS: StopConfig = {
-  id: 258,
+  id: stop.ST_ALBANS,
   name: "St Albans",
   tags: [],
   urlPath: "stalbans",
@@ -5283,7 +5283,7 @@ export const ST_ALBANS: StopConfig = {
 };
 
 export const STONY_POINT: StopConfig = {
-  id: 259,
+  id: stop.STONY_POINT,
   name: "Stony Point",
   tags: [],
   urlPath: "stonypoint",
@@ -5300,7 +5300,7 @@ export const STONY_POINT: StopConfig = {
 };
 
 export const STRATFORD: StopConfig = {
-  id: 260,
+  id: stop.STRATFORD,
   name: "Stratford",
   tags: [],
   urlPath: "stratford",
@@ -5313,7 +5313,7 @@ export const STRATFORD: StopConfig = {
 };
 
 export const STRATHMORE: StopConfig = {
-  id: 261,
+  id: stop.STRATHMORE,
   name: "Strathmore",
   tags: [],
   urlPath: "strathmore",
@@ -5334,7 +5334,7 @@ export const STRATHMORE: StopConfig = {
 };
 
 export const SUNBURY: StopConfig = {
-  id: 262,
+  id: stop.SUNBURY,
   name: "Sunbury",
   tags: [],
   urlPath: "sunbury",
@@ -5347,7 +5347,7 @@ export const SUNBURY: StopConfig = {
 };
 
 export const SUNSHINE: StopConfig = {
-  id: 263,
+  id: stop.SUNSHINE,
   name: "Sunshine",
   tags: [],
   urlPath: "sunshine",
@@ -5360,7 +5360,7 @@ export const SUNSHINE: StopConfig = {
 };
 
 export const SWAN_HILL: StopConfig = {
-  id: 265,
+  id: stop.SWAN_HILL,
   name: "Swan Hill",
   tags: [],
   urlPath: "swanhill",
@@ -5373,7 +5373,7 @@ export const SWAN_HILL: StopConfig = {
 };
 
 export const SYNDAL: StopConfig = {
-  id: 266,
+  id: stop.SYNDAL,
   name: "Syndal",
   tags: [],
   urlPath: "syndal",
@@ -5398,7 +5398,7 @@ export const SYNDAL: StopConfig = {
 };
 
 export const TALBOT: StopConfig = {
-  id: 267,
+  id: stop.TALBOT,
   name: "Talbot",
   tags: [],
   urlPath: "talbot",
@@ -5411,7 +5411,7 @@ export const TALBOT: StopConfig = {
 };
 
 export const TALLAROOK: StopConfig = {
-  id: 268,
+  id: stop.TALLAROOK,
   name: "Tallarook",
   tags: [],
   urlPath: "tallarook",
@@ -5424,7 +5424,7 @@ export const TALLAROOK: StopConfig = {
 };
 
 export const TARNEIT: StopConfig = {
-  id: 269,
+  id: stop.TARNEIT,
   name: "Tarneit",
   tags: [],
   urlPath: "tarneit",
@@ -5437,7 +5437,7 @@ export const TARNEIT: StopConfig = {
 };
 
 export const TECOMA: StopConfig = {
-  id: 270,
+  id: stop.TECOMA,
   name: "Tecoma",
   tags: [],
   urlPath: "tecoma",
@@ -5454,7 +5454,7 @@ export const TECOMA: StopConfig = {
 };
 
 export const TERANG: StopConfig = {
-  id: 271,
+  id: stop.TERANG,
   name: "Terang",
   tags: [],
   urlPath: "terang",
@@ -5467,7 +5467,7 @@ export const TERANG: StopConfig = {
 };
 
 export const THOMASTOWN: StopConfig = {
-  id: 272,
+  id: stop.THOMASTOWN,
   name: "Thomastown",
   tags: [],
   urlPath: "thomastown",
@@ -5492,7 +5492,7 @@ export const THOMASTOWN: StopConfig = {
 };
 
 export const THORNBURY: StopConfig = {
-  id: 273,
+  id: stop.THORNBURY,
   name: "Thornbury",
   tags: [],
   urlPath: "thornbury",
@@ -5517,7 +5517,7 @@ export const THORNBURY: StopConfig = {
 };
 
 export const TOORAK: StopConfig = {
-  id: 274,
+  id: stop.TOORAK,
   name: "Toorak",
   tags: [],
   urlPath: "toorak",
@@ -5538,7 +5538,7 @@ export const TOORAK: StopConfig = {
 };
 
 export const TOORONGA: StopConfig = {
-  id: 275,
+  id: stop.TOORONGA,
   name: "Tooronga",
   tags: [],
   urlPath: "tooronga",
@@ -5559,7 +5559,7 @@ export const TOORONGA: StopConfig = {
 };
 
 export const TOTTENHAM: StopConfig = {
-  id: 276,
+  id: stop.TOTTENHAM,
   name: "Tottenham",
   tags: [],
   urlPath: "tottenham",
@@ -5580,7 +5580,7 @@ export const TOTTENHAM: StopConfig = {
 };
 
 export const TRAFALGAR: StopConfig = {
-  id: 277,
+  id: stop.TRAFALGAR,
   name: "Trafalgar",
   tags: [],
   urlPath: "trafalgar",
@@ -5593,7 +5593,7 @@ export const TRAFALGAR: StopConfig = {
 };
 
 export const TRARALGON: StopConfig = {
-  id: 278,
+  id: stop.TRARALGON,
   name: "Traralgon",
   tags: [],
   urlPath: "traralgon",
@@ -5606,7 +5606,7 @@ export const TRARALGON: StopConfig = {
 };
 
 export const TYABB: StopConfig = {
-  id: 279,
+  id: stop.TYABB,
   name: "Tyabb",
   tags: [],
   urlPath: "tyabb",
@@ -5623,7 +5623,7 @@ export const TYABB: StopConfig = {
 };
 
 export const TYNONG: StopConfig = {
-  id: 280,
+  id: stop.TYNONG,
   name: "Tynong",
   tags: [],
   urlPath: "tynong",
@@ -5636,7 +5636,7 @@ export const TYNONG: StopConfig = {
 };
 
 export const UPFIELD: StopConfig = {
-  id: 281,
+  id: stop.UPFIELD,
   name: "Upfield",
   tags: [],
   urlPath: "upfield",
@@ -5653,7 +5653,7 @@ export const UPFIELD: StopConfig = {
 };
 
 export const UPPER_FERNTREE_GULLY: StopConfig = {
-  id: 282,
+  id: stop.UPPER_FERNTREE_GULLY,
   name: "Upper Ferntree Gully",
   tags: [],
   urlPath: "upperferntreegully",
@@ -5674,7 +5674,7 @@ export const UPPER_FERNTREE_GULLY: StopConfig = {
 };
 
 export const UPWEY: StopConfig = {
-  id: 283,
+  id: stop.UPWEY,
   name: "Upwey",
   tags: [],
   urlPath: "upwey",
@@ -5695,7 +5695,7 @@ export const UPWEY: StopConfig = {
 };
 
 export const VICTORIA_PARK: StopConfig = {
-  id: 284,
+  id: stop.VICTORIA_PARK,
   name: "Victoria Park",
   tags: [],
   urlPath: "victoriapark",
@@ -5720,7 +5720,7 @@ export const VICTORIA_PARK: StopConfig = {
 };
 
 export const VIOLET_TOWN: StopConfig = {
-  id: 285,
+  id: stop.VIOLET_TOWN,
   name: "Violet Town",
   tags: [],
   urlPath: "violettown",
@@ -5733,7 +5733,7 @@ export const VIOLET_TOWN: StopConfig = {
 };
 
 export const WALLAN: StopConfig = {
-  id: 286,
+  id: stop.WALLAN,
   name: "Wallan",
   tags: [],
   urlPath: "wallan",
@@ -5746,7 +5746,7 @@ export const WALLAN: StopConfig = {
 };
 
 export const WANDONG: StopConfig = {
-  id: 287,
+  id: stop.WANDONG,
   name: "Wandong",
   tags: [],
   urlPath: "wandong",
@@ -5759,7 +5759,7 @@ export const WANDONG: StopConfig = {
 };
 
 export const WANGARATTA: StopConfig = {
-  id: 288,
+  id: stop.WANGARATTA,
   name: "Wangaratta",
   tags: [],
   urlPath: "wangaratta",
@@ -5772,7 +5772,7 @@ export const WANGARATTA: StopConfig = {
 };
 
 export const WARRAGUL: StopConfig = {
-  id: 289,
+  id: stop.WARRAGUL,
   name: "Warragul",
   tags: [],
   urlPath: "warragul",
@@ -5785,7 +5785,7 @@ export const WARRAGUL: StopConfig = {
 };
 
 export const WARRNAMBOOL: StopConfig = {
-  id: 290,
+  id: stop.WARRNAMBOOL,
   name: "Warrnambool",
   tags: [],
   urlPath: "warrnambool",
@@ -5798,7 +5798,7 @@ export const WARRNAMBOOL: StopConfig = {
 };
 
 export const WATERGARDENS: StopConfig = {
-  id: 291,
+  id: stop.WATERGARDENS,
   name: "Watergardens",
   tags: [],
   urlPath: "watergardens",
@@ -5811,7 +5811,7 @@ export const WATERGARDENS: StopConfig = {
 };
 
 export const WATSONIA: StopConfig = {
-  id: 292,
+  id: stop.WATSONIA,
   name: "Watsonia",
   tags: [],
   urlPath: "watsonia",
@@ -5836,7 +5836,7 @@ export const WATSONIA: StopConfig = {
 };
 
 export const WATTLE_GLEN: StopConfig = {
-  id: 293,
+  id: stop.WATTLE_GLEN,
   name: "Wattle Glen",
   tags: [],
   urlPath: "wattleglen",
@@ -5857,7 +5857,7 @@ export const WATTLE_GLEN: StopConfig = {
 };
 
 export const WAURN_PONDS: StopConfig = {
-  id: 294,
+  id: stop.WAURN_PONDS,
   name: "Waurn Ponds",
   tags: [],
   urlPath: "waurnponds",
@@ -5870,7 +5870,7 @@ export const WAURN_PONDS: StopConfig = {
 };
 
 export const WENDOUREE: StopConfig = {
-  id: 295,
+  id: stop.WENDOUREE,
   name: "Wendouree",
   tags: [],
   urlPath: "wendouree",
@@ -5883,7 +5883,7 @@ export const WENDOUREE: StopConfig = {
 };
 
 export const WERRIBEE: StopConfig = {
-  id: 296,
+  id: stop.WERRIBEE,
   name: "Werribee",
   tags: [],
   urlPath: "werribee",
@@ -5912,7 +5912,7 @@ export const WERRIBEE: StopConfig = {
 };
 
 export const WEST_FOOTSCRAY: StopConfig = {
-  id: 297,
+  id: stop.WEST_FOOTSCRAY,
   name: "West Footscray",
   tags: [],
   urlPath: "westfootscray",
@@ -5941,7 +5941,7 @@ export const WEST_FOOTSCRAY: StopConfig = {
 };
 
 export const WEST_RICHMOND: StopConfig = {
-  id: 298,
+  id: stop.WEST_RICHMOND,
   name: "West Richmond",
   tags: [],
   urlPath: "westrichmond",
@@ -5966,7 +5966,7 @@ export const WEST_RICHMOND: StopConfig = {
 };
 
 export const WESTALL: StopConfig = {
-  id: 299,
+  id: stop.WESTALL,
   name: "Westall",
   tags: [],
   urlPath: "westall",
@@ -5995,7 +5995,7 @@ export const WESTALL: StopConfig = {
 };
 
 export const WESTGARTH: StopConfig = {
-  id: 300,
+  id: stop.WESTGARTH,
   name: "Westgarth",
   tags: [],
   urlPath: "westgarth",
@@ -6020,7 +6020,7 @@ export const WESTGARTH: StopConfig = {
 };
 
 export const WESTONA: StopConfig = {
-  id: 301,
+  id: stop.WESTONA,
   name: "Westona",
   tags: [],
   urlPath: "westona",
@@ -6045,7 +6045,7 @@ export const WESTONA: StopConfig = {
 };
 
 export const WILLIAMS_LANDING: StopConfig = {
-  id: 302,
+  id: stop.WILLIAMS_LANDING,
   name: "Williams Landing",
   tags: [],
   urlPath: "williamslanding",
@@ -6070,7 +6070,7 @@ export const WILLIAMS_LANDING: StopConfig = {
 };
 
 export const WILLIAMSTOWN: StopConfig = {
-  id: 303,
+  id: stop.WILLIAMSTOWN,
   name: "Williamstown",
   tags: [],
   urlPath: "williamstown",
@@ -6091,7 +6091,7 @@ export const WILLIAMSTOWN: StopConfig = {
 };
 
 export const WILLIAMSTOWN_BEACH: StopConfig = {
-  id: 304,
+  id: stop.WILLIAMSTOWN_BEACH,
   name: "Williamstown Beach",
   tags: [],
   urlPath: "williamstownbeach",
@@ -6112,7 +6112,7 @@ export const WILLIAMSTOWN_BEACH: StopConfig = {
 };
 
 export const WILLISON: StopConfig = {
-  id: 305,
+  id: stop.WILLISON,
   name: "Willison",
   tags: [],
   urlPath: "willison",
@@ -6137,7 +6137,7 @@ export const WILLISON: StopConfig = {
 };
 
 export const WINCHELSEA: StopConfig = {
-  id: 306,
+  id: stop.WINCHELSEA,
   name: "Winchelsea",
   tags: [],
   urlPath: "winchelsea",
@@ -6150,7 +6150,7 @@ export const WINCHELSEA: StopConfig = {
 };
 
 export const WINDSOR: StopConfig = {
-  id: 307,
+  id: stop.WINDSOR,
   name: "Windsor",
   tags: [],
   urlPath: "windsor",
@@ -6175,7 +6175,7 @@ export const WINDSOR: StopConfig = {
 };
 
 export const WODONGA: StopConfig = {
-  id: 308,
+  id: stop.WODONGA,
   name: "Wodonga",
   tags: [],
   urlPath: "wodonga",
@@ -6188,7 +6188,7 @@ export const WODONGA: StopConfig = {
 };
 
 export const WOODEND: StopConfig = {
-  id: 309,
+  id: stop.WOODEND,
   name: "Woodend",
   tags: [],
   urlPath: "woodend",
@@ -6201,7 +6201,7 @@ export const WOODEND: StopConfig = {
 };
 
 export const WYNDHAM_VALE: StopConfig = {
-  id: 310,
+  id: stop.WYNDHAM_VALE,
   name: "Wyndham Vale",
   tags: [],
   urlPath: "wyndhamvale",
@@ -6214,7 +6214,7 @@ export const WYNDHAM_VALE: StopConfig = {
 };
 
 export const YARRAGON: StopConfig = {
-  id: 311,
+  id: stop.YARRAGON,
   name: "Yarragon",
   tags: [],
   urlPath: "yarragon",
@@ -6227,7 +6227,7 @@ export const YARRAGON: StopConfig = {
 };
 
 export const YARRAMAN: StopConfig = {
-  id: 312,
+  id: stop.YARRAMAN,
   name: "Yarraman",
   tags: [],
   urlPath: "yarraman",
@@ -6252,7 +6252,7 @@ export const YARRAMAN: StopConfig = {
 };
 
 export const YARRAVILLE: StopConfig = {
-  id: 313,
+  id: stop.YARRAVILLE,
   name: "Yarraville",
   tags: [],
   urlPath: "yarraville",
@@ -6277,7 +6277,7 @@ export const YARRAVILLE: StopConfig = {
 };
 
 export const HUNTLY: StopConfig = {
-  id: 314,
+  id: stop.HUNTLY,
   name: "Huntly",
   tags: [],
   urlPath: "huntly",
@@ -6290,7 +6290,7 @@ export const HUNTLY: StopConfig = {
 };
 
 export const RAYWOOD: StopConfig = {
-  id: 315,
+  id: stop.RAYWOOD,
   name: "Raywood",
   tags: [],
   urlPath: "raywood",
@@ -6303,7 +6303,7 @@ export const RAYWOOD: StopConfig = {
 };
 
 export const UNION: StopConfig = {
-  id: 316,
+  id: stop.UNION,
   name: "Union",
   tags: [],
   urlPath: "union",
@@ -6328,7 +6328,7 @@ export const UNION: StopConfig = {
 };
 
 export const EAST_PAKENHAM: StopConfig = {
-  id: 317,
+  id: stop.EAST_PAKENHAM,
   name: "East Pakenham",
   tags: [],
   urlPath: "eastpakenham",
@@ -6353,7 +6353,7 @@ export const EAST_PAKENHAM: StopConfig = {
 };
 
 export const ANZAC: StopConfig = {
-  id: 318,
+  id: stop.ANZAC,
   name: "Anzac",
   tags: [],
   urlPath: "anzac",
@@ -6374,7 +6374,7 @@ export const ANZAC: StopConfig = {
 };
 
 export const TOWN_HALL: StopConfig = {
-  id: 319,
+  id: stop.TOWN_HALL,
   name: "Town Hall",
   tags: [],
   urlPath: "townhall",
@@ -6395,7 +6395,7 @@ export const TOWN_HALL: StopConfig = {
 };
 
 export const STATE_LIBRARY: StopConfig = {
-  id: 320,
+  id: stop.STATE_LIBRARY,
   name: "State Library",
   tags: [],
   urlPath: "statelibrary",
@@ -6416,7 +6416,7 @@ export const STATE_LIBRARY: StopConfig = {
 };
 
 export const PARKVILLE: StopConfig = {
-  id: 321,
+  id: stop.PARKVILLE,
   name: "Parkville",
   tags: [],
   urlPath: "parkville",
@@ -6437,7 +6437,7 @@ export const PARKVILLE: StopConfig = {
 };
 
 export const ARDEN: StopConfig = {
-  id: 322,
+  id: stop.ARDEN,
   name: "Arden",
   tags: [],
   urlPath: "arden",

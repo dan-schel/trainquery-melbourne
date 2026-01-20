@@ -3,11 +3,14 @@ import { IdList } from "./source-code/id-list.js";
 import { StopList } from "./source-code/stop-list.js";
 
 export class AutogenerationContext {
+  readonly stops: StopList;
+
   constructor(
     readonly checkMode: boolean,
     readonly gtfsData: GtfsData,
     readonly stopIds: IdList,
     readonly lineIds: IdList,
-    readonly stops: StopList,
-  ) {}
+  ) {
+    this.stops = new StopList([]);
+  }
 }

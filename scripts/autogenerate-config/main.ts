@@ -3,7 +3,6 @@ import { AutogenerationContext } from "./autogeneration-context.js";
 import { autogenerateConfig } from "./autogenerate-config.js";
 import { IdList } from "./source-code/id-list.js";
 import fsp from "fs/promises";
-import { StopList } from "./source-code/stop-list.js";
 import { parseGtfs } from "./gtfs/parse-gtfs.js";
 
 const STOP_IDS_PATH = "./src/ids/stop-ids.ts";
@@ -27,15 +26,8 @@ async function buildContext(): Promise<AutogenerationContext> {
 
   const stopIds = IdList.fromCode(await fsp.readFile(STOP_IDS_PATH, "utf-8"));
   const lineIds = IdList.fromCode(await fsp.readFile(LINE_IDS_PATH, "utf-8"));
-  const stops = StopList.fromCode(await fsp.readFile(STOPS_PATH, "utf-8"));
 
-  return new AutogenerationContext(
-    checkMode,
-    gtfsData,
-    stopIds,
-    lineIds,
-    stops,
-  );
+  return new AutogenerationContext(checkMode, gtfsData, stopIds, lineIds);
 }
 
 async function output(filePath: string, content: string, checkMode: boolean) {
