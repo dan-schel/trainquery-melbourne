@@ -1,5 +1,6 @@
 import { type StopConfig } from "corequery";
 import * as stop from "../ids/stop-ids.js";
+import * as position from "../ids/stop-position-ids.js";
 
 export const AIRCRAFT: StopConfig = {
   id: stop.AIRCRAFT,
@@ -13,15 +14,11 @@ export const AIRCRAFT: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -38,11 +35,7 @@ export const ALAMEIN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -59,11 +52,11 @@ export const ALBION: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -93,15 +86,11 @@ export const ALPHINGTON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -118,11 +107,7 @@ export const ALTONA: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -139,11 +124,11 @@ export const ANSTEY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -186,11 +171,11 @@ export const ARMADALE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -207,11 +192,11 @@ export const ASCOT_VALE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -228,7 +213,7 @@ export const ASHBURTON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -245,15 +230,11 @@ export const ASPENDALE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -270,15 +251,15 @@ export const AUBURN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -334,15 +315,11 @@ export const BALACLAVA: StopConfig = {
   positions: [
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -385,11 +362,11 @@ export const BATMAN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -406,7 +383,7 @@ export const BAXTER: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -423,11 +400,11 @@ export const BAYSWATER: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -444,15 +421,11 @@ export const BEACONSFIELD: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -482,11 +455,11 @@ export const BELGRAVE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -503,15 +476,11 @@ export const BELL: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -554,15 +523,15 @@ export const BENTLEIGH: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -579,15 +548,11 @@ export const BERWICK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -617,7 +582,7 @@ export const BITTERN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -634,19 +599,15 @@ export const BLACKBURN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -663,15 +624,11 @@ export const BONBEACH: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -688,11 +645,11 @@ export const BORONIA: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -709,19 +666,15 @@ export const BOX_HILL: StopConfig = {
   positions: [
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
     {
       name: "4",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_4,
     },
   ],
 };
@@ -738,11 +691,11 @@ export const BRIGHTON_BEACH: StopConfig = {
   positions: [
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -772,11 +725,11 @@ export const BROADMEADOWS: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -793,11 +746,11 @@ export const BRUNSWICK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -827,23 +780,19 @@ export const BURNLEY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
     {
       name: "4",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_4,
     },
   ],
 };
@@ -860,15 +809,11 @@ export const BURWOOD: StopConfig = {
   positions: [
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -885,19 +830,15 @@ export const CAMBERWELL: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -927,15 +868,15 @@ export const CANTERBURY: StopConfig = {
   positions: [
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -951,16 +892,12 @@ export const CARDINIA_ROAD: StopConfig = {
   },
   positions: [
     {
-      name: "Replacement bus",
-      stopPositionId: 1,
-    },
-    {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -977,15 +914,11 @@ export const CARNEGIE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1015,11 +948,11 @@ export const CARRUM: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1062,15 +995,15 @@ export const CHATHAM: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -1087,15 +1020,11 @@ export const CHELSEA: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1112,19 +1041,15 @@ export const CHELTENHAM: StopConfig = {
   positions: [
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "3",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -1180,15 +1105,11 @@ export const CLIFTON_HILL: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1231,11 +1152,11 @@ export const COBURG: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1265,15 +1186,11 @@ export const COLLINGWOOD: StopConfig = {
   positions: [
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -1290,11 +1207,11 @@ export const COOLAROO: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1337,15 +1254,11 @@ export const CRANBOURNE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1375,7 +1288,7 @@ export const CRIB_POINT: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -1392,15 +1305,11 @@ export const CROXTON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1417,11 +1326,11 @@ export const CROYDON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1451,15 +1360,11 @@ export const DAREBIN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1476,11 +1381,11 @@ export const DARLING: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1510,15 +1415,11 @@ export const DENNIS: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1535,15 +1436,11 @@ export const DIAMOND_CREEK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1560,11 +1457,11 @@ export const DIGGERS_REST: StopConfig = {
   positions: [
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -1633,15 +1530,11 @@ export const EAGLEMONT: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1658,19 +1551,15 @@ export const EAST_CAMBERWELL: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -1687,11 +1576,11 @@ export const EAST_MALVERN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1708,15 +1597,11 @@ export const EAST_RICHMOND: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1746,15 +1631,11 @@ export const EDITHVALE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1784,15 +1665,11 @@ export const ELSTERNWICK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1809,15 +1686,11 @@ export const ELTHAM: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1834,15 +1707,11 @@ export const EPPING: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1898,15 +1767,11 @@ export const FAIRFIELD: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1923,11 +1788,11 @@ export const FAWKNER: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1944,11 +1809,11 @@ export const FERNTREE_GULLY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1965,23 +1830,19 @@ export const FLAGSTAFF: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
     {
       name: "4",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_4,
     },
   ],
 };
@@ -1998,11 +1859,11 @@ export const FLEMINGTON_BRIDGE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2019,11 +1880,11 @@ export const FLEMINGTON_RACECOURSE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2066,19 +1927,15 @@ export const FRANKSTON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -2095,11 +1952,11 @@ export const GARDENVALE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2116,11 +1973,11 @@ export const GARDINER: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2163,11 +2020,11 @@ export const GINIFER: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2197,11 +2054,11 @@ export const GLEN_IRIS: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2218,15 +2075,11 @@ export const GLEN_WAVERLEY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2243,11 +2096,11 @@ export const GLENBERVIE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2264,19 +2117,15 @@ export const GLENFERRIE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -2293,15 +2142,15 @@ export const GLEN_HUNTLY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -2318,15 +2167,11 @@ export const GLENROY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2356,11 +2201,11 @@ export const GOWRIE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2377,15 +2222,11 @@ export const GREENSBOROUGH: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2402,15 +2243,11 @@ export const HALLAM: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2427,11 +2264,11 @@ export const HAMPTON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2448,11 +2285,11 @@ export const HARTWELL: StopConfig = {
   positions: [
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -2469,7 +2306,7 @@ export const HASTINGS: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -2486,11 +2323,11 @@ export const HAWKSBURN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2506,16 +2343,12 @@ export const HAWKSTOWE: StopConfig = {
   },
   positions: [
     {
-      name: "Replacement bus",
-      stopPositionId: 1,
-    },
-    {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2532,15 +2365,15 @@ export const HAWTHORN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -2570,15 +2403,11 @@ export const HEATHERDALE: StopConfig = {
   positions: [
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -2595,11 +2424,11 @@ export const HEATHMONT: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2616,15 +2445,11 @@ export const HEIDELBERG: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2641,15 +2466,11 @@ export const HEYINGTON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2666,11 +2487,11 @@ export const HIGHETT: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2687,11 +2508,11 @@ export const HOLMESGLEN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2708,15 +2529,11 @@ export const HOPPERS_CROSSING: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2733,15 +2550,11 @@ export const HUGHESDALE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2758,15 +2571,11 @@ export const HUNTINGDALE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2783,11 +2592,7 @@ export const HURSTBRIDGE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -2804,15 +2609,11 @@ export const IVANHOE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2829,11 +2630,11 @@ export const JACANA: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2850,11 +2651,11 @@ export const JEWELL: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2871,15 +2672,11 @@ export const JOLIMONT: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2896,11 +2693,11 @@ export const JORDANVILLE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2917,11 +2714,11 @@ export const KANANOOK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2951,11 +2748,11 @@ export const KEILOR_PLAINS: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2972,11 +2769,11 @@ export const KENSINGTON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2993,15 +2790,11 @@ export const KEON_PARK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3044,11 +2837,11 @@ export const KOOYONG: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3078,15 +2871,11 @@ export const LABURNUM: StopConfig = {
   positions: [
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -3103,15 +2892,11 @@ export const LALOR: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3141,19 +2926,15 @@ export const LAVERTON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -3170,7 +2951,7 @@ export const LEAWARRA: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -3187,11 +2968,11 @@ export const LILYDALE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3233,16 +3014,12 @@ export const LYNBROOK: StopConfig = {
   },
   positions: [
     {
-      name: "Replacement bus",
-      stopPositionId: 1,
-    },
-    {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3259,11 +3036,11 @@ export const MACAULAY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3293,19 +3070,15 @@ export const MACLEOD: StopConfig = {
   positions: [
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -3335,19 +3108,19 @@ export const MALVERN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
     {
       name: "4",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_4,
     },
   ],
 };
@@ -3390,15 +3163,15 @@ export const MCKINNON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -3415,23 +3188,19 @@ export const MELBOURNE_CENTRAL: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
     {
       name: "4",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_4,
     },
   ],
 };
@@ -3461,11 +3230,11 @@ export const MENTONE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3482,15 +3251,11 @@ export const MERINDA_PARK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3507,11 +3272,11 @@ export const MERLYNSTON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3527,16 +3292,12 @@ export const MERNDA: StopConfig = {
   },
   positions: [
     {
-      name: "Replacement bus",
-      stopPositionId: 1,
-    },
-    {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3553,15 +3314,11 @@ export const MERRI: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3578,11 +3335,11 @@ export const MIDDLE_BRIGHTON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3599,11 +3356,11 @@ export const MIDDLE_FOOTSCRAY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3619,16 +3376,12 @@ export const MIDDLE_GORGE: StopConfig = {
   },
   positions: [
     {
-      name: "Replacement bus",
-      stopPositionId: 1,
-    },
-    {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3645,15 +3398,11 @@ export const MITCHAM: StopConfig = {
   positions: [
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -3683,15 +3432,11 @@ export const MONTMORENCY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3708,15 +3453,11 @@ export const MOONEE_PONDS: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3733,19 +3474,15 @@ export const MOORABBIN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -3762,11 +3499,11 @@ export const MOOROOLBARK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3796,11 +3533,11 @@ export const MORDIALLOC: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3817,11 +3554,11 @@ export const MORELAND: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3838,7 +3575,7 @@ export const MORRADOO: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -3868,15 +3605,11 @@ export const MOUNT_WAVERLEY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3906,15 +3639,11 @@ export const MURRUMBEENA: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3957,15 +3686,11 @@ export const NARRE_WARREN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3982,15 +3707,11 @@ export const NEWMARKET: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4007,15 +3728,11 @@ export const NEWPORT: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4032,15 +3749,11 @@ export const NOBLE_PARK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4057,15 +3770,11 @@ export const NORTH_BRIGHTON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4095,27 +3804,27 @@ export const NORTH_MELBOURNE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
     {
       name: "4",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_4,
     },
     {
       name: "5",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_5,
     },
     {
       name: "6",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_6,
     },
   ],
 };
@@ -4132,15 +3841,11 @@ export const NORTH_RICHMOND: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4170,11 +3875,11 @@ export const NORTH_WILLIAMSTOWN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4191,15 +3896,11 @@ export const NORTHCOTE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4216,15 +3917,11 @@ export const NUNAWADING: StopConfig = {
   positions: [
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -4241,11 +3938,11 @@ export const OAK_PARK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4262,15 +3959,11 @@ export const OAKLEIGH: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4287,15 +3980,11 @@ export const OFFICER: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4312,15 +4001,15 @@ export const ORMOND: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -4337,15 +4026,11 @@ export const PAKENHAM: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4362,11 +4047,11 @@ export const PARKDALE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4383,19 +4068,19 @@ export const PARLIAMENT: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
     {
       name: "4",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_4,
     },
   ],
 };
@@ -4412,11 +4097,11 @@ export const PASCOE_VALE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4433,15 +4118,15 @@ export const PATTERSON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -4458,15 +4143,11 @@ export const PRAHRAN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4483,15 +4164,11 @@ export const PRESTON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4521,15 +4198,11 @@ export const REGENT: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4546,15 +4219,11 @@ export const RESERVOIR: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4597,19 +4266,15 @@ export const RINGWOOD: StopConfig = {
   positions: [
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4626,11 +4291,11 @@ export const RINGWOOD_EAST: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4647,15 +4312,11 @@ export const RIPPONLEA: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4672,15 +4333,11 @@ export const RIVERSDALE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4723,15 +4380,11 @@ export const ROSANNA: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4761,11 +4414,11 @@ export const ROXBURGH_PARK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4782,11 +4435,11 @@ export const ROYAL_PARK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4803,15 +4456,11 @@ export const RUSHALL: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4828,15 +4477,11 @@ export const RUTHVEN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4866,15 +4511,11 @@ export const SANDOWN_PARK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4891,11 +4532,7 @@ export const SANDRINGHAM: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -4912,11 +4549,11 @@ export const SEAFORD: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4933,11 +4570,7 @@ export const SEAHOLME: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -4954,11 +4587,11 @@ export const SEDDON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5014,7 +4647,7 @@ export const SHOWGROUNDS: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -5031,7 +4664,7 @@ export const SOMERVILLE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -5061,11 +4694,11 @@ export const SOUTH_KENSINGTON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5081,16 +4714,12 @@ export const SOUTH_MORANG: StopConfig = {
   },
   positions: [
     {
-      name: "Replacement bus",
-      stopPositionId: 1,
-    },
-    {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5107,31 +4736,27 @@ export const SOUTH_YARRA: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
     {
       name: "4",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_4,
     },
     {
       name: "5",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_5,
     },
     {
       name: "6",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_6,
     },
   ],
 };
@@ -5148,31 +4773,31 @@ export const SOUTHERN_CROSS: StopConfig = {
   positions: [
     {
       name: "8",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_8,
     },
     {
       name: "9",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_9,
     },
     {
       name: "10",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_10,
     },
     {
       name: "11",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_11,
     },
     {
       name: "12",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_12,
     },
     {
       name: "13",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_13,
     },
     {
       name: "14",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_14,
     },
   ],
 };
@@ -5189,11 +4814,11 @@ export const SOUTHLAND: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5210,11 +4835,11 @@ export const SPOTSWOOD: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5244,15 +4869,11 @@ export const SPRINGVALE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5269,15 +4890,11 @@ export const ST_ALBANS: StopConfig = {
   positions: [
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -5294,7 +4911,7 @@ export const STONY_POINT: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -5324,11 +4941,11 @@ export const STRATHMORE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5384,15 +5001,11 @@ export const SYNDAL: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5448,7 +5061,7 @@ export const TECOMA: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -5478,15 +5091,11 @@ export const THOMASTOWN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5503,15 +5112,11 @@ export const THORNBURY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5528,11 +5133,11 @@ export const TOORAK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5549,11 +5154,11 @@ export const TOORONGA: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5570,11 +5175,11 @@ export const TOTTENHAM: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5617,7 +5222,7 @@ export const TYABB: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -5647,7 +5252,7 @@ export const UPFIELD: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -5664,11 +5269,11 @@ export const UPPER_FERNTREE_GULLY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5685,11 +5290,11 @@ export const UPWEY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5706,15 +5311,11 @@ export const VICTORIA_PARK: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5822,15 +5423,11 @@ export const WATSONIA: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5847,11 +5444,7 @@ export const WATTLE_GLEN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -5894,19 +5487,15 @@ export const WERRIBEE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -5923,19 +5512,15 @@ export const WEST_FOOTSCRAY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -5952,15 +5537,11 @@ export const WEST_RICHMOND: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5977,19 +5558,15 @@ export const WESTALL: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -6006,15 +5583,11 @@ export const WESTGARTH: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -6031,15 +5604,11 @@ export const WESTONA: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -6055,16 +5624,12 @@ export const WILLIAMS_LANDING: StopConfig = {
   },
   positions: [
     {
-      name: "Replacement bus",
-      stopPositionId: 1,
-    },
-    {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -6081,11 +5646,7 @@ export const WILLIAMSTOWN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
   ],
 };
@@ -6102,11 +5663,11 @@ export const WILLIAMSTOWN_BEACH: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -6123,15 +5684,11 @@ export const WILLISON: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -6161,15 +5718,11 @@ export const WINDSOR: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -6238,15 +5791,11 @@ export const YARRAMAN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -6263,15 +5812,11 @@ export const YARRAVILLE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
-    },
-    {
-      name: "Replacement bus",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -6314,15 +5859,15 @@ export const UNION: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -6338,16 +5883,12 @@ export const EAST_PAKENHAM: StopConfig = {
   },
   positions: [
     {
-      name: "Replacement bus",
-      stopPositionId: 1,
-    },
-    {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -6364,11 +5905,11 @@ export const ANZAC: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -6385,11 +5926,11 @@ export const TOWN_HALL: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -6406,11 +5947,11 @@ export const STATE_LIBRARY: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -6427,11 +5968,11 @@ export const PARKVILLE: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -6448,11 +5989,11 @@ export const ARDEN: StopConfig = {
   positions: [
     {
       name: "1",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
-      stopPositionId: 1,
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };

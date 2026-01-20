@@ -20,5 +20,7 @@ export const addFlemingtonRacecourseStationPatch =
         { id: "15524", platformCode: "1" },
         { id: "15525", platformCode: "2" },
       ],
+
+      replacementBusGtfsIds: [],
     },
   });

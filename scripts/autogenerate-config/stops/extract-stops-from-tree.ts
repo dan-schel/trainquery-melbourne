@@ -3,6 +3,8 @@ import {
   type StopsCsvTreeNode,
 } from "./build-stops-csv-tree.js";
 
+const replacementBusPlatformCode = "Replacement bus";
+
 export type ParsedStop = {
   readonly name: string;
   readonly latitude: number;
@@ -16,6 +18,8 @@ export type ParsedStop = {
     readonly id: string;
     readonly platformCode: string | null;
   }[];
+
+  readonly replacementBusGtfsIds: readonly string[];
 };
 
 export function extractStopsFromTree(tree: StopsCsvTree): ParsedStop[] {
@@ -31,23 +35,47 @@ function parseStop(station: StopsCsvTreeNode): ParsedStop {
   // - Remove replacement bus platforms
   // - Add V/Line platforms.
 
-  type TreeNodeWithPlatformCode = StopsCsvTreeNode & { platform_code: string };
-  const platforms = station.children
-    .filter((c): c is TreeNodeWithPlatformCode => isPresent(c.platform_code))
-    .map((platform) => ({ platformCode: platform.platform_code }));
-
-  const primaryGtfsId = { id: station.stop_id, platformCode: null };
-  const childGtfsIds = station.children.map((c) => ({
-    id: c.stop_id,
-    platformCode: isPresent(c.platform_code) ? c.platform_code : null,
-  }));
+  const platforms = parsePlatforms(station);
+  const { gtfsIds, replacementBusGtfsIds } = parseGtfsIds(station);
 
   return {
     name: station.stop_name,
     latitude: station.stop_lat,
     longitude: station.stop_lon,
-    platforms: platforms,
-    gtfsIds: [primaryGtfsId, ...childGtfsIds],
+    platforms,
+    gtfsIds,
+    replacementBusGtfsIds,
+  };
+}
+
+function parsePlatforms(station: StopsCsvTreeNode) {
+  type TreeNodeWithPlatformCode = StopsCsvTreeNode & { platform_code: string };
+
+  return station.children
+    .filter((c): c is TreeNodeWithPlatformCode => isPresent(c.platform_code))
+    .filter((c) => c.platform_code !== replacementBusPlatformCode)
+    .map((platform) => ({ platformCode: platform.platform_code }));
+}
+
+function parseGtfsIds(station: StopsCsvTreeNode) {
+  const primaryGtfsId = { id: station.stop_id, platformCode: null };
+
+  const childGtfsIds = station.children.map((c) => ({
+    id: c.stop_id,
+    platformCode: isPresent(c.platform_code) ? c.platform_code : null,
+  }));
+
+  const platformGtfsIds = childGtfsIds.filter(
+    (c) => c.platformCode !== replacementBusPlatformCode,
+  );
+
+  const replacementBusGtfsIds = childGtfsIds
+    .filter((c) => c.platformCode === replacementBusPlatformCode)
+    .map((c) => c.id);
+
+  return {
+    gtfsIds: [primaryGtfsId, ...platformGtfsIds],
+    replacementBusGtfsIds,
   };
 }
 
