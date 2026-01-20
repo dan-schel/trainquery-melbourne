@@ -19,7 +19,7 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
         longitude: stop.longitude,
       },
       positions: stop.platforms.map((platform) => ({
-        name: platform.name,
+        name: platform.platformCode,
         stopPositionId: 1, // TODO: Fix this.
       })),
     });

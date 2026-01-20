@@ -10,12 +10,15 @@ export const addFlemingtonRacecourseStationPatch =
 
     stop: {
       name: "Flemington Racecourse",
-      gtfsId: "vic:rail:RCE",
       latitude: -37.78721073,
       longitude: 144.90757709,
-      platforms: [
-        { name: "Platform 1", gtfsId: "15524" },
-        { name: "Platform 2", gtfsId: "15525" },
+
+      platforms: [{ platformCode: "1" }, { platformCode: "2" }],
+
+      gtfsIds: [
+        { id: "vic:rail:RCE", platformCode: null },
+        { id: "15524", platformCode: "1" },
+        { id: "15525", platformCode: "2" },
       ],
     },
   });

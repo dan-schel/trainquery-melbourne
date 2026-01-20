@@ -9,7 +9,6 @@ export const addShowgroundsStationPatch = createAddStopUnlessExistsPatch({
 
   stop: {
     name: "Showgrounds",
-    gtfsId: "vic:rail:SGS",
 
     // Note: I've grabbed these coordinates from Google Maps, so when
     // Showgrounds station is next added back to the GTFS data, I expect these
@@ -17,6 +16,11 @@ export const addShowgroundsStationPatch = createAddStopUnlessExistsPatch({
     latitude: -37.7833933,
     longitude: 144.9149124,
 
-    platforms: [{ name: "Platform 1", gtfsId: "???" }],
+    platforms: [{ platformCode: "1" }],
+
+    gtfsIds: [
+      { id: "vic:rail:SGS", platformCode: null },
+      { id: "15526", platformCode: "1" },
+    ],
   },
 });
