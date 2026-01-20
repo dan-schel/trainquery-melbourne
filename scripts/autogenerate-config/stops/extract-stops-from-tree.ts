@@ -76,7 +76,7 @@ function isPresent(str: string | null | undefined): str is string {
 
 function compareGtfsIds(a: ParsedGtfsId, b: ParsedGtfsId): number {
   // Always sort "parent", before "train", before "replacement-bus".
-  const typeOrder = { parent: 0, train: 1, "replacement-bus": 2 };
+  const typeOrder = { "parent": 0, "train": 1, "replacement-bus": 2 };
   const typeDiff = typeOrder[a.type] - typeOrder[b.type];
   if (typeDiff !== 0) return typeDiff;
 
