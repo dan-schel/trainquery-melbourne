@@ -49,7 +49,8 @@ function parsePlatforms(station: StopsCsvTreeNode): ParsedPlatform[] {
   return station.children
     .filter((c): c is TreeNodeWithPlatformCode => isPresent(c.platform_code))
     .filter((c) => c.platform_code !== replacementBusCode)
-    .map((platform) => ({ platformCode: platform.platform_code }));
+    .map((platform) => ({ platformCode: platform.platform_code }))
+    .sort((a, b) => numberWiseSort(a.platformCode, b.platformCode));
 }
 
 function parseGtfsIds(station: StopsCsvTreeNode): ParsedGtfsId[] {
@@ -65,9 +66,33 @@ function parseGtfsIds(station: StopsCsvTreeNode): ParsedGtfsId[] {
     platformCode: isPresent(c.platform_code) ? c.platform_code : null,
   }));
 
-  return [primaryGtfsId, ...childGtfsIds];
+  return [primaryGtfsId, ...childGtfsIds].sort((a, b) => compareGtfsIds(a, b));
 }
 
 function isPresent(str: string | null | undefined): str is string {
   return str != null && str.length > 0;
+}
+
+function compareGtfsIds(a: ParsedGtfsId, b: ParsedGtfsId): number {
+  // Always sort "parent", before "train", before "replacement-bus".
+  const typeOrder = { parent: 0, train: 1, "replacement-bus": 2 };
+  const typeDiff = typeOrder[a.type] - typeOrder[b.type];
+  if (typeDiff !== 0) return typeDiff;
+
+  // Then, sort by platform code (any without a platform code go to the bottom).
+  if (a.platformCode != null && b.platformCode != null) {
+    const platformDiff = numberWiseSort(a.platformCode, b.platformCode);
+    if (platformDiff !== 0) return platformDiff;
+  } else if (b.platformCode != null) {
+    return 1;
+  } else if (a.platformCode != null) {
+    return -1;
+  }
+
+  // Finally, sort any remaining IDs by their GTFS ID.
+  return a.id.localeCompare(b.id);
+}
+
+function numberWiseSort(a: string, b: string): number {
+  return a.localeCompare(b, undefined, { numeric: true });
 }

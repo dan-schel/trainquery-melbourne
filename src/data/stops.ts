@@ -308,12 +308,12 @@ export const BALACLAVA: StopConfig = {
   },
   positions: [
     {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -794,12 +794,12 @@ export const BURWOOD: StopConfig = {
   },
   positions: [
     {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -852,16 +852,16 @@ export const CANTERBURY: StopConfig = {
   },
   positions: [
     {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
       stopPositionId: position.PLATFORM_2,
+    },
+    {
+      name: "3",
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -1039,12 +1039,12 @@ export const CHELTENHAM: StopConfig = {
   },
   positions: [
     {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
     },
     {
       name: "3",
@@ -1187,12 +1187,12 @@ export const COLLINGWOOD: StopConfig = {
   },
   positions: [
     {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1475,12 +1475,12 @@ export const DIGGERS_REST: StopConfig = {
   },
   positions: [
     {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -1951,24 +1951,24 @@ export const FLINDERS_STREET: StopConfig = {
       stopPositionId: position.PLATFORM_7,
     },
     {
-      name: "13",
-      stopPositionId: position.PLATFORM_13,
-    },
-    {
-      name: "12",
-      stopPositionId: position.PLATFORM_12,
-    },
-    {
-      name: "10",
-      stopPositionId: position.PLATFORM_10,
+      name: "8",
+      stopPositionId: position.PLATFORM_8,
     },
     {
       name: "9",
       stopPositionId: position.PLATFORM_9,
     },
     {
-      name: "8",
-      stopPositionId: position.PLATFORM_8,
+      name: "10",
+      stopPositionId: position.PLATFORM_10,
+    },
+    {
+      name: "12",
+      stopPositionId: position.PLATFORM_12,
+    },
+    {
+      name: "13",
+      stopPositionId: position.PLATFORM_13,
     },
   ],
 };
@@ -2375,12 +2375,12 @@ export const HARTWELL: StopConfig = {
   },
   positions: [
     {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2492,12 +2492,12 @@ export const HEATHERDALE: StopConfig = {
   },
   positions: [
     {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -2956,12 +2956,12 @@ export const LABURNUM: StopConfig = {
   },
   positions: [
     {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3151,16 +3151,16 @@ export const MACLEOD: StopConfig = {
   },
   positions: [
     {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
+      name: "1",
+      stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
       stopPositionId: position.PLATFORM_2,
     },
     {
-      name: "1",
-      stopPositionId: position.PLATFORM_1,
+      name: "3",
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -3475,12 +3475,12 @@ export const MITCHAM: StopConfig = {
   },
   positions: [
     {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -3986,12 +3986,12 @@ export const NUNAWADING: StopConfig = {
   },
   positions: [
     {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -4373,16 +4373,16 @@ export const RINGWOOD: StopConfig = {
   },
   positions: [
     {
-      name: "3",
-      stopPositionId: position.PLATFORM_3,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
     },
     {
       name: "2",
       stopPositionId: position.PLATFORM_2,
+    },
+    {
+      name: "3",
+      stopPositionId: position.PLATFORM_3,
     },
   ],
 };
@@ -4988,12 +4988,12 @@ export const ST_ALBANS: StopConfig = {
   },
   positions: [
     {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
@@ -5059,12 +5059,12 @@ export const SUNBURY: StopConfig = {
   },
   positions: [
     {
-      name: "2",
-      stopPositionId: position.PLATFORM_2,
-    },
-    {
       name: "1",
       stopPositionId: position.PLATFORM_1,
+    },
+    {
+      name: "2",
+      stopPositionId: position.PLATFORM_2,
     },
   ],
 };
