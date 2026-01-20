@@ -8,6 +8,10 @@ export type ParsedStop = {
   readonly gtfsId: string;
   readonly latitude: number;
   readonly longitude: number;
+  readonly platforms: readonly {
+    readonly name: string;
+    readonly gtfsId: string;
+  }[];
 };
 
 export function extractStopsFromTree(tree: StopsCsvTree): ParsedStop[] {
@@ -18,12 +22,18 @@ export function extractStopsFromTree(tree: StopsCsvTree): ParsedStop[] {
 }
 
 function parseStop(station: StopsCsvTreeNode): ParsedStop {
-  // TODO: Parse platforms.
-
   return {
     name: station.stop_name,
     gtfsId: station.stop_id,
     latitude: station.stop_lat,
     longitude: station.stop_lon,
+    platforms: station.children
+      .filter(
+        (child) => child.platform_code != null && child.platform_code !== "",
+      )
+      .map((platform) => ({
+        name: `Platform ${platform.platform_code}`,
+        gtfsId: platform.stop_id,
+      })),
   };
 }

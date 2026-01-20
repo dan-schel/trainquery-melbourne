@@ -16,5 +16,7 @@ export const addShowgroundsStationPatch = createAddStopUnlessExistsPatch({
     // to need updating.
     latitude: -37.7833933,
     longitude: 144.9149124,
+
+    platforms: [{ name: "Platform 1", gtfsId: "???" }],
   },
 });

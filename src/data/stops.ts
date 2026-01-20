@@ -11,6 +11,18 @@ export const AIRCRAFT: StopConfig = {
     longitude: 144.76080944,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -24,6 +36,14 @@ export const ALAMEIN: StopConfig = {
     longitude: 145.07965567,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -37,6 +57,14 @@ export const ALBION: StopConfig = {
     longitude: 144.82470361,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -63,6 +91,18 @@ export const ALPHINGTON: StopConfig = {
     longitude: 145.03125493,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -76,6 +116,14 @@ export const ALTONA: StopConfig = {
     longitude: 144.82964474,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -89,6 +137,14 @@ export const ANSTEY: StopConfig = {
     longitude: 144.96068404,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -128,6 +184,14 @@ export const ARMADALE: StopConfig = {
     longitude: 145.01932554,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -141,6 +205,14 @@ export const ASCOT_VALE: StopConfig = {
     longitude: 144.92182074,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -154,6 +226,10 @@ export const ASHBURTON: StopConfig = {
     longitude: 145.08134376,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -167,6 +243,18 @@ export const ASPENDALE: StopConfig = {
     longitude: 145.10214962,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -180,6 +268,18 @@ export const AUBURN: StopConfig = {
     longitude: 145.04584366,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -232,6 +332,18 @@ export const BALACLAVA: StopConfig = {
     longitude: 144.9935121,
   },
   positions: [
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -271,6 +383,14 @@ export const BATMAN: StopConfig = {
     longitude: 144.96284055,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -284,6 +404,10 @@ export const BAXTER: StopConfig = {
     longitude: 145.16052609,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -297,6 +421,14 @@ export const BAYSWATER: StopConfig = {
     longitude: 145.26813639,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -310,6 +442,18 @@ export const BEACONSFIELD: StopConfig = {
     longitude: 145.36607374,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -336,6 +480,14 @@ export const BELGRAVE: StopConfig = {
     longitude: 145.35529128,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -349,6 +501,18 @@ export const BELL: StopConfig = {
     longitude: 145.00015503,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -388,6 +552,18 @@ export const BENTLEIGH: StopConfig = {
     longitude: 145.03699513,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -401,6 +577,18 @@ export const BERWICK: StopConfig = {
     longitude: 145.34541666,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -427,6 +615,10 @@ export const BITTERN: StopConfig = {
     longitude: 145.17802653,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -440,6 +632,22 @@ export const BLACKBURN: StopConfig = {
     longitude: 145.15001354,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -453,6 +661,18 @@ export const BONBEACH: StopConfig = {
     longitude: 145.1201058,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -466,6 +686,14 @@ export const BORONIA: StopConfig = {
     longitude: 145.28470457,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -479,6 +707,22 @@ export const BOX_HILL: StopConfig = {
     longitude: 145.12142893,
   },
   positions: [
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 4",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -492,6 +736,14 @@ export const BRIGHTON_BEACH: StopConfig = {
     longitude: 144.98915355,
   },
   positions: [
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -518,6 +770,14 @@ export const BROADMEADOWS: StopConfig = {
     longitude: 144.91961322,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -531,6 +791,14 @@ export const BRUNSWICK: StopConfig = {
     longitude: 144.95958654,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -557,6 +825,26 @@ export const BURNLEY: StopConfig = {
     longitude: 145.00755515,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 4",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -570,6 +858,18 @@ export const BURWOOD: StopConfig = {
     longitude: 145.08051107,
   },
   positions: [
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -583,6 +883,22 @@ export const CAMBERWELL: StopConfig = {
     longitude: 145.05869718,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -609,6 +925,18 @@ export const CANTERBURY: StopConfig = {
     longitude: 145.08122424,
   },
   positions: [
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -622,6 +950,18 @@ export const CARDINIA_ROAD: StopConfig = {
     longitude: 145.43779101,
   },
   positions: [
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -635,6 +975,18 @@ export const CARNEGIE: StopConfig = {
     longitude: 145.05857506,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -661,6 +1013,14 @@ export const CARRUM: StopConfig = {
     longitude: 145.1228096,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -700,6 +1060,18 @@ export const CHATHAM: StopConfig = {
     longitude: 145.08864793,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -713,6 +1085,18 @@ export const CHELSEA: StopConfig = {
     longitude: 145.1166795,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -726,6 +1110,22 @@ export const CHELTENHAM: StopConfig = {
     longitude: 145.05455793,
   },
   positions: [
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -778,6 +1178,18 @@ export const CLIFTON_HILL: StopConfig = {
     longitude: 144.9954167,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -817,6 +1229,14 @@ export const COBURG: StopConfig = {
     longitude: 144.96333634,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -843,6 +1263,18 @@ export const COLLINGWOOD: StopConfig = {
     longitude: 144.99374967,
   },
   positions: [
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -856,6 +1288,14 @@ export const COOLAROO: StopConfig = {
     longitude: 144.92604123,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -895,6 +1335,18 @@ export const CRANBOURNE: StopConfig = {
     longitude: 145.28059898,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -921,6 +1373,10 @@ export const CRIB_POINT: StopConfig = {
     longitude: 145.20404332,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -934,6 +1390,18 @@ export const CROXTON: StopConfig = {
     longitude: 144.99705619,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -947,6 +1415,14 @@ export const CROYDON: StopConfig = {
     longitude: 145.28048737,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -973,6 +1449,18 @@ export const DAREBIN: StopConfig = {
     longitude: 145.03847598,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -986,6 +1474,14 @@ export const DARLING: StopConfig = {
     longitude: 145.06295083,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1012,6 +1508,18 @@ export const DENNIS: StopConfig = {
     longitude: 145.00824163,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1025,6 +1533,18 @@ export const DIAMOND_CREEK: StopConfig = {
     longitude: 145.15853819,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1038,6 +1558,14 @@ export const DIGGERS_REST: StopConfig = {
     longitude: 144.71982218,
   },
   positions: [
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1103,6 +1631,18 @@ export const EAGLEMONT: StopConfig = {
     longitude: 145.05394269,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1116,6 +1656,22 @@ export const EAST_CAMBERWELL: StopConfig = {
     longitude: 145.06819025,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1129,6 +1685,14 @@ export const EAST_MALVERN: StopConfig = {
     longitude: 145.06939324,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1142,6 +1706,18 @@ export const EAST_RICHMOND: StopConfig = {
     longitude: 144.99706569,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1168,6 +1744,18 @@ export const EDITHVALE: StopConfig = {
     longitude: 145.10758338,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1194,6 +1782,18 @@ export const ELSTERNWICK: StopConfig = {
     longitude: 145.00089787,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1207,6 +1807,18 @@ export const ELTHAM: StopConfig = {
     longitude: 145.14782202,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1220,6 +1832,18 @@ export const EPPING: StopConfig = {
     longitude: 145.03107934,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1272,6 +1896,18 @@ export const FAIRFIELD: StopConfig = {
     longitude: 145.0169053,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1285,6 +1921,14 @@ export const FAWKNER: StopConfig = {
     longitude: 144.96054503,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1298,6 +1942,14 @@ export const FERNTREE_GULLY: StopConfig = {
     longitude: 145.29525126,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1311,6 +1963,26 @@ export const FLAGSTAFF: StopConfig = {
     longitude: 144.95566511,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 4",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1324,6 +1996,14 @@ export const FLEMINGTON_BRIDGE: StopConfig = {
     longitude: 144.93932328,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1337,6 +2017,14 @@ export const FLEMINGTON_RACECOURSE: StopConfig = {
     longitude: 144.90757709,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1376,6 +2064,22 @@ export const FRANKSTON: StopConfig = {
     longitude: 145.12616228,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1389,6 +2093,14 @@ export const GARDENVALE: StopConfig = {
     longitude: 145.00416843,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1402,6 +2114,14 @@ export const GARDINER: StopConfig = {
     longitude: 145.05165466,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1441,6 +2161,14 @@ export const GINIFER: StopConfig = {
     longitude: 144.81135895,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1467,6 +2195,14 @@ export const GLEN_IRIS: StopConfig = {
     longitude: 145.0582249,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1480,6 +2216,18 @@ export const GLEN_WAVERLEY: StopConfig = {
     longitude: 145.16205755,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1493,6 +2241,14 @@ export const GLENBERVIE: StopConfig = {
     longitude: 144.92093868,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1506,6 +2262,22 @@ export const GLENFERRIE: StopConfig = {
     longitude: 145.03643883,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1519,6 +2291,18 @@ export const GLEN_HUNTLY: StopConfig = {
     longitude: 145.04222285,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1532,6 +2316,18 @@ export const GLENROY: StopConfig = {
     longitude: 144.9172204,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1558,6 +2354,14 @@ export const GOWRIE: StopConfig = {
     longitude: 144.95887432,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1571,6 +2375,18 @@ export const GREENSBOROUGH: StopConfig = {
     longitude: 145.10793589,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1584,6 +2400,18 @@ export const HALLAM: StopConfig = {
     longitude: 145.2697768,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1597,6 +2425,14 @@ export const HAMPTON: StopConfig = {
     longitude: 145.00150445,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1610,6 +2446,14 @@ export const HARTWELL: StopConfig = {
     longitude: 145.07555959,
   },
   positions: [
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1623,6 +2467,10 @@ export const HASTINGS: StopConfig = {
     longitude: 145.18597988,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1636,6 +2484,14 @@ export const HAWKSBURN: StopConfig = {
     longitude: 145.00190352,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1649,6 +2505,18 @@ export const HAWKSTOWE: StopConfig = {
     longitude: 145.09729471,
   },
   positions: [
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1662,6 +2530,18 @@ export const HAWTHORN: StopConfig = {
     longitude: 145.02289866,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1688,6 +2568,18 @@ export const HEATHERDALE: StopConfig = {
     longitude: 145.21397044,
   },
   positions: [
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1701,6 +2593,14 @@ export const HEATHMONT: StopConfig = {
     longitude: 145.24455538,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1714,6 +2614,18 @@ export const HEIDELBERG: StopConfig = {
     longitude: 145.06068552,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1727,6 +2639,18 @@ export const HEYINGTON: StopConfig = {
     longitude: 145.02264711,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1740,6 +2664,14 @@ export const HIGHETT: StopConfig = {
     longitude: 145.0418718,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1753,6 +2685,14 @@ export const HOLMESGLEN: StopConfig = {
     longitude: 145.09066203,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1766,6 +2706,18 @@ export const HOPPERS_CROSSING: StopConfig = {
     longitude: 144.70074704,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1779,6 +2731,18 @@ export const HUGHESDALE: StopConfig = {
     longitude: 145.07618607,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1792,6 +2756,18 @@ export const HUNTINGDALE: StopConfig = {
     longitude: 145.10236432,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1805,6 +2781,14 @@ export const HURSTBRIDGE: StopConfig = {
     longitude: 145.19201689,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1818,6 +2802,18 @@ export const IVANHOE: StopConfig = {
     longitude: 145.04542519,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1831,6 +2827,14 @@ export const JACANA: StopConfig = {
     longitude: 144.91585052,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1844,6 +2848,14 @@ export const JEWELL: StopConfig = {
     longitude: 144.95871691,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1857,6 +2869,18 @@ export const JOLIMONT: StopConfig = {
     longitude: 144.98409834,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1870,6 +2894,14 @@ export const JORDANVILLE: StopConfig = {
     longitude: 145.11209016,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1883,6 +2915,14 @@ export const KANANOOK: StopConfig = {
     longitude: 145.13537493,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1909,6 +2949,14 @@ export const KEILOR_PLAINS: StopConfig = {
     longitude: 144.79373807,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1922,6 +2970,14 @@ export const KENSINGTON: StopConfig = {
     longitude: 144.93052444,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1935,6 +2991,18 @@ export const KEON_PARK: StopConfig = {
     longitude: 145.01188382,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -1974,6 +3042,14 @@ export const KOOYONG: StopConfig = {
     longitude: 145.03355161,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2000,6 +3076,18 @@ export const LABURNUM: StopConfig = {
     longitude: 145.14070271,
   },
   positions: [
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2013,6 +3101,18 @@ export const LALOR: StopConfig = {
     longitude: 145.01719317,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2039,6 +3139,22 @@ export const LAVERTON: StopConfig = {
     longitude: 144.77261667,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2052,6 +3168,10 @@ export const LEAWARRA: StopConfig = {
     longitude: 145.13953396,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2065,6 +3185,14 @@ export const LILYDALE: StopConfig = {
     longitude: 145.34582227,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2104,6 +3232,18 @@ export const LYNBROOK: StopConfig = {
     longitude: 145.24925211,
   },
   positions: [
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2117,6 +3257,14 @@ export const MACAULAY: StopConfig = {
     longitude: 144.93616633,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2143,6 +3291,22 @@ export const MACLEOD: StopConfig = {
     longitude: 145.06914332,
   },
   positions: [
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2169,6 +3333,22 @@ export const MALVERN: StopConfig = {
     longitude: 145.02929394,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 4",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2208,6 +3388,18 @@ export const MCKINNON: StopConfig = {
     longitude: 145.03829897,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2221,6 +3413,26 @@ export const MELBOURNE_CENTRAL: StopConfig = {
     longitude: 144.96260489,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 4",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2247,6 +3459,14 @@ export const MENTONE: StopConfig = {
     longitude: 145.06580232,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2260,6 +3480,18 @@ export const MERINDA_PARK: StopConfig = {
     longitude: 145.26351137,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2273,6 +3505,14 @@ export const MERLYNSTON: StopConfig = {
     longitude: 144.96131355,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2286,6 +3526,18 @@ export const MERNDA: StopConfig = {
     longitude: 145.10095293,
   },
   positions: [
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2299,6 +3551,18 @@ export const MERRI: StopConfig = {
     longitude: 144.99297248,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2312,6 +3576,14 @@ export const MIDDLE_BRIGHTON: StopConfig = {
     longitude: 144.99629909,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2325,6 +3597,14 @@ export const MIDDLE_FOOTSCRAY: StopConfig = {
     longitude: 144.89147208,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2338,6 +3618,18 @@ export const MIDDLE_GORGE: StopConfig = {
     longitude: 145.09212201,
   },
   positions: [
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2351,6 +3643,18 @@ export const MITCHAM: StopConfig = {
     longitude: 145.19220824,
   },
   positions: [
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2377,6 +3681,18 @@ export const MONTMORENCY: StopConfig = {
     longitude: 145.12151574,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2390,6 +3706,18 @@ export const MOONEE_PONDS: StopConfig = {
     longitude: 144.9191607,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2403,6 +3731,22 @@ export const MOORABBIN: StopConfig = {
     longitude: 145.03676929,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2416,6 +3760,14 @@ export const MOOROOLBARK: StopConfig = {
     longitude: 145.3124024,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2442,6 +3794,14 @@ export const MORDIALLOC: StopConfig = {
     longitude: 145.08765936,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2455,6 +3815,14 @@ export const MORELAND: StopConfig = {
     longitude: 144.96182303,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2468,6 +3836,10 @@ export const MORRADOO: StopConfig = {
     longitude: 145.18960249,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2494,6 +3866,18 @@ export const MOUNT_WAVERLEY: StopConfig = {
     longitude: 145.1280441,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2520,6 +3904,18 @@ export const MURRUMBEENA: StopConfig = {
     longitude: 145.06737487,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2559,6 +3955,18 @@ export const NARRE_WARREN: StopConfig = {
     longitude: 145.303993,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2572,6 +3980,18 @@ export const NEWMARKET: StopConfig = {
     longitude: 144.92897847,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2585,6 +4005,18 @@ export const NEWPORT: StopConfig = {
     longitude: 144.8835883,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2598,6 +4030,18 @@ export const NOBLE_PARK: StopConfig = {
     longitude: 145.17632482,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2611,6 +4055,18 @@ export const NORTH_BRIGHTON: StopConfig = {
     longitude: 145.00261908,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2637,6 +4093,30 @@ export const NORTH_MELBOURNE: StopConfig = {
     longitude: 144.94151017,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 4",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 5",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 6",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2650,6 +4130,18 @@ export const NORTH_RICHMOND: StopConfig = {
     longitude: 144.99250026,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2676,6 +4168,14 @@ export const NORTH_WILLIAMSTOWN: StopConfig = {
     longitude: 144.88906947,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2689,6 +4189,18 @@ export const NORTHCOTE: StopConfig = {
     longitude: 144.99527721,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2702,6 +4214,18 @@ export const NUNAWADING: StopConfig = {
     longitude: 145.1748915,
   },
   positions: [
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2715,6 +4239,14 @@ export const OAK_PARK: StopConfig = {
     longitude: 144.92151877,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2728,6 +4260,18 @@ export const OAKLEIGH: StopConfig = {
     longitude: 145.08830787,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2741,6 +4285,18 @@ export const OFFICER: StopConfig = {
     longitude: 145.41098723,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2754,6 +4310,18 @@ export const ORMOND: StopConfig = {
     longitude: 145.03961342,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2767,6 +4335,18 @@ export const PAKENHAM: StopConfig = {
     longitude: 145.48637907,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2780,6 +4360,14 @@ export const PARKDALE: StopConfig = {
     longitude: 145.07632682,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2793,6 +4381,22 @@ export const PARLIAMENT: StopConfig = {
     longitude: 144.973119,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 4",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2806,6 +4410,14 @@ export const PASCOE_VALE: StopConfig = {
     longitude: 144.92819562,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2819,6 +4431,18 @@ export const PATTERSON: StopConfig = {
     longitude: 145.03547003,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2832,6 +4456,18 @@ export const PRAHRAN: StopConfig = {
     longitude: 144.98985992,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2845,6 +4481,18 @@ export const PRESTON: StopConfig = {
     longitude: 145.00052198,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2871,6 +4519,18 @@ export const REGENT: StopConfig = {
     longitude: 145.00277256,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2884,6 +4544,18 @@ export const RESERVOIR: StopConfig = {
     longitude: 145.00699582,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2923,6 +4595,22 @@ export const RINGWOOD: StopConfig = {
     longitude: 145.22896846,
   },
   positions: [
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2936,6 +4624,14 @@ export const RINGWOOD_EAST: StopConfig = {
     longitude: 145.25019091,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2949,6 +4645,18 @@ export const RIPPONLEA: StopConfig = {
     longitude: 144.99525782,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -2962,6 +4670,18 @@ export const RIVERSDALE: StopConfig = {
     longitude: 145.06964598,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3001,6 +4721,18 @@ export const ROSANNA: StopConfig = {
     longitude: 145.06614029,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3027,6 +4759,14 @@ export const ROXBURGH_PARK: StopConfig = {
     longitude: 144.93540368,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3040,6 +4780,14 @@ export const ROYAL_PARK: StopConfig = {
     longitude: 144.95230127,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3053,6 +4801,18 @@ export const RUSHALL: StopConfig = {
     longitude: 144.99240708,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3066,6 +4826,18 @@ export const RUTHVEN: StopConfig = {
     longitude: 145.00951662,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3092,6 +4864,18 @@ export const SANDOWN_PARK: StopConfig = {
     longitude: 145.16282634,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3105,6 +4889,14 @@ export const SANDRINGHAM: StopConfig = {
     longitude: 145.00456136,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3118,6 +4910,14 @@ export const SEAFORD: StopConfig = {
     longitude: 145.1282304,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3131,6 +4931,14 @@ export const SEAHOLME: StopConfig = {
     longitude: 144.84095773,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3144,6 +4952,14 @@ export const SEDDON: StopConfig = {
     longitude: 144.89567157,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3196,6 +5012,10 @@ export const SHOWGROUNDS: StopConfig = {
     longitude: 144.9149124,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3209,6 +5029,10 @@ export const SOMERVILLE: StopConfig = {
     longitude: 145.17624492,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3235,6 +5059,14 @@ export const SOUTH_KENSINGTON: StopConfig = {
     longitude: 144.92546901,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3248,6 +5080,18 @@ export const SOUTH_MORANG: StopConfig = {
     longitude: 145.06701257,
   },
   positions: [
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3261,6 +5105,34 @@ export const SOUTH_YARRA: StopConfig = {
     longitude: 144.99234221,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 4",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 5",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 6",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3274,6 +5146,34 @@ export const SOUTHERN_CROSS: StopConfig = {
     longitude: 144.95277706,
   },
   positions: [
+    {
+      name: "Platform 8",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 9",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 10",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 11",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 12",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 13",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 14",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3287,6 +5187,14 @@ export const SOUTHLAND: StopConfig = {
     longitude: 145.04864786,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3300,6 +5208,14 @@ export const SPOTSWOOD: StopConfig = {
     longitude: 144.88593345,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3326,6 +5242,18 @@ export const SPRINGVALE: StopConfig = {
     longitude: 145.15345183,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3339,6 +5267,18 @@ export const ST_ALBANS: StopConfig = {
     longitude: 144.80005045,
   },
   positions: [
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3352,6 +5292,10 @@ export const STONY_POINT: StopConfig = {
     longitude: 145.22183746,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3378,6 +5322,14 @@ export const STRATHMORE: StopConfig = {
     longitude: 144.92731571,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3430,6 +5382,18 @@ export const SYNDAL: StopConfig = {
     longitude: 145.14978071,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3482,6 +5446,10 @@ export const TECOMA: StopConfig = {
     longitude: 145.34299458,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3508,6 +5476,18 @@ export const THOMASTOWN: StopConfig = {
     longitude: 145.01427887,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3521,6 +5501,18 @@ export const THORNBURY: StopConfig = {
     longitude: 144.99857152,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3534,6 +5526,14 @@ export const TOORAK: StopConfig = {
     longitude: 145.01390858,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3547,6 +5547,14 @@ export const TOORONGA: StopConfig = {
     longitude: 145.04173374,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3560,6 +5568,14 @@ export const TOTTENHAM: StopConfig = {
     longitude: 144.86294494,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3599,6 +5615,10 @@ export const TYABB: StopConfig = {
     longitude: 145.18640071,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3625,6 +5645,10 @@ export const UPFIELD: StopConfig = {
     longitude: 144.94673994,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3638,6 +5662,14 @@ export const UPPER_FERNTREE_GULLY: StopConfig = {
     longitude: 145.30753019,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3651,6 +5683,14 @@ export const UPWEY: StopConfig = {
     longitude: 145.33133336,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3664,6 +5704,18 @@ export const VICTORIA_PARK: StopConfig = {
     longitude: 144.99445143,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3768,6 +5820,18 @@ export const WATSONIA: StopConfig = {
     longitude: 145.08379338,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3781,6 +5845,14 @@ export const WATTLE_GLEN: StopConfig = {
     longitude: 145.18161453,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3820,6 +5892,22 @@ export const WERRIBEE: StopConfig = {
     longitude: 144.66111801,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3833,6 +5921,22 @@ export const WEST_FOOTSCRAY: StopConfig = {
     longitude: 144.88398479,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3846,6 +5950,18 @@ export const WEST_RICHMOND: StopConfig = {
     longitude: 144.99142278,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3859,6 +5975,22 @@ export const WESTALL: StopConfig = {
     longitude: 145.13881033,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3872,6 +6004,18 @@ export const WESTGARTH: StopConfig = {
     longitude: 144.99923319,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3885,6 +6029,18 @@ export const WESTONA: StopConfig = {
     longitude: 144.81349356,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3898,6 +6054,18 @@ export const WILLIAMS_LANDING: StopConfig = {
     longitude: 144.74744472,
   },
   positions: [
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3911,6 +6079,14 @@ export const WILLIAMSTOWN: StopConfig = {
     longitude: 144.90532331,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3924,6 +6100,14 @@ export const WILLIAMSTOWN_BEACH: StopConfig = {
     longitude: 144.89448368,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3937,6 +6121,18 @@ export const WILLISON: StopConfig = {
     longitude: 145.07029756,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -3963,6 +6159,18 @@ export const WINDSOR: StopConfig = {
     longitude: 144.99203517,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -4028,6 +6236,18 @@ export const YARRAMAN: StopConfig = {
     longitude: 145.19160028,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -4041,6 +6261,18 @@ export const YARRAVILLE: StopConfig = {
     longitude: 144.88993371,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -4080,6 +6312,18 @@ export const UNION: StopConfig = {
     longitude: 145.10034527,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 3",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -4093,6 +6337,18 @@ export const EAST_PAKENHAM: StopConfig = {
     longitude: 145.50635689,
   },
   positions: [
+    {
+      name: "Platform Replacement bus",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -4106,6 +6362,14 @@ export const ANZAC: StopConfig = {
     longitude: 144.97279042,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -4119,6 +6383,14 @@ export const TOWN_HALL: StopConfig = {
     longitude: 144.96709126,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -4132,6 +6404,14 @@ export const STATE_LIBRARY: StopConfig = {
     longitude: 144.9632775,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -4145,6 +6425,14 @@ export const PARKVILLE: StopConfig = {
     longitude: 144.95954246,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };
 
@@ -4158,5 +6446,13 @@ export const ARDEN: StopConfig = {
     longitude: 144.94120851,
   },
   positions: [
+    {
+      name: "Platform 1",
+      stopPositionId: 1,
+    },
+    {
+      name: "Platform 2",
+      stopPositionId: 1,
+    },
   ],
 };

@@ -82,12 +82,12 @@ export class StopList {
         return (
           `{\n` +
           `      name: ${JSON.stringify(p.name)},\n` +
-          `      stopPositionId: ${p.stopPositionId}\n` + // TODO: Use const.
+          `      stopPositionId: ${p.stopPositionId},\n` + // TODO: Use const.
           `    }`
         );
       });
 
-      return `[\n${x.map((y) => `    ${y},\n`)}  ]`;
+      return `[\n${x.map((y) => `    ${y},\n`).join("")}  ]`;
     }
 
     return (

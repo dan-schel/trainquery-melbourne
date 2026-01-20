@@ -18,7 +18,10 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
         latitude: stop.latitude,
         longitude: stop.longitude,
       },
-      positions: [],
+      positions: stop.platforms.map((platform) => ({
+        name: platform.name,
+        stopPositionId: 1, // TODO: Fix this.
+      })),
     });
   }
 }
