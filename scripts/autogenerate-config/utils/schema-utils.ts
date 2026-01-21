@@ -1,13 +1,13 @@
 import z from "zod";
-import { parseFloatNull } from "@dan-schel/js-utils";
+import { parseFloatNull, parseIntNull } from "@dan-schel/js-utils";
 
-// export const intStringSchema = z.string().transform((x, ctx) => {
-//   const result = parseIntNull(x);
-//   if (result != null) return result;
+export const intStringSchema = z.string().transform((x, ctx) => {
+  const result = parseIntNull(x);
+  if (result != null) return result;
 
-//   ctx.addIssue({ code: "custom", message: "Not an integer.", input: x });
-//   return z.NEVER;
-// });
+  ctx.addIssue({ code: "custom", message: "Not an integer.", input: x });
+  return z.NEVER;
+});
 
 export const floatStringSchema = z.string().transform((x, ctx) => {
   const result = parseFloatNull(x);
@@ -17,11 +17,11 @@ export const floatStringSchema = z.string().transform((x, ctx) => {
   return z.NEVER;
 });
 
-// export const booleanIntegerStringSchema = z.string().transform((x, ctx) => {
-//   const result = parseIntNull(x);
-//   if (result === 0) return false;
-//   if (result === 1) return true;
+export const booleanIntegerStringSchema = z.string().transform((x, ctx) => {
+  const result = parseIntNull(x);
+  if (result === 0) return false;
+  if (result === 1) return true;
 
-//   ctx.addIssue({ code: "custom", message: 'Expecting "0" or "1".', input: x });
-//   return z.NEVER;
-// });
+  ctx.addIssue({ code: "custom", message: 'Expecting "0" or "1".', input: x });
+  return z.NEVER;
+});

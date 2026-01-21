@@ -5,7 +5,7 @@ import {
   assignPositionId,
   type WithPlatformIds,
 } from "./assign-position-ids.js";
-import type { WithUrlPath } from "./assign-url-paths.js";
+import type { WithUrlPath } from "../utils/assign-url-paths.js";
 import type {
   ParsedStopGtfsId,
   ParsedStop,

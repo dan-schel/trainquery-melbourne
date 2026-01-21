@@ -1,6 +1,6 @@
 import type { IdList } from "../source-code/id-list.js";
 
-export type WithName = {
+type WithName = {
   readonly name: string;
 };
 

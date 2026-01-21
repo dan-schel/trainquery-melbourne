@@ -1,12 +1,13 @@
 import type { LineGtfsIdMappingMetadata } from "../../../src/third-party-id-mapping-types.js";
 import type { AutogenerationContext } from "../autogeneration-context.js";
+import type { WithUrlPath } from "../utils/assign-url-paths.js";
 import type { WithId } from "../utils/sync-ids.js";
 import type {
   ParsedLine,
   ParsedLineGtfsId,
 } from "./extract-lines-from-subfeed.js";
 
-type FullLine = WithId<ParsedLine>;
+type FullLine = WithUrlPath<WithId<ParsedLine>>;
 
 export function writeLineGtfsIds(
   ctx: AutogenerationContext,

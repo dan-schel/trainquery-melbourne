@@ -1,7 +1,7 @@
 import type { AutogenerationContext } from "../autogeneration-context.js";
 import type { WithId } from "../utils/sync-ids.js";
 import { type WithPlatformIds } from "./assign-position-ids.js";
-import type { WithUrlPath } from "./assign-url-paths.js";
+import type { WithUrlPath } from "../utils/assign-url-paths.js";
 import type { ParsedStop } from "./extract-stops-from-tree.js";
 
 type FullStop = WithPlatformIds<WithUrlPath<WithId<ParsedStop>>>;

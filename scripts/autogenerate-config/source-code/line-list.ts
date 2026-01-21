@@ -1,14 +1,8 @@
 import { type LineConfig } from "corequery";
 import type { AutogenerationContext } from "../autogeneration-context.js";
 
-type LineListEntry = {
-  readonly id: number;
-  readonly name: string;
-  readonly sourceCode: string;
-};
-
 export class LineList {
-  private _entries: LineListEntry[];
+  private _entries: LineConfig[];
 
   constructor() {
     this._entries = [];
@@ -28,23 +22,17 @@ export class LineList {
     return existing;
   }
 
-  add(ctx: AutogenerationContext, config: LineConfig) {
+  add(config: LineConfig) {
     const existing = this.get(config.name);
     if (existing != null) throw new Error(`Already has "${config.name}".`);
 
-    const entry: LineListEntry = {
-      id: config.id,
-      name: config.name,
-      sourceCode: LineList._generateSourceCode(ctx, config),
-    };
-    this._entries.push(entry);
-    return entry;
+    this._entries.push(config);
   }
 
-  toCode() {
+  toCode(ctx: AutogenerationContext) {
     const entries = this._entries
       .sort((a, b) => a.id - b.id)
-      .map((e) => e.sourceCode)
+      .map((e) => LineList._generateSourceCode(ctx, e))
       .join("\n\n");
 
     return (

@@ -1,14 +1,8 @@
 import { type StopConfig } from "corequery";
 import type { AutogenerationContext } from "../autogeneration-context.js";
 
-type StopListEntry = {
-  readonly id: number;
-  readonly name: string;
-  readonly sourceCode: string;
-};
-
 export class StopList {
-  private _entries: StopListEntry[];
+  private _entries: StopConfig[];
 
   constructor() {
     this._entries = [];
@@ -28,23 +22,23 @@ export class StopList {
     return existing;
   }
 
-  add(ctx: AutogenerationContext, config: StopConfig) {
+  requireById(id: number) {
+    const existing = this._entries.find((e) => e.id === id);
+    if (existing == null) throw new Error(`No entry for ID ${id}.`);
+    return existing;
+  }
+
+  add(config: StopConfig) {
     const existing = this.get(config.name);
     if (existing != null) throw new Error(`Already has "${config.name}".`);
 
-    const entry: StopListEntry = {
-      id: config.id,
-      name: config.name,
-      sourceCode: StopList._generateSourceCode(ctx, config),
-    };
-    this._entries.push(entry);
-    return entry;
+    this._entries.push(config);
   }
 
-  toCode() {
+  toCode(ctx: AutogenerationContext) {
     const entries = this._entries
       .sort((a, b) => a.id - b.id)
-      .map((e) => e.sourceCode)
+      .map((e) => StopList._generateSourceCode(ctx, e))
       .join("\n\n");
 
     return (

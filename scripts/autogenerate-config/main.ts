@@ -36,11 +36,11 @@ async function main() {
   await output(LINE_IDS_PATH, ctx.lineIds.toCode(), checkMode);
   await output(ROUTE_IDS_PATH, ctx.routeIds.toCode(), checkMode);
 
-  await output(STOPS_PATH, ctx.stops.toCode(), ctx.checkMode);
+  await output(STOPS_PATH, ctx.stops.toCode(ctx), ctx.checkMode);
   await output(STOP_GTFS_IDS_PATH, ctx.stopGtfsIds.toCode(ctx), checkMode);
   await output(STOP_PTV_API_IDS_PATH, ctx.stopPtvApiIds.toCode(ctx), checkMode);
 
-  await output(LINES_PATH, ctx.lines.toCode(), checkMode);
+  await output(LINES_PATH, ctx.lines.toCode(ctx), checkMode);
   await output(LINE_GTFS_IDS_PATH, ctx.lineGtfsIds.toCode(ctx), checkMode);
 }
 

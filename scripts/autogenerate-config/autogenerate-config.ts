@@ -3,7 +3,7 @@ import { parseLines } from "./lines/parse-lines.js";
 import { writeLineGtfsIds } from "./lines/write-line-gtfs-ids.js";
 import { writeLines } from "./lines/write-lines.js";
 import { assignPositionIds } from "./stops/assign-position-ids.js";
-import { assignUrlPaths } from "./stops/assign-url-paths.js";
+import { assignUrlPaths } from "./utils/assign-url-paths.js";
 import { parseStops } from "./stops/parse-stops.js";
 import { writeStopGtfsIds } from "./stops/write-stop-gtfs-ids.js";
 import { writeStopPtvApiIds } from "./stops/write-stop-ptv-api-ids.js";
@@ -22,7 +22,8 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
 
   const lines = parseLines(ctx);
   const linesWithIds = syncIds(ctx.lineIds, lines);
+  const linesWithUrlPaths = assignUrlPaths(linesWithIds);
 
-  writeLines(ctx, linesWithIds);
-  writeLineGtfsIds(ctx, linesWithIds);
+  writeLines(ctx, linesWithUrlPaths);
+  writeLineGtfsIds(ctx, linesWithUrlPaths);
 }
