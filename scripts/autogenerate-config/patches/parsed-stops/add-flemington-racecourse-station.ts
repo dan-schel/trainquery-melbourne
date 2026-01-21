@@ -35,5 +35,7 @@ export const addFlemingtonRacecourseStationPatch =
           subfeeds: ["suburban"],
         },
       ],
+
+      ptvApiId: "1070",
     },
   });

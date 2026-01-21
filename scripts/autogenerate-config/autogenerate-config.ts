@@ -4,6 +4,7 @@ import { assignUrlPaths } from "./stops/assign-url-paths.js";
 import { parseStops } from "./stops/parse-stops.js";
 import { syncStopIds } from "./stops/sync-stop-ids.js";
 import { writeStopGtfsIds } from "./stops/write-stop-gtfs-ids.js";
+import { writeStopPtvApiIds } from "./stops/write-stop-ptv-api-ids.js";
 import { writeStops } from "./stops/write-stops.js";
 
 export function autogenerateConfig(ctx: AutogenerationContext) {
@@ -14,4 +15,5 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
 
   writeStops(ctx, stopsWithPositionIds);
   writeStopGtfsIds(ctx, stopsWithPositionIds);
+  writeStopPtvApiIds(ctx, stopsWithPositionIds);
 }

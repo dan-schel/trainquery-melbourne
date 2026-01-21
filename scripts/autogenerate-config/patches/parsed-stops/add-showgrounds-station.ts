@@ -32,5 +32,7 @@ export const addShowgroundsStationPatch = createAddStopUnlessExistsPatch({
         subfeeds: ["suburban"],
       },
     ],
+
+    ptvApiId: "showgrounds???",
   },
 });

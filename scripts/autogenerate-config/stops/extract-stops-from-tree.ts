@@ -1,3 +1,4 @@
+import { itsOk, unique } from "@dan-schel/js-utils";
 import { isPresent } from "../utils/is-present.js";
 import { numberWiseSort } from "../utils/number-wise-sort.js";
 import type { Subfeed } from "../utils/subfeed.js";
@@ -25,6 +26,7 @@ export type ParsedStop = {
   readonly longitude: number;
   readonly platforms: readonly ParsedPlatform[];
   readonly gtfsIds: readonly ParsedGtfsId[];
+  readonly ptvApiId: string;
 };
 
 export function extractStopsFromTree(tree: StopsCsvTree): ParsedStop[] {
@@ -37,6 +39,7 @@ export function extractStopsFromTree(tree: StopsCsvTree): ParsedStop[] {
 function parseStop(station: StopsCsvTreeNode): ParsedStop {
   const platforms = parsePlatforms(station);
   const gtfsIds = parseGtfsIds(station);
+  const ptvApiId = parsePtvApiId(station);
 
   return {
     name: station.stop_name,
@@ -44,6 +47,7 @@ function parseStop(station: StopsCsvTreeNode): ParsedStop {
     longitude: station.stop_lon,
     platforms,
     gtfsIds,
+    ptvApiId,
   };
 }
 
@@ -103,4 +107,25 @@ export function platformSortOrder(
   b: ParsedPlatform,
 ): number {
   return numberWiseSort(a.platformCode, b.platformCode);
+}
+
+export function parsePtvApiId(station: StopsCsvTreeNode): string {
+  const stopName = station.stop_name;
+
+  const urls = station.children
+    .filter((x) => x.stop_url.startsWith("https://transport.vic.gov.au/stop/"))
+    .map((x) => x.stop_url);
+
+  if (urls.length === 0) throw new Error(`No URL for ${stopName}.`);
+
+  const urlsAreIdentical = unique(urls).length === 1;
+  if (!urlsAreIdentical) throw new Error(`Multiple URLs for ${stopName}.`);
+
+  const url = itsOk(urls[0]);
+
+  const pattern = /https:\/\/transport\.vic\.gov\.au\/stop\/([0-9]+)($|\/)/g;
+  const match = pattern.exec(url);
+  if (match == null) throw new Error(`Weird URL for ${stopName}: ${url}`);
+
+  return itsOk(match[1]);
 }
