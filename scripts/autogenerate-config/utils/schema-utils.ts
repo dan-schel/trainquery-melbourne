@@ -17,11 +17,13 @@ export const floatStringSchema = z.string().transform((x, ctx) => {
   return z.NEVER;
 });
 
-export const booleanIntegerStringSchema = z.string().transform((x, ctx) => {
-  const result = parseIntNull(x);
-  if (result === 0) return false;
-  if (result === 1) return true;
+// export const booleanIntegerStringSchema = z.string().transform((x, ctx) => {
+//   const result = parseIntNull(x);
+//   if (result === 0) return false;
+//   if (result === 1) return true;
 
-  ctx.addIssue({ code: "custom", message: 'Expecting "0" or "1".', input: x });
-  return z.NEVER;
-});
+//   console.log(result);
+
+//   ctx.addIssue({ code: "custom", message: 'Expecting "0" or "1".', input: x });
+//   return z.NEVER;
+// });

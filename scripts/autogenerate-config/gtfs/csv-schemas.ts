@@ -1,9 +1,5 @@
 import z from "zod";
-import {
-  booleanIntegerStringSchema,
-  floatStringSchema,
-  intStringSchema,
-} from "../utils/schema-utils.js";
+import { floatStringSchema, intStringSchema } from "../utils/schema-utils.js";
 
 export type StopsCsvRow = z.infer<typeof stopsCsvSchema>;
 export type StopsCsv = readonly StopsCsvRow[];
@@ -47,8 +43,8 @@ export const tripsCsvSchema = z
     trip_headsign: z.string(),
     direction_id: z.string(),
     block_id: z.string(),
-    wheelchair_accessible: booleanIntegerStringSchema,
-    bikes_allowed: booleanIntegerStringSchema,
+    wheelchair_accessible: intStringSchema,
+    bikes_allowed: intStringSchema,
   })
   .readonly();
 

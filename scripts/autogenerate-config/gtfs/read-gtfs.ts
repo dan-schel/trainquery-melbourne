@@ -41,6 +41,6 @@ async function readFeed(dir: string): Promise<GtfsFeed> {
     stops: await readCsvNamed("stops.txt", stopsCsvSchema),
     routes: await readCsvNamed("routes.txt", routesCsvSchema),
     trips: await readCsvNamed("trips.txt", tripsCsvSchema),
-    stopTimes: await readCsvNamed("stopTimes.txt", stopTimesCsvSchema),
+    stopTimes: await readCsvNamed("stop_times.txt", stopTimesCsvSchema),
   };
 }

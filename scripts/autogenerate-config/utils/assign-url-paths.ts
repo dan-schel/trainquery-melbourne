@@ -16,7 +16,7 @@ export function assignUrlPaths<T extends WithName>(
 }
 
 function generateUrlPath(name: string): string {
-  const processed = name.toLowerCase().replaceAll(/[\w-]/gi, "");
+  const processed = name.toLowerCase().replaceAll(/[\s-&/,]/gi, "");
 
   if (!/^[a-z]+$/g.test(processed)) throw new Error(`Tricky name: ${name}`);
 
