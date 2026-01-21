@@ -1,4 +1,4 @@
-import type { StopGtfsIdMappingMetadata } from "../../../src/data/third-party-id-mapping-types.js";
+import type { StopGtfsIdMappingMetadata } from "../../../src/third-party-id-mapping-types.js";
 import { ThirdPartyIdMapping } from "./third-party-id-mapping.js";
 
 export class StopGtfsIdsMapping extends ThirdPartyIdMapping<StopGtfsIdMappingMetadata> {

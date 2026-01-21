@@ -1,4 +1,4 @@
-import type { StopGtfsIdMapping } from "./third-party-id-mapping-types.js";
+import type { StopGtfsIdMapping } from "../third-party-id-mapping-types.js";
 
 export const stopGtfsIds: StopGtfsIdMapping = {
   // Aircraft

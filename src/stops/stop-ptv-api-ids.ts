@@ -1,4 +1,4 @@
-import type { StopPtvApiIdMapping } from "./third-party-id-mapping-types.js";
+import type { StopPtvApiIdMapping } from "../third-party-id-mapping-types.js";
 
 export const stopPtvApiIds: StopPtvApiIdMapping = {
   // Aircraft

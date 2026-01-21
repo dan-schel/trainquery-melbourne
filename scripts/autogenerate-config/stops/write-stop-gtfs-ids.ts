@@ -1,4 +1,4 @@
-import type { StopGtfsIdMappingMetadata } from "../../../src/data/third-party-id-mapping-types.js";
+import type { StopGtfsIdMappingMetadata } from "../../../src/third-party-id-mapping-types.js";
 import type { AutogenerationContext } from "../autogeneration-context.js";
 import {
   assignPositionId,
