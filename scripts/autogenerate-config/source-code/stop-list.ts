@@ -49,8 +49,8 @@ export class StopList {
 
     return (
       `import { type StopConfig } from "corequery";\n` +
-      `import * as stop from "../ids/stop-ids.js";\n` +
-      `import * as position from "../ids/stop-position-ids.js";\n` +
+      `import * as stop from "./stop-ids.js";\n` +
+      `import * as position from "./stop-position-ids.js";\n` +
       `\n` +
       `${entries}\n`
     );

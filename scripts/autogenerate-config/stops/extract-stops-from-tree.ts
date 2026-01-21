@@ -109,7 +109,7 @@ export function platformSortOrder(
   return numberWiseSort(a.platformCode, b.platformCode);
 }
 
-export function parsePtvApiId(station: StopsCsvTreeNode): string {
+function parsePtvApiId(station: StopsCsvTreeNode): string {
   const stopName = station.stop_name;
 
   const urls = station.children

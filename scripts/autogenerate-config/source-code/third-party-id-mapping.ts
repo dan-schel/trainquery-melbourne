@@ -62,7 +62,7 @@ export abstract class ThirdPartyIdMapping<T> {
       .join("\n\n");
 
     return (
-      `import type { ${dataTypeName} } from "./third-party-id-mapping-types.js";\n` +
+      `import type { ${dataTypeName} } from "../third-party-id-mapping-types.js";\n` +
       `\n` +
       `export const ${constantName}: ${dataTypeName} = {\n` +
       `${entriesStr}\n` +

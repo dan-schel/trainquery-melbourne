@@ -5,14 +5,14 @@ import { IdList } from "./source-code/id-list.js";
 import fsp from "fs/promises";
 import { parseGtfs } from "./gtfs/parse-gtfs.js";
 
-const STOP_IDS_PATH = "./src/ids/stop-ids.ts";
-const LINE_IDS_PATH = "./src/ids/line-ids.ts";
-const ROUTE_IDS_PATH = "./src/ids/route-ids.ts";
-const STOP_POSITION_IDS_PATH = "./src/ids/stop-position-ids.ts";
+const STOP_IDS_PATH = "./src/stops/stop-ids.ts";
+const LINE_IDS_PATH = "./src/lines/line-ids.ts";
+const ROUTE_IDS_PATH = "./src/lines/route-ids.ts";
+const STOP_POSITION_IDS_PATH = "./src/stops/stop-position-ids.ts";
 
-const STOPS_PATH = "./src/data/stops.ts";
-const STOP_GTFS_IDS_PATH = "./src/data/stop-gtfs-ids.ts";
-const STOP_PTV_API_IDS_PATH = "./src/data/stop-ptv-api-ids.ts";
+const STOPS_PATH = "./src/stops/stops.ts";
+const STOP_GTFS_IDS_PATH = "./src/stops/stop-gtfs-ids.ts";
+const STOP_PTV_API_IDS_PATH = "./src/stops/stop-ptv-api-ids.ts";
 
 async function main() {
   const checkMode = process.argv.includes("--check");
