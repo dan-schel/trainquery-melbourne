@@ -42,8 +42,10 @@ function createMetadata(
 }
 
 function createComment(gtfsId: ParsedGtfsId): string | null {
-  if (gtfsId.type === "parent") return "Parent";
-  if (gtfsId.type === "replacement-bus") return "Replacement bus";
-  if (gtfsId.platformCode != null) return `Platform ${gtfsId.platformCode}`;
-  return null;
+  const subfeeds = gtfsId.subfeeds.join(" and ");
+
+  if (gtfsId.type === "parent") return `Parent (${subfeeds})`;
+  if (gtfsId.type === "replacement-bus") return `Replacement bus (${subfeeds})`;
+
+  return `Platform ${gtfsId.platformCode ?? "?"} (${subfeeds})`;
 }
