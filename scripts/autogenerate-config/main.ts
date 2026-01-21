@@ -20,16 +20,26 @@ const LINE_GTFS_IDS_PATH = "./src/lines/line-gtfs-ids.ts";
 async function main() {
   const checkMode = process.argv.includes("--check");
 
+  console.log("Downloading/parsing GTFS data...");
+
+  const gtfsData = await parseGtfs(env.RELAY_KEY);
+
+  console.log("Reading ID files...");
+
   const ctx = new AutogenerationContext(
     checkMode,
-    await parseGtfs(env.RELAY_KEY),
+    gtfsData,
     IdList.fromCode(await fsp.readFile(STOP_IDS_PATH, "utf-8")),
     IdList.fromCode(await fsp.readFile(STOP_POSITION_IDS_PATH, "utf-8")),
     IdList.fromCode(await fsp.readFile(LINE_IDS_PATH, "utf-8")),
     IdList.fromCode(await fsp.readFile(ROUTE_IDS_PATH, "utf-8")),
   );
 
+  console.log("Generating config...");
+
   autogenerateConfig(ctx);
+
+  console.log("Outputting config...");
 
   await output(STOP_IDS_PATH, ctx.stopIds.toCode(), checkMode);
   await output(STOP_POSITION_IDS_PATH, ctx.positionIds.toCode(), checkMode);
@@ -42,6 +52,8 @@ async function main() {
 
   await output(LINES_PATH, ctx.lines.toCode(ctx), checkMode);
   await output(LINE_GTFS_IDS_PATH, ctx.lineGtfsIds.toCode(ctx), checkMode);
+
+  console.log("✅ Done!");
 }
 
 async function output(filePath: string, content: string, checkMode: boolean) {

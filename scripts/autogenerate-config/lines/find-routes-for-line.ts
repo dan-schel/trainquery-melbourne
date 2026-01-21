@@ -35,9 +35,8 @@ function findUniqueStoppingPatterns(
   const stoppingPatterns = new Map<string, number[]>();
 
   for (const trip of matchingTrips) {
-    const stopIds = ctx.gtfsData[subfeed].stopTimes
-      .filter((st) => st.trip_id === trip.trip_id)
-      .sort((a, b) => a.stop_sequence - b.stop_sequence)
+    const stopIds = ctx.gtfsData[subfeed].stopTimesIndexed
+      .forTrip(trip.trip_id)
       .map((x) => ctx.stopGtfsIds.require(x.stop_id).value.stopId);
 
     const hashKey = stopIds.map((x) => x.toFixed()).join(",");
