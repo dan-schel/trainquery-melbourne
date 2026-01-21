@@ -1,5 +1,6 @@
 import { AutogenerationContext } from "./autogeneration-context.js";
 import { parseLines } from "./lines/parse-lines.js";
+import { writeLineGtfsIds } from "./lines/write-line-gtfs-ids.js";
 import { writeLines } from "./lines/write-lines.js";
 import { assignPositionIds } from "./stops/assign-position-ids.js";
 import { assignUrlPaths } from "./stops/assign-url-paths.js";
@@ -23,4 +24,5 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
   const linesWithIds = syncIds(ctx.lineIds, lines);
 
   writeLines(ctx, linesWithIds);
+  writeLineGtfsIds(ctx, linesWithIds);
 }

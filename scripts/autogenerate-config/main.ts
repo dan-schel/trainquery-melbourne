@@ -15,6 +15,7 @@ const STOP_GTFS_IDS_PATH = "./src/stops/stop-gtfs-ids.ts";
 const STOP_PTV_API_IDS_PATH = "./src/stops/stop-ptv-api-ids.ts";
 
 const LINES_PATH = "./src/lines/lines.ts";
+const LINE_GTFS_IDS_PATH = "./src/lines/line-gtfs-ids.ts";
 
 async function main() {
   const checkMode = process.argv.includes("--check");
@@ -40,6 +41,7 @@ async function main() {
   await output(STOP_PTV_API_IDS_PATH, ctx.stopPtvApiIds.toCode(), checkMode);
 
   await output(LINES_PATH, ctx.lines.toCode(), checkMode);
+  await output(LINE_GTFS_IDS_PATH, ctx.lineGtfsIds.toCode(), checkMode);
 }
 
 async function output(filePath: string, content: string, checkMode: boolean) {

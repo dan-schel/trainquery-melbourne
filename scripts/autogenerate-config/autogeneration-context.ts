@@ -1,5 +1,6 @@
 import { type GtfsData } from "./gtfs/read-gtfs.js";
 import { IdList } from "./source-code/id-list.js";
+import { LineGtfsIdsMapping } from "./source-code/line-gtfs-ids-mapping.js";
 import { LineList } from "./source-code/line-list.js";
 import { StopGtfsIdsMapping } from "./source-code/stop-gtfs-ids-mapping.js";
 import { StopList } from "./source-code/stop-list.js";
@@ -11,6 +12,7 @@ export class AutogenerationContext {
   readonly stopPtvApiIds: StopPtvApiIdsMapping;
 
   readonly lines: LineList;
+  readonly lineGtfsIds: LineGtfsIdsMapping;
 
   constructor(
     readonly checkMode: boolean,
@@ -25,5 +27,6 @@ export class AutogenerationContext {
     this.stopPtvApiIds = new StopPtvApiIdsMapping();
 
     this.lines = new LineList();
+    this.lineGtfsIds = new LineGtfsIdsMapping();
   }
 }
