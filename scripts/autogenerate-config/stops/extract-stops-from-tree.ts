@@ -1,3 +1,4 @@
+import { isPresent } from "../utils/is-present.js";
 import { numberWiseSort } from "../utils/number-wise-sort.js";
 import {
   type StopsCsvTree,
@@ -71,10 +72,6 @@ function parseGtfsIds(station: StopsCsvTreeNode): ParsedGtfsId[] {
   }));
 
   return [primaryGtfsId, ...childGtfsIds].sort((a, b) => compareGtfsIds(a, b));
-}
-
-function isPresent(str: string | null | undefined): str is string {
-  return str != null && str.length > 0;
 }
 
 function compareGtfsIds(a: ParsedGtfsId, b: ParsedGtfsId): number {

@@ -1,3 +1,4 @@
+import { isPresent } from "../utils/is-present.js";
 import type { StopsCsvTree, StopsCsvTreeNode } from "./build-stops-csv-tree.js";
 
 export function mergeRootsOfAllSubfeeds(
@@ -40,13 +41,9 @@ function mergeLikeNodes(
 }
 
 function selectBetterNode(a: StopsCsvTreeNode, b: StopsCsvTreeNode) {
-  function hasPlatformCode(node: StopsCsvTreeNode) {
-    return node.platform_code != null && node.platform_code.length > 0;
-  }
-
   // Prefer nodes with a platform code defined.
-  if (hasPlatformCode(a) && !hasPlatformCode(b)) return a;
-  if (hasPlatformCode(b) && !hasPlatformCode(a)) return b;
+  if (isPresent(a.platform_code) && !isPresent(b.platform_code)) return a;
+  if (isPresent(b.platform_code) && !isPresent(a.platform_code)) return b;
 
   return a;
 }
