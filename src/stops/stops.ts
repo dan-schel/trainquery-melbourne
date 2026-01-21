@@ -1,6 +1,6 @@
 import { type StopConfig } from "corequery";
-import * as stop from "../ids/stop-ids.js";
-import * as position from "../ids/stop-position-ids.js";
+import * as stop from "./stop-ids.js";
+import * as position from "./stop-position-ids.js";
 
 export const AIRCRAFT: StopConfig = {
   id: stop.AIRCRAFT,
