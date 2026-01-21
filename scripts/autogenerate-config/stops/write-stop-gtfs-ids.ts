@@ -6,7 +6,10 @@ import {
   type WithPlatformIds,
 } from "./assign-position-ids.js";
 import type { WithUrlPath } from "./assign-url-paths.js";
-import type { ParsedGtfsId, ParsedStop } from "./extract-stops-from-tree.js";
+import type {
+  ParsedStopGtfsId,
+  ParsedStop,
+} from "./extract-stops-from-tree.js";
 
 type FullStop = WithPlatformIds<WithUrlPath<WithId<ParsedStop>>>;
 
@@ -30,7 +33,7 @@ export function writeStopGtfsIds(
 function createMetadata(
   ctx: AutogenerationContext,
   stop: FullStop,
-  gtfsId: ParsedGtfsId,
+  gtfsId: ParsedStopGtfsId,
 ): StopGtfsIdMappingMetadata {
   if (gtfsId.type === "replacement-bus") {
     return { stopId: stop.id, replacementBus: true };
@@ -42,7 +45,7 @@ function createMetadata(
   }
 }
 
-function createComment(gtfsId: ParsedGtfsId): string | null {
+function createComment(gtfsId: ParsedStopGtfsId): string | null {
   const subfeeds = gtfsId.subfeeds.join(" and ");
 
   if (gtfsId.type === "parent") return `Parent (${subfeeds})`;

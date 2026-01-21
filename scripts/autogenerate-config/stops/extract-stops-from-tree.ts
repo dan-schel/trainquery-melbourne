@@ -9,11 +9,11 @@ import {
 
 const replacementBusCode = "Replacement bus";
 
-type ParsedPlatform = {
+type ParsedStopPlatform = {
   readonly platformCode: string;
 };
 
-export type ParsedGtfsId = {
+export type ParsedStopGtfsId = {
   readonly id: string;
   readonly type: "parent" | "train" | "replacement-bus";
   readonly platformCode: string | null;
@@ -24,8 +24,8 @@ export type ParsedStop = {
   readonly name: string;
   readonly latitude: number;
   readonly longitude: number;
-  readonly platforms: readonly ParsedPlatform[];
-  readonly gtfsIds: readonly ParsedGtfsId[];
+  readonly platforms: readonly ParsedStopPlatform[];
+  readonly gtfsIds: readonly ParsedStopGtfsId[];
   readonly ptvApiId: string;
 };
 
@@ -51,7 +51,7 @@ function parseStop(station: StopsCsvTreeNode): ParsedStop {
   };
 }
 
-function parsePlatforms(station: StopsCsvTreeNode): ParsedPlatform[] {
+function parsePlatforms(station: StopsCsvTreeNode): ParsedStopPlatform[] {
   type TreeNodeWithPlatformCode = StopsCsvTreeNode & { platform_code: string };
 
   return station.children
@@ -61,15 +61,15 @@ function parsePlatforms(station: StopsCsvTreeNode): ParsedPlatform[] {
     .sort((a, b) => numberWiseSort(a.platformCode, b.platformCode));
 }
 
-function parseGtfsIds(station: StopsCsvTreeNode): ParsedGtfsId[] {
-  const primaryGtfsId: ParsedGtfsId = {
+function parseGtfsIds(station: StopsCsvTreeNode): ParsedStopGtfsId[] {
+  const primaryGtfsId: ParsedStopGtfsId = {
     id: station.stop_id,
     type: "parent",
     platformCode: null,
     subfeeds: station.subfeeds,
   };
 
-  const childGtfsIds: ParsedGtfsId[] = station.children.map((c) => ({
+  const childGtfsIds: ParsedStopGtfsId[] = station.children.map((c) => ({
     id: c.stop_id,
     type: c.platform_code === replacementBusCode ? "replacement-bus" : "train",
     platformCode:
@@ -82,7 +82,7 @@ function parseGtfsIds(station: StopsCsvTreeNode): ParsedGtfsId[] {
   return [primaryGtfsId, ...childGtfsIds].sort((a, b) => compareGtfsIds(a, b));
 }
 
-function compareGtfsIds(a: ParsedGtfsId, b: ParsedGtfsId): number {
+function compareGtfsIds(a: ParsedStopGtfsId, b: ParsedStopGtfsId): number {
   // Always sort "parent", before "train", before "replacement-bus".
   const typeOrder = { "parent": 0, "train": 1, "replacement-bus": 2 };
   const typeDiff = typeOrder[a.type] - typeOrder[b.type];
@@ -103,8 +103,8 @@ function compareGtfsIds(a: ParsedGtfsId, b: ParsedGtfsId): number {
 }
 
 export function platformSortOrder(
-  a: ParsedPlatform,
-  b: ParsedPlatform,
+  a: ParsedStopPlatform,
+  b: ParsedStopPlatform,
 ): number {
   return numberWiseSort(a.platformCode, b.platformCode);
 }
