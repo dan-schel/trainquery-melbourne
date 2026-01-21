@@ -15,6 +15,12 @@ const customRules = {
 
     // Warn about non-null assertions.
     "@typescript-eslint/no-non-null-assertion": "warn",
+
+    // Warn about relying on truthy/falsy values.
+    "@typescript-eslint/strict-boolean-expressions": [
+      "warn",
+      { allowString: false, allowNumber: false, allowNullableObject: false },
+    ],
   },
 };
 
@@ -23,7 +29,14 @@ export default tseslint.config(
     ignores: ["node_modules", "local", "coverage"],
   },
   eslint.configs.recommended,
-  ...tseslint.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
   prettier,
   customRules,
+  {
+    languageOptions: {
+      parserOptions: {
+        project: "./tsconfig.eslint.json",
+      },
+    },
+  },
 );

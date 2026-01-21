@@ -8,7 +8,7 @@ export async function extractZip(
 
   await new Promise<void>((resolve, reject) => {
     zip.extractAllToAsync(location, true, false, (error) => {
-      if (error) {
+      if (error != null) {
         reject(error);
       } else {
         resolve();

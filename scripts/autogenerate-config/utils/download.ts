@@ -23,8 +23,10 @@ export async function download(
     );
 
     stream.pipe(destination);
-    stream.on("error", () => reject());
-    destination.on("error", () => reject());
+    stream.on("error", () => reject(new Error(`Failed to download "${url}".`)));
+    destination.on("error", () =>
+      reject(new Error(`Failed to download "${url}".`)),
+    );
     destination.on("finish", resolve);
   });
 }

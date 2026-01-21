@@ -47,4 +47,7 @@ async function main() {
   await trainquery.start();
 }
 
-main();
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

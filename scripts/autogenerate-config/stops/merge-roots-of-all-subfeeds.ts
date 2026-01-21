@@ -20,7 +20,7 @@ function mergeTrees(a: StopsCsvTree, b: StopsCsvTree): StopsCsvTree {
   }
   for (const node of b) {
     const existingNode = map.get(node.stop_id);
-    if (existingNode) {
+    if (existingNode != null) {
       const mergedNode = mergeLikeNodes(existingNode, node);
       map.set(node.stop_id, mergedNode);
     } else {
