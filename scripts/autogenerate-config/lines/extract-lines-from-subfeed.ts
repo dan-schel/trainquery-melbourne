@@ -2,6 +2,7 @@ import { groupBy } from "@dan-schel/js-utils";
 import type { AutogenerationContext } from "../autogeneration-context.js";
 import type { RoutesCsv, RoutesCsvRow } from "../gtfs/csv-schemas.js";
 import type { Subfeed } from "../utils/subfeed.js";
+import { findRoutesForLine, type ParsedRoute } from "./find-routes-for-line.js";
 
 export type ParsedLineGtfsId = {
   readonly id: string;
@@ -12,6 +13,7 @@ export type ParsedLine = {
   readonly name: string;
   readonly shortName: string;
   readonly gtfsIds: readonly ParsedLineGtfsId[];
+  readonly routes: readonly ParsedRoute[];
 };
 
 type GroupedLine = {
@@ -38,10 +40,13 @@ export function extractLinesFromSubfeed(
       });
     }
 
+    const routes = findRoutesForLine(ctx, subfeed, line.primary.route_id);
+
     return {
       name: line.primary.route_long_name,
       shortName: line.primary.route_short_name,
       gtfsIds: gtfsIds,
+      routes,
     };
   });
 

@@ -2,9 +2,9 @@ import { groupBy } from "@dan-schel/js-utils";
 import type { AutogenerationContext } from "../autogeneration-context.js";
 
 type MappingEntry<T> = {
-  value: T;
-  group: string;
-  comment: string | null;
+  readonly value: T;
+  readonly group: string;
+  readonly comment: string | null;
 };
 type IdAndValue<T> = [string, MappingEntry<T>];
 
@@ -28,6 +28,16 @@ export abstract class ThirdPartyIdMapping<T> {
 
     this._mapping.set(id, { value, group, comment });
     this._groupSortOrder.set(group, groupSortOrder);
+  }
+
+  get(id: string): MappingEntry<T> | null {
+    return this._mapping.get(id) ?? null;
+  }
+
+  require(id: string): MappingEntry<T> {
+    const entry = this._mapping.get(id);
+    if (entry == null) throw new Error(`No mapping for "${id}" found.`);
+    return entry;
   }
 
   protected abstract _formatValue(ctx: AutogenerationContext, value: T): string;

@@ -13,7 +13,16 @@ export function writeLines(ctx: AutogenerationContext, lines: FullLine[]) {
       code: null,
       tags: [],
       urlPath: line.urlPath,
-      routes: [],
+      routes: line.routes.map((route) => ({
+        id: 1,
+        name: route.name,
+        tags: [],
+        stops: route.stops.map((s) => ({
+          stopId: s.stopId,
+          type: "regular",
+        })),
+        color: null,
+      })),
       diagram: { entries: [] },
     });
   }
