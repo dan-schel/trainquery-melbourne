@@ -1,4 +1,9 @@
-import { type StopsCsv, stopsCsvSchema } from "./csv-schemas.js";
+import {
+  type RoutesCsv,
+  routesCsvSchema,
+  type StopsCsv,
+  stopsCsvSchema,
+} from "./csv-schemas.js";
 import { readCsv } from "../utils/read-csv.js";
 import path from "path";
 import { type GtfsDirectories } from "./with-gtfs-files.js";
@@ -10,6 +15,7 @@ export type GtfsData = {
 
 export type GtfsFeed = {
   readonly stops: StopsCsv;
+  readonly routes: RoutesCsv;
 };
 
 export async function readGtfs(dirs: GtfsDirectories): Promise<GtfsData> {
@@ -22,5 +28,6 @@ export async function readGtfs(dirs: GtfsDirectories): Promise<GtfsData> {
 async function readFeed(dir: string): Promise<GtfsFeed> {
   return {
     stops: await readCsv(path.join(dir, "stops.txt"), stopsCsvSchema),
+    routes: await readCsv(path.join(dir, "routes.txt"), routesCsvSchema),
   };
 }

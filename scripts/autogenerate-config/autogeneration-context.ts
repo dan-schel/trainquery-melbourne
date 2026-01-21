@@ -13,9 +13,9 @@ export class AutogenerationContext {
     readonly checkMode: boolean,
     readonly gtfsData: GtfsData,
     readonly stopIds: IdList,
+    readonly positionIds: IdList,
     readonly lineIds: IdList,
     readonly routeIds: IdList,
-    readonly positionIds: IdList,
   ) {
     this.stops = new StopList();
     this.stopGtfsIds = new StopGtfsIdsMapping();

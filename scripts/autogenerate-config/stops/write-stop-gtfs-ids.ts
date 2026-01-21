@@ -1,12 +1,12 @@
 import type { StopGtfsIdMappingMetadata } from "../../../src/third-party-id-mapping-types.js";
 import type { AutogenerationContext } from "../autogeneration-context.js";
+import type { WithId } from "../utils/sync-ids.js";
 import {
   assignPositionId,
   type WithPlatformIds,
 } from "./assign-position-ids.js";
 import type { WithUrlPath } from "./assign-url-paths.js";
 import type { ParsedGtfsId, ParsedStop } from "./extract-stops-from-tree.js";
-import type { WithId } from "./sync-stop-ids.js";
 
 type FullStop = WithPlatformIds<WithUrlPath<WithId<ParsedStop>>>;
 

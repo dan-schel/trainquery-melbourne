@@ -1,6 +1,8 @@
 import z from "zod";
 import { floatStringSchema } from "../utils/schema-utils.js";
 
+export type StopsCsvRow = z.infer<typeof stopsCsvSchema>;
+export type StopsCsv = readonly StopsCsvRow[];
 export const stopsCsvSchema = z
   .object({
     stop_id: z.string(),
@@ -16,7 +18,16 @@ export const stopsCsvSchema = z
   })
   .readonly();
 
-export type StopsCsvRow = z.infer<typeof stopsCsvSchema>;
-export type StopsCsv = readonly StopsCsvRow[];
-
-// Add other schemas for the other files here as needed.
+export type RoutesCsvRow = z.infer<typeof routesCsvSchema>;
+export type RoutesCsv = readonly RoutesCsvRow[];
+export const routesCsvSchema = z
+  .object({
+    route_id: z.string(),
+    agency_id: z.string(),
+    route_short_name: z.string(),
+    route_long_name: z.string(),
+    route_type: z.string(),
+    route_color: z.string(),
+    route_text_color: z.string(),
+  })
+  .readonly();

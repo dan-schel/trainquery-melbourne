@@ -6,9 +6,9 @@ import fsp from "fs/promises";
 import { parseGtfs } from "./gtfs/parse-gtfs.js";
 
 const STOP_IDS_PATH = "./src/stops/stop-ids.ts";
+const STOP_POSITION_IDS_PATH = "./src/stops/stop-position-ids.ts";
 const LINE_IDS_PATH = "./src/lines/line-ids.ts";
 const ROUTE_IDS_PATH = "./src/lines/route-ids.ts";
-const STOP_POSITION_IDS_PATH = "./src/stops/stop-position-ids.ts";
 
 const STOPS_PATH = "./src/stops/stops.ts";
 const STOP_GTFS_IDS_PATH = "./src/stops/stop-gtfs-ids.ts";
@@ -21,17 +21,17 @@ async function main() {
     checkMode,
     await parseGtfs(env.RELAY_KEY),
     IdList.fromCode(await fsp.readFile(STOP_IDS_PATH, "utf-8")),
+    IdList.fromCode(await fsp.readFile(STOP_POSITION_IDS_PATH, "utf-8")),
     IdList.fromCode(await fsp.readFile(LINE_IDS_PATH, "utf-8")),
     IdList.fromCode(await fsp.readFile(ROUTE_IDS_PATH, "utf-8")),
-    IdList.fromCode(await fsp.readFile(STOP_POSITION_IDS_PATH, "utf-8")),
   );
 
   autogenerateConfig(ctx);
 
   await output(STOP_IDS_PATH, ctx.stopIds.toCode(), checkMode);
+  await output(STOP_POSITION_IDS_PATH, ctx.positionIds.toCode(), checkMode);
   await output(LINE_IDS_PATH, ctx.lineIds.toCode(), checkMode);
   await output(ROUTE_IDS_PATH, ctx.routeIds.toCode(), checkMode);
-  await output(STOP_POSITION_IDS_PATH, ctx.positionIds.toCode(), checkMode);
 
   await output(STOPS_PATH, ctx.stops.toCode(), ctx.checkMode);
   await output(STOP_GTFS_IDS_PATH, ctx.stopGtfsIds.toCode(), checkMode);
