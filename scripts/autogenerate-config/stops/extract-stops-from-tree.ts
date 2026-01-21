@@ -64,7 +64,10 @@ function parseGtfsIds(station: StopsCsvTreeNode): ParsedGtfsId[] {
   const childGtfsIds: ParsedGtfsId[] = station.children.map((c) => ({
     id: c.stop_id,
     type: c.platform_code === replacementBusCode ? "replacement-bus" : "train",
-    platformCode: isPresent(c.platform_code) ? c.platform_code : null,
+    platformCode:
+      isPresent(c.platform_code) && c.platform_code !== replacementBusCode
+        ? c.platform_code
+        : null,
   }));
 
   return [primaryGtfsId, ...childGtfsIds].sort((a, b) => compareGtfsIds(a, b));

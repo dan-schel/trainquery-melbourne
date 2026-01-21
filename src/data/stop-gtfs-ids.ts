@@ -5,14 +5,14 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:ACF": { stopId: 1, positionId: null }, // Parent
   "13738": { stopId: 1, positionId: 51 }, // Platform 1
   "13739": { stopId: 1, positionId: 52 }, // Platform 2
-  "26100": { stopId: 1, positionId: 86 }, // Replacement bus
+  "26100": { stopId: 1, positionId: null }, // Replacement bus
 
   // Alamein
   "vic:rail:ALM": { stopId: 2, positionId: null }, // Parent
   "11197": { stopId: 2, positionId: 51 }, // Platform 1
   "vic:rail:ALM_ConX": { stopId: 2, positionId: null },
   "vic:rail:ALM_EN1": { stopId: 2, positionId: null },
-  "26101": { stopId: 2, positionId: 86 }, // Replacement bus
+  "26101": { stopId: 2, positionId: null }, // Replacement bus
 
   // Albion
   "vic:rail:ALB": { stopId: 3, positionId: null }, // Parent
@@ -27,12 +27,12 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:ALP": { stopId: 5, positionId: null }, // Parent
   "13750": { stopId: 5, positionId: 51 }, // Platform 1
   "13751": { stopId: 5, positionId: 52 }, // Platform 2
-  "26103": { stopId: 5, positionId: 86 }, // Replacement bus
+  "26103": { stopId: 5, positionId: null }, // Replacement bus
 
   // Altona
   "vic:rail:ALT": { stopId: 6, positionId: null }, // Parent
   "13742": { stopId: 6, positionId: 51 }, // Platform 1
-  "26104": { stopId: 6, positionId: 86 }, // Replacement bus
+  "26104": { stopId: 6, positionId: null }, // Replacement bus
 
   // Anstey
   "vic:rail:ASY": { stopId: 7, positionId: null }, // Parent
@@ -100,7 +100,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:ASP_EN2": { stopId: 13, positionId: null },
   "vic:rail:ASP_EN3": { stopId: 13, positionId: null },
   "vic:rail:ASP_PR1": { stopId: 13, positionId: null },
-  "26109": { stopId: 13, positionId: 86 }, // Replacement bus
+  "26109": { stopId: 13, positionId: null }, // Replacement bus
 
   // Auburn
   "vic:rail:AUB": { stopId: 14, positionId: null }, // Parent
@@ -131,7 +131,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:BCV_EN2": { stopId: 18, positionId: null },
   "vic:rail:BCV_EN3": { stopId: 18, positionId: null },
   "vic:rail:BCV_EN4": { stopId: 18, positionId: null },
-  "26111": { stopId: 18, positionId: 86 }, // Replacement bus
+  "26111": { stopId: 18, positionId: null }, // Replacement bus
 
   // Ballan
   "vic:rail:BLN": { stopId: 19, positionId: null }, // Parent
@@ -159,7 +159,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:BFD": { stopId: 24, positionId: null }, // Parent
   "12176": { stopId: 24, positionId: 51 }, // Platform 1
   "12177": { stopId: 24, positionId: 52 }, // Platform 2
-  "26115": { stopId: 24, positionId: 86 }, // Replacement bus
+  "26115": { stopId: 24, positionId: null }, // Replacement bus
 
   // Beaufort
   "vic:rail:BET": { stopId: 25, positionId: null }, // Parent
@@ -179,7 +179,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:BEL_EN1": { stopId: 27, positionId: null },
   "vic:rail:BEL_EN2": { stopId: 27, positionId: null },
   "vic:rail:BEL_PR1": { stopId: 27, positionId: null },
-  "26117": { stopId: 27, positionId: 86 }, // Replacement bus
+  "26117": { stopId: 27, positionId: null }, // Replacement bus
 
   // Benalla
   "vic:rail:BXA": { stopId: 28, positionId: null }, // Parent
@@ -200,7 +200,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "12178": { stopId: 31, positionId: 51 }, // Platform 1
   "12179": { stopId: 31, positionId: 52 }, // Platform 2
   "22251": { stopId: 31, positionId: null },
-  "26119": { stopId: 31, positionId: 86 }, // Replacement bus
+  "26119": { stopId: 31, positionId: null }, // Replacement bus
 
   // Birregurra
   "vic:rail:BGE": { stopId: 32, positionId: null }, // Parent
@@ -232,7 +232,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:BBN_PR1": { stopId: 34, positionId: null },
   "vic:rail:BBN_PR2": { stopId: 34, positionId: null },
   "vic:rail:BBN_TX1": { stopId: 34, positionId: null },
-  "26121": { stopId: 34, positionId: 86 }, // Replacement bus
+  "26121": { stopId: 34, positionId: null }, // Replacement bus
 
   // Bonbeach
   "vic:rail:BON": { stopId: 35, positionId: null }, // Parent
@@ -254,7 +254,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:BON_LI2": { stopId: 35, positionId: null },
   "vic:rail:BON_PR1": { stopId: 35, positionId: null },
   "vic:rail:BON_PR2": { stopId: 35, positionId: null },
-  "26122": { stopId: 35, positionId: 86 }, // Replacement bus
+  "26122": { stopId: 35, positionId: null }, // Replacement bus
 
   // Boronia
   "vic:rail:BOR": { stopId: 36, positionId: null }, // Parent
@@ -277,7 +277,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:BOX_PR2": { stopId: 37, positionId: null },
   "vic:rail:BOX_PR3": { stopId: 37, positionId: null },
   "vic:rail:BOX_TX1": { stopId: 37, positionId: null },
-  "26124": { stopId: 37, positionId: 86 }, // Replacement bus
+  "26124": { stopId: 37, positionId: null }, // Replacement bus
 
   // Brighton Beach
   "vic:rail:BBH": { stopId: 38, positionId: null }, // Parent
@@ -318,7 +318,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:BLY_EN2": { stopId: 43, positionId: null },
   "vic:rail:BLY_EN3": { stopId: 43, positionId: null },
   "vic:rail:BLY_PR": { stopId: 43, positionId: null },
-  "26128": { stopId: 43, positionId: 86 }, // Replacement bus
+  "26128": { stopId: 43, positionId: null }, // Replacement bus
 
   // Burwood
   "vic:rail:BWD": { stopId: 44, positionId: null }, // Parent
@@ -329,7 +329,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:BWD_EN2": { stopId: 44, positionId: null },
   "vic:rail:BWD_PR1": { stopId: 44, positionId: null },
   "vic:rail:BWD_PR2": { stopId: 44, positionId: null },
-  "26129": { stopId: 44, positionId: 86 }, // Replacement bus
+  "26129": { stopId: 44, positionId: null }, // Replacement bus
 
   // Camberwell
   "vic:rail:CAM": { stopId: 45, positionId: null }, // Parent
@@ -346,7 +346,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:CAM_EN4": { stopId: 45, positionId: null },
   "vic:rail:CAM_PR1": { stopId: 45, positionId: null },
   "vic:rail:CAM_TX1": { stopId: 45, positionId: null },
-  "26130": { stopId: 45, positionId: 86 }, // Replacement bus
+  "26130": { stopId: 45, positionId: null }, // Replacement bus
 
   // Camperdown
   "vic:rail:CPD": { stopId: 46, positionId: null }, // Parent
@@ -362,7 +362,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:CDA": { stopId: 48, positionId: null }, // Parent
   "26501": { stopId: 48, positionId: 51 }, // Platform 1
   "26502": { stopId: 48, positionId: 52 }, // Platform 2
-  "26132": { stopId: 48, positionId: 86 }, // Replacement bus
+  "26132": { stopId: 48, positionId: null }, // Replacement bus
 
   // Carnegie
   "vic:rail:CNE": { stopId: 49, positionId: null }, // Parent
@@ -376,7 +376,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:CNE_EN2": { stopId: 49, positionId: null },
   "vic:rail:CNE_LI1": { stopId: 49, positionId: null },
   "vic:rail:CNE_PR1": { stopId: 49, positionId: null },
-  "26133": { stopId: 49, positionId: 86 }, // Replacement bus
+  "26133": { stopId: 49, positionId: null }, // Replacement bus
 
   // Caroline Springs
   "vic:rail:RVH": { stopId: 50, positionId: null }, // Parent
@@ -413,7 +413,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:CFD_KR1": { stopId: 53, positionId: null },
   "vic:rail:CFD_PR1": { stopId: 53, positionId: null },
   "vic:rail:CFD_TX1": { stopId: 53, positionId: null },
-  "26135": { stopId: 53, positionId: 86 }, // Replacement bus
+  "26135": { stopId: 53, positionId: null }, // Replacement bus
 
   // Chatham
   "vic:rail:CHM": { stopId: 54, positionId: null }, // Parent
@@ -438,7 +438,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:CSA_LI1": { stopId: 55, positionId: null },
   "vic:rail:CSA_LI2": { stopId: 55, positionId: null },
   "vic:rail:CSA_PR1": { stopId: 55, positionId: null },
-  "26137": { stopId: 55, positionId: 86 }, // Replacement bus
+  "26137": { stopId: 55, positionId: null }, // Replacement bus
 
   // Cheltenham
   "vic:rail:CTM": { stopId: 56, positionId: null }, // Parent
@@ -452,7 +452,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:CTM_LI1": { stopId: 56, positionId: null },
   "vic:rail:CTM_LI2": { stopId: 56, positionId: null },
   "vic:rail:CTM_PR1": { stopId: 56, positionId: null },
-  "26138": { stopId: 56, positionId: 86 }, // Replacement bus
+  "26138": { stopId: 56, positionId: null }, // Replacement bus
 
   // Chiltern
   "vic:rail:CHI": { stopId: 57, positionId: null }, // Parent
@@ -473,7 +473,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:CLA_EN1": { stopId: 59, positionId: null },
   "vic:rail:CLA_LI1": { stopId: 59, positionId: null },
   "vic:rail:CLA_PR1": { stopId: 59, positionId: null },
-  "26139": { stopId: 59, positionId: 86 }, // Replacement bus
+  "26139": { stopId: 59, positionId: null }, // Replacement bus
 
   // Clifton Hill
   "vic:rail:CHL": { stopId: 60, positionId: null }, // Parent
@@ -490,7 +490,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:CHL_EN5": { stopId: 60, positionId: null },
   "vic:rail:CHL_PR1": { stopId: 60, positionId: null },
   "vic:rail:CHL_PR2": { stopId: 60, positionId: null },
-  "26140": { stopId: 60, positionId: 86 }, // Replacement bus
+  "26140": { stopId: 60, positionId: null }, // Replacement bus
 
   // Clunes
   "vic:rail:CLU": { stopId: 61, positionId: null }, // Parent
@@ -522,7 +522,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:CWD_EN5": { stopId: 65, positionId: null },
   "vic:rail:CWD_EN6": { stopId: 65, positionId: null },
   "vic:rail:CWD_PR1": { stopId: 65, positionId: null },
-  "26142": { stopId: 65, positionId: 86 }, // Replacement bus
+  "26142": { stopId: 65, positionId: null }, // Replacement bus
 
   // Coolaroo
   "vic:rail:CLO": { stopId: 66, positionId: null }, // Parent
@@ -549,7 +549,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:CGB_PR1": { stopId: 68, positionId: null },
   "vic:rail:CGB_PR2": { stopId: 68, positionId: null },
   "vic:rail:CGB_TX1": { stopId: 68, positionId: null },
-  "26144": { stopId: 68, positionId: 86 }, // Replacement bus
+  "26144": { stopId: 68, positionId: null }, // Replacement bus
 
   // Cranbourne
   "vic:rail:CBE": { stopId: 69, positionId: null }, // Parent
@@ -560,7 +560,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:CBE_EN1": { stopId: 69, positionId: null },
   "vic:rail:CBE_PR1": { stopId: 69, positionId: null },
   "vic:rail:CBE_PR2": { stopId: 69, positionId: null },
-  "26145": { stopId: 69, positionId: 86 }, // Replacement bus
+  "26145": { stopId: 69, positionId: null }, // Replacement bus
 
   // Creswick
   "vic:rail:CWK": { stopId: 70, positionId: null }, // Parent
@@ -581,7 +581,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:CXT_EN5": { stopId: 72, positionId: null },
   "vic:rail:CXT_EN6": { stopId: 72, positionId: null },
   "vic:rail:CXT_EN7": { stopId: 72, positionId: null },
-  "26147": { stopId: 72, positionId: 86 }, // Replacement bus
+  "26147": { stopId: 72, positionId: null }, // Replacement bus
 
   // Croydon
   "vic:rail:CDN": { stopId: 73, positionId: null }, // Parent
@@ -614,13 +614,13 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:DNG_PR1": { stopId: 74, positionId: null },
   "vic:rail:DNG_PR2": { stopId: 74, positionId: null },
   "vic:rail:DNG_TX1": { stopId: 74, positionId: null },
-  "26149": { stopId: 74, positionId: 86 }, // Replacement bus
+  "26149": { stopId: 74, positionId: null }, // Replacement bus
 
   // Darebin
   "vic:rail:DBN": { stopId: 75, positionId: null }, // Parent
   "13752": { stopId: 75, positionId: 51 }, // Platform 1
   "13753": { stopId: 75, positionId: 52 }, // Platform 2
-  "26150": { stopId: 75, positionId: 86 }, // Replacement bus
+  "26150": { stopId: 75, positionId: null }, // Replacement bus
 
   // Darling
   "vic:rail:DLG": { stopId: 76, positionId: null }, // Parent
@@ -635,7 +635,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:DEN": { stopId: 78, positionId: null }, // Parent
   "13746": { stopId: 78, positionId: 51 }, // Platform 1
   "13747": { stopId: 78, positionId: 52 }, // Platform 2
-  "26152": { stopId: 78, positionId: 86 }, // Replacement bus
+  "26152": { stopId: 78, positionId: null }, // Replacement bus
 
   // Diamond Creek
   "vic:rail:DCK": { stopId: 79, positionId: null }, // Parent
@@ -648,7 +648,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:DCK_EN2": { stopId: 79, positionId: null },
   "vic:rail:DCK_EN3": { stopId: 79, positionId: null },
   "vic:rail:DCK_PR1": { stopId: 79, positionId: null },
-  "26153": { stopId: 79, positionId: 86 }, // Replacement bus
+  "26153": { stopId: 79, positionId: null }, // Replacement bus
 
   // Diggers Rest
   "vic:rail:DRT": { stopId: 80, positionId: null }, // Parent
@@ -675,7 +675,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:EAG": { stopId: 85, positionId: null }, // Parent
   "13756": { stopId: 85, positionId: 51 }, // Platform 1
   "13757": { stopId: 85, positionId: 52 }, // Platform 2
-  "26155": { stopId: 85, positionId: 86 }, // Replacement bus
+  "26155": { stopId: 85, positionId: null }, // Replacement bus
 
   // East Camberwell
   "vic:rail:ECM": { stopId: 86, positionId: null }, // Parent
@@ -691,7 +691,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:ECM_EN3": { stopId: 86, positionId: null },
   "vic:rail:ECM_EN4": { stopId: 86, positionId: null },
   "vic:rail:ECM_PR1": { stopId: 86, positionId: null },
-  "26156": { stopId: 86, positionId: 86 }, // Replacement bus
+  "26156": { stopId: 86, positionId: null }, // Replacement bus
 
   // East Malvern
   "vic:rail:EMV": { stopId: 87, positionId: null }, // Parent
@@ -702,7 +702,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:EPH": { stopId: 317, positionId: null }, // Parent
   "26506": { stopId: 317, positionId: 51 }, // Platform 1
   "26507": { stopId: 317, positionId: 52 }, // Platform 2
-  "26158": { stopId: 317, positionId: 86 }, // Replacement bus
+  "26158": { stopId: 317, positionId: null }, // Replacement bus
 
   // East Richmond
   "vic:rail:ERM": { stopId: 88, positionId: null }, // Parent
@@ -714,7 +714,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:ERM_EN3": { stopId: 88, positionId: null },
   "vic:rail:ERM_EN4": { stopId: 88, positionId: null },
   "vic:rail:ERM_EN5": { stopId: 88, positionId: null },
-  "26159": { stopId: 88, positionId: 86 }, // Replacement bus
+  "26159": { stopId: 88, positionId: null }, // Replacement bus
 
   // Echuca
   "vic:rail:ECH": { stopId: 89, positionId: null }, // Parent
@@ -740,7 +740,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:EDI_LI2": { stopId: 90, positionId: null },
   "vic:rail:EDI_PR1": { stopId: 90, positionId: null },
   "vic:rail:EDI_PR2": { stopId: 90, positionId: null },
-  "26160": { stopId: 90, positionId: 86 }, // Replacement bus
+  "26160": { stopId: 90, positionId: null }, // Replacement bus
 
   // Elmore
   "vic:rail:EME": { stopId: 91, positionId: null }, // Parent
@@ -754,7 +754,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:ELS_EN1": { stopId: 92, positionId: null },
   "vic:rail:ELS_EN2": { stopId: 92, positionId: null },
   "vic:rail:ELS_PR1": { stopId: 92, positionId: null },
-  "26161": { stopId: 92, positionId: 86 }, // Replacement bus
+  "26161": { stopId: 92, positionId: null }, // Replacement bus
 
   // Eltham
   "vic:rail:ELT": { stopId: 93, positionId: null }, // Parent
@@ -775,7 +775,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:ELT_PR3": { stopId: 93, positionId: null },
   "vic:rail:ELT_PR4": { stopId: 93, positionId: null },
   "vic:rail:ELT_TX1": { stopId: 93, positionId: null },
-  "26162": { stopId: 93, positionId: 86 }, // Replacement bus
+  "26162": { stopId: 93, positionId: null }, // Replacement bus
 
   // Epping
   "vic:rail:EPP": { stopId: 94, positionId: null }, // Parent
@@ -788,7 +788,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:EPP_PR3": { stopId: 94, positionId: null },
   "vic:rail:EPP_PR4": { stopId: 94, positionId: null },
   "vic:rail:EPP_TX1": { stopId: 94, positionId: null },
-  "26163": { stopId: 94, positionId: 86 }, // Replacement bus
+  "26163": { stopId: 94, positionId: null }, // Replacement bus
 
   // Epsom
   "vic:rail:EPM": { stopId: 95, positionId: null }, // Parent
@@ -810,7 +810,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:ESD_EN4": { stopId: 96, positionId: null },
   "vic:rail:ESD_PR1": { stopId: 96, positionId: null },
   "vic:rail:ESD_PR2": { stopId: 96, positionId: null },
-  "26164": { stopId: 96, positionId: 86 }, // Replacement bus
+  "26164": { stopId: 96, positionId: null }, // Replacement bus
 
   // Euroa
   "vic:rail:EOA": { stopId: 97, positionId: null }, // Parent
@@ -820,7 +820,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:FFD": { stopId: 98, positionId: null }, // Parent
   "13748": { stopId: 98, positionId: 51 }, // Platform 1
   "13749": { stopId: 98, positionId: 52 }, // Platform 2
-  "26165": { stopId: 98, positionId: 86 }, // Replacement bus
+  "26165": { stopId: 98, positionId: null }, // Replacement bus
 
   // Fawkner
   "vic:rail:FAK": { stopId: 99, positionId: null }, // Parent
@@ -846,7 +846,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:FGS_EN1": { stopId: 101, positionId: null },
   "vic:rail:FGS_EN2": { stopId: 101, positionId: null },
   "vic:rail:FGS_LII": { stopId: 101, positionId: null },
-  "26168": { stopId: 101, positionId: 86 }, // Replacement bus
+  "26168": { stopId: 101, positionId: null }, // Replacement bus
 
   // Flemington Bridge
   "vic:rail:FBD": { stopId: 102, positionId: null }, // Parent
@@ -918,7 +918,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:FSS_yDP2": { stopId: 104, positionId: null },
   "vic:rail:FSS_yEN1": { stopId: 104, positionId: null },
   "vic:rail:FSS_yEN2": { stopId: 104, positionId: null },
-  "26170": { stopId: 104, positionId: 86 }, // Replacement bus
+  "26170": { stopId: 104, positionId: null }, // Replacement bus
 
   // Footscray
   "vic:rail:FSY": { stopId: 105, positionId: null }, // Parent
@@ -960,7 +960,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:FSY_LI4": { stopId: 105, positionId: null },
   "vic:rail:FSY_PR1": { stopId: 105, positionId: null },
   "vic:rail:FSY_TX1": { stopId: 105, positionId: null },
-  "26171": { stopId: 105, positionId: 86 }, // Replacement bus
+  "26171": { stopId: 105, positionId: null }, // Replacement bus
 
   // Frankston
   "vic:rail:FKN": { stopId: 106, positionId: null }, // Parent
@@ -978,7 +978,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:FKN_EN2": { stopId: 106, positionId: null },
   "vic:rail:FKN_EN3": { stopId: 106, positionId: null },
   "vic:rail:FKN_PR1": { stopId: 106, positionId: null },
-  "26172": { stopId: 106, positionId: 86 }, // Replacement bus
+  "26172": { stopId: 106, positionId: null }, // Replacement bus
 
   // Gardenvale
   "vic:rail:GVE": { stopId: 107, positionId: null }, // Parent
@@ -1027,7 +1027,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:GWY_EN1": { stopId: 114, positionId: null },
   "vic:rail:GWY_PR1": { stopId: 114, positionId: null },
   "vic:rail:GWY_PR2": { stopId: 114, positionId: null },
-  "26177": { stopId: 114, positionId: 86 }, // Replacement bus
+  "26177": { stopId: 114, positionId: null }, // Replacement bus
 
   // Glenbervie
   "vic:rail:GBV": { stopId: 115, positionId: null }, // Parent
@@ -1045,7 +1045,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:GFE_DP3": { stopId: 116, positionId: null },
   "vic:rail:GFE_EN1": { stopId: 116, positionId: null },
   "vic:rail:GFE_EN2": { stopId: 116, positionId: null },
-  "26179": { stopId: 116, positionId: 86 }, // Replacement bus
+  "26179": { stopId: 116, positionId: null }, // Replacement bus
 
   // Glenroy
   "vic:rail:GRY": { stopId: 118, positionId: null }, // Parent
@@ -1064,7 +1064,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:GRY_PR1": { stopId: 118, positionId: null },
   "vic:rail:GRY_PR2": { stopId: 118, positionId: null },
   "vic:rail:GRY_PR3": { stopId: 118, positionId: null },
-  "26181": { stopId: 118, positionId: 86 }, // Replacement bus
+  "26181": { stopId: 118, positionId: null }, // Replacement bus
 
   // Goornong
   "vic:rail:GRG": { stopId: 119, positionId: null }, // Parent
@@ -1091,13 +1091,13 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:GRN_LI2": { stopId: 121, positionId: null },
   "vic:rail:GRN_PR1": { stopId: 121, positionId: null },
   "vic:rail:GRN_PR2": { stopId: 121, positionId: null },
-  "26183": { stopId: 121, positionId: 86 }, // Replacement bus
+  "26183": { stopId: 121, positionId: null }, // Replacement bus
 
   // Hallam
   "vic:rail:HLM": { stopId: 122, positionId: null }, // Parent
   "12182": { stopId: 122, positionId: 51 }, // Platform 1
   "12183": { stopId: 122, positionId: 52 }, // Platform 2
-  "26184": { stopId: 122, positionId: 86 }, // Replacement bus
+  "26184": { stopId: 122, positionId: null }, // Replacement bus
 
   // Hampton
   "vic:rail:HAM": { stopId: 123, positionId: null }, // Parent
@@ -1129,7 +1129,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:HWS_LI1": { stopId: 127, positionId: null },
   "vic:rail:HWS_PR1": { stopId: 127, positionId: null },
   "vic:rail:HWS_TX1": { stopId: 127, positionId: null },
-  "26189": { stopId: 127, positionId: 86 }, // Replacement bus
+  "26189": { stopId: 127, positionId: null }, // Replacement bus
 
   // Hawthorn
   "vic:rail:HAW": { stopId: 128, positionId: null }, // Parent
@@ -1145,7 +1145,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:HTD": { stopId: 130, positionId: null }, // Parent
   "12234": { stopId: 130, positionId: 51 }, // Platform 1
   "12233": { stopId: 130, positionId: 52 }, // Platform 2
-  "26191": { stopId: 130, positionId: 86 }, // Replacement bus
+  "26191": { stopId: 130, positionId: null }, // Replacement bus
 
   // Heathmont
   "vic:rail:HMT": { stopId: 131, positionId: null }, // Parent
@@ -1165,7 +1165,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:HDB_EN3": { stopId: 132, positionId: null },
   "vic:rail:HDB_PR1": { stopId: 132, positionId: null },
   "vic:rail:HDB_TX1": { stopId: 132, positionId: null },
-  "26193": { stopId: 132, positionId: 86 }, // Replacement bus
+  "26193": { stopId: 132, positionId: null }, // Replacement bus
 
   // Heyington
   "vic:rail:HEY": { stopId: 133, positionId: null }, // Parent
@@ -1175,7 +1175,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:HEY_DP1": { stopId: 133, positionId: null },
   "vic:rail:HEY_DP2": { stopId: 133, positionId: null },
   "vic:rail:HEY_EN1": { stopId: 133, positionId: null },
-  "26194": { stopId: 133, positionId: 86 }, // Replacement bus
+  "26194": { stopId: 133, positionId: null }, // Replacement bus
 
   // Highett
   "vic:rail:HIG": { stopId: 134, positionId: null }, // Parent
@@ -1206,7 +1206,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:HCG_LI3": { stopId: 136, positionId: null },
   "vic:rail:HCG_PR1": { stopId: 136, positionId: null },
   "vic:rail:HCG_TX1": { stopId: 136, positionId: null },
-  "26197": { stopId: 136, positionId: 86 }, // Replacement bus
+  "26197": { stopId: 136, positionId: null }, // Replacement bus
 
   // Hughesdale
   "vic:rail:HUG": { stopId: 137, positionId: null }, // Parent
@@ -1221,7 +1221,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:HUG_LI1": { stopId: 137, positionId: null },
   "vic:rail:HUG_PR1": { stopId: 137, positionId: null },
   "vic:rail:HUG_PR2": { stopId: 137, positionId: null },
-  "26198": { stopId: 137, positionId: 86 }, // Replacement bus
+  "26198": { stopId: 137, positionId: null }, // Replacement bus
 
   // Huntingdale
   "vic:rail:HUN": { stopId: 138, positionId: null }, // Parent
@@ -1239,7 +1239,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:HUN_EN4": { stopId: 138, positionId: null },
   "vic:rail:HUN_PR1": { stopId: 138, positionId: null },
   "vic:rail:HUN_TX1": { stopId: 138, positionId: null },
-  "26199": { stopId: 138, positionId: 86 }, // Replacement bus
+  "26199": { stopId: 138, positionId: null }, // Replacement bus
 
   // Huntly
   "vic:rail:HUY": { stopId: 314, positionId: null }, // Parent
@@ -1255,7 +1255,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:HBE_PR2": { stopId: 139, positionId: null },
   "vic:rail:HBE_PR3": { stopId: 139, positionId: null },
   "vic:rail:HBE_PR4": { stopId: 139, positionId: null },
-  "26200": { stopId: 139, positionId: 86 }, // Replacement bus
+  "26200": { stopId: 139, positionId: null }, // Replacement bus
 
   // Ivanhoe
   "vic:rail:IVA": { stopId: 140, positionId: null }, // Parent
@@ -1269,7 +1269,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:IVA_PR1": { stopId: 140, positionId: null },
   "vic:rail:IVA_PR2": { stopId: 140, positionId: null },
   "vic:rail:IVA_PR3": { stopId: 140, positionId: null },
-  "26201": { stopId: 140, positionId: 86 }, // Replacement bus
+  "26201": { stopId: 140, positionId: null }, // Replacement bus
 
   // Jacana
   "vic:rail:JAC": { stopId: 141, positionId: null }, // Parent
@@ -1294,7 +1294,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:JLI_EN2": { stopId: 143, positionId: null },
   "vic:rail:JLI_EN3": { stopId: 143, positionId: null },
   "vic:rail:JLI_EN4": { stopId: 143, positionId: null },
-  "26204": { stopId: 143, positionId: 86 }, // Replacement bus
+  "26204": { stopId: 143, positionId: null }, // Replacement bus
 
   // Jordanville
   "vic:rail:JOR": { stopId: 144, positionId: null }, // Parent
@@ -1331,7 +1331,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:KPK_KR1": { stopId: 149, positionId: null },
   "vic:rail:KPK_PR1": { stopId: 149, positionId: null },
   "vic:rail:KPK_PR2": { stopId: 149, positionId: null },
-  "26209": { stopId: 149, positionId: 86 }, // Replacement bus
+  "26209": { stopId: 149, positionId: null }, // Replacement bus
 
   // Kerang
   "vic:rail:KER": { stopId: 150, positionId: null }, // Parent
@@ -1354,7 +1354,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:LAB": { stopId: 154, positionId: null }, // Parent
   "12225": { stopId: 154, positionId: 51 }, // Platform 1
   "12224": { stopId: 154, positionId: 52 }, // Platform 2
-  "26211": { stopId: 154, positionId: 86 }, // Replacement bus
+  "26211": { stopId: 154, positionId: null }, // Replacement bus
 
   // Lalor
   "vic:rail:LAL": { stopId: 155, positionId: null }, // Parent
@@ -1365,7 +1365,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:LAL_PR2": { stopId: 155, positionId: null },
   "vic:rail:LAL_PR3": { stopId: 155, positionId: null },
   "vic:rail:LAL_TX1": { stopId: 155, positionId: null },
-  "26212": { stopId: 155, positionId: 86 }, // Replacement bus
+  "26212": { stopId: 155, positionId: null }, // Replacement bus
 
   // Lara
   "vic:rail:LRA": { stopId: 156, positionId: null }, // Parent
@@ -1394,7 +1394,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:LAV_PR3": { stopId: 157, positionId: null },
   "vic:rail:LAV_PR4": { stopId: 157, positionId: null },
   "vic:rail:LAV_TX1": { stopId: 157, positionId: null },
-  "26213": { stopId: 157, positionId: 86 }, // Replacement bus
+  "26213": { stopId: 157, positionId: null }, // Replacement bus
 
   // Leawarra
   "vic:rail:LWA": { stopId: 158, positionId: null }, // Parent
@@ -1417,7 +1417,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:LBK": { stopId: 162, positionId: null }, // Parent
   "26514": { stopId: 162, positionId: 51 }, // Platform 1
   "26515": { stopId: 162, positionId: 52 }, // Platform 2
-  "26216": { stopId: 162, positionId: 86 }, // Replacement bus
+  "26216": { stopId: 162, positionId: null }, // Replacement bus
 
   // Macaulay
   "vic:rail:MAC": { stopId: 163, positionId: null }, // Parent
@@ -1438,7 +1438,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:MCD_EN2": { stopId: 165, positionId: null },
   "vic:rail:MCD_EN3": { stopId: 165, positionId: null },
   "vic:rail:MCD_PR1": { stopId: 165, positionId: null },
-  "26218": { stopId: 165, positionId: 86 }, // Replacement bus
+  "26218": { stopId: 165, positionId: null }, // Replacement bus
 
   // Malmsbury
   "vic:rail:MMY-V": { stopId: 166, positionId: null }, // Parent
@@ -1489,7 +1489,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:MCE_LI2": { stopId: 171, positionId: null },
   "vic:rail:MCE_LI3": { stopId: 171, positionId: null },
   "vic:rail:MCE_LI4": { stopId: 171, positionId: null },
-  "26221": { stopId: 171, positionId: 86 }, // Replacement bus
+  "26221": { stopId: 171, positionId: null }, // Replacement bus
 
   // Melton
   "vic:rail:MEL": { stopId: 172, positionId: null }, // Parent
@@ -1504,7 +1504,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:MPK": { stopId: 174, positionId: null }, // Parent
   "12186": { stopId: 174, positionId: 51 }, // Platform 1
   "26516": { stopId: 174, positionId: 52 }, // Platform 2
-  "26223": { stopId: 174, positionId: 86 }, // Replacement bus
+  "26223": { stopId: 174, positionId: null }, // Replacement bus
 
   // Merlynston
   "vic:rail:MYN": { stopId: 175, positionId: null }, // Parent
@@ -1525,7 +1525,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:MDD_PR1": { stopId: 176, positionId: null },
   "vic:rail:MDD_PR2": { stopId: 176, positionId: null },
   "vic:rail:MDD_TX1": { stopId: 176, positionId: null },
-  "26225": { stopId: 176, positionId: 86 }, // Replacement bus
+  "26225": { stopId: 176, positionId: null }, // Replacement bus
 
   // Merri
   "vic:rail:MER": { stopId: 177, positionId: null }, // Parent
@@ -1538,7 +1538,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:MER_EN2": { stopId: 177, positionId: null },
   "vic:rail:MER_EN3": { stopId: 177, positionId: null },
   "vic:rail:MER_PR1": { stopId: 177, positionId: null },
-  "26226": { stopId: 177, positionId: 86 }, // Replacement bus
+  "26226": { stopId: 177, positionId: null }, // Replacement bus
 
   // Middle Brighton
   "vic:rail:MBN": { stopId: 178, positionId: null }, // Parent
@@ -1563,7 +1563,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:MMR_EN3": { stopId: 180, positionId: null },
   "vic:rail:MMR_PR1": { stopId: 180, positionId: null },
   "vic:rail:MMR_TX1": { stopId: 180, positionId: null },
-  "26229": { stopId: 180, positionId: 86 }, // Replacement bus
+  "26229": { stopId: 180, positionId: null }, // Replacement bus
 
   // Mitcham
   "vic:rail:MCH": { stopId: 181, positionId: null }, // Parent
@@ -1581,7 +1581,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:MCH_PR1": { stopId: 181, positionId: null },
   "vic:rail:MCH_PR2": { stopId: 181, positionId: null },
   "vic:rail:MCH_TX1": { stopId: 181, positionId: null },
-  "26230": { stopId: 181, positionId: 86 }, // Replacement bus
+  "26230": { stopId: 181, positionId: null }, // Replacement bus
 
   // Moe
   "vic:rail:MOE": { stopId: 182, positionId: null }, // Parent
@@ -1604,7 +1604,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:MMY_PR2": { stopId: 184, positionId: null },
   "vic:rail:MMY_PR3": { stopId: 184, positionId: null },
   "vic:rail:MMY_PR4": { stopId: 184, positionId: null },
-  "26231": { stopId: 184, positionId: 86 }, // Replacement bus
+  "26231": { stopId: 184, positionId: null }, // Replacement bus
 
   // Moonee Ponds
   "vic:rail:MPD": { stopId: 185, positionId: null }, // Parent
@@ -1617,14 +1617,14 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:MPD_EN4": { stopId: 185, positionId: null },
   "vic:rail:MPD_PR1": { stopId: 185, positionId: null },
   "vic:rail:MPD_TX1": { stopId: 185, positionId: null },
-  "26232": { stopId: 185, positionId: 86 }, // Replacement bus
+  "26232": { stopId: 185, positionId: null }, // Replacement bus
 
   // Moorabbin
   "vic:rail:MRN": { stopId: 186, positionId: null }, // Parent
   "14233": { stopId: 186, positionId: 51 }, // Platform 1
   "14234": { stopId: 186, positionId: 52 }, // Platform 2
   "14235": { stopId: 186, positionId: 53 }, // Platform 3
-  "26233": { stopId: 186, positionId: 86 }, // Replacement bus
+  "26233": { stopId: 186, positionId: null }, // Replacement bus
 
   // Mooroolbark
   "vic:rail:MLK": { stopId: 187, positionId: null }, // Parent
@@ -1665,7 +1665,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:MWY_EN3": { stopId: 193, positionId: null },
   "vic:rail:MWY_PR1": { stopId: 193, positionId: null },
   "vic:rail:MWY_PR2": { stopId: 193, positionId: null },
-  "26238": { stopId: 193, positionId: 86 }, // Replacement bus
+  "26238": { stopId: 193, positionId: null }, // Replacement bus
 
   // Murchison East
   "vic:rail:MST": { stopId: 194, positionId: null }, // Parent
@@ -1684,7 +1684,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:MRB_LI1": { stopId: 195, positionId: null },
   "vic:rail:MRB_PR1": { stopId: 195, positionId: null },
   "vic:rail:MRB_TX1": { stopId: 195, positionId: null },
-  "26239": { stopId: 195, positionId: 86 }, // Replacement bus
+  "26239": { stopId: 195, positionId: null }, // Replacement bus
 
   // Nagambie
   "vic:rail:NGE": { stopId: 196, positionId: null }, // Parent
@@ -1709,7 +1709,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:NWA_PR1": { stopId: 198, positionId: null },
   "vic:rail:NWA_PR2": { stopId: 198, positionId: null },
   "vic:rail:NWA_TX1": { stopId: 198, positionId: null },
-  "26240": { stopId: 198, positionId: 86 }, // Replacement bus
+  "26240": { stopId: 198, positionId: null }, // Replacement bus
 
   // Newmarket
   "vic:rail:NKT": { stopId: 199, positionId: null }, // Parent
@@ -1724,7 +1724,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:NKT_EN1": { stopId: 199, positionId: null },
   "vic:rail:NKT_EN2": { stopId: 199, positionId: null },
   "vic:rail:NKT_EN3": { stopId: 199, positionId: null },
-  "26241": { stopId: 199, positionId: 86 }, // Replacement bus
+  "26241": { stopId: 199, positionId: null }, // Replacement bus
 
   // Newport
   "vic:rail:NPT": { stopId: 200, positionId: null }, // Parent
@@ -1747,7 +1747,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:NPT_PR2": { stopId: 200, positionId: null },
   "vic:rail:NPT_PR3": { stopId: 200, positionId: null },
   "vic:rail:NPT_TX1": { stopId: 200, positionId: null },
-  "26242": { stopId: 200, positionId: 86 }, // Replacement bus
+  "26242": { stopId: 200, positionId: null }, // Replacement bus
 
   // Noble Park
   "vic:rail:NPK": { stopId: 201, positionId: null }, // Parent
@@ -1761,7 +1761,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:NPK_LI1": { stopId: 201, positionId: null },
   "vic:rail:NPK_PR1": { stopId: 201, positionId: null },
   "vic:rail:NPK_PR2": { stopId: 201, positionId: null },
-  "26243": { stopId: 201, positionId: 86 }, // Replacement bus
+  "26243": { stopId: 201, positionId: null }, // Replacement bus
 
   // North Brighton
   "vic:rail:NBN": { stopId: 202, positionId: null }, // Parent
@@ -1774,7 +1774,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:NBN_EN4": { stopId: 202, positionId: null },
   "vic:rail:NBN_EN5": { stopId: 202, positionId: null },
   "vic:rail:NBN_PR": { stopId: 202, positionId: null },
-  "26244": { stopId: 202, positionId: 86 }, // Replacement bus
+  "26244": { stopId: 202, positionId: null }, // Replacement bus
 
   // North Geelong
   "vic:rail:NGL": { stopId: 203, positionId: null }, // Parent
@@ -1804,7 +1804,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:NRM_EN2": { stopId: 205, positionId: null },
   "vic:rail:NRM_EN3": { stopId: 205, positionId: null },
   "vic:rail:NRM_EN4": { stopId: 205, positionId: null },
-  "26246": { stopId: 205, positionId: 86 }, // Replacement bus
+  "26246": { stopId: 205, positionId: null }, // Replacement bus
 
   // North Shore
   "vic:rail:NSH": { stopId: 206, positionId: null }, // Parent
@@ -1827,7 +1827,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:NCE_EN3": { stopId: 208, positionId: null },
   "vic:rail:NCE_EN4": { stopId: 208, positionId: null },
   "vic:rail:NCE_PR1": { stopId: 208, positionId: null },
-  "26248": { stopId: 208, positionId: 86 }, // Replacement bus
+  "26248": { stopId: 208, positionId: null }, // Replacement bus
 
   // Nunawading
   "vic:rail:NWG": { stopId: 209, positionId: null }, // Parent
@@ -1851,7 +1851,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:NWG_PR1": { stopId: 209, positionId: null },
   "vic:rail:NWG_PR2": { stopId: 209, positionId: null },
   "vic:rail:NWG_TX1": { stopId: 209, positionId: null },
-  "26249": { stopId: 209, positionId: 86 }, // Replacement bus
+  "26249": { stopId: 209, positionId: null }, // Replacement bus
 
   // Oak Park
   "vic:rail:OKP": { stopId: 210, positionId: null }, // Parent
@@ -1881,13 +1881,13 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:OAK_PR2": { stopId: 211, positionId: null },
   "vic:rail:OAK_PR3": { stopId: 211, positionId: null },
   "vic:rail:OAK_TX1": { stopId: 211, positionId: null },
-  "26251": { stopId: 211, positionId: 86 }, // Replacement bus
+  "26251": { stopId: 211, positionId: null }, // Replacement bus
 
   // Officer
   "vic:rail:OFC": { stopId: 212, positionId: null }, // Parent
   "12174": { stopId: 212, positionId: 51 }, // Platform 1
   "12175": { stopId: 212, positionId: 52 }, // Platform 2
-  "26252": { stopId: 212, positionId: 86 }, // Replacement bus
+  "26252": { stopId: 212, positionId: null }, // Replacement bus
 
   // Ormond
   "vic:rail:OMD": { stopId: 213, positionId: null }, // Parent
@@ -1900,7 +1900,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "12172": { stopId: 214, positionId: 51 }, // Platform 1
   "12173": { stopId: 214, positionId: 52 }, // Platform 2
   "22252": { stopId: 214, positionId: null },
-  "26254": { stopId: 214, positionId: 86 }, // Replacement bus
+  "26254": { stopId: 214, positionId: null }, // Replacement bus
 
   // Parkdale
   "vic:rail:PKD": { stopId: 215, positionId: null }, // Parent
@@ -1953,7 +1953,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:PRA_EN2": { stopId: 219, positionId: null },
   "vic:rail:PRA_EN3": { stopId: 219, positionId: null },
   "vic:rail:PRA_EN4": { stopId: 219, positionId: null },
-  "26259": { stopId: 219, positionId: 86 }, // Replacement bus
+  "26259": { stopId: 219, positionId: null }, // Replacement bus
 
   // Preston
   "vic:rail:PRE": { stopId: 220, positionId: null }, // Parent
@@ -1967,7 +1967,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:PRE_KR1": { stopId: 220, positionId: null },
   "vic:rail:PRE_PR1": { stopId: 220, positionId: null },
   "vic:rail:PRE_PR2": { stopId: 220, positionId: null },
-  "26260": { stopId: 220, positionId: 86 }, // Replacement bus
+  "26260": { stopId: 220, positionId: null }, // Replacement bus
 
   // Pyramid
   "vic:rail:PYD": { stopId: 221, positionId: null }, // Parent
@@ -1991,7 +1991,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:REG_PR2": { stopId: 222, positionId: null },
   "vic:rail:REG_PR3": { stopId: 222, positionId: null },
   "vic:rail:REG_PR4": { stopId: 222, positionId: null },
-  "26261": { stopId: 222, positionId: 86 }, // Replacement bus
+  "26261": { stopId: 222, positionId: null }, // Replacement bus
 
   // Reservoir
   "vic:rail:RES": { stopId: 223, positionId: null }, // Parent
@@ -2007,7 +2007,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:RES_PR1": { stopId: 223, positionId: null },
   "vic:rail:RES_PR2": { stopId: 223, positionId: null },
   "vic:rail:RES_PR3": { stopId: 223, positionId: null },
-  "26262": { stopId: 223, positionId: 86 }, // Replacement bus
+  "26262": { stopId: 223, positionId: null }, // Replacement bus
 
   // Richmond
   "vic:rail:RMD": { stopId: 224, positionId: null }, // Parent
@@ -2045,7 +2045,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:RMD_EN2": { stopId: 224, positionId: null },
   "vic:rail:RMD_EN3": { stopId: 224, positionId: null },
   "vic:rail:RMD_EN4": { stopId: 224, positionId: null },
-  "26263": { stopId: 224, positionId: 86 }, // Replacement bus
+  "26263": { stopId: 224, positionId: null }, // Replacement bus
 
   // Riddells Creek
   "vic:rail:RIK": { stopId: 225, positionId: null }, // Parent
@@ -2075,7 +2075,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:RWD_LI2": { stopId: 226, positionId: null },
   "vic:rail:RWD_LI3": { stopId: 226, positionId: null },
   "vic:rail:RWD_PR1": { stopId: 226, positionId: null },
-  "26265": { stopId: 226, positionId: 86 }, // Replacement bus
+  "26265": { stopId: 226, positionId: null }, // Replacement bus
 
   // Ringwood East
   "vic:rail:RWE": { stopId: 227, positionId: null }, // Parent
@@ -2092,7 +2092,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:RIP_EN2": { stopId: 228, positionId: null },
   "vic:rail:RIP_EN3": { stopId: 228, positionId: null },
   "vic:rail:RIP_EN4": { stopId: 228, positionId: null },
-  "26266": { stopId: 228, positionId: 86 }, // Replacement bus
+  "26266": { stopId: 228, positionId: null }, // Replacement bus
 
   // Riversdale
   "vic:rail:RIV": { stopId: 229, positionId: null }, // Parent
@@ -2103,7 +2103,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:RIV_EN1": { stopId: 229, positionId: null },
   "vic:rail:RIV_EN2": { stopId: 229, positionId: null },
   "vic:rail:RIV_PR1": { stopId: 229, positionId: null },
-  "26267": { stopId: 229, positionId: 86 }, // Replacement bus
+  "26267": { stopId: 229, positionId: null }, // Replacement bus
 
   // Rochester
   "vic:rail:ROR": { stopId: 230, positionId: null }, // Parent
@@ -2132,7 +2132,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:ROS_LI2": { stopId: 232, positionId: null },
   "vic:rail:ROS_PR1": { stopId: 232, positionId: null },
   "vic:rail:ROS_PR2": { stopId: 232, positionId: null },
-  "26268": { stopId: 232, positionId: 86 }, // Replacement bus
+  "26268": { stopId: 232, positionId: null }, // Replacement bus
 
   // Rosedale
   "vic:rail:ROE": { stopId: 233, positionId: null }, // Parent
@@ -2159,7 +2159,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:RUS_EN3": { stopId: 236, positionId: null },
   "vic:rail:RUS_EN4": { stopId: 236, positionId: null },
   "vic:rail:RUS_EN5": { stopId: 236, positionId: null },
-  "26271": { stopId: 236, positionId: 86 }, // Replacement bus
+  "26271": { stopId: 236, positionId: null }, // Replacement bus
 
   // Ruthven
   "vic:rail:RUT": { stopId: 237, positionId: null }, // Parent
@@ -2170,7 +2170,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:RUT_EN2": { stopId: 237, positionId: null },
   "vic:rail:RUT_PR1": { stopId: 237, positionId: null },
   "vic:rail:RUT_PR2": { stopId: 237, positionId: null },
-  "26272": { stopId: 237, positionId: 86 }, // Replacement bus
+  "26272": { stopId: 237, positionId: null }, // Replacement bus
 
   // Sale
   "vic:rail:SAE": { stopId: 238, positionId: null }, // Parent
@@ -2180,7 +2180,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:SNP": { stopId: 239, positionId: null }, // Parent
   "12194": { stopId: 239, positionId: 51 }, // Platform 1
   "13713": { stopId: 239, positionId: 52 }, // Platform 2
-  "26273": { stopId: 239, positionId: 86 }, // Replacement bus
+  "26273": { stopId: 239, positionId: null }, // Replacement bus
 
   // Sandringham
   "vic:rail:SHM": { stopId: 240, positionId: null }, // Parent
@@ -2190,7 +2190,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:SHM_EN1": { stopId: 240, positionId: null },
   "vic:rail:SHM_PR1": { stopId: 240, positionId: null },
   "vic:rail:SHM_TX1": { stopId: 240, positionId: null },
-  "26274": { stopId: 240, positionId: 86 }, // Replacement bus
+  "26274": { stopId: 240, positionId: null }, // Replacement bus
 
   // Seaford
   "vic:rail:SEA": { stopId: 241, positionId: null }, // Parent
@@ -2200,7 +2200,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   // Seaholme
   "vic:rail:SHE": { stopId: 242, positionId: null }, // Parent
   "13743": { stopId: 242, positionId: 51 }, // Platform 1
-  "26276": { stopId: 242, positionId: 86 }, // Replacement bus
+  "26276": { stopId: 242, positionId: null }, // Replacement bus
 
   // Seddon
   "vic:rail:SEN": { stopId: 243, positionId: null }, // Parent
@@ -2247,7 +2247,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:SMG_PR1": { stopId: 251, positionId: null },
   "vic:rail:SMG_PR2": { stopId: 251, positionId: null },
   "vic:rail:SMG_TX1": { stopId: 251, positionId: null },
-  "26280": { stopId: 251, positionId: 86 }, // Replacement bus
+  "26280": { stopId: 251, positionId: null }, // Replacement bus
 
   // South Yarra
   "vic:rail:SYR": { stopId: 252, positionId: null }, // Parent
@@ -2263,7 +2263,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:SYR_DP3": { stopId: 252, positionId: null },
   "vic:rail:SYR_DP4": { stopId: 252, positionId: null },
   "vic:rail:SYR_EN1": { stopId: 252, positionId: null },
-  "26281": { stopId: 252, positionId: 86 }, // Replacement bus
+  "26281": { stopId: 252, positionId: null }, // Replacement bus
 
   // Southern Cross
   "vic:rail:SSS": { stopId: 253, positionId: null }, // Parent
@@ -2305,7 +2305,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:SPG_LI2": { stopId: 257, positionId: null },
   "vic:rail:SPG_PR1": { stopId: 257, positionId: null },
   "vic:rail:SPG_TX1": { stopId: 257, positionId: null },
-  "26285": { stopId: 257, positionId: 86 }, // Replacement bus
+  "26285": { stopId: 257, positionId: null }, // Replacement bus
 
   // St Albans
   "vic:rail:SAB": { stopId: 258, positionId: null }, // Parent
@@ -2324,7 +2324,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:SAB_PR1": { stopId: 258, positionId: null },
   "vic:rail:SAB_PR2": { stopId: 258, positionId: null },
   "vic:rail:SAB_TX1": { stopId: 258, positionId: null },
-  "26286": { stopId: 258, positionId: 86 }, // Replacement bus
+  "26286": { stopId: 258, positionId: null }, // Replacement bus
 
   // State Library
   "vic:rail:STL": { stopId: 320, positionId: null }, // Parent
@@ -2375,7 +2375,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:SUY_EN4": { stopId: 262, positionId: null },
   "vic:rail:SUY_KR1": { stopId: 262, positionId: null },
   "vic:rail:SUY_PR1": { stopId: 262, positionId: null },
-  "26289": { stopId: 262, positionId: 86 }, // Replacement bus
+  "26289": { stopId: 262, positionId: null }, // Replacement bus
 
   // Sunshine
   "vic:rail:SUN": { stopId: 263, positionId: null }, // Parent
@@ -2407,7 +2407,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:SUN_PR2": { stopId: 263, positionId: null },
   "vic:rail:SUN_PR3": { stopId: 263, positionId: null },
   "vic:rail:SUN_TX1": { stopId: 263, positionId: null },
-  "26290": { stopId: 263, positionId: 86 }, // Replacement bus
+  "26290": { stopId: 263, positionId: null }, // Replacement bus
 
   // Swan Hill
   "vic:rail:SWL": { stopId: 265, positionId: null }, // Parent
@@ -2427,7 +2427,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:SYN_EN4": { stopId: 266, positionId: null },
   "vic:rail:SYN_PR1": { stopId: 266, positionId: null },
   "vic:rail:SYN_PR2": { stopId: 266, positionId: null },
-  "26292": { stopId: 266, positionId: 86 }, // Replacement bus
+  "26292": { stopId: 266, positionId: null }, // Replacement bus
 
   // Talbot
   "vic:rail:TAT": { stopId: 267, positionId: null }, // Parent
@@ -2464,7 +2464,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:TSN_LI2": { stopId: 272, positionId: null },
   "vic:rail:TSN_PR1": { stopId: 272, positionId: null },
   "vic:rail:TSN_PR2": { stopId: 272, positionId: null },
-  "26294": { stopId: 272, positionId: 86 }, // Replacement bus
+  "26294": { stopId: 272, positionId: null }, // Replacement bus
 
   // Thornbury
   "vic:rail:TBY": { stopId: 273, positionId: null }, // Parent
@@ -2474,7 +2474,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:TBY_DP2": { stopId: 273, positionId: null },
   "vic:rail:TBY_EN1": { stopId: 273, positionId: null },
   "vic:rail:TBY_EN2": { stopId: 273, positionId: null },
-  "26295": { stopId: 273, positionId: 86 }, // Replacement bus
+  "26295": { stopId: 273, positionId: null }, // Replacement bus
 
   // Toorak
   "vic:rail:TOR": { stopId: 274, positionId: null }, // Parent
@@ -2559,7 +2559,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:VPK_EN3": { stopId: 284, positionId: null },
   "vic:rail:VPK_EN4": { stopId: 284, positionId: null },
   "vic:rail:VPK_PR1": { stopId: 284, positionId: null },
-  "26303": { stopId: 284, positionId: 86 }, // Replacement bus
+  "26303": { stopId: 284, positionId: null }, // Replacement bus
 
   // Violet Town
   "vic:rail:VTN": { stopId: 285, positionId: null }, // Parent
@@ -2614,7 +2614,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:WGS_PR2": { stopId: 291, positionId: null },
   "vic:rail:WGS_PR3": { stopId: 291, positionId: null },
   "vic:rail:WGS_TX1": { stopId: 291, positionId: null },
-  "26304": { stopId: 291, positionId: 86 }, // Replacement bus
+  "26304": { stopId: 291, positionId: null }, // Replacement bus
 
   // Watsonia
   "vic:rail:WAT": { stopId: 292, positionId: null }, // Parent
@@ -2628,7 +2628,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:WAT_PR1": { stopId: 292, positionId: null },
   "vic:rail:WAT_PR2": { stopId: 292, positionId: null },
   "vic:rail:WAT_PR3": { stopId: 292, positionId: null },
-  "26305": { stopId: 292, positionId: 86 }, // Replacement bus
+  "26305": { stopId: 292, positionId: null }, // Replacement bus
 
   // Wattle Glen
   "vic:rail:WTT": { stopId: 293, positionId: null }, // Parent
@@ -2637,7 +2637,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:WTT_EN1": { stopId: 293, positionId: null },
   "vic:rail:WTT_PR1": { stopId: 293, positionId: null },
   "vic:rail:WTT_PR2": { stopId: 293, positionId: null },
-  "26306": { stopId: 293, positionId: 86 }, // Replacement bus
+  "26306": { stopId: 293, positionId: null }, // Replacement bus
 
   // Waurn Ponds
   "vic:rail:WPP": { stopId: 294, positionId: null }, // Parent
@@ -2665,7 +2665,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:WER_PR1": { stopId: 296, positionId: null },
   "vic:rail:WER_PR2": { stopId: 296, positionId: null },
   "vic:rail:WER_TX1": { stopId: 296, positionId: null },
-  "26307": { stopId: 296, positionId: 86 }, // Replacement bus
+  "26307": { stopId: 296, positionId: null }, // Replacement bus
 
   // West Footscray
   "vic:rail:WFY": { stopId: 297, positionId: null }, // Parent
@@ -2695,7 +2695,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:WFY_PR2": { stopId: 297, positionId: null },
   "vic:rail:WFY_PR3": { stopId: 297, positionId: null },
   "vic:rail:WFY_TX1": { stopId: 297, positionId: null },
-  "26308": { stopId: 297, positionId: 86 }, // Replacement bus
+  "26308": { stopId: 297, positionId: null }, // Replacement bus
 
   // West Richmond
   "vic:rail:WRM": { stopId: 298, positionId: null }, // Parent
@@ -2705,7 +2705,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:WRM_DP4": { stopId: 298, positionId: null },
   "vic:rail:WRM_EN1": { stopId: 298, positionId: null },
   "vic:rail:WRM_EN2": { stopId: 298, positionId: null },
-  "26309": { stopId: 298, positionId: 86 }, // Replacement bus
+  "26309": { stopId: 298, positionId: null }, // Replacement bus
 
   // Westall
   "vic:rail:WTL": { stopId: 299, positionId: null }, // Parent
@@ -2729,19 +2729,19 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:WTL_PR1": { stopId: 299, positionId: null },
   "vic:rail:WTL_PR2": { stopId: 299, positionId: null },
   "vic:rail:WTL_PR3": { stopId: 299, positionId: null },
-  "26310": { stopId: 299, positionId: 86 }, // Replacement bus
+  "26310": { stopId: 299, positionId: null }, // Replacement bus
 
   // Westgarth
   "vic:rail:WTG": { stopId: 300, positionId: null }, // Parent
   "13744": { stopId: 300, positionId: 51 }, // Platform 1
   "13745": { stopId: 300, positionId: 52 }, // Platform 2
-  "26311": { stopId: 300, positionId: 86 }, // Replacement bus
+  "26311": { stopId: 300, positionId: null }, // Replacement bus
 
   // Westona
   "vic:rail:WTO": { stopId: 301, positionId: null }, // Parent
   "13740": { stopId: 301, positionId: 51 }, // Platform 1
   "13741": { stopId: 301, positionId: 52 }, // Platform 2
-  "26312": { stopId: 301, positionId: 86 }, // Replacement bus
+  "26312": { stopId: 301, positionId: null }, // Replacement bus
 
   // Williams Landing
   "vic:rail:WLD": { stopId: 302, positionId: null }, // Parent
@@ -2761,14 +2761,14 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:WLD_LI2": { stopId: 302, positionId: null },
   "vic:rail:WLD_PR1": { stopId: 302, positionId: null },
   "vic:rail:WLD_TX1": { stopId: 302, positionId: null },
-  "26313": { stopId: 302, positionId: 86 }, // Replacement bus
+  "26313": { stopId: 302, positionId: null }, // Replacement bus
 
   // Williamstown
   "vic:rail:WIL": { stopId: 303, positionId: null }, // Parent
   "15338": { stopId: 303, positionId: 51 }, // Platform 1
   "vic:rail:WIL_PR": { stopId: 303, positionId: null },
   "vic:rail:WIL_Railw": { stopId: 303, positionId: null },
-  "26315": { stopId: 303, positionId: 86 }, // Replacement bus
+  "26315": { stopId: 303, positionId: null }, // Replacement bus
 
   // Williamstown Beach
   "vic:rail:WBH": { stopId: 304, positionId: null }, // Parent
@@ -2784,7 +2784,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:WSN_EN1": { stopId: 305, positionId: null },
   "vic:rail:WSN_EN2": { stopId: 305, positionId: null },
   "vic:rail:WSN_PR1": { stopId: 305, positionId: null },
-  "26316": { stopId: 305, positionId: 86 }, // Replacement bus
+  "26316": { stopId: 305, positionId: null }, // Replacement bus
 
   // Winchelsea
   "vic:rail:WIA": { stopId: 306, positionId: null }, // Parent
@@ -2801,7 +2801,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:WIN_EN3": { stopId: 307, positionId: null },
   "vic:rail:WIN_EN4": { stopId: 307, positionId: null },
   "vic:rail:WIN_EN5": { stopId: 307, positionId: null },
-  "26317": { stopId: 307, positionId: 86 }, // Replacement bus
+  "26317": { stopId: 307, positionId: null }, // Replacement bus
 
   // Wodonga
   "vic:rail:WOD": { stopId: 308, positionId: null }, // Parent
@@ -2823,7 +2823,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:YMN": { stopId: 312, positionId: null }, // Parent
   "12190": { stopId: 312, positionId: 51 }, // Platform 1
   "12191": { stopId: 312, positionId: 52 }, // Platform 2
-  "26318": { stopId: 312, positionId: 86 }, // Replacement bus
+  "26318": { stopId: 312, positionId: null }, // Replacement bus
 
   // Yarraville
   "vic:rail:YVE": { stopId: 313, positionId: null }, // Parent
@@ -2837,5 +2837,5 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:YVE_EN4": { stopId: 313, positionId: null },
   "vic:rail:YVE_PR1": { stopId: 313, positionId: null },
   "vic:rail:YVE_TX1": { stopId: 313, positionId: null },
-  "26319": { stopId: 313, positionId: 86 }, // Replacement bus
+  "26319": { stopId: 313, positionId: null }, // Replacement bus
 };
