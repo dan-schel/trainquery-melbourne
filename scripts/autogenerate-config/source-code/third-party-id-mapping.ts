@@ -1,4 +1,5 @@
 import { groupBy } from "@dan-schel/js-utils";
+import type { AutogenerationContext } from "../autogeneration-context.js";
 
 type MappingEntry<T> = {
   value: T;
@@ -29,9 +30,10 @@ export abstract class ThirdPartyIdMapping<T> {
     this._groupSortOrder.set(group, groupSortOrder);
   }
 
-  protected abstract formatValue(value: T): string;
-  protected abstract getDataTypeName(): string;
-  protected abstract getConstantName(): string;
+  protected abstract _formatValue(ctx: AutogenerationContext, value: T): string;
+  protected abstract _getDataTypeName(): string;
+  protected abstract _getConstantName(): string;
+  protected abstract _getAdditionalImports(): string[];
 
   private _getSortOrder(group: string): number {
     const order = this._groupSortOrder.get(group);
@@ -39,16 +41,20 @@ export abstract class ThirdPartyIdMapping<T> {
     return order;
   }
 
-  toCode() {
-    const constantName = this.getConstantName();
-    const dataTypeName = this.getDataTypeName();
+  toCode(ctx: AutogenerationContext) {
+    const constantName = this._getConstantName();
+    const dataTypeName = this._getDataTypeName();
     const entriesArray = Array.from(this._mapping.entries());
+
+    const additionalImports = this._getAdditionalImports()
+      .map((x) => `${x}\n`)
+      .join("");
 
     const formatGroup = (group: string, items: IdAndValue<T>[]) => {
       const itemsStr = items
         .map(([id, entry]) => {
           const formattedId = JSON.stringify(id);
-          const formattedValue = this.formatValue(entry.value);
+          const formattedValue = this._formatValue(ctx, entry.value);
           const suffix = entry.comment == null ? "" : ` // ${entry.comment}`;
           return `  ${formattedId}: ${formattedValue},${suffix}`;
         })
@@ -63,7 +69,9 @@ export abstract class ThirdPartyIdMapping<T> {
 
     return (
       `import type { ${dataTypeName} } from "../third-party-id-mapping-types.js";\n` +
+      additionalImports +
       `\n` +
+      `// prettier-ignore\n` +
       `export const ${constantName}: ${dataTypeName} = {\n` +
       `${entriesStr}\n` +
       `};\n`

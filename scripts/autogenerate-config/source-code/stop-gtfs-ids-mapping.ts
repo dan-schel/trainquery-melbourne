@@ -1,21 +1,36 @@
 import type { StopGtfsIdMappingMetadata } from "../../../src/third-party-id-mapping-types.js";
+import type { AutogenerationContext } from "../autogeneration-context.js";
 import { ThirdPartyIdMapping } from "./third-party-id-mapping.js";
 
 export class StopGtfsIdsMapping extends ThirdPartyIdMapping<StopGtfsIdMappingMetadata> {
-  protected override formatValue(value: StopGtfsIdMappingMetadata): string {
-    const items: string[] = [`stopId: ${value.stopId}`];
+  protected override _formatValue(
+    ctx: AutogenerationContext,
+    value: StopGtfsIdMappingMetadata,
+  ): string {
+    const stopId = ctx.stopIds.requireById(value.stopId);
+    const items: string[] = [`stopId: stop.${stopId.constantName}`];
 
-    if (value.positionId != null) items.push(`positionId: ${value.positionId}`);
+    if (value.positionId != null) {
+      const positionId = ctx.positionIds.requireById(value.positionId);
+      items.push(`positionId: position.${positionId.constantName}`);
+    }
     if (value.replacementBus === true) items.push(`replacementBus: true`);
 
     return `{ ${items.join(", ")} }`;
   }
 
-  protected override getDataTypeName(): string {
+  protected override _getDataTypeName(): string {
     return "StopGtfsIdMapping";
   }
 
-  protected override getConstantName(): string {
+  protected override _getConstantName(): string {
     return "stopGtfsIds";
+  }
+
+  protected override _getAdditionalImports(): string[] {
+    return [
+      'import * as stop from "./stop-ids.js";',
+      'import * as position from "./stop-position-ids.js";',
+    ];
   }
 }

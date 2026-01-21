@@ -2,7 +2,6 @@ import { groupBy } from "@dan-schel/js-utils";
 import type { AutogenerationContext } from "../autogeneration-context.js";
 import type { RoutesCsv, RoutesCsvRow } from "../gtfs/csv-schemas.js";
 import type { Subfeed } from "../utils/subfeed.js";
-import { th } from "zod/v4/locales";
 
 export type ParsedLineGtfsId = {
   readonly id: string;
@@ -52,7 +51,7 @@ export function extractLinesFromSubfeed(
 function groupIntoLines(routesCsv: RoutesCsv): GroupedLine[] {
   const groups = groupBy(routesCsv, (r) => r.route_id.replace(/-R:$/, ":"));
 
-  const result = groups.map(({ group, items }) => {
+  const result = groups.map(({ items }) => {
     if (items.length > 2) throw new Error("Unexpected group size.");
 
     const primary = items.find((r) => !r.route_id.endsWith("-R:"));

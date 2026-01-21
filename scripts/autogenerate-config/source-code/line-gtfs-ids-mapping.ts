@@ -1,20 +1,29 @@
 import type { LineGtfsIdMappingMetadata } from "../../../src/third-party-id-mapping-types.js";
+import type { AutogenerationContext } from "../autogeneration-context.js";
 import { ThirdPartyIdMapping } from "./third-party-id-mapping.js";
 
 export class LineGtfsIdsMapping extends ThirdPartyIdMapping<LineGtfsIdMappingMetadata> {
-  protected override formatValue(value: LineGtfsIdMappingMetadata): string {
-    const items: string[] = [`lineId: ${value.lineId}`];
+  protected override _formatValue(
+    ctx: AutogenerationContext,
+    value: LineGtfsIdMappingMetadata,
+  ): string {
+    const lineId = ctx.lineIds.requireById(value.lineId);
+    const items: string[] = [`lineId: line.${lineId.constantName}`];
 
     if (value.replacementBus === true) items.push(`replacementBus: true`);
 
     return `{ ${items.join(", ")} }`;
   }
 
-  protected override getDataTypeName(): string {
+  protected override _getDataTypeName(): string {
     return "LineGtfsIdMapping";
   }
 
-  protected override getConstantName(): string {
+  protected override _getConstantName(): string {
     return "lineGtfsIds";
+  }
+
+  protected override _getAdditionalImports(): string[] {
+    return ['import * as line from "./line-ids.js";'];
   }
 }

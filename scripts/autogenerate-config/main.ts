@@ -37,11 +37,11 @@ async function main() {
   await output(ROUTE_IDS_PATH, ctx.routeIds.toCode(), checkMode);
 
   await output(STOPS_PATH, ctx.stops.toCode(), ctx.checkMode);
-  await output(STOP_GTFS_IDS_PATH, ctx.stopGtfsIds.toCode(), checkMode);
-  await output(STOP_PTV_API_IDS_PATH, ctx.stopPtvApiIds.toCode(), checkMode);
+  await output(STOP_GTFS_IDS_PATH, ctx.stopGtfsIds.toCode(ctx), checkMode);
+  await output(STOP_PTV_API_IDS_PATH, ctx.stopPtvApiIds.toCode(ctx), checkMode);
 
   await output(LINES_PATH, ctx.lines.toCode(), checkMode);
-  await output(LINE_GTFS_IDS_PATH, ctx.lineGtfsIds.toCode(), checkMode);
+  await output(LINE_GTFS_IDS_PATH, ctx.lineGtfsIds.toCode(ctx), checkMode);
 }
 
 async function output(filePath: string, content: string, checkMode: boolean) {
