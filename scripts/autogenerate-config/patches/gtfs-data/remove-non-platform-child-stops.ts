@@ -1,24 +1,30 @@
-import type { StopsCsvRow } from "../../gtfs/csv-schemas.js";
+import type { StopsCsv, StopsCsvRow } from "../../gtfs/csv-schemas.js";
 import type { GtfsData } from "../../gtfs/read-gtfs.js";
 import { isPresent } from "../../utils/is-present.js";
 import type { Patch } from "../patch.js";
 
 export const removeNonPlatformChildStopsPatch: Patch<GtfsData> = (data) => {
-  const newSuburbanStops = data.suburban.stops.filter(
-    (stop) => !shouldBeRemoved(stop),
-  );
-
-  const madeChanges = newSuburbanStops.length < data.suburban.stops.length;
-  if (!madeChanges) throw new Error("No stops were filtered out.");
-
   return {
     ...data,
     suburban: {
       ...data.suburban,
-      stops: newSuburbanStops,
+      stops: removeStopsFromSubfeed(data.suburban.stops),
+    },
+    regional: {
+      ...data.regional,
+      stops: removeStopsFromSubfeed(data.regional.stops),
     },
   };
 };
+
+function removeStopsFromSubfeed(stops: StopsCsv) {
+  const newStops = stops.filter((stop) => !shouldBeRemoved(stop));
+
+  const madeChanges = newStops.length < stops.length;
+  if (!madeChanges) throw new Error("No stops were filtered out.");
+
+  return newStops;
+}
 
 function shouldBeRemoved(stop: StopsCsvRow): boolean {
   return (
