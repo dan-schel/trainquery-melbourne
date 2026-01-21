@@ -1,9 +1,10 @@
 import { type GtfsData } from "../../../gtfs/read-gtfs.js";
+import type { Subfeed } from "../../../utils/subfeed.js";
 import { type Patch } from "../../patch.js";
 
 type CreateReplaceStopNamePatchArgs = {
   readonly id: string;
-  readonly subfeed: "suburban" | "regional";
+  readonly subfeed: Subfeed;
   readonly correctName: string;
 
   // Only apply the patch if the current name matches this string or regex.

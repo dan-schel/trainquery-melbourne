@@ -1,5 +1,7 @@
+import { unique } from "@dan-schel/js-utils";
 import { isPresent } from "../utils/is-present.js";
 import type { StopsCsvTree, StopsCsvTreeNode } from "./build-stops-csv-tree.js";
+import type { Subfeed } from "../utils/subfeed.js";
 
 export function mergeRootsOfAllSubfeeds(
   subfeedTrees: StopsCsvTree[],
@@ -37,6 +39,7 @@ function mergeLikeNodes(
   return {
     ...betterNode,
     children,
+    subfeeds: unique<Subfeed>([...a.subfeeds, ...b.subfeeds]),
   };
 }
 

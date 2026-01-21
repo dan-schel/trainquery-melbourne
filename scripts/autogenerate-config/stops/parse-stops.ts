@@ -9,11 +9,12 @@ import {
 import { mergeRootsOfAllSubfeeds } from "./merge-roots-of-all-subfeeds.js";
 
 export function parseStops(ctx: AutogenerationContext): ParsedStop[] {
-  const suburbanTree = buildStopsCsvTree(ctx.gtfsData.suburban.stops);
-  const regionalTree = buildStopsCsvTree(ctx.gtfsData.regional.stops);
-  const unifiedTree = mergeRootsOfAllSubfeeds([suburbanTree, regionalTree]);
-  const stops = extractStopsFromTree(unifiedTree);
-  const patchedStops = applyPatches(stops, parsedStopsPatches);
+  const suburban = buildStopsCsvTree(ctx.gtfsData.suburban.stops, "suburban");
+  const regional = buildStopsCsvTree(ctx.gtfsData.regional.stops, "regional");
+  const unifiedTree = mergeRootsOfAllSubfeeds([suburban, regional]);
 
+  const stops = extractStopsFromTree(unifiedTree);
+
+  const patchedStops = applyPatches(stops, parsedStopsPatches);
   return patchedStops;
 }

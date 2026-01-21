@@ -19,8 +19,18 @@ export const addShowgroundsStationPatch = createAddStopUnlessExistsPatch({
     platforms: [{ platformCode: "1" }],
 
     gtfsIds: [
-      { id: "vic:rail:SGS", type: "parent", platformCode: null },
-      { id: "15526", type: "train", platformCode: "1" },
+      {
+        id: "vic:rail:SGS",
+        type: "parent",
+        platformCode: null,
+        subfeeds: ["suburban"],
+      },
+      {
+        id: "15526",
+        type: "train",
+        platformCode: "1",
+        subfeeds: ["suburban"],
+      },
     ],
   },
 });

@@ -1,5 +1,6 @@
 import { isPresent } from "../utils/is-present.js";
 import { numberWiseSort } from "../utils/number-wise-sort.js";
+import type { Subfeed } from "../utils/subfeed.js";
 import {
   type StopsCsvTree,
   type StopsCsvTreeNode,
@@ -15,6 +16,7 @@ export type ParsedGtfsId = {
   readonly id: string;
   readonly type: "parent" | "train" | "replacement-bus";
   readonly platformCode: string | null;
+  readonly subfeeds: readonly Subfeed[];
 };
 
 export type ParsedStop = {
@@ -60,6 +62,7 @@ function parseGtfsIds(station: StopsCsvTreeNode): ParsedGtfsId[] {
     id: station.stop_id,
     type: "parent",
     platformCode: null,
+    subfeeds: station.subfeeds,
   };
 
   const childGtfsIds: ParsedGtfsId[] = station.children.map((c) => ({
@@ -69,6 +72,7 @@ function parseGtfsIds(station: StopsCsvTreeNode): ParsedGtfsId[] {
       isPresent(c.platform_code) && c.platform_code !== replacementBusCode
         ? c.platform_code
         : null,
+    subfeeds: c.subfeeds,
   }));
 
   return [primaryGtfsId, ...childGtfsIds].sort((a, b) => compareGtfsIds(a, b));
