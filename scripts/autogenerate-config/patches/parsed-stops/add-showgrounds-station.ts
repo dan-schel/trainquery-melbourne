@@ -33,6 +33,6 @@ export const addShowgroundsStationPatch = createAddStopUnlessExistsPatch({
       },
     ],
 
-    ptvApiId: "showgrounds???",
+    ptvApiId: "1177",
   },
 });
