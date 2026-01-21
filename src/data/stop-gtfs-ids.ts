@@ -37,11 +37,6 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "14312": { stopId: 7, positionId: 51 }, // Platform 1 (suburban)
   "14313": { stopId: 7, positionId: 52 }, // Platform 2 (suburban)
 
-  // Anzac
-  "vic:rail:AZC": { stopId: 318 }, // Parent (suburban)
-  "26556": { stopId: 318, positionId: 51 }, // Platform 1 (suburban)
-  "26557": { stopId: 318, positionId: 52 }, // Platform 2 (suburban)
-
   // Ararat
   "vic:rail:ART": { stopId: 8 }, // Parent (regional)
   "20288": { stopId: 8 }, // Platform ? (regional)
@@ -49,11 +44,6 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   // Ardeer
   "vic:rail:ARR": { stopId: 9 }, // Parent (regional)
   "20020": { stopId: 9 }, // Platform ? (regional)
-
-  // Arden
-  "vic:rail:ARN": { stopId: 322 }, // Parent (suburban)
-  "26548": { stopId: 322, positionId: 51 }, // Platform 1 (suburban)
-  "26549": { stopId: 322, positionId: 52 }, // Platform 2 (suburban)
 
   // Armadale
   "vic:rail:ARM": { stopId: 10 }, // Parent (suburban)
@@ -463,12 +453,6 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "8705": { stopId: 87, positionId: 51 }, // Platform 1 (suburban)
   "8718": { stopId: 87, positionId: 52 }, // Platform 2 (suburban)
 
-  // East Pakenham
-  "vic:rail:EPH": { stopId: 317 }, // Parent (suburban)
-  "26506": { stopId: 317, positionId: 51 }, // Platform 1 (suburban)
-  "26507": { stopId: 317, positionId: 52 }, // Platform 2 (suburban)
-  "26158": { stopId: 317, replacementBus: true }, // Replacement bus (suburban)
-
   // East Richmond
   "vic:rail:ERM": { stopId: 88 }, // Parent (suburban)
   "12251": { stopId: 88, positionId: 51 }, // Platform 1 (suburban)
@@ -619,12 +603,6 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "vic:rail:GIS": { stopId: 112 }, // Parent (regional)
   "20315": { stopId: 112 }, // Platform ? (regional)
 
-  // Glen Huntly
-  "vic:rail:GHY": { stopId: 117 }, // Parent (suburban)
-  "14248": { stopId: 117, positionId: 51 }, // Platform 1 (suburban)
-  "14249": { stopId: 117, positionId: 52 }, // Platform 2 (suburban)
-  "14250": { stopId: 117, positionId: 53 }, // Platform 3 (suburban)
-
   // Glen Iris
   "vic:rail:GIR": { stopId: 113 }, // Parent (suburban)
   "5966": { stopId: 113, positionId: 51 }, // Platform 1 (suburban)
@@ -647,6 +625,12 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "12242": { stopId: 116, positionId: 52 }, // Platform 2 (suburban)
   "12243": { stopId: 116, positionId: 53 }, // Platform 3 (suburban)
   "26179": { stopId: 116, replacementBus: true }, // Replacement bus (suburban)
+
+  // Glen Huntly
+  "vic:rail:GHY": { stopId: 117 }, // Parent (suburban)
+  "14248": { stopId: 117, positionId: 51 }, // Platform 1 (suburban)
+  "14249": { stopId: 117, positionId: 52 }, // Platform 2 (suburban)
+  "14250": { stopId: 117, positionId: 53 }, // Platform 3 (suburban)
 
   // Glenroy
   "vic:rail:GRY": { stopId: 118 }, // Parent (suburban)
@@ -760,10 +744,6 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "13720": { stopId: 138, positionId: 51 }, // Platform 1 (suburban)
   "13721": { stopId: 138, positionId: 52 }, // Platform 2 (suburban)
   "26199": { stopId: 138, replacementBus: true }, // Replacement bus (suburban)
-
-  // Huntly
-  "vic:rail:HUY": { stopId: 314 }, // Parent (regional)
-  "49296": { stopId: 314 }, // Platform ? (regional)
 
   // Hurstbridge
   "vic:rail:HBE": { stopId: 139 }, // Parent (suburban)
@@ -1169,11 +1149,6 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "11238": { stopId: 215, positionId: 51 }, // Platform 1 (suburban)
   "11239": { stopId: 215, positionId: 52 }, // Platform 2 (suburban)
 
-  // Parkville
-  "vic:rail:PKV": { stopId: 321 }, // Parent (suburban)
-  "26550": { stopId: 321, positionId: 51 }, // Platform 1 (suburban)
-  "26551": { stopId: 321, positionId: 52 }, // Platform 2 (suburban)
-
   // Parliament
   "vic:rail:PAR": { stopId: 216 }, // Parent (suburban)
   "10924": { stopId: 216, positionId: 51 }, // Platform 1 (suburban)
@@ -1207,10 +1182,6 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   // Pyramid
   "vic:rail:PYD": { stopId: 221 }, // Parent (regional)
   "20336": { stopId: 221 }, // Platform ? (regional)
-
-  // Raywood
-  "vic:rail:RAY": { stopId: 315 }, // Parent (regional)
-  "49295": { stopId: 315 }, // Platform ? (regional)
 
   // Regent
   "vic:rail:REG": { stopId: 222 }, // Parent (suburban)
@@ -1420,11 +1391,6 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "22243": { stopId: 258 }, // Platform ? (suburban)
   "26286": { stopId: 258, replacementBus: true }, // Replacement bus (suburban)
 
-  // State Library
-  "vic:rail:STL": { stopId: 320 }, // Parent (suburban)
-  "26552": { stopId: 320, positionId: 51 }, // Platform 1 (suburban)
-  "26553": { stopId: 320, positionId: 52 }, // Platform 2 (suburban)
-
   // Stony Point
   "vic:rail:STY": { stopId: 259 }, // Parent (suburban)
   "88": { stopId: 259, positionId: 51 }, // Platform 1 (suburban)
@@ -1511,11 +1477,6 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "15512": { stopId: 276, positionId: 51 }, // Platform 1 (suburban)
   "15513": { stopId: 276, positionId: 52 }, // Platform 2 (suburban)
 
-  // Town Hall
-  "vic:rail:THL": { stopId: 319 }, // Parent (suburban)
-  "26554": { stopId: 319, positionId: 51 }, // Platform 1 (suburban)
-  "26555": { stopId: 319, positionId: 52 }, // Platform 2 (suburban)
-
   // Trafalgar
   "vic:rail:TAR": { stopId: 277 }, // Parent (regional)
   "20350": { stopId: 277 }, // Platform ? (regional)
@@ -1531,12 +1492,6 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   // Tynong
   "vic:rail:TYN": { stopId: 280 }, // Parent (regional)
   "20352": { stopId: 280 }, // Platform ? (regional)
-
-  // Union
-  "vic:rail:UNN": { stopId: 316 }, // Parent (suburban)
-  "26535": { stopId: 316, positionId: 51 }, // Platform 1 (suburban)
-  "26536": { stopId: 316, positionId: 52 }, // Platform 2 (suburban)
-  "26537": { stopId: 316, positionId: 53 }, // Platform 3 (suburban)
 
   // Upfield
   "vic:rail:UFD": { stopId: 281 }, // Parent (suburban)
@@ -1708,4 +1663,49 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   "15347": { stopId: 313, positionId: 51 }, // Platform 1 (suburban)
   "15348": { stopId: 313, positionId: 52 }, // Platform 2 (suburban)
   "26319": { stopId: 313, replacementBus: true }, // Replacement bus (suburban)
+
+  // Huntly
+  "vic:rail:HUY": { stopId: 314 }, // Parent (regional)
+  "49296": { stopId: 314 }, // Platform ? (regional)
+
+  // Raywood
+  "vic:rail:RAY": { stopId: 315 }, // Parent (regional)
+  "49295": { stopId: 315 }, // Platform ? (regional)
+
+  // Union
+  "vic:rail:UNN": { stopId: 316 }, // Parent (suburban)
+  "26535": { stopId: 316, positionId: 51 }, // Platform 1 (suburban)
+  "26536": { stopId: 316, positionId: 52 }, // Platform 2 (suburban)
+  "26537": { stopId: 316, positionId: 53 }, // Platform 3 (suburban)
+
+  // East Pakenham
+  "vic:rail:EPH": { stopId: 317 }, // Parent (suburban)
+  "26506": { stopId: 317, positionId: 51 }, // Platform 1 (suburban)
+  "26507": { stopId: 317, positionId: 52 }, // Platform 2 (suburban)
+  "26158": { stopId: 317, replacementBus: true }, // Replacement bus (suburban)
+
+  // Anzac
+  "vic:rail:AZC": { stopId: 318 }, // Parent (suburban)
+  "26556": { stopId: 318, positionId: 51 }, // Platform 1 (suburban)
+  "26557": { stopId: 318, positionId: 52 }, // Platform 2 (suburban)
+
+  // Town Hall
+  "vic:rail:THL": { stopId: 319 }, // Parent (suburban)
+  "26554": { stopId: 319, positionId: 51 }, // Platform 1 (suburban)
+  "26555": { stopId: 319, positionId: 52 }, // Platform 2 (suburban)
+
+  // State Library
+  "vic:rail:STL": { stopId: 320 }, // Parent (suburban)
+  "26552": { stopId: 320, positionId: 51 }, // Platform 1 (suburban)
+  "26553": { stopId: 320, positionId: 52 }, // Platform 2 (suburban)
+
+  // Parkville
+  "vic:rail:PKV": { stopId: 321 }, // Parent (suburban)
+  "26550": { stopId: 321, positionId: 51 }, // Platform 1 (suburban)
+  "26551": { stopId: 321, positionId: 52 }, // Platform 2 (suburban)
+
+  // Arden
+  "vic:rail:ARN": { stopId: 322 }, // Parent (suburban)
+  "26548": { stopId: 322, positionId: 51 }, // Platform 1 (suburban)
+  "26549": { stopId: 322, positionId: 52 }, // Platform 2 (suburban)
 };

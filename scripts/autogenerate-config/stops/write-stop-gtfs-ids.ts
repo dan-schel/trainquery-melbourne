@@ -20,6 +20,7 @@ export function writeStopGtfsIds(
         gtfsId.id,
         createMetadata(ctx, stop, gtfsId),
         stop.name,
+        stop.id,
         createComment(gtfsId),
       );
     }

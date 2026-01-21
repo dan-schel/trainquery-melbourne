@@ -9,19 +9,35 @@ type IdAndValue<T> = [string, MappingEntry<T>];
 
 export abstract class ThirdPartyIdMapping<T> {
   private readonly _mapping: Map<string, MappingEntry<T>>;
+  private readonly _groupSortOrder: Map<string, number>;
 
   constructor() {
     this._mapping = new Map<string, MappingEntry<T>>();
+    this._groupSortOrder = new Map<string, number>();
   }
 
-  add(id: string, value: T, group: string, comment: string | null) {
+  add(
+    id: string,
+    value: T,
+    group: string,
+    groupSortOrder: number,
+    comment: string | null,
+  ) {
     if (this._mapping.has(id)) throw new Error(`"${id}" already added.`);
+
     this._mapping.set(id, { value, group, comment });
+    this._groupSortOrder.set(group, groupSortOrder);
   }
 
   protected abstract formatValue(value: T): string;
   protected abstract getImportCode(): string;
   protected abstract getConstantName(): string;
+
+  private _getSortOrder(group: string): number {
+    const order = this._groupSortOrder.get(group);
+    if (order == null) throw new Error(`No sort order for "${group}" found.`);
+    return order;
+  }
 
   toCode() {
     const constantName = this.getConstantName();
@@ -41,7 +57,7 @@ export abstract class ThirdPartyIdMapping<T> {
     };
 
     const entriesStr = groupBy(entriesArray, ([, entry]) => entry.group)
-      .sort((a, b) => a.group.localeCompare(b.group))
+      .sort((a, b) => this._getSortOrder(a.group) - this._getSortOrder(b.group))
       .map(({ group, items }) => formatGroup(group, items))
       .join("\n\n");
 
