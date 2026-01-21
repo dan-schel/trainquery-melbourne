@@ -1,10 +1,14 @@
-import type { StopAndPositionId } from "../../../src/data/third-party-id-mapping-types.js";
+import type { StopGtfsIdMappingMetadata } from "../../../src/data/third-party-id-mapping-types.js";
 import { ThirdPartyIdMapping } from "./third-party-id-mapping.js";
 
-export class StopGtfsIdsMapping extends ThirdPartyIdMapping<StopAndPositionId> {
-  protected override formatValue(value: StopAndPositionId): string {
-    const positionId = value.positionId === null ? "null" : value.positionId;
-    return `{ stopId: ${value.stopId}, positionId: ${positionId} }`;
+export class StopGtfsIdsMapping extends ThirdPartyIdMapping<StopGtfsIdMappingMetadata> {
+  protected override formatValue(value: StopGtfsIdMappingMetadata): string {
+    const items: string[] = [`stopId: ${value.stopId}`];
+
+    if (value.positionId != null) items.push(`positionId: ${value.positionId}`);
+    if (value.replacementBus === true) items.push(`replacementBus: true`);
+
+    return `{ ${items.join(", ")} }`;
   }
 
   protected override getImportCode(): string {

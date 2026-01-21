@@ -10,7 +10,7 @@ type ParsedPlatform = {
   readonly platformCode: string;
 };
 
-type ParsedGtfsId = {
+export type ParsedGtfsId = {
   readonly id: string;
   readonly type: "parent" | "train" | "replacement-bus";
   readonly platformCode: string | null;
