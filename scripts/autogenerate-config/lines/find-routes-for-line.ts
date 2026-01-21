@@ -55,6 +55,9 @@ function eliminateSubsequenceStoppingPatterns(
   // Returns true if `potentialSubset` is the same as `other` with/without some
   // elements removed.
   function isSubsequence(potentialSubset: number[], other: number[]) {
+    // TODO: This is wrong. What we really need is a merge sort style zipper
+    // merge thing. Otherwise A -> B -> C -> E and A -> C -> D -> E can't merge
+    // even though there's no conflict.
     let start = 0;
     for (const stopId of potentialSubset) {
       const idx = other.indexOf(stopId, start);

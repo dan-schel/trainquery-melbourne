@@ -62,15 +62,10 @@ export class LineList {
       const stopEntries = stops.map((stop) => {
         const stopId = ctx.stopIds.requireById(stop.stopId);
 
-        return (
-          `${prefix}  {\n` +
-          `${prefix}    stopId: stop.${stopId.constantName},\n` +
-          `${prefix}    type: ${JSON.stringify(stop.type)},\n` +
-          `${prefix}  }`
-        );
+        return `${prefix}  { stopId: stop.${stopId.constantName}, type: ${JSON.stringify(stop.type)} },\n`;
       });
 
-      return `[\n${stopEntries.join(",\n")}\n${prefix}]`;
+      return `[\n${stopEntries.join("")}${prefix}]`;
     }
 
     function stringifyRoutes(): string {
@@ -81,16 +76,16 @@ export class LineList {
 
         return (
           `    {\n` +
-          `      id: route.${routeId.constantName},\n` +
+          `      id: route.${routeId.constantName}, // TODO: This is wrong!\n` +
           `      name: ${JSON.stringify(route.name)},\n` +
           `      tags: ${JSON.stringify(route.tags)},\n` +
           `      stops: ${stringifyStops(route.stops, "      ")},\n` +
           `      color: ${JSON.stringify(route.color)},\n` +
-          `    }`
+          `    },\n`
         );
       });
 
-      return `[\n${routeEntries.join(",\n")}\n  ]`;
+      return `[\n${routeEntries.join("")}  ]`;
     }
 
     function stringifyDiagram(): string {
@@ -102,11 +97,11 @@ export class LineList {
           `        name: ${JSON.stringify(diagram.name)},\n` +
           `        color: ${JSON.stringify(diagram.color)},\n` +
           `        stops: ${stringifyStops(diagram.stops, "        ")},\n` +
-          `      }`
+          `      },\n`
         );
       });
 
-      return `{\n    entries: [\n${diagramEntries.join(",\n")}\n    ],\n  }`;
+      return `{\n    entries: [\n${diagramEntries.join("")}    ],\n  }`;
     }
 
     return (
