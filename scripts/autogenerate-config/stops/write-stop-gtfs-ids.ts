@@ -16,7 +16,7 @@ export function writeStopGtfsIds(
 ) {
   for (const stop of stops) {
     for (const gtfsId of stop.gtfsIds) {
-      ctx.stopGtdsIds.add(
+      ctx.stopGtfsIds.add(
         gtfsId.id,
         createMetadata(ctx, stop, gtfsId),
         stop.name,

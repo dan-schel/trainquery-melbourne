@@ -30,7 +30,7 @@ export abstract class ThirdPartyIdMapping<T> {
   }
 
   protected abstract formatValue(value: T): string;
-  protected abstract getImportCode(): string;
+  protected abstract getDataTypeName(): string;
   protected abstract getConstantName(): string;
 
   private _getSortOrder(group: string): number {
@@ -41,7 +41,7 @@ export abstract class ThirdPartyIdMapping<T> {
 
   toCode() {
     const constantName = this.getConstantName();
-    const importCode = this.getImportCode();
+    const dataTypeName = this.getDataTypeName();
     const entriesArray = Array.from(this._mapping.entries());
 
     const formatGroup = (group: string, items: IdAndValue<T>[]) => {
@@ -62,9 +62,9 @@ export abstract class ThirdPartyIdMapping<T> {
       .join("\n\n");
 
     return (
-      `${importCode}\n` +
+      `import type { ${dataTypeName} } from "./third-party-id-mapping-types.js";\n` +
       `\n` +
-      `export const ${constantName}: StopGtfsIdMapping = {\n` +
+      `export const ${constantName}: ${dataTypeName} = {\n` +
       `${entriesStr}\n` +
       `};\n`
     );

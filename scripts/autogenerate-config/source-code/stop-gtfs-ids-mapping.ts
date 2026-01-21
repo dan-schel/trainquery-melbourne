@@ -11,8 +11,8 @@ export class StopGtfsIdsMapping extends ThirdPartyIdMapping<StopGtfsIdMappingMet
     return `{ ${items.join(", ")} }`;
   }
 
-  protected override getImportCode(): string {
-    return 'import type { StopGtfsIdMapping } from "./third-party-id-mapping-types.js";';
+  protected override getDataTypeName(): string {
+    return "StopGtfsIdMapping";
   }
 
   protected override getConstantName(): string {

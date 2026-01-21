@@ -11,10 +11,12 @@ const ROUTE_IDS_PATH = "./src/ids/route-ids.ts";
 const STOP_POSITION_IDS_PATH = "./src/ids/stop-position-ids.ts";
 const STOPS_PATH = "./src/data/stops.ts";
 const STOP_GTFS_IDS_PATH = "./src/data/stop-gtfs-ids.ts";
+const STOP_PTV_API_IDS_PATH = "./src/data/stop-ptv-api-ids.ts";
 
 async function main() {
+  const checkMode = process.argv.includes("--check");
   const ctx = new AutogenerationContext(
-    process.argv.includes("--check"),
+    checkMode,
     await parseGtfs(env.RELAY_KEY),
     IdList.fromCode(await fsp.readFile(STOP_IDS_PATH, "utf-8")),
     IdList.fromCode(await fsp.readFile(LINE_IDS_PATH, "utf-8")),
@@ -24,12 +26,13 @@ async function main() {
 
   autogenerateConfig(ctx);
 
-  await output(STOP_IDS_PATH, ctx.stopIds.toCode(), ctx.checkMode);
-  await output(LINE_IDS_PATH, ctx.lineIds.toCode(), ctx.checkMode);
-  await output(ROUTE_IDS_PATH, ctx.routeIds.toCode(), ctx.checkMode);
-  await output(STOP_POSITION_IDS_PATH, ctx.positionIds.toCode(), ctx.checkMode);
+  await output(STOP_IDS_PATH, ctx.stopIds.toCode(), checkMode);
+  await output(LINE_IDS_PATH, ctx.lineIds.toCode(), checkMode);
+  await output(ROUTE_IDS_PATH, ctx.routeIds.toCode(), checkMode);
+  await output(STOP_POSITION_IDS_PATH, ctx.positionIds.toCode(), checkMode);
   await output(STOPS_PATH, ctx.stops.toCode(), ctx.checkMode);
-  await output(STOP_GTFS_IDS_PATH, ctx.stopGtdsIds.toCode(), ctx.checkMode);
+  await output(STOP_GTFS_IDS_PATH, ctx.stopGtfsIds.toCode(), checkMode);
+  await output(STOP_PTV_API_IDS_PATH, ctx.stopPtvApiIds.toCode(), checkMode);
 }
 
 async function output(filePath: string, content: string, checkMode: boolean) {
