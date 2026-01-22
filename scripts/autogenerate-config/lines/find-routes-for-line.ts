@@ -15,7 +15,7 @@ export function findRoutesForLine(
   linePrimaryGtfsId: string,
 ): ParsedRoute[] {
   const patterns = findUniqueStoppingPatterns(ctx, subfeed, linePrimaryGtfsId);
-  const consolidatedPatterns = eliminateSubsequenceStoppingPatterns(patterns);
+  const consolidatedPatterns = consolidateStoppingPatterns(patterns);
   const namedPatterns = namePatterns(ctx, consolidatedPatterns);
 
   return namedPatterns.map((x) => ({
@@ -49,30 +49,83 @@ function findUniqueStoppingPatterns(
   return Array.from(stoppingPatterns.values());
 }
 
-function eliminateSubsequenceStoppingPatterns(
-  patterns: number[][],
-): number[][] {
-  // Returns true if `potentialSubset` is the same as `other` with/without some
-  // elements removed.
-  function isSubsequence(potentialSubset: number[], other: number[]) {
-    // TODO: This is wrong. What we really need is a merge sort style zipper
-    // merge thing. Otherwise A -> B -> C -> E and A -> C -> D -> E can't merge
-    // even though there's no conflict.
-    let start = 0;
-    for (const stopId of potentialSubset) {
-      const idx = other.indexOf(stopId, start);
-      if (idx === -1) return false;
+function consolidateStoppingPatterns(patterns: number[][]): number[][] {
+  const result: number[][] = [...patterns];
 
-      // Only check the remaining part of `other` in the next iteration.
-      start = idx + 1;
+  for (let i = 0; i < result.length - 1; i++) {
+    for (let j = i + 1; j < result.length; j++) {
+      const merged = getMergedPattern(itsOk(result[i]), itsOk(result[j]));
+
+      if (merged != null) {
+        // Replace the two patterns in the array with the merged one.
+        result.splice(j, 1);
+        result.splice(i, 1, merged);
+
+        // Start from the start again. Something that previously couldn't merge
+        // might be able to merge now.
+        // (We actually want the next iteration to do i=0, j=1, but have to set
+        // j=0 to compensate for the j++ at the end of this loop. We don't exit
+        // the outer loop until this inner loop stops iterating so i=0 is fine.)
+        i = 0;
+        j = 0;
+      }
     }
-    return true;
   }
 
-  return patterns.filter(
-    (me, i) =>
-      !patterns.some((other, j) => i !== j && isSubsequence(me, other)),
-  );
+  // Once we've been through all pairs without restarting, there must be no more
+  // merges possible, so return the result.
+  return result;
+}
+
+function getMergedPattern(a: number[], b: number[]): number[] | null {
+  let i = 0;
+  let j = 0;
+
+  const merged: number[] = [];
+
+  let aSkips = 0;
+  let bSkips = 0;
+
+  while (i < a.length || j < b.length) {
+    if (i >= a.length) {
+      merged.push(itsOk(b[j]));
+      j++;
+      continue;
+    }
+
+    if (j >= b.length) {
+      merged.push(itsOk(a[i]));
+      i++;
+      continue;
+    }
+
+    const elementA = itsOk(a[i]);
+    const elementB = itsOk(b[j]);
+
+    if (elementA === elementB) {
+      merged.push(elementA);
+      i++;
+      j++;
+    } else if (a.indexOf(elementB, i + 1) !== -1) {
+      merged.push(elementA);
+      i++;
+      aSkips++;
+    } else if (b.indexOf(elementA, j + 1) !== -1) {
+      merged.push(elementB);
+      j++;
+      bSkips++;
+    } else {
+      return null;
+    }
+  }
+
+  // Don't merge patterns if you skipped all stops except one to achieve it.
+  // Avoids A -> B -> C merging with C -> B -> A to form A -> B -> C -> B -> A.
+  if (aSkips >= a.length - 1 || bSkips >= b.length - 1) {
+    return null;
+  }
+
+  return merged;
 }
 
 function namePatterns(ctx: AutogenerationContext, patterns: number[][]) {
