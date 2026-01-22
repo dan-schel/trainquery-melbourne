@@ -76,7 +76,7 @@ export class LineList {
 
         return (
           `    {\n` +
-          `      id: route.${routeId.constantName}, // TODO: This is wrong!\n` +
+          `      id: route.${routeId.constantName},\n` +
           `      name: ${JSON.stringify(route.name)},\n` +
           `      tags: ${JSON.stringify(route.tags)},\n` +
           `      stops: ${stringifyStops(route.stops, "      ")},\n` +

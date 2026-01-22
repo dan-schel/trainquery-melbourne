@@ -2,8 +2,9 @@ import type { AutogenerationContext } from "../autogeneration-context.js";
 import type { WithUrlPath } from "../utils/assign-url-paths.js";
 import type { WithId } from "../utils/sync-ids.js";
 import type { ParsedLine } from "./extract-lines-from-subfeed.js";
+import type { ParsedRoute } from "./find-routes-for-line.js";
 
-type FullLine = WithUrlPath<WithId<ParsedLine>>;
+type FullLine = WithUrlPath<WithId<ParsedLine<WithId<ParsedRoute>>>>;
 
 export function writeLines(ctx: AutogenerationContext, lines: FullLine[]) {
   for (const line of lines) {
@@ -14,7 +15,7 @@ export function writeLines(ctx: AutogenerationContext, lines: FullLine[]) {
       tags: [],
       urlPath: line.urlPath,
       routes: line.routes.map((route) => ({
-        id: 1,
+        id: route.id,
         name: route.name,
         tags: [],
         stops: route.stops.map((s) => ({

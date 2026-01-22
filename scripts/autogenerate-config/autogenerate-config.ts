@@ -9,6 +9,7 @@ import { writeStopGtfsIds } from "./stops/write-stop-gtfs-ids.js";
 import { writeStopPtvApiIds } from "./stops/write-stop-ptv-api-ids.js";
 import { writeStops } from "./stops/write-stops.js";
 import { syncIds } from "./utils/sync-ids.js";
+import { syncRouteIds } from "./lines/sync-route-ids.js";
 
 export function autogenerateConfig(ctx: AutogenerationContext) {
   const stops = parseStops(ctx);
@@ -23,7 +24,8 @@ export function autogenerateConfig(ctx: AutogenerationContext) {
   const lines = parseLines(ctx);
   const linesWithIds = syncIds(ctx.lineIds, lines);
   const linesWithUrlPaths = assignUrlPaths(linesWithIds);
+  const linesWithRouteIds = syncRouteIds(ctx, linesWithUrlPaths);
 
-  writeLines(ctx, linesWithUrlPaths);
+  writeLines(ctx, linesWithRouteIds);
   writeLineGtfsIds(ctx, linesWithUrlPaths);
 }

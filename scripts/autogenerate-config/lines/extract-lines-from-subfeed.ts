@@ -9,11 +9,11 @@ export type ParsedLineGtfsId = {
   readonly type: "train" | "replacement-bus";
 };
 
-export type ParsedLine = {
+export type ParsedLine<RouteType extends ParsedRoute = ParsedRoute> = {
   readonly name: string;
   readonly shortName: string;
   readonly gtfsIds: readonly ParsedLineGtfsId[];
-  readonly routes: readonly ParsedRoute[];
+  readonly routes: readonly RouteType[];
 };
 
 type GroupedLine = {

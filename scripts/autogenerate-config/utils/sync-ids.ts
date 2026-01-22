@@ -11,7 +11,7 @@ export type WithId<T> = T & {
 
 export function syncIds<T extends WithName>(
   idList: IdList,
-  items: T[],
+  items: readonly T[],
 ): WithId<T>[] {
   const itemsWithIdsAssigned = assignIds(idList, items);
   deactivateMissingIds(idList, items);
@@ -21,7 +21,7 @@ export function syncIds<T extends WithName>(
 
 function assignIds<T extends WithName>(
   idList: IdList,
-  items: T[],
+  items: readonly T[],
 ): WithId<T>[] {
   const result: WithId<T>[] = [];
 
@@ -40,7 +40,7 @@ function assignIds<T extends WithName>(
   return result;
 }
 
-function deactivateMissingIds(idList: IdList, items: WithName[]) {
+function deactivateMissingIds(idList: IdList, items: readonly WithName[]) {
   const activeEntries = idList.entries.filter((x) => x.isActive);
 
   for (const entry of activeEntries) {

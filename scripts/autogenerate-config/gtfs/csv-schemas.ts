@@ -32,7 +32,7 @@ export const routesCsvSchema = z
   })
   .readonly();
 
-export type TripsCsvRow = z.infer<typeof tripsCsvSchema>;
+type TripsCsvRow = z.infer<typeof tripsCsvSchema>;
 export type TripsCsv = readonly TripsCsvRow[];
 export const tripsCsvSchema = z
   .object({
