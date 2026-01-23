@@ -7,6 +7,7 @@ export type StopGtfsIdMapping = Record<
   {
     parent: string[];
     [stopPositionId: number]: string[];
+    unknownPlatform?: string[];
     replacementBus?: string[];
   }
 >;
