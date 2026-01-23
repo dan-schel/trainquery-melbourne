@@ -1159,7 +1159,7 @@ export const FERNTREE_GULLY: StopConfig = {
 export const FLAGSTAFF: StopConfig = {
   id: stop.FLAGSTAFF,
   name: "Flagstaff",
-  tags: [tag.CITY_LOOP, tag.CITY_LOOP_UNDERGROUND],
+  tags: [tag.CITY_LOOP_UNDERGROUND],
   urlPath: "flagstaff",
   location: { latitude: -37.8119815, longitude: 144.95566511 },
   positions: [
@@ -2005,7 +2005,7 @@ export const MCKINNON: StopConfig = {
 export const MELBOURNE_CENTRAL: StopConfig = {
   id: stop.MELBOURNE_CENTRAL,
   name: "Melbourne Central",
-  tags: [tag.CITY_LOOP, tag.CITY_LOOP_UNDERGROUND],
+  tags: [tag.CITY_LOOP_UNDERGROUND],
   urlPath: "melbournecentral",
   location: { latitude: -37.80993896, longitude: 144.96260489 },
   positions: [
@@ -2526,7 +2526,7 @@ export const PARKDALE: StopConfig = {
 export const PARLIAMENT: StopConfig = {
   id: stop.PARLIAMENT,
   name: "Parliament",
-  tags: [tag.CITY_LOOP, tag.CITY_LOOP_UNDERGROUND],
+  tags: [tag.CITY_LOOP_UNDERGROUND],
   urlPath: "parliament",
   location: { latitude: -37.811337, longitude: 144.973119 },
   positions: [
