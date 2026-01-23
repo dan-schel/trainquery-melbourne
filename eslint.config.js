@@ -21,6 +21,11 @@ const customRules = {
       "warn",
       { allowString: false, allowNumber: false, allowNullableObject: false },
     ],
+
+    // These errors are often just symptoms of another error, and obscure the
+    // actual error, so disable them.
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
   },
 };
 
