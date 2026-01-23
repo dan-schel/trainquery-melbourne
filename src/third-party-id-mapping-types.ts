@@ -1,6 +1,6 @@
 export type LinePtvApiIdMapping = Record<string, number>;
 
-export type StopPtvApiIdMapping = Record<string, number>;
+export type StopPtvApiIdMapping = Record<number, string[]>;
 
 export type StopGtfsIdMapping = Record<
   number,
@@ -13,13 +13,6 @@ export type StopGtfsIdMapping = Record<
 >;
 
 export type LineGtfsIdMapping = Record<string, LineGtfsIdMappingMetadata>;
-
-// TODO: Remove this.
-export type StopGtfsIdMappingMetadata = {
-  stopId: number;
-  positionId?: number | null;
-  replacementBus?: boolean;
-};
 
 export type LineGtfsIdMappingMetadata = {
   lineId: number;
