@@ -7,3 +7,5 @@
 - Stop IDs haven't been removed compared to master.
 - `src/stops/stops.ts` are sorted alphabetically.
 - All active tags are used.
+- Abilty to check "corridors" to ensure all lines list the same stops between two stations.
+- Check that if a stop isn't marked "always express" on the line diagram, that some service actually stops there (and vice versa).
