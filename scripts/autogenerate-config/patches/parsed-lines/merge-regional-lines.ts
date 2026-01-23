@@ -1,12 +1,10 @@
 import { itsOk } from "@dan-schel/js-utils";
 import type { ParsedLine } from "../../lines/extract-lines-from-subfeed.js";
 import type { LinePatch } from "../patch.js";
-import {
-  consolidateStoppingPatterns,
-  namePatterns,
-  type ParsedRoute,
-} from "../../lines/find-routes-for-line.js";
+import { type ParsedRoute } from "../../lines/find-routes-for-line.js";
 import type { AutogenerationContext } from "../../autogeneration-context.js";
+import { consolidateStoppingPatterns } from "../../lines/consolidate-stopping-patterns.js";
+import { namePatterns } from "../../lines/name-patterns.js";
 
 type Merge = {
   readonly primaryGtfsId: string;
