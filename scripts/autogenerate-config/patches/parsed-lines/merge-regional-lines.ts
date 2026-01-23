@@ -26,6 +26,17 @@ type SuburbanSection = {
   readonly to: string;
 };
 
+// TODO: Should consider splitting this up into multiple patches, e.g.:
+// - Merge suburban sections into regional lines
+// - Merge lines together to form one line
+// - Merge branch lines as new routes on main lines
+//
+// Or even:
+// - Merge suburban section into Gippsland line.
+// - Merge suburban section into Seymour line.
+// - Merge Seymour branches into Seymour line.
+// - etc.
+
 const merges: readonly Merge[] = [
   // Gippsland Line
   {
@@ -173,12 +184,19 @@ function fillSuburbanSection(
 
   const allPatterns = [...existingPatterns, ...suburbanStoppingPatterns];
 
+  // TODO: Right now it refuses to merge in East Pakenham because it conflicts
+  // with Nar Nar Goon. We need a different algorithm which finds the portion
+  // of regional stops which are a subset of the suburban ones and merges there.
   const consolidatedPatterns = consolidateStoppingPatterns(allPatterns);
+
   const namedPatterns = namePatterns(ctx, consolidatedPatterns);
+
   const newRoutes: ParsedRoute[] = namedPatterns.map((x) => ({
     name: x.name,
     stops: x.pattern.map((stopId) => {
-      const type = existingPatterns.some((p) => p.includes(stopId))
+      const type = primaryLine.routes.some((r) =>
+        r.stops.some((s) => s.stopId === stopId && s.type === "regular"),
+      )
         ? "regular"
         : "hidden-unless-stopped-at";
 

@@ -170,5 +170,5 @@ function guessUpOrDown(ctx: AutogenerationContext, pattern: number[]) {
     lastStop.longitude,
   );
 
-  return distanceToFirst < distanceToLast ? "down" : "up";
+  return distanceToFirst < distanceToLast ? "Down" : "Up";
 }
