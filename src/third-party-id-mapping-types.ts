@@ -1,16 +1,16 @@
 export type LinePtvApiIdMapping = Record<string, number>;
 
-export type StopPtvApiIdMapping = Record<number, string[]>;
+export type StopGtfsIds = {
+  readonly parent: string;
+  readonly general?: string[];
+  readonly platforms?: Readonly<Record<number, readonly string[]>>;
+  readonly replacementBus?: string[];
+};
 
-export type StopGtfsIdMapping = Record<
-  number,
-  {
-    parent: string;
-    general?: string[];
-    platforms?: Record<number, string[]>;
-    replacementBus?: string[];
-  }
->;
+export type StopPtvIds = readonly string[];
+
+export type StopGtfsIdMapping = Record<number, StopGtfsIds>;
+export type StopPtvApiIdMapping = Record<number, StopPtvIds>;
 
 export type LineGtfsIdMapping = Record<string, LineGtfsIdMappingMetadata>;
 
