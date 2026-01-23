@@ -1,9 +1,8 @@
 import type { StopsCsv, StopsCsvRow } from "../../gtfs/csv-schemas.js";
-import type { GtfsData } from "../../gtfs/read-gtfs.js";
 import { isPresent } from "../../utils/is-present.js";
-import type { Patch } from "../patch.js";
+import type { GtfsPatch } from "../patch.js";
 
-export const removeNonPlatformChildStopsPatch: Patch<GtfsData> = (data) => {
+export const removeUselessChildStopsPatch: GtfsPatch = (data) => {
   return {
     ...data,
     suburban: {

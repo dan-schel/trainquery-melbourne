@@ -1,6 +1,5 @@
-import { type GtfsData } from "../../../gtfs/read-gtfs.js";
 import type { Subfeed } from "../../../utils/subfeed.js";
-import { type Patch } from "../../patch.js";
+import { type GtfsPatch } from "../../patch.js";
 
 type CreateReplaceStopNamePatchArgs = {
   readonly id: string;
@@ -16,7 +15,7 @@ export function createReplaceStopNamePatch({
   subfeed,
   correctName,
   expectedName,
-}: CreateReplaceStopNamePatchArgs): Patch<GtfsData> {
+}: CreateReplaceStopNamePatchArgs): GtfsPatch {
   return (data) => {
     const stop = data[subfeed].stops.find((s) => s.stop_id === id);
     if (stop == null) throw new Error(`No stop with ID ${id}.`);

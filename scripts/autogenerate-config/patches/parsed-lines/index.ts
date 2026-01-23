@@ -1,4 +1,8 @@
-import type { ParsedLine } from "../../lines/extract-lines-from-subfeed.js";
-import type { Patch } from "../patch.js";
+import type { LinePatch } from "../patch.js";
+import { fixLineNamesPatch } from "./fix-line-names.js";
+import { mergeRegionalLinesPatch } from "./merge-regional-lines.js";
 
-export const parsedLinesPatches: Patch<ParsedLine[]>[] = [];
+export const parsedLinesPatches: LinePatch[] = [
+  mergeRegionalLinesPatch,
+  fixLineNamesPatch,
+];

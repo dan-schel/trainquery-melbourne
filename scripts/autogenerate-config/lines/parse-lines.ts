@@ -4,7 +4,7 @@ import {
   type ParsedLine,
 } from "./extract-lines-from-subfeed.js";
 import { parsedLinesPatches } from "../patches/parsed-lines/index.js";
-import { applyPatches } from "../patches/patch.js";
+import { applyContextAwarePatches } from "../patches/patch.js";
 
 export function parseLines(ctx: AutogenerationContext): ParsedLine[] {
   const lines = [
@@ -12,6 +12,6 @@ export function parseLines(ctx: AutogenerationContext): ParsedLine[] {
     ...extractLinesFromSubfeed(ctx, "regional"),
   ];
 
-  const patchedLines = applyPatches(lines, parsedLinesPatches);
+  const patchedLines = applyContextAwarePatches(ctx, lines, parsedLinesPatches);
   return patchedLines;
 }

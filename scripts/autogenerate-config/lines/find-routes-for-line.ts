@@ -6,6 +6,7 @@ export type ParsedRoute = {
   readonly name: string;
   readonly stops: readonly {
     readonly stopId: number;
+    readonly type: "regular" | "hidden-unless-stopped-at";
   }[];
 };
 
@@ -20,7 +21,7 @@ export function findRoutesForLine(
 
   return namedPatterns.map((x) => ({
     name: x.name,
-    stops: x.pattern.map((stopId) => ({ stopId })),
+    stops: x.pattern.map((stopId) => ({ stopId, type: "regular" })),
   }));
 }
 

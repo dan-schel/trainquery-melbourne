@@ -1,6 +1,6 @@
 import { AutogenerationContext } from "../autogeneration-context.js";
 import { parsedStopsPatches } from "../patches/parsed-stops/index.js";
-import { applyPatches } from "../patches/patch.js";
+import { applyContextAwarePatches } from "../patches/patch.js";
 import { buildStopsCsvTree } from "./build-stops-csv-tree.js";
 import {
   extractStopsFromTree,
@@ -15,6 +15,6 @@ export function parseStops(ctx: AutogenerationContext): ParsedStop[] {
 
   const stops = extractStopsFromTree(unifiedTree);
 
-  const patchedStops = applyPatches(stops, parsedStopsPatches);
+  const patchedStops = applyContextAwarePatches(ctx, stops, parsedStopsPatches);
   return patchedStops;
 }

@@ -2,7 +2,7 @@ import {
   platformSortOrder,
   type ParsedStop,
 } from "../../stops/extract-stops-from-tree.js";
-import { type Patch } from "../patch.js";
+import { type StopPatch } from "../patch.js";
 
 type PlatformMapping = Readonly<Record<string, readonly string[]>>;
 
@@ -150,7 +150,7 @@ const additionalSuburbanPlatforms: PlatformMapping = {
   "Watergardens": [],
 };
 
-export const addRegionalPlatformsPatch: Patch<ParsedStop[]> = (stops) => {
+export const addRegionalPlatformsPatch: StopPatch = (_ctx, stops) => {
   const regionalKeys = Object.keys(regionalPlatforms);
   const suburbanKeys = Object.keys(additionalSuburbanPlatforms);
   const allKeys = [...regionalKeys, ...suburbanKeys];

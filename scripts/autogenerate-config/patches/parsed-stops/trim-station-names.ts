@@ -1,7 +1,6 @@
-import { type ParsedStop } from "../../stops/extract-stops-from-tree.js";
-import { type Patch } from "../patch.js";
+import { type StopPatch } from "../patch.js";
 
-export const trimStationNamesPatch: Patch<ParsedStop[]> = (stops) => {
+export const trimStationNamesPatch: StopPatch = (_ctx, stops) => {
   return stops.map((stop) => ({
     ...stop,
     name: stop.name.trim().replace(/( Railway)? Station$/gi, ""),

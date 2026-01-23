@@ -20,7 +20,7 @@ export function writeLines(ctx: AutogenerationContext, lines: FullLine[]) {
         tags: [],
         stops: route.stops.map((s) => ({
           stopId: s.stopId,
-          type: "regular",
+          type: s.type,
         })),
         color: null,
       })),

@@ -1,5 +1,5 @@
 import type { ParsedStop } from "../../../stops/extract-stops-from-tree.js";
-import { type Patch } from "../../patch.js";
+import { type StopPatch } from "../../patch.js";
 
 type CreateAddStopUnlessExistsPatchArgs = {
   readonly stop: ParsedStop;
@@ -16,8 +16,8 @@ export function createAddStopUnlessExistsPatch({
   expectedGtfsId,
   expectedName,
   throwIfAlreadyExists = true,
-}: CreateAddStopUnlessExistsPatchArgs): Patch<ParsedStop[]> {
-  return (stops) => {
+}: CreateAddStopUnlessExistsPatchArgs): StopPatch {
+  return (_ctx, stops) => {
     const existingById = stops.find((s) =>
       s.gtfsIds.some((g) => g.id === expectedGtfsId),
     );
