@@ -50,7 +50,7 @@ function findUniqueStoppingPatterns(
   return Array.from(stoppingPatterns.values());
 }
 
-function consolidateStoppingPatterns(patterns: number[][]): number[][] {
+export function consolidateStoppingPatterns(patterns: number[][]): number[][] {
   const result: number[][] = [...patterns];
 
   for (let i = 0; i < result.length - 1; i++) {
@@ -129,7 +129,7 @@ function getMergedPattern(a: number[], b: number[]): number[] | null {
   return merged;
 }
 
-function namePatterns(ctx: AutogenerationContext, patterns: number[][]) {
+export function namePatterns(ctx: AutogenerationContext, patterns: number[][]) {
   const automaticNames = patterns.map((pattern) => ({
     name: guessUpOrDown(ctx, pattern),
     pattern,
