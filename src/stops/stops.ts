@@ -1,6 +1,7 @@
 import { type StopConfig } from "corequery";
 import * as stop from "./stop-ids.js";
 import * as position from "./stop-position-ids.js";
+import * as tag from "./stop-tags.js";
 
 export const AIRCRAFT: StopConfig = {
   id: stop.AIRCRAFT,
@@ -1158,7 +1159,7 @@ export const FERNTREE_GULLY: StopConfig = {
 export const FLAGSTAFF: StopConfig = {
   id: stop.FLAGSTAFF,
   name: "Flagstaff",
-  tags: [],
+  tags: [tag.CITY_LOOP, tag.CITY_LOOP_UNDERGROUND],
   urlPath: "flagstaff",
   location: { latitude: -37.8119815, longitude: 144.95566511 },
   positions: [
@@ -1184,7 +1185,7 @@ export const FLEMINGTON_BRIDGE: StopConfig = {
 export const FLEMINGTON_RACECOURSE: StopConfig = {
   id: stop.FLEMINGTON_RACECOURSE,
   name: "Flemington Racecourse",
-  tags: [],
+  tags: [tag.SPECIAL_EVENTS_ONLY],
   urlPath: "flemingtonracecourse",
   location: { latitude: -37.78721073, longitude: 144.90757709 },
   positions: [
@@ -1196,7 +1197,7 @@ export const FLEMINGTON_RACECOURSE: StopConfig = {
 export const FLINDERS_STREET: StopConfig = {
   id: stop.FLINDERS_STREET,
   name: "Flinders Street",
-  tags: [],
+  tags: [tag.CITY_LOOP],
   urlPath: "flindersstreet",
   location: { latitude: -37.81830513, longitude: 144.96696435 },
   positions: [
@@ -2004,7 +2005,7 @@ export const MCKINNON: StopConfig = {
 export const MELBOURNE_CENTRAL: StopConfig = {
   id: stop.MELBOURNE_CENTRAL,
   name: "Melbourne Central",
-  tags: [],
+  tags: [tag.CITY_LOOP, tag.CITY_LOOP_UNDERGROUND],
   urlPath: "melbournecentral",
   location: { latitude: -37.80993896, longitude: 144.96260489 },
   positions: [
@@ -2525,7 +2526,7 @@ export const PARKDALE: StopConfig = {
 export const PARLIAMENT: StopConfig = {
   id: stop.PARLIAMENT,
   name: "Parliament",
-  tags: [],
+  tags: [tag.CITY_LOOP, tag.CITY_LOOP_UNDERGROUND],
   urlPath: "parliament",
   location: { latitude: -37.811337, longitude: 144.973119 },
   positions: [
@@ -2886,7 +2887,7 @@ export const SHERWOOD_PARK: StopConfig = {
 export const SHOWGROUNDS: StopConfig = {
   id: stop.SHOWGROUNDS,
   name: "Showgrounds",
-  tags: [],
+  tags: [tag.SPECIAL_EVENTS_ONLY],
   urlPath: "showgrounds",
   location: { latitude: -37.7833933, longitude: 144.9149124 },
   positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
@@ -2956,7 +2957,7 @@ export const SOUTH_YARRA: StopConfig = {
 export const SOUTHERN_CROSS: StopConfig = {
   id: stop.SOUTHERN_CROSS,
   name: "Southern Cross",
-  tags: [],
+  tags: [tag.CITY_LOOP],
   urlPath: "southerncross",
   location: { latitude: -37.8186631, longitude: 144.95277706 },
   positions: [
@@ -3716,7 +3717,7 @@ export const EAST_PAKENHAM: StopConfig = {
 export const ANZAC: StopConfig = {
   id: stop.ANZAC,
   name: "Anzac",
-  tags: [],
+  tags: [tag.METRO_TUNNEL],
   urlPath: "anzac",
   location: { latitude: -37.83331103, longitude: 144.97279042 },
   positions: [
@@ -3728,7 +3729,7 @@ export const ANZAC: StopConfig = {
 export const TOWN_HALL: StopConfig = {
   id: stop.TOWN_HALL,
   name: "Town Hall",
-  tags: [],
+  tags: [tag.METRO_TUNNEL],
   urlPath: "townhall",
   location: { latitude: -37.81699161, longitude: 144.96709126 },
   positions: [
@@ -3740,7 +3741,7 @@ export const TOWN_HALL: StopConfig = {
 export const STATE_LIBRARY: StopConfig = {
   id: stop.STATE_LIBRARY,
   name: "State Library",
-  tags: [],
+  tags: [tag.METRO_TUNNEL],
   urlPath: "statelibrary",
   location: { latitude: -37.80943693, longitude: 144.9632775 },
   positions: [
@@ -3752,7 +3753,7 @@ export const STATE_LIBRARY: StopConfig = {
 export const PARKVILLE: StopConfig = {
   id: stop.PARKVILLE,
   name: "Parkville",
-  tags: [],
+  tags: [tag.METRO_TUNNEL],
   urlPath: "parkville",
   location: { latitude: -37.79987386, longitude: 144.95954246 },
   positions: [
@@ -3764,7 +3765,7 @@ export const PARKVILLE: StopConfig = {
 export const ARDEN: StopConfig = {
   id: stop.ARDEN,
   name: "Arden",
-  tags: [],
+  tags: [tag.METRO_TUNNEL],
   urlPath: "arden",
   location: { latitude: -37.80122194, longitude: 144.94120851 },
   positions: [
