@@ -1,11 +1,11 @@
 export const UP = 1; // Up
 export const DOWN = 2; // Down
-// [REMOVED] export const UP_DIRECT = 3; // Up Direct
-// [REMOVED] export const DOWN_DIRECT = 4; // Down Direct
-// [REMOVED] export const UP_VIA_CITY_LOOP = 5; // Up via City Loop
-// [REMOVED] export const DOWN_VIA_CITY_LOOP = 6; // Down via City Loop
-// [REMOVED] export const UP_VIA_METRO_TUNNEL = 7; // Up via Metro Tunnel
-// [REMOVED] export const DOWN_VIA_METRO_TUNNEL = 8; // Down via Metro Tunnel
+export const UP_DIRECT = 3; // Up Direct
+export const DOWN_DIRECT = 4; // Down Direct
+export const UP_VIA_CITY_LOOP = 5; // Up via City Loop
+export const DOWN_VIA_CITY_LOOP = 6; // Down via City Loop
+export const UP_VIA_METRO_TUNNEL = 7; // Up via Metro Tunnel
+export const DOWN_VIA_METRO_TUNNEL = 8; // Down via Metro Tunnel
 // [REMOVED] export const ALBURY_BRANCH_UP = 9; // Albury Branch Up
 // [REMOVED] export const ALBURY_BRANCH_DOWN = 10; // Albury Branch Down
 // [REMOVED] export const SHEPPARTON_BRANCH_UP = 11; // Shepparton Branch Up

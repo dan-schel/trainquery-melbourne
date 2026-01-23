@@ -66,8 +66,8 @@ export const FRANKSTON: LineConfig = {
   urlPath: "frankston",
   routes: [
     {
-      id: route.DOWN,
-      name: "Down",
+      id: route.DOWN_DIRECT,
+      name: "Down Direct",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -102,8 +102,8 @@ export const FRANKSTON: LineConfig = {
       color: null,
     },
     {
-      id: route.UP,
-      name: "Up",
+      id: route.UP_VIA_CITY_LOOP,
+      name: "Up via City Loop",
       tags: [],
       stops: [
         { stopId: stop.FRANKSTON, type: "regular" },
@@ -200,8 +200,8 @@ export const CRANBOURNE: LineConfig = {
   urlPath: "cranbourne",
   routes: [
     {
-      id: route.ROUTE_1,
-      name: "Route 1",
+      id: route.DOWN_VIA_METRO_TUNNEL,
+      name: "Down via Metro Tunnel",
       tags: [],
       stops: [
         { stopId: stop.TOWN_HALL, type: "regular" },
@@ -227,8 +227,8 @@ export const CRANBOURNE: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_2,
-      name: "Route 2",
+      id: route.UP_VIA_METRO_TUNNEL,
+      name: "Up via Metro Tunnel",
       tags: [],
       stops: [
         { stopId: stop.CRANBOURNE, type: "regular" },
@@ -254,8 +254,8 @@ export const CRANBOURNE: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_3,
-      name: "Route 3",
+      id: route.UP_VIA_CITY_LOOP,
+      name: "Up via City Loop",
       tags: [],
       stops: [
         { stopId: stop.CRANBOURNE, type: "regular" },
@@ -286,8 +286,8 @@ export const CRANBOURNE: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_4,
-      name: "Route 4",
+      id: route.DOWN_DIRECT,
+      name: "Down Direct",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -325,8 +325,8 @@ export const PAKENHAM: LineConfig = {
   urlPath: "pakenham",
   routes: [
     {
-      id: route.ROUTE_1,
-      name: "Route 1",
+      id: route.DOWN_VIA_METRO_TUNNEL,
+      name: "Down via Metro Tunnel",
       tags: [],
       stops: [
         { stopId: stop.TOWN_HALL, type: "regular" },
@@ -357,8 +357,8 @@ export const PAKENHAM: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_2,
-      name: "Route 2",
+      id: route.UP_VIA_METRO_TUNNEL,
+      name: "Up via Metro Tunnel",
       tags: [],
       stops: [
         { stopId: stop.EAST_PAKENHAM, type: "regular" },
@@ -389,8 +389,8 @@ export const PAKENHAM: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_3,
-      name: "Route 3",
+      id: route.DOWN_DIRECT,
+      name: "Down Direct",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -422,8 +422,8 @@ export const PAKENHAM: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_4,
-      name: "Route 4",
+      id: route.UP_VIA_CITY_LOOP,
+      name: "Up via City Loop",
       tags: [],
       stops: [
         { stopId: stop.EAST_PAKENHAM, type: "regular" },
@@ -537,8 +537,8 @@ export const GLEN_WAVERLEY: LineConfig = {
   urlPath: "glenwaverley",
   routes: [
     {
-      id: route.UP,
-      name: "Up",
+      id: route.UP_VIA_CITY_LOOP,
+      name: "Up via City Loop",
       tags: [],
       stops: [
         { stopId: stop.GLEN_WAVERLEY, type: "regular" },
@@ -565,8 +565,8 @@ export const GLEN_WAVERLEY: LineConfig = {
       color: null,
     },
     {
-      id: route.DOWN,
-      name: "Down",
+      id: route.DOWN_VIA_CITY_LOOP,
+      name: "Down via City Loop",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -604,8 +604,8 @@ export const ALAMEIN: LineConfig = {
   urlPath: "alamein",
   routes: [
     {
-      id: route.UP,
-      name: "Up",
+      id: route.UP_VIA_CITY_LOOP,
+      name: "Up via City Loop",
       tags: [],
       stops: [
         { stopId: stop.ALAMEIN, type: "regular" },
@@ -630,8 +630,8 @@ export const ALAMEIN: LineConfig = {
       color: null,
     },
     {
-      id: route.DOWN,
-      name: "Down",
+      id: route.DOWN_VIA_CITY_LOOP,
+      name: "Down via City Loop",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -667,8 +667,8 @@ export const BELGRAVE: LineConfig = {
   urlPath: "belgrave",
   routes: [
     {
-      id: route.UP,
-      name: "Up",
+      id: route.UP_VIA_CITY_LOOP,
+      name: "Up via City Loop",
       tags: [],
       stops: [
         { stopId: stop.BELGRAVE, type: "regular" },
@@ -706,8 +706,8 @@ export const BELGRAVE: LineConfig = {
       color: null,
     },
     {
-      id: route.DOWN,
-      name: "Down",
+      id: route.DOWN_VIA_CITY_LOOP,
+      name: "Down via City Loop",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -756,8 +756,8 @@ export const LILYDALE: LineConfig = {
   urlPath: "lilydale",
   routes: [
     {
-      id: route.UP,
-      name: "Up",
+      id: route.UP_VIA_CITY_LOOP,
+      name: "Up via City Loop",
       tags: [],
       stops: [
         { stopId: stop.LILYDALE, type: "regular" },
@@ -791,8 +791,8 @@ export const LILYDALE: LineConfig = {
       color: null,
     },
     {
-      id: route.DOWN,
-      name: "Down",
+      id: route.DOWN_VIA_CITY_LOOP,
+      name: "Down via City Loop",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -837,8 +837,8 @@ export const HURSTBRIDGE: LineConfig = {
   urlPath: "hurstbridge",
   routes: [
     {
-      id: route.UP,
-      name: "Up",
+      id: route.UP_DIRECT,
+      name: "Up Direct",
       tags: [],
       stops: [
         { stopId: stop.HURSTBRIDGE, type: "regular" },
@@ -869,8 +869,8 @@ export const HURSTBRIDGE: LineConfig = {
       color: null,
     },
     {
-      id: route.DOWN,
-      name: "Down",
+      id: route.DOWN_VIA_CITY_LOOP,
+      name: "Down via City Loop",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -916,8 +916,8 @@ export const MERNDA: LineConfig = {
   urlPath: "mernda",
   routes: [
     {
-      id: route.UP,
-      name: "Up",
+      id: route.UP_DIRECT,
+      name: "Up Direct",
       tags: [],
       stops: [
         { stopId: stop.MERNDA, type: "regular" },
@@ -949,8 +949,8 @@ export const MERNDA: LineConfig = {
       color: null,
     },
     {
-      id: route.DOWN,
-      name: "Down",
+      id: route.DOWN_VIA_CITY_LOOP,
+      name: "Down via City Loop",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -997,8 +997,8 @@ export const UPFIELD: LineConfig = {
   urlPath: "upfield",
   routes: [
     {
-      id: route.ROUTE_1,
-      name: "Route 1",
+      id: route.DOWN_DIRECT,
+      name: "Down Direct",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -1021,8 +1021,8 @@ export const UPFIELD: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_2,
-      name: "Route 2",
+      id: route.UP_DIRECT,
+      name: "Up Direct",
       tags: [],
       stops: [
         { stopId: stop.UPFIELD, type: "regular" },
@@ -1045,8 +1045,8 @@ export const UPFIELD: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_3,
-      name: "Route 3",
+      id: route.UP_VIA_CITY_LOOP,
+      name: "Up via City Loop",
       tags: [],
       stops: [
         { stopId: stop.UPFIELD, type: "regular" },
@@ -1071,8 +1071,8 @@ export const UPFIELD: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_4,
-      name: "Route 4",
+      id: route.DOWN_VIA_CITY_LOOP,
+      name: "Down via City Loop",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -1108,8 +1108,8 @@ export const CRAIGIEBURN: LineConfig = {
   urlPath: "craigieburn",
   routes: [
     {
-      id: route.ROUTE_1,
-      name: "Route 1",
+      id: route.DOWN_DIRECT,
+      name: "Down Direct",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -1134,8 +1134,8 @@ export const CRAIGIEBURN: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_2,
-      name: "Route 2",
+      id: route.UP_DIRECT,
+      name: "Up Direct",
       tags: [],
       stops: [
         { stopId: stop.CRAIGIEBURN, type: "regular" },
@@ -1160,8 +1160,8 @@ export const CRAIGIEBURN: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_3,
-      name: "Route 3",
+      id: route.UP_VIA_CITY_LOOP,
+      name: "Up via City Loop",
       tags: [],
       stops: [
         { stopId: stop.CRAIGIEBURN, type: "regular" },
@@ -1188,8 +1188,8 @@ export const CRAIGIEBURN: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_4,
-      name: "Route 4",
+      id: route.DOWN_VIA_CITY_LOOP,
+      name: "Down via City Loop",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -1280,8 +1280,8 @@ export const FLEMINGTON_RACECOURSE: LineConfig = {
   urlPath: "flemingtonracecourse",
   routes: [
     {
-      id: route.ROUTE_1,
-      name: "Route 1",
+      id: route.UP_DIRECT,
+      name: "Up Direct",
       tags: [],
       stops: [
         { stopId: stop.FLEMINGTON_RACECOURSE, type: "regular" },
@@ -1292,8 +1292,8 @@ export const FLEMINGTON_RACECOURSE: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_2,
-      name: "Route 2",
+      id: route.DOWN_DIRECT,
+      name: "Down Direct",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -1304,8 +1304,8 @@ export const FLEMINGTON_RACECOURSE: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_3,
-      name: "Route 3",
+      id: route.UP_VIA_CITY_LOOP,
+      name: "Up via City Loop",
       tags: [],
       stops: [
         { stopId: stop.NORTH_MELBOURNE, type: "regular" },
@@ -1328,8 +1328,8 @@ export const SUNBURY: LineConfig = {
   urlPath: "sunbury",
   routes: [
     {
-      id: route.ROUTE_1,
-      name: "Route 1",
+      id: route.DOWN_VIA_METRO_TUNNEL,
+      name: "Down via Metro Tunnel",
       tags: [],
       stops: [
         { stopId: stop.TOWN_HALL, type: "regular" },
@@ -1352,8 +1352,8 @@ export const SUNBURY: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_2,
-      name: "Route 2",
+      id: route.UP_VIA_METRO_TUNNEL,
+      name: "Up via Metro Tunnel",
       tags: [],
       stops: [
         { stopId: stop.SUNBURY, type: "regular" },
@@ -1376,8 +1376,8 @@ export const SUNBURY: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_3,
-      name: "Route 3",
+      id: route.UP_DIRECT,
+      name: "Up Direct",
       tags: [],
       stops: [
         { stopId: stop.SUNBURY, type: "regular" },
@@ -1399,8 +1399,8 @@ export const SUNBURY: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_4,
-      name: "Route 4",
+      id: route.DOWN_DIRECT,
+      name: "Down Direct",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
@@ -1422,8 +1422,8 @@ export const SUNBURY: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_5,
-      name: "Route 5",
+      id: route.UP_VIA_CITY_LOOP,
+      name: "Up via City Loop",
       tags: [],
       stops: [
         { stopId: stop.SUNBURY, type: "regular" },
@@ -1447,8 +1447,8 @@ export const SUNBURY: LineConfig = {
       color: null,
     },
     {
-      id: route.ROUTE_6,
-      name: "Route 6",
+      id: route.DOWN_VIA_CITY_LOOP,
+      name: "Down via City Loop",
       tags: [],
       stops: [
         { stopId: stop.FLINDERS_STREET, type: "regular" },
