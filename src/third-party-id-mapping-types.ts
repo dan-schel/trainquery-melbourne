@@ -5,9 +5,9 @@ export type StopPtvApiIdMapping = Record<string, number>;
 export type StopGtfsIdMapping = Record<
   number,
   {
-    parent: string[];
-    [stopPositionId: number]: string[];
-    unknownPlatform?: string[];
+    parent: string;
+    general?: string[];
+    platforms?: Record<number, string[]>;
     replacementBus?: string[];
   }
 >;
