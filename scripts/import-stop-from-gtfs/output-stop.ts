@@ -1,6 +1,11 @@
 import chalk from "chalk";
 import type { StopsCsvTreeNode } from "../../src/gtfs/schedule/higher-order/stops-csv-tree.js";
-import { isPresent, itsOk, numberWiseSort } from "@dan-schel/js-utils";
+import {
+  constify,
+  isPresent,
+  itsOk,
+  numberWiseSort,
+} from "@dan-schel/js-utils";
 import { stops } from "../../src/config/stops/index.js";
 import { pressAnyKeyToContinue } from "./input.js";
 
@@ -42,14 +47,6 @@ async function outputForFile(filePath: string, output: string) {
   console.log(`\n${header}\n\n${instruction}\n\n${bar}\n${code}\n${bar}`);
 
   await pressAnyKeyToContinue();
-}
-
-// TODO: Move to js-utils like kebabify?
-function constify(input: string) {
-  return input
-    .toUpperCase()
-    .replace(/\s+/g, "_")
-    .replace(/[^A-Z0-9_]/g, "");
 }
 
 function formatPositions(stop: StopsCsvTreeNode) {
