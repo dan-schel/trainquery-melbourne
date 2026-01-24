@@ -12,7 +12,7 @@ export const SANDRINGHAM: LineConfig = {
   id: line.SANDRINGHAM,
   name: "Sandringham",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "sandringham",
   ...linear({
     color: "pink",
@@ -39,7 +39,7 @@ export const FRANKSTON: LineConfig = {
   id: line.FRANKSTON,
   name: "Frankston",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "frankston",
   ...cityLoop({
     color: "green",
@@ -79,7 +79,7 @@ export const STONY_POINT: LineConfig = {
   id: line.STONY_POINT,
   name: "Stony Point",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "stonypoint",
   ...linear({
     color: "green",
@@ -102,7 +102,7 @@ export const CRANBOURNE: LineConfig = {
   id: line.CRANBOURNE,
   name: "Cranbourne",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "cranbourne",
   ...merge({
     items: [
@@ -168,7 +168,7 @@ export const PAKENHAM: LineConfig = {
   id: line.PAKENHAM,
   name: "Pakenham",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "pakenham",
   ...merge({
     items: [
@@ -302,7 +302,7 @@ export const GLEN_WAVERLEY: LineConfig = {
   id: line.GLEN_WAVERLEY,
   name: "Glen Waverley",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "glenwaverley",
   ...cityLoop({
     color: "blue",
@@ -330,7 +330,7 @@ export const ALAMEIN: LineConfig = {
   id: line.ALAMEIN,
   name: "Alamein",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "alamein",
   ...cityLoop({
     color: "blue",
@@ -356,7 +356,7 @@ export const BELGRAVE: LineConfig = {
   id: line.BELGRAVE,
   name: "Belgrave",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "belgrave",
   ...cityLoop({
     color: "blue",
@@ -395,7 +395,7 @@ export const LILYDALE: LineConfig = {
   id: line.LILYDALE,
   name: "Lilydale",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "lilydale",
   ...cityLoop({
     color: "blue",
@@ -430,7 +430,7 @@ export const HURSTBRIDGE: LineConfig = {
   id: line.HURSTBRIDGE,
   name: "Hurstbridge",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "hurstbridge",
   ...cityLoop({
     color: "red",
@@ -466,7 +466,7 @@ export const MERNDA: LineConfig = {
   id: line.MERNDA,
   name: "Mernda",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "mernda",
   ...cityLoop({
     color: "red",
@@ -503,7 +503,7 @@ export const UPFIELD: LineConfig = {
   id: line.UPFIELD,
   name: "Upfield",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "upfield",
   ...cityLoop({
     color: "yellow",
@@ -530,7 +530,7 @@ export const CRAIGIEBURN: LineConfig = {
   id: line.CRAIGIEBURN,
   name: "Craigieburn",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "craigieburn",
   ...cityLoop({
     color: "yellow",
@@ -635,7 +635,7 @@ export const SUNBURY: LineConfig = {
   id: line.SUNBURY,
   name: "Sunbury",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "sunbury",
   ...merge({
     items: [
@@ -828,7 +828,7 @@ export const WERRIBEE: LineConfig = {
   id: line.WERRIBEE,
   name: "Werribee",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "werribee",
   ...linear({
     color: "green",
@@ -858,7 +858,7 @@ export const WILLIAMSTOWN: LineConfig = {
   id: line.WILLIAMSTOWN,
   name: "Williamstown",
   code: null,
-  tags: [tag.SUBURBAN],
+  tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "williamstown",
   ...linear({
     color: "green",
