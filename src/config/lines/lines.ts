@@ -812,6 +812,7 @@ export const GEELONG: LineConfig = {
       { stopId: stop.WYNDHAM_VALE },
       { stopId: stop.TARNEIT },
       { stopId: stop.DEER_PARK },
+      { stopId: stop.ARDEER, express: true },
       { stopId: stop.SUNSHINE },
       { stopId: stop.TOTTENHAM, hidden: true },
       { stopId: stop.WEST_FOOTSCRAY, hidden: true },

@@ -30,10 +30,11 @@ export class LintIssueReporter {
   }
 
   printSummary() {
-    if (this._issueCount === 0) return;
-
     const header = chalk.bgWhite.bold(` Summary `);
-    const summary = `❌ Found ${this._issueCount} ${this._issueCount === 1 ? "issue" : "issues"}.`;
+    const summary =
+      this._issueCount > 0
+        ? `❌ Found ${this._issueCount} ${this._issueCount === 1 ? "issue" : "issues"}.`
+        : `✅ No issues found.`;
 
     console.log(`\n${header}\n\n${summary}\n`);
   }

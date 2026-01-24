@@ -38,7 +38,7 @@ const corridors = [
   { a: stop.CAULFIELD, b: stop.HAWKSBURN },
   { a: stop.CAULFIELD, b: stop.RICHMOND },
   { a: stop.NORTH_MELBOURNE, b: stop.PARLIAMENT },
-  { a: stop.RICHMOND, b: stop.SOUTHERN_CROSS },
+  { a: stop.RICHMOND, b: stop.FLAGSTAFF },
   { a: stop.CLIFTON_HILL, b: stop.SOUTHERN_CROSS },
 ];
 
