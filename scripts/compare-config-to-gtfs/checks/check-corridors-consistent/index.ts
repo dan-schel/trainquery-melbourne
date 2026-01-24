@@ -9,6 +9,9 @@
 //     { a: stop.HAWKSBURN, b: stop.DANDENONG },
 //   ]
 // }
+//
+// I think ALL corequery consumers can benefit from most of these rules, and can
+// always turn them off if they want to.
 
 import { itsOk } from "@dan-schel/js-utils";
 import * as stop from "../../../../src/config/stops/stop-ids.js";
