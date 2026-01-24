@@ -28,16 +28,16 @@ export function branch(options: Options): RouteBuilderOutput {
   return {
     routes: [
       {
-        id: route.UP,
+        id: route.COMMON_UP,
         name: `${options.commonName} Up`,
-        tags: [tag.UP],
+        tags: [tag.COMMON_UP],
         stops: toRouteStops(options.commonStops),
         color: options.color,
       },
       {
-        id: route.DOWN,
+        id: route.COMMON_DOWN,
         name: `${options.commonName} Down`,
-        tags: [tag.DOWN],
+        tags: [tag.COMMON_DOWN],
         stops: toRouteStops([...options.commonStops].reverse()),
         color: options.color,
       },
