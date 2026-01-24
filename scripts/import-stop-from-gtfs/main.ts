@@ -2,6 +2,7 @@ import { stopGtfsIds } from "../../src/config/stops/stop-gtfs-ids.js";
 import { StopsCsvTree } from "../../src/gtfs/schedule/higher-order/stops-csv-tree.js";
 import { readGtfs } from "../../src/gtfs/schedule/read-gtfs.js";
 import { withGtfsFiles } from "../../src/gtfs/schedule/with-gtfs-files.js";
+import { askStopToImport } from "./ask-stop-to-import.js";
 import { env } from "./env.js";
 import { findUnseenGtfsIds } from "./find-unseen-gtfs-ids.js";
 
@@ -24,7 +25,17 @@ async function main() {
     return;
   }
 
-  console.log("TODO: Implement");
+  const stopToImport = await askStopToImport(unseenStops);
+
+  if (stopToImport == null) {
+    return;
+  }
+
+  // TODO: Implement the actual import logic here
+  console.log(
+    `\nImporting stop: ${stopToImport.stop_name} (${stopToImport.stop_id})`,
+  );
+
   console.log("✅ Done!");
 }
 
