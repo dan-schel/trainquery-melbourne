@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import type { StopsCsvTreeNode } from "../../src/gtfs/schedule/higher-order/stops-csv-tree.js";
-import { isPresent, numberWiseSort } from "@dan-schel/js-utils";
+import { isPresent, itsOk, numberWiseSort } from "@dan-schel/js-utils";
 import { stops } from "../../src/config/stops/index.js";
 import { pressAnyKeyToContinue } from "./input.js";
 
@@ -9,10 +9,11 @@ export async function outputStopData(stop: StopsCsvTreeNode) {
   const id = Math.max(...stops.map((x) => x.id)) + 1;
   const urlPath = name.toLowerCase().replace(/\s+/g, "");
   const constName = constify(name);
+  const ptvApiId = findPtvApiIds(stop);
 
-  const stopIdsTsOutput = `export const ${constName} = ${id};`;
+  const stopIdsOutput = `export const ${constName} = ${id};`;
 
-  const stopsTsOutput = `export const ${constName}: StopConfig = {
+  const stopsOutput = `export const ${constName}: StopConfig = {
   id: stop.${constName},
   name: ${JSON.stringify(name)},
   tags: [],
@@ -23,10 +24,14 @@ ${formatPositions(stop).join("\n")}
   ],
 };`;
 
-  await outputForFile("src/config/stops/stop-ids.ts", stopIdsTsOutput);
-  await outputForFile("src/config/stops/stops.ts", stopsTsOutput);
+  const gtfsIdsOutput = formatChildGtfsIds(stop, constName);
 
-  // TODO: GTFS ID mappings, and PTV API ID mappings.
+  const ptvApiIdsOutput = `[stop.${constName}]: ${JSON.stringify(ptvApiId)},`;
+
+  await outputForFile("src/config/stops/stop-ids.ts", stopIdsOutput);
+  await outputForFile("src/config/stops/stops.ts", stopsOutput);
+  await outputForFile("src/config/stops/stop-gtfs-ids.ts", gtfsIdsOutput);
+  await outputForFile("src/config/stops/stop-ptv-api-ids.ts", ptvApiIdsOutput);
 }
 
 async function outputForFile(filePath: string, output: string) {
@@ -57,4 +62,56 @@ function formatPositions(stop: StopsCsvTreeNode) {
     .map((c) => {
       return `    { stopPositionId: position.PLATFORM_${constify(c.platform_code)}, name: ${JSON.stringify(c.platform_code)} },`;
     });
+}
+
+function formatChildGtfsIds(stop: StopsCsvTreeNode, constName: string) {
+  const platforms: Map<string, string[]> = new Map();
+  const replacementBuses: string[] = [];
+  const general: string[] = [];
+
+  for (const c of stop.children) {
+    if (c.platform_code === "Replacement bus") {
+      replacementBuses.push(c.stop_id);
+    } else if (isPresent(c.platform_code)) {
+      platforms.set(c.platform_code, [
+        ...(platforms.get(c.platform_code) ?? []),
+        c.stop_id,
+      ]);
+    } else if (!/^vic:rail:[A-Z]{3}.+/g.test(stop.stop_id)) {
+      general.push(c.stop_id);
+    }
+  }
+
+  let result = `[stop.${constName}]: {\n  parent: ${JSON.stringify(stop.stop_id)},\n`;
+
+  if (general.length > 0) {
+    result += `  general: [${general.map((id) => JSON.stringify(id)).join(", ")}],\n`;
+  }
+
+  if (platforms.size > 0) {
+    result += `  platforms: {\n`;
+    for (const [platformCode, ids] of platforms) {
+      result += `    [position.PLATFORM_${constify(platformCode)}]: ${JSON.stringify(ids)},\n`;
+    }
+    result += `  },\n`;
+  }
+
+  if (replacementBuses.length > 0) {
+    result += `  replacementBus: ${JSON.stringify(replacementBuses)},\n`;
+  }
+
+  return result + `},`;
+}
+
+function findPtvApiIds(stop: StopsCsvTreeNode): string[] {
+  const url = stop.children.find((x) =>
+    x.stop_url.startsWith("https://transport.vic.gov.au/stop/"),
+  )?.stop_url;
+  if (url == null) return [];
+
+  const pattern = /https:\/\/transport\.vic\.gov\.au\/stop\/([0-9]+)($|\/)/g;
+  const match = pattern.exec(url);
+  if (match == null) return [];
+
+  return [itsOk(match[1])];
 }
