@@ -4,7 +4,7 @@ import * as tag from "./line-tags.js";
 import * as stop from "../stops/stop-ids.js";
 import { linear } from "./route-builders/linear.js";
 import { cityLoop } from "./route-builders/city-loop.js";
-import { merge } from "./route-builders/merge.js";
+import { multi } from "./route-builders/multi.js";
 import { metroTunnel } from "./route-builders/metro-tunnel.js";
 import { branch } from "./route-builders/branch.js";
 
@@ -104,7 +104,7 @@ export const CRANBOURNE: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "cranbourne",
-  ...merge({
+  ...multi({
     items: [
       metroTunnel({
         color: "cyan",
@@ -170,7 +170,7 @@ export const PAKENHAM: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "pakenham",
-  ...merge({
+  ...multi({
     items: [
       metroTunnel({
         color: "cyan",
@@ -637,7 +637,7 @@ export const SUNBURY: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME],
   urlPath: "sunbury",
-  ...merge({
+  ...multi({
     items: [
       metroTunnel({
         color: "cyan",

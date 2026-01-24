@@ -4,7 +4,7 @@ type Options = {
   items: readonly RouteBuilderOutput[];
 };
 
-export function merge(options: Options): RouteBuilderOutput {
+export function multi(options: Options): RouteBuilderOutput {
   return {
     routes: options.items.flatMap((item) => item.routes),
     diagram: {
