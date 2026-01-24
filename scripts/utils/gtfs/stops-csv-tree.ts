@@ -1,6 +1,9 @@
 import { isPresent, unique } from "@dan-schel/js-utils";
-import type { StopsCsv, StopsCsvRow } from "../csv-schemas.js";
-import type { Subfeed } from "../utils/subfeed.js";
+import type {
+  StopsCsv,
+  StopsCsvRow,
+} from "../../../src/gtfs/schedule/csv-schemas.js";
+import type { Subfeed } from "../../../src/gtfs/schedule/utils/subfeed.js";
 
 export type StopsCsvTreeNode = StopsCsvRow & {
   readonly children: readonly StopsCsvTreeNode[];

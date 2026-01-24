@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import type { StopsCsvTreeNode } from "../../src/gtfs/schedule/higher-order/stops-csv-tree.js";
+import type { StopsCsvTreeNode } from "../utils/gtfs/stops-csv-tree.js";
 import {
   constify,
   isPresent,

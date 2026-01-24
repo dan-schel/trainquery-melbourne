@@ -2,7 +2,7 @@ import type { StopGtfsIdMapping } from "../../src/config/third-party-id-mapping-
 import type {
   StopsCsvTree,
   StopsCsvTreeNode,
-} from "../../src/gtfs/schedule/higher-order/stops-csv-tree.js";
+} from "../utils/gtfs/stops-csv-tree.js";
 
 export function findUnseenGtfsIds(
   stopsCsvTree: StopsCsvTree,

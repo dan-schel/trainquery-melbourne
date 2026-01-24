@@ -1,5 +1,5 @@
 import { stopGtfsIds } from "../../src/config/stops/stop-gtfs-ids.js";
-import { StopsCsvTree } from "../../src/gtfs/schedule/higher-order/stops-csv-tree.js";
+import { StopsCsvTree } from "../utils/gtfs/stops-csv-tree.js";
 import { readGtfs } from "../../src/gtfs/schedule/read-gtfs.js";
 import { withGtfsFiles } from "../../src/gtfs/schedule/with-gtfs-files.js";
 import { askStopToImport } from "./ask-stop-to-import.js";
