@@ -3,7 +3,7 @@ import type { StopsCsvTreeNode } from "../utils/gtfs/stops-csv-tree.js";
 import { itsOk, parseIntNull } from "@dan-schel/js-utils";
 import { ask } from "./input.js";
 
-export async function askStopToImport(
+export async function askWhichStopToImport(
   unseenStops: StopsCsvTreeNode[],
 ): Promise<StopsCsvTreeNode | null> {
   const what = unseenStops.length === 1 ? "stop" : "stops";

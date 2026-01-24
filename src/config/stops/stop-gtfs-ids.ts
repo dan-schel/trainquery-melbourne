@@ -3,14 +3,14 @@ import * as stop from "./stop-ids.js";
 import * as position from "./stop-position-ids.js";
 
 export const stopGtfsIds: StopGtfsIdMapping = {
-  // [stop.AIRCRAFT]: {
-  //   parent: "vic:rail:ACF",
-  //   platforms: {
-  //     [position.PLATFORM_1]: ["13738"],
-  //     [position.PLATFORM_2]: ["13739"],
-  //   },
-  //   replacementBus: ["26100"],
-  // },
+  [stop.AIRCRAFT]: {
+    parent: "vic:rail:ACF",
+    platforms: {
+      [position.PLATFORM_1]: ["13738"],
+      [position.PLATFORM_2]: ["13739"],
+    },
+    replacementBus: ["26100"],
+  },
 
   [stop.ALAMEIN]: {
     parent: "vic:rail:ALM",
