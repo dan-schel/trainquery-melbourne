@@ -29,7 +29,9 @@ async function main() {
   const stopToImport = await askStopToImport(unseenStops);
   if (stopToImport == null) return;
 
-  outputStopData(stopToImport);
+  await outputStopData(stopToImport);
+
+  console.log("\n✅ Done.");
 }
 
 main().catch((error) => {

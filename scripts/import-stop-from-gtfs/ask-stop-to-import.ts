@@ -1,7 +1,7 @@
 import chalk from "chalk";
-import readline from "readline/promises";
 import type { StopsCsvTreeNode } from "../../src/gtfs/schedule/higher-order/stops-csv-tree.js";
 import { itsOk, parseIntNull } from "@dan-schel/js-utils";
+import { ask } from "./input.js";
 
 export async function askStopToImport(
   unseenStops: StopsCsvTreeNode[],
@@ -46,25 +46,5 @@ async function askMultipleStops(
     }
 
     return itsOk(stops[choice - 1]);
-  }
-}
-
-async function ask(question: string) {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-
-  try {
-    return await rl.question(question);
-  } catch (e) {
-    if (e instanceof Error && e.name === "AbortError") {
-      console.log("\nAborted.");
-      process.exit(1);
-    } else {
-      throw e;
-    }
-  } finally {
-    rl.close();
   }
 }
