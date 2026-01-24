@@ -1,8 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/require-await
 async function main() {
-  const checkMode = process.argv.includes("--check");
-
-  console.log("Downloading/parsing GTFS data...");
-
+  console.log("TODO: Implement");
   console.log("✅ Done!");
 }
 

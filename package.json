@@ -30,8 +30,9 @@
     "test-coverage": "vitest --run --coverage",
     "format": "prettier --write .",
     "format-check": "prettier --check .",
-    "confgen": "tsx scripts/autogenerate-config/main.ts",
-    "confgen-check": "tsx scripts/autogenerate-config/main.ts --check"
+    "compare-config-to-gtfs": "tsx scripts/compare-config-to-gtfs/main.ts",
+    "download-gtfs": "tsx scripts/download-gtfs/main.ts",
+    "import-stop-from-gtfs": "tsx scripts/import-stop-from-gtfs/main.ts"
   },
   "corequeryDemoApp": {
     "scripts": {

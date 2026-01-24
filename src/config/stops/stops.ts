@@ -3,6 +3,8 @@ import * as stop from "./stop-ids.js";
 import * as position from "./stop-position-ids.js";
 import * as tag from "./stop-tags.js";
 
+// Run `npm run import-stop-from-gtfs` to make your life easier :)
+
 export const AIRCRAFT: StopConfig = {
   id: stop.AIRCRAFT,
   name: "Aircraft",

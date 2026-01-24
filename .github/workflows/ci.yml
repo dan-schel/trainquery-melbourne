@@ -48,7 +48,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: dan-schel/trainquery-melbourne
   confgen:
-    name: Config aligns with GTFS & PTV API responses
+    name: Config aligns with latest GTFS data
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -59,6 +59,6 @@ jobs:
       - name: Install modules
         run: npm ci
       - name: Run confgen
-        run: npm run confgen-check
+        run: npm run compare-config-to-gtfs
         env:
           RELAY_KEY: ${{ secrets.RELAY_KEY }}
