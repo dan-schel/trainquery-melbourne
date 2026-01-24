@@ -2,7 +2,8 @@ import path from "path";
 import { withTemporaryDirectory } from "./utils/with-temporary-directory.js";
 import { download } from "./utils/download.js";
 import { extractZip } from "./utils/extract-zip.js";
-const gtfsUrl = "https://vtar.trainquery.com/gtfs.zip";
+
+const gtfsZipUrl = "https://vtar.trainquery.com/gtfs.zip";
 
 export type GtfsDirectories = {
   readonly suburban: string;
@@ -20,7 +21,7 @@ export async function withGtfsFiles<T>(
     const suburbanDir = path.join(tempDir, "suburban");
     const regionalDir = path.join(tempDir, "regional");
 
-    await download(gtfsUrl, gtfsZipPath, { "relay-key": relayKey });
+    await download(gtfsZipUrl, gtfsZipPath, { "relay-key": relayKey });
     await extractZip(gtfsZipPath, tempDir);
     await extractZip(suburbanZipPath, suburbanDir);
     await extractZip(regionalZipPath, regionalDir);

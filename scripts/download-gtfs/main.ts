@@ -2,10 +2,12 @@ import fsp from "fs/promises";
 import path from "path";
 import { withGtfsFiles } from "../../src/gtfs/schedule/with-gtfs-files.js";
 import { env } from "./env.js";
+import { fetchGtfsRealtime } from "../../src/gtfs/realtime/fetch-gtfs-realtime.js";
 
 const saveDirectory = "./local/gtfs";
 const saveSuburbanDirectory = path.join(saveDirectory, "suburban");
 const saveRegionalDirectory = path.join(saveDirectory, "regional");
+const realtimePath = path.join(saveDirectory, "realtime.json");
 
 async function main() {
   console.log(`Clearing "${saveDirectory}" folder...`);
@@ -25,7 +27,9 @@ async function main() {
     console.log("Cleaning up temp files...");
   });
 
-  // TODO: GTFS realtime.
+  console.log("Fetching GTFS Realtime data...");
+  const realtime = await fetchGtfsRealtime(env.RELAY_KEY);
+  await fsp.writeFile(realtimePath, JSON.stringify(realtime, null, 2), "utf-8");
 
   console.log("✅ Done!");
 }

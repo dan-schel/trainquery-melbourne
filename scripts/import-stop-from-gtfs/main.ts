@@ -1,5 +1,29 @@
-// eslint-disable-next-line @typescript-eslint/require-await
+import { stopGtfsIds } from "../../src/config/stops/stop-gtfs-ids.js";
+import { StopsCsvTree } from "../../src/gtfs/schedule/higher-order/stops-csv-tree.js";
+import { readGtfs } from "../../src/gtfs/schedule/read-gtfs.js";
+import { withGtfsFiles } from "../../src/gtfs/schedule/with-gtfs-files.js";
+import { env } from "./env.js";
+import { findUnseenGtfsIds } from "./find-unseen-gtfs-ids.js";
+
 async function main() {
+  console.log("Downloading/parsing GTFS data...");
+
+  const gtfsData = await withGtfsFiles(env.RELAY_KEY, readGtfs);
+
+  const allStops = StopsCsvTree.merge(
+    StopsCsvTree.build(gtfsData.suburban.stops).setSubfeed("suburban"),
+    StopsCsvTree.build(gtfsData.suburban.stops).setSubfeed("regional"),
+  );
+
+  console.log("Checking for unseen stops...");
+
+  const unseenStops = findUnseenGtfsIds(allStops, stopGtfsIds);
+
+  if (unseenStops.length === 0) {
+    console.log("🤷 Didn't find any new stops to import.");
+    return;
+  }
+
   console.log("TODO: Implement");
   console.log("✅ Done!");
 }
