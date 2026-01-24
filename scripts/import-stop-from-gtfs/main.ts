@@ -5,6 +5,7 @@ import { withGtfsFiles } from "../../src/gtfs/schedule/with-gtfs-files.js";
 import { askStopToImport } from "./ask-stop-to-import.js";
 import { env } from "./env.js";
 import { findUnseenGtfsIds } from "./find-unseen-gtfs-ids.js";
+import { outputStopData } from "./output-stop.js";
 
 async function main() {
   console.log("Downloading/parsing GTFS data...");
@@ -26,17 +27,9 @@ async function main() {
   }
 
   const stopToImport = await askStopToImport(unseenStops);
+  if (stopToImport == null) return;
 
-  if (stopToImport == null) {
-    return;
-  }
-
-  // TODO: Implement the actual import logic here
-  console.log(
-    `\nImporting stop: ${stopToImport.stop_name} (${stopToImport.stop_id})`,
-  );
-
-  console.log("✅ Done!");
+  outputStopData(stopToImport);
 }
 
 main().catch((error) => {
