@@ -1,14 +1,12 @@
-import { readGtfs } from "../../src/gtfs/schedule/read-gtfs.js";
-import { withGtfsFiles } from "../../src/gtfs/schedule/with-gtfs-files.js";
-import { StopsCsvTree } from "../utils/gtfs/stops-csv-tree.js";
 import { env } from "./env.js";
+import { LintingContext } from "./linting-context.js";
 
 async function main() {
   console.log("Downloading/parsing GTFS data...");
 
-  const gtfsData = await withGtfsFiles(env.RELAY_KEY, readGtfs);
-  const allStops = StopsCsvTree.fromGtfsData(gtfsData);
-  console.log(`That's ${allStops.nodes.length} stops!`);
+  const context = await LintingContext.build(env.RELAY_KEY);
+
+  console.log(`That's ${context.stopsCsvTree.nodes.length} stops!`);
 }
 
 main().catch((error) => {

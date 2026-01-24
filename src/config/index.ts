@@ -1,5 +1,5 @@
 import { parseIntThrow } from "@dan-schel/js-utils";
-import type { CorequeryConfigBuilder, lintConfig } from "corequery";
+import type { CorequeryConfigBuilder, LintableConfig } from "corequery";
 import { env } from "../env.js";
 import { assets } from "./assets.js";
 import { linesPage } from "./lines-page.js";
@@ -16,9 +16,6 @@ export const buildConfig: CorequeryConfigBuilder = () => ({
   assets: assets,
   ...lintableConfig,
 });
-
-// TODO: Use LintableConfig type from corequery repo.
-type LintableConfig = Parameters<typeof lintConfig>[0];
 
 export const lintableConfig: LintableConfig = {
   stops: stops,
