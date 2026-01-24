@@ -1,7 +1,7 @@
-import type { TagSuccession } from "../tag-succession.js";
+import type { TagSuccessionConfig } from "corequery";
 import * as tag from "./route-tags.js";
 
-export const routeTagSuccession: TagSuccession = {
+export const routeTagSuccession: TagSuccessionConfig = {
   [tag.UP_DIRECT]: [tag.UP, tag.DIRECT],
   [tag.DOWN_DIRECT]: [tag.DOWN, tag.DIRECT],
   [tag.UP_VIA_CITY_LOOP]: [tag.UP, tag.VIA_CITY_LOOP],

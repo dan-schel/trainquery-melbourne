@@ -1,4 +1,4 @@
-import type { LineGtfsIdMappingMetadata } from "../../../src/third-party-id-mapping-types.js";
+import type { LineGtfsIdMappingMetadata } from "../../../src/config/third-party-id-mapping-types.js";
 import type { AutogenerationContext } from "../autogeneration-context.js";
 import { ThirdPartyIdMapping } from "./third-party-id-mapping.js";
 
