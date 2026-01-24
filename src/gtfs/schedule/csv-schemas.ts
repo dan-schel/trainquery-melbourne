@@ -1,5 +1,5 @@
 import z from "zod";
-import { floatStringSchema, intStringSchema } from "../utils/schema-utils.js";
+import { floatStringSchema, intStringSchema } from "../../utils.js";
 
 export type StopsCsvRow = z.infer<typeof stopsCsvSchema>;
 export type StopsCsv = readonly StopsCsvRow[];

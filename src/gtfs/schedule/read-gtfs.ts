@@ -8,11 +8,10 @@ import {
   type TripsCsv,
   tripsCsvSchema,
 } from "./csv-schemas.js";
-import { readCsv } from "../utils/read-csv.js";
 import path from "path";
 import { type GtfsDirectories } from "./with-gtfs-files.js";
 import type z from "zod";
-import { IndexedStopTimes } from "./indexed-stop-times.js";
+import { readCsv } from "./utils/read-csv.js";
 
 export type GtfsData = {
   readonly suburban: GtfsFeed;
@@ -24,7 +23,6 @@ export type GtfsFeed = {
   readonly routes: RoutesCsv;
   readonly trips: TripsCsv;
   readonly stopTimes: StopTimesCsv;
-  readonly stopTimesIndexed: IndexedStopTimes;
 };
 
 export async function readGtfs(dirs: GtfsDirectories): Promise<GtfsData> {
@@ -39,13 +37,10 @@ async function readFeed(dir: string): Promise<GtfsFeed> {
     return await readCsv(path.join(dir, file), schema);
   }
 
-  const stopTimes = await readCsvNamed("stop_times.txt", stopTimesCsvSchema);
-
   return {
     stops: await readCsvNamed("stops.txt", stopsCsvSchema),
     routes: await readCsvNamed("routes.txt", routesCsvSchema),
     trips: await readCsvNamed("trips.txt", tripsCsvSchema),
-    stopTimes,
-    stopTimesIndexed: IndexedStopTimes.build(stopTimes),
+    stopTimes: await readCsvNamed("stop_times.txt", stopTimesCsvSchema),
   };
 }
