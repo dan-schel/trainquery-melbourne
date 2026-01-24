@@ -1,5 +1,5 @@
 import { parseIntThrow } from "@dan-schel/js-utils";
-import type { CorequeryConfigBuilder } from "corequery";
+import type { CorequeryConfigBuilder, lintConfig } from "corequery";
 import { env } from "../env.js";
 import { assets } from "./assets.js";
 import { linesPage } from "./lines-page.js";
@@ -11,9 +11,16 @@ import { landingPage } from "./landing-page.js";
 import { footer } from "./footer.js";
 import { aboutPage } from "./about-page.js";
 
-export const config: CorequeryConfigBuilder = () => ({
+export const buildConfig: CorequeryConfigBuilder = () => ({
   port: parseIntThrow(env.PORT ?? "3000"),
   assets: assets,
+  ...lintableConfig,
+});
+
+// TODO: Use LintableConfig type from corequery repo.
+type LintableConfig = Parameters<typeof lintConfig>[0];
+
+export const lintableConfig: LintableConfig = {
   stops: stops,
   lines: lines,
   terminology: terminology,
@@ -22,4 +29,4 @@ export const config: CorequeryConfigBuilder = () => ({
   aboutPage: aboutPage,
   linesPage: linesPage,
   tags: tags,
-});
+};

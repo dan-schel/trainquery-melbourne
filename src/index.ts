@@ -1,8 +1,8 @@
 import { Corequery } from "corequery";
-import { config } from "./config/index.js";
+import { buildConfig } from "./config/index.js";
 
 async function main() {
-  const trainquery = new Corequery(config);
+  const trainquery = new Corequery(buildConfig);
   await trainquery.start();
 }
 
