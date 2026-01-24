@@ -9,7 +9,7 @@ import {
 import { stops } from "../../src/config/stops/index.js";
 import { pressAnyKeyToContinue } from "./input.js";
 
-export async function outputStopData(stop: StopsCsvTreeNode) {
+export async function printStopData(stop: StopsCsvTreeNode) {
   const name = stop.stop_name.replace(/( Railway)? Station$/g, "");
   const id = Math.max(...stops.map((x) => x.id)) + 1;
   const urlPath = name.toLowerCase().replace(/\s+/g, "");
@@ -33,13 +33,13 @@ ${formatPositions(stop).join("\n")}
 
   const ptvApiIdsOutput = `[stop.${constName}]: ${JSON.stringify(ptvApiId)},`;
 
-  await outputForFile("src/config/stops/stop-ids.ts", stopIdsOutput);
-  await outputForFile("src/config/stops/stops.ts", stopsOutput);
-  await outputForFile("src/config/stops/stop-gtfs-ids.ts", gtfsIdsOutput);
-  await outputForFile("src/config/stops/stop-ptv-api-ids.ts", ptvApiIdsOutput);
+  await printUpdate("src/config/stops/stop-ids.ts", stopIdsOutput);
+  await printUpdate("src/config/stops/stops.ts", stopsOutput);
+  await printUpdate("src/config/stops/stop-gtfs-ids.ts", gtfsIdsOutput);
+  await printUpdate("src/config/stops/stop-ptv-api-ids.ts", ptvApiIdsOutput);
 }
 
-async function outputForFile(filePath: string, output: string) {
+async function printUpdate(filePath: string, output: string) {
   const header = chalk.bgMagenta.bold(` ${filePath} `);
   const instruction = "Add the following:";
   const bar = chalk.gray("─".repeat(80));
