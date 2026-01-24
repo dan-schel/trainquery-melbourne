@@ -25,6 +25,8 @@ async function main() {
     console.log("Cleaning up temp files...");
   });
 
+  // TODO: GTFS realtime.
+
   console.log("✅ Done!");
 }
 
