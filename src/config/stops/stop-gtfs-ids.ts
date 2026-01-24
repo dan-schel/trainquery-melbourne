@@ -2003,7 +2003,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   },
 
   [stop.SPRINGHURST]: {
-    parent: "1620",
+    parent: "vic:rail:SHT",
     general: ["22490"],
   },
 

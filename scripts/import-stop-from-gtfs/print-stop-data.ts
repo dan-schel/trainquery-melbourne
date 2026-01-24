@@ -10,7 +10,7 @@ import { stops } from "../../src/config/stops/index.js";
 import { pressAnyKeyToContinue } from "./input.js";
 
 export async function printStopData(stop: StopsCsvTreeNode) {
-  const name = stop.stop_name.replace(/( Railway)? Station$/g, "");
+  const name = stop.stop_name.trim().replace(/( Railway)? Station$/g, "");
   const id = Math.max(...stops.map((x) => x.id)) + 1;
   const urlPath = name.toLowerCase().replace(/\s+/g, "");
   const constName = constify(name);
