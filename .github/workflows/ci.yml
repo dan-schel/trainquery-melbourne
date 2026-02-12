@@ -58,7 +58,7 @@ jobs:
           node-version: 24.12.0
       - name: Install modules
         run: npm ci
-      - name: Run confgen
+      - name: Run comparison script
         run: npm run compare-config-to-gtfs
         env:
           RELAY_KEY: ${{ secrets.RELAY_KEY }}
