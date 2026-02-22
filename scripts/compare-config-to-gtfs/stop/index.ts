@@ -31,7 +31,7 @@ export function compareStops(ctx: ComparisonContext, issues: IssueCollector) {
       const ignore = stopOptions.ignoreMissingFromGtfs ?? false;
       if (!ignore) {
         issues.add({
-          message: `No stop in the GTFS with ID "${stopGtfsIds.parent}".`,
+          message: `No stop in the GTFS data with ID "${stopGtfsIds.parent}".`,
         });
       }
       continue;

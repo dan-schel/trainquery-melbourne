@@ -7,8 +7,13 @@ export type ComparisonOptions = {
     readonly [stopId: number]: StopLintOptions;
   };
 
-  readonly lines?: Record<number, LineLintOptions>;
+  readonly lines?: {
+    readonly all?: LineLintOptions;
+    readonly [lineId: number]: LineLintOptions;
+  };
+
   readonly ignoredUnmappedParentStopGtfsIds?: string[];
+  readonly ignoredUnmappedGtfsRouteIds?: string[];
 };
 
 export type StopLintOptions = {

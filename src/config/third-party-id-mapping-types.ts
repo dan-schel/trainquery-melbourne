@@ -9,7 +9,7 @@ export type StopGtfsIds = {
   readonly platforms?: Readonly<Record<number, readonly string[]>>;
   readonly replacementBus?: readonly string[];
 };
-type LineGtfsIds = {
+export type LineGtfsIds = {
   readonly primary: string;
   readonly other?: readonly string[];
   readonly replacementBus?: readonly string[];
