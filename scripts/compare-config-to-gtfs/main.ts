@@ -30,6 +30,18 @@ const options: ComparisonOptions = {
       // Appears as "St Albans Railway Station (St Albans)" in GTFS.
       ignoreNameMismatch: true,
     },
+
+    [stop.FLEMINGTON_RACECOURSE]: {
+      // Sometimes Flemington Racecourse disappears from the GTFS data entirely,
+      // and sometimes just the platforms do.
+      ignoredAdditionalChildGtfsIds: ["15524", "15525"],
+    },
+
+    [stop.SOUTHERN_CROSS]: {
+      // This is platform 8, which disappears with the Flemington Racecourse
+      // line sometimes. I guess that makes sense.
+      ignoredAdditionalChildGtfsIds: ["22187"],
+    },
   },
 };
 
