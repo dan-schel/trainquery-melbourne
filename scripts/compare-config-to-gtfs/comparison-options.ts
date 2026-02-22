@@ -8,6 +8,7 @@ export type StopLintOptions = {
   readonly ignoreMissingGtfsId?: boolean;
   readonly ignoreMissingFromGtfs?: boolean;
   readonly ignoreNameMismatch?: boolean;
+  readonly ignoreLocationMismatch?: boolean;
 };
 
 export type LineLintOptions = {
