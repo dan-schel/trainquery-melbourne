@@ -1,6 +1,7 @@
 import { buildComparisonContext } from "./comparison-context.js";
 import type { ComparisonOptions } from "./comparison-options.js";
 import { IssueCollector } from "./issue-collector.js";
+import { compareLines } from "./line/index.js";
 import { compareStops } from "./stop/index.js";
 
 export async function compareConfigToGtfs(
@@ -15,6 +16,7 @@ export async function compareConfigToGtfs(
   console.log("Checking for issues...");
 
   compareStops(ctx, issues);
+  compareLines(ctx, issues);
 
   console.log();
   if (issues.getIssues().length === 0) {

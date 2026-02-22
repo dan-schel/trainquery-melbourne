@@ -3,6 +3,7 @@ import type { ComparisonContext } from "../comparison-context.js";
 import type { IssueCollector } from "../issue-collector.js";
 import type { LineComparisonContext } from "./line-comparison-context.js";
 import { reverseMapGtfsIds } from "./utils/reverse-map-gtfs-ids.js";
+import { checkLineTripCompatibility } from "./check-trip-compatibility.js";
 
 export function compareLines(ctx: ComparisonContext, issues: IssueCollector) {
   const allGtfsRoutes = [
@@ -74,4 +75,6 @@ export function compareLines(ctx: ComparisonContext, issues: IssueCollector) {
   }
 }
 
-function compareLine(ctx: LineComparisonContext, issues: IssueCollector) {}
+function compareLine(ctx: LineComparisonContext, issues: IssueCollector) {
+  checkLineTripCompatibility(ctx, issues);
+}
