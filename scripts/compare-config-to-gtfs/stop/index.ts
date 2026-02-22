@@ -1,9 +1,15 @@
 import type { StopConfig } from "corequery";
 import type { IssueCollector } from "../issue-collector.js";
-import { compareStop } from "./compare-stop.js";
 import type { StopLintOptions } from "../comparison-options.js";
-import type { StopsCsvTree } from "../../utils/gtfs/stops-csv-tree.js";
-import type { StopGtfsIdMapping } from "../../../src/config/third-party-id-mapping-types.js";
+import type {
+  StopsCsvTree,
+  StopsCsvTreeNode,
+} from "../../utils/gtfs/stops-csv-tree.js";
+import type {
+  StopGtfsIdMapping,
+  StopGtfsIds,
+} from "../../../src/config/third-party-id-mapping-types.js";
+import { compareStopNames } from "./compare-names.js";
 
 export function compareStops(
   issues: IssueCollector,
@@ -11,13 +17,15 @@ export function compareStops(
   stopsCsvTree: StopsCsvTree,
   stopsGtfsIds: StopGtfsIdMapping,
   stopsOptions: Record<number, StopLintOptions>,
+  ignoredUnmappedGtfsStops: string[],
 ) {
   for (const stopConfig of stopsConfigs) {
     const stopOptions = stopsOptions[stopConfig.id] ?? {};
     const stopGtfsIds = stopsGtfsIds[stopConfig.id];
 
     if (stopGtfsIds == null) {
-      if (stopOptions.ignoreMissingGtfsId ?? false) {
+      const ignore = stopOptions.ignoreMissingGtfsId ?? false;
+      if (!ignore) {
         issues.add({
           message: `No GTFS IDs for stop ${stopConfig.name} (#${stopConfig.id}).`,
         });
@@ -30,7 +38,8 @@ export function compareStops(
     );
 
     if (stopGtfs == null) {
-      if (stopOptions.ignoreMissingFromGtfs ?? false) {
+      const ignore = stopOptions.ignoreMissingFromGtfs ?? false;
+      if (!ignore) {
         issues.add({
           message: `No stop in the GTFS with ID "${stopGtfsIds.parent}".`,
         });
@@ -46,10 +55,21 @@ export function compareStops(
       (stop) => stopsGtfsIds[stop.id]?.parent === stopGtfs.stop_id,
     );
 
-    if (stopConfig == null) {
+    const ignore = ignoredUnmappedGtfsStops.includes(stopGtfs.stop_id);
+    if (stopConfig == null && !ignore) {
       issues.add({
         message: `GTFS stop "${stopGtfs.stop_name}" (${stopGtfs.stop_id}) is not mapped.`,
       });
     }
   }
+}
+
+function compareStop(
+  issues: IssueCollector,
+  stopConfig: StopConfig,
+  stopGtfs: StopsCsvTreeNode,
+  stopGtfsIds: StopGtfsIds,
+  stopOptions: StopLintOptions,
+) {
+  compareStopNames(issues, stopConfig, stopGtfs, stopOptions);
 }
