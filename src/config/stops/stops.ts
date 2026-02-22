@@ -2891,7 +2891,7 @@ export const SHOWGROUNDS: StopConfig = {
   name: "Showgrounds",
   tags: [tag.SPECIAL_EVENTS_ONLY],
   urlPath: "showgrounds",
-  location: { latitude: -37.7833933, longitude: 144.9149124 },
+  location: { latitude: -37.7834722, longitude: 144.91425689 },
   positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
