@@ -8,6 +8,10 @@
   "rangeStrategy": "pin",
   "packageRules": [
     {
+      "matchPackageNames": ["corequery"],
+      "groupName": null
+    },
+    {
       "matchCurrentVersion": ">=1.0.0",
       "matchUpdateTypes": ["patch", "minor"],
       "groupName": "all non-major updates"
