@@ -11,6 +11,7 @@ import type {
 } from "../../../src/config/third-party-id-mapping-types.js";
 import { compareStopNames } from "./compare-names.js";
 import { compareStopLocations } from "./compare-locations.js";
+import { compareStopGtfsIds } from "./compare-gtfs-ids.js";
 
 export function compareStops(
   issues: IssueCollector,
@@ -74,4 +75,5 @@ function compareStop(
 ) {
   compareStopNames(issues, stopConfig, stopGtfs, stopOptions);
   compareStopLocations(issues, stopConfig, stopGtfs, stopOptions);
+  compareStopGtfsIds(issues, stopConfig, stopGtfs, stopGtfsIds, stopOptions);
 }

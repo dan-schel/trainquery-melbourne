@@ -8,6 +8,7 @@ import {
 } from "@dan-schel/js-utils";
 import { stops } from "../../src/config/stops/index.js";
 import { pressAnyKeyToContinue } from "./input.js";
+import { GTFS_REPLACEMENT_BUS_PLATFORM_CODE } from "../../src/gtfs/schedule/utils/magic-values.js";
 
 export async function printStopData(stop: StopsCsvTreeNode) {
   const name = stop.stop_name.trim().replace(/( Railway)? Station$/g, "");
@@ -54,7 +55,7 @@ function formatPositions(stop: StopsCsvTreeNode) {
 
   return stop.children
     .filter((c): c is HasPlatformCode => isPresent(c.platform_code))
-    .filter((c) => c.platform_code !== "Replacement bus")
+    .filter((c) => c.platform_code !== GTFS_REPLACEMENT_BUS_PLATFORM_CODE)
     .sort((a, b) => numberWiseSort(a.platform_code, b.platform_code))
     .map((c) => {
       return `    { stopPositionId: position.PLATFORM_${constify(c.platform_code)}, name: ${JSON.stringify(c.platform_code)} },`;
@@ -67,7 +68,7 @@ function formatChildGtfsIds(stop: StopsCsvTreeNode, constName: string) {
   const general: string[] = [];
 
   for (const c of stop.children) {
-    if (c.platform_code === "Replacement bus") {
+    if (c.platform_code === GTFS_REPLACEMENT_BUS_PLATFORM_CODE) {
       replacementBuses.push(c.stop_id);
     } else if (isPresent(c.platform_code)) {
       platforms.set(c.platform_code, [
