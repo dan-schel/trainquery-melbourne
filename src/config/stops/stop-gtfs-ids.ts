@@ -222,7 +222,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
 
   [stop.BERWICK]: {
     parent: "vic:rail:BEW",
-    general: ["22251"],
+    general: ["22251", "27882", "27883"],
     platforms: {
       [position.PLATFORM_1]: ["12178"],
       [position.PLATFORM_2]: ["12179"],
@@ -868,6 +868,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
 
   [stop.GINIFER]: {
     parent: "vic:rail:GIN",
+    general: ["22242"],
     platforms: {
       [position.PLATFORM_1]: ["15362"],
       [position.PLATFORM_2]: ["15363"],
