@@ -627,7 +627,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   },
 
   [stop.EAGLEHAWK]: {
-    parent: "vic:rail:EAG-V",
+    parent: "vic:rail:EHK",
     general: ["20309"],
   },
 
@@ -847,7 +847,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   },
 
   [stop.GARFIELD]: {
-    parent: "vic:rail:GAR-V",
+    parent: "vic:rail:GFD",
     general: ["20313"],
   },
 
@@ -1287,7 +1287,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   },
 
   [stop.MALMSBURY]: {
-    parent: "vic:rail:MMY-V",
+    parent: "vic:rail:MBY",
     general: ["20326"],
   },
 
@@ -1307,7 +1307,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
   },
 
   [stop.MARYBOROUGH]: {
-    parent: "vic:rail:MBY",
+    parent: "vic:rail:MYB",
     general: ["44953"],
   },
 
