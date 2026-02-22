@@ -7,7 +7,10 @@ import type { StopComparisonContext } from "./stop-comparison-context.js";
 
 export function compareStops(ctx: ComparisonContext, issues: IssueCollector) {
   for (const stopConfig of ctx.lintableConfig.stops) {
-    const stopOptions = ctx.options.stops?.[stopConfig.id] ?? {};
+    const stopOptions = {
+      ...ctx.options.stops?.all,
+      ...ctx.options.stops?.[stopConfig.id],
+    };
     const stopGtfsIds = ctx.stopGtfsIds[stopConfig.id];
 
     if (stopGtfsIds == null) {
@@ -51,8 +54,9 @@ export function compareStops(ctx: ComparisonContext, issues: IssueCollector) {
       (stop) => ctx.stopGtfsIds[stop.id]?.parent === stopGtfs.stop_id,
     );
 
-    const ignore =
-      ctx.options.ignoredUnmappedGtfsStops?.includes(stopGtfs.stop_id) ?? false;
+    const ignore = (
+      ctx.options?.ignoredUnmappedParentStopGtfsIds ?? []
+    ).includes(stopGtfs.stop_id);
 
     if (stopConfig == null && !ignore) {
       issues.add({

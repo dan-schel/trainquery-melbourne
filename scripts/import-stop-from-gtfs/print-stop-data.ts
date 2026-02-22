@@ -9,7 +9,10 @@ import {
 import { stops } from "../../src/config/stops/index.js";
 import { pressAnyKeyToContinue } from "./input.js";
 import { cleanupStopName } from "../utils/gtfs/cleanup-stop-name.js";
-import { GTFS_REPLACEMENT_BUS_PLATFORM_CODE } from "../utils/gtfs/magic-values.js";
+import {
+  GTFS_REPLACEMENT_BUS_PLATFORM_CODE,
+  NONSENSE_GTFS_STOP_ID_REGEX,
+} from "../utils/gtfs/magic-values.js";
 
 export async function printStopData(stop: StopsCsvTreeNode) {
   const name = cleanupStopName(stop.stop_name);
@@ -76,7 +79,7 @@ function formatChildGtfsIds(stop: StopsCsvTreeNode, constName: string) {
         ...(platforms.get(c.platform_code) ?? []),
         c.stop_id,
       ]);
-    } else if (!/^vic:rail:[A-Z]{3}.+/g.test(stop.stop_id)) {
+    } else if (!NONSENSE_GTFS_STOP_ID_REGEX.test(stop.stop_id)) {
       general.push(c.stop_id);
     }
   }
