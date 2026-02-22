@@ -1,4 +1,5 @@
 import type { StopsCsvTreeNode } from "../utils/gtfs/stops-csv-tree.js";
+import type { GtfsIdEntry } from "./stop/utils/reverse-map-gtfs-ids.js";
 
 export type ComparisonOptions = {
   readonly stops?: {
@@ -15,6 +16,7 @@ export type StopLintOptions = {
   readonly ignoreMissingFromGtfs?: boolean;
   readonly ignoreNameMismatch?: boolean;
   readonly ignoreLocationMismatch?: boolean;
+  readonly ignoreAdditionalChildGtfsId?: (id: GtfsIdEntry) => boolean;
   readonly ignoreUnmappedChildGtfsId?: (node: StopsCsvTreeNode) => boolean;
 };
 

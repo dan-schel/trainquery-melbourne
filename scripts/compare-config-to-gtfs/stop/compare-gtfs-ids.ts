@@ -13,6 +13,9 @@ export function compareStopGtfsIds(
   const configGtfsIdList = reverseMapGtfsIds(gtfsIds);
 
   for (const gtfsIdEntry of configGtfsIdList) {
+    const ignored = options.ignoreAdditionalChildGtfsId?.(gtfsIdEntry) ?? false;
+    if (ignored) continue;
+
     const match = gtfsIdList.find(
       (gtfsNode) => gtfsNode.stop_id === gtfsIdEntry.gtfsId,
     );
@@ -27,12 +30,13 @@ export function compareStopGtfsIds(
 
   for (const gtfsNode of gtfsIdList) {
     const ignored = options.ignoreUnmappedChildGtfsId?.(gtfsNode) ?? false;
+    if (ignored) continue;
 
     const match = configGtfsIdList.find(
       (configEntry) => configEntry.gtfsId === gtfsNode.stop_id,
     );
 
-    if (match == null && !ignored) {
+    if (match == null) {
       issues.add({
         message: `GTFS ID "${gtfsNode.stop_id}" is not mapped to ${config.name} (#${config.id}) despite being a child of "${gtfs.stop_id}".`,
       });
