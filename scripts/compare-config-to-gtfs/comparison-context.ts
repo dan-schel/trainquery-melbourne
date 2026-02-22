@@ -14,8 +14,12 @@ import { stopGtfsIds } from "../../src/config/stops/stop-gtfs-ids.js";
 import { stopPtvApiIds } from "../../src/config/stops/stop-ptv-api-ids.js";
 import { lineGtfsIds } from "../../src/config/lines/line-gtfs-ids.js";
 import { linePtvApiIds } from "../../src/config/lines/line-ptv-api-ids.js";
+import { IssueCollector } from "./issue-collector.js";
+import type { ComparisonOptions } from "./comparison-options.js";
 
-export class LintingContext {
+export class ComparisonContext {
+  readonly issues;
+
   constructor(
     readonly lintableConfig: LintableConfig,
     readonly stopGtfsIds: StopGtfsIdMapping,
@@ -26,12 +30,15 @@ export class LintingContext {
     readonly stopsCsvTree: StopsCsvTree,
     readonly suburbanIndexedStopTimes: IndexedStopTimes,
     readonly regionalIndexedStopTimes: IndexedStopTimes,
-  ) {}
+    readonly options: ComparisonOptions,
+  ) {
+    this.issues = new IssueCollector();
+  }
 
-  static async build(relayKey: string) {
+  static async build(relayKey: string, options: ComparisonOptions) {
     const gtfsData = await withGtfsFiles(relayKey, readGtfs);
 
-    return new LintingContext(
+    return new ComparisonContext(
       lintableConfig,
       stopGtfsIds,
       stopPtvApiIds,
@@ -41,6 +48,7 @@ export class LintingContext {
       StopsCsvTree.fromGtfsData(gtfsData),
       IndexedStopTimes.build(gtfsData.suburban.stopTimes),
       IndexedStopTimes.build(gtfsData.regional.stopTimes),
+      options,
     );
   }
 }

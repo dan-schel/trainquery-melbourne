@@ -3,7 +3,7 @@ export type LineGtfsIdMapping = Record<number, LineGtfsIds>;
 export type StopPtvApiIdMapping = Record<number, StopPtvApiIds>;
 export type LinePtvApiIdMapping = Record<number, LinePtvApiIds>;
 
-type StopGtfsIds = {
+export type StopGtfsIds = {
   readonly parent: string;
   readonly general?: readonly string[];
   readonly platforms?: Readonly<Record<number, readonly string[]>>;
