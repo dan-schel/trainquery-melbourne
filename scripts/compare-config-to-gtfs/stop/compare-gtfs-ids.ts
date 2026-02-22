@@ -13,7 +13,10 @@ export function compareStopGtfsIds(
   const configGtfsIdList = reverseMapGtfsIds(gtfsIds);
 
   for (const gtfsIdEntry of configGtfsIdList) {
-    const ignored = options.ignoreAdditionalChildGtfsId?.(gtfsIdEntry) ?? false;
+    const ignored =
+      (options.ignoredAdditionalChildGtfsIds?.includes(gtfsIdEntry.gtfsId) ??
+        false) ||
+      (options.ignoreAdditionalChildGtfsId?.(gtfsIdEntry) ?? false);
     if (ignored) continue;
 
     const match = gtfsIdList.find(
@@ -29,7 +32,10 @@ export function compareStopGtfsIds(
   }
 
   for (const gtfsNode of gtfsIdList) {
-    const ignored = options.ignoreUnmappedChildGtfsId?.(gtfsNode) ?? false;
+    const ignored =
+      (options.ignoredUnmappedChildGtfsIds?.includes(gtfsNode.stop_id) ??
+        false) ||
+      (options.ignoreUnmappedChildGtfsId?.(gtfsNode) ?? false);
     if (ignored) continue;
 
     const match = configGtfsIdList.find(

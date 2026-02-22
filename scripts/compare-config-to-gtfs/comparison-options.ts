@@ -16,7 +16,11 @@ export type StopLintOptions = {
   readonly ignoreMissingFromGtfs?: boolean;
   readonly ignoreNameMismatch?: boolean;
   readonly ignoreLocationMismatch?: boolean;
+
+  readonly ignoredAdditionalChildGtfsIds?: string[];
   readonly ignoreAdditionalChildGtfsId?: (id: GtfsIdEntry) => boolean;
+
+  readonly ignoredUnmappedChildGtfsIds?: string[];
   readonly ignoreUnmappedChildGtfsId?: (node: StopsCsvTreeNode) => boolean;
 };
 
