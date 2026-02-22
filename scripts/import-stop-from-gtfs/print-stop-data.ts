@@ -8,10 +8,11 @@ import {
 } from "@dan-schel/js-utils";
 import { stops } from "../../src/config/stops/index.js";
 import { pressAnyKeyToContinue } from "./input.js";
-import { GTFS_REPLACEMENT_BUS_PLATFORM_CODE } from "../../src/gtfs/schedule/utils/magic-values.js";
+import { cleanupStopName } from "../utils/gtfs/cleanup-stop-name.js";
+import { GTFS_REPLACEMENT_BUS_PLATFORM_CODE } from "../utils/gtfs/magic-values.js";
 
 export async function printStopData(stop: StopsCsvTreeNode) {
-  const name = stop.stop_name.trim().replace(/( Railway)? Station$/g, "");
+  const name = cleanupStopName(stop.stop_name);
   const id = Math.max(...stops.map((x) => x.id)) + 1;
   const urlPath = name.toLowerCase().replace(/\s+/g, "");
   const constName = constify(name);

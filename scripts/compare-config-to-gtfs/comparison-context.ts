@@ -14,41 +14,45 @@ import { stopGtfsIds } from "../../src/config/stops/stop-gtfs-ids.js";
 import { stopPtvApiIds } from "../../src/config/stops/stop-ptv-api-ids.js";
 import { lineGtfsIds } from "../../src/config/lines/line-gtfs-ids.js";
 import { linePtvApiIds } from "../../src/config/lines/line-ptv-api-ids.js";
-import { IssueCollector } from "./issue-collector.js";
 import type { ComparisonOptions } from "./comparison-options.js";
 
-export class ComparisonContext {
-  readonly issues;
+export type ComparisonContext = {
+  readonly lintableConfig: LintableConfig;
+  readonly stopGtfsIds: StopGtfsIdMapping;
+  readonly stopPtvApiIds: StopPtvApiIdMapping;
+  readonly lineGtfsIds: LineGtfsIdMapping;
+  readonly linePtvApiIds: LinePtvApiIdMapping;
+  readonly gtfsData: GtfsData;
+  readonly stopsCsvTree: StopsCsvTree;
+  readonly suburbanIndexedStopTimes: IndexedStopTimes;
+  readonly regionalIndexedStopTimes: IndexedStopTimes;
+  readonly options: ComparisonOptions;
+};
 
-  constructor(
-    readonly lintableConfig: LintableConfig,
-    readonly stopGtfsIds: StopGtfsIdMapping,
-    readonly stopPtvApiIds: StopPtvApiIdMapping,
-    readonly lineGtfsIds: LineGtfsIdMapping,
-    readonly linePtvApiIds: LinePtvApiIdMapping,
-    readonly gtfsData: GtfsData,
-    readonly stopsCsvTree: StopsCsvTree,
-    readonly suburbanIndexedStopTimes: IndexedStopTimes,
-    readonly regionalIndexedStopTimes: IndexedStopTimes,
-    readonly options: ComparisonOptions,
-  ) {
-    this.issues = new IssueCollector();
-  }
+export async function buildComparisonContext(
+  relayKey: string,
+  options: ComparisonOptions,
+): Promise<ComparisonContext> {
+  const gtfsData = await withGtfsFiles(relayKey, readGtfs);
 
-  static async build(relayKey: string, options: ComparisonOptions) {
-    const gtfsData = await withGtfsFiles(relayKey, readGtfs);
+  const stopsCsvTree = StopsCsvTree.fromGtfsData(gtfsData);
+  const suburbanIndexedStopTimes = IndexedStopTimes.build(
+    gtfsData.suburban.stopTimes,
+  );
+  const regionalIndexedStopTimes = IndexedStopTimes.build(
+    gtfsData.regional.stopTimes,
+  );
 
-    return new ComparisonContext(
-      lintableConfig,
-      stopGtfsIds,
-      stopPtvApiIds,
-      lineGtfsIds,
-      linePtvApiIds,
-      gtfsData,
-      StopsCsvTree.fromGtfsData(gtfsData),
-      IndexedStopTimes.build(gtfsData.suburban.stopTimes),
-      IndexedStopTimes.build(gtfsData.regional.stopTimes),
-      options,
-    );
-  }
+  return {
+    lintableConfig,
+    stopGtfsIds,
+    stopPtvApiIds,
+    lineGtfsIds,
+    linePtvApiIds,
+    gtfsData,
+    stopsCsvTree,
+    suburbanIndexedStopTimes,
+    regionalIndexedStopTimes,
+    options,
+  };
 }

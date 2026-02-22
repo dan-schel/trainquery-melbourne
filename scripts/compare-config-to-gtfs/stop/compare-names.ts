@@ -1,23 +1,20 @@
-import type { StopConfig } from "corequery";
-import type { StopsCsvTreeNode } from "../../utils/gtfs/stops-csv-tree.js";
-import type { StopLintOptions } from "../comparison-options.js";
+import { cleanupStopName } from "../../utils/gtfs/cleanup-stop-name.js";
 import type { IssueCollector } from "../issue-collector.js";
+import type { StopComparisonContext } from "./stop-comparison-context.js";
 
 export function compareStopNames(
+  ctx: StopComparisonContext,
   issues: IssueCollector,
-  stopConfig: StopConfig,
-  stopGtfs: StopsCsvTreeNode,
-  stopOptions: StopLintOptions,
 ) {
-  const sanitizedGtfsName = stopGtfs.stop_name
-    .trim()
-    .replace(/( Railway)? Station$/g, "");
+  const { config, gtfs, options } = ctx.currentStop;
 
-  if (stopConfig.name !== sanitizedGtfsName) {
-    const ignored = stopOptions.ignoreNameMismatch ?? false;
+  const sanitizedGtfsName = cleanupStopName(gtfs.stop_name);
+
+  if (config.name !== sanitizedGtfsName) {
+    const ignored = options.ignoreNameMismatch ?? false;
     if (!ignored) {
       issues.add({
-        message: `Stop ${stopConfig.name} (#${stopConfig.id}) expected to be named "${sanitizedGtfsName}".`,
+        message: `Stop ${config.name} (#${config.id}) expected to be named "${sanitizedGtfsName}".`,
       });
     }
   }

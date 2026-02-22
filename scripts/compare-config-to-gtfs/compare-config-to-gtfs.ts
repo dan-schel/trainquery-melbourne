@@ -1,5 +1,6 @@
-import { ComparisonContext } from "./comparison-context.js";
+import { buildComparisonContext } from "./comparison-context.js";
 import type { ComparisonOptions } from "./comparison-options.js";
+import { IssueCollector } from "./issue-collector.js";
 import { compareStops } from "./stop/index.js";
 
 export async function compareConfigToGtfs(
@@ -8,26 +9,19 @@ export async function compareConfigToGtfs(
 ) {
   console.log("Downloading/parsing GTFS data...");
 
-  const ctx = await ComparisonContext.build(relayKey, options);
+  const issues = new IssueCollector();
+  const ctx = await buildComparisonContext(relayKey, options);
 
   console.log("Checking for issues...");
 
-  compareStops(
-    ctx.issues,
-    ctx.lintableConfig.stops,
-    ctx.stopsCsvTree,
-    ctx.stopGtfsIds,
-    ctx.options.stops ?? {},
-    ctx.options.ignoredUnmappedGtfsStops ?? [],
-  );
+  compareStops(ctx, issues);
 
   console.log();
-  const issues = ctx.issues.getIssues();
-  if (issues.length === 0) {
+  if (issues.getIssues().length === 0) {
     console.log("No issues found!");
   } else {
-    console.log(`Found ${issues.length} issue(s):`);
-    for (const issue of issues) {
+    console.log(`Found ${issues.getIssues().length} issue(s):`);
+    for (const issue of issues.getIssues()) {
       console.log(`- ${issue.message}`);
     }
     process.exit(1);
