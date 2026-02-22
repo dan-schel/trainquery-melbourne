@@ -38,7 +38,7 @@ export function compareStopGtfsIds(
 
     if (match == null) {
       issues.add({
-        message: `GTFS ID "${gtfsNode.stop_id}" is not mapped to ${config.name} (#${config.id}) despite being a child of "${gtfs.stop_id}".`,
+        message: `GTFS ID "${gtfsNode.stop_id}" ("${gtfsNode.stop_name}", platform_code="${gtfsNode.platform_code}") is not mapped to ${config.name} (#${config.id}) despite being a child of "${gtfs.stop_id}".`,
       });
     }
   }

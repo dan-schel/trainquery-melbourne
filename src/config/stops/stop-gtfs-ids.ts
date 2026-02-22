@@ -26,6 +26,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15364"],
       [position.PLATFORM_2]: ["15365"],
     },
+    replacementBus: ["26102"],
   },
 
   [stop.ALBURY]: {
@@ -82,6 +83,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15548"],
       [position.PLATFORM_2]: ["15549"],
     },
+    replacementBus: ["26107"],
   },
 
   [stop.ASHBURTON]: {
@@ -107,6 +109,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_2]: ["12239"],
       [position.PLATFORM_3]: ["12240"],
     },
+    replacementBus: ["26110"],
   },
 
   [stop.AVENEL]: {
@@ -214,6 +217,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_2]: ["14240"],
       [position.PLATFORM_3]: ["14241"],
     },
+    replacementBus: ["26118"],
   },
 
   [stop.BERWICK]: {
@@ -295,6 +299,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15529"],
       [position.PLATFORM_2]: ["15530"],
     },
+    replacementBus: ["26126"],
   },
 
   [stop.BRUNSWICK]: {
@@ -383,6 +388,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["11226"],
       [position.PLATFORM_2]: ["11227"],
     },
+    replacementBus: ["26134"],
   },
 
   [stop.CASTLEMAINE]: {
@@ -475,6 +481,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["14308"],
       [position.PLATFORM_2]: ["14309"],
     },
+    replacementBus: ["26141"],
   },
 
   [stop.COLAC]: {
@@ -497,6 +504,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["26503"],
       [position.PLATFORM_2]: ["26504"],
     },
+    replacementBus: ["26143"],
   },
 
   [stop.CORIO]: {
@@ -609,6 +617,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["26505"],
       [position.PLATFORM_2]: ["15354"],
     },
+    replacementBus: ["26154"],
   },
 
   [stop.DINGEE]: {
@@ -784,6 +793,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15524"],
       [position.PLATFORM_2]: ["15525"],
     },
+    replacementBus: ["26322"],
   },
 
   [stop.FLINDERS_STREET]: {
@@ -862,6 +872,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15362"],
       [position.PLATFORM_2]: ["15363"],
     },
+    replacementBus: ["26175"],
   },
 
   [stop.GISBORNE]: {
@@ -892,6 +903,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15541"],
       [position.PLATFORM_2]: ["15542"],
     },
+    replacementBus: ["26178"],
   },
 
   [stop.GLENFERRIE]: {
@@ -911,6 +923,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_2]: ["14249"],
       [position.PLATFORM_3]: ["14250"],
     },
+    replacementBus: ["26180"],
   },
 
   [stop.GLENROY]: {
@@ -959,6 +972,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["14272"],
       [position.PLATFORM_2]: ["14273"],
     },
+    replacementBus: ["26185"],
   },
 
   [stop.HARTWELL]: {
@@ -1000,6 +1014,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_2]: ["12245"],
       [position.PLATFORM_3]: ["12246"],
     },
+    replacementBus: ["26190"],
   },
 
   [stop.HEATHCOTE_JUNCTION]: {
@@ -1108,6 +1123,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15531"],
       [position.PLATFORM_2]: ["15532"],
     },
+    replacementBus: ["26202"],
   },
 
   [stop.JEWELL]: {
@@ -1141,6 +1157,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["11222"],
       [position.PLATFORM_2]: ["11223"],
     },
+    replacementBus: ["26206"],
   },
 
   [stop.KANGAROO_FLAT]: {
@@ -1154,6 +1171,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15358"],
       [position.PLATFORM_2]: ["15359"],
     },
+    replacementBus: ["26207"],
   },
 
   [stop.KENSINGTON]: {
@@ -1162,6 +1180,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15552"],
       [position.PLATFORM_2]: ["15553"],
     },
+    replacementBus: ["26208"],
   },
 
   [stop.KEON_PARK]: {
@@ -1299,6 +1318,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_3]: ["14257"],
       [position.PLATFORM_4]: ["14258"],
     },
+    replacementBus: ["26219"],
   },
 
   [stop.MARSHALL]: {
@@ -1342,6 +1362,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["11240"],
       [position.PLATFORM_2]: ["11241"],
     },
+    replacementBus: ["26222"],
   },
 
   [stop.MERINDA_PARK]: {
@@ -1385,6 +1406,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["14277"],
       [position.PLATFORM_2]: ["14278"],
     },
+    replacementBus: ["26227"],
   },
 
   [stop.MIDDLE_FOOTSCRAY]: {
@@ -1393,6 +1415,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15516"],
       [position.PLATFORM_2]: ["15517"],
     },
+    replacementBus: ["26228"],
   },
 
   [stop.MIDDLE_GORGE]: {
@@ -1465,6 +1488,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["11236"],
       [position.PLATFORM_2]: ["11237"],
     },
+    replacementBus: ["26235"],
   },
 
   [stop.MORELAND]: {
@@ -1582,6 +1606,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_5]: ["14328"],
       [position.PLATFORM_6]: ["14329"],
     },
+    replacementBus: ["26245"],
   },
 
   [stop.NORTH_RICHMOND]: {
@@ -1604,6 +1629,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15341"],
       [position.PLATFORM_2]: ["15342"],
     },
+    replacementBus: ["26247"],
   },
 
   [stop.NORTHCOTE]: {
@@ -1630,6 +1656,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15535"],
       [position.PLATFORM_2]: ["15536"],
     },
+    replacementBus: ["26250"],
   },
 
   [stop.OAKLEIGH]: {
@@ -1657,6 +1684,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_2]: ["14246"],
       [position.PLATFORM_3]: ["14247"],
     },
+    replacementBus: ["26253"],
   },
 
   [stop.PAKENHAM]: {
@@ -1675,6 +1703,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["11238"],
       [position.PLATFORM_2]: ["11239"],
     },
+    replacementBus: ["26255"],
   },
 
   [stop.PARLIAMENT]: {
@@ -1685,6 +1714,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_3]: ["12199"],
       [position.PLATFORM_4]: ["12200"],
     },
+    replacementBus: ["26256"],
   },
 
   [stop.PASCOE_VALE]: {
@@ -1693,6 +1723,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15537"],
       [position.PLATFORM_2]: ["15538"],
     },
+    replacementBus: ["26257"],
   },
 
   [stop.PATTERSON]: {
@@ -1834,6 +1865,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["40218"],
       [position.PLATFORM_2]: ["40219"],
     },
+    replacementBus: ["26269"],
   },
 
   [stop.ROYAL_PARK]: {
@@ -1890,6 +1922,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["11224"],
       [position.PLATFORM_2]: ["11225"],
     },
+    replacementBus: ["26275"],
   },
 
   [stop.SEAHOLME]: {
@@ -1906,6 +1939,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15349"],
       [position.PLATFORM_2]: ["15350"],
     },
+    replacementBus: ["26277"],
   },
 
   [stop.SEYMOUR]: {
@@ -1928,6 +1962,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
     platforms: {
       [position.PLATFORM_1]: ["15526"],
     },
+    replacementBus: ["726320"],
   },
 
   [stop.SOMERVILLE]: {
@@ -1948,6 +1983,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15522"],
       [position.PLATFORM_2]: ["15523"],
     },
+    replacementBus: ["26279"],
   },
 
   [stop.SOUTH_MORANG]: {
@@ -2000,6 +2036,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15345"],
       [position.PLATFORM_2]: ["15346"],
     },
+    replacementBus: ["26284"],
   },
 
   [stop.SPRINGHURST]: {
@@ -2044,6 +2081,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15539"],
       [position.PLATFORM_2]: ["15540"],
     },
+    replacementBus: ["26288"],
   },
 
   [stop.SUNBURY]: {
@@ -2141,6 +2179,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["12267"],
       [position.PLATFORM_2]: ["12268"],
     },
+    replacementBus: ["26297"],
   },
 
   [stop.TOTTENHAM]: {
@@ -2149,6 +2188,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15512"],
       [position.PLATFORM_2]: ["15513"],
     },
+    replacementBus: ["26298"],
   },
 
   [stop.TRAFALGAR]: {
@@ -2354,6 +2394,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["15339"],
       [position.PLATFORM_2]: ["15340"],
     },
+    replacementBus: ["26314"],
   },
 
   [stop.WILLISON]: {
@@ -2434,6 +2475,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_2]: ["26536"],
       [position.PLATFORM_3]: ["26537"],
     },
+    replacementBus: ["26321"],
   },
 
   [stop.EAST_PAKENHAM]: {
@@ -2475,6 +2517,7 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["26550"],
       [position.PLATFORM_2]: ["26551"],
     },
+    replacementBus: ["126324"],
   },
 
   [stop.ARDEN]: {
@@ -2483,5 +2526,6 @@ export const stopGtfsIds: StopGtfsIdMapping = {
       [position.PLATFORM_1]: ["26548"],
       [position.PLATFORM_2]: ["26549"],
     },
+    replacementBus: ["126323"],
   },
 };
