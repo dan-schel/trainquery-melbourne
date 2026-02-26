@@ -17,7 +17,7 @@ describe("lines", () => {
 
       assert(
         subfeedTagCount === 1,
-        `Line ${line.id} is tagged for ${subfeedTagCount} GTFS subfeeds.`,
+        `${line.name} (#${line.id})  is tagged for ${subfeedTagCount} GTFS subfeeds.`,
       );
     }
   });
