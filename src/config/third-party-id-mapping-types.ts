@@ -1,5 +1,5 @@
 export type StopGtfsIdsConfig = Record<number, StopGtfsIdCollectionConfig>;
-export type LineGtfsIdsConfig = Record<number, LineAllGtfsIdCollectionConfig>;
+export type LineGtfsIdsConfig = Record<number, LineGtfsIdCollectionConfig>;
 export type StopPtvApiIdsConfig = Record<number, StopPtvApiIdCollectionConfig>;
 export type LinePtvApiIdsConfig = Record<number, LinePtvApiIdCollectionConfig>;
 
@@ -15,12 +15,12 @@ export type StopGtfsIdCollectionForSubfeedConfig = {
   readonly replacementBus?: readonly string[];
 };
 
-export type LineAllGtfsIdCollectionConfig = {
-  readonly suburban?: LineAllGtfsIdCollectionForSubfeedConfig;
-  readonly regional?: LineAllGtfsIdCollectionForSubfeedConfig;
+export type LineGtfsIdCollectionConfig = {
+  readonly suburban?: LineGtfsIdCollectionForSubfeedConfig;
+  readonly regional?: LineGtfsIdCollectionForSubfeedConfig;
 };
 
-export type LineAllGtfsIdCollectionForSubfeedConfig = {
+export type LineGtfsIdCollectionForSubfeedConfig = {
   readonly primary: string;
   readonly other?: readonly string[];
   readonly replacementBus?: readonly string[];
