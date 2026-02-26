@@ -5,7 +5,7 @@ import { lintableConfig } from "../../src/config/index.js";
 const options: LintOptions = {};
 
 describe("config", () => {
-  it("passes linting", () => {
+  it("passes CoreQuery linting", () => {
     expect(lintConfig(lintableConfig, options)).toStrictEqual([]);
   });
 });
