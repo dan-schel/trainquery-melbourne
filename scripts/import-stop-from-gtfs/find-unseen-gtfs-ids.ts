@@ -1,4 +1,4 @@
-import type { StopGtfsIdMapping } from "../../src/config/third-party-id-mapping-types.js";
+import type { StopGtfsIdsConfig } from "../../src/config/third-party-id-mapping-types.js";
 import type {
   StopsCsvTree,
   StopsCsvTreeNode,
@@ -6,7 +6,7 @@ import type {
 
 export function findUnseenGtfsIds(
   stopsCsvTree: StopsCsvTree,
-  mappedGtfsIds: StopGtfsIdMapping,
+  mappedGtfsIds: StopGtfsIdsConfig,
 ): StopsCsvTreeNode[] {
   const result: StopsCsvTreeNode[] = [];
 

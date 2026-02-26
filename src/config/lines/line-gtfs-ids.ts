@@ -1,7 +1,7 @@
-import type { LineGtfsIdMapping } from "../third-party-id-mapping-types.js";
+import type { LineGtfsIdsConfig } from "../third-party-id-mapping-types.js";
 import * as line from "./line-ids.js";
 
-export const lineGtfsIds: LineGtfsIdMapping = {
+export const lineGtfsIds: LineGtfsIdsConfig = {
   [line.SANDRINGHAM]: {
     primary: "aus:vic:vic-02-SHM:",
     replacementBus: ["aus:vic:vic-02-SHM-R:"],

@@ -1,8 +1,8 @@
-import type { StopGtfsIdMapping } from "../third-party-id-mapping-types.js";
+import type { StopGtfsIdsConfig } from "../third-party-id-mapping-types.js";
 import * as stop from "./stop-ids.js";
 import * as position from "./stop-position-ids.js";
 
-export const stopGtfsIds: StopGtfsIdMapping = {
+export const stopGtfsIds: StopGtfsIdsConfig = {
   [stop.AIRCRAFT]: {
     parent: "vic:rail:ACF",
     platforms: {

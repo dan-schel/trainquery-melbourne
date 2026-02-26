@@ -5,10 +5,10 @@ import { withGtfsFiles } from "../../src/gtfs/schedule/with-gtfs-files.js";
 import { lintableConfig } from "../../src/config/index.js";
 import { IndexedStopTimes } from "../../src/gtfs/schedule/higher-order/indexed-stop-times.js";
 import type {
-  LineGtfsIdMapping,
-  LinePtvApiIdMapping,
-  StopGtfsIdMapping,
-  StopPtvApiIdMapping,
+  LineGtfsIdsConfig,
+  LinePtvApiIdsConfig,
+  StopGtfsIdsConfig,
+  StopPtvApiIdsConfig,
 } from "../../src/config/third-party-id-mapping-types.js";
 import { stopGtfsIds } from "../../src/config/stops/stop-gtfs-ids.js";
 import { stopPtvApiIds } from "../../src/config/stops/stop-ptv-api-ids.js";
@@ -18,10 +18,10 @@ import type { ComparisonOptions } from "./comparison-options.js";
 
 export type ComparisonContext = {
   readonly lintableConfig: LintableConfig;
-  readonly stopGtfsIds: StopGtfsIdMapping;
-  readonly stopPtvApiIds: StopPtvApiIdMapping;
-  readonly lineGtfsIds: LineGtfsIdMapping;
-  readonly linePtvApiIds: LinePtvApiIdMapping;
+  readonly stopGtfsIds: StopGtfsIdsConfig;
+  readonly stopPtvApiIds: StopPtvApiIdsConfig;
+  readonly lineGtfsIds: LineGtfsIdsConfig;
+  readonly linePtvApiIds: LinePtvApiIdsConfig;
   readonly gtfsData: GtfsData;
   readonly stopsCsvTree: StopsCsvTree;
   readonly suburbanIndexedStopTimes: IndexedStopTimes;
