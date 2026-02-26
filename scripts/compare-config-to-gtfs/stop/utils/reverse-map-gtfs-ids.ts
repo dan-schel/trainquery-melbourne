@@ -1,5 +1,5 @@
 import { parseIntThrow } from "@dan-schel/js-utils";
-import type { StopGtfsIdCollectionConfig } from "../../../../src/config/third-party-id-mapping-types.js";
+import type { StopGtfsIdsBySubfeedConfig } from "../../../../src/config/third-party-id-mapping-types.js";
 
 export type GtfsIdEntry =
   | ParentGtfsIdEntry
@@ -28,7 +28,7 @@ export type PositionGtfsIdEntry = {
   positionId: number;
 };
 
-export function reverseMapGtfsIds(stopGtfsIds: StopGtfsIdCollectionConfig) {
+export function reverseMapGtfsIds(stopGtfsIds: StopGtfsIdsBySubfeedConfig) {
   const result: GtfsIdEntry[] = [];
 
   result.push({ type: "parent", gtfsId: stopGtfsIds.parent });

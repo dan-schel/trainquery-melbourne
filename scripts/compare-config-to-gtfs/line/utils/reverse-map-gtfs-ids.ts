@@ -1,11 +1,11 @@
-import type { LineGtfsIdCollectionConfig } from "../../../../src/config/third-party-id-mapping-types.js";
+import type { LineGtfsIdsBySubfeedConfig } from "../../../../src/config/third-party-id-mapping-types.js";
 
 export type GtfsIdEntry = {
   type: "primary" | "other" | "replacement-bus";
   gtfsId: string;
 };
 
-export function reverseMapGtfsIds(lineGtfsIds: LineGtfsIdCollectionConfig) {
+export function reverseMapGtfsIds(lineGtfsIds: LineGtfsIdsBySubfeedConfig) {
   const result: GtfsIdEntry[] = [];
 
   result.push({ type: "primary", gtfsId: lineGtfsIds.primary });

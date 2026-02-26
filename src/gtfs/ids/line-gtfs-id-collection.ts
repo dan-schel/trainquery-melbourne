@@ -1,5 +1,5 @@
 import type { LineGtfsIdMetadata } from "./line-gtfs-id-metadata.js";
-import type { LineGtfsIdCollectionForSubfeedConfig } from "../../config/third-party-id-mapping-types.js";
+import type { LineGtfsIdCollectionConfig } from "../../config/third-party-id-mapping-types.js";
 
 export class LineGtfsIdCollection {
   constructor(
@@ -31,10 +31,7 @@ export class LineGtfsIdCollection {
     ];
   }
 
-  static build(
-    stopId: number,
-    gtfsIdsForSubfeed: LineGtfsIdCollectionForSubfeedConfig,
-  ) {
+  static build(stopId: number, gtfsIdsForSubfeed: LineGtfsIdCollectionConfig) {
     return new LineGtfsIdCollection(
       stopId,
       gtfsIdsForSubfeed.primary,
