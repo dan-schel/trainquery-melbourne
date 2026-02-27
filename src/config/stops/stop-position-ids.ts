@@ -1,5 +1,4 @@
-// Intentionally start from 51 to avoid confusion (i.e. 1 != Platform 1).
-export const PLATFORM_1 = 51;
+export const PLATFORM_1 = 51; // Intentionally start from 51 to avoid confusion (i.e. 1 != Platform 1).
 export const PLATFORM_2 = 52;
 export const PLATFORM_3 = 53;
 export const PLATFORM_4 = 54;
