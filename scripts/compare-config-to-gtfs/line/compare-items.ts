@@ -1,5 +1,5 @@
 import type { LineConfig } from "corequery";
-import { compareArrays, groupBy, nonNull } from "@dan-schel/js-utils";
+import { compareArrays, nonNull } from "@dan-schel/js-utils";
 import type { IssueCollector } from "../issue-collector.js";
 import type { LineGtfsIdMapping } from "../../../src/gtfs/ids/line-gtfs-id-mapping.js";
 import type { LineGtfsIdCollection } from "../../../src/gtfs/ids/line-gtfs-id-collection.js";
