@@ -3028,7 +3028,7 @@ export const SOUTH_YARRA: StopConfig = {
 
 export const SOUTHERN_CROSS: StopConfig = {
   id: stop.SOUTHERN_CROSS,
-  name: "Southern Cross (Spencer Street)",
+  name: "Southern Cross",
   tags: [tag.CITY_LOOP, tag.SUBURBAN_GTFS_SUBFEED, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "southerncross",
   location: { latitude: -37.8186631, longitude: 144.95277706 },
