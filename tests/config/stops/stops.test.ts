@@ -1,7 +1,7 @@
 import { describe, it, assert } from "vitest";
-import { stops } from "../../../src/config/stops";
-import { stopTagSuccession } from "../../../src/config/stops/stop-tag-succession";
-import * as tag from "../../../src/config/stops/stop-tags";
+import { stops } from "../../../src/config/stops/index.js";
+import { stopTagSuccession } from "../../../src/config/stops/stop-tag-succession.js";
+import * as tag from "../../../src/config/stops/stop-tags.js";
 import { Tags } from "corequery";
 
 describe("stops", () => {

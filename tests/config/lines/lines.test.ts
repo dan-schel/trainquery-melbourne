@@ -1,7 +1,7 @@
 import { describe, it, assert } from "vitest";
-import { lines } from "../../../src/config/lines";
-import { lineTagSuccession } from "../../../src/config/lines/line-tag-succession";
-import * as tag from "../../../src/config/lines/line-tags";
+import { lines } from "../../../src/config/lines/index.js";
+import { lineTagSuccession } from "../../../src/config/lines/line-tag-succession.js";
+import * as tag from "../../../src/config/lines/line-tags.js";
 import { Tags } from "corequery";
 
 describe("lines", () => {
