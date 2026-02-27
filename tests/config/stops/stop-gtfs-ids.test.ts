@@ -3,20 +3,33 @@ import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.j
 import { stops } from "../../../src/config/stops/index.js";
 import { stopGtfsIds } from "../../../src/config/stops/stop-gtfs-ids.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
+import { getSubfeedsWithStop } from "../../../src/gtfs/utils/get-subfeeds-with.js";
 
 const stopsExemptedFromHavingGtfsId: number[] = [];
 
 describe("stopGtfsIds", () => {
-  it("has an entry for each stop", () => {
+  it("has an entry for each line", () => {
     for (const stop of stops) {
       if (stopsExemptedFromHavingGtfsId.includes(stop.id)) continue;
 
-      // TODO: Check that it's present in the correct subfeed, considering the
-      // tag.
+      const idConfig = stopGtfsIds[stop.id];
       assert(
-        stopGtfsIds[stop.id] != null,
-        `No GTFS IDs found for stop ${stop.name} (#${stop.id}).`,
+        idConfig != null,
+        `No GTFS IDs found for ${stop.name} (#${stop.id}).`,
       );
+
+      if (getSubfeedsWithStop(stop).suburban) {
+        assert(
+          idConfig.suburban != null,
+          `Use of tags indicates ${stop.name} (#${stop.id}) should have suburban GTFS IDs mapped.`,
+        );
+      }
+      if (getSubfeedsWithStop(stop).regional) {
+        assert(
+          idConfig.regional != null,
+          `Use of tags indicates ${stop.name} (#${stop.id}) should have regional GTFS IDs mapped.`,
+        );
+      }
     }
   });
 

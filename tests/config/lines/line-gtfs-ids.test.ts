@@ -3,6 +3,7 @@ import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.j
 import { lines } from "../../../src/config/lines/index.js";
 import { lineGtfsIds } from "../../../src/config/lines/line-gtfs-ids.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
+import { getSubfeedsWithLine } from "../../../src/gtfs/utils/get-subfeeds-with.js";
 
 const linesExemptedFromHavingGtfsId: number[] = [];
 
@@ -11,12 +12,24 @@ describe("lineGtfsIds", () => {
     for (const line of lines) {
       if (linesExemptedFromHavingGtfsId.includes(line.id)) continue;
 
-      // TODO: Check that it's present in the correct subfeed, considering the
-      // tag.
+      const idConfig = lineGtfsIds[line.id];
       assert(
-        lineGtfsIds[line.id] != null,
-        `No GTFS IDs found for line ${line.name} (#${line.id}).`,
+        idConfig != null,
+        `No GTFS IDs found for ${line.name} line (#${line.id}).`,
       );
+
+      if (getSubfeedsWithLine(line).suburban) {
+        assert(
+          idConfig.suburban != null,
+          `Use of tags indicates ${line.name} line (#${line.id}) should have suburban GTFS IDs mapped.`,
+        );
+      }
+      if (getSubfeedsWithLine(line).regional) {
+        assert(
+          idConfig.regional != null,
+          `Use of tags indicates ${line.name} line (#${line.id}) should have regional GTFS IDs mapped.`,
+        );
+      }
     }
   });
 

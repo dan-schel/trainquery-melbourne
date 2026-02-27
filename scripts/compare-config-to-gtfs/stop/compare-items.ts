@@ -23,26 +23,15 @@ export function compareStopItems({
   onMatch,
   isStopMissingFromConfigIgnored,
   isStopMissingFromGtfsIgnored,
-  isStopWithNoConfiguredGtfsIdIgnored,
 }: {
   stops: readonly StopConfig[];
   idMapping: StopGtfsIdMapping;
   gtfsStops: StopsCsv;
   issues: IssueCollector;
   onMatch: OnMatchCallback;
-  isStopWithNoConfiguredGtfsIdIgnored: (config: StopConfig) => boolean;
   isStopMissingFromConfigIgnored: (gtfsNode: StopsCsvTreeNode) => boolean;
   isStopMissingFromGtfsIgnored: (config: StopConfig) => boolean;
 }) {
-  // TODO: Theoretically, this doesn't belong here. It could be caught in a unit
-  // test.
-  function reportUnmappedStop(config: StopConfig) {
-    if (isStopWithNoConfiguredGtfsIdIgnored(config)) return;
-    issues.add({
-      message: `No GTFS ID configured for ${config.name} (#${config.id}).`,
-    });
-  }
-
   function reportStopMissingFromGtfs(
     config: StopConfig,
     mappedIds: StopGtfsIdCollection,
@@ -61,7 +50,7 @@ export function compareStopItems({
   }
 
   const stopTree = StopsCsvTree.build(gtfsStops);
-  const stopsWithGtfsIds = mapToGtfsIds(stops, idMapping, reportUnmappedStop);
+  const stopsWithGtfsIds = mapToGtfsIds(stops, idMapping);
 
   compareArrays({
     a: stopsWithGtfsIds,
@@ -77,15 +66,12 @@ export function compareStopItems({
 function mapToGtfsIds(
   stops: readonly StopConfig[],
   idMapping: StopGtfsIdMapping,
-  onUnmappedStop: (config: StopConfig) => void,
 ) {
   return stops
     .map((stop) => {
       const gtfsId = idMapping.getForStop(stop.id);
-      if (gtfsId != null) return { stop, gtfsId };
-
-      onUnmappedStop(stop);
-      return null;
+      if (gtfsId == null) return null;
+      return { stop, gtfsId };
     })
     .filter(nonNull);
 }

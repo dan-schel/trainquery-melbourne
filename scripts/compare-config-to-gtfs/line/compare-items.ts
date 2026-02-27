@@ -22,26 +22,15 @@ export function compareLineItems({
   onMatch,
   isLineMissingFromConfigIgnored,
   isLineMissingFromGtfsIgnored,
-  isLineWithNoConfiguredGtfsIdIgnored,
 }: {
   lines: readonly LineConfig[];
   idMapping: LineGtfsIdMapping;
   gtfsRoutes: RoutesCsv;
   issues: IssueCollector;
   onMatch: OnMatchCallback;
-  isLineWithNoConfiguredGtfsIdIgnored: (config: LineConfig) => boolean;
   isLineMissingFromConfigIgnored: (gtfsId: RoutesCsvRow) => boolean;
   isLineMissingFromGtfsIgnored: (config: LineConfig) => boolean;
 }) {
-  // TODO: Theoretically, this doesn't belong here. It could be caught in a unit
-  // test.
-  function reportUnmappedLine(config: LineConfig) {
-    if (isLineWithNoConfiguredGtfsIdIgnored(config)) return;
-    issues.add({
-      message: `No GTFS ID configured for ${config.name} (#${config.id}).`,
-    });
-  }
-
   function reportLineMissingFromGtfs(
     config: LineConfig,
     mappedIds: LineGtfsIdCollection,
@@ -65,7 +54,7 @@ export function compareLineItems({
     });
   }
 
-  const linesWithGtfsIds = mapToGtfsIds(lines, idMapping, reportUnmappedLine);
+  const linesWithGtfsIds = mapToGtfsIds(lines, idMapping);
 
   compareArrays({
     a: linesWithGtfsIds,
@@ -81,15 +70,12 @@ export function compareLineItems({
 function mapToGtfsIds(
   lines: readonly LineConfig[],
   idMapping: LineGtfsIdMapping,
-  onUnmappedLine: (config: LineConfig) => void,
 ) {
   return lines
     .map((line) => {
       const gtfsId = idMapping.getForLine(line.id);
-      if (gtfsId != null) return { line, gtfsId };
-
-      onUnmappedLine(line);
-      return null;
+      if (gtfsId == null) return null;
+      return { line, gtfsId };
     })
     .filter(nonNull);
 }
