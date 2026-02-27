@@ -4,6 +4,7 @@ import { env } from "./env.js";
 const REPO = "dan-schel/trainquery-melbourne";
 const ISSUE_TITLE = "Automated GTFS Config Check Failed";
 const ASSIGNEE = "dan-schel";
+const GITHUB_ACTIONS_BOT = "app/github-actions";
 
 // GitHub issues are limited to ~65k chars.
 const MAX_LEN = 60000;
@@ -54,7 +55,7 @@ function createIssueBody(issues: string[]): string {
   const content =
     list.length > MAX_LEN ? list.slice(0, MAX_LEN) + "\n... (truncated)" : list;
 
-  return `The automated GTFS config check found the following issues:\n\n${content}\n\n@${ASSIGNEE}`;
+  return `@${ASSIGNEE} The automated GTFS config check found the following issues:\n\n\`\`\`${content}\n\`\`\``;
 }
 
 async function findExistingIssue(
@@ -62,7 +63,7 @@ async function findExistingIssue(
 ): Promise<GithubIssue | undefined> {
   const params = new URLSearchParams({
     state: "open",
-    creator: "app/github-actions", // created by the bot
+    creator: GITHUB_ACTIONS_BOT,
     per_page: "100",
   });
 
