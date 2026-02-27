@@ -73,6 +73,16 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
   },
 
+  [stop.ANZAC]: {
+    suburban: {
+      parent: "vic:rail:AZC",
+      platforms: {
+        [position.PLATFORM_1]: ["26556"],
+        [position.PLATFORM_2]: ["26557"],
+      },
+    },
+  },
+
   [stop.ARARAT]: {
     regional: {
       parent: "vic:rail:ART",
@@ -84,6 +94,17 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     regional: {
       parent: "vic:rail:ARR",
       general: ["20020"],
+    },
+  },
+
+  [stop.ARDEN]: {
+    suburban: {
+      parent: "vic:rail:ARN",
+      platforms: {
+        [position.PLATFORM_1]: ["26548"],
+        [position.PLATFORM_2]: ["26549"],
+      },
+      replacementBus: ["126323"],
     },
   },
 
@@ -876,6 +897,17 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
   },
 
+  [stop.EAST_PAKENHAM]: {
+    suburban: {
+      parent: "vic:rail:EPH",
+      platforms: {
+        [position.PLATFORM_1]: ["26506"],
+        [position.PLATFORM_2]: ["26507"],
+      },
+      replacementBus: ["26158"],
+    },
+  },
+
   [stop.EAST_RICHMOND]: {
     suburban: {
       parent: "vic:rail:ERM",
@@ -1169,6 +1201,18 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
   },
 
+  [stop.GLEN_HUNTLY]: {
+    suburban: {
+      parent: "vic:rail:GHY",
+      platforms: {
+        [position.PLATFORM_1]: ["14248"],
+        [position.PLATFORM_2]: ["14249"],
+        [position.PLATFORM_3]: ["14250"],
+      },
+      replacementBus: ["26180"],
+    },
+  },
+
   [stop.GLEN_IRIS]: {
     suburban: {
       parent: "vic:rail:GIR",
@@ -1210,18 +1254,6 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_3]: ["12243"],
       },
       replacementBus: ["26179"],
-    },
-  },
-
-  [stop.GLEN_HUNTLY]: {
-    suburban: {
-      parent: "vic:rail:GHY",
-      platforms: {
-        [position.PLATFORM_1]: ["14248"],
-        [position.PLATFORM_2]: ["14249"],
-        [position.PLATFORM_3]: ["14250"],
-      },
-      replacementBus: ["26180"],
     },
   },
 
@@ -1440,6 +1472,13 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_2]: ["13721"],
       },
       replacementBus: ["26199"],
+    },
+  },
+
+  [stop.HUNTLY]: {
+    regional: {
+      parent: "vic:rail:HUY",
+      general: ["49296"],
     },
   },
 
@@ -2210,6 +2249,17 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
   },
 
+  [stop.PARKVILLE]: {
+    suburban: {
+      parent: "vic:rail:PKV",
+      platforms: {
+        [position.PLATFORM_1]: ["26550"],
+        [position.PLATFORM_2]: ["26551"],
+      },
+      replacementBus: ["126324"],
+    },
+  },
+
   [stop.PARLIAMENT]: {
     suburban: {
       parent: "vic:rail:PAR",
@@ -2272,6 +2322,13 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     regional: {
       parent: "vic:rail:PYD",
       general: ["20336"],
+    },
+  },
+
+  [stop.RAYWOOD]: {
+    regional: {
+      parent: "vic:rail:RAY",
+      general: ["49295"],
     },
   },
 
@@ -2675,6 +2732,16 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
   },
 
+  [stop.STATE_LIBRARY]: {
+    suburban: {
+      parent: "vic:rail:STL",
+      platforms: {
+        [position.PLATFORM_1]: ["26552"],
+        [position.PLATFORM_2]: ["26553"],
+      },
+    },
+  },
+
   [stop.STONY_POINT]: {
     suburban: {
       parent: "vic:rail:STY",
@@ -2850,6 +2917,16 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
   },
 
+  [stop.TOWN_HALL]: {
+    suburban: {
+      parent: "vic:rail:THL",
+      platforms: {
+        [position.PLATFORM_1]: ["26554"],
+        [position.PLATFORM_2]: ["26555"],
+      },
+    },
+  },
+
   [stop.TRAFALGAR]: {
     regional: {
       parent: "vic:rail:TAR",
@@ -2877,6 +2954,18 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     regional: {
       parent: "vic:rail:TYN",
       general: ["20352"],
+    },
+  },
+
+  [stop.UNION]: {
+    suburban: {
+      parent: "vic:rail:UNN",
+      platforms: {
+        [position.PLATFORM_1]: ["26535"],
+        [position.PLATFORM_2]: ["26536"],
+        [position.PLATFORM_3]: ["26537"],
+      },
+      replacementBus: ["26321"],
     },
   },
 
@@ -3193,95 +3282,6 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_2]: ["15348"],
       },
       replacementBus: ["26319"],
-    },
-  },
-
-  [stop.HUNTLY]: {
-    regional: {
-      parent: "vic:rail:HUY",
-      general: ["49296"],
-    },
-  },
-
-  [stop.RAYWOOD]: {
-    regional: {
-      parent: "vic:rail:RAY",
-      general: ["49295"],
-    },
-  },
-
-  [stop.UNION]: {
-    suburban: {
-      parent: "vic:rail:UNN",
-      platforms: {
-        [position.PLATFORM_1]: ["26535"],
-        [position.PLATFORM_2]: ["26536"],
-        [position.PLATFORM_3]: ["26537"],
-      },
-      replacementBus: ["26321"],
-    },
-  },
-
-  [stop.EAST_PAKENHAM]: {
-    suburban: {
-      parent: "vic:rail:EPH",
-      platforms: {
-        [position.PLATFORM_1]: ["26506"],
-        [position.PLATFORM_2]: ["26507"],
-      },
-      replacementBus: ["26158"],
-    },
-  },
-
-  [stop.ANZAC]: {
-    suburban: {
-      parent: "vic:rail:AZC",
-      platforms: {
-        [position.PLATFORM_1]: ["26556"],
-        [position.PLATFORM_2]: ["26557"],
-      },
-    },
-  },
-
-  [stop.TOWN_HALL]: {
-    suburban: {
-      parent: "vic:rail:THL",
-      platforms: {
-        [position.PLATFORM_1]: ["26554"],
-        [position.PLATFORM_2]: ["26555"],
-      },
-    },
-  },
-
-  [stop.STATE_LIBRARY]: {
-    suburban: {
-      parent: "vic:rail:STL",
-      platforms: {
-        [position.PLATFORM_1]: ["26552"],
-        [position.PLATFORM_2]: ["26553"],
-      },
-    },
-  },
-
-  [stop.PARKVILLE]: {
-    suburban: {
-      parent: "vic:rail:PKV",
-      platforms: {
-        [position.PLATFORM_1]: ["26550"],
-        [position.PLATFORM_2]: ["26551"],
-      },
-      replacementBus: ["126324"],
-    },
-  },
-
-  [stop.ARDEN]: {
-    suburban: {
-      parent: "vic:rail:ARN",
-      platforms: {
-        [position.PLATFORM_1]: ["26548"],
-        [position.PLATFORM_2]: ["26549"],
-      },
-      replacementBus: ["126323"],
     },
   },
 };

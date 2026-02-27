@@ -2,6 +2,7 @@ import { assert, describe, it } from "vitest";
 import { linePtvApiIds } from "../../../src/config/lines/line-ptv-api-ids.js";
 import { lines } from "../../../src/config/lines/index.js";
 import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.js";
+import { expectUniqueIds } from "../support/expect-unique-ids.js";
 
 const linesExemptedFromHavingPtvId: number[] = [];
 
@@ -17,16 +18,8 @@ describe("linePtvApiIds", () => {
     }
   });
 
-  it("no two lines have the same PTV API ID", () => {
-    const seenApiIds = new Set<string>();
-
-    for (const ptvApiId of Object.values(linePtvApiIds).flat()) {
-      assert(
-        !seenApiIds.has(ptvApiId),
-        `PTV API ID "${ptvApiId}" is present twice.`,
-      );
-      seenApiIds.add(ptvApiId);
-    }
+  it("no PTV API ID appears in the mapping twice", () => {
+    expectUniqueIds(linePtvApiIds, "Line PTV API ID");
   });
 
   it("are listed alphabetically", async () => {
