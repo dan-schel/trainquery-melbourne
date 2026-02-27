@@ -11,6 +11,10 @@ export const regionalSubfeedOptions: ComparisonOptions = {
       ignoreIdMissingFromConfig: (node) =>
         !isPresent(node.platform_code) &&
         NONSENSE_GTFS_STOP_ID_REGEX.test(node.stop_id),
+
+      // The replacement bus IDs seem to come and go, even in the regional
+      // subfeed!
+      ignoreIdMissingFromGtfs: (id) => id.type === "replacement-bus",
     },
   },
 };
