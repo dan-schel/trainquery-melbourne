@@ -15,6 +15,7 @@ import type { LineLintOptions } from "../comparison-options.js";
 import { compareLineItems } from "./compare-items.js";
 import type { LineGtfsIdCollection } from "../../../src/gtfs/ids/line-gtfs-id-collection.js";
 import { IndexedStopTimes } from "../../../src/gtfs/schedule/higher-order/indexed-stop-times.js";
+import type { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
 
 export function compareLines({
   lines,
@@ -22,6 +23,8 @@ export function compareLines({
   gtfsRoutes,
   gtfsTrips,
   gtfsStopTimes,
+  stopIdMapping,
+  getStopName,
   issues,
   getOptionsForLine,
   isLineMissingFromConfigIgnored,
@@ -31,6 +34,8 @@ export function compareLines({
   gtfsRoutes: RoutesCsv;
   gtfsTrips: TripsCsv;
   gtfsStopTimes: StopTimesCsv;
+  stopIdMapping: StopGtfsIdMapping;
+  getStopName: (stopId: number) => string | null;
   issues: IssueCollector;
   getOptionsForLine: (lineId: number) => LineLintOptions;
   isLineMissingFromConfigIgnored: (gtfsRow: RoutesCsvRow) => boolean;
@@ -47,9 +52,11 @@ export function compareLines({
 
     checkLineTripCompatibility({
       config,
-      mappedIds,
+      mappedLineIds: mappedIds,
       gtfsTrips,
       gtfsStopTimes: indexedStopTimes,
+      stopIdMapping,
+      getStopName,
       issues,
     });
   }

@@ -1,4 +1,4 @@
-import type { LineConfig, StopConfig } from "corequery";
+import { type LineConfig, type StopConfig } from "corequery";
 import type { ComparisonOptions } from "./comparison-options.js";
 import { IssueCollector } from "./issue-collector.js";
 import { compareLines } from "./line/index.js";
@@ -46,6 +46,13 @@ export function compareSubfeed({
     gtfsRoutes: gtfsFeed.routes,
     gtfsTrips: gtfsFeed.trips,
     gtfsStopTimes: gtfsFeed.stopTimes,
+    stopIdMapping: stopIdMapping,
+
+    // As nice as it would be to use StopCollection for this, it operates on
+    // fully constructed Stop objects (which require tag succession to build).
+    // Seems overkill!
+    getStopName: (stopId) => stops.find((s) => s.id === stopId)?.name ?? null,
+
     issues,
 
     getOptionsForLine: (lineId) => ({

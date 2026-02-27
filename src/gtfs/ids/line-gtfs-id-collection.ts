@@ -31,8 +31,18 @@ export class LineGtfsIdCollection {
     ];
   }
 
-  includes(id: string) {
-    return this.all().some((metadata) => metadata.id === id);
+  allExcludingReplacementBus(): LineGtfsIdMetadata[] {
+    return this.all().filter((metadata) => metadata.type !== "replacement-bus");
+  }
+
+  includes(
+    id: string,
+    { ignoreReplacementBusIds }: { ignoreReplacementBusIds: boolean },
+  ) {
+    const idsToCheck = ignoreReplacementBusIds
+      ? this.allExcludingReplacementBus()
+      : this.all();
+    return idsToCheck.some((metadata) => metadata.id === id);
   }
 
   static build(stopId: number, gtfsIdsForSubfeed: LineGtfsIdCollectionConfig) {
