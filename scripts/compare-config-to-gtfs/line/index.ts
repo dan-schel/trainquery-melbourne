@@ -74,9 +74,6 @@ export function compareLines({
     issues,
     onMatch: compareLine,
 
-    isLineWithNoConfiguredGtfsIdIgnored: (config) =>
-      getOptionsForLine(config.id).ignoreNoConfiguredGtfsId ?? false,
-
     isLineMissingFromConfigIgnored: isLineMissingFromConfigIgnored,
 
     isLineMissingFromGtfsIgnored: (config) =>

@@ -69,9 +69,6 @@ export function compareStops({
     issues,
     onMatch: compareStop,
 
-    isStopWithNoConfiguredGtfsIdIgnored: (config) =>
-      getOptionsForStop(config.id).ignoreNoConfiguredGtfsId ?? false,
-
     isStopMissingFromConfigIgnored: isStopMissingFromConfigIgnored,
 
     isStopMissingFromGtfsIgnored: (config) =>

@@ -321,4 +321,4 @@ export const STATE_LIBRARY = 320;
 export const PARKVILLE = 321;
 export const ARDEN = 322;
 
-// Run `npm run import-stop-from-gtfs` to make your life easier :)
+// [NOTE] Run `npm run import-stop-from-gtfs` to make your life easier :)

@@ -6,8 +6,12 @@ import { extractConfigForSubfeed } from "./extract-config-for-subfeed.js";
 import { compareSubfeed } from "./compare-subfeed.js";
 import { suburbanSubfeedOptions } from "./suburban-subfeed-options.js";
 import { regionalSubfeedOptions } from "./regional-subfeed-options.js";
+import { reportToGithub } from "./github-actions.js";
 
 async function main() {
+  const args = process.argv.slice(2);
+  const outputToGithub = args.includes("--output-to-github");
+
   const issues = new IssueCollector();
 
   console.log("Downloading/parsing GTFS data...");
@@ -32,14 +36,22 @@ async function main() {
   });
 
   console.log();
-  if (issues.getIssues().length === 0) {
-    console.log("No issues found!");
+  const issueMessages = issues.getIssues().map((i) => i.message);
+
+  if (outputToGithub) {
+    await reportToGithub(issueMessages);
+    // In GitHub CI mode, always exit with code 0 unless the script itself
+    // fails.
   } else {
-    console.log(`Found ${issues.getIssues().length} issue(s):`);
-    for (const issue of issues.getIssues()) {
-      console.log(`- ${issue.message}`);
+    if (issueMessages.length === 0) {
+      console.log("No issues found!");
+    } else {
+      console.log(`Found ${issueMessages.length} issue(s):`);
+      for (const msg of issueMessages) {
+        console.log(`- ${msg}`);
+      }
+      process.exit(1);
     }
-    process.exit(1);
   }
 }
 

@@ -2,24 +2,38 @@ import type { LineGtfsIdsConfig } from "../third-party-id-mapping-types.js";
 import * as line from "./line-ids.js";
 
 export const lineGtfsIds: LineGtfsIdsConfig = {
-  [line.SANDRINGHAM]: {
+  [line.ALAMEIN]: {
     suburban: {
-      primary: "aus:vic:vic-02-SHM:",
-      replacementBus: ["aus:vic:vic-02-SHM-R:"],
+      primary: "aus:vic:vic-02-ALM:",
+      replacementBus: ["aus:vic:vic-02-ALM-R:"],
     },
   },
 
-  [line.FRANKSTON]: {
-    suburban: {
-      primary: "aus:vic:vic-02-FKN:",
-      replacementBus: ["aus:vic:vic-02-FKN-R:"],
+  [line.BALLARAT]: {
+    regional: {
+      primary: "aus:vic:vic-01-BAT:",
+      other: ["aus:vic:vic-01-ART:", "aus:vic:vic-01-MBY:"],
     },
   },
 
-  [line.STONY_POINT]: {
+  [line.BELGRAVE]: {
     suburban: {
-      primary: "aus:vic:vic-02-STY:",
-      replacementBus: ["aus:vic:vic-02-STY-R:"],
+      primary: "aus:vic:vic-02-BEG:",
+      replacementBus: ["aus:vic:vic-02-BEG-R:"],
+    },
+  },
+
+  [line.BENDIGO]: {
+    regional: {
+      primary: "aus:vic:vic-01-BGO:",
+      other: ["aus:vic:vic-01-ECH:", "aus:vic:vic-01-SWL:"],
+    },
+  },
+
+  [line.CRAIGIEBURN]: {
+    suburban: {
+      primary: "aus:vic:vic-02-CGB:",
+      replacementBus: ["aus:vic:vic-02-CGB-R:"],
     },
   },
 
@@ -30,10 +44,24 @@ export const lineGtfsIds: LineGtfsIdsConfig = {
     },
   },
 
-  [line.PAKENHAM]: {
+  [line.FLEMINGTON_RACECOURSE]: {
     suburban: {
-      primary: "aus:vic:vic-02-PKM:",
-      replacementBus: ["aus:vic:vic-02-PKM-R:"],
+      primary: "aus:vic:vic-02-RCE:",
+      replacementBus: ["aus:vic:vic-02-RCE-R:"],
+    },
+  },
+
+  [line.FRANKSTON]: {
+    suburban: {
+      primary: "aus:vic:vic-02-FKN:",
+      replacementBus: ["aus:vic:vic-02-FKN-R:"],
+    },
+  },
+
+  [line.GEELONG]: {
+    regional: {
+      primary: "aus:vic:vic-01-GEL:",
+      other: ["aus:vic:vic-01-WBL:"],
     },
   },
 
@@ -51,17 +79,10 @@ export const lineGtfsIds: LineGtfsIdsConfig = {
     },
   },
 
-  [line.ALAMEIN]: {
+  [line.HURSTBRIDGE]: {
     suburban: {
-      primary: "aus:vic:vic-02-ALM:",
-      replacementBus: ["aus:vic:vic-02-ALM-R:"],
-    },
-  },
-
-  [line.BELGRAVE]: {
-    suburban: {
-      primary: "aus:vic:vic-02-BEG:",
-      replacementBus: ["aus:vic:vic-02-BEG-R:"],
+      primary: "aus:vic:vic-02-HBE:",
+      replacementBus: ["aus:vic:vic-02-HBE-R:"],
     },
   },
 
@@ -72,13 +93,6 @@ export const lineGtfsIds: LineGtfsIdsConfig = {
     },
   },
 
-  [line.HURSTBRIDGE]: {
-    suburban: {
-      primary: "aus:vic:vic-02-HBE:",
-      replacementBus: ["aus:vic:vic-02-HBE-R:"],
-    },
-  },
-
   [line.MERNDA]: {
     suburban: {
       primary: "aus:vic:vic-02-MDD:",
@@ -86,17 +100,17 @@ export const lineGtfsIds: LineGtfsIdsConfig = {
     },
   },
 
-  [line.UPFIELD]: {
+  [line.PAKENHAM]: {
     suburban: {
-      primary: "aus:vic:vic-02-UFD:",
-      replacementBus: ["aus:vic:vic-02-UFD-R:"],
+      primary: "aus:vic:vic-02-PKM:",
+      replacementBus: ["aus:vic:vic-02-PKM-R:"],
     },
   },
 
-  [line.CRAIGIEBURN]: {
+  [line.SANDRINGHAM]: {
     suburban: {
-      primary: "aus:vic:vic-02-CGB:",
-      replacementBus: ["aus:vic:vic-02-CGB-R:"],
+      primary: "aus:vic:vic-02-SHM:",
+      replacementBus: ["aus:vic:vic-02-SHM-R:"],
     },
   },
 
@@ -107,10 +121,10 @@ export const lineGtfsIds: LineGtfsIdsConfig = {
     },
   },
 
-  [line.FLEMINGTON_RACECOURSE]: {
+  [line.STONY_POINT]: {
     suburban: {
-      primary: "aus:vic:vic-02-RCE:",
-      replacementBus: ["aus:vic:vic-02-RCE-R:"],
+      primary: "aus:vic:vic-02-STY:",
+      replacementBus: ["aus:vic:vic-02-STY-R:"],
     },
   },
 
@@ -121,24 +135,10 @@ export const lineGtfsIds: LineGtfsIdsConfig = {
     },
   },
 
-  [line.BENDIGO]: {
-    regional: {
-      primary: "aus:vic:vic-01-BGO:",
-      other: ["aus:vic:vic-01-ECH:", "aus:vic:vic-01-SWL:"],
-    },
-  },
-
-  [line.BALLARAT]: {
-    regional: {
-      primary: "aus:vic:vic-01-BAT:",
-      other: ["aus:vic:vic-01-ART:", "aus:vic:vic-01-MBY:"],
-    },
-  },
-
-  [line.GEELONG]: {
-    regional: {
-      primary: "aus:vic:vic-01-GEL:",
-      other: ["aus:vic:vic-01-WBL:"],
+  [line.UPFIELD]: {
+    suburban: {
+      primary: "aus:vic:vic-02-UFD:",
+      replacementBus: ["aus:vic:vic-02-UFD-R:"],
     },
   },
 

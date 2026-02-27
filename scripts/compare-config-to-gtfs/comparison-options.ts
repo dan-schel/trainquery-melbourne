@@ -18,7 +18,6 @@ export type ComparisonOptions = {
 };
 
 export type StopLintOptions = {
-  readonly ignoreNoConfiguredGtfsId?: boolean;
   readonly ignoreNotFoundInGtfs?: boolean;
   readonly ignoreNameMismatch?: boolean;
   readonly ignoreLocationMismatch?: boolean;
@@ -31,7 +30,6 @@ export type StopLintOptions = {
 };
 
 export type LineLintOptions = {
-  readonly ignoreNoConfiguredGtfsId?: boolean;
   readonly ignoreNotFoundInGtfs?: boolean;
 
   readonly ignoredIncompatibleStoppingPatternsKeys?: string[];

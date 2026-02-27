@@ -1,6 +1,8 @@
 import { assert, describe, it } from "vitest";
 import { stopPtvApiIds } from "../../../src/config/stops/stop-ptv-api-ids.js";
 import { stops } from "../../../src/config/stops/index.js";
+import { expectUniqueIds } from "../support/expect-unique-ids.js";
+import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.js";
 
 const stopsExemptedFromHavingPtvId: number[] = [];
 
@@ -16,15 +18,15 @@ describe("stopPtvApiIds", () => {
     }
   });
 
-  it("no two stops have the same PTV API ID", () => {
-    const seenApiIds = new Set<string>();
+  it("no PTV API ID appears in the mapping twice", () => {
+    expectUniqueIds(stopPtvApiIds, "Stop PTV API ID");
+  });
 
-    for (const ptvApiId of Object.values(stopPtvApiIds).flat()) {
-      assert(
-        !seenApiIds.has(ptvApiId),
-        `PTV API ID "${ptvApiId}" is present twice.`,
-      );
-      seenApiIds.add(ptvApiId);
-    }
+  it("are listed alphabetically", async () => {
+    await expectedSortedSourceCode(
+      "src/config/stops/stop-ptv-api-ids.ts",
+      /^  \[([^\]]+)\]:/,
+      (match) => match[1],
+    );
   });
 });
