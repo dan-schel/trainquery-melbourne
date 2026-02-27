@@ -35,6 +35,12 @@ export const suburbanSubfeedOptions: ComparisonOptions = {
       ignoredIdsMissingFromGtfs: ["15524", "15525"],
     },
 
+    [stop.SHOWGROUNDS]: {
+      // Sometimes Showgrounds disappears from the GTFS data entirely, and
+      // sometimes just the platforms do.
+      ignoredIdsMissingFromGtfs: ["15526"],
+    },
+
     [stop.SOUTHERN_CROSS]: {
       // This is platform 8, which disappears with the Flemington Racecourse
       // line sometimes. I guess that makes sense.

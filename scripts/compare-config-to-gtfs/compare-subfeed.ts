@@ -30,8 +30,10 @@ export function compareSubfeed({
     gtfsStops: gtfsFeed.stops,
     issues,
 
-    getOptionsForStop: (stopId) =>
-      options.stops?.[stopId] ?? options.stops?.all ?? {},
+    getOptionsForStop: (stopId) => ({
+      ...options.stops?.all,
+      ...options.stops?.[stopId],
+    }),
 
     isStopMissingFromConfigIgnored: (n) =>
       options.ignoredParentGtfsStopIdsMissingFromConfig?.includes(n.stop_id) ??
@@ -46,8 +48,10 @@ export function compareSubfeed({
     gtfsStopTimes: gtfsFeed.stopTimes,
     issues,
 
-    getOptionsForLine: (lineId) =>
-      options.lines?.[lineId] ?? options.lines?.all ?? {},
+    getOptionsForLine: (lineId) => ({
+      ...options.lines?.all,
+      ...options.lines?.[lineId],
+    }),
 
     isLineMissingFromConfigIgnored: (n) =>
       options.ignoredGtfsRouteIdsMissingFromConfig?.includes(n.route_id) ??
