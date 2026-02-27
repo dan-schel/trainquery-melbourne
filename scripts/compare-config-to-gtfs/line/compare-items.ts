@@ -1,5 +1,5 @@
 import type { LineConfig } from "corequery";
-import { compareArrays, nonNull } from "@dan-schel/js-utils";
+import { compareArrays, groupBy, nonNull } from "@dan-schel/js-utils";
 import type { IssueCollector } from "../issue-collector.js";
 import type { LineGtfsIdMapping } from "../../../src/gtfs/ids/line-gtfs-id-mapping.js";
 import type { LineGtfsIdCollection } from "../../../src/gtfs/ids/line-gtfs-id-collection.js";
@@ -53,7 +53,13 @@ export function compareLineItems({
   }
 
   function reportLineMissingFromConfig(line: RoutesCsvRow) {
+    // The `compareArrays` below is only comparing against GTFS IDs mapped as
+    // "primary" IDs, so let's check first if it's mapped as a non-primary ID
+    // before declaring it "missing".
+    if (idMapping.tryResolve(line.route_id) != null) return;
+
     if (isLineMissingFromConfigIgnored(line)) return;
+
     issues.add({
       message: `Additional line "${line.route_long_name}" ("${line.route_id}") found in GTFS.`,
     });
