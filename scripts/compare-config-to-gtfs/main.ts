@@ -1,52 +1,46 @@
 import { env } from "./env.js";
-import type { ComparisonOptions } from "./comparison-options.js";
-import { compareConfigToGtfs } from "./compare-config-to-gtfs.js";
-import * as stop from "../../src/config/stops/stop-ids.js";
-import { isPresent } from "@dan-schel/js-utils";
-import { NONSENSE_GTFS_STOP_ID_REGEX } from "../utils/gtfs/magic-values.js";
-
-const options: ComparisonOptions = {
-  stops: {
-    all: {
-      // We're not mapping the "vic:rail:ABC_[...]" codes at the moment. They're
-      // the "decision point" type ones that seem to be points in the station
-      // complex (for navigation?), not actual stops/platforms served by trains.
-      ignoreUnmappedChildGtfsId: (node) =>
-        !isPresent(node.platform_code) &&
-        NONSENSE_GTFS_STOP_ID_REGEX.test(node.stop_id),
-
-      // The replacement bus IDs seem to come and go. As services actually serve
-      // these IDs (and we might want to display replacement bus stuff someday),
-      // I'm choosing to map them instead of ignoring them.
-      ignoreAdditionalChildGtfsId: (id) => id.type === "replacement-bus",
-    },
-
-    [stop.JOLIMONT]: {
-      // Appears as "Jolimont-MCG" in GTFS.
-      ignoreNameMismatch: true,
-    },
-
-    [stop.ST_ALBANS]: {
-      // Appears as "St Albans Railway Station (St Albans)" in GTFS.
-      ignoreNameMismatch: true,
-    },
-
-    [stop.FLEMINGTON_RACECOURSE]: {
-      // Sometimes Flemington Racecourse disappears from the GTFS data entirely,
-      // and sometimes just the platforms do.
-      ignoredAdditionalChildGtfsIds: ["15524", "15525"],
-    },
-
-    [stop.SOUTHERN_CROSS]: {
-      // This is platform 8, which disappears with the Flemington Racecourse
-      // line sometimes. I guess that makes sense.
-      ignoredAdditionalChildGtfsIds: ["22187"],
-    },
-  },
-};
+import { withGtfsFiles } from "../../src/gtfs/schedule/with-gtfs-files.js";
+import { readGtfs } from "../../src/gtfs/schedule/read-gtfs.js";
+import { IssueCollector } from "./issue-collector.js";
+import { extractConfigForSubfeed } from "./extract-config-for-subfeed.js";
+import { compareSubfeed } from "./compare-subfeed.js";
+import { suburbanSubfeedOptions } from "./suburban-subfeed-options.js";
+import { regionalSubfeedOptions } from "./regional-subfeed-options.js";
 
 async function main() {
-  await compareConfigToGtfs(env.RELAY_KEY, options);
+  const issues = new IssueCollector();
+
+  console.log("Downloading/parsing GTFS data...");
+  const gtfsData = await withGtfsFiles(env.RELAY_KEY, readGtfs);
+
+  console.log("Checking for issues (suburban)...");
+
+  compareSubfeed({
+    ...extractConfigForSubfeed("suburban"),
+    gtfsFeed: gtfsData.suburban,
+    issues,
+    options: suburbanSubfeedOptions,
+  });
+
+  console.log("Checking for issues (regional)...");
+
+  compareSubfeed({
+    ...extractConfigForSubfeed("regional"),
+    gtfsFeed: gtfsData.regional,
+    issues,
+    options: regionalSubfeedOptions,
+  });
+
+  console.log();
+  if (issues.getIssues().length === 0) {
+    console.log("No issues found!");
+  } else {
+    console.log(`Found ${issues.getIssues().length} issue(s):`);
+    for (const issue of issues.getIssues()) {
+      console.log(`- ${issue.message}`);
+    }
+    process.exit(1);
+  }
 }
 
 main().catch((error) => {

@@ -31,7 +31,7 @@ export function compareStopGtfsIds({
   function reportMissingFromActualGtfs(mappedId: StopGtfsIdMetadata) {
     if (isIdMissingFromGtfsIgnored(mappedId)) return;
     issues.add({
-      message: `GTFS ID "${mappedId.id}" mapped to ${config.name} (#${config.id}) no found in GTFS.`,
+      message: `GTFS ID "${mappedId.id}" mapped to ${config.name} (#${config.id}) not found in GTFS.`,
     });
   }
 

@@ -1,3 +1,6 @@
+// TODO: Remove this.
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import type { LineConfig } from "corequery";
 import type { TripsCsv } from "../../../src/gtfs/schedule/csv-schemas.js";
 import type { IndexedStopTimes } from "../../../src/gtfs/schedule/higher-order/indexed-stop-times.js";

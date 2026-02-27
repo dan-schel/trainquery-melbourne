@@ -12,8 +12,8 @@ export type ComparisonOptions = {
     readonly [lineId: number]: LineLintOptions;
   };
 
-  readonly ignoredUnmappedParentStopGtfsIds?: string[];
-  readonly ignoredUnmappedGtfsRouteIds?: string[];
+  readonly ignoredParentGtfsStopIdsMissingFromConfig?: string[];
+  readonly ignoredGtfsRouteIdsMissingFromConfig?: string[];
 };
 
 export type StopLintOptions = {
