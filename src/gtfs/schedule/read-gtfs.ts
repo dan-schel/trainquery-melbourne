@@ -12,6 +12,7 @@ import path from "path";
 import { type GtfsDirectories } from "./with-gtfs-files.js";
 import type z from "zod";
 import { readCsv } from "./utils/read-csv.js";
+import { applyPatches } from "./patches/index.js";
 
 export type GtfsData = {
   readonly suburban: GtfsFeed;
@@ -26,10 +27,10 @@ export type GtfsFeed = {
 };
 
 export async function readGtfs(dirs: GtfsDirectories): Promise<GtfsData> {
-  return {
+  return applyPatches({
     suburban: await readFeed(dirs.suburban),
     regional: await readFeed(dirs.regional),
-  };
+  });
 }
 
 async function readFeed(dir: string): Promise<GtfsFeed> {
