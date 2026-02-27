@@ -1,6 +1,3 @@
-// TODO: Remove this.
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import type { IssueCollector } from "../issue-collector.js";
 import { checkLineTripCompatibility } from "./check-trip-compatibility.js";
 import type { LineConfig } from "corequery";
@@ -46,7 +43,7 @@ export function compareLines({
   function compareLine(
     config: LineConfig,
     mappedIds: LineGtfsIdCollection,
-    gtfsRow: RoutesCsvRow,
+    _gtfsRow: RoutesCsvRow,
   ) {
     const options = getOptionsForLine(config.id);
 
@@ -58,6 +55,15 @@ export function compareLines({
       stopIdMapping,
       getStopName,
       issues,
+      isIncompatibleStoppingPatternIgnored: (pattern) => {
+        const ignoreList = options.ignoredIncompatibleStoppingPatternsKeys;
+        const ignoreFunc = options.ignoreIncompatibleStoppingPattern;
+
+        return (
+          (ignoreList?.includes(pattern.key) ?? false) ||
+          (ignoreFunc?.(pattern) ?? false)
+        );
+      },
     });
   }
 

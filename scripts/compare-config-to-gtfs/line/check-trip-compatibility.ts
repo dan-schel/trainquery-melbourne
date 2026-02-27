@@ -6,6 +6,14 @@ import type { LineGtfsIdCollection } from "../../../src/gtfs/ids/line-gtfs-id-co
 import type { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
 import { nonNull } from "@dan-schel/js-utils";
 
+export type StoppingPattern = {
+  readonly key: string;
+  readonly stops: number[];
+  readonly instanceCount: number;
+  readonly exampleTripId: string;
+  readonly exampleRouteId: string;
+};
+
 export function checkLineTripCompatibility({
   config,
   mappedLineIds,
@@ -14,6 +22,7 @@ export function checkLineTripCompatibility({
   stopIdMapping,
   getStopName,
   issues,
+  isIncompatibleStoppingPatternIgnored,
 }: {
   config: LineConfig;
   mappedLineIds: LineGtfsIdCollection;
@@ -22,6 +31,7 @@ export function checkLineTripCompatibility({
   stopIdMapping: StopGtfsIdMapping;
   getStopName: (stopId: number) => string | null;
   issues: IssueCollector;
+  isIncompatibleStoppingPatternIgnored: (pattern: StoppingPattern) => boolean;
 }) {
   // Find the trips which belong to this line. (Ignore replacement bus trips.
   // Right now TrainQuery is only attempting to model actual train trips.)
@@ -39,12 +49,16 @@ export function checkLineTripCompatibility({
 
   for (const stoppingPattern of uniqueStoppingPatterns) {
     if (config.routes.every((r) => !isCompatible(stoppingPattern.stops, r))) {
+      if (isIncompatibleStoppingPatternIgnored(stoppingPattern)) continue;
+
+      const formattedInstanceCount = `${stoppingPattern.instanceCount} ${stoppingPattern.instanceCount === 1 ? "instance" : "instances"}`;
+      const formattedExampleTripId = `e.g. in trip "${stoppingPattern.exampleTripId}" on route "${stoppingPattern.exampleRouteId}"`;
       const formattedStopList = stoppingPattern.stops
         .map((s) => `${getStopName(s) ?? "???"} (#${s})`)
         .join(" → ");
 
       issues.add({
-        message: `Unsupported stopping pattern for ${config.name} (#${config.id}) line, e.g. in trip "${stoppingPattern.exampleTripId}" on route "${stoppingPattern.exampleRouteId}": ${formattedStopList}`,
+        message: `${formattedInstanceCount} of stopping pattern for ${config.name} (#${config.id}) line, ${formattedExampleTripId}: ${formattedStopList}`,
       });
     }
   }
@@ -61,12 +75,6 @@ function findUniqueStoppingPatterns({
   stopIdMapping: StopGtfsIdMapping;
   onUnmappedGtfsStopIdInUse: (gtfsId: string) => void;
 }) {
-  type StoppingPattern = {
-    readonly stops: number[];
-    readonly exampleTripId: string;
-    readonly exampleRouteId: string;
-  };
-
   const stoppingPatterns = new Map<string, StoppingPattern>();
 
   for (const trip of trips) {
@@ -82,13 +90,21 @@ function findUniqueStoppingPatterns({
       })
       .filter(nonNull);
 
-    const hashKey = stops.map((x) => x.toFixed()).join(",");
+    const key = stops.map((x) => x.toFixed()).join(",");
+    const existingEntry = stoppingPatterns.get(key);
 
-    if (!stoppingPatterns.has(hashKey)) {
-      stoppingPatterns.set(hashKey, {
+    if (existingEntry == null) {
+      stoppingPatterns.set(key, {
+        key: key,
         stops: stops,
         exampleTripId: trip.trip_id,
         exampleRouteId: trip.route_id,
+        instanceCount: 1,
+      });
+    } else {
+      stoppingPatterns.set(key, {
+        ...existingEntry,
+        instanceCount: existingEntry.instanceCount + 1,
       });
     }
   }
