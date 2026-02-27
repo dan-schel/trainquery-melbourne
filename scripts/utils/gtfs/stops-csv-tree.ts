@@ -20,7 +20,7 @@ export class StopsCsvTree {
     );
   }
 
-  static fromGtfsData(data: GtfsData) {
+  static buildCombined(data: GtfsData) {
     return StopsCsvTree.merge(
       StopsCsvTree.build(data.suburban.stops).setSubfeed("suburban"),
       StopsCsvTree.build(data.regional.stops).setSubfeed("regional"),

@@ -1,5 +1,5 @@
+import type { StopGtfsIdMetadata } from "../../src/gtfs/ids/stop-gtfs-id-metadata.js";
 import type { StopsCsvTreeNode } from "../utils/gtfs/stops-csv-tree.js";
-import type { GtfsIdEntry } from "./stop/utils/reverse-map-gtfs-ids.js";
 
 export type ComparisonOptions = {
   readonly stops?: {
@@ -17,16 +17,16 @@ export type ComparisonOptions = {
 };
 
 export type StopLintOptions = {
-  readonly ignoreMissingGtfsId?: boolean;
-  readonly ignoreMissingFromGtfs?: boolean;
+  readonly ignoreNoConfiguredGtfsId?: boolean;
+  readonly ignoreNotFoundInGtfs?: boolean;
   readonly ignoreNameMismatch?: boolean;
   readonly ignoreLocationMismatch?: boolean;
 
-  readonly ignoredAdditionalChildGtfsIds?: string[];
-  readonly ignoreAdditionalChildGtfsId?: (id: GtfsIdEntry) => boolean;
+  readonly ignoredIdsMissingFromConfig?: string[];
+  readonly ignoreIdMissingFromConfig?: (id: StopsCsvTreeNode) => boolean;
 
-  readonly ignoredUnmappedChildGtfsIds?: string[];
-  readonly ignoreUnmappedChildGtfsId?: (node: StopsCsvTreeNode) => boolean;
+  readonly ignoredIdsMissingFromGtfs?: string[];
+  readonly ignoreIdMissingFromGtfs?: (node: StopGtfsIdMetadata) => boolean;
 };
 
 export type LineLintOptions = {

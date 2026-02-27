@@ -1,20 +1,27 @@
+import type { StopConfig } from "corequery";
 import type { IssueCollector } from "../issue-collector.js";
-import type { StopComparisonContext } from "./stop-comparison-context.js";
+import type { StopsCsvTreeNode } from "../../utils/gtfs/stops-csv-tree.js";
 
-export function compareStopLocations(
-  ctx: StopComparisonContext,
-  issues: IssueCollector,
-) {
-  const { config, gtfs, options } = ctx.currentStop;
+export function compareStopLocations({
+  config,
+  gtfsNode,
+  issues,
+  isIgnored,
+}: {
+  config: StopConfig;
+  gtfsNode: StopsCsvTreeNode;
+  issues: IssueCollector;
+  isIgnored: boolean;
+}) {
+  if (isIgnored) return;
 
   const match =
-    config.location?.latitude === gtfs.stop_lat &&
-    config.location?.longitude === gtfs.stop_lon;
+    config.location?.latitude === gtfsNode.stop_lat &&
+    config.location?.longitude === gtfsNode.stop_lon;
 
-  const ignored = options.ignoreLocationMismatch ?? false;
-  if (!match && !ignored) {
+  if (!match) {
     issues.add({
-      message: `Stop ${config.name} (#${config.id}) location expected to be ${gtfs.stop_lat}, ${gtfs.stop_lon}.`,
+      message: `Stop ${config.name} (#${config.id}) location expected to be ${gtfsNode.stop_lat}, ${gtfsNode.stop_lon}.`,
     });
   }
 }

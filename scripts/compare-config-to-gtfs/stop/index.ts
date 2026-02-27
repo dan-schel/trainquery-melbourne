@@ -2,72 +2,79 @@ import type { IssueCollector } from "../issue-collector.js";
 import { compareStopNames } from "./compare-names.js";
 import { compareStopLocations } from "./compare-locations.js";
 import { compareStopGtfsIds } from "./compare-gtfs-ids.js";
-import type { ComparisonContext } from "../comparison-context.js";
-import type { StopComparisonContext } from "./stop-comparison-context.js";
+import type { StopConfig } from "corequery";
+import type { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
+import type { GtfsFeed } from "../../../src/gtfs/schedule/read-gtfs.js";
+import { compareStopItems } from "./compare-items.js";
+import type { StopLintOptions } from "../comparison-options.js";
+import type { StopGtfsIdCollection } from "../../../src/gtfs/ids/stop-gtfs-id-collection.js";
+import type { StopsCsvTreeNode } from "../../utils/gtfs/stops-csv-tree.js";
 
-export function compareStops(ctx: ComparisonContext, issues: IssueCollector) {
-  for (const stopConfig of ctx.lintableConfig.stops) {
-    const stopOptions = {
-      ...ctx.options.stops?.all,
-      ...ctx.options.stops?.[stopConfig.id],
-    };
-    const stopGtfsIds = ctx.stopGtfsIds[stopConfig.id];
+export function compareStops({
+  stops,
+  idMapping,
+  gtfs,
+  issues,
+  getOptionsForStop,
+  isStopMissingFromConfigIgnored,
+}: {
+  stops: readonly StopConfig[];
+  idMapping: StopGtfsIdMapping;
+  gtfs: GtfsFeed;
+  issues: IssueCollector;
+  getOptionsForStop: (stopId: number) => StopLintOptions;
+  isStopMissingFromConfigIgnored: (gtfsId: string) => boolean;
+}) {
+  function compareStop(
+    config: StopConfig,
+    mappedIds: StopGtfsIdCollection,
+    gtfsNode: StopsCsvTreeNode,
+  ) {
+    const options = getOptionsForStop(config.id);
 
-    if (stopGtfsIds == null) {
-      const ignore = stopOptions.ignoreMissingGtfsId ?? false;
-      if (!ignore) {
-        issues.add({
-          message: `No GTFS IDs for stop ${stopConfig.name} (#${stopConfig.id}).`,
-        });
-      }
-      continue;
-    }
+    compareStopNames({
+      config,
+      gtfsNode,
+      issues,
+      isIgnored: options.ignoreNameMismatch ?? false,
+    });
 
-    const stopGtfs = ctx.stopsCsvTree.nodes.find(
-      (stop) => stop.stop_id === stopGtfsIds.parent,
-    );
+    compareStopLocations({
+      config,
+      gtfsNode,
+      issues,
+      isIgnored: options.ignoreLocationMismatch ?? false,
+    });
 
-    if (stopGtfs == null) {
-      const ignore = stopOptions.ignoreMissingFromGtfs ?? false;
-      if (!ignore) {
-        issues.add({
-          message: `No stop in the GTFS data with ID "${stopGtfsIds.parent}".`,
-        });
-      }
-      continue;
-    }
+    compareStopGtfsIds({
+      config,
+      mappedIds,
+      gtfsNode,
+      issues,
 
-    const stopCtx: StopComparisonContext = {
-      ...ctx,
-      currentStop: {
-        config: stopConfig,
-        gtfs: stopGtfs,
-        gtfsIds: stopGtfsIds,
-        options: stopOptions,
-      },
-    };
-    compareStop(stopCtx, issues);
+      isIdMissingFromConfigIgnored: (id) =>
+        (options.ignoredIdsMissingFromConfig?.includes(id.stop_id) ?? false) ||
+        (options.ignoreIdMissingFromConfig?.(id) ?? false),
+
+      isIdMissingFromGtfsIgnored: (gtfsId) =>
+        (options.ignoredIdsMissingFromGtfs?.includes(gtfsId.id) ?? false) ||
+        (options.ignoreIdMissingFromGtfs?.(gtfsId) ?? false),
+    });
   }
 
-  for (const stopGtfs of ctx.stopsCsvTree.nodes) {
-    const stopConfig = ctx.lintableConfig.stops.find(
-      (stop) => ctx.stopGtfsIds[stop.id]?.parent === stopGtfs.stop_id,
-    );
+  compareStopItems({
+    stops,
+    idMapping,
+    gtfs,
+    issues,
+    onMatch: compareStop,
 
-    const ignore = (
-      ctx.options?.ignoredUnmappedParentStopGtfsIds ?? []
-    ).includes(stopGtfs.stop_id);
+    isStopWithNoConfiguredGtfsIdIgnored: (config) =>
+      getOptionsForStop(config.id).ignoreNoConfiguredGtfsId ?? false,
 
-    if (stopConfig == null && !ignore) {
-      issues.add({
-        message: `GTFS stop "${stopGtfs.stop_name}" (${stopGtfs.stop_id}) is not mapped.`,
-      });
-    }
-  }
-}
+    isStopMissingFromConfigIgnored: isStopMissingFromConfigIgnored,
 
-function compareStop(stopCtx: StopComparisonContext, issues: IssueCollector) {
-  compareStopNames(stopCtx, issues);
-  compareStopLocations(stopCtx, issues);
-  compareStopGtfsIds(stopCtx, issues);
+    isStopMissingFromGtfsIgnored: (config) =>
+      getOptionsForStop(config.id).ignoreNotFoundInGtfs ?? false,
+  });
 }

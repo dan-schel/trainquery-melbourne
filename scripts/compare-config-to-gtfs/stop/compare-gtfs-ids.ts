@@ -1,51 +1,52 @@
 import type { IssueCollector } from "../issue-collector.js";
 import { flattenStopsCsvTree } from "./utils/flatten-stops-csv-tree.js";
-import { reverseMapGtfsIds } from "./utils/reverse-map-gtfs-ids.js";
-import type { StopComparisonContext } from "./stop-comparison-context.js";
+import type { StopConfig } from "corequery";
+import { StopGtfsIdCollection } from "../../../src/gtfs/ids/stop-gtfs-id-collection.js";
+import type { StopsCsvTreeNode } from "../../utils/gtfs/stops-csv-tree.js";
+import { compareArrays } from "@dan-schel/js-utils";
+import type { StopGtfsIdMetadata } from "../../../src/gtfs/ids/stop-gtfs-id-metadata.js";
 
-export function compareStopGtfsIds(
-  ctx: StopComparisonContext,
-  issues: IssueCollector,
-) {
-  const { config, gtfs, gtfsIds, options } = ctx.currentStop;
-
-  const gtfsIdList = flattenStopsCsvTree(gtfs);
-  const configGtfsIdList = reverseMapGtfsIds(gtfsIds);
-
-  for (const gtfsIdEntry of configGtfsIdList) {
-    const ignored =
-      (options.ignoredAdditionalChildGtfsIds?.includes(gtfsIdEntry.gtfsId) ??
-        false) ||
-      (options.ignoreAdditionalChildGtfsId?.(gtfsIdEntry) ?? false);
-    if (ignored) continue;
-
-    const match = gtfsIdList.find(
-      (gtfsNode) => gtfsNode.stop_id === gtfsIdEntry.gtfsId,
-    );
-
-    if (match == null) {
-      issues.add({
-        message: `GTFS ID "${gtfsIdEntry.gtfsId}" mapped to ${config.name} (#${config.id}) no longer exists or isn't a child of "${gtfs.stop_id}".`,
-      });
-      continue;
-    }
+export function compareStopGtfsIds({
+  config,
+  mappedIds,
+  gtfsNode,
+  issues,
+  isIdMissingFromConfigIgnored,
+  isIdMissingFromGtfsIgnored,
+}: {
+  config: StopConfig;
+  mappedIds: StopGtfsIdCollection;
+  gtfsNode: StopsCsvTreeNode;
+  issues: IssueCollector;
+  isIdMissingFromConfigIgnored: (gtfsId: StopsCsvTreeNode) => boolean;
+  isIdMissingFromGtfsIgnored: (gtfsId: StopGtfsIdMetadata) => boolean;
+}) {
+  function reportMissingFromConfig(row: StopsCsvTreeNode) {
+    if (isIdMissingFromConfigIgnored(row)) return;
+    issues.add({
+      message: `GTFS ID "${row.stop_id}" belonging to ${config.name} (#${config.id}) found in GTFS but not mapped.`,
+    });
   }
 
-  for (const gtfsNode of gtfsIdList) {
-    const ignored =
-      (options.ignoredUnmappedChildGtfsIds?.includes(gtfsNode.stop_id) ??
-        false) ||
-      (options.ignoreUnmappedChildGtfsId?.(gtfsNode) ?? false);
-    if (ignored) continue;
-
-    const match = configGtfsIdList.find(
-      (configEntry) => configEntry.gtfsId === gtfsNode.stop_id,
-    );
-
-    if (match == null) {
-      issues.add({
-        message: `GTFS ID "${gtfsNode.stop_id}" ("${gtfsNode.stop_name}", platform_code="${gtfsNode.platform_code}") is not mapped to ${config.name} (#${config.id}) despite being a child of "${gtfs.stop_id}".`,
-      });
-    }
+  function reportMissingFromActualGtfs(mappedId: StopGtfsIdMetadata) {
+    if (isIdMissingFromGtfsIgnored(mappedId)) return;
+    issues.add({
+      message: `GTFS ID "${mappedId.id}" mapped to ${config.name} (#${config.id}) no found in GTFS.`,
+    });
   }
+
+  const actualGtfsIdList = flattenStopsCsvTree(gtfsNode);
+
+  compareArrays({
+    a: actualGtfsIdList,
+    b: mappedIds.all(),
+
+    // Note: We're not comparing the ID types, or the platform codes here. Just
+    // checking that the list of IDs matches up.
+    aKeyFunc: (a) => a.stop_id,
+    bKeyFunc: (b) => b.id,
+
+    onMissingFromA: reportMissingFromActualGtfs,
+    onMissingFromB: reportMissingFromConfig,
+  });
 }

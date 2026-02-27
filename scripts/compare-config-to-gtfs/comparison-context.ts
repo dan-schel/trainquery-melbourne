@@ -35,7 +35,7 @@ export async function buildComparisonContext(
 ): Promise<ComparisonContext> {
   const gtfsData = await withGtfsFiles(relayKey, readGtfs);
 
-  const stopsCsvTree = StopsCsvTree.fromGtfsData(gtfsData);
+  const stopsCsvTree = StopsCsvTree.buildCombined(gtfsData);
   const suburbanIndexedStopTimes = IndexedStopTimes.build(
     gtfsData.suburban.stopTimes,
   );
