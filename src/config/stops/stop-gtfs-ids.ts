@@ -93,7 +93,10 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
       platforms: {
         [position.PLATFORM_1]: ["14259"],
         [position.PLATFORM_2]: ["14260"],
+        [position.PLATFORM_3]: ["14261"],
+        [position.PLATFORM_4]: ["14262"],
       },
+      replacementBus: ["26106"],
     },
   },
 
@@ -114,6 +117,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
       platforms: {
         [position.PLATFORM_1]: ["11198"],
       },
+      replacementBus: ["26108"],
     },
   },
 
@@ -292,7 +296,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:BEW",
-      general: ["22251", "27882", "27883"],
+      general: ["22251", "27882", "27883", "12178", "12179"],
       replacementBus: ["26119"],
     },
   },
@@ -378,7 +382,6 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
   [stop.BROADMEADOWS]: {
     suburban: {
       parent: "vic:rail:BMS",
-      general: ["22254"],
       platforms: {
         [position.PLATFORM_1]: ["15529"],
         [position.PLATFORM_2]: ["15530"],
@@ -460,6 +463,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_2]: ["12211"],
         [position.PLATFORM_3]: ["12209"],
       },
+      replacementBus: ["26131"],
     },
   },
 
@@ -524,7 +528,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:CFD",
-      general: ["22248"],
+      general: ["22248", "14251", "14252", "14253", "14254"],
       replacementBus: ["26135"],
     },
   },
@@ -537,6 +541,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_2]: ["12213"],
         [position.PLATFORM_3]: ["12214"],
       },
+      replacementBus: ["26136"],
     },
   },
 
@@ -589,7 +594,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:CLA",
-      general: ["22249"],
+      general: ["22249", "13718", "13719"],
       replacementBus: ["26139"],
     },
   },
@@ -678,7 +683,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:CGB",
-      general: ["20029"],
+      general: ["20029", "15527", "15528"],
       replacementBus: ["26144"],
     },
   },
@@ -744,7 +749,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:DNG",
-      general: ["22250"],
+      general: ["22250", "12187", "12188", "12189"],
       replacementBus: ["26149"],
     },
   },
@@ -960,7 +965,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:ESD",
-      general: ["22253"],
+      general: ["22253", "15543", "15544", "15545"],
       replacementBus: ["26164"],
     },
   },
@@ -1059,7 +1064,21 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:FSS",
-      general: ["22238"],
+      general: [
+        "22238",
+        "11212",
+        "11213",
+        "11214",
+        "11215",
+        "11216",
+        "11217",
+        "11218",
+        "12205",
+        "12204",
+        "12203",
+        "12202",
+        "12201",
+      ],
       replacementBus: ["26170"],
     },
   },
@@ -1080,7 +1099,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:FSY",
-      general: ["22240"],
+      general: ["22240", "15518", "15519", "15520", "15521", "26508", "26509"],
       replacementBus: ["26171"],
     },
   },
@@ -1274,6 +1293,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["11202"],
         [position.PLATFORM_2]: ["11201"],
       },
+      replacementBus: ["26186"],
     },
   },
 
@@ -1376,6 +1396,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["11471"],
         [position.PLATFORM_2]: ["14232"],
       },
+      replacementBus: ["26195"],
     },
   },
 
@@ -1723,6 +1744,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_2]: ["14243"],
         [position.PLATFORM_3]: ["14244"],
       },
+      replacementBus: ["26220"],
     },
   },
 
@@ -2048,7 +2070,6 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
   [stop.NORTH_MELBOURNE]: {
     suburban: {
       parent: "vic:rail:NME",
-      general: ["22239"],
       platforms: {
         [position.PLATFORM_1]: ["14324"],
         [position.PLATFORM_2]: ["14325"],
@@ -2165,7 +2186,6 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
   [stop.PAKENHAM]: {
     suburban: {
       parent: "vic:rail:PKM",
-      general: ["22252"],
       platforms: {
         [position.PLATFORM_1]: ["12172"],
         [position.PLATFORM_2]: ["12173"],
@@ -2222,6 +2242,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_2]: ["14237"],
         [position.PLATFORM_3]: ["14238"],
       },
+      replacementBus: ["26258"],
     },
   },
 
@@ -2296,7 +2317,19 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:RMD",
-      general: ["22247"],
+      general: [
+        "22247",
+        "12253",
+        "12254",
+        "12255",
+        "12256",
+        "12257",
+        "12258",
+        "12259",
+        "12260",
+        "12261",
+        "12262",
+      ],
       replacementBus: ["26263"],
     },
   },
@@ -2574,7 +2607,6 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
   [stop.SOUTHERN_CROSS]: {
     suburban: {
       parent: "vic:rail:SSS",
-      general: ["20043"],
       platforms: {
         [position.PLATFORM_8]: ["22187"],
         [position.PLATFORM_9]: ["22188"],
@@ -2598,6 +2630,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["26527"],
         [position.PLATFORM_2]: ["26528"],
       },
+      replacementBus: ["26283"],
     },
   },
 
@@ -2681,7 +2714,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:SUY",
-      general: ["19998"],
+      general: ["19998", "15352", "26529"],
       replacementBus: ["26289"],
     },
   },
@@ -2700,7 +2733,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:SUN",
-      general: ["22241"],
+      general: ["22241", "26530", "26531", "26532", "26533"],
       replacementBus: ["26290"],
     },
   },
@@ -2788,7 +2821,10 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
       platforms: {
         [position.PLATFORM_1]: ["14263"],
         [position.PLATFORM_2]: ["14264"],
+        [position.PLATFORM_3]: ["14265"],
+        [position.PLATFORM_4]: ["14266"],
       },
+      replacementBus: ["26296"],
     },
   },
 
@@ -2939,7 +2975,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:WGS",
-      general: ["22244"],
+      general: ["22244", "15355", "15356", "15357"],
       replacementBus: ["26304"],
     },
   },

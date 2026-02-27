@@ -110,6 +110,8 @@ export const ARMADALE: StopConfig = {
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
   ],
 };
 
@@ -1482,6 +1484,8 @@ export const HAWKSBURN: StopConfig = {
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
   ],
 };
 
@@ -3222,6 +3226,8 @@ export const TOORAK: StopConfig = {
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+    { stopPositionId: position.PLATFORM_4, name: "4" },
   ],
 };
 
