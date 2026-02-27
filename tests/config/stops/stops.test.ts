@@ -18,4 +18,16 @@ describe("stops", () => {
       );
     }
   });
+
+  it("are listed alphabetically", () => {
+    stops.forEach((entry, i) => {
+      const previous = stops[i - 1];
+      if (previous == null) return;
+
+      assert(
+        entry.name.localeCompare(previous.name) >= 0,
+        `${previous.name} should be listed after ${entry.name} in alphabetical order.`,
+      );
+    });
+  });
 });

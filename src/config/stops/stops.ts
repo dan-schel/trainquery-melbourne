@@ -80,6 +80,18 @@ export const ANSTEY: StopConfig = {
   ],
 };
 
+export const ANZAC: StopConfig = {
+  id: stop.ANZAC,
+  name: "Anzac",
+  tags: [tag.METRO_TUNNEL, tag.SUBURBAN_GTFS_SUBFEED],
+  urlPath: "anzac",
+  location: { latitude: -37.83331103, longitude: 144.97279042 },
+  positions: [
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+  ],
+};
+
 export const ARARAT: StopConfig = {
   id: stop.ARARAT,
   name: "Ararat",
@@ -95,6 +107,18 @@ export const ARDEER: StopConfig = {
   tags: [tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "ardeer",
   location: { latitude: -37.78306529, longitude: 144.80218807 },
+  positions: [
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+  ],
+};
+
+export const ARDEN: StopConfig = {
+  id: stop.ARDEN,
+  name: "Arden",
+  tags: [tag.METRO_TUNNEL, tag.SUBURBAN_GTFS_SUBFEED],
+  urlPath: "arden",
+  location: { latitude: -37.80122194, longitude: 144.94120851 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -1012,6 +1036,18 @@ export const EAST_MALVERN: StopConfig = {
   ],
 };
 
+export const EAST_PAKENHAM: StopConfig = {
+  id: stop.EAST_PAKENHAM,
+  name: "East Pakenham",
+  tags: [tag.SUBURBAN_GTFS_SUBFEED],
+  urlPath: "eastpakenham",
+  location: { latitude: -38.08441136, longitude: 145.50635689 },
+  positions: [
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+  ],
+};
+
 export const EAST_RICHMOND: StopConfig = {
   id: stop.EAST_RICHMOND,
   name: "East Richmond",
@@ -1323,6 +1359,19 @@ export const GISBORNE: StopConfig = {
   ],
 };
 
+export const GLEN_HUNTLY: StopConfig = {
+  id: stop.GLEN_HUNTLY,
+  name: "Glen Huntly",
+  tags: [tag.SUBURBAN_GTFS_SUBFEED],
+  urlPath: "glenhuntly",
+  location: { latitude: -37.88971946, longitude: 145.04222285 },
+  positions: [
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
+  ],
+};
+
 export const GLEN_IRIS: StopConfig = {
   id: stop.GLEN_IRIS,
   name: "Glen Iris",
@@ -1365,19 +1414,6 @@ export const GLENFERRIE: StopConfig = {
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "glenferrie",
   location: { latitude: -37.82146682, longitude: 145.03643883 },
-  positions: [
-    { stopPositionId: position.PLATFORM_1, name: "1" },
-    { stopPositionId: position.PLATFORM_2, name: "2" },
-    { stopPositionId: position.PLATFORM_3, name: "3" },
-  ],
-};
-
-export const GLEN_HUNTLY: StopConfig = {
-  id: stop.GLEN_HUNTLY,
-  name: "Glen Huntly",
-  tags: [tag.SUBURBAN_GTFS_SUBFEED],
-  urlPath: "glenhuntly",
-  location: { latitude: -37.88971946, longitude: 145.04222285 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -1632,6 +1668,15 @@ export const HUNTINGDALE: StopConfig = {
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
   ],
+};
+
+export const HUNTLY: StopConfig = {
+  id: stop.HUNTLY,
+  name: "Huntly",
+  tags: [tag.REGIONAL_GTFS_SUBFEED],
+  urlPath: "huntly",
+  location: { latitude: -36.66584794, longitude: 144.36982046 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
 export const HURSTBRIDGE: StopConfig = {
@@ -2529,6 +2574,18 @@ export const PARKDALE: StopConfig = {
   ],
 };
 
+export const PARKVILLE: StopConfig = {
+  id: stop.PARKVILLE,
+  name: "Parkville",
+  tags: [tag.METRO_TUNNEL, tag.SUBURBAN_GTFS_SUBFEED],
+  urlPath: "parkville",
+  location: { latitude: -37.79987386, longitude: 144.95954246 },
+  positions: [
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+  ],
+};
+
 export const PARLIAMENT: StopConfig = {
   id: stop.PARLIAMENT,
   name: "Parliament",
@@ -2598,6 +2655,15 @@ export const PYRAMID: StopConfig = {
   tags: [tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "pyramid",
   location: { latitude: -36.0534147, longitude: 144.11332145 },
+  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
+};
+
+export const RAYWOOD: StopConfig = {
+  id: stop.RAYWOOD,
+  name: "Raywood",
+  tags: [tag.REGIONAL_GTFS_SUBFEED],
+  urlPath: "raywood",
+  location: { latitude: -36.53195927, longitude: 144.20116104 },
   positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
 };
 
@@ -3065,6 +3131,18 @@ export const ST_ALBANS: StopConfig = {
   ],
 };
 
+export const STATE_LIBRARY: StopConfig = {
+  id: stop.STATE_LIBRARY,
+  name: "State Library",
+  tags: [tag.METRO_TUNNEL, tag.SUBURBAN_GTFS_SUBFEED],
+  urlPath: "statelibrary",
+  location: { latitude: -37.80943693, longitude: 144.9632775 },
+  positions: [
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+  ],
+};
+
 export const STONY_POINT: StopConfig = {
   id: stop.STONY_POINT,
   name: "Stony Point",
@@ -3255,6 +3333,18 @@ export const TOTTENHAM: StopConfig = {
   ],
 };
 
+export const TOWN_HALL: StopConfig = {
+  id: stop.TOWN_HALL,
+  name: "Town Hall",
+  tags: [tag.METRO_TUNNEL, tag.SUBURBAN_GTFS_SUBFEED],
+  urlPath: "townhall",
+  location: { latitude: -37.81699161, longitude: 144.96709126 },
+  positions: [
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+  ],
+};
+
 export const TRAFALGAR: StopConfig = {
   id: stop.TRAFALGAR,
   name: "Trafalgar",
@@ -3297,6 +3387,19 @@ export const TYNONG: StopConfig = {
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
+  ],
+};
+
+export const UNION: StopConfig = {
+  id: stop.UNION,
+  name: "Union",
+  tags: [tag.SUBURBAN_GTFS_SUBFEED],
+  urlPath: "union",
+  location: { latitude: -37.82315506, longitude: 145.10034527 },
+  positions: [
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+    { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
 };
 
@@ -3673,109 +3776,6 @@ export const YARRAVILLE: StopConfig = {
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "yarraville",
   location: { latitude: -37.81585044, longitude: 144.88993371 },
-  positions: [
-    { stopPositionId: position.PLATFORM_1, name: "1" },
-    { stopPositionId: position.PLATFORM_2, name: "2" },
-  ],
-};
-
-export const HUNTLY: StopConfig = {
-  id: stop.HUNTLY,
-  name: "Huntly",
-  tags: [tag.REGIONAL_GTFS_SUBFEED],
-  urlPath: "huntly",
-  location: { latitude: -36.66584794, longitude: 144.36982046 },
-  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
-};
-
-export const RAYWOOD: StopConfig = {
-  id: stop.RAYWOOD,
-  name: "Raywood",
-  tags: [tag.REGIONAL_GTFS_SUBFEED],
-  urlPath: "raywood",
-  location: { latitude: -36.53195927, longitude: 144.20116104 },
-  positions: [{ stopPositionId: position.PLATFORM_1, name: "1" }],
-};
-
-export const UNION: StopConfig = {
-  id: stop.UNION,
-  name: "Union",
-  tags: [tag.SUBURBAN_GTFS_SUBFEED],
-  urlPath: "union",
-  location: { latitude: -37.82315506, longitude: 145.10034527 },
-  positions: [
-    { stopPositionId: position.PLATFORM_1, name: "1" },
-    { stopPositionId: position.PLATFORM_2, name: "2" },
-    { stopPositionId: position.PLATFORM_3, name: "3" },
-  ],
-};
-
-export const EAST_PAKENHAM: StopConfig = {
-  id: stop.EAST_PAKENHAM,
-  name: "East Pakenham",
-  tags: [tag.SUBURBAN_GTFS_SUBFEED],
-  urlPath: "eastpakenham",
-  location: { latitude: -38.08441136, longitude: 145.50635689 },
-  positions: [
-    { stopPositionId: position.PLATFORM_1, name: "1" },
-    { stopPositionId: position.PLATFORM_2, name: "2" },
-  ],
-};
-
-export const ANZAC: StopConfig = {
-  id: stop.ANZAC,
-  name: "Anzac",
-  tags: [tag.METRO_TUNNEL, tag.SUBURBAN_GTFS_SUBFEED],
-  urlPath: "anzac",
-  location: { latitude: -37.83331103, longitude: 144.97279042 },
-  positions: [
-    { stopPositionId: position.PLATFORM_1, name: "1" },
-    { stopPositionId: position.PLATFORM_2, name: "2" },
-  ],
-};
-
-export const TOWN_HALL: StopConfig = {
-  id: stop.TOWN_HALL,
-  name: "Town Hall",
-  tags: [tag.METRO_TUNNEL, tag.SUBURBAN_GTFS_SUBFEED],
-  urlPath: "townhall",
-  location: { latitude: -37.81699161, longitude: 144.96709126 },
-  positions: [
-    { stopPositionId: position.PLATFORM_1, name: "1" },
-    { stopPositionId: position.PLATFORM_2, name: "2" },
-  ],
-};
-
-export const STATE_LIBRARY: StopConfig = {
-  id: stop.STATE_LIBRARY,
-  name: "State Library",
-  tags: [tag.METRO_TUNNEL, tag.SUBURBAN_GTFS_SUBFEED],
-  urlPath: "statelibrary",
-  location: { latitude: -37.80943693, longitude: 144.9632775 },
-  positions: [
-    { stopPositionId: position.PLATFORM_1, name: "1" },
-    { stopPositionId: position.PLATFORM_2, name: "2" },
-  ],
-};
-
-export const PARKVILLE: StopConfig = {
-  id: stop.PARKVILLE,
-  name: "Parkville",
-  tags: [tag.METRO_TUNNEL, tag.SUBURBAN_GTFS_SUBFEED],
-  urlPath: "parkville",
-  location: { latitude: -37.79987386, longitude: 144.95954246 },
-  positions: [
-    { stopPositionId: position.PLATFORM_1, name: "1" },
-    { stopPositionId: position.PLATFORM_2, name: "2" },
-  ],
-};
-
-export const ARDEN: StopConfig = {
-  id: stop.ARDEN,
-  name: "Arden",
-  tags: [tag.METRO_TUNNEL, tag.SUBURBAN_GTFS_SUBFEED],
-  urlPath: "arden",
-  location: { latitude: -37.80122194, longitude: 144.94120851 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
