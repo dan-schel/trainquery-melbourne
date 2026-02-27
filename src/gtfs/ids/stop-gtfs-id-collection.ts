@@ -42,6 +42,10 @@ export class StopGtfsIdCollection {
     ];
   }
 
+  includes(id: string) {
+    return this.all().some((metadata) => metadata.id === id);
+  }
+
   static build(stopId: number, gtfsIdsForSubfeed: StopGtfsIdCollectionConfig) {
     const platformsConfig = gtfsIdsForSubfeed.platforms ?? {};
     const platforms = new Map<number, readonly string[]>();

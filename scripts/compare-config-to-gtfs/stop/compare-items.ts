@@ -5,9 +5,9 @@ import {
 } from "../../utils/gtfs/stops-csv-tree.js";
 import { compareArrays, nonNull } from "@dan-schel/js-utils";
 import type { IssueCollector } from "../issue-collector.js";
-import type { GtfsFeed } from "../../../src/gtfs/schedule/read-gtfs.js";
 import type { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
 import type { StopGtfsIdCollection } from "../../../src/gtfs/ids/stop-gtfs-id-collection.js";
+import type { StopsCsv } from "../../../src/gtfs/schedule/csv-schemas.js";
 
 type OnMatchCallback = (
   config: StopConfig,
@@ -18,7 +18,7 @@ type OnMatchCallback = (
 export function compareStopItems({
   stops,
   idMapping,
-  gtfs,
+  gtfsStops,
   issues,
   onMatch,
   isStopMissingFromConfigIgnored,
@@ -27,17 +27,19 @@ export function compareStopItems({
 }: {
   stops: readonly StopConfig[];
   idMapping: StopGtfsIdMapping;
-  gtfs: GtfsFeed;
+  gtfsStops: StopsCsv;
   issues: IssueCollector;
   onMatch: OnMatchCallback;
   isStopWithNoConfiguredGtfsIdIgnored: (config: StopConfig) => boolean;
-  isStopMissingFromConfigIgnored: (gtfsId: string) => boolean;
+  isStopMissingFromConfigIgnored: (gtfsNode: StopsCsvTreeNode) => boolean;
   isStopMissingFromGtfsIgnored: (config: StopConfig) => boolean;
 }) {
+  // TODO: Theoretically, this doesn't belong here. It could be caught in a unit
+  // test.
   function reportUnmappedStop(config: StopConfig) {
     if (isStopWithNoConfiguredGtfsIdIgnored(config)) return;
     issues.add({
-      message: `No GTFS ID mapped for ${config.name} (#${config.id}).`,
+      message: `No GTFS ID configured for ${config.name} (#${config.id}).`,
     });
   }
 
@@ -52,13 +54,13 @@ export function compareStopItems({
   }
 
   function reportStopMissingFromConfig(stop: StopsCsvTreeNode) {
-    if (isStopMissingFromConfigIgnored(stop.stop_id)) return;
+    if (isStopMissingFromConfigIgnored(stop)) return;
     issues.add({
       message: `Additional stop "${stop.stop_name}" ("${stop.stop_id}") found in GTFS.`,
     });
   }
 
-  const stopTree = StopsCsvTree.build(gtfs.stops);
+  const stopTree = StopsCsvTree.build(gtfsStops);
   const stopsWithGtfsIds = mapToGtfsIds(stops, idMapping, reportUnmappedStop);
 
   compareArrays({

@@ -31,6 +31,10 @@ export class LineGtfsIdCollection {
     ];
   }
 
+  includes(id: string) {
+    return this.all().some((metadata) => metadata.id === id);
+  }
+
   static build(stopId: number, gtfsIdsForSubfeed: LineGtfsIdCollectionConfig) {
     return new LineGtfsIdCollection(
       stopId,

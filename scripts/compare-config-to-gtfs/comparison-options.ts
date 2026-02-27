@@ -30,5 +30,6 @@ export type StopLintOptions = {
 };
 
 export type LineLintOptions = {
-  readonly ignoreMissingGtfsId?: boolean;
+  readonly ignoreNoConfiguredGtfsId?: boolean;
+  readonly ignoreNotFoundInGtfs?: boolean;
 };

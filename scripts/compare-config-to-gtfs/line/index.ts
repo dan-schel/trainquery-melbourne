@@ -1,80 +1,65 @@
-import { nonNull } from "@dan-schel/js-utils";
-import type { ComparisonContext } from "../comparison-context.js";
 import type { IssueCollector } from "../issue-collector.js";
-import type { LineComparisonContext } from "./line-comparison-context.js";
-import { reverseMapGtfsIds } from "./utils/reverse-map-gtfs-ids.js";
 import { checkLineTripCompatibility } from "./check-trip-compatibility.js";
+import type { LineConfig } from "corequery";
+import type { LineGtfsIdMapping } from "../../../src/gtfs/ids/line-gtfs-id-mapping.js";
+import type {
+  RoutesCsv,
+  RoutesCsvRow,
+  TripsCsv,
+} from "../../../src/gtfs/schedule/csv-schemas.js";
+import type { LineLintOptions } from "../comparison-options.js";
+import { compareLineItems } from "./compare-items.js";
+import type { LineGtfsIdCollection } from "../../../src/gtfs/ids/line-gtfs-id-collection.js";
+import type { IndexedStopTimes } from "../../../src/gtfs/schedule/higher-order/indexed-stop-times.js";
 
-export function compareLines(ctx: ComparisonContext, issues: IssueCollector) {
-  const allGtfsRoutes = [
-    ...ctx.gtfsData.suburban.routes,
-    ...ctx.gtfsData.regional.routes,
-  ];
+export function compareLines({
+  lines,
+  idMapping,
+  gtfsRoutes,
+  gtfsTrips,
+  gtfsStopTimes,
+  issues,
+  getOptionsForLine,
+  isLineMissingFromConfigIgnored,
+}: {
+  lines: readonly LineConfig[];
+  idMapping: LineGtfsIdMapping;
+  gtfsRoutes: RoutesCsv;
+  gtfsTrips: TripsCsv;
+  gtfsStopTimes: IndexedStopTimes;
+  issues: IssueCollector;
+  getOptionsForLine: (lineId: number) => LineLintOptions;
+  isLineMissingFromConfigIgnored: (gtfsRow: RoutesCsvRow) => boolean;
+}) {
+  function compareLine(
+    config: LineConfig,
+    mappedIds: LineGtfsIdCollection,
+    gtfsRow: RoutesCsvRow,
+  ) {
+    const options = getOptionsForLine(config.id);
 
-  for (const lineConfig of ctx.lintableConfig.lines) {
-    const lineOptions = {
-      ...ctx.options.lines?.all,
-      ...ctx.options.lines?.[lineConfig.id],
-    };
-    const lineGtfsIds = ctx.lineGtfsIds[lineConfig.id];
-
-    if (lineGtfsIds == null) {
-      const ignore = lineOptions.ignoreMissingGtfsId ?? false;
-      if (!ignore) {
-        issues.add({
-          message: `No GTFS IDs for line ${lineConfig.name} (#${lineConfig.id}).`,
-        });
-      }
-      continue;
-    }
-
-    const lineGtfsIdList = reverseMapGtfsIds(lineGtfsIds);
-    const routesGtfs = lineGtfsIdList.map(
-      (gtfsId) =>
-        allGtfsRoutes.find((route) => route.route_id === gtfsId.gtfsId) ?? null,
-    );
-
-    for (const [index, gtfsId] of lineGtfsIdList.entries()) {
-      if (routesGtfs[index] == null) {
-        issues.add({
-          message: `No route in the GTFS data with ID "${gtfsId.gtfsId}".`,
-        });
-      }
-    }
-
-    const lineCtx: LineComparisonContext = {
-      ...ctx,
-      currentLine: {
-        config: lineConfig,
-        routesGtfs: routesGtfs.filter(nonNull),
-        gtfsIds: lineGtfsIds,
-        options: lineOptions,
-      },
-    };
-    compareLine(lineCtx, issues);
-  }
-
-  for (const routeGtfs of allGtfsRoutes) {
-    const lineConfig = ctx.lintableConfig.lines.find((line) => {
-      const gtfsIds = ctx.lineGtfsIds[line.id];
-      if (gtfsIds == null) return false;
-
-      const gtfsIdList = reverseMapGtfsIds(gtfsIds);
-      return gtfsIdList.some((entry) => entry.gtfsId === routeGtfs.route_id);
+    checkLineTripCompatibility({
+      config,
+      mappedIds,
+      gtfsTrips,
+      gtfsStopTimes,
+      issues,
     });
-
-    const ignore = (ctx.options?.ignoredUnmappedGtfsRouteIds ?? []).includes(
-      routeGtfs.route_id,
-    );
-
-    if (lineConfig == null && !ignore) {
-      issues.add({
-        message: `GTFS route "${routeGtfs.route_id}" ("${routeGtfs.route_long_name}") is not mapped.`,
-      });
-    }
   }
-}
 
-function compareLine(ctx: LineComparisonContext, issues: IssueCollector) {
-  checkLineTripCompatibility(ctx, issues);
+  compareLineItems({
+    lines,
+    idMapping,
+    gtfsRoutes,
+    issues,
+    onMatch: compareLine,
+
+    isLineWithNoConfiguredGtfsIdIgnored: (config) =>
+      getOptionsForLine(config.id).ignoreNoConfiguredGtfsId ?? false,
+
+    isLineMissingFromConfigIgnored: isLineMissingFromConfigIgnored,
+
+    isLineMissingFromGtfsIgnored: (config) =>
+      getOptionsForLine(config.id).ignoreNotFoundInGtfs ?? false,
+  });
 }
