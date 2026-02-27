@@ -55,7 +55,7 @@ function createIssueBody(issues: string[]): string {
   const content =
     list.length > MAX_LEN ? list.slice(0, MAX_LEN) + "\n... (truncated)" : list;
 
-  return `@${ASSIGNEE} The automated GTFS config check found the following issues:\n\n\`\`\`${content}\n\`\`\``;
+  return `@${ASSIGNEE} The automated GTFS config check found the following issues:\n\n\`\`\`\n${content}\n\`\`\``;
 }
 
 async function findExistingIssue(
