@@ -1,6 +1,7 @@
 import { assert, describe, it } from "vitest";
 import { linePtvApiIds } from "../../../src/config/lines/line-ptv-api-ids.js";
 import { lines } from "../../../src/config/lines/index.js";
+import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.js";
 
 const linesExemptedFromHavingPtvId: number[] = [];
 
@@ -26,5 +27,13 @@ describe("linePtvApiIds", () => {
       );
       seenApiIds.add(ptvApiId);
     }
+  });
+
+  it("are listed alphabetically", async () => {
+    await expectedSortedSourceCode(
+      "src/config/lines/line-ptv-api-ids.ts",
+      /^  \[([^\]]+)\]:/,
+      (match) => match[1],
+    );
   });
 });

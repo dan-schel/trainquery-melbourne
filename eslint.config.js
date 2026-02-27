@@ -29,6 +29,10 @@ const customRules = {
     "@typescript-eslint/no-unsafe-call": "warn",
     "@typescript-eslint/no-unsafe-member-access": "warn",
     "@typescript-eslint/no-unsafe-return": "warn",
+
+    // This rule prevents you doing multiple spaces in a row in regex. I don't
+    // care. *Shrug*
+    "no-regex-spaces": "off",
   },
 };
 
