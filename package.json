@@ -1,14 +1,14 @@
 {
   "type": "module",
   "dependencies": {
-    "@dan-schel/js-utils": "4.9.0",
+    "@dan-schel/js-utils": "4.10.2",
     "@eslint/js": "10.0.1",
     "@types/adm-zip": "0.5.7",
     "@types/node": "25.3.0",
     "@vitest/coverage-v8": "4.0.18",
     "adm-zip": "0.5.16",
     "chalk": "5.6.2",
-    "corequery": "0.5.6",
+    "corequery": "0.5.7",
     "csv-parser": "3.2.0",
     "dotenv": "17.3.1",
     "eslint": "10.0.1",

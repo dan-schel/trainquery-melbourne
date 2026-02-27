@@ -1,18 +1,31 @@
-export type StopGtfsIdMapping = Record<number, StopGtfsIds>;
-export type LineGtfsIdMapping = Record<number, LineGtfsIds>;
-export type StopPtvApiIdMapping = Record<number, StopPtvApiIds>;
-export type LinePtvApiIdMapping = Record<number, LinePtvApiIds>;
+export type StopGtfsIdsConfig = Record<number, StopGtfsIdsBySubfeedConfig>;
+export type LineGtfsIdsConfig = Record<number, LineGtfsIdsBySubfeedConfig>;
+export type StopPtvApiIdsConfig = Record<number, StopPtvApiIdCollectionConfig>;
+export type LinePtvApiIdsConfig = Record<number, LinePtvApiIdCollectionConfig>;
 
-type StopGtfsIds = {
+export type StopGtfsIdsBySubfeedConfig = {
+  readonly suburban?: StopGtfsIdCollectionConfig;
+  readonly regional?: StopGtfsIdCollectionConfig;
+};
+
+export type LineGtfsIdsBySubfeedConfig = {
+  readonly suburban?: LineGtfsIdCollectionConfig;
+  readonly regional?: LineGtfsIdCollectionConfig;
+};
+
+export type StopGtfsIdCollectionConfig = {
   readonly parent: string;
   readonly general?: readonly string[];
   readonly platforms?: Readonly<Record<number, readonly string[]>>;
   readonly replacementBus?: readonly string[];
 };
-type LineGtfsIds = {
+
+export type LineGtfsIdCollectionConfig = {
   readonly primary: string;
   readonly other?: readonly string[];
   readonly replacementBus?: readonly string[];
 };
-type StopPtvApiIds = readonly string[];
-type LinePtvApiIds = readonly string[];
+
+type StopPtvApiIdCollectionConfig = readonly string[];
+
+type LinePtvApiIdCollectionConfig = readonly string[];

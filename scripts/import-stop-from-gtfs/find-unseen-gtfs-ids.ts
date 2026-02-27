@@ -1,4 +1,5 @@
-import type { StopGtfsIdMapping } from "../../src/config/third-party-id-mapping-types.js";
+import type { StopGtfsIdsConfig } from "../../src/config/third-party-id-mapping-types.js";
+import { StopGtfsIdMapping } from "../../src/gtfs/ids/stop-gtfs-id-mapping.js";
 import type {
   StopsCsvTree,
   StopsCsvTreeNode,
@@ -6,26 +7,18 @@ import type {
 
 export function findUnseenGtfsIds(
   stopsCsvTree: StopsCsvTree,
-  mappedGtfsIds: StopGtfsIdMapping,
+  mappedGtfsIds: StopGtfsIdsConfig,
 ): StopsCsvTreeNode[] {
   const result: StopsCsvTreeNode[] = [];
 
-  const knownGtfsIds = new Set<string>();
-
-  for (const mapping of Object.values(mappedGtfsIds)) {
-    knownGtfsIds.add(mapping.parent);
-
-    const otherIdLists = [
-      mapping.general ?? [],
-      mapping.replacementBus ?? [],
-      ...Object.values(mapping.platforms ?? {}),
-    ];
-
-    otherIdLists.flat().forEach((id) => knownGtfsIds.add(id));
-  }
+  const suburbanGtfsIds = StopGtfsIdMapping.build(mappedGtfsIds, "suburban");
+  const regionalGtfsIds = StopGtfsIdMapping.build(mappedGtfsIds, "regional");
 
   for (const node of stopsCsvTree.nodes) {
-    if (!knownGtfsIds.has(node.stop_id)) {
+    const resolvesAsSuburban = suburbanGtfsIds.tryResolve(node.stop_id) != null;
+    const resolvesAsRegional = regionalGtfsIds.tryResolve(node.stop_id) != null;
+
+    if (!resolvesAsSuburban && !resolvesAsRegional) {
       result.push(node);
     }
   }

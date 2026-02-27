@@ -12,7 +12,7 @@ export const SANDRINGHAM: LineConfig = {
   id: line.SANDRINGHAM,
   name: "Sandringham",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "sandringham",
   ...linear({
     color: "pink",
@@ -39,7 +39,7 @@ export const FRANKSTON: LineConfig = {
   id: line.FRANKSTON,
   name: "Frankston",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "frankston",
   ...cityLoop({
     color: "green",
@@ -79,7 +79,7 @@ export const STONY_POINT: LineConfig = {
   id: line.STONY_POINT,
   name: "Stony Point",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "stonypoint",
   ...linear({
     color: "green",
@@ -102,7 +102,7 @@ export const CRANBOURNE: LineConfig = {
   id: line.CRANBOURNE,
   name: "Cranbourne",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "cranbourne",
   ...multi({
     items: [
@@ -168,7 +168,7 @@ export const PAKENHAM: LineConfig = {
   id: line.PAKENHAM,
   name: "Pakenham",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "pakenham",
   ...multi({
     items: [
@@ -244,7 +244,7 @@ export const GIPPSLAND: LineConfig = {
   id: line.GIPPSLAND,
   name: "Gippsland",
   code: null,
-  tags: [tag.REGIONAL],
+  tags: [tag.REGIONAL, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "gippsland",
   ...linear({
     color: "purple",
@@ -302,7 +302,7 @@ export const GLEN_WAVERLEY: LineConfig = {
   id: line.GLEN_WAVERLEY,
   name: "Glen Waverley",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "glenwaverley",
   ...cityLoop({
     color: "blue",
@@ -330,7 +330,7 @@ export const ALAMEIN: LineConfig = {
   id: line.ALAMEIN,
   name: "Alamein",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "alamein",
   ...cityLoop({
     color: "blue",
@@ -356,7 +356,7 @@ export const BELGRAVE: LineConfig = {
   id: line.BELGRAVE,
   name: "Belgrave",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "belgrave",
   ...cityLoop({
     color: "blue",
@@ -395,7 +395,7 @@ export const LILYDALE: LineConfig = {
   id: line.LILYDALE,
   name: "Lilydale",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "lilydale",
   ...cityLoop({
     color: "blue",
@@ -430,7 +430,7 @@ export const HURSTBRIDGE: LineConfig = {
   id: line.HURSTBRIDGE,
   name: "Hurstbridge",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "hurstbridge",
   ...cityLoop({
     color: "red",
@@ -466,7 +466,7 @@ export const MERNDA: LineConfig = {
   id: line.MERNDA,
   name: "Mernda",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "mernda",
   ...cityLoop({
     color: "red",
@@ -503,7 +503,7 @@ export const UPFIELD: LineConfig = {
   id: line.UPFIELD,
   name: "Upfield",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "upfield",
   ...cityLoop({
     color: "yellow",
@@ -530,7 +530,7 @@ export const CRAIGIEBURN: LineConfig = {
   id: line.CRAIGIEBURN,
   name: "Craigieburn",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "craigieburn",
   ...cityLoop({
     color: "yellow",
@@ -559,7 +559,7 @@ export const SEYMOUR: LineConfig = {
   id: line.SEYMOUR,
   name: "Seymour",
   code: null,
-  tags: [tag.REGIONAL],
+  tags: [tag.REGIONAL, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "seymour",
   ...branch({
     commonName: "Seymour",
@@ -617,7 +617,7 @@ export const FLEMINGTON_RACECOURSE: LineConfig = {
   id: line.FLEMINGTON_RACECOURSE,
   name: "Flemington Racecourse",
   code: null,
-  tags: [tag.SUBURBAN, tag.SPECIAL_EVENTS_ONLY],
+  tags: [tag.SUBURBAN, tag.SPECIAL_EVENTS_ONLY, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "flemingtonracecourse",
   ...cityLoop({
     color: "gray",
@@ -635,7 +635,7 @@ export const SUNBURY: LineConfig = {
   id: line.SUNBURY,
   name: "Sunbury",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "sunbury",
   ...multi({
     items: [
@@ -687,7 +687,7 @@ export const BENDIGO: LineConfig = {
   id: line.BENDIGO,
   name: "Bendigo",
   code: null,
-  tags: [tag.REGIONAL],
+  tags: [tag.REGIONAL, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "bendigo",
   ...branch({
     commonName: "Bendigo",
@@ -744,7 +744,7 @@ export const BALLARAT: LineConfig = {
   id: line.BALLARAT,
   name: "Ballarat",
   code: null,
-  tags: [tag.REGIONAL],
+  tags: [tag.REGIONAL, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "ballarat",
   ...branch({
     commonName: "Ballarat",
@@ -788,7 +788,7 @@ export const GEELONG: LineConfig = {
   id: line.GEELONG,
   name: "Geelong",
   code: null,
-  tags: [tag.REGIONAL],
+  tags: [tag.REGIONAL, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "geelong",
   ...linear({
     color: "purple",
@@ -829,7 +829,7 @@ export const WERRIBEE: LineConfig = {
   id: line.WERRIBEE,
   name: "Werribee",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "werribee",
   ...linear({
     color: "green",
@@ -859,7 +859,7 @@ export const WILLIAMSTOWN: LineConfig = {
   id: line.WILLIAMSTOWN,
   name: "Williamstown",
   code: null,
-  tags: [tag.SUBURBAN_FULL_TIME],
+  tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "williamstown",
   ...linear({
     color: "green",

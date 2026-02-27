@@ -11,7 +11,7 @@ async function main() {
   console.log("Downloading/parsing GTFS data...");
 
   const gtfsData = await withGtfsFiles(env.RELAY_KEY, readGtfs);
-  const allStops = StopsCsvTree.fromGtfsData(gtfsData);
+  const allStops = StopsCsvTree.buildCombined(gtfsData);
 
   console.log("Checking for unseen stops...");
 

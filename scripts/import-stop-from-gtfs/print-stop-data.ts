@@ -8,9 +8,15 @@ import {
 } from "@dan-schel/js-utils";
 import { stops } from "../../src/config/stops/index.js";
 import { pressAnyKeyToContinue } from "./input.js";
+import { cleanupStopName } from "../utils/gtfs/cleanup-stop-name.js";
+import {
+  GTFS_REPLACEMENT_BUS_PLATFORM_CODE,
+  NONSENSE_GTFS_STOP_ID_REGEX,
+} from "../utils/gtfs/magic-values.js";
+import type { Subfeed } from "../../src/gtfs/schedule/utils/subfeed.js";
 
 export async function printStopData(stop: StopsCsvTreeNode) {
-  const name = stop.stop_name.trim().replace(/( Railway)? Station$/g, "");
+  const name = cleanupStopName(stop.stop_name);
   const id = Math.max(...stops.map((x) => x.id)) + 1;
   const urlPath = name.toLowerCase().replace(/\s+/g, "");
   const constName = constify(name);
@@ -54,7 +60,7 @@ function formatPositions(stop: StopsCsvTreeNode) {
 
   return stop.children
     .filter((c): c is HasPlatformCode => isPresent(c.platform_code))
-    .filter((c) => c.platform_code !== "Replacement bus")
+    .filter((c) => c.platform_code !== GTFS_REPLACEMENT_BUS_PLATFORM_CODE)
     .sort((a, b) => numberWiseSort(a.platform_code, b.platform_code))
     .map((c) => {
       return `    { stopPositionId: position.PLATFORM_${constify(c.platform_code)}, name: ${JSON.stringify(c.platform_code)} },`;
@@ -62,42 +68,63 @@ function formatPositions(stop: StopsCsvTreeNode) {
 }
 
 function formatChildGtfsIds(stop: StopsCsvTreeNode, constName: string) {
+  const suburbanOutput = formatChildGtfsIdsForSubfeed(stop, "suburban");
+  const regionalOutput = formatChildGtfsIdsForSubfeed(stop, "regional");
+
+  let result = `[stop.${constName}]: {\n`;
+
+  if (suburbanOutput != null) {
+    result += `  suburban: ${suburbanOutput}\n`;
+  }
+  if (regionalOutput != null) {
+    result += `  regional: ${regionalOutput}\n`;
+  }
+
+  return result + `},`;
+}
+
+function formatChildGtfsIdsForSubfeed(
+  stop: StopsCsvTreeNode,
+  subfeed: Subfeed,
+) {
+  if (!stop.subfeeds.includes(subfeed)) return null;
+
   const platforms: Map<string, string[]> = new Map();
   const replacementBuses: string[] = [];
   const general: string[] = [];
 
-  for (const c of stop.children) {
-    if (c.platform_code === "Replacement bus") {
+  for (const c of stop.children.filter((c) => c.subfeeds.includes(subfeed))) {
+    if (c.platform_code === GTFS_REPLACEMENT_BUS_PLATFORM_CODE) {
       replacementBuses.push(c.stop_id);
     } else if (isPresent(c.platform_code)) {
       platforms.set(c.platform_code, [
         ...(platforms.get(c.platform_code) ?? []),
         c.stop_id,
       ]);
-    } else if (!/^vic:rail:[A-Z]{3}.+/g.test(stop.stop_id)) {
+    } else if (!NONSENSE_GTFS_STOP_ID_REGEX.test(stop.stop_id)) {
       general.push(c.stop_id);
     }
   }
 
-  let result = `[stop.${constName}]: {\n  parent: ${JSON.stringify(stop.stop_id)},\n`;
+  let result = `{\n    parent: ${JSON.stringify(stop.stop_id)},\n`;
 
   if (general.length > 0) {
-    result += `  general: [${general.map((id) => JSON.stringify(id)).join(", ")}],\n`;
+    result += `    general: [${general.map((id) => JSON.stringify(id)).join(", ")}],\n`;
   }
 
   if (platforms.size > 0) {
-    result += `  platforms: {\n`;
+    result += `    platforms: {\n`;
     for (const [platformCode, ids] of platforms) {
-      result += `    [position.PLATFORM_${constify(platformCode)}]: ${JSON.stringify(ids)},\n`;
+      result += `      [position.PLATFORM_${constify(platformCode)}]: ${JSON.stringify(ids)},\n`;
     }
-    result += `  },\n`;
+    result += `    },\n`;
   }
 
   if (replacementBuses.length > 0) {
-    result += `  replacementBus: ${JSON.stringify(replacementBuses)},\n`;
+    result += `    replacementBus: ${JSON.stringify(replacementBuses)},\n`;
   }
 
-  return result + `},`;
+  return result + `  },`;
 }
 
 function findPtvApiIds(stop: StopsCsvTreeNode): string[] {

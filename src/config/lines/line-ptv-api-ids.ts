@@ -1,7 +1,7 @@
-import type { LinePtvApiIdMapping } from "../third-party-id-mapping-types.js";
+import type { LinePtvApiIdsConfig } from "../third-party-id-mapping-types.js";
 import * as line from "./line-ids.js";
 
-export const linePtvApiIds: LinePtvApiIdMapping = {
+export const linePtvApiIds: LinePtvApiIdsConfig = {
   [line.SANDRINGHAM]: ["12"],
   [line.FRANKSTON]: ["6"],
   [line.STONY_POINT]: ["13"],
