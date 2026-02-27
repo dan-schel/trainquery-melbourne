@@ -7,7 +7,7 @@ import * as tag from "./stop-tags.js";
 
 export const AIRCRAFT: StopConfig = {
   id: stop.AIRCRAFT,
-  name: "Aircraft",
+  name: "Airplane",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "aircraft",
   location: { latitude: -37.86660595, longitude: 144.76080944 },
