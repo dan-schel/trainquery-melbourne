@@ -1,4 +1,4 @@
-type ComparisonIssue = {
+export type ComparisonIssue = {
   readonly message: string;
 };
 
@@ -22,6 +22,31 @@ export class IssueCollector {
 
   getIssues(): ComparisonIssue[] {
     return [...this._issues, ...this._getUnmappedStopIdsInUseIssues()];
+  }
+
+  getCount(): number {
+    return this.getIssues().length;
+  }
+
+  isEmpty(): boolean {
+    return this.getCount() === 0;
+  }
+
+  outputToConsole(): void {
+    console.log();
+
+    const issues = this.getIssues();
+    if (issues.length === 0) {
+      console.log("No issues found!");
+      return;
+    }
+
+    const noun = issues.length === 1 ? "issue" : "issues";
+    console.log(`Found ${issues.length} ${noun}:`);
+
+    for (const issue of issues) {
+      console.log(`- ${issue.message}`);
+    }
   }
 
   private _getUnmappedStopIdsInUseIssues() {

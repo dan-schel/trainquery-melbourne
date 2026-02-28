@@ -6,11 +6,13 @@ import { extractConfigForSubfeed } from "./extract-config-for-subfeed.js";
 import { compareSubfeed } from "./compare-subfeed.js";
 import { suburbanSubfeedOptions } from "./suburban-subfeed-options.js";
 import { regionalSubfeedOptions } from "./regional-subfeed-options.js";
-import { reportToGithub } from "./github-actions.js";
+import { reportToGithub } from "./output-to-github/report-to-github.js";
+import { GithubClient } from "./output-to-github/github-client.js";
+import { createGithubIssueFlag } from "./output-to-github/flag.js";
 
 async function main() {
   const args = process.argv.slice(2);
-  const outputToGithub = args.includes("--output-to-github");
+  const outputToGithub = args.includes(createGithubIssueFlag);
 
   const issues = new IssueCollector();
 
@@ -18,7 +20,6 @@ async function main() {
   const gtfsData = await withGtfsFiles(env.RELAY_KEY, readGtfs);
 
   console.log("Checking for issues (suburban)...");
-
   compareSubfeed({
     ...extractConfigForSubfeed("suburban"),
     gtfsFeed: gtfsData.suburban,
@@ -27,7 +28,6 @@ async function main() {
   });
 
   console.log("Checking for issues (regional)...");
-
   compareSubfeed({
     ...extractConfigForSubfeed("regional"),
     gtfsFeed: gtfsData.regional,
@@ -35,23 +35,19 @@ async function main() {
     options: regionalSubfeedOptions,
   });
 
-  console.log();
-  const issueMessages = issues.getIssues().map((i) => i.message);
-
   if (outputToGithub) {
-    await reportToGithub(issueMessages);
-    // In GitHub CI mode, always exit with code 0 unless the script itself
-    // fails.
+    const githubClient = GithubClient.fromEnv(env);
+    await reportToGithub(githubClient, issues);
+
+    // We DON'T want an ❌ against the action maintaining the github issue,
+    // unless the action itself fails.
+    process.exit(0);
   } else {
-    if (issueMessages.length === 0) {
-      console.log("No issues found!");
-    } else {
-      console.log(`Found ${issueMessages.length} issue(s):`);
-      for (const msg of issueMessages) {
-        console.log(`- ${msg}`);
-      }
-      process.exit(1);
-    }
+    issues.outputToConsole();
+
+    // For CI however, we DO want an ❌ against any PR making an incompatible
+    // config change.
+    process.exit(issues.isEmpty() ? 0 : 1);
   }
 }
 
