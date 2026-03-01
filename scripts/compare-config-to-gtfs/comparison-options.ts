@@ -1,6 +1,7 @@
 import type { StopGtfsIdMetadata } from "../../src/gtfs/ids/stop-gtfs-id-metadata.js";
 import type { StopsCsvTreeNode } from "../utils/gtfs/stops-csv-tree.js";
-import type { StoppingPattern } from "./line/check-trip-compatibility.js";
+import type { Trip } from "./line/utils/trip.js";
+import type { UniqueStoppingPattern } from "./line/utils/unique-stopping-pattern-tracker.js";
 
 export type ComparisonOptions = {
   readonly stops?: {
@@ -15,6 +16,7 @@ export type ComparisonOptions = {
 
   readonly ignoredParentGtfsStopIdsMissingFromConfig?: string[];
   readonly ignoredGtfsRouteIdsMissingFromConfig?: string[];
+  readonly ignoreTripNotAssignedToALine?: (trip: Trip) => boolean;
 };
 
 export type StopLintOptions = {
@@ -33,5 +35,8 @@ export type LineLintOptions = {
   readonly ignoreNotFoundInGtfs?: boolean;
 
   readonly ignoredIncompatibleStoppingPatternsKeys?: string[];
-  readonly ignoreIncompatibleStoppingPattern?: (p: StoppingPattern) => boolean;
+
+  readonly ignoreIncompatibleStoppingPattern?: (
+    p: UniqueStoppingPattern,
+  ) => boolean;
 };

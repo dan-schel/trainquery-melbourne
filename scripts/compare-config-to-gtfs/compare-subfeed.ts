@@ -63,5 +63,8 @@ export function compareSubfeed({
     isLineMissingFromConfigIgnored: (n) =>
       options.ignoredGtfsRouteIdsMissingFromConfig?.includes(n.route_id) ??
       false,
+
+    isTripNotAssignedToALineIgnored: (trip) =>
+      options.ignoreTripNotAssignedToALine?.(trip) ?? false,
   });
 }
