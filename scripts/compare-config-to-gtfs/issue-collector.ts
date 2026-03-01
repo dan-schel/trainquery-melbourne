@@ -1,4 +1,4 @@
-export type ComparisonIssue = {
+type ComparisonIssue = {
   readonly message: string;
 };
 

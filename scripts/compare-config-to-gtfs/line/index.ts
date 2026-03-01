@@ -13,6 +13,8 @@ import { compareLineItems } from "./compare-items.js";
 import type { LineGtfsIdCollection } from "../../../src/gtfs/ids/line-gtfs-id-collection.js";
 import { IndexedStopTimes } from "../../../src/gtfs/schedule/higher-order/indexed-stop-times.js";
 import type { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
+import { checkAllTripsAssignedToALine } from "./check-all-trips-assigned-to-a-line.js";
+import type { Trip } from "./utils/trip.js";
 
 export function compareLines({
   lines,
@@ -25,6 +27,7 @@ export function compareLines({
   issues,
   getOptionsForLine,
   isLineMissingFromConfigIgnored,
+  isTripNotAssignedToALineIgnored,
 }: {
   lines: readonly LineConfig[];
   idMapping: LineGtfsIdMapping;
@@ -36,6 +39,7 @@ export function compareLines({
   issues: IssueCollector;
   getOptionsForLine: (lineId: number) => LineLintOptions;
   isLineMissingFromConfigIgnored: (gtfsRow: RoutesCsvRow) => boolean;
+  isTripNotAssignedToALineIgnored: (trip: Trip) => boolean;
 }) {
   // Somewhat expensive, so do it once and share it between lines.
   const indexedStopTimes = IndexedStopTimes.build(gtfsStopTimes);
@@ -60,7 +64,7 @@ export function compareLines({
         const ignoreFunc = options.ignoreIncompatibleStoppingPattern;
 
         return (
-          (ignoreList?.includes(pattern.key) ?? false) ||
+          (ignoreList?.includes(pattern.pattern.getKey()) ?? false) ||
           (ignoreFunc?.(pattern) ?? false)
         );
       },
@@ -78,5 +82,15 @@ export function compareLines({
 
     isLineMissingFromGtfsIgnored: (config) =>
       getOptionsForLine(config.id).ignoreNotFoundInGtfs ?? false,
+  });
+
+  checkAllTripsAssignedToALine({
+    gtfsTrips,
+    gtfsStopTimes: indexedStopTimes,
+    lineIdMapping: idMapping,
+    stopIdMapping,
+    getStopName,
+    issues,
+    isTripNotAssignedToALineIgnored,
   });
 }
