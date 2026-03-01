@@ -3012,7 +3012,7 @@ export const SOUTH_MORANG: StopConfig = {
 
 export const SOUTH_YARRA: StopConfig = {
   id: stop.SOUTH_YARRA,
-  name: "South Yarra asdfasdf",
+  name: "South Yarra qwerty",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "southyarra",
   location: { latitude: -37.83844935, longitude: 144.99234221 },
