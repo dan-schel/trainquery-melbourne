@@ -51,11 +51,13 @@ export async function reportToGithub(
   if (ghIssue.body !== ghIssueBody) {
     console.log(`Updating GitHub issue, as content is outdated...`);
     await github.updateIssueBody(ghIssue.number, ghIssueBody);
+
+    console.log("✅ Done!");
+    return;
   }
 
   console.log(`Existing GitHub issue is identical. No action required.`);
   console.log("✅ Done!");
-  return;
 }
 
 function createIssueBody(github: GithubClient, issues: IssueCollector): string {
