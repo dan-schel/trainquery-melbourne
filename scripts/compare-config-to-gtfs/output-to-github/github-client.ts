@@ -1,8 +1,9 @@
 import z from "zod";
 import type { Env } from "../env.js";
-import { createGithubIssueFlag } from "./flag.js";
-
-const githubActionsBotUsername = "app/github-actions";
+import {
+  createGithubIssueFlag,
+  githubActionsBotUsername,
+} from "./constants.js";
 
 const githubIssueSchema = z
   .object({
@@ -86,6 +87,10 @@ export class GithubClient {
       method: "PATCH",
       body: JSON.stringify({ state: "closed" }),
     });
+  }
+
+  getCommitUrl() {
+    return `https://github.com/${this.repo}/commit/${this.commitSha}`;
   }
 
   private async _githubFetch(

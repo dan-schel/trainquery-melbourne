@@ -8,7 +8,7 @@ import { suburbanSubfeedOptions } from "./suburban-subfeed-options.js";
 import { regionalSubfeedOptions } from "./regional-subfeed-options.js";
 import { reportToGithub } from "./output-to-github/report-to-github.js";
 import { GithubClient } from "./output-to-github/github-client.js";
-import { createGithubIssueFlag } from "./output-to-github/flag.js";
+import { createGithubIssueFlag } from "./output-to-github/constants.js";
 
 async function main() {
   const args = process.argv.slice(2);

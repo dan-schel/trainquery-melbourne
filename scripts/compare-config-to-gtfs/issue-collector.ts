@@ -42,11 +42,13 @@ export class IssueCollector {
     }
 
     const noun = issues.length === 1 ? "issue" : "issues";
-    console.log(`Found ${issues.length} ${noun}:`);
+    console.log(`Found ${issues.length} ${noun}:\n${this.asFormattedList()}`);
+  }
 
-    for (const issue of issues) {
-      console.log(`- ${issue.message}`);
-    }
+  asFormattedList() {
+    return this.getIssues()
+      .map((i) => `- ${i.message}`)
+      .join("\n");
   }
 
   private _getUnmappedStopIdsInUseIssues() {

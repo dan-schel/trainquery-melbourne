@@ -1,10 +1,11 @@
 import type { GithubClient } from "./github-client.js";
 import type { IssueCollector } from "../issue-collector.js";
-
-const issueTitle = "Automated GTFS Config Check Failed";
-
-// GitHub issues are limited to ~65k chars.
-const issuesListMaxLength = 60000;
+import {
+  truncateListAfterChars,
+  issueTitle,
+  dateFormatOptions,
+  dateFormatLocale,
+} from "./constants.js";
 
 export async function reportToGithub(
   github: GithubClient,
@@ -58,22 +59,24 @@ export async function reportToGithub(
 }
 
 function createIssueBody(github: GithubClient, issues: IssueCollector): string {
-  // TODO: Move logic to IssueCollector.
-  const formattedIssues = issues
-    .getIssues()
-    .map((i) => `- ${i.message}`)
-    .join("\n");
+  const noun = issues.getCount() === 1 ? "discrepancy" : "discrepancies";
+  const header = `@${github.repoOwner} ${issues.getCount()} ${noun} found between config and the latest GTFS data:`;
 
-  // TODO: truncateIfOverLength() function.
-  const requiresTruncation = formattedIssues.length > issuesListMaxLength;
-  const truncatedIssues = requiresTruncation
-    ? formattedIssues.slice(0, issuesListMaxLength) + "\n... (truncated)"
-    : formattedIssues;
-  const issuesBlock = "```\n" + truncatedIssues + "\n```";
+  const issuesStr = issues.asFormattedList();
+  const truncatedStr = truncateIfOverLength(issuesStr, truncateListAfterChars);
+  const issuesBlock = "```\n" + truncatedStr + "\n```";
 
-  const noun = issues.getCount() === 1 ? "issue" : "issues";
-  const header = `@${github.repoOwner} Comparing current config to the latest published GTFS reveals ${noun}:`;
-  const footer = `(Generated against commit ${github.commitSha.slice(0, 7)})`;
+  const time = new Date().toLocaleString(dateFormatLocale, dateFormatOptions);
+  const commit = `[${github.commitSha.slice(0, 7)}](${github.getCommitUrl()})`;
+  const footer = `(Updated ${time}, against commit ${commit})`;
 
   return `${header}\n\n${issuesBlock}\n\n${footer}`;
+}
+
+function truncateIfOverLength(text: string, maxLength: number): string {
+  if (text.length <= maxLength) {
+    return text;
+  }
+
+  return text.slice(0, maxLength) + "\n... (truncated)";
 }
