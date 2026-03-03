@@ -13,6 +13,7 @@ import { aboutPage } from "./about-page.js";
 
 export const buildConfig: CorequeryConfigBuilder = () => ({
   port: parseIntThrow(env.PORT ?? "3000"),
+  version: env.COMMIT_HASH ?? "dev",
   assets: assets,
   ...lintableConfig,
 });
