@@ -1,11 +1,9 @@
 import type { AssetConfig } from "corequery";
-import { env } from "../env.js";
 
 export const assets: AssetConfig = {
   appName: "TrainQuery v4 (Beta)",
   shortAppName: "TQ4 (Beta)",
   description: "Navigate Melbourne's train network with TrainQuery.",
-  version: env.COMMIT_HASH ?? "dev",
 
   faviconSvgPath: "assets/favicon.svg",
   appleTouchIconPngPath: "assets/apple-touch-icon.png",
