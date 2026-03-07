@@ -1039,7 +1039,7 @@ export const EAST_MALVERN: StopConfig = {
 export const EAST_PAKENHAM: StopConfig = {
   id: stop.EAST_PAKENHAM,
   name: "East Pakenham",
-  tags: [tag.SUBURBAN_GTFS_SUBFEED],
+  tags: [tag.SUBURBAN_GTFS_SUBFEED, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "eastpakenham",
   location: { latitude: -38.08441136, longitude: 145.50635689 },
   positions: [
