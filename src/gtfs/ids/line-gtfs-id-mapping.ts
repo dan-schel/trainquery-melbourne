@@ -37,6 +37,10 @@ export class LineGtfsIdMapping {
     return result;
   }
 
+  allIds(): LineGtfsIdMetadata[] {
+    return [...this._fromGtfsIdMapping.values()];
+  }
+
   static build(config: LineGtfsIdsConfig, subfeed: Subfeed): LineGtfsIdMapping {
     const result = new Map<number, LineGtfsIdCollection>();
 

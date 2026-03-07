@@ -4,11 +4,12 @@ import { stops } from "../../../src/config/stops/index.js";
 import { stopGtfsIds } from "../../../src/config/stops/stop-gtfs-ids.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import { getSubfeedsWithStop } from "../../../src/gtfs/utils/get-subfeeds-with.js";
+import { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
 
 const stopsExemptedFromHavingGtfsId: number[] = [];
 
 describe("stopGtfsIds", () => {
-  it("has an entry for each line", () => {
+  it("has an entry for each stop", () => {
     for (const stop of stops) {
       if (stopsExemptedFromHavingGtfsId.includes(stop.id)) continue;
 
@@ -40,6 +41,31 @@ describe("stopGtfsIds", () => {
 
     expectUniqueIds(suburbanGtfsIds, "Stop GTFS ID (suburban subfeed)");
     expectUniqueIds(regionalGtfsIds, "Stop GTFS ID (regional subfeed)");
+  });
+
+  it("mapped stops and positions all exist in the config", () => {
+    const suburbanMapping = StopGtfsIdMapping.build(stopGtfsIds, "suburban");
+    const regionalMapping = StopGtfsIdMapping.build(stopGtfsIds, "regional");
+
+    for (const mapping of [suburbanMapping, regionalMapping]) {
+      for (const gtfsId of mapping.allIds()) {
+        const mappedTo = `mapped to GTFS ID "${gtfsId.id}"`;
+
+        const stop = stops.find((s) => s.id === gtfsId.stopId);
+        assert(stop != null, `Stop #${gtfsId.stopId}, ${mappedTo}, not found.`);
+
+        if (gtfsId.type === "platform") {
+          const position = stop.positions.find((p) => {
+            return p.stopPositionId === gtfsId.positionId;
+          });
+
+          assert(
+            position != null,
+            `Position ID #${gtfsId.positionId}, ${mappedTo}, not found on stop #${gtfsId.stopId}.`,
+          );
+        }
+      }
+    }
   });
 
   it("are listed alphabetically", async () => {
