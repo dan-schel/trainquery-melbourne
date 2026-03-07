@@ -37,7 +37,8 @@ export function compareLineItems({
   ) {
     if (isLineMissingFromGtfsIgnored(config)) return;
     issues.add({
-      message: `GTFS ID "${mappedIds.primary}" belonging to ${config.name} (#${config.id}) not found in GTFS.`,
+      category: "Lines not found in GTFS",
+      message: `GTFS ID "${mappedIds.primary}" mapped to ${config.name} (#${config.id}) not found in GTFS.`,
     });
   }
 
@@ -50,6 +51,7 @@ export function compareLineItems({
     if (isLineMissingFromConfigIgnored(line)) return;
 
     issues.add({
+      category: "Additional lines found in GTFS",
       message: `Additional line "${line.route_long_name}" ("${line.route_id}") found in GTFS.`,
     });
   }

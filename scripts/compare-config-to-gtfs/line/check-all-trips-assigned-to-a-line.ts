@@ -44,6 +44,7 @@ export function checkAllTripsAssignedToALine({
     const formattedStopList = instance.pattern.format(getStopName);
 
     issues.add({
+      category: "Trips not assigned to a line",
       message: `${formattedTripCount} with stopping pattern, ${formattedExampleTripId}: ${formattedStopList}`,
     });
   }

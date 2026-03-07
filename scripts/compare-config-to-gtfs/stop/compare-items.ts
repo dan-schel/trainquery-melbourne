@@ -38,6 +38,7 @@ export function compareStopItems({
   ) {
     if (isStopMissingFromGtfsIgnored(config)) return;
     issues.add({
+      category: "Stops not found in GTFS",
       message: `GTFS ID "${mappedIds.parent}" belonging to ${config.name} (#${config.id}) not found in GTFS.`,
     });
   }
@@ -45,6 +46,7 @@ export function compareStopItems({
   function reportStopMissingFromConfig(stop: StopsCsvTreeNode) {
     if (isStopMissingFromConfigIgnored(stop)) return;
     issues.add({
+      category: "Additional stops found in GTFS",
       message: `Additional stop "${stop.stop_name}" ("${stop.stop_id}") found in GTFS.`,
     });
   }

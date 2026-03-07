@@ -1,4 +1,7 @@
+import { groupBy } from "@dan-schel/js-utils";
+
 type ComparisonIssue = {
+  readonly category: string;
   readonly message: string;
 };
 
@@ -42,17 +45,26 @@ export class IssueCollector {
     }
 
     const noun = issues.length === 1 ? "issue" : "issues";
-    console.log(`Found ${issues.length} ${noun}:\n${this.asFormattedList()}`);
+    console.log(`Found ${issues.length} ${noun}:\n\n${this.asFormattedList()}`);
   }
 
   asFormattedList() {
-    return this.getIssues()
-      .map((i) => `- ${i.message}`)
-      .join("\n");
+    const groups = groupBy(this.getIssues(), (i) => i.category).map(
+      ({ group, items }) => {
+        const itemsStr = items
+          .map((i) => `- ${i.message}`)
+          .sort((a, b) => a.localeCompare(b))
+          .join("\n");
+
+        return `[${group}]\n${itemsStr}`;
+      },
+    );
+    return groups.join("\n\n");
   }
 
-  private _getUnmappedStopIdsInUseIssues() {
+  private _getUnmappedStopIdsInUseIssues(): ComparisonIssue[] {
     return Array.from(this._unmappedGtfsStopIdsInUse).map((stopId) => ({
+      category: "Unmapped GTFS stop IDs in use",
       message: `GTFS stop ID "${stopId}" is present in stopping patterns, but not mapped.`,
     }));
   }

@@ -61,6 +61,7 @@ export function checkLineTripCompatibility({
     const formattedStopList = instance.pattern.format(getStopName);
 
     issues.add({
+      category: "Incompatible stopping patterns",
       message: `${formattedInstanceCount} of stopping pattern for ${config.name} (#${config.id}) line, ${formattedExampleTripId}: ${formattedStopList}`,
     });
   }

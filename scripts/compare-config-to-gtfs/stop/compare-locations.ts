@@ -21,6 +21,7 @@ export function compareStopLocations({
 
   if (!match) {
     issues.add({
+      category: "Stop location mismatches",
       message: `Stop ${config.name} (#${config.id}) location expected to be ${gtfsNode.stop_lat}, ${gtfsNode.stop_lon}.`,
     });
   }
