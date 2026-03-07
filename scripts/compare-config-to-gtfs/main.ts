@@ -14,40 +14,46 @@ async function main() {
   const args = process.argv.slice(2);
   const outputToGithub = args.includes(createGithubIssueFlag);
 
-  const issues = new IssueCollector();
-
   console.log("Downloading/parsing GTFS data...");
   const gtfsData = await withGtfsFiles(env.RELAY_KEY, readGtfs);
 
   console.log("Checking for issues (suburban)...");
+  const suburbanIssues = new IssueCollector();
   compareSubfeed({
     ...extractConfigForSubfeed("suburban"),
     gtfsFeed: gtfsData.suburban,
-    issues,
+    issues: suburbanIssues,
     options: suburbanSubfeedOptions,
   });
 
   console.log("Checking for issues (regional)...");
+  const regionalIssues = new IssueCollector();
   compareSubfeed({
     ...extractConfigForSubfeed("regional"),
     gtfsFeed: gtfsData.regional,
-    issues,
+    issues: regionalIssues,
     options: regionalSubfeedOptions,
   });
 
   if (outputToGithub) {
     const githubClient = GithubClient.fromEnv(env);
-    await reportToGithub(githubClient, issues);
+    await reportToGithub(githubClient, suburbanIssues, regionalIssues);
 
     // We DON'T want an ❌ against the action maintaining the github issue,
     // unless the action itself fails.
     process.exit(0);
   } else {
-    issues.outputToConsole();
+    suburbanIssues.outputToConsole("suburban");
+    regionalIssues.outputToConsole("regional");
+
+    const totalCount = suburbanIssues.getCount() + regionalIssues.getCount();
+    const noun = totalCount === 1 ? "issue" : "issues";
+    const emoji = totalCount === 0 ? "✅" : "❌";
+    console.log(`\n${emoji} Finished. Found ${totalCount} ${noun}.`);
 
     // For CI however, we DO want an ❌ against any PR making an incompatible
     // config change.
-    process.exit(issues.isEmpty() ? 0 : 1);
+    process.exit(totalCount === 0 ? 0 : 1);
   }
 }
 

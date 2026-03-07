@@ -20,6 +20,7 @@ export function compareStopNames({
 
   if (config.name !== sanitizedGtfsName) {
     issues.add({
+      category: "Stop name mismatches",
       message: `Stop ${config.name} (#${config.id}) expected to be named "${sanitizedGtfsName}".`,
     });
   }

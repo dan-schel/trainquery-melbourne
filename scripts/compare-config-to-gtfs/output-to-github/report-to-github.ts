@@ -9,7 +9,8 @@ import {
 
 export async function reportToGithub(
   github: GithubClient,
-  issues: IssueCollector,
+  suburbanIssues: IssueCollector,
+  regionalIssues: IssueCollector,
 ): Promise<void> {
   const ghIssue = await github.findIssueByTitle(issueTitle);
   if (ghIssue != null) {
@@ -18,7 +19,9 @@ export async function reportToGithub(
     console.log(`No existing GitHub issue with title "${issueTitle}" found.`);
   }
 
-  if (issues.isEmpty()) {
+  const issuesCount = suburbanIssues.getCount() + regionalIssues.getCount();
+
+  if (issuesCount === 0) {
     console.log("No issues needing reporting!");
 
     if (ghIssue != null) {
@@ -30,10 +33,10 @@ export async function reportToGithub(
     return;
   }
 
-  const noun = issues.getCount() === 1 ? "issue" : "issues";
-  console.log(`Found ${issues.getCount()} comparison ${noun} to report.`);
+  const noun = issuesCount === 1 ? "issue" : "issues";
+  console.log(`Found ${issuesCount} comparison ${noun} to report.`);
 
-  const ghIssueBody = createIssueBody(github, issues);
+  const ghIssueBody = createIssueBody(github, suburbanIssues, regionalIssues);
 
   if (ghIssue == null) {
     console.log(`Opening GitHub issue...`);
@@ -60,19 +63,34 @@ export async function reportToGithub(
   console.log("✅ Done!");
 }
 
-function createIssueBody(github: GithubClient, issues: IssueCollector): string {
-  const noun = issues.getCount() === 1 ? "discrepancy" : "discrepancies";
-  const header = `@${github.repoOwner} ${issues.getCount()} ${noun} found between config and the latest GTFS data:`;
+function createIssueBody(
+  github: GithubClient,
+  suburbanIssues: IssueCollector,
+  regionalIssues: IssueCollector,
+): string {
+  const issuesCount = suburbanIssues.getCount() + regionalIssues.getCount();
+  const noun = issuesCount === 1 ? "discrepancy" : "discrepancies";
+  const header = `@${github.repoOwner} ${issuesCount} ${noun} found between config and the latest GTFS data:`;
 
-  const issuesStr = issues.asFormattedList();
-  const truncatedStr = truncateIfOverLength(issuesStr, truncateListAfterChars);
-  const issuesBlock = "```\n" + truncatedStr + "\n```";
+  function createBlock(issues: IssueCollector, subfeedName: string): string {
+    // Each of the two subfeeds get half the character limit each.
+    const maxChars = truncateListAfterChars / 2;
+
+    const issuesStr = issues.asFormattedList();
+    const truncatedStr = truncateIfOverLength(issuesStr, maxChars);
+    const issuesBlock = "```\n" + truncatedStr + "\n```";
+
+    return `#### Against ${subfeedName} subfeed:\n\n${issuesBlock}`;
+  }
 
   const time = new Date().toLocaleString(dateFormatLocale, dateFormatOptions);
   const commit = `[${github.commitSha.slice(0, 7)}](${github.getCommitUrl()})`;
   const footer = `(Updated ${time}, against commit ${commit})`;
 
-  return `${header}\n\n${issuesBlock}\n\n${footer}`;
+  const surburbanBlock = createBlock(suburbanIssues, "suburban");
+  const regionalBlock = createBlock(regionalIssues, "regional");
+
+  return `${header}\n\n${surburbanBlock}\n\n${regionalBlock}\n\n${footer}`;
 }
 
 function truncateIfOverLength(text: string, maxLength: number): string {

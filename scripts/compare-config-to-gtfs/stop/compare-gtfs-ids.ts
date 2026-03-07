@@ -24,6 +24,7 @@ export function compareStopGtfsIds({
   function reportMissingFromConfig(row: StopsCsvTreeNode) {
     if (isIdMissingFromConfigIgnored(row)) return;
     issues.add({
+      category: "Child GTFS stop IDs not mapped",
       message: `GTFS ID "${row.stop_id}" ("${row.stop_name}", platform code: ${JSON.stringify(row.platform_code)}) belonging to ${config.name} (#${config.id}) found in GTFS but not mapped.`,
     });
   }
@@ -31,6 +32,7 @@ export function compareStopGtfsIds({
   function reportMissingFromActualGtfs(mappedId: StopGtfsIdMetadata) {
     if (isIdMissingFromGtfsIgnored(mappedId)) return;
     issues.add({
+      category: "Mapped GTFS stop IDs not found in GTFS",
       message: `GTFS ID "${mappedId.id}" mapped to ${config.name} (#${config.id}) not found in GTFS.`,
     });
   }

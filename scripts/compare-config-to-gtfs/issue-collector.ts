@@ -1,4 +1,8 @@
+import { groupBy } from "@dan-schel/js-utils";
+import type { Subfeed } from "../../src/gtfs/schedule/utils/subfeed.js";
+
 type ComparisonIssue = {
+  readonly category: string;
   readonly message: string;
 };
 
@@ -32,27 +36,43 @@ export class IssueCollector {
     return this.getCount() === 0;
   }
 
-  outputToConsole(): void {
+  outputToConsole(subfeed: Subfeed): void {
     console.log();
 
     const issues = this.getIssues();
+    const subfeedSuffix = `against ${subfeed} subfeed`;
     if (issues.length === 0) {
-      console.log("No issues found!");
+      console.log(`📝 No issues found ${subfeedSuffix}!`);
       return;
     }
 
+    const count = issues.length;
     const noun = issues.length === 1 ? "issue" : "issues";
-    console.log(`Found ${issues.length} ${noun}:\n${this.asFormattedList()}`);
+    const list = this.asFormattedList();
+    console.log(`📝 Found ${count} ${noun} ${subfeedSuffix}:\n\n${list}`);
   }
 
   asFormattedList() {
-    return this.getIssues()
-      .map((i) => `- ${i.message}`)
-      .join("\n");
+    if (this.isEmpty()) {
+      return "No issues!";
+    }
+
+    const groups = groupBy(this.getIssues(), (i) => i.category).map(
+      ({ group, items }) => {
+        const itemsStr = items
+          .map((i) => `- ${i.message}`)
+          .sort((a, b) => a.localeCompare(b))
+          .join("\n");
+
+        return `[${group}]\n${itemsStr}`;
+      },
+    );
+    return groups.join("\n\n");
   }
 
-  private _getUnmappedStopIdsInUseIssues() {
+  private _getUnmappedStopIdsInUseIssues(): ComparisonIssue[] {
     return Array.from(this._unmappedGtfsStopIdsInUse).map((stopId) => ({
+      category: "Unmapped GTFS stop IDs in use",
       message: `GTFS stop ID "${stopId}" is present in stopping patterns, but not mapped.`,
     }));
   }
