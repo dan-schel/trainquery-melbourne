@@ -30,6 +30,12 @@ export const lineGtfsIds: LineGtfsIdsConfig = {
     },
   },
 
+  [line.CITY_CIRCLE]: {
+    suburban: {
+      primary: "aus:vic:vic-02-CCL:",
+    },
+  },
+
   [line.CRAIGIEBURN]: {
     suburban: {
       primary: "aus:vic:vic-02-CGB:",

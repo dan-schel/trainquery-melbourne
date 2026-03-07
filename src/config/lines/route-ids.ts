@@ -20,3 +20,5 @@ export const COMMON_DOWN = 10;
 /** @knipignore */ export const MARYBOROUGH_BRANCH_DOWN = 20;
 /** @knipignore */ export const ARARAT_BRANCH_UP = 21;
 /** @knipignore */ export const ARARAT_BRANCH_DOWN = 22;
+export const CLOCKWISE = 23;
+export const ANTI_CLOCKWISE = 24;

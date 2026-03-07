@@ -2,6 +2,8 @@ import { type LineConfig } from "corequery";
 import * as line from "./line-ids.js";
 import * as tag from "./line-tags.js";
 import * as stop from "../stops/stop-ids.js";
+import * as route from "./route-ids.js";
+import * as routeTag from "./route-tags.js";
 import { linear } from "./route-builders/linear.js";
 import { cityLoop } from "./route-builders/city-loop.js";
 import { multi } from "./route-builders/multi.js";
@@ -172,6 +174,60 @@ export const BENDIGO: LineConfig = {
       { stopId: stop.EAGLEHAWK },
     ],
   }),
+};
+
+export const CITY_CIRCLE: LineConfig = {
+  id: line.CITY_CIRCLE,
+  name: "City Circle",
+  code: null,
+  tags: [tag.SUBURBAN, tag.SUBURBAN_GTFS_SUBFEED],
+  urlPath: "citycircle",
+  routes: [
+    {
+      id: route.CLOCKWISE,
+      name: "Clockwise",
+      tags: [routeTag.CLOCKWISE],
+      stops: [
+        { type: "regular", stopId: stop.FLINDERS_STREET },
+        { type: "regular", stopId: stop.SOUTHERN_CROSS },
+        { type: "regular", stopId: stop.FLAGSTAFF },
+        { type: "regular", stopId: stop.MELBOURNE_CENTRAL },
+        { type: "regular", stopId: stop.PARLIAMENT },
+        { type: "regular", stopId: stop.FLINDERS_STREET },
+      ],
+      color: "red",
+    },
+    {
+      id: route.ANTI_CLOCKWISE,
+      name: "Anti-Clockwise",
+      tags: [routeTag.ANTI_CLOCKWISE],
+      stops: [
+        { type: "regular", stopId: stop.FLINDERS_STREET },
+        { type: "regular", stopId: stop.PARLIAMENT },
+        { type: "regular", stopId: stop.MELBOURNE_CENTRAL },
+        { type: "regular", stopId: stop.FLAGSTAFF },
+        { type: "regular", stopId: stop.SOUTHERN_CROSS },
+        { type: "regular", stopId: stop.FLINDERS_STREET },
+      ],
+      color: "red",
+    },
+  ],
+  diagram: {
+    entries: [
+      {
+        name: null,
+        color: "red",
+        stops: [
+          { type: "regular", stopId: stop.FLINDERS_STREET },
+          { type: "regular", stopId: stop.SOUTHERN_CROSS },
+          { type: "regular", stopId: stop.FLAGSTAFF },
+          { type: "regular", stopId: stop.MELBOURNE_CENTRAL },
+          { type: "regular", stopId: stop.PARLIAMENT },
+          { type: "regular", stopId: stop.FLINDERS_STREET },
+        ],
+      },
+    ],
+  },
 };
 
 export const CRAIGIEBURN: LineConfig = {
