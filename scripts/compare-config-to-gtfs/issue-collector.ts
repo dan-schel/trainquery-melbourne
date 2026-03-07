@@ -1,4 +1,5 @@
 import { groupBy } from "@dan-schel/js-utils";
+import type { Subfeed } from "../../src/gtfs/schedule/utils/subfeed.js";
 
 type ComparisonIssue = {
   readonly category: string;
@@ -35,20 +36,27 @@ export class IssueCollector {
     return this.getCount() === 0;
   }
 
-  outputToConsole(): void {
+  outputToConsole(subfeed: Subfeed): void {
     console.log();
 
     const issues = this.getIssues();
+    const subfeedSuffix = `against ${subfeed} subfeed`;
     if (issues.length === 0) {
-      console.log("No issues found!");
+      console.log(`📝 No issues found ${subfeedSuffix}!`);
       return;
     }
 
+    const count = issues.length;
     const noun = issues.length === 1 ? "issue" : "issues";
-    console.log(`Found ${issues.length} ${noun}:\n\n${this.asFormattedList()}`);
+    const list = this.asFormattedList();
+    console.log(`📝 Found ${count} ${noun} ${subfeedSuffix}:\n\n${list}`);
   }
 
   asFormattedList() {
+    if (this.isEmpty()) {
+      return "No issues!";
+    }
+
     const groups = groupBy(this.getIssues(), (i) => i.category).map(
       ({ group, items }) => {
         const itemsStr = items
