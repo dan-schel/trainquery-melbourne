@@ -20,3 +20,4 @@ export const BALLARAT = 19;
 export const GEELONG = 20;
 export const WERRIBEE = 21;
 export const WILLIAMSTOWN = 22;
+export const CITY_CIRCLE = 23;

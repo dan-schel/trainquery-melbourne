@@ -30,10 +30,12 @@ export const MARYBOROUGH_BRANCH_DOWN = 29;
 export const ARARAT_BRANCH = 30;
 export const ARARAT_BRANCH_UP = 31;
 export const ARARAT_BRANCH_DOWN = 32;
+export const CLOCKWISE = 33;
+export const ANTI_CLOCKWISE = 34;
 
 // [NOTE] These look the same as the route IDs, but serve a different purpose.
 // [NOTE] Each route can only have one ID, but can have multiple tags (e.g.
 // [NOTE] routes with IDs of UP, UP_DIRECT, UP_VIA_CITY_LOOP,
 // [NOTE] UP_VIA_METRO_TUNNEL, ALBURY_BRANCH_UP, etc. will have those tags too,
-// [NOTE] but they'll also be taggedwith UP so that stop pages can group all
+// [NOTE] but they'll also be tagged with UP so that stop pages can group all
 // [NOTE] services going in the up direction, regardless of the exact route ID).

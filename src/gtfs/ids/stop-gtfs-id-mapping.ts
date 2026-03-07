@@ -37,6 +37,10 @@ export class StopGtfsIdMapping {
     return result;
   }
 
+  allIds(): StopGtfsIdMetadata[] {
+    return [...this._fromGtfsIdMapping.values()];
+  }
+
   static build(config: StopGtfsIdsConfig, subfeed: Subfeed): StopGtfsIdMapping {
     const result = new Map<number, StopGtfsIdCollection>();
 

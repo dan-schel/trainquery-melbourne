@@ -237,6 +237,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["11410"],
         [position.PLATFORM_2]: ["11411"],
       },
+      replacementBus: ["26114"],
     },
   },
 
@@ -265,6 +266,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["11119"],
         [position.PLATFORM_2]: ["11120"],
       },
+      replacementBus: ["26116"],
     },
   },
 
@@ -368,6 +370,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["11249"],
         [position.PLATFORM_2]: ["11409"],
       },
+      replacementBus: ["26123"],
     },
   },
 
@@ -906,6 +909,10 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
       },
       replacementBus: ["26158"],
     },
+    regional: {
+      parent: "vic:rail:EPH",
+      general: ["49848"],
+    },
   },
 
   [stop.EAST_RICHMOND]: {
@@ -1037,6 +1044,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["11247"],
         [position.PLATFORM_2]: ["11248"],
       },
+      replacementBus: ["26167"],
     },
   },
 
@@ -1344,7 +1352,10 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
       platforms: {
         [position.PLATFORM_1]: ["14267"],
         [position.PLATFORM_2]: ["14268"],
+        [position.PLATFORM_3]: ["14269"],
+        [position.PLATFORM_4]: ["14270"],
       },
+      replacementBus: ["26188"],
     },
   },
 
@@ -1396,6 +1407,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["11412"],
         [position.PLATFORM_2]: ["11413"],
       },
+      replacementBus: ["26192"],
     },
   },
 
@@ -1439,6 +1451,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["8763"],
         [position.PLATFORM_2]: ["8766"],
       },
+      replacementBus: ["26196"],
     },
   },
 
@@ -1542,6 +1555,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["10117"],
         [position.PLATFORM_2]: ["11219"],
       },
+      replacementBus: ["26205"],
     },
   },
 
@@ -2850,6 +2864,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
       platforms: {
         [position.PLATFORM_1]: ["11121"],
       },
+      replacementBus: ["26293"],
     },
   },
 
@@ -2985,6 +3000,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["11245"],
         [position.PLATFORM_2]: ["11246"],
       },
+      replacementBus: ["26301"],
     },
   },
 
@@ -2995,6 +3011,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["11122"],
         [position.PLATFORM_2]: ["11123"],
       },
+      replacementBus: ["26302"],
     },
   },
 

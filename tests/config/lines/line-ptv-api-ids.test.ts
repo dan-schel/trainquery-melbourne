@@ -3,8 +3,12 @@ import { linePtvApiIds } from "../../../src/config/lines/line-ptv-api-ids.js";
 import { lines } from "../../../src/config/lines/index.js";
 import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
+import * as line from "../../../src/config/lines/line-ids.js";
 
-const linesExemptedFromHavingPtvId: number[] = [];
+const linesExemptedFromHavingPtvId: number[] = [
+  // I don't think it HAS a PTV API ID.
+  line.CITY_CIRCLE,
+];
 
 describe("linePtvApiIds", () => {
   it("has an entry for each line", () => {
