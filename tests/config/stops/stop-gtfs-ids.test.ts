@@ -19,18 +19,14 @@ describe("stopGtfsIds", () => {
         `No GTFS IDs found for ${stop.name} (#${stop.id}).`,
       );
 
-      if (getSubfeedsWithStop(stop).suburban) {
-        assert(
-          idConfig.suburban != null,
-          `Use of tags indicates ${stop.name} (#${stop.id}) should have suburban GTFS IDs mapped.`,
-        );
-      }
-      if (getSubfeedsWithStop(stop).regional) {
-        assert(
-          idConfig.regional != null,
-          `Use of tags indicates ${stop.name} (#${stop.id}) should have regional GTFS IDs mapped.`,
-        );
-      }
+      assert(
+        getSubfeedsWithStop(stop).suburban === (idConfig.suburban != null),
+        `Tag ${stop.name} (#${stop.id}) with SUBURBAN_GTFS_SUBFEED if and only if it has suburban GTFS IDs mapped.`,
+      );
+      assert(
+        getSubfeedsWithStop(stop).regional === (idConfig.regional != null),
+        `Tag ${stop.name} (#${stop.id}) with REGIONAL_GTFS_SUBFEED if and only if it has regional GTFS IDs mapped.`,
+      );
     }
   });
 
