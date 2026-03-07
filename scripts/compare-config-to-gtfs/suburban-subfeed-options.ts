@@ -30,12 +30,20 @@ export const suburbanSubfeedOptions: ComparisonOptions = {
     },
 
     [stop.FLEMINGTON_RACECOURSE]: {
+      // Flemington Racecourse line stations disappear from the GTFS data
+      // sometimes.
+      ignoreNotFoundInGtfs: true,
+
       // Sometimes Flemington Racecourse disappears from the GTFS data entirely,
       // and sometimes just the platforms do.
       ignoredIdsMissingFromGtfs: ["15524", "15525"],
     },
 
     [stop.SHOWGROUNDS]: {
+      // Flemington Racecourse line stations disappear from the GTFS data
+      // sometimes.
+      ignoreNotFoundInGtfs: true,
+
       // Sometimes Showgrounds disappears from the GTFS data entirely, and
       // sometimes just the platforms do.
       ignoredIdsMissingFromGtfs: ["15526"],
