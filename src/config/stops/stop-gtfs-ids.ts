@@ -1163,6 +1163,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["14281"],
         [position.PLATFORM_2]: ["14282"],
       },
+      replacementBus: ["26173"],
     },
   },
 
@@ -1173,6 +1174,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["12269"],
         [position.PLATFORM_2]: ["5804"],
       },
+      replacementBus: ["26174"],
     },
   },
 
@@ -1534,6 +1536,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["14316"],
         [position.PLATFORM_2]: ["14317"],
       },
+      replacementBus: ["26203"],
     },
   },
 
@@ -2687,6 +2690,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_13]: ["22192"],
         [position.PLATFORM_14]: ["22193"],
       },
+      replacementBus: ["26282"],
     },
     regional: {
       parent: "vic:rail:SSS",

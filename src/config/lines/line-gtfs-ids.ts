@@ -33,6 +33,7 @@ export const lineGtfsIds: LineGtfsIdsConfig = {
   [line.CITY_CIRCLE]: {
     suburban: {
       primary: "aus:vic:vic-02-CCL:",
+      replacementBus: ["aus:vic:vic-02-CCL-R:"],
     },
   },
 
