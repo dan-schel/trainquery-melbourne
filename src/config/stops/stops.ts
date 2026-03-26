@@ -2430,7 +2430,7 @@ export const NORTH_MELBOURNE: StopConfig = {
   name: "North Melbourne",
   tags: [tag.SUBURBAN_GTFS_SUBFEED, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "northmelbourne",
-  location: { latitude: -37.80630984, longitude: 144.94151017 },
+  location: { latitude: -37.80755071, longitude: 144.94238439 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
