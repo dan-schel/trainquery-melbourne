@@ -1,4 +1,4 @@
-import { itsOk, parseIntNull, parseIntThrow } from "@dan-schel/js-utils";
+import { parseIntNull } from "@dan-schel/js-utils";
 import type { GtfsData } from "../read-gtfs.js";
 
 export function patchDuplicateStopTimes(gtfsData: GtfsData): GtfsData {
