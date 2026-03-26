@@ -70,6 +70,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["14312"],
         [position.PLATFORM_2]: ["14313"],
       },
+      replacementBus: ["26105"],
     },
   },
 
@@ -218,6 +219,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["14306"],
         [position.PLATFORM_2]: ["14307"],
       },
+      replacementBus: ["26112"],
     },
   },
 
@@ -426,6 +428,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["14314"],
         [position.PLATFORM_2]: ["14315"],
       },
+      replacementBus: ["26127"],
     },
   },
 
@@ -897,6 +900,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["8705"],
         [position.PLATFORM_2]: ["8718"],
       },
+      replacementBus: ["26157"],
     },
   },
 
@@ -1034,6 +1038,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["14302"],
         [position.PLATFORM_2]: ["14303"],
       },
+      replacementBus: ["26166"],
     },
   },
 
@@ -1068,6 +1073,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["14320"],
         [position.PLATFORM_2]: ["14321"],
       },
+      replacementBus: ["26169"],
     },
   },
 
@@ -1292,6 +1298,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["14300"],
         [position.PLATFORM_2]: ["14301"],
       },
+      replacementBus: ["26182"],
     },
   },
 
@@ -1736,6 +1743,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["14322"],
         [position.PLATFORM_2]: ["14323"],
       },
+      replacementBus: ["26217"],
     },
   },
 
@@ -1853,6 +1861,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["14304"],
         [position.PLATFORM_2]: ["14305"],
       },
+      replacementBus: ["26224"],
     },
   },
 
@@ -1998,6 +2007,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["14310"],
         [position.PLATFORM_2]: ["14311"],
       },
+      replacementBus: ["26236"],
     },
   },
 
@@ -2126,6 +2136,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
   [stop.NORTH_MELBOURNE]: {
     suburban: {
       parent: "vic:rail:NME",
+      general: ["22239"],
       platforms: {
         [position.PLATFORM_1]: ["14324"],
         [position.PLATFORM_2]: ["14325"],
@@ -2138,7 +2149,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:NME",
-      general: ["22239"],
+      general: ["22239", "14324", "14325", "14326", "14327", "14328", "14329"],
       replacementBus: ["26245"],
     },
   },
@@ -2509,6 +2520,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["14318"],
         [position.PLATFORM_2]: ["14319"],
       },
+      replacementBus: ["26270"],
     },
   },
 
@@ -2994,6 +3006,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
       platforms: {
         [position.PLATFORM_1]: ["14299"],
       },
+      replacementBus: ["26300"],
     },
   },
 
