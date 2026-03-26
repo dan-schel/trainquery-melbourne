@@ -2149,7 +2149,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:NME",
-      general: ["22239"],
+      general: ["22239", "14324", "14325", "14326", "14327", "14328", "14329"],
       replacementBus: ["26245"],
     },
   },

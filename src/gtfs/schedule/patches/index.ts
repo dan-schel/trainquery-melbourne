@@ -1,5 +1,5 @@
 import type { GtfsData } from "../read-gtfs.js";
-import { patchDuplicateStopTimes } from "./patch-duplicate-stop-times.js";
+// import { patchDuplicateStopTimes } from "./patch-duplicate-stop-times.js";
 
 type Patch = (gtfsData: GtfsData) => GtfsData;
 
@@ -15,7 +15,10 @@ type Patch = (gtfsData: GtfsData) => GtfsData;
 // e.g. duplicate stop times appearing in stop_times.txt DOES get a patch,
 // because it runtime TrainQuery will fail to match the trip to any route, and
 // would presumably show double stops even if it could.
-const activePatches: Patch[] = [patchDuplicateStopTimes];
+const activePatches: Patch[] = [
+  // NOTE: Intentionally disabling this patch (see comments in patch file).
+  // patchDuplicateStopTimes
+];
 
 export function applyPatches(gtfsData: GtfsData): GtfsData {
   return activePatches.reduce((data, patch) => patch(data), gtfsData);

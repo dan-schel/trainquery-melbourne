@@ -1,4 +1,5 @@
 import type { ComparisonOptions } from "./comparison-options.js";
+import * as stop from "../../src/config/stops/stop-ids.js";
 import { isPresent } from "@dan-schel/js-utils";
 import { NONSENSE_GTFS_STOP_ID_REGEX } from "../utils/gtfs/magic-values.js";
 
@@ -15,6 +16,11 @@ export const regionalSubfeedOptions: ComparisonOptions = {
       // The replacement bus IDs seem to come and go, even in the regional
       // subfeed!
       ignoreIdMissingFromGtfs: (id) => id.type === "replacement-bus",
+    },
+
+    [stop.EAST_PAKENHAM]: {
+      // East Pakenham disappears from the GTFS data sometimes.
+      ignoreNotFoundInGtfs: true,
     },
   },
 };
