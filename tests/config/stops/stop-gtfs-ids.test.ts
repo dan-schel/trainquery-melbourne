@@ -5,8 +5,52 @@ import { stopGtfsIds } from "../../../src/config/stops/stop-gtfs-ids.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import { getSubfeedsWithStop } from "../../../src/gtfs/utils/get-subfeeds-with.js";
 import { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
+import * as stop from "../../../src/config/stops/stop-ids.js";
+import * as position from "../../../src/config/stops/stop-position-ids.js";
 
 const stopsExemptedFromHavingGtfsId: number[] = [];
+
+const platformsExemptedFromHavingGtfsId: {
+  stopId: number;
+  positionId: number;
+}[] = [
+  // Platform not in use anymore, so it makes sense that the GTFS feed hasn't
+  // given an ID for it.
+  { stopId: stop.FLINDERS_STREET, positionId: position.PLATFORM_14 },
+
+  // Only the suburban feed gives platform-level IDs, so we don't have them for
+  // the regional-only platforms that suburban trains never use. We do have them
+  // for platforms 9 to 14 though, and also "standard" platform 8 (sometimes
+  // used by Racecourse line trains).
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_1 },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_2 },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_2A },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_2B },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_3 },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_3A },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_3B },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_4 },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_4A },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_4B },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_5 },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_5A },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_5B },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_6 },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_6A },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_6B },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_7 },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_7A },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_7B },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_8A },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_8B },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_8S },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_15 },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_15A },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_15B },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_16 },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_16A },
+  { stopId: stop.SOUTHERN_CROSS, positionId: position.PLATFORM_16B },
+];
 
 describe("stopGtfsIds", () => {
   it("has an entry for each stop", () => {
@@ -27,6 +71,28 @@ describe("stopGtfsIds", () => {
         getSubfeedsWithStop(stop).regional === (idConfig.regional != null),
         `Tag ${stop.name} (#${stop.id}) with REGIONAL_GTFS_SUBFEED if and only if it has regional GTFS IDs mapped.`,
       );
+    }
+  });
+
+  it("has an entry for each platform of each suburban station", () => {
+    for (const stop of stops) {
+      const idConfig = stopGtfsIds[stop.id];
+      if (idConfig?.suburban == null) continue;
+
+      for (const position of stop.positions) {
+        const positionId = position.stopPositionId;
+
+        const isExempt = platformsExemptedFromHavingGtfsId.some(
+          (e) => e.stopId === stop.id && e.positionId === positionId,
+        );
+        if (isExempt) continue;
+
+        const mappedIdForPlatform = idConfig.suburban.platforms?.[positionId];
+        assert(
+          mappedIdForPlatform != null && mappedIdForPlatform.length > 0,
+          `No suburban GTFS IDs found for platform "${position.name}" (position #${positionId}) at ${stop.name} (#${stop.id}).`,
+        );
+      }
     }
   });
 
