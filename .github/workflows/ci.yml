@@ -47,8 +47,9 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: dan-schel/trainquery-melbourne
-  confgen:
+  compare-config-to-gtfs:
     name: Config aligns with latest GTFS data
+    if: ${{ !startsWith(github.ref_name, 'renovate/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
