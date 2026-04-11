@@ -453,6 +453,7 @@ export const BRIGHTON_BEACH: StopConfig = {
   urlPath: "brightonbeach",
   location: { latitude: -37.92648432, longitude: 144.98915355 },
   positions: [
+    { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
     { stopPositionId: position.PLATFORM_3, name: "3" },
   ],
@@ -1964,7 +1965,7 @@ export const MACAULAY: StopConfig = {
   name: "Macaulay",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "macaulay",
-  location: { latitude: -37.79426673, longitude: 144.93616633 },
+  location: { latitude: -37.79478777, longitude: 144.93607233 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },

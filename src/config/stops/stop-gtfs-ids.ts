@@ -392,9 +392,11 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     suburban: {
       parent: "vic:rail:BBH",
       platforms: {
+        [position.PLATFORM_1]: ["14274"],
         [position.PLATFORM_2]: ["14275"],
         [position.PLATFORM_3]: ["14276"],
       },
+      replacementBus: ["26125"],
     },
   },
 
@@ -408,15 +410,17 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
   [stop.BROADMEADOWS]: {
     suburban: {
       parent: "vic:rail:BMS",
+      general: ["22254"],
       platforms: {
         [position.PLATFORM_1]: ["15529"],
         [position.PLATFORM_2]: ["15530"],
+        [position.PLATFORM_3]: ["26500"],
       },
       replacementBus: ["26126"],
     },
     regional: {
       parent: "vic:rail:BMS",
-      general: ["22254"],
+      general: ["22254", "15529", "15530", "26500"],
       replacementBus: ["26126"],
     },
   },
@@ -760,6 +764,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["12168"],
         [position.PLATFORM_2]: ["12169"],
       },
+      replacementBus: ["26148"],
     },
   },
 
@@ -799,6 +804,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["8272"],
         [position.PLATFORM_2]: ["8691"],
       },
+      replacementBus: ["26151"],
     },
   },
 
@@ -1236,6 +1242,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["5966"],
         [position.PLATFORM_2]: ["8266"],
       },
+      replacementBus: ["26176"],
     },
   },
 
@@ -1641,6 +1648,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["12265"],
         [position.PLATFORM_2]: ["12266"],
       },
+      replacementBus: ["26210"],
     },
   },
 
@@ -1708,6 +1716,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["12164"],
         [position.PLATFORM_2]: ["12165"],
       },
+      replacementBus: ["26215"],
     },
   },
 
@@ -1979,6 +1988,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["12166"],
         [position.PLATFORM_2]: ["12167"],
       },
+      replacementBus: ["26234"],
     },
   },
 
