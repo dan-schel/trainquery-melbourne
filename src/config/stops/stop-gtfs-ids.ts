@@ -2455,6 +2455,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["12170"],
         [position.PLATFORM_2]: ["12171"],
       },
+      replacementBus: ["26264"],
     },
   },
 
