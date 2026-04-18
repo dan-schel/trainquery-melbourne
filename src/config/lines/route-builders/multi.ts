@@ -1,7 +1,7 @@
 import { type RouteBuilderOutput } from "./utils.js";
 
 type Options = {
-  items: readonly RouteBuilderOutput[];
+  readonly items: readonly RouteBuilderOutput[];
 };
 
 export function multi(options: Options): RouteBuilderOutput {

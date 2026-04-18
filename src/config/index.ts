@@ -1,8 +1,8 @@
 import { parseIntThrow } from "@dan-schel/js-utils";
 import {
-  ConsoleLogger,
   type CorequeryConfigBuilder,
   type LintableConfig,
+  ConsoleLogger,
 } from "corequery";
 import { env } from "../env.js";
 import { assets } from "./assets.js";
@@ -14,12 +14,14 @@ import { terminology } from "./terminology.js";
 import { landingPage } from "./landing-page.js";
 import { footer } from "./footer.js";
 import { aboutPage } from "./about-page.js";
+import { getCanonicalLinesServingStop } from "./get-canonical-lines-serving-stop.js";
 
 export const buildConfig: CorequeryConfigBuilder = () => ({
   port: parseIntThrow(env.PORT ?? "3000"),
   version: env.COMMIT_HASH ?? "dev",
   assets: assets,
   logger: new ConsoleLogger(),
+  getCanonicalLinesServingStop,
   ...lintableConfig,
 });
 
