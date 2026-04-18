@@ -9,13 +9,13 @@ import {
 } from "./utils.js";
 
 type Options = {
-  commonName: string;
-  branchAName: string;
-  branchBName: string;
-  color: Color;
-  commonStops: readonly RouteBuilderStop[];
-  branchAStops: readonly RouteBuilderStop[];
-  branchBStops: readonly RouteBuilderStop[];
+  readonly commonName: string;
+  readonly branchAName: string;
+  readonly branchBName: string;
+  readonly color: Color;
+  readonly commonStops: readonly RouteBuilderStop[];
+  readonly branchAStops: readonly RouteBuilderStop[];
+  readonly branchBStops: readonly RouteBuilderStop[];
 };
 
 export function branch(options: Options): RouteBuilderOutput {

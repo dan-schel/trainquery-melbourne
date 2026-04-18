@@ -32,6 +32,7 @@ export const ARARAT_BRANCH_UP = 31;
 export const ARARAT_BRANCH_DOWN = 32;
 export const CLOCKWISE = 33;
 export const ANTI_CLOCKWISE = 34;
+export const NON_CANONICAL = 35;
 
 // [NOTE] These look the same as the route IDs, but serve a different purpose.
 // [NOTE] Each route can only have one ID, but can have multiple tags (e.g.

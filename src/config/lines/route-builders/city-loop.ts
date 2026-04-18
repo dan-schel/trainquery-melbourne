@@ -10,8 +10,8 @@ import {
 } from "./utils.js";
 
 type Options = {
-  color: Color;
-  stops: readonly RouteBuilderStop[];
+  readonly color: Color;
+  readonly stops: readonly RouteBuilderStop[];
 };
 
 export function cityLoop(options: Options): RouteBuilderOutput {
