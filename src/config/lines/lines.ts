@@ -16,6 +16,7 @@ export const ALAMEIN: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "alamein",
+  color: "blue",
   ...cityLoop({
     color: "blue",
     stops: [
@@ -42,6 +43,7 @@ export const BALLARAT: LineConfig = {
   code: null,
   tags: [tag.REGIONAL, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "ballarat",
+  color: "purple",
   ...branch({
     commonName: "Ballarat",
     branchAName: "Ararat",
@@ -86,6 +88,7 @@ export const BELGRAVE: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "belgrave",
+  color: "blue",
   ...cityLoop({
     color: "blue",
     stops: [
@@ -125,6 +128,7 @@ export const BENDIGO: LineConfig = {
   code: null,
   tags: [tag.REGIONAL, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "bendigo",
+  color: "purple",
   ...branch({
     commonName: "Bendigo",
     branchAName: "Echuca",
@@ -182,6 +186,7 @@ export const CITY_CIRCLE: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "citycircle",
+  color: "red",
   routes: [
     {
       id: route.CLOCKWISE,
@@ -236,6 +241,7 @@ export const CRAIGIEBURN: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "craigieburn",
+  color: "yellow",
   ...cityLoop({
     color: "yellow",
     stops: [
@@ -265,6 +271,7 @@ export const CRANBOURNE: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "cranbourne",
+  color: "cyan",
   ...multi({
     items: [
       metroTunnel({
@@ -331,6 +338,7 @@ export const FLEMINGTON_RACECOURSE: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN, tag.SPECIAL_EVENTS_ONLY, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "flemingtonracecourse",
+  color: "gray",
   ...cityLoop({
     color: "gray",
     stops: [
@@ -349,6 +357,7 @@ export const FRANKSTON: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "frankston",
+  color: "green",
   ...cityLoop({
     color: "green",
     stops: [
@@ -389,6 +398,7 @@ export const GEELONG: LineConfig = {
   code: null,
   tags: [tag.REGIONAL, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "geelong",
+  color: "purple",
   ...linear({
     color: "purple",
     stops: [
@@ -430,6 +440,7 @@ export const GIPPSLAND: LineConfig = {
   code: null,
   tags: [tag.REGIONAL, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "gippsland",
+  color: "purple",
   ...linear({
     color: "purple",
     stops: [
@@ -488,6 +499,7 @@ export const GLEN_WAVERLEY: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "glenwaverley",
+  color: "blue",
   ...cityLoop({
     color: "blue",
     stops: [
@@ -516,6 +528,7 @@ export const HURSTBRIDGE: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "hurstbridge",
+  color: "red",
   ...cityLoop({
     color: "red",
     stops: [
@@ -552,6 +565,7 @@ export const LILYDALE: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "lilydale",
+  color: "blue",
   ...cityLoop({
     color: "blue",
     stops: [
@@ -587,6 +601,7 @@ export const MERNDA: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "mernda",
+  color: "red",
   ...cityLoop({
     color: "red",
     stops: [
@@ -624,6 +639,7 @@ export const PAKENHAM: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "pakenham",
+  color: "cyan",
   ...multi({
     items: [
       metroTunnel({
@@ -700,6 +716,7 @@ export const SANDRINGHAM: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "sandringham",
+  color: "pink",
   ...linear({
     color: "pink",
     stops: [
@@ -727,6 +744,7 @@ export const SEYMOUR: LineConfig = {
   code: null,
   tags: [tag.REGIONAL, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "seymour",
+  color: "purple",
   ...branch({
     commonName: "Seymour",
     branchAName: "Albury",
@@ -785,6 +803,7 @@ export const STONY_POINT: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "stonypoint",
+  color: "green",
   ...linear({
     color: "green",
     stops: [
@@ -808,6 +827,7 @@ export const SUNBURY: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "sunbury",
+  color: "cyan",
   ...multi({
     items: [
       metroTunnel({
@@ -860,6 +880,7 @@ export const UPFIELD: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "upfield",
+  color: "yellow",
   ...cityLoop({
     color: "yellow",
     stops: [
@@ -887,8 +908,9 @@ export const WERRIBEE: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "werribee",
+  color: "pink",
   ...linear({
-    color: "green",
+    color: "pink",
     stops: [
       { stopId: stop.WERRIBEE },
       { stopId: stop.HOPPERS_CROSSING },
@@ -917,8 +939,9 @@ export const WILLIAMSTOWN: LineConfig = {
   code: null,
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "williamstown",
+  color: "pink",
   ...linear({
-    color: "green",
+    color: "pink",
     stops: [
       { stopId: stop.WILLIAMSTOWN },
       { stopId: stop.WILLIAMSTOWN_BEACH },
