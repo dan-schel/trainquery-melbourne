@@ -185,7 +185,7 @@ export const CITY_CIRCLE: LineConfig = {
   id: line.CITY_CIRCLE,
   name: "City Circle",
   code: null,
-  tags: [tag.SUBURBAN, tag.SUBURBAN_GTFS_SUBFEED],
+  tags: [tag.SUBURBAN, tag.DISRUPTIONS_ONLY, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "citycircle",
   color: "red",
   routes: [

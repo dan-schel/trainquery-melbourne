@@ -4,3 +4,6 @@ export const SPECIAL_EVENTS_ONLY = 3;
 export const SUBURBAN_FULL_TIME = 4;
 export const SUBURBAN_GTFS_SUBFEED = 5;
 export const REGIONAL_GTFS_SUBFEED = 6;
+export const DISRUPTIONS_ONLY = 7;
+export const PART_TIME = 8;
+export const FULL_TIME = 9;
