@@ -3,19 +3,19 @@ export type LineGtfsIdMetadata =
   | OtherLineGtfsIdMetadata
   | ReplacementBusLineGtfsIdMetadata;
 
-export type PrimaryLineGtfsIdMetadata = {
+type PrimaryLineGtfsIdMetadata = {
   readonly type: "primary";
   readonly id: string;
   readonly lineId: number;
 };
 
-export type OtherLineGtfsIdMetadata = {
+type OtherLineGtfsIdMetadata = {
   readonly type: "other";
   readonly id: string;
   readonly lineId: number;
 };
 
-export type ReplacementBusLineGtfsIdMetadata = {
+type ReplacementBusLineGtfsIdMetadata = {
   readonly type: "replacement-bus";
   readonly id: string;
   readonly lineId: number;
