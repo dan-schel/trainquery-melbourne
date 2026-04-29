@@ -3,12 +3,12 @@ export type LineGtfsIdsConfig = Record<number, LineGtfsIdsBySubfeedConfig>;
 export type StopPtvApiIdsConfig = Record<number, StopPtvApiIdCollectionConfig>;
 export type LinePtvApiIdsConfig = Record<number, LinePtvApiIdCollectionConfig>;
 
-export type StopGtfsIdsBySubfeedConfig = {
+type StopGtfsIdsBySubfeedConfig = {
   readonly suburban?: StopGtfsIdCollectionConfig;
   readonly regional?: StopGtfsIdCollectionConfig;
 };
 
-export type LineGtfsIdsBySubfeedConfig = {
+type LineGtfsIdsBySubfeedConfig = {
   readonly suburban?: LineGtfsIdCollectionConfig;
   readonly regional?: LineGtfsIdCollectionConfig;
 };
