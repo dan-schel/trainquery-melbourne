@@ -61,14 +61,13 @@ export function cityLoop(options: Options): RouteBuilderOutput {
     diagram: {
       entries: [
         {
-          name: "Via City Loop",
+          name: null,
           color: options.color,
-          stops: toDiagramStops([...upViaCityLoopStops].reverse()),
-        },
-        {
-          name: "Direct",
-          color: options.color,
-          stops: toDiagramStops([...viaDirectStops].reverse()),
+          shape: {
+            type: "loop",
+            mainStops: toDiagramStops([...options.stops].reverse()),
+            ...getDiagramStops(portalStop),
+          },
         },
       ],
     },
@@ -98,6 +97,36 @@ function getCityStops(
           { stopId: stop.FLINDERS_STREET },
         ]
       : [{ stopId: stop.SOUTHERN_CROSS }, { stopId: stop.FLINDERS_STREET }];
+  } else {
+    throw new Error("Invalid portal stop for city loop route.");
+  }
+}
+
+function getDiagramStops(portalStopId: number) {
+  if (portalStopId === stop.RICHMOND || portalStopId === stop.JOLIMONT) {
+    return {
+      loopLeftStops: toDiagramStops([
+        { stopId: stop.SOUTHERN_CROSS },
+        { stopId: stop.FLINDERS_STREET },
+      ]),
+      loopRightStops: toDiagramStops([
+        { stopId: stop.FLAGSTAFF },
+        { stopId: stop.MELBOURNE_CENTRAL },
+        { stopId: stop.PARLIAMENT },
+      ]),
+    };
+  } else if (portalStopId === stop.NORTH_MELBOURNE) {
+    return {
+      loopLeftStops: toDiagramStops([
+        { stopId: stop.PARLIAMENT },
+        { stopId: stop.MELBOURNE_CENTRAL },
+        { stopId: stop.FLAGSTAFF },
+      ]),
+      loopRightStops: toDiagramStops([
+        { stopId: stop.FLINDERS_STREET },
+        { stopId: stop.SOUTHERN_CROSS },
+      ]),
+    };
   } else {
     throw new Error("Invalid portal stop for city loop route.");
   }
