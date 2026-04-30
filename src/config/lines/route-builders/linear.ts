@@ -36,7 +36,10 @@ export function linear(options: Options): RouteBuilderOutput {
         {
           name: null,
           color: options.color,
-          stops: toDiagramStops([...options.stops].reverse()),
+          shape: {
+            type: "linear",
+            stops: toDiagramStops([...options.stops].reverse()),
+          },
         },
       ],
     },

@@ -73,19 +73,14 @@ export function branch(options: Options): RouteBuilderOutput {
     diagram: {
       entries: [
         {
-          name: options.commonName,
+          name: null,
           color: options.color,
-          stops: toDiagramStops([...options.commonStops].reverse()),
-        },
-        {
-          name: options.branchAName,
-          color: options.color,
-          stops: toDiagramStops([...branchAStops].reverse()),
-        },
-        {
-          name: options.branchBName,
-          color: options.color,
-          stops: toDiagramStops([...branchBStops].reverse()),
+          shape: {
+            type: "branch",
+            commonStops: toDiagramStops([...options.commonStops].reverse()),
+            branchAStops: toDiagramStops([...options.branchAStops].reverse()),
+            branchBStops: toDiagramStops([...options.branchBStops].reverse()),
+          },
         },
       ],
     },

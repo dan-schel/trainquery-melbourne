@@ -223,14 +223,19 @@ export const CITY_CIRCLE: LineConfig = {
       {
         name: null,
         color: "red",
-        stops: [
-          { type: "regular", stopId: stop.FLINDERS_STREET },
-          { type: "regular", stopId: stop.SOUTHERN_CROSS },
-          { type: "regular", stopId: stop.FLAGSTAFF },
-          { type: "regular", stopId: stop.MELBOURNE_CENTRAL },
-          { type: "regular", stopId: stop.PARLIAMENT },
-          { type: "regular", stopId: stop.FLINDERS_STREET },
-        ],
+        shape: {
+          type: "loop",
+          loopLeftStops: [
+            { type: "regular", stopId: stop.SOUTHERN_CROSS },
+            { type: "regular", stopId: stop.FLINDERS_STREET },
+          ],
+          loopRightStops: [
+            { type: "regular", stopId: stop.FLAGSTAFF },
+            { type: "regular", stopId: stop.MELBOURNE_CENTRAL },
+            { type: "regular", stopId: stop.PARLIAMENT },
+          ],
+          mainStops: [],
+        },
       },
     ],
   },
@@ -333,6 +338,7 @@ export const CRANBOURNE: LineConfig = {
         }),
       }),
     ],
+    diagramNames: ["Via Metro Tunnel", "Via City Loop"],
   }),
 };
 
@@ -714,6 +720,7 @@ export const PAKENHAM: LineConfig = {
         }),
       }),
     ],
+    diagramNames: ["Via Metro Tunnel", "Via City Loop"],
   }),
 };
 
@@ -881,6 +888,7 @@ export const SUNBURY: LineConfig = {
         }),
       }),
     ],
+    diagramNames: ["Via Metro Tunnel", "Via City Loop"],
   }),
 };
 

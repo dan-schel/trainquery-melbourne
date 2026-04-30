@@ -18,7 +18,7 @@ export function metroTunnel(options: Options): RouteBuilderOutput {
     routes: [
       {
         id: route.UP_VIA_METRO_TUNNEL,
-        name: "Up",
+        name: "Up via Metro Tunnel",
         tags: [tag.UP_VIA_METRO_TUNNEL],
         stops: toRouteStops(options.stops),
         color: options.color,
@@ -34,9 +34,12 @@ export function metroTunnel(options: Options): RouteBuilderOutput {
     diagram: {
       entries: [
         {
-          name: "Via Metro Tunnel",
+          name: null,
           color: options.color,
-          stops: toDiagramStops([...options.stops].reverse()),
+          shape: {
+            type: "linear",
+            stops: toDiagramStops([...options.stops].reverse()),
+          },
         },
       ],
     },

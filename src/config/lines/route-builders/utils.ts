@@ -1,4 +1,8 @@
-import type { LineDiagramConfig, RouteConfig } from "corequery";
+import type {
+  LineDiagramConfig,
+  LineDiagramStopConfig,
+  RouteConfig,
+} from "corequery";
 
 export type RouteBuilderStop = {
   readonly stopId: number;
@@ -12,7 +16,6 @@ export type RouteBuilderOutput = {
 };
 
 type RouteStops = RouteConfig["stops"];
-type LineDiagramStops = LineDiagramConfig["entries"][0]["stops"];
 
 export function toRouteStops(stops: readonly RouteBuilderStop[]): RouteStops {
   return stops.map((stop) => ({
@@ -23,7 +26,7 @@ export function toRouteStops(stops: readonly RouteBuilderStop[]): RouteStops {
 
 export function toDiagramStops(
   stops: readonly RouteBuilderStop[],
-): LineDiagramStops {
+): LineDiagramStopConfig[] {
   return stops
     .filter((stop) => !(stop.hidden ?? false))
     .map((stop) => ({
