@@ -1,9 +1,18 @@
 import type { ComparisonOptions } from "./comparison-options.js";
+import * as line from "../../src/config/lines/line-ids.js";
 import * as stop from "../../src/config/stops/stop-ids.js";
 import { isPresent } from "@dan-schel/js-utils";
 import { NONSENSE_GTFS_STOP_ID_REGEX } from "../utils/gtfs/magic-values.js";
 
 export const suburbanSubfeedOptions: ComparisonOptions = {
+  lines: {
+    [line.CITY_CIRCLE]: {
+      // City Circle drops out of the suburban GTFS feed at times, but we still
+      // want to keep it mapped in the config.
+      ignoreNotFoundInGtfs: true,
+    },
+  },
+
   stops: {
     all: {
       // We're not mapping the "vic:rail:ABC_[...]" codes at the moment. They're
