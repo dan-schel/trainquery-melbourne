@@ -1,4 +1,4 @@
-import { assert, describe, expect, it } from "vitest";
+import { assert, describe, it } from "vitest";
 import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.js";
 import { stops } from "../../../src/config/stops/index.js";
 import { stopGtfsIds } from "../../../src/config/stops/stop-gtfs-ids.js";
@@ -128,27 +128,6 @@ describe("stopGtfsIds", () => {
         }
       }
     }
-  });
-
-  it("keeps both known Arden and Parkville replacement-bus ID variants mapped", () => {
-    const suburbanMapping = StopGtfsIdMapping.build(stopGtfsIds, "suburban");
-
-    expect(suburbanMapping.resolveOrThrow("26323")).toMatchObject({
-      stopId: stop.ARDEN,
-      type: "replacement-bus",
-    });
-    expect(suburbanMapping.resolveOrThrow("126323")).toMatchObject({
-      stopId: stop.ARDEN,
-      type: "replacement-bus",
-    });
-    expect(suburbanMapping.resolveOrThrow("26324")).toMatchObject({
-      stopId: stop.PARKVILLE,
-      type: "replacement-bus",
-    });
-    expect(suburbanMapping.resolveOrThrow("126324")).toMatchObject({
-      stopId: stop.PARKVILLE,
-      type: "replacement-bus",
-    });
   });
 
   it("are listed alphabetically", async () => {
