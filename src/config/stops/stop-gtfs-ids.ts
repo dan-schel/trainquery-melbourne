@@ -105,7 +105,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["26548"],
         [position.PLATFORM_2]: ["26549"],
       },
-      replacementBus: ["126323"],
+      replacementBus: ["26323", "126323"],
     },
   },
 
@@ -2300,7 +2300,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["26550"],
         [position.PLATFORM_2]: ["26551"],
       },
-      replacementBus: ["126324"],
+      replacementBus: ["26324", "126324"],
     },
   },
 
