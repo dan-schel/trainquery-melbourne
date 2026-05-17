@@ -55,11 +55,9 @@ const routeStopsExemptedFromBeingInDiagrams: Record<number, number[]> = {
   ],
 };
 
-const linesExemptedFromHavingCompatibleDiagrams: number[] = [];
+const linesExemptedFromHavingReversedRoutes: number[] = [];
 
-// TODO: More tests:
-// - all routes are reversed
-// - all stops in a route... exist
+const linesExemptedFromHavingCompatibleDiagrams: number[] = [];
 
 describe("lineRoutes", () => {
   it("has an entry for each line", () => {
@@ -71,6 +69,21 @@ describe("lineRoutes", () => {
         routes.length !== 0,
         `No routes found for ${line.name} line (#${line.id}).`,
       );
+    }
+  });
+
+  it("only includes stops which actually exist", () => {
+    for (const line of lines) {
+      const routes = lineRoutes[line.id] ?? [];
+
+      for (const route of routes) {
+        for (const stop of route.stops) {
+          assert(
+            stops.some((s) => s.id === stop.stopId),
+            `Non-existent stop #${stop.stopId} present on some ${line.name} line (#${line.id}) routes.`,
+          );
+        }
+      }
     }
   });
 
@@ -143,6 +156,26 @@ describe("lineRoutes", () => {
         );
 
         seenRoutes.add(routeSignature);
+      }
+    }
+  });
+
+  it("has routes such that each route has a reverse route", () => {
+    for (const line of lines) {
+      if (linesExemptedFromHavingReversedRoutes.includes(line.id)) continue;
+
+      const routes = lineRoutes[line.id] ?? [];
+      const stopLists = routes.map((r) => r.stops.map((s) => s.stopId));
+
+      for (const stopList of stopLists) {
+        const hasReverse = stopLists.some((r) =>
+          r.every((s, i) => s === stopList[stopList.length - 1 - i]),
+        );
+
+        assert(
+          hasReverse,
+          `${line.name} line (#${line.id}) contains a route with no identical reverse route.`,
+        );
       }
     }
   });
