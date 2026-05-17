@@ -10,15 +10,6 @@ import { formalizeRouteStops } from "../utils/formalize-stops.js";
 import { createCityLoopRoutes } from "../utils/city-loop.js";
 
 export const lineRoutes: LineRoutesConfig = {
-  // TODO: Add tests to ensure:
-  //
-  // - all lines have at least one route
-  // - all stops in a route are in a diagram
-  // - all stops in a diagram are in a route
-  // - no routes are duplicated
-  // - no routes have less than two stops
-  // - no routes have duplicate service tags
-
   [line.ALAMEIN]: createCityLoopRoutes([
     stop.RICHMOND,
     stop.EAST_RICHMOND,
