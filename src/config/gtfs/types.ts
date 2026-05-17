@@ -31,7 +31,7 @@ export type RouteConfig = {
   readonly serviceTags: readonly number[];
 };
 
-type RouteStopConfig = {
+export type RouteStopConfig = {
   readonly stopId: number;
-  readonly hidden?: boolean;
+  readonly collapseInStoppingPatterns: boolean;
 };

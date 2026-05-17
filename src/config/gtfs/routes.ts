@@ -2,6 +2,8 @@ import type { LineRoutesConfig } from "./types.js";
 import * as line from "../corequery/lines/line-ids.js";
 import * as stop from "../corequery/stops/stop-ids.js";
 import * as tag from "../corequery/lines/service-tags.js";
+import { withReversedRoute } from "../utils/with-reversed-route.js";
+import { formalizeRouteStops } from "../utils/formalize-stops.js";
 
 export const lineRoutes: LineRoutesConfig = {
   // TODO: Fill this out.
@@ -14,28 +16,15 @@ export const lineRoutes: LineRoutesConfig = {
   // - no routes have less than two stops
   // - no routes have duplicate service tags
 
-  [line.CITY_CIRCLE]: [
-    {
-      stops: [
-        { stopId: stop.FLINDERS_STREET },
-        { stopId: stop.SOUTHERN_CROSS },
-        { stopId: stop.FLAGSTAFF },
-        { stopId: stop.MELBOURNE_CENTRAL },
-        { stopId: stop.PARLIAMENT },
-        { stopId: stop.FLINDERS_STREET },
-      ],
-      serviceTags: [tag.CLOCKWISE, tag.VIA_CITY_LOOP],
-    },
-    {
-      stops: [
-        { stopId: stop.FLINDERS_STREET },
-        { stopId: stop.PARLIAMENT },
-        { stopId: stop.MELBOURNE_CENTRAL },
-        { stopId: stop.FLAGSTAFF },
-        { stopId: stop.SOUTHERN_CROSS },
-        { stopId: stop.FLINDERS_STREET },
-      ],
-      serviceTags: [tag.ANTICLOCKWISE, tag.VIA_CITY_LOOP],
-    },
-  ],
+  [line.CITY_CIRCLE]: withReversedRoute({
+    stops: formalizeRouteStops(
+      stop.FLINDERS_STREET,
+      stop.SOUTHERN_CROSS,
+      stop.FLAGSTAFF,
+      stop.MELBOURNE_CENTRAL,
+      stop.PARLIAMENT,
+      stop.FLINDERS_STREET,
+    ),
+    serviceTags: [tag.CITY_LOOP_CLOCKWISE, tag.VIA_CITY_LOOP],
+  }),
 };

@@ -1,12 +1,12 @@
-import type { RouteConfig } from "../types.js";
-import * as tag from "../../corequery/lines/service-tags.js";
-import { getTagName } from "../../../utils/get-tag-name.js";
+import type { RouteConfig } from "../gtfs/types.js";
+import * as tag from "../corequery/lines/service-tags.js";
+import { getTagName } from "../../utils/get-tag-name.js";
 
 const reversedTags: Record<number, number> = {
   [tag.CITYBOUND]: tag.OUTBOUND,
   [tag.OUTBOUND]: tag.CITYBOUND,
-  [tag.CLOCKWISE]: tag.ANTICLOCKWISE,
-  [tag.ANTICLOCKWISE]: tag.CLOCKWISE,
+  [tag.CITY_LOOP_CLOCKWISE]: tag.CITY_LOOP_ANTICLOCKWISE,
+  [tag.CITY_LOOP_ANTICLOCKWISE]: tag.CITY_LOOP_CLOCKWISE,
 
   // Tags which intentionally don't change when reversed. Specified here to
   // differentiate from tags which are missing from this mapping by mistake.
@@ -15,7 +15,13 @@ const reversedTags: Record<number, number> = {
   [tag.VIA_CITY_LOOP]: tag.VIA_CITY_LOOP,
 };
 
-export function withReversed(route: RouteConfig): RouteConfig {
+export function withReversedRoutes(
+  route: readonly RouteConfig[],
+): readonly RouteConfig[] {
+  return route.flatMap((route) => [route, buildReversedRoute(route)]);
+}
+
+function buildReversedRoute(route: RouteConfig): RouteConfig {
   return {
     stops: [...route.stops].reverse(),
 
