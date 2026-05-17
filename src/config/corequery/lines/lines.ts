@@ -653,7 +653,7 @@ export const SUNBURY: LineConfig = {
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "sunbury",
   color: "cyan",
-  diagram: createCityLoopDiagram("cyan", [
+  diagram: createLinearDiagram("cyan", [
     stop.TOWN_HALL,
     stop.STATE_LIBRARY,
     stop.PARKVILLE,
@@ -705,7 +705,7 @@ export const WERRIBEE: LineConfig = {
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "werribee",
   color: "pink",
-  diagram: createCityLoopDiagram("pink", [
+  diagram: createLinearDiagram("pink", [
     stop.FLINDERS_STREET,
     stop.SOUTHERN_CROSS,
     stop.NORTH_MELBOURNE,
@@ -733,7 +733,7 @@ export const WILLIAMSTOWN: LineConfig = {
   tags: [tag.SUBURBAN_FULL_TIME, tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "williamstown",
   color: "pink",
-  diagram: createCityLoopDiagram("pink", [
+  diagram: createLinearDiagram("pink", [
     stop.FLINDERS_STREET,
     stop.SOUTHERN_CROSS,
     stop.NORTH_MELBOURNE,
