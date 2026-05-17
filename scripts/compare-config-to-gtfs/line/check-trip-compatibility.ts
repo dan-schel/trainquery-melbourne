@@ -4,7 +4,7 @@ import type { IndexedStopTimes } from "../../../src/gtfs/schedule/higher-order/i
 import type { IssueCollector } from "../issue-collector.js";
 import type { LineGtfsIdCollection } from "../../../src/gtfs/ids/line-gtfs-id-collection.js";
 import type { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
-import { isSubsequence } from "./utils/is-subsequence.js";
+import { isSubsequence } from "../../../src/utils/is-subsequence.js";
 import { Trip } from "./utils/trip.js";
 import {
   UniqueStoppingPatternTracker,

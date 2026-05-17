@@ -2,9 +2,14 @@ import { assert, describe, it } from "vitest";
 import { lines } from "../../../src/config/corequery/lines/index.js";
 import { stops } from "../../../src/config/corequery/stops/index.js";
 import { lineRoutes } from "../../../src/config/gtfs/routes.js";
-import { unique } from "@dan-schel/js-utils";
-import { extractStopsFromLineDiagramShape, LineConfig } from "corequery";
+import { assertNever, unique } from "@dan-schel/js-utils";
+import {
+  extractStopsFromLineDiagramShape,
+  LineConfig,
+  LineDiagramShapeConfig,
+} from "corequery";
 import { getStopName } from "../../../src/utils/get-stop-name.js";
+import { isSubsequence } from "../../../src/utils/is-subsequence.js";
 import * as line from "../../../src/config/corequery/lines/line-ids.js";
 import * as stop from "../../../src/config/corequery/stops/stop-ids.js";
 
@@ -50,6 +55,8 @@ const routeStopsExemptedFromBeingInDiagrams: Record<number, number[]> = {
   ],
 };
 
+const linesExemptedFromHavingCompatibleDiagrams: number[] = [];
+
 describe("lineRoutes", () => {
   it("has an entry for each line", () => {
     for (const line of lines) {
@@ -63,7 +70,7 @@ describe("lineRoutes", () => {
     }
   });
 
-  it("each stop in the line's diagram(s) is also in a route", () => {
+  it("has all the stops present that in line's diagram(s)", () => {
     for (const line of lines) {
       const stopsInDiagrams = getStopsInDiagrams(line);
 
@@ -83,7 +90,7 @@ describe("lineRoutes", () => {
     }
   });
 
-  it("each stop in a line's routes are also in the diagram(s)", () => {
+  it("has no stops which aren't also in that line's diagram(s)", () => {
     for (const line of lines) {
       const stopsInRoutes = getStopsInRoutes(line.id);
 
@@ -101,7 +108,7 @@ describe("lineRoutes", () => {
     }
   });
 
-  it("all routes have at least two stops", () => {
+  it("has no routes with less than two stops", () => {
     for (const line of lines) {
       const routes = lineRoutes[line.id] ?? [];
 
@@ -115,7 +122,7 @@ describe("lineRoutes", () => {
     }
   });
 
-  it("no routes are duplicated", () => {
+  it("has no duplicate routes", () => {
     for (const line of lines) {
       const routes = lineRoutes[line.id] ?? [];
       const seenRoutes = new Set<string>();
@@ -132,6 +139,30 @@ describe("lineRoutes", () => {
         );
 
         seenRoutes.add(routeSignature);
+      }
+    }
+  });
+
+  it("has routes such that each line's diagram(s) are compatible", () => {
+    for (const line of lines) {
+      if (linesExemptedFromHavingCompatibleDiagrams.includes(line.id)) continue;
+
+      const routes = lineRoutes[line.id] ?? [];
+      const routeStopLists = routes.map((r) => r.stops.map((s) => s.stopId));
+
+      for (const diagram of line.diagram.entries) {
+        const stopLists = toLinearStopLists(diagram.shape);
+
+        for (const stopList of stopLists) {
+          const stopNames = stopList
+            .map((s) => getStopName(s, stops))
+            .join(", ");
+
+          assert(
+            routeStopLists.some((r) => isSubsequence(stopList, r)),
+            `No routes on ${line.name} line (#${line.id}) are compatible with stopping pattern from diagram: ${stopNames}.`,
+          );
+        }
       }
     }
   });
@@ -157,4 +188,26 @@ function getStopsInDiagrams(line: LineConfig): number[] {
     extractStopsFromLineDiagramShape(d.shape).map((s) => s.stopId),
   );
   return unique(stops);
+}
+
+function toLinearStopLists(shape: LineDiagramShapeConfig): number[][] {
+  if (shape.type === "linear") {
+    return [shape.stops.map((s) => s.stopId)];
+  } else if (shape.type === "branch") {
+    const common = shape.commonStops.map((s) => s.stopId);
+    const branchA = shape.branchAStops.map((s) => s.stopId);
+    const branchB = shape.branchBStops.map((s) => s.stopId);
+    return [
+      [...common, ...branchA],
+      [...common, ...branchB],
+    ];
+  } else if (shape.type === "loop") {
+    // There isn't really a neat way to convert the loop into a linear pattern,
+    // and also split it correctly at Flinders Street, so let's just check the
+    // main trunk of the loop line is correct and not worry about the loop
+    // itself. Good enough!
+    return [shape.mainStops.map((s) => s.stopId)];
+  } else {
+    assertNever(shape);
+  }
 }
