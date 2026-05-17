@@ -1,6 +1,6 @@
 import type { ComparisonOptions } from "./comparison-options.js";
-import * as line from "../../src/config/lines/line-ids.js";
-import * as stop from "../../src/config/stops/stop-ids.js";
+import * as line from "../../src/config/corequery/lines/line-ids.js";
+import * as stop from "../../src/config/corequery/stops/stop-ids.js";
 import { isPresent } from "@dan-schel/js-utils";
 import { NONSENSE_GTFS_STOP_ID_REGEX } from "../utils/gtfs/magic-values.js";
 

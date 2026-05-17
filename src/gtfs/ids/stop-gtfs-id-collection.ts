@@ -1,5 +1,5 @@
 import { parseIntThrow } from "@dan-schel/js-utils";
-import type { StopGtfsIdCollectionConfig } from "../../config/third-party-id-mapping-types.js";
+import type { StopGtfsIdCollectionConfig } from "../../config/gtfs/types.js";
 import type { StopGtfsIdMetadata } from "./stop-gtfs-id-metadata.js";
 
 export class StopGtfsIdCollection {

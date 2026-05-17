@@ -1,5 +1,5 @@
 import type { LineGtfsIdMetadata } from "./line-gtfs-id-metadata.js";
-import type { LineGtfsIdCollectionConfig } from "../../config/third-party-id-mapping-types.js";
+import type { LineGtfsIdCollectionConfig } from "../../config/gtfs/types.js";
 
 export class LineGtfsIdCollection {
   constructor(

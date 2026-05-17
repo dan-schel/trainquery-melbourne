@@ -6,7 +6,7 @@ import {
   itsOk,
   numberWiseSort,
 } from "@dan-schel/js-utils";
-import { stops } from "../../src/config/stops/index.js";
+import { stops } from "../../src/config/corequery/stops/index.js";
 import { pressAnyKeyToContinue } from "./input.js";
 import { cleanupStopName } from "../utils/gtfs/cleanup-stop-name.js";
 import {
@@ -39,10 +39,10 @@ ${formatPositions(stop).join("\n")}
 
   const ptvApiIdsOutput = `[stop.${constName}]: ${JSON.stringify(ptvApiId)},`;
 
-  await printUpdate("src/config/stops/stop-ids.ts", stopIdsOutput);
-  await printUpdate("src/config/stops/stops.ts", stopsOutput);
-  await printUpdate("src/config/stops/stop-gtfs-ids.ts", gtfsIdsOutput);
-  await printUpdate("src/config/stops/stop-ptv-api-ids.ts", ptvApiIdsOutput);
+  await printUpdate("src/config/corequery/stops/stop-ids.ts", stopIdsOutput);
+  await printUpdate("src/config/corequery/stops/stops.ts", stopsOutput);
+  await printUpdate("src/config/gtfs/stop-gtfs-ids.ts", gtfsIdsOutput);
+  await printUpdate("src/config/ptv-api/stop-ptv-api-ids.ts", ptvApiIdsOutput);
 }
 
 async function printUpdate(filePath: string, output: string) {

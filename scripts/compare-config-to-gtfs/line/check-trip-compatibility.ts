@@ -1,19 +1,21 @@
-import type { LineConfig, RouteConfig } from "corequery";
+import type { LineConfig } from "corequery";
 import type { TripsCsv } from "../../../src/gtfs/schedule/csv-schemas.js";
 import type { IndexedStopTimes } from "../../../src/gtfs/schedule/higher-order/indexed-stop-times.js";
 import type { IssueCollector } from "../issue-collector.js";
 import type { LineGtfsIdCollection } from "../../../src/gtfs/ids/line-gtfs-id-collection.js";
 import type { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
-import { isSubsequence } from "./utils/is-subsequence.js";
+import { isSubsequence } from "../../../src/utils/is-subsequence.js";
 import { Trip } from "./utils/trip.js";
 import {
   UniqueStoppingPatternTracker,
   type UniqueStoppingPattern,
 } from "./utils/unique-stopping-pattern-tracker.js";
+import type { RouteConfig } from "../../../src/config/gtfs/types.js";
 
 export function checkLineTripCompatibility({
   config,
   mappedLineIds,
+  routes,
   gtfsTrips,
   gtfsStopTimes,
   stopIdMapping,
@@ -23,6 +25,7 @@ export function checkLineTripCompatibility({
 }: {
   config: LineConfig;
   mappedLineIds: LineGtfsIdCollection;
+  routes: readonly RouteConfig[];
   gtfsTrips: TripsCsv;
   gtfsStopTimes: IndexedStopTimes;
   stopIdMapping: StopGtfsIdMapping;
@@ -51,7 +54,7 @@ export function checkLineTripCompatibility({
   const instances = UniqueStoppingPatternTracker.process(trips);
 
   for (const instance of instances) {
-    const hasMatch = config.routes.some((r) => isCompatible(instance, r));
+    const hasMatch = routes.some((r) => isCompatible(instance, r));
     const isIgnored = isIncompatibleStoppingPatternIgnored(instance);
 
     if (hasMatch || isIgnored) continue;
