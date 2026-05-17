@@ -1,7 +1,7 @@
 import { assert, describe, it } from "vitest";
 import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.js";
 import { stops } from "../../../src/config/stops/index.js";
-import { stopGtfsIds } from "../../../src/config/stops/stop-gtfs-ids.js";
+import { stopGtfsIds } from "../../../src/config/gtfs/stop-gtfs-ids.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import { getSubfeedsWithStop } from "../../../src/gtfs/utils/get-subfeeds-with.js";
 import { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
@@ -132,7 +132,7 @@ describe("stopGtfsIds", () => {
 
   it("are listed alphabetically", async () => {
     await expectedSortedSourceCode(
-      "src/config/stops/stop-gtfs-ids.ts",
+      "src/config/gtfs/stop-gtfs-ids.ts",
       /^  \[([^\]]+)\]:/,
       (match) => match[1],
     );

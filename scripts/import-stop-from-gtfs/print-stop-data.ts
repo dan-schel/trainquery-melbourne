@@ -41,8 +41,8 @@ ${formatPositions(stop).join("\n")}
 
   await printUpdate("src/config/stops/stop-ids.ts", stopIdsOutput);
   await printUpdate("src/config/stops/stops.ts", stopsOutput);
-  await printUpdate("src/config/stops/stop-gtfs-ids.ts", gtfsIdsOutput);
-  await printUpdate("src/config/stops/stop-ptv-api-ids.ts", ptvApiIdsOutput);
+  await printUpdate("src/config/gtfs/stop-gtfs-ids.ts", gtfsIdsOutput);
+  await printUpdate("src/config/gtfs/stop-ptv-api-ids.ts", ptvApiIdsOutput);
 }
 
 async function printUpdate(filePath: string, output: string) {
