@@ -361,6 +361,7 @@ export const GIPPSLAND: LineConfig = {
     stop.CAULFIELD,
     stop.CLAYTON,
     stop.DANDENONG,
+    stop.BERWICK,
     stop.PAKENHAM,
     stop.NAR_NAR_GOON,
     stop.TYNONG,

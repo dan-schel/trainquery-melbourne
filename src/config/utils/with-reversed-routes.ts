@@ -18,7 +18,11 @@ const reversedTags: Record<number, number> = {
 export function withReversedRoutes(
   route: readonly RouteConfig[],
 ): readonly RouteConfig[] {
-  return route.flatMap((route) => [route, buildReversedRoute(route)]);
+  return route.flatMap(withReversedRoute);
+}
+
+export function withReversedRoute(route: RouteConfig): readonly RouteConfig[] {
+  return [route, buildReversedRoute(route)];
 }
 
 function buildReversedRoute(route: RouteConfig): RouteConfig {

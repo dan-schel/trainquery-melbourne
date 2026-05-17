@@ -6,7 +6,7 @@ import {
   type InformalLineDiagramStopConfig,
   type InformalRouteStopConfig,
 } from "./formalize-stops.js";
-import { withReversedRoutes } from "./with-reversed-route.js";
+import { withReversedRoutes } from "./with-reversed-routes.js";
 import * as stop from "../corequery/stops/stop-ids.js";
 import * as tag from "../corequery/lines/service-tags.js";
 
