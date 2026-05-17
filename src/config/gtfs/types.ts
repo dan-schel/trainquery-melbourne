@@ -23,3 +23,15 @@ export type LineGtfsIdCollectionConfig = {
   readonly other?: readonly string[];
   readonly replacementBus?: readonly string[];
 };
+
+export type LineRoutesConfig = Record<number, readonly RouteConfig[]>;
+
+export type RouteConfig = {
+  readonly stops: readonly RouteStopConfig[];
+  readonly serviceTags: readonly number[];
+};
+
+type RouteStopConfig = {
+  readonly stopId: number;
+  readonly hidden?: boolean;
+};

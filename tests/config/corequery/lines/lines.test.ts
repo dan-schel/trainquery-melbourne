@@ -1,9 +1,9 @@
 import { describe, it, assert } from "vitest";
-import { lines } from "../../../src/config/corequery/lines/index.js";
-import { getSubfeedsWithLine } from "../../../src/gtfs/utils/get-subfeeds-with.js";
+import { lines } from "../../../../src/config/corequery/lines/index.js";
+import { getSubfeedsWithLine } from "../../../../src/gtfs/utils/get-subfeeds-with.js";
 import { Tags } from "corequery";
-import { lineTagSuccession } from "../../../src/config/corequery/lines/line-tag-succession.js";
-import * as tag from "../../../src/config/corequery/lines/line-tags.js";
+import { lineTagSuccession } from "../../../../src/config/corequery/lines/line-tag-succession.js";
+import * as tag from "../../../../src/config/corequery/lines/line-tags.js";
 
 describe("lines", () => {
   it("all lines are tagged for exactly one subfeed", () => {
