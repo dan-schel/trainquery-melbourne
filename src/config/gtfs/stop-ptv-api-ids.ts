@@ -1,5 +1,5 @@
 import type { StopPtvApiIdsConfig } from "./third-party-id-mapping-types.js";
-import * as stop from "../stops/stop-ids.js";
+import * as stop from "../corequery/stops/stop-ids.js";
 
 export const stopPtvApiIds: StopPtvApiIdsConfig = {
   [stop.AIRCRAFT]: ["1220"],

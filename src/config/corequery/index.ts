@@ -4,7 +4,7 @@ import {
   type LintableConfig,
   ConsoleLogger,
 } from "corequery";
-import { env } from "../env.js";
+import { env } from "../../env.js";
 import { assets } from "./assets.js";
 import { linesPage } from "./lines-page.js";
 import { stops } from "./stops/index.js";

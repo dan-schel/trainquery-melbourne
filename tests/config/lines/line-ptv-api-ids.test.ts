@@ -1,9 +1,9 @@
 import { assert, describe, it } from "vitest";
 import { linePtvApiIds } from "../../../src/config/gtfs/line-ptv-api-ids.js";
-import { lines } from "../../../src/config/lines/index.js";
+import { lines } from "../../../src/config/corequery/lines/index.js";
 import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
-import * as line from "../../../src/config/lines/line-ids.js";
+import * as line from "../../../src/config/corequery/lines/line-ids.js";
 
 const linesExemptedFromHavingPtvId: number[] = [
   // I don't think it HAS a PTV API ID.

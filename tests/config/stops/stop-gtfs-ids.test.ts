@@ -1,12 +1,12 @@
 import { assert, describe, it } from "vitest";
 import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.js";
-import { stops } from "../../../src/config/stops/index.js";
+import { stops } from "../../../src/config/corequery/stops/index.js";
 import { stopGtfsIds } from "../../../src/config/gtfs/stop-gtfs-ids.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import { getSubfeedsWithStop } from "../../../src/gtfs/utils/get-subfeeds-with.js";
 import { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
-import * as stop from "../../../src/config/stops/stop-ids.js";
-import * as position from "../../../src/config/stops/stop-position-ids.js";
+import * as stop from "../../../src/config/corequery/stops/stop-ids.js";
+import * as position from "../../../src/config/corequery/stops/stop-position-ids.js";
 
 const stopsExemptedFromHavingGtfsId: number[] = [];
 

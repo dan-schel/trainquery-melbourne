@@ -6,7 +6,7 @@ import {
   itsOk,
   numberWiseSort,
 } from "@dan-schel/js-utils";
-import { stops } from "../../src/config/stops/index.js";
+import { stops } from "../../src/config/corequery/stops/index.js";
 import { pressAnyKeyToContinue } from "./input.js";
 import { cleanupStopName } from "../utils/gtfs/cleanup-stop-name.js";
 import {

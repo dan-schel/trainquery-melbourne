@@ -1,5 +1,5 @@
 import type { Subfeed } from "../../src/gtfs/schedule/utils/subfeed.js";
-import { lintableConfig } from "../../src/config/index.js";
+import { lintableConfig } from "../../src/config/corequery/index.js";
 import { StopGtfsIdMapping } from "../../src/gtfs/ids/stop-gtfs-id-mapping.js";
 import { stopGtfsIds } from "../../src/config/gtfs/stop-gtfs-ids.js";
 import { LineGtfsIdMapping } from "../../src/gtfs/ids/line-gtfs-id-mapping.js";

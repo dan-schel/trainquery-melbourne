@@ -1,5 +1,5 @@
 import { Corequery } from "corequery";
-import { buildConfig } from "./config/index.js";
+import { buildConfig } from "./config/corequery/index.js";
 
 async function main() {
   // TODO: Need to investigate why frontend version is changing on every

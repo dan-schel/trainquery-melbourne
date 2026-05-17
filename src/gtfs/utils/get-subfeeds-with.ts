@@ -1,8 +1,8 @@
 import { Tags, type LineConfig, type StopConfig } from "corequery";
-import { lineTagSuccession } from "../../config/lines/line-tag-succession.js";
-import { stopTagSuccession } from "../../config/stops/stop-tag-succession.js";
-import * as lineTag from "../../config/lines/line-tags.js";
-import * as stopTag from "../../config/stops/stop-tags.js";
+import { lineTagSuccession } from "../../config/corequery/lines/line-tag-succession.js";
+import { stopTagSuccession } from "../../config/corequery/stops/stop-tag-succession.js";
+import * as lineTag from "../../config/corequery/lines/line-tags.js";
+import * as stopTag from "../../config/corequery/stops/stop-tags.js";
 
 export function getSubfeedsWithLine(line: LineConfig) {
   const tags = Tags.build(line.tags, lineTagSuccession);

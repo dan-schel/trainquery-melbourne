@@ -1,6 +1,6 @@
 import { assert, describe, it } from "vitest";
 import { stopPtvApiIds } from "../../../src/config/gtfs/stop-ptv-api-ids.js";
-import { stops } from "../../../src/config/stops/index.js";
+import { stops } from "../../../src/config/corequery/stops/index.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.js";
 

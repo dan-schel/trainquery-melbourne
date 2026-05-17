@@ -1,5 +1,5 @@
 import type { LinePtvApiIdsConfig } from "./third-party-id-mapping-types.js";
-import * as line from "../lines/line-ids.js";
+import * as line from "../corequery/lines/line-ids.js";
 
 export const linePtvApiIds: LinePtvApiIdsConfig = {
   [line.ALAMEIN]: ["1"],
