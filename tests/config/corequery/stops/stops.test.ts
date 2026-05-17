@@ -1,6 +1,6 @@
 import { describe, it, assert } from "vitest";
-import { stops } from "../../../src/config/corequery/stops/index.js";
-import { getSubfeedsWithStop } from "../../../src/gtfs/utils/get-subfeeds-with.js";
+import { stops } from "../../../../src/config/corequery/stops/index.js";
+import { getSubfeedsWithStop } from "../../../../src/gtfs/utils/get-subfeeds-with.js";
 
 describe("stops", () => {
   it("all stops are tagged for at least one GTFS subfeed", () => {

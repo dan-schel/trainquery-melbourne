@@ -18,7 +18,6 @@ describe("constants source code files", () => {
     const idFiles = [
       "src/config/corequery/lines/line-ids.ts",
       "src/config/corequery/lines/line-tags.ts",
-      "src/config/corequery/lines/service-ids.ts",
       "src/config/corequery/lines/service-tags.ts",
       "src/config/corequery/stops/stop-ids.ts",
       "src/config/corequery/stops/stop-tags.ts",

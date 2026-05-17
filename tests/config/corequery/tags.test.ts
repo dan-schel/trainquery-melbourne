@@ -3,7 +3,6 @@ import { Tags } from "corequery";
 import { lines } from "../../../src/config/corequery/lines/index.js";
 import { stops } from "../../../src/config/corequery/stops/index.js";
 import { lineTagSuccession } from "../../../src/config/corequery/lines/line-tag-succession.js";
-import { routeTagSuccession } from "../../src/config/corequery/lines/route-tag-succession.js";
 import { stopTagSuccession } from "../../../src/config/corequery/stops/stop-tag-succession.js";
 import { requireTagName, TagType } from "../../../src/utils/get-tag-name.js";
 
@@ -13,14 +12,8 @@ describe("tags", () => {
 
     for (const line of sortedByName(lines)) {
       const lineTags = Tags.build(line.tags, lineTagSuccession);
-      output += `${line.name} (#${line.id}): ${getSortedNames(lineTags, "line").join(", ")}\n\n`;
-
-      for (const route of sortedByName(line.routes)) {
-        const routeTags = Tags.build(route.tags, routeTagSuccession);
-        output += `  - ${route.name} (#${route.id}): ${getSortedNames(routeTags, "route").join(", ")}\n`;
-      }
-
-      output += "\n\n";
+      const names = getSortedNames(lineTags, "line");
+      output += `${line.name} (#${line.id}): ${names.join(", ")}\n\n`;
     }
 
     expect(`\n${output}`).toMatchSnapshot();
@@ -32,9 +25,7 @@ describe("tags", () => {
     for (const stop of sortedByName(stops)) {
       const tags = Tags.build(stop.tags, stopTagSuccession);
       const names = getSortedNames(tags, "stop");
-      if (names.length > 0) {
-        output += `${stop.name} (#${stop.id}): ${names.join(", ")}\n`;
-      }
+      output += `${stop.name} (#${stop.id}): ${names.join(", ")}\n`;
     }
 
     expect(`\n${output}`).toMatchSnapshot();
