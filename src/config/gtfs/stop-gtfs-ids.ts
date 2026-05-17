@@ -1,4 +1,4 @@
-import type { StopGtfsIdsConfig } from "../third-party-id-mapping-types.js";
+import type { StopGtfsIdsConfig } from "./third-party-id-mapping-types.js";
 import * as stop from "../stops/stop-ids.js";
 import * as position from "../stops/stop-position-ids.js";
 

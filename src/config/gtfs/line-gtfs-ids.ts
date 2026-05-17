@@ -1,4 +1,4 @@
-import type { LineGtfsIdsConfig } from "../third-party-id-mapping-types.js";
+import type { LineGtfsIdsConfig } from "./third-party-id-mapping-types.js";
 import * as line from "../lines/line-ids.js";
 
 export const lineGtfsIds: LineGtfsIdsConfig = {

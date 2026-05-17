@@ -1,4 +1,4 @@
-import type { StopPtvApiIdsConfig } from "../third-party-id-mapping-types.js";
+import type { StopPtvApiIdsConfig } from "./third-party-id-mapping-types.js";
 import * as stop from "../stops/stop-ids.js";
 
 export const stopPtvApiIds: StopPtvApiIdsConfig = {
