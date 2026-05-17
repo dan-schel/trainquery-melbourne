@@ -1,5 +1,5 @@
 import { assert, describe, it } from "vitest";
-import { linePtvApiIds } from "../../../src/config/gtfs/line-ptv-api-ids.js";
+import { linePtvApiIds } from "../../../src/config/ptv-api/line-ptv-api-ids.js";
 import { lines } from "../../../src/config/corequery/lines/index.js";
 import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
@@ -28,7 +28,7 @@ describe("linePtvApiIds", () => {
 
   it("are listed alphabetically", async () => {
     await expectedSortedSourceCode(
-      "src/config/gtfs/line-ptv-api-ids.ts",
+      "src/config/ptv-api/line-ptv-api-ids.ts",
       /^  \[([^\]]+)\]:/,
       (match) => match[1],
     );

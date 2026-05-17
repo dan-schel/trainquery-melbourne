@@ -1,4 +1,4 @@
-import type { LinePtvApiIdsConfig } from "./third-party-id-mapping-types.js";
+import type { LinePtvApiIdsConfig } from "./types.js";
 import * as line from "../corequery/lines/line-ids.js";
 
 export const linePtvApiIds: LinePtvApiIdsConfig = {

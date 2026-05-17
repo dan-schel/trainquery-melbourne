@@ -1,4 +1,4 @@
-import type { StopGtfsIdsConfig } from "../../src/config/gtfs/third-party-id-mapping-types.js";
+import type { StopGtfsIdsConfig } from "../../src/config/gtfs/types.js";
 import { StopGtfsIdMapping } from "../../src/gtfs/ids/stop-gtfs-id-mapping.js";
 import type {
   StopsCsvTree,
