@@ -7,13 +7,13 @@ import { stopTagSuccession } from "../../../src/config/corequery/stops/stop-tag-
 import { requireTagName, TagType } from "../../../src/utils/get-tag-name.js";
 
 describe("tags", () => {
-  it("line and route tags", () => {
+  it("line tags", () => {
     let output = "";
 
     for (const line of sortedByName(lines)) {
       const lineTags = Tags.build(line.tags, lineTagSuccession);
       const names = getSortedNames(lineTags, "line");
-      output += `${line.name} (#${line.id}): ${names.join(", ")}\n\n`;
+      output += `${line.name} (#${line.id}): ${names.join(", ")}\n`;
     }
 
     expect(`\n${output}`).toMatchSnapshot();
