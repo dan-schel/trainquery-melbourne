@@ -6,12 +6,14 @@ import { compareStops } from "./stop/index.js";
 import type { GtfsFeed } from "../../src/gtfs/schedule/read-gtfs.js";
 import type { StopGtfsIdMapping } from "../../src/gtfs/ids/stop-gtfs-id-mapping.js";
 import type { LineGtfsIdMapping } from "../../src/gtfs/ids/line-gtfs-id-mapping.js";
+import type { LineRoutesConfig } from "../../src/config/gtfs/types.js";
 
 export function compareSubfeed({
   stops,
   lines,
   stopIdMapping,
   lineIdMapping,
+  routes,
   gtfsFeed,
   issues,
   options,
@@ -20,6 +22,7 @@ export function compareSubfeed({
   lines: readonly LineConfig[];
   stopIdMapping: StopGtfsIdMapping;
   lineIdMapping: LineGtfsIdMapping;
+  routes: LineRoutesConfig;
   gtfsFeed: GtfsFeed;
   issues: IssueCollector;
   options: ComparisonOptions;
@@ -43,6 +46,7 @@ export function compareSubfeed({
   compareLines({
     lines,
     idMapping: lineIdMapping,
+    routes,
     gtfsRoutes: gtfsFeed.routes,
     gtfsTrips: gtfsFeed.trips,
     gtfsStopTimes: gtfsFeed.stopTimes,

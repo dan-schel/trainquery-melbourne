@@ -8,6 +8,7 @@ import {
   getSubfeedsWithLine,
   getSubfeedsWithStop,
 } from "../../src/gtfs/utils/get-subfeeds-with.js";
+import { lineRoutes } from "../../src/config/gtfs/routes.js";
 
 export function extractConfigForSubfeed(subfeed: Subfeed) {
   return {
@@ -15,5 +16,6 @@ export function extractConfigForSubfeed(subfeed: Subfeed) {
     lines: lintableConfig.lines.filter((x) => getSubfeedsWithLine(x)[subfeed]),
     stopIdMapping: StopGtfsIdMapping.build(stopGtfsIds, subfeed),
     lineIdMapping: LineGtfsIdMapping.build(lineGtfsIds, subfeed),
+    routes: lineRoutes,
   };
 }

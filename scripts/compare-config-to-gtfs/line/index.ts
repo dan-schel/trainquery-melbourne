@@ -15,10 +15,12 @@ import { IndexedStopTimes } from "../../../src/gtfs/schedule/higher-order/indexe
 import type { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
 import { checkAllTripsAssignedToALine } from "./check-all-trips-assigned-to-a-line.js";
 import type { Trip } from "./utils/trip.js";
+import type { LineRoutesConfig } from "../../../src/config/gtfs/types.js";
 
 export function compareLines({
   lines,
   idMapping,
+  routes,
   gtfsRoutes,
   gtfsTrips,
   gtfsStopTimes,
@@ -31,6 +33,7 @@ export function compareLines({
 }: {
   lines: readonly LineConfig[];
   idMapping: LineGtfsIdMapping;
+  routes: LineRoutesConfig;
   gtfsRoutes: RoutesCsv;
   gtfsTrips: TripsCsv;
   gtfsStopTimes: StopTimesCsv;
@@ -50,9 +53,9 @@ export function compareLines({
     _gtfsRow: RoutesCsvRow,
   ) {
     const options = getOptionsForLine(config.id);
-
     checkLineTripCompatibility({
       config,
+      routes: routes[config.id] ?? [],
       mappedLineIds: mappedIds,
       gtfsTrips,
       gtfsStopTimes: indexedStopTimes,
