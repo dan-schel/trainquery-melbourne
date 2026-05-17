@@ -1,6 +1,6 @@
 import { assert, describe, it } from "vitest";
 import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.js";
-import { lines } from "../../../src/config/lines/index.js";
+import { lines } from "../../../src/config/corequery/lines/index.js";
 import { lineGtfsIds } from "../../../src/config/gtfs/line-gtfs-ids.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import { getSubfeedsWithLine } from "../../../src/gtfs/utils/get-subfeeds-with.js";

@@ -39,8 +39,8 @@ ${formatPositions(stop).join("\n")}
 
   const ptvApiIdsOutput = `[stop.${constName}]: ${JSON.stringify(ptvApiId)},`;
 
-  await printUpdate("src/config/stops/stop-ids.ts", stopIdsOutput);
-  await printUpdate("src/config/stops/stops.ts", stopsOutput);
+  await printUpdate("src/config/corequery/stops/stop-ids.ts", stopIdsOutput);
+  await printUpdate("src/config/corequery/stops/stops.ts", stopsOutput);
   await printUpdate("src/config/gtfs/stop-gtfs-ids.ts", gtfsIdsOutput);
   await printUpdate("src/config/gtfs/stop-ptv-api-ids.ts", ptvApiIdsOutput);
 }

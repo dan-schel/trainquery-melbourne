@@ -1,5 +1,5 @@
 import { describe, it, assert } from "vitest";
-import { stops } from "../../../src/config/stops/index.js";
+import { stops } from "../../../src/config/corequery/stops/index.js";
 import { getSubfeedsWithStop } from "../../../src/gtfs/utils/get-subfeeds-with.js";
 
 describe("stops", () => {

@@ -1,13 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { Tags } from "corequery";
-import { lines } from "../../src/config/lines/index.js";
-import { stops } from "../../src/config/stops/index.js";
-import { lineTagSuccession } from "../../src/config/lines/line-tag-succession.js";
-import { routeTagSuccession } from "../../src/config/lines/route-tag-succession.js";
-import { stopTagSuccession } from "../../src/config/stops/stop-tag-succession.js";
-import * as lineTag from "../../src/config/lines/line-tags.js";
-import * as routeTag from "../../src/config/lines/route-tags.js";
-import * as stopTag from "../../src/config/stops/stop-tags.js";
+import { lines } from "../../src/config/corequery/lines/index.js";
+import { stops } from "../../src/config/corequery/stops/index.js";
+import { lineTagSuccession } from "../../src/config/corequery/lines/line-tag-succession.js";
+import { routeTagSuccession } from "../../src/config/corequery/lines/route-tag-succession.js";
+import { stopTagSuccession } from "../../src/config/corequery/stops/stop-tag-succession.js";
+import * as lineTag from "../../src/config/corequery/lines/line-tags.js";
+import * as routeTag from "../../src/config/corequery/lines/route-tags.js";
+import * as stopTag from "../../src/config/corequery/stops/stop-tags.js";
 
 const lineTagNames = reverseMap(lineTag);
 const routeTagNames = reverseMap(routeTag);

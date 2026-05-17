@@ -16,17 +16,17 @@ describe("constants source code files", () => {
     // happily stored in the DB or a user's local storage for long periods.
 
     const idFiles = [
-      "src/config/lines/line-ids.ts",
-      "src/config/lines/line-tags.ts",
-      "src/config/lines/service-ids.ts",
-      "src/config/lines/service-tags.ts",
-      "src/config/stops/stop-ids.ts",
-      "src/config/stops/stop-tags.ts",
-      "src/config/stops/stop-position-ids.ts",
+      "src/config/corequery/lines/line-ids.ts",
+      "src/config/corequery/lines/line-tags.ts",
+      "src/config/corequery/lines/service-ids.ts",
+      "src/config/corequery/lines/service-tags.ts",
+      "src/config/corequery/stops/stop-ids.ts",
+      "src/config/corequery/stops/stop-tags.ts",
+      "src/config/corequery/stops/stop-position-ids.ts",
     ];
 
     const offsets: Record<string, number> = {
-      "src/config/stops/stop-position-ids.ts": 50,
+      "src/config/corequery/stops/stop-position-ids.ts": 50,
     };
 
     for (const file of idFiles) {
