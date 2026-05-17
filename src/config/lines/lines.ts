@@ -3,7 +3,7 @@ import * as line from "./line-ids.js";
 import * as tag from "./line-tags.js";
 import * as stop from "../stops/stop-ids.js";
 import * as route from "./route-ids.js";
-import * as routeTag from "./route-tags.js";
+import * as routeTag from "./service-tags.js";
 import { linear } from "./route-builders/linear.js";
 import { cityLoop } from "./route-builders/city-loop.js";
 import { multi } from "./route-builders/multi.js";

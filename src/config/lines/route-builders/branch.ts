@@ -1,6 +1,6 @@
 import type { Color } from "corequery";
 import * as route from "../route-ids.js";
-import * as tag from "../route-tags.js";
+import * as tag from "../service-tags.js";
 import {
   toDiagramStops,
   toRouteStops,

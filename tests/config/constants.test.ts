@@ -18,8 +18,8 @@ describe("constants source code files", () => {
     const idFiles = [
       "src/config/lines/line-ids.ts",
       "src/config/lines/line-tags.ts",
-      "src/config/lines/route-ids.ts",
-      "src/config/lines/route-tags.ts",
+      "src/config/lines/service-ids.ts",
+      "src/config/lines/service-tags.ts",
       "src/config/stops/stop-ids.ts",
       "src/config/stops/stop-tags.ts",
       "src/config/stops/stop-position-ids.ts",
