@@ -62,22 +62,22 @@ function getCityStops(
   if (portalStopId === stop.RICHMOND || portalStopId === stop.JOLIMONT) {
     return route === "via-city-loop"
       ? [
-          stop.PARLIAMENT,
-          stop.MELBOURNE_CENTRAL,
-          stop.FLAGSTAFF,
-          stop.SOUTHERN_CROSS,
           stop.FLINDERS_STREET,
+          stop.SOUTHERN_CROSS,
+          stop.FLAGSTAFF,
+          stop.MELBOURNE_CENTRAL,
+          stop.PARLIAMENT,
         ]
       : [stop.FLINDERS_STREET];
   } else if (portalStopId === stop.NORTH_MELBOURNE) {
     return route === "via-city-loop"
       ? [
-          stop.FLAGSTAFF,
-          stop.MELBOURNE_CENTRAL,
-          stop.PARLIAMENT,
           stop.FLINDERS_STREET,
+          stop.PARLIAMENT,
+          stop.MELBOURNE_CENTRAL,
+          stop.FLAGSTAFF,
         ]
-      : [stop.SOUTHERN_CROSS, stop.FLINDERS_STREET];
+      : [stop.FLINDERS_STREET, stop.SOUTHERN_CROSS];
   } else {
     throw new Error("Invalid portal stop for city loop route.");
   }
@@ -89,12 +89,12 @@ function getLoopDirectionTag(
 ): number {
   if (portalStopId === stop.RICHMOND || portalStopId === stop.JOLIMONT) {
     return route === "via-city-loop"
-      ? tag.CITY_LOOP_ANTICLOCKWISE
-      : tag.CITY_LOOP_CLOCKWISE;
-  } else if (portalStopId === stop.NORTH_MELBOURNE) {
-    return route === "via-city-loop"
       ? tag.CITY_LOOP_CLOCKWISE
       : tag.CITY_LOOP_ANTICLOCKWISE;
+  } else if (portalStopId === stop.NORTH_MELBOURNE) {
+    return route === "via-city-loop"
+      ? tag.CITY_LOOP_ANTICLOCKWISE
+      : tag.CITY_LOOP_CLOCKWISE;
   } else {
     throw new Error("Invalid portal stop for city loop route.");
   }
