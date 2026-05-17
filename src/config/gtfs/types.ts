@@ -1,3 +1,5 @@
+import type { Color } from "corequery";
+
 export type StopGtfsIdsConfig = Record<number, StopGtfsIdsBySubfeedConfig>;
 export type LineGtfsIdsConfig = Record<number, LineGtfsIdsBySubfeedConfig>;
 
@@ -27,6 +29,7 @@ export type LineGtfsIdCollectionConfig = {
 export type LineRoutesConfig = Record<number, readonly RouteConfig[]>;
 
 export type RouteConfig = {
+  readonly color: Color;
   readonly stops: readonly RouteStopConfig[];
   readonly serviceTags: readonly number[];
 };

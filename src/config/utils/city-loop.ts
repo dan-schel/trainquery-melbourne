@@ -1,4 +1,4 @@
-import type { LoopLineDiagramShapeConfig } from "corequery";
+import type { Color, LoopLineDiagramShapeConfig } from "corequery";
 import type { RouteConfig } from "../gtfs/types.js";
 import {
   formalizeDiagramStops,
@@ -11,6 +11,7 @@ import * as stop from "../corequery/stops/stop-ids.js";
 import * as tag from "../corequery/lines/service-tags.js";
 
 export function createCityLoopRoutes(
+  color: Color,
   stops: readonly InformalRouteStopConfig[],
 ): readonly RouteConfig[] {
   const formalStops = formalizeRouteStops(stops);
@@ -20,6 +21,7 @@ export function createCityLoopRoutes(
 
   return withReversedRoutes([
     {
+      color,
       stops: [
         ...formalizeRouteStops(getCityStops(portalStop, "via-city-loop")),
         ...formalStops,
@@ -31,6 +33,7 @@ export function createCityLoopRoutes(
       ],
     },
     {
+      color,
       stops: [
         ...formalizeRouteStops(getCityStops(portalStop, "direct")),
         ...formalStops,

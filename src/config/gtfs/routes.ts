@@ -10,7 +10,7 @@ import { formalizeRouteStops } from "../utils/formalize-stops.js";
 import { createCityLoopRoutes } from "../utils/city-loop.js";
 
 export const lineRoutes: LineRoutesConfig = {
-  [line.ALAMEIN]: createCityLoopRoutes([
+  [line.ALAMEIN]: createCityLoopRoutes("blue", [
     stop.RICHMOND,
     stop.EAST_RICHMOND,
     stop.BURNLEY,
@@ -28,6 +28,7 @@ export const lineRoutes: LineRoutesConfig = {
 
   [line.BALLARAT]: withReversedRoutes([
     {
+      color: "purple",
       stops: formalizeRouteStops([
         stop.SOUTHERN_CROSS,
         stop.FOOTSCRAY,
@@ -48,6 +49,7 @@ export const lineRoutes: LineRoutesConfig = {
       serviceTags: [tag.OUTBOUND],
     },
     {
+      color: "purple",
       stops: formalizeRouteStops([
         stop.SOUTHERN_CROSS,
         stop.FOOTSCRAY,
@@ -70,7 +72,7 @@ export const lineRoutes: LineRoutesConfig = {
     },
   ]),
 
-  [line.BELGRAVE]: createCityLoopRoutes([
+  [line.BELGRAVE]: createCityLoopRoutes("blue", [
     stop.RICHMOND,
     stop.EAST_RICHMOND,
     stop.BURNLEY,
@@ -101,6 +103,7 @@ export const lineRoutes: LineRoutesConfig = {
 
   [line.BENDIGO]: withReversedRoutes([
     {
+      color: "purple",
       stops: formalizeRouteStops([
         stop.SOUTHERN_CROSS,
         stop.FOOTSCRAY,
@@ -127,6 +130,7 @@ export const lineRoutes: LineRoutesConfig = {
       serviceTags: [tag.OUTBOUND],
     },
     {
+      color: "purple",
       stops: formalizeRouteStops([
         stop.SOUTHERN_CROSS,
         stop.FOOTSCRAY,
@@ -155,6 +159,7 @@ export const lineRoutes: LineRoutesConfig = {
   ]),
 
   [line.CITY_CIRCLE]: withReversedRoute({
+    color: "red",
     stops: formalizeRouteStops([
       stop.FLINDERS_STREET,
       stop.SOUTHERN_CROSS,
@@ -166,7 +171,7 @@ export const lineRoutes: LineRoutesConfig = {
     serviceTags: [tag.CITY_LOOP_CLOCKWISE, tag.VIA_CITY_LOOP],
   }),
 
-  [line.CRAIGIEBURN]: createCityLoopRoutes([
+  [line.CRAIGIEBURN]: createCityLoopRoutes("yellow", [
     stop.NORTH_MELBOURNE,
     stop.KENSINGTON,
     stop.NEWMARKET,
@@ -187,6 +192,7 @@ export const lineRoutes: LineRoutesConfig = {
 
   [line.CRANBOURNE]: [
     ...withReversedRoute({
+      color: "cyan",
       stops: formalizeRouteStops([
         stop.TOWN_HALL,
         stop.ANZAC,
@@ -213,7 +219,7 @@ export const lineRoutes: LineRoutesConfig = {
       ]),
       serviceTags: [tag.OUTBOUND],
     }),
-    ...createCityLoopRoutes([
+    ...createCityLoopRoutes("cyan", [
       stop.RICHMOND,
       stop.SOUTH_YARRA,
       stop.HAWKSBURN,
@@ -239,7 +245,7 @@ export const lineRoutes: LineRoutesConfig = {
     ]),
   ],
 
-  [line.FLEMINGTON_RACECOURSE]: createCityLoopRoutes([
+  [line.FLEMINGTON_RACECOURSE]: createCityLoopRoutes("gray", [
     stop.NORTH_MELBOURNE,
     stop.KENSINGTON,
     stop.NEWMARKET,
@@ -247,7 +253,7 @@ export const lineRoutes: LineRoutesConfig = {
     stop.FLEMINGTON_RACECOURSE,
   ]),
 
-  [line.FRANKSTON]: createCityLoopRoutes([
+  [line.FRANKSTON]: createCityLoopRoutes("green", [
     stop.RICHMOND,
     stop.SOUTH_YARRA,
     stop.HAWKSBURN,
@@ -278,6 +284,7 @@ export const lineRoutes: LineRoutesConfig = {
   ]),
 
   [line.GEELONG]: withReversedRoute({
+    color: "purple",
     stops: formalizeRouteStops([
       stop.SOUTHERN_CROSS,
       { stopId: stop.NORTH_MELBOURNE, collapseInStoppingPatterns: true },
@@ -312,6 +319,7 @@ export const lineRoutes: LineRoutesConfig = {
   }),
 
   [line.GIPPSLAND]: withReversedRoute({
+    color: "purple",
     stops: formalizeRouteStops([
       stop.SOUTHERN_CROSS,
       stop.FLINDERS_STREET,
@@ -362,7 +370,7 @@ export const lineRoutes: LineRoutesConfig = {
     serviceTags: [tag.OUTBOUND],
   }),
 
-  [line.GLEN_WAVERLEY]: createCityLoopRoutes([
+  [line.GLEN_WAVERLEY]: createCityLoopRoutes("blue", [
     stop.RICHMOND,
     stop.EAST_RICHMOND,
     stop.BURNLEY,
@@ -380,7 +388,7 @@ export const lineRoutes: LineRoutesConfig = {
     stop.GLEN_WAVERLEY,
   ]),
 
-  [line.HURSTBRIDGE]: createCityLoopRoutes([
+  [line.HURSTBRIDGE]: createCityLoopRoutes("red", [
     stop.JOLIMONT,
     stop.WEST_RICHMOND,
     stop.NORTH_RICHMOND,
@@ -406,7 +414,7 @@ export const lineRoutes: LineRoutesConfig = {
     stop.HURSTBRIDGE,
   ]),
 
-  [line.LILYDALE]: createCityLoopRoutes([
+  [line.LILYDALE]: createCityLoopRoutes("blue", [
     stop.RICHMOND,
     stop.EAST_RICHMOND,
     stop.BURNLEY,
@@ -431,7 +439,7 @@ export const lineRoutes: LineRoutesConfig = {
     stop.LILYDALE,
   ]),
 
-  [line.MERNDA]: createCityLoopRoutes([
+  [line.MERNDA]: createCityLoopRoutes("red", [
     stop.JOLIMONT,
     stop.WEST_RICHMOND,
     stop.NORTH_RICHMOND,
@@ -460,6 +468,7 @@ export const lineRoutes: LineRoutesConfig = {
 
   [line.PAKENHAM]: [
     ...withReversedRoute({
+      color: "cyan",
       stops: formalizeRouteStops([
         stop.TOWN_HALL,
         stop.ANZAC,
@@ -491,7 +500,7 @@ export const lineRoutes: LineRoutesConfig = {
       ]),
       serviceTags: [tag.OUTBOUND],
     }),
-    ...createCityLoopRoutes([
+    ...createCityLoopRoutes("cyan", [
       stop.RICHMOND,
       stop.SOUTH_YARRA,
       stop.HAWKSBURN,
@@ -523,6 +532,7 @@ export const lineRoutes: LineRoutesConfig = {
   ],
 
   [line.SANDRINGHAM]: withReversedRoute({
+    color: "pink",
     stops: formalizeRouteStops([
       stop.FLINDERS_STREET,
       stop.RICHMOND,
@@ -544,6 +554,7 @@ export const lineRoutes: LineRoutesConfig = {
 
   [line.SEYMOUR]: withReversedRoutes([
     {
+      color: "purple",
       stops: formalizeRouteStops([
         stop.SOUTHERN_CROSS,
         stop.NORTH_MELBOURNE,
@@ -571,6 +582,7 @@ export const lineRoutes: LineRoutesConfig = {
       serviceTags: [tag.OUTBOUND],
     },
     {
+      color: "purple",
       stops: formalizeRouteStops([
         stop.SOUTHERN_CROSS,
         stop.NORTH_MELBOURNE,
@@ -595,6 +607,7 @@ export const lineRoutes: LineRoutesConfig = {
   ]),
 
   [line.STONY_POINT]: withReversedRoute({
+    color: "green",
     stops: formalizeRouteStops([
       stop.FRANKSTON,
       stop.LEAWARRA,
@@ -612,6 +625,7 @@ export const lineRoutes: LineRoutesConfig = {
 
   [line.SUNBURY]: [
     ...withReversedRoute({
+      color: "cyan",
       stops: formalizeRouteStops([
         stop.TOWN_HALL,
         stop.STATE_LIBRARY,
@@ -632,7 +646,7 @@ export const lineRoutes: LineRoutesConfig = {
       ]),
       serviceTags: [tag.OUTBOUND],
     }),
-    ...createCityLoopRoutes([
+    ...createCityLoopRoutes("cyan", [
       stop.NORTH_MELBOURNE,
       stop.SOUTH_KENSINGTON,
       stop.FOOTSCRAY,
@@ -650,7 +664,7 @@ export const lineRoutes: LineRoutesConfig = {
     ]),
   ],
 
-  [line.UPFIELD]: createCityLoopRoutes([
+  [line.UPFIELD]: createCityLoopRoutes("yellow", [
     stop.NORTH_MELBOURNE,
     stop.MACAULAY,
     stop.FLEMINGTON_BRIDGE,
@@ -668,6 +682,7 @@ export const lineRoutes: LineRoutesConfig = {
   ]),
 
   [line.WERRIBEE]: withReversedRoute({
+    color: "pink",
     stops: formalizeRouteStops([
       stop.FLINDERS_STREET,
       stop.SOUTHERN_CROSS,
@@ -691,6 +706,7 @@ export const lineRoutes: LineRoutesConfig = {
   }),
 
   [line.WILLIAMSTOWN]: withReversedRoute({
+    color: "pink",
     stops: formalizeRouteStops([
       stop.FLINDERS_STREET,
       stop.SOUTHERN_CROSS,

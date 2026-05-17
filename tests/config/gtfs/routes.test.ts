@@ -57,6 +57,10 @@ const routeStopsExemptedFromBeingInDiagrams: Record<number, number[]> = {
 
 const linesExemptedFromHavingCompatibleDiagrams: number[] = [];
 
+// TODO: More tests:
+// - all routes are reversed
+// - all stops in a route... exist
+
 describe("lineRoutes", () => {
   it("has an entry for each line", () => {
     for (const line of lines) {
