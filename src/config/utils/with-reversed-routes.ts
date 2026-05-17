@@ -27,8 +27,8 @@ export function withReversedRoute(route: RouteConfig): readonly RouteConfig[] {
 
 function buildReversedRoute(route: RouteConfig): RouteConfig {
   return {
+    color: route.color,
     stops: [...route.stops].reverse(),
-
     serviceTags: route.serviceTags.map((tag) => {
       const reversedTag = reversedTags[tag];
       if (reversedTag == null) {
