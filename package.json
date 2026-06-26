@@ -1,7 +1,7 @@
 {
   "type": "module",
   "dependencies": {
-    "@dan-schel/js-utils": "4.13.0",
+    "@dan-schel/js-utils": "4.14.1",
     "@eslint/js": "10.0.1",
     "@types/adm-zip": "0.5.8",
     "@types/node": "25.8.0",
