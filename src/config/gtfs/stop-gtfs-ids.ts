@@ -926,10 +926,6 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:EPH",
-      platforms: {
-        [position.PLATFORM_1]: ["26506"],
-        [position.PLATFORM_2]: ["26507"],
-      },
       general: ["49848"],
       replacementBus: ["26158"],
     },
