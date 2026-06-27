@@ -926,7 +926,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:EPH",
-      general: ["49848"],
+      general: ["49848", "26506", "26507"],
       replacementBus: ["26158"],
     },
   },
