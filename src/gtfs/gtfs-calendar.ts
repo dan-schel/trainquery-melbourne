@@ -37,7 +37,7 @@ export class GtfsCalendar {
    * given date. Note that a return value of true does not guarantee that there
    * are future dates, only that there _may_ be.
    *
-   * (I believe this function will be used to determine when departures from a
+   * (This function is designed to be used to determine when departures from a
    * certain stop should be considered exhausted, as when we iterate through the
    * departures for a given stop, we will track which departures will never
    * occur again, and when all departures never occur again, stop iterating
@@ -69,9 +69,11 @@ export class GtfsCalendar {
       (dow.isSaturday() && this.saturday)
     );
   }
+
   private _isDateAdded(date: CoreDate): boolean {
     return this.addedDates.some((addedDate) => addedDate.isEqual(date));
   }
+
   private _isDateRemoved(date: CoreDate): boolean {
     return this.removedDates.some((removedDate) => removedDate.isEqual(date));
   }
