@@ -843,6 +843,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
   [stop.DIGGERS_REST]: {
     suburban: {
       parent: "vic:rail:DRT",
+      general: ["19999"],
       platforms: {
         [position.PLATFORM_1]: ["26505"],
         [position.PLATFORM_2]: ["15354"],
@@ -916,6 +917,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
   [stop.EAST_PAKENHAM]: {
     suburban: {
       parent: "vic:rail:EPH",
+      general: ["49848"],
       platforms: {
         [position.PLATFORM_1]: ["26506"],
         [position.PLATFORM_2]: ["26507"],
@@ -924,7 +926,8 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:EPH",
-      general: ["49848"],
+      general: ["49848", "26506", "26507"],
+      replacementBus: ["26158"],
     },
   },
 
@@ -2651,7 +2654,7 @@ export const stopGtfsIds: StopGtfsIdsConfig = {
       platforms: {
         [position.PLATFORM_1]: ["15526"],
       },
-      replacementBus: ["726320"],
+      replacementBus: ["26320"],
     },
   },
 

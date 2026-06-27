@@ -130,6 +130,18 @@ describe("stopGtfsIds", () => {
     }
   });
 
+  it("uses general IDs instead of platform-based IDs for the regional subfeed", () => {
+    for (const stop of stops) {
+      const idConfig = stopGtfsIds[stop.id];
+      if (idConfig?.regional == null) continue;
+
+      assert(
+        idConfig.regional.platforms == null,
+        `Stop ${stop.name} (#${stop.id}) defines platform-based IDs.`,
+      );
+    }
+  });
+
   it("are listed alphabetically", async () => {
     await expectedSortedSourceCode(
       "src/config/gtfs/stop-gtfs-ids.ts",
