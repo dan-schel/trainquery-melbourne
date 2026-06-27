@@ -130,14 +130,14 @@ describe("stopGtfsIds", () => {
     }
   });
 
-  it("regional subfeed entries do not define platform IDs", () => {
+  it("uses general IDs instead of platform-based IDs for the regional subfeed", () => {
     for (const stop of stops) {
       const idConfig = stopGtfsIds[stop.id];
       if (idConfig?.regional == null) continue;
 
       assert(
         idConfig.regional.platforms == null,
-        `Stop ${stop.name} (#${stop.id}) defines platform IDs in the regional subfeed, which is not allowed.`,
+        `Stop ${stop.name} (#${stop.id}) defines platform-based IDs.`,
       );
     }
   });
