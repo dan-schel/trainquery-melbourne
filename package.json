@@ -1,7 +1,7 @@
 {
   "type": "module",
   "dependencies": {
-    "@dan-schel/js-utils": "4.13.0",
+    "@dan-schel/js-utils": "4.14.1",
     "@eslint/js": "10.0.1",
     "@types/adm-zip": "0.5.8",
     "@types/node": "25.8.0",
@@ -16,6 +16,7 @@
     "eslint-plugin-prettier": "5.5.5",
     "knip": "6.14.1",
     "prettier": "3.8.3",
+    "temporal-polyfill": "1.0.1",
     "tsx": "4.22.1",
     "typescript": "6.0.3",
     "typescript-eslint": "8.59.3",

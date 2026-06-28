@@ -1,5 +1,5 @@
 {
-  "include": ["./src/**/*", "./scripts/**/*"],
+  "include": ["./src/**/*", "./scripts/**/*", "./tests/**/*"],
   "compilerOptions": {
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -16,6 +16,6 @@
     "outDir": "dist",
     "sourceMap": true,
     "declaration": true,
-    "lib": ["es2022"]
+    "lib": ["es2022", "ESNext.Temporal"]
   }
 }

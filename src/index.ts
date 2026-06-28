@@ -1,6 +1,9 @@
 import { Corequery } from "corequery";
 import { buildConfig } from "./config/corequery/index.js";
 
+// TODO: Can remove once NodeJS v26 becomes LTS (expected in October 2026).
+import "temporal-polyfill/global";
+
 async function main() {
   // TODO: Need to investigate why frontend version is changing on every
   // `npm run start`/`npm run dev`. It should remain constant as long as the

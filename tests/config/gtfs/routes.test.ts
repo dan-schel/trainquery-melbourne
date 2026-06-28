@@ -2,11 +2,11 @@ import { assert, describe, it } from "vitest";
 import { lines } from "../../../src/config/corequery/lines/index.js";
 import { stops } from "../../../src/config/corequery/stops/index.js";
 import { lineRoutes } from "../../../src/config/gtfs/routes.js";
-import { assertNever, unique } from "@dan-schel/js-utils";
+import { assertNever, itsOk, unique } from "@dan-schel/js-utils";
 import {
   extractStopsFromLineDiagramShape,
-  LineConfig,
-  LineDiagramShapeConfig,
+  type LineConfig,
+  type LineDiagramShapeConfig,
 } from "corequery";
 import { getStopName } from "../../../src/utils/get-stop-name.js";
 import { isSubsequence } from "../../../src/utils/is-subsequence.js";
@@ -130,7 +130,7 @@ describe("lineRoutes", () => {
       const routes = lineRoutes[line.id] ?? [];
 
       for (let i = 0; i < routes.length; i++) {
-        const route = routes[i];
+        const route = itsOk(routes[i]);
         assert(
           route.stops.length >= 2,
           `Routes (index = ${i}) on ${line.name} line (#${line.id}) have less than two stops.`,
@@ -145,7 +145,7 @@ describe("lineRoutes", () => {
       const seenRoutes = new Set<string>();
 
       for (let i = 0; i < routes.length; i++) {
-        const route = routes[i];
+        const route = itsOk(routes[i]);
         const routeSignature = route.stops
           .map((s) => s.stopId.toFixed())
           .join("|");
