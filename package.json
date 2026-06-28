@@ -4,7 +4,7 @@
     "@dan-schel/js-utils": "4.13.0",
     "@eslint/js": "10.0.1",
     "@types/adm-zip": "0.5.8",
-    "@types/node": "26.0.1",
+    "@types/node": "25.8.0",
     "@vitest/coverage-v8": "4.1.6",
     "adm-zip": "0.5.17",
     "chalk": "5.6.2",
@@ -48,11 +48,5 @@
         "name": "VTAR_KEY"
       }
     ]
-  },
-  "allowScripts": {
-    "sharp@0.34.5": true
-  },
-  "engines": {
-    "node": "26.4.0"
   }
 }
