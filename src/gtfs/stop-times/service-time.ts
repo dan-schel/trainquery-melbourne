@@ -1,8 +1,6 @@
-// TODO: Move to corequery.
-
 import { posMod } from "@dan-schel/js-utils";
 
-export class CoreServiceTime {
+export class ServiceTime {
   private constructor(
     /**
      * The number of seconds since midnight. Allows values greater than
@@ -12,10 +10,8 @@ export class CoreServiceTime {
     readonly secondsSinceMidnight: number,
   ) {}
 
-  static fromSecondsSinceMidnight(
-    secondsSinceMidnight: number,
-  ): CoreServiceTime {
-    return new CoreServiceTime(secondsSinceMidnight);
+  static fromSecondsSinceMidnight(secondsSinceMidnight: number): ServiceTime {
+    return new ServiceTime(secondsSinceMidnight);
   }
 
   /**

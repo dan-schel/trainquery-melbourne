@@ -1,12 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { CoreDate } from "../../../src/core-date/core-date.js";
 import { ServiceDay } from "../../../src/gtfs/stop-times/service-day.js";
 
 describe("ServiceDay", () => {
   describe(".offsetAtMiddayInMinsFor", () => {
     it("returns AEST offset for Melbourne winter dates", () => {
       const offset = ServiceDay.offsetSecondsAtMiddayFor(
-        CoreDate.from(2026, 6, 15),
+        Temporal.PlainDate.from({ year: 2026, month: 6, day: 15 }),
         "Australia/Melbourne",
       );
 
@@ -15,7 +14,7 @@ describe("ServiceDay", () => {
 
     it("returns AEDT offset for Melbourne summer dates", () => {
       const offset = ServiceDay.offsetSecondsAtMiddayFor(
-        CoreDate.from(2026, 1, 15),
+        Temporal.PlainDate.from({ year: 2026, month: 1, day: 15 }),
         "Australia/Melbourne",
       );
 
@@ -24,7 +23,7 @@ describe("ServiceDay", () => {
 
     it("supports non-integer hour offsets", () => {
       const offset = ServiceDay.offsetSecondsAtMiddayFor(
-        CoreDate.from(2026, 6, 15),
+        Temporal.PlainDate.from({ year: 2026, month: 6, day: 15 }),
         "Australia/Adelaide",
       );
 

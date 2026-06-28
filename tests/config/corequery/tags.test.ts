@@ -4,7 +4,10 @@ import { lines } from "../../../src/config/corequery/lines/index.js";
 import { stops } from "../../../src/config/corequery/stops/index.js";
 import { lineTagSuccession } from "../../../src/config/corequery/lines/line-tag-succession.js";
 import { stopTagSuccession } from "../../../src/config/corequery/stops/stop-tag-succession.js";
-import { requireTagName, TagType } from "../../../src/utils/get-tag-name.js";
+import {
+  requireTagName,
+  type TagType,
+} from "../../../src/utils/get-tag-name.js";
 
 describe("tags", () => {
   it("line tags", () => {

@@ -1,6 +1,4 @@
-import type { CoreDateRange } from "../core-date/core-date-range.js";
-import type { CoreDate } from "../core-date/core-date.js";
-import { CoreDayOfWeek } from "../core-date/core-day-of-week.js";
+import type { PlainDateRange } from "./stop-times/plain-date-range.js";
 
 export class GtfsCalendar {
   constructor(
@@ -12,12 +10,12 @@ export class GtfsCalendar {
     readonly friday: boolean,
     readonly saturday: boolean,
     readonly sunday: boolean,
-    readonly dateRange: CoreDateRange,
-    readonly addedDates: readonly CoreDate[],
-    readonly removedDates: readonly CoreDate[],
+    readonly dateRange: PlainDateRange,
+    readonly addedDates: readonly Temporal.PlainDate[],
+    readonly removedDates: readonly Temporal.PlainDate[],
   ) {}
 
-  occursOn(date: CoreDate): boolean {
+  occursOn(date: Temporal.PlainDate): boolean {
     // Note: The GTFS spec doesn't seem to specify what would happen if a date
     // was both added and removed, so I'm making an assumption that added dates
     // take precedence over removed dates.
@@ -50,31 +48,40 @@ export class GtfsCalendar {
    * when the first eligible date is found, but could theoretically be
    * expensive.)
    */
-  mayOccurAgainAfter(date: CoreDate): boolean {
-    if (this.addedDates.some((addedDate) => addedDate.isAfter(date))) {
+  mayOccurAgainAfter(date: Temporal.PlainDate): boolean {
+    if (this.addedDates.some((a) => Temporal.PlainDate.compare(a, date) > 0)) {
       return true;
     }
 
     return !this.dateRange.endsBeforeOrOn(date);
   }
 
-  private _isDayOfWeekIncluded(dow: CoreDayOfWeek): boolean {
-    return (
-      (dow.isSunday() && this.sunday) ||
-      (dow.isMonday() && this.monday) ||
-      (dow.isTuesday() && this.tuesday) ||
-      (dow.isWednesday() && this.wednesday) ||
-      (dow.isThursday() && this.thursday) ||
-      (dow.isFriday() && this.friday) ||
-      (dow.isSaturday() && this.saturday)
-    );
+  private _isDayOfWeekIncluded(dayOfWeek: number): boolean {
+    switch (dayOfWeek) {
+      case 1:
+        return this.monday;
+      case 2:
+        return this.tuesday;
+      case 3:
+        return this.wednesday;
+      case 4:
+        return this.thursday;
+      case 5:
+        return this.friday;
+      case 6:
+        return this.saturday;
+      case 7:
+        return this.sunday;
+      default:
+        throw new Error(`Invalid day of week number: ${dayOfWeek}`);
+    }
   }
 
-  private _isDateAdded(date: CoreDate): boolean {
-    return this.addedDates.some((addedDate) => addedDate.isEqual(date));
+  private _isDateAdded(date: Temporal.PlainDate): boolean {
+    return this.addedDates.some((addedDate) => addedDate.equals(date));
   }
 
-  private _isDateRemoved(date: CoreDate): boolean {
-    return this.removedDates.some((removedDate) => removedDate.isEqual(date));
+  private _isDateRemoved(date: Temporal.PlainDate): boolean {
+    return this.removedDates.some((removedDate) => removedDate.equals(date));
   }
 }

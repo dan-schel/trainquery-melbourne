@@ -1,6 +1,4 @@
-import type { CoreDate } from "../../core-date/core-date.js";
-import type { CoreServiceTime } from "../../core-date/core-service-time.js";
-import type { CoreUtcDateTime } from "../../core-date/core-utc-date-time.js";
+import type { ServiceTime } from "./service-time.js";
 
 export const MELBOURNE_TIMEZONE = "Australia/Melbourne";
 
@@ -11,25 +9,28 @@ export const MELBOURNE_MAXIMUM_VIABLE_OFFSET_MINS = 11 * 60;
 
 export class ServiceDay {
   constructor(
-    readonly date: CoreDate,
+    readonly date: Temporal.PlainDate,
     readonly offsetSeconds: number,
-    readonly earliestServiceTime: CoreServiceTime,
-    readonly earliestServiceTimeUtc: CoreUtcDateTime,
-    readonly latestServiceTime: CoreServiceTime,
-    readonly latestServiceTimeUtc: CoreUtcDateTime,
+    readonly earliestServiceTime: ServiceTime,
+    readonly earliestServiceInstant: Temporal.Instant,
+    readonly latestServiceTime: ServiceTime,
+    readonly latestServiceInstant: Temporal.Instant,
   ) {}
 
   static allInWindow(
-    start: CoreUtcDateTime,
-    end: CoreUtcDateTime,
+    start: Temporal.Instant,
+    end: Temporal.Instant,
     timezone: string,
     minimumViableOffsetMins: number,
     maximumViableOffsetMins: number,
-    earliestServiceTime: CoreServiceTime,
-    latestServiceTime: CoreServiceTime,
+    earliestServiceTime: ServiceTime,
+    latestServiceTime: ServiceTime,
   ): ServiceDay[] {}
 
-  static offsetSecondsAtMiddayFor(date: CoreDate, timezone: string): number {
+  static offsetSecondsAtMiddayFor(
+    date: Temporal.PlainDate,
+    timezone: string,
+  ): number {
     // Should be safe to use Temporal, as this code (as with all code in the
     // `trainquery-melbourne` repo) runs on the server only.
     const nanoseconds = Temporal.ZonedDateTime.from(

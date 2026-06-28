@@ -5,6 +5,7 @@ import { lineGtfsIds } from "../../../src/config/gtfs/line-gtfs-ids.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import { getSubfeedsWithLine } from "../../../src/gtfs/utils/get-subfeeds-with.js";
 import { LineGtfsIdMapping } from "../../../src/gtfs/ids/line-gtfs-id-mapping.js";
+import { itsOk } from "@dan-schel/js-utils";
 
 const linesExemptedFromHavingGtfsId: number[] = [];
 
@@ -57,7 +58,7 @@ describe("lineGtfsIds", () => {
     await expectedSortedSourceCode(
       "src/config/gtfs/line-gtfs-ids.ts",
       /^  \[([^\]]+)\]:/,
-      (match) => match[1],
+      (match) => itsOk(match[1]),
     );
   });
 });

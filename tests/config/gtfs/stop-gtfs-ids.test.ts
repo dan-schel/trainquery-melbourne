@@ -7,6 +7,7 @@ import { getSubfeedsWithStop } from "../../../src/gtfs/utils/get-subfeeds-with.j
 import { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
 import * as stop from "../../../src/config/corequery/stops/stop-ids.js";
 import * as position from "../../../src/config/corequery/stops/stop-position-ids.js";
+import { itsOk } from "@dan-schel/js-utils";
 
 const stopsExemptedFromHavingGtfsId: number[] = [];
 
@@ -134,7 +135,7 @@ describe("stopGtfsIds", () => {
     await expectedSortedSourceCode(
       "src/config/gtfs/stop-gtfs-ids.ts",
       /^  \[([^\]]+)\]:/,
-      (match) => match[1],
+      (match) => itsOk(match[1]),
     );
   });
 });
