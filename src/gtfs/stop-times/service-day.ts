@@ -1,12 +1,5 @@
 import type { ServiceTime } from "./service-time.js";
 
-export const MELBOURNE_TIMEZONE = "Australia/Melbourne";
-
-// While we could cast a much wider net (+/- 24 hours) to handle all possible
-// timezones, we know that for Melbourne it's either +10 in AEDT or +11 in AEST.
-export const MELBOURNE_MINIMUM_VIABLE_OFFSET_MINS = 10 * 60;
-export const MELBOURNE_MAXIMUM_VIABLE_OFFSET_MINS = 11 * 60;
-
 export class ServiceDay {
   constructor(
     readonly date: Temporal.PlainDate,
@@ -17,7 +10,7 @@ export class ServiceDay {
     readonly latestServiceInstant: Temporal.Instant,
   ) {}
 
-  static allInWindow(
+  static allIntersectingTimeRange(
     start: Temporal.Instant,
     end: Temporal.Instant,
     timezone: string,
@@ -28,14 +21,14 @@ export class ServiceDay {
   ): ServiceDay[] {
     // TODO: Based on image.png, return all the ServiceDay objects relevant for
     // the given UTC datetime window.
+
+    throw new Error("Method not implemented.");
   }
 
   static offsetSecondsAtMiddayFor(
     date: Temporal.PlainDate,
     timezone: string,
   ): number {
-    // Should be safe to use Temporal, as this code (as with all code in the
-    // `trainquery-melbourne` repo) runs on the server only.
     const nanoseconds = Temporal.ZonedDateTime.from(
       {
         timeZone: timezone,
@@ -48,8 +41,8 @@ export class ServiceDay {
       {
         // Throws an error if this is ambiguous (just like 2:30am can be
         // ambiguous during DST changes in Melbourne). The GTFS spec operates on
-        // the timezone as at 12pm that day, which should avoid this problem,
-        // and certainly does for Melbourne.
+        // the timezone as at 12pm that day, as do we, and so that should mean
+        // it's never a problem (both for Melbourne, and elsewhere).
         disambiguation: "reject",
       },
     ).offsetNanoseconds;
