@@ -1,7 +1,7 @@
 import { parseIntNull } from "@dan-schel/js-utils";
-import type { GtfsData } from "../read-gtfs.js";
+import type { GtfsCsvData } from "../read-gtfs.js";
 
-export function patchDuplicateStopTimes(gtfsData: GtfsData): GtfsData {
+export function patchDuplicateStopTimes(gtfsData: GtfsCsvData): GtfsCsvData {
   // I've noticed the regional feed containing duplicate stop times entries,
   // i.e. the exact same row is present twice, one after the other. This causes
   // us to assume the service stops twice at each stop!

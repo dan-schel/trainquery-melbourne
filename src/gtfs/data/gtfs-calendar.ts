@@ -1,4 +1,4 @@
-import type { PlainDateRange } from "./stop-times/plain-date-range.js";
+import type { PlainDateRange } from "../stop-times/plain-date-range.js";
 
 export class GtfsCalendar {
   constructor(

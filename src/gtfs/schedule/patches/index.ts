@@ -1,7 +1,7 @@
-import type { GtfsData } from "../read-gtfs.js";
+import type { GtfsCsvData } from "../read-gtfs.js";
 // import { patchDuplicateStopTimes } from "./patch-duplicate-stop-times.js";
 
-type Patch = (gtfsData: GtfsData) => GtfsData;
+type Patch = (gtfsData: GtfsCsvData) => GtfsCsvData;
 
 // This "patch" mechanism is to be used SPARINGLY, and only for issues that
 // actually affect TrainQuery at runtime. Things which are purely linting/config
@@ -20,6 +20,6 @@ const activePatches: Patch[] = [
   // patchDuplicateStopTimes
 ];
 
-export function applyPatches(gtfsData: GtfsData): GtfsData {
+export function applyPatches(gtfsData: GtfsCsvData): GtfsCsvData {
   return activePatches.reduce((data, patch) => patch(data), gtfsData);
 }

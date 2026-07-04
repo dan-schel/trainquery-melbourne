@@ -4,7 +4,7 @@ import type {
   StopsCsvRow,
 } from "../../../src/gtfs/schedule/csv-schemas.js";
 import type { Subfeed } from "../../../src/gtfs/schedule/utils/subfeed.js";
-import type { GtfsData } from "../../../src/gtfs/schedule/read-gtfs.js";
+import type { GtfsCsvData } from "../../../src/gtfs/schedule/read-gtfs.js";
 
 export type StopsCsvTreeNode = StopsCsvRow & {
   readonly children: readonly StopsCsvTreeNode[];
@@ -20,7 +20,7 @@ export class StopsCsvTree {
     );
   }
 
-  static buildCombined(data: GtfsData) {
+  static buildCombined(data: GtfsCsvData) {
     return StopsCsvTree.merge(
       StopsCsvTree.build(data.suburban.stops).setSubfeed("suburban"),
       StopsCsvTree.build(data.regional.stops).setSubfeed("regional"),
