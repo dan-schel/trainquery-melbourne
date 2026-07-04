@@ -11,7 +11,7 @@ import type {
 import type { LineLintOptions } from "../comparison-options.js";
 import { compareLineItems } from "./compare-items.js";
 import type { LineGtfsIdCollection } from "../../../src/gtfs/ids/line-gtfs-id-collection.js";
-import { IndexedStopTimes } from "../../../src/gtfs/schedule/higher-order/indexed-stop-times.js";
+import { IndexedStopTimes } from "./utils/indexed-stop-times.js";
 import type { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
 import { checkAllTripsAssignedToALine } from "./check-all-trips-assigned-to-a-line.js";
 import type { Trip } from "./utils/trip.js";

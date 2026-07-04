@@ -1,4 +1,7 @@
-import type { StopTimesCsv, StopTimesCsvRow } from "../csv-schemas.js";
+import type {
+  StopTimesCsv,
+  StopTimesCsvRow,
+} from "../../../../src/gtfs/schedule/csv-schemas.js";
 
 export class IndexedStopTimes {
   constructor(private _stopTimesByTripId: Map<string, StopTimesCsv>) {}
