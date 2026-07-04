@@ -25,7 +25,10 @@ export class ServiceDay {
     maximumViableOffsetMins: number,
     earliestServiceTime: ServiceTime,
     latestServiceTime: ServiceTime,
-  ): ServiceDay[] {}
+  ): ServiceDay[] {
+    // TODO: Based on image.png, return all the ServiceDay objects relevant for
+    // the given UTC datetime window.
+  }
 
   static offsetSecondsAtMiddayFor(
     date: Temporal.PlainDate,
@@ -43,9 +46,10 @@ export class ServiceDay {
         minute: 0,
       },
       {
-        // Throws an error if this is ambiguous, but in practice it shouldn't
-        // ever be, at least in Melbourne. (This aligns with the GTFS spec,
-        // which operates on the timezone as at 12pm that day.)
+        // Throws an error if this is ambiguous (just like 2:30am can be
+        // ambiguous during DST changes in Melbourne). The GTFS spec operates on
+        // the timezone as at 12pm that day, which should avoid this problem,
+        // and certainly does for Melbourne.
         disambiguation: "reject",
       },
     ).offsetNanoseconds;
