@@ -1,4 +1,3 @@
-import type { LineCollection } from "corequery";
 import type { LineGtfsIdMapping } from "../../ids/line-gtfs-id-mapping.js";
 import type { StopGtfsIdMapping } from "../../ids/stop-gtfs-id-mapping.js";
 import type {
@@ -28,17 +27,12 @@ export class GtfsTripParser {
   constructor(
     // Unlike csvs, lineGtfsIdMapping, and stopGtfsIdMapping, these are not
     // subfeed-dependent, so I'm opting to make them constructor args.
-    private readonly _lines: LineCollection,
     private readonly _lineRoutes: LineRoutesConfig,
 
     private readonly _onError: (error: GtfsTripParsingError) => void,
   ) {
     this._stopTimeNormaliser = new GtfsStopTimeNormaliser(this._onError);
-    this._routeMatcher = new GtfsRouteMatcher(
-      this._lines,
-      this._lineRoutes,
-      this._onError,
-    );
+    this._routeMatcher = new GtfsRouteMatcher(this._onError);
   }
 
   parse(
@@ -68,6 +62,8 @@ export class GtfsTripParser {
         continue;
       }
 
+      if (lineIdMatch.type === "replacement-bus") continue;
+
       const normalizedStopTimes = this._stopTimeNormaliser.normalise(stopTimes);
 
       // TODO: Instead of using the line routes config object, we should be
@@ -86,8 +82,8 @@ export class GtfsTripParser {
       // Route matcher reports its own errors.
       if (routeMatchResult == null) continue;
 
-      // It can't actually work like this, just popped this here so I don't
-      // forget. Once all trips constructed in a mutable sense, use the
+      // TODO: It can't actually work like this, just popped this here so I
+      // don't forget. Once all trips constructed in a mutable sense, use the
       // transfers.txt to link them together.
       const previousTrip = null;
       const nextTrip = null;

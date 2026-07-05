@@ -20,7 +20,12 @@ export type GtfsTripParsingError =
 
 export type GtfsStopTimeNormalisationError = StopSequenceDuplicatedError;
 
-export type GtfsRouteMatchingError = NoMatchingRouteError;
+export type GtfsRouteMatchingError =
+  | NoMatchingRouteError
+  | StopIdNotMappedError
+  | UnexpectedPickupTypeError
+  | UnexpectedDropOffTypeError
+  | InvalidGtfsTimeStringError;
 
 export class DuplicateCalendarIdError extends Error {
   readonly type = "duplicate-calendar";
@@ -92,10 +97,56 @@ export class NoMatchingRouteError extends Error {
   readonly type = "no-matching-route";
   constructor(tripId: string, stopIds: readonly number[]) {
     // TODO: Pass a stop name resolving function so this can be human readable.
+    // Actually no. It shouldn't be the error's job to format it's message
+    // anyway, just capture the details which are needed for another bit code
+    // elsewhere to effectively format the message.
     super(
       `Trip with trip_id "${tripId}" has stop_ids [${stopIds.join(
         ", ",
       )}] which do not match any route for the line.`,
+    );
+  }
+}
+
+export class StopIdNotMappedError extends Error {
+  readonly type = "stop-id-not-mapped";
+  constructor(tripId: string, stopId: string) {
+    super(
+      `Unmapped stop_id "${stopId}" used in trip with trip_id "${tripId}" cannot be resolved to a stop.`,
+    );
+  }
+}
+
+export class UnexpectedPickupTypeError extends Error {
+  readonly type = "unexpected-pickup-type";
+  constructor(tripId: string, stopId: string, pickupType: number) {
+    super(
+      `Unexpected pickup_type "${pickupType}" used at stop_id "${stopId}" in trip with trip_id "${tripId}".`,
+    );
+  }
+}
+
+export class UnexpectedDropOffTypeError extends Error {
+  readonly type = "unexpected-drop-off-type";
+  constructor(tripId: string, stopId: string, dropOffType: number) {
+    super(
+      `Unexpected drop_off_type "${dropOffType}" used at stop_id "${stopId}" in trip with trip_id "${tripId}".`,
+    );
+  }
+}
+
+export class InvalidGtfsTimeStringError extends Error {
+  readonly type = "invalid-gtfs-time-string";
+  constructor(
+    // TODO: For things like this, just pass the StopTimesCsvRow?
+    tripId: string,
+    stopId: string,
+
+    input: string,
+    field: "arrival_time" | "departure_time",
+  ) {
+    super(
+      `Unable to parse ${field} "${input}" for stop_id "${stopId}" in trip with trip_id "${tripId}".`,
     );
   }
 }

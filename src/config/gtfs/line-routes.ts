@@ -30,6 +30,7 @@ export const lineRoutes: LineRoutesConfig = {
     {
       color: "purple",
       stops: formalizeRouteStops([
+        // TODO: Missing the suburban stops like Geelong has?
         stop.SOUTHERN_CROSS,
         stop.FOOTSCRAY,
         stop.SUNSHINE,
@@ -105,6 +106,7 @@ export const lineRoutes: LineRoutesConfig = {
     {
       color: "purple",
       stops: formalizeRouteStops([
+        // TODO: Missing the suburban stops like Geelong has?
         stop.SOUTHERN_CROSS,
         stop.FOOTSCRAY,
         stop.SUNSHINE,
@@ -556,6 +558,7 @@ export const lineRoutes: LineRoutesConfig = {
     {
       color: "purple",
       stops: formalizeRouteStops([
+        // TODO: Missing the suburban stops like Geelong has?
         stop.SOUTHERN_CROSS,
         stop.NORTH_MELBOURNE,
         stop.ESSENDON,

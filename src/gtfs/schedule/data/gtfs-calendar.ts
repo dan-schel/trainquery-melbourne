@@ -1,8 +1,5 @@
 import type { PlainDateRange } from "../../departures/plain-date-range.js";
 
-// TODO: Note when parsing that it's completely valid for added/removed dates
-// to be given in calendar_dates.txt without any corresponding entry in
-// calendar.txt, even though that probably doesn't happen in the PTV feed.
 export class GtfsCalendar {
   constructor(
     readonly id: string,

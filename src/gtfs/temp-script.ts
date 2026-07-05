@@ -6,30 +6,47 @@ import { readGtfsCsvs } from "./schedule/csv/read-gtfs-csvs.js";
 import { withGtfsCsvs } from "./schedule/csv/with-gtfs-csvs.js";
 import { GtfsScheduleParser } from "./schedule/parser/gtfs-schedule-parser.js";
 import type { GtfsConfig } from "../config/gtfs/types.js";
+import type { GtfsParsingError } from "./schedule/parser/errors.js";
 
 export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
-  console.log("downloading/reading...");
+  console.log("Downloading/reading...");
   const gtfsData = await withGtfsCsvs(env.RELAY_KEY, readGtfsCsvs);
 
-  console.log("parsing...");
+  console.log("Parsing...");
+  const start = performance.now();
 
-  let hadErrors = false;
-  const parser = new GtfsScheduleParser(
-    ctx.lines,
-    config.lineRoutes,
-    (error: unknown) => {
-      hadErrors = true;
-      console.error("Error:", error);
-    },
+  const errors: GtfsParsingError[] = [];
+  const parser = new GtfsScheduleParser(config.lineRoutes, (error) =>
+    errors.push(error),
   );
 
-  const schedule = parser.parse(
+  const suburban = parser.parse(
     gtfsData.suburban,
     LineGtfsIdMapping.build(config.lineGtfsIds, "suburban"),
     StopGtfsIdMapping.build(config.stopGtfsIds, "suburban"),
   );
+  const regional = parser.parse(
+    gtfsData.regional,
+    LineGtfsIdMapping.build(config.lineGtfsIds, "regional"),
+    StopGtfsIdMapping.build(config.stopGtfsIds, "regional"),
+  );
 
-  if (!hadErrors) {
-    console.log(schedule);
+  const end = performance.now();
+  const diff = end - start;
+  console.log(`Done parsing! (${diff.toFixed(2)}ms)`);
+
+  if (errors.length !== 0) {
+    for (const error of errors) {
+      console.error(error);
+    }
+    return;
+  }
+
+  const tripLines = [...suburban.trips, ...regional.trips].map((x) => x.lineId);
+
+  console.log("\nTrip counts:");
+  for (const line of ctx.lines.all()) {
+    const count = tripLines.filter((x) => x === line.id).length;
+    console.log(` - ${line.name}: ${count} trips`);
   }
 }

@@ -1,4 +1,4 @@
-import { posMod } from "@dan-schel/js-utils";
+import { itsOk, posMod } from "@dan-schel/js-utils";
 
 export class GtfsStopTime {
   private constructor(
@@ -12,6 +12,19 @@ export class GtfsStopTime {
 
   static fromSecondsSinceMidnight(secondsSinceMidnight: number): GtfsStopTime {
     return new GtfsStopTime(secondsSinceMidnight);
+  }
+
+  /** Parses strings like `05:30:00` or `25:04:42`. */
+  static tryParse(input: string): GtfsStopTime | null {
+    const match = /^(\d+):(\d\d):(\d\d)$/.exec(input);
+    if (match == null) return null;
+
+    const h = parseInt(itsOk(match[1]), 10);
+    const m = parseInt(itsOk(match[2]), 10);
+    const s = parseInt(itsOk(match[3]), 10);
+    if (m >= 60 || s >= 60) return null;
+
+    return GtfsStopTime.fromSecondsSinceMidnight(h * 60 * 60 + m * 60 + s);
   }
 
   /**

@@ -1,8 +1,3 @@
-// TODO: Contains all the data trainquery needs to know for a single gtfs trip.
-// These objects only represent valid trips. Build the indexes for each stop for
-// departures from these trips, not prior, so that we can be sure that invalid
-// trips have been filtered out first.
-
 import type { Color } from "corequery";
 import type { GtfsCalendar } from "./gtfs-calendar.js";
 import type { GtfsStopTime } from "./gtfs-stop-time.js";
