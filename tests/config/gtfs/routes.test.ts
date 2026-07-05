@@ -1,7 +1,7 @@
 import { assert, describe, it } from "vitest";
 import { lines } from "../../../src/config/corequery/lines/index.js";
 import { stops } from "../../../src/config/corequery/stops/index.js";
-import { lineRoutes } from "../../../src/config/gtfs/routes.js";
+import { lineRoutes } from "../../../src/config/gtfs/line-routes.js";
 import { assertNever, itsOk, unique } from "@dan-schel/js-utils";
 import {
   extractStopsFromLineDiagramShape,

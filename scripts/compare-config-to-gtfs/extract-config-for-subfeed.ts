@@ -8,7 +8,7 @@ import {
   getSubfeedsWithLine,
   getSubfeedsWithStop,
 } from "../../src/gtfs/utils/get-subfeeds-with.js";
-import { lineRoutes } from "../../src/config/gtfs/routes.js";
+import { lineRoutes } from "../../src/config/gtfs/line-routes.js";
 
 export function extractConfigForSubfeed(subfeed: Subfeed) {
   return {

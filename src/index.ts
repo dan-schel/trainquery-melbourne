@@ -1,12 +1,10 @@
+// TODO: Can remove once NodeJS v26 becomes LTS (expected in October 2026).
+import "temporal-polyfill/global";
+
 import { Corequery } from "corequery";
 import { buildConfig } from "./config/corequery/index.js";
 import { runGtfsTempScript } from "./gtfs/temp-script.js";
-
-// TODO: Can remove once NodeJS v26 becomes LTS (expected in October 2026).
-import "temporal-polyfill/global";
-import { lineGtfsIds } from "./config/gtfs/line-gtfs-ids.js";
-import { stopGtfsIds } from "./config/gtfs/stop-gtfs-ids.js";
-import { lineRoutes } from "./config/gtfs/routes.js";
+import { gtfsConfig } from "./config/gtfs/index.js";
 
 async function main() {
   // TODO: Need to investigate why frontend version is changing on every
@@ -17,7 +15,7 @@ async function main() {
   // TEMPORARILY COMMENTED OUT FOR TEMP SCRIPT BELOW.
   // await trainquery.start();
 
-  await runGtfsTempScript(trainquery, { lineGtfsIds, stopGtfsIds, lineRoutes });
+  await runGtfsTempScript(trainquery, gtfsConfig);
 }
 
 main().catch((error) => {

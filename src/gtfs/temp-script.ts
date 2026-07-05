@@ -5,17 +5,7 @@ import { StopGtfsIdMapping } from "./ids/stop-gtfs-id-mapping.js";
 import { readGtfsCsvs } from "./schedule/csv/read-gtfs-csvs.js";
 import { withGtfsCsvs } from "./schedule/csv/with-gtfs-csvs.js";
 import { GtfsScheduleParser } from "./schedule/parser/gtfs-schedule-parser.js";
-import type {
-  LineGtfsIdsConfig,
-  LineRoutesConfig,
-  StopGtfsIdsConfig,
-} from "../config/gtfs/types.js";
-
-type GtfsConfig = {
-  lineGtfsIds: LineGtfsIdsConfig;
-  stopGtfsIds: StopGtfsIdsConfig;
-  lineRoutes: LineRoutesConfig;
-};
+import type { GtfsConfig } from "../config/gtfs/types.js";
 
 export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
   console.log("downloading/reading...");

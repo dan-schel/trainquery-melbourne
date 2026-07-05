@@ -1,5 +1,11 @@
 import type { Color } from "corequery";
 
+export type GtfsConfig = {
+  lineGtfsIds: LineGtfsIdsConfig;
+  stopGtfsIds: StopGtfsIdsConfig;
+  lineRoutes: LineRoutesConfig;
+};
+
 export type StopGtfsIdsConfig = Record<number, StopGtfsIdsBySubfeedConfig>;
 export type LineGtfsIdsConfig = Record<number, LineGtfsIdsBySubfeedConfig>;
 
