@@ -1,6 +1,6 @@
 import fsp from "fs/promises";
 import path from "path";
-import { withGtfsFiles } from "../../src/gtfs/schedule/with-gtfs-files.js";
+import { withGtfsCsvs } from "../../src/gtfs/schedule/with-gtfs-csvs.js";
 import { env } from "./env.js";
 import { fetchGtfsRealtime } from "../../src/gtfs/realtime/fetch-gtfs-realtime.js";
 
@@ -15,7 +15,7 @@ async function main() {
 
   console.log("Downloading/extracting GTFS data...");
 
-  await withGtfsFiles(env.RELAY_KEY, async ({ suburban, regional }) => {
+  await withGtfsCsvs(env.RELAY_KEY, async ({ suburban, regional }) => {
     console.log(`Copying files into "${saveDirectory}" folder...`);
 
     await fsp.mkdir(saveSuburbanDirectory, { recursive: true });

@@ -9,7 +9,7 @@ import {
   tripsCsvSchema,
 } from "./csv-schemas.js";
 import path from "path";
-import { type GtfsDirectories } from "./with-gtfs-files.js";
+import { type GtfsDirectories } from "./with-gtfs-csvs.js";
 import type z from "zod";
 import { readCsv } from "./utils/read-csv.js";
 import { applyPatches } from "./patches/index.js";
@@ -26,7 +26,9 @@ export type GtfsFeedCsv = {
   readonly stopTimes: StopTimesCsv;
 };
 
-export async function readGtfs(dirs: GtfsDirectories): Promise<GtfsCsvData> {
+export async function readGtfsCsvs(
+  dirs: GtfsDirectories,
+): Promise<GtfsCsvData> {
   return applyPatches({
     suburban: await readFeed(dirs.suburban),
     regional: await readFeed(dirs.regional),

@@ -5,5 +5,10 @@
 // possible to funky trips, e.g. provide a callback for each type of error so
 // that it can be logged or something in the admin dashboard, but ultimately
 // just ignore that trip and continue (i.e. don't throw an error). We've seen
+
+import type { GtfsCalendar } from "./gtfs-calendar.js";
+
 // all sorts from PTV, and it's no reason to throw out all the data.
-export class GtfsTrip {}
+export class GtfsTrip {
+  constructor(readonly calendar: GtfsCalendar) {}
+}

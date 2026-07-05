@@ -4,7 +4,7 @@ import type {
   StopsCsvRow,
 } from "../../../src/gtfs/schedule/csv-schemas.js";
 import type { Subfeed } from "../../../src/gtfs/schedule/utils/subfeed.js";
-import type { GtfsCsvData } from "../../../src/gtfs/schedule/read-gtfs.js";
+import type { GtfsCsvData } from "../../../src/gtfs/schedule/read-gtfs-csvs.js";
 
 export type StopsCsvTreeNode = StopsCsvRow & {
   readonly children: readonly StopsCsvTreeNode[];

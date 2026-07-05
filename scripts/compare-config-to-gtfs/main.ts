@@ -1,6 +1,6 @@
 import { env } from "./env.js";
-import { withGtfsFiles } from "../../src/gtfs/schedule/with-gtfs-files.js";
-import { readGtfs } from "../../src/gtfs/schedule/read-gtfs.js";
+import { withGtfsCsvs } from "../../src/gtfs/schedule/with-gtfs-csvs.js";
+import { readGtfsCsvs } from "../../src/gtfs/schedule/read-gtfs-csvs.js";
 import { IssueCollector } from "./issue-collector.js";
 import { extractConfigForSubfeed } from "./extract-config-for-subfeed.js";
 import { compareSubfeed } from "./compare-subfeed.js";
@@ -15,7 +15,7 @@ async function main() {
   const outputToGithub = args.includes(createGithubIssueFlag);
 
   console.log("Downloading/parsing GTFS data...");
-  const gtfsData = await withGtfsFiles(env.RELAY_KEY, readGtfs);
+  const gtfsData = await withGtfsCsvs(env.RELAY_KEY, readGtfsCsvs);
 
   console.log("Checking for issues (suburban)...");
   const suburbanIssues = new IssueCollector();

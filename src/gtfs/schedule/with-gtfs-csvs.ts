@@ -10,7 +10,7 @@ export type GtfsDirectories = {
   readonly regional: string;
 };
 
-export async function withGtfsFiles<T>(
+export async function withGtfsCsvs<T>(
   relayKey: string,
   callback: (directories: GtfsDirectories) => Promise<T>,
 ): Promise<T> {

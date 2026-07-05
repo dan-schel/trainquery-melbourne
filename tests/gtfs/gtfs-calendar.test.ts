@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { GtfsCalendar } from "../../src/gtfs/data/gtfs-calendar.js";
+import { GtfsCalendar } from "../../src/gtfs/schedule/data/gtfs-calendar.js";
 import { PlainDateRange } from "../../src/gtfs/stop-times/plain-date-range.js";
 
 describe("GtfsCalendar", () => {
