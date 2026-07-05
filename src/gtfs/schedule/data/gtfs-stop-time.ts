@@ -1,6 +1,6 @@
 import { posMod } from "@dan-schel/js-utils";
 
-export class ServiceTime {
+export class GtfsStopTime {
   private constructor(
     /**
      * The number of seconds since midnight. Allows values greater than
@@ -10,8 +10,8 @@ export class ServiceTime {
     readonly secondsSinceMidnight: number,
   ) {}
 
-  static fromSecondsSinceMidnight(secondsSinceMidnight: number): ServiceTime {
-    return new ServiceTime(secondsSinceMidnight);
+  static fromSecondsSinceMidnight(secondsSinceMidnight: number): GtfsStopTime {
+    return new GtfsStopTime(secondsSinceMidnight);
   }
 
   /**

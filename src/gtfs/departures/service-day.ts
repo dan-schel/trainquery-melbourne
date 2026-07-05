@@ -1,12 +1,12 @@
-import type { ServiceTime } from "./service-time.js";
+import type { GtfsStopTime } from "../schedule/data/gtfs-stop-time.js";
 
 export class ServiceDay {
   constructor(
     readonly date: Temporal.PlainDate,
     readonly offsetSeconds: number,
-    readonly earliestServiceTime: ServiceTime,
+    readonly earliestServiceTime: GtfsStopTime,
     readonly earliestServiceInstant: Temporal.Instant,
-    readonly latestServiceTime: ServiceTime,
+    readonly latestServiceTime: GtfsStopTime,
     readonly latestServiceInstant: Temporal.Instant,
   ) {}
 
@@ -16,8 +16,8 @@ export class ServiceDay {
     timezone: string,
     minimumViableOffsetMins: number,
     maximumViableOffsetMins: number,
-    earliestServiceTime: ServiceTime,
-    latestServiceTime: ServiceTime,
+    earliestServiceTime: GtfsStopTime,
+    latestServiceTime: GtfsStopTime,
   ): ServiceDay[] {
     // TODO: Based on image.png, return all the ServiceDay objects relevant for
     // the given UTC datetime window.

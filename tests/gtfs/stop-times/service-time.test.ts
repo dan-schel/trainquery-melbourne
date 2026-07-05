@@ -1,12 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { ServiceTime } from "../../../src/gtfs/departures/service-time.js";
+import { GtfsStopTime } from "../../../src/gtfs/schedule/data/gtfs-stop-time.js";
 
 // TODO: Move to corequery.
 
 describe("CoreServiceTime", () => {
   describe("#secondOfDay", () => {
     function run(secondsSinceMidnight: number) {
-      return ServiceTime.fromSecondsSinceMidnight(secondsSinceMidnight)
+      return GtfsStopTime.fromSecondsSinceMidnight(secondsSinceMidnight)
         .secondOfDay;
     }
 
@@ -30,7 +30,7 @@ describe("CoreServiceTime", () => {
 
   describe("#dayOffset", () => {
     function run(secondsSinceMidnight: number) {
-      return ServiceTime.fromSecondsSinceMidnight(secondsSinceMidnight)
+      return GtfsStopTime.fromSecondsSinceMidnight(secondsSinceMidnight)
         .dayOffset;
     }
 

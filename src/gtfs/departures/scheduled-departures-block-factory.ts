@@ -1,6 +1,6 @@
 import { ScheduledDeparturesBlock } from "./scheduled-departures-block.js";
 import { ServiceDay } from "./service-day.js";
-import type { ServiceTime } from "./service-time.js";
+import type { GtfsStopTime } from "../schedule/data/gtfs-stop-time.js";
 
 const MELBOURNE_TIMEZONE = "Australia/Melbourne";
 
@@ -11,8 +11,8 @@ const MELBOURNE_MAXIMUM_VIABLE_OFFSET_MINS = 11 * 60;
 
 export class ScheduledDeparturesBlockFactory {
   constructor(
-    private readonly _earliestServiceTime: ServiceTime,
-    private readonly _latestServiceTime: ServiceTime,
+    private readonly _earliestServiceTime: GtfsStopTime,
+    private readonly _latestServiceTime: GtfsStopTime,
   ) {}
 
   create(
