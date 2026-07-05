@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { ServiceTime } from "../../../src/gtfs/stop-times/service-time.js";
+import { ServiceTime } from "../../../src/gtfs/departures/service-time.js";
 
 // TODO: Move to corequery.
 

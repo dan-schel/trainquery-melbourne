@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { GtfsCalendar } from "../../src/gtfs/schedule/data/gtfs-calendar.js";
-import { PlainDateRange } from "../../src/gtfs/stop-times/plain-date-range.js";
+import { PlainDateRange } from "../../src/gtfs/departures/plain-date-range.js";
 
 describe("GtfsCalendar", () => {
   describe("#mayOccurAgainAfter", () => {

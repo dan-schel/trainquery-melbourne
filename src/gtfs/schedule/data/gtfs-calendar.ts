@@ -1,4 +1,4 @@
-import type { PlainDateRange } from "../../stop-times/plain-date-range.js";
+import type { PlainDateRange } from "../../departures/plain-date-range.js";
 
 // TODO: Note when parsing that it's completely valid for added/removed dates
 // to be given in calendar_dates.txt without any corresponding entry in

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { ServiceDay } from "../../../src/gtfs/stop-times/service-day.js";
+import { ServiceDay } from "../../../src/gtfs/departures/service-day.js";
 
 describe("ServiceDay", () => {
   describe(".offsetAtMiddayInMinsFor", () => {
