@@ -1,5 +1,13 @@
 import z from "zod";
-import { floatStringSchema, intStringSchema } from "../../../utils.js";
+import { createSchemaHelpers, buildZodTransform } from "@dan-schel/js-utils";
+
+const { intStringSchema, floatStringSchema } = createSchemaHelpers(z);
+
+const gtfsBooleanSchema = intStringSchema.transform((value) => value !== 0);
+const gtfsDateSchema = z
+  .string()
+  .refine((val) => /^\d{8}$/.test(val))
+  .transform(buildZodTransform((val) => Temporal.PlainDate.from(val)));
 
 export type StopsCsvRow = z.infer<typeof stopsCsvSchema>;
 export type StopsCsv = readonly StopsCsvRow[];
@@ -61,5 +69,47 @@ export const stopTimesCsvSchema = z
     pickup_type: intStringSchema,
     drop_off_type: intStringSchema,
     shape_dist_traveled: floatStringSchema,
+  })
+  .readonly();
+
+export type CalendarCsvRow = z.infer<typeof calendarCsvSchema>;
+export type CalendarCsv = readonly CalendarCsvRow[];
+export const calendarCsvSchema = z
+  .object({
+    service_id: z.string(),
+    monday: gtfsBooleanSchema,
+    tuesday: gtfsBooleanSchema,
+    wednesday: gtfsBooleanSchema,
+    thursday: gtfsBooleanSchema,
+    friday: gtfsBooleanSchema,
+    saturday: gtfsBooleanSchema,
+    sunday: gtfsBooleanSchema,
+    start_date: gtfsDateSchema,
+    end_date: gtfsDateSchema,
+  })
+  .readonly();
+
+export type CalendarDatesCsvRow = z.infer<typeof calendarDatesCsvSchema>;
+export type CalendarDatesCsv = readonly CalendarDatesCsvRow[];
+export const calendarDatesCsvSchema = z
+  .object({
+    service_id: z.string(),
+    date: gtfsDateSchema,
+    exception_type: intStringSchema,
+  })
+  .readonly();
+
+export type TransfersCsvRow = z.infer<typeof transfersCsvSchema>;
+export type TransfersCsv = readonly TransfersCsvRow[];
+export const transfersCsvSchema = z
+  .object({
+    from_stop_id: z.string(),
+    to_stop_id: z.string(),
+    from_route_id: z.string(),
+    to_route_id: z.string(),
+    from_trip_id: z.string(),
+    to_trip_id: z.string(),
+    transfer_type: intStringSchema,
+    min_transfer_time: z.string(),
   })
   .readonly();

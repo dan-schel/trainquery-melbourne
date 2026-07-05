@@ -52,11 +52,26 @@ export class GtfsCalendar {
    * expensive.)
    */
   mayOccurAgainAfter(date: Temporal.PlainDate): boolean {
-    if (this.addedDates.some((a) => Temporal.PlainDate.compare(a, date) > 0)) {
-      return true;
-    }
+    return (
+      this._containsAddedDateAfter(date) ||
+      (this.isRecurring && this.dateRange.endsAfter(date))
+    );
+  }
 
-    return !this.dateRange.endsBeforeOrOn(date);
+  /**
+   * Returns true if one of `monday`, `tuesday`, `wednesday`, etc. is true, i.e.
+   * we don't purely rely on `addedDates` to provide days to this calendar.
+   */
+  get isRecurring() {
+    return (
+      this.monday ||
+      this.tuesday ||
+      this.wednesday ||
+      this.thursday ||
+      this.friday ||
+      this.saturday ||
+      this.sunday
+    );
   }
 
   private _isDayOfWeekIncluded(dayOfWeek: number): boolean {
@@ -86,5 +101,9 @@ export class GtfsCalendar {
 
   private _isDateRemoved(date: Temporal.PlainDate): boolean {
     return this.removedDates.some((removedDate) => removedDate.equals(date));
+  }
+
+  private _containsAddedDateAfter(date: Temporal.PlainDate): boolean {
+    return this.addedDates.some((a) => Temporal.PlainDate.compare(a, date) > 0);
   }
 }
