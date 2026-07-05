@@ -2,9 +2,9 @@ import { isPresent, unique } from "@dan-schel/js-utils";
 import type {
   StopsCsv,
   StopsCsvRow,
-} from "../../../src/gtfs/schedule/csv-schemas.js";
-import type { Subfeed } from "../../../src/gtfs/schedule/utils/subfeed.js";
-import type { GtfsCsvData } from "../../../src/gtfs/schedule/read-gtfs-csvs.js";
+} from "../../../src/gtfs/schedule/csv/csv-schemas.js";
+import type { Subfeed } from "../../../src/gtfs/subfeed.js";
+import type { GtfsCsvData } from "../../../src/gtfs/schedule/csv/read-gtfs-csvs.js";
 
 export type StopsCsvTreeNode = StopsCsvRow & {
   readonly children: readonly StopsCsvTreeNode[];

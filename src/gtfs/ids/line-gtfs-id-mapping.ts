@@ -1,6 +1,6 @@
 import { parseIntThrow } from "@dan-schel/js-utils";
 import type { LineGtfsIdsConfig } from "../../config/gtfs/types.js";
-import type { Subfeed } from "../schedule/utils/subfeed.js";
+import type { Subfeed } from "../subfeed.js";
 import type { LineGtfsIdMetadata } from "./line-gtfs-id-metadata.js";
 import { LineGtfsIdCollection } from "./line-gtfs-id-collection.js";
 

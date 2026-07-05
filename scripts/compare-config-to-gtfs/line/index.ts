@@ -7,7 +7,7 @@ import type {
   RoutesCsvRow,
   StopTimesCsv,
   TripsCsv,
-} from "../../../src/gtfs/schedule/csv-schemas.js";
+} from "../../../src/gtfs/schedule/csv/csv-schemas.js";
 import type { LineLintOptions } from "../comparison-options.js";
 import { compareLineItems } from "./compare-items.js";
 import type { LineGtfsIdCollection } from "../../../src/gtfs/ids/line-gtfs-id-collection.js";

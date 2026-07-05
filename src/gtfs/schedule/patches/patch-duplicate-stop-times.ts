@@ -1,5 +1,5 @@
 import { parseIntNull } from "@dan-schel/js-utils";
-import type { GtfsCsvData } from "../read-gtfs-csvs.js";
+import type { GtfsCsvData } from "../csv/read-gtfs-csvs.js";
 
 export function patchDuplicateStopTimes(gtfsData: GtfsCsvData): GtfsCsvData {
   // I've noticed the regional feed containing duplicate stop times entries,

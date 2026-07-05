@@ -1,5 +1,5 @@
 import { groupBy } from "@dan-schel/js-utils";
-import type { Subfeed } from "../../src/gtfs/schedule/utils/subfeed.js";
+import type { Subfeed } from "../../src/gtfs/subfeed.js";
 
 type ComparisonIssue = {
   readonly category: string;

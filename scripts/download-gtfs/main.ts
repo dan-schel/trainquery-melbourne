@@ -1,6 +1,6 @@
 import fsp from "fs/promises";
 import path from "path";
-import { withGtfsCsvs } from "../../src/gtfs/schedule/with-gtfs-csvs.js";
+import { withGtfsCsvs } from "../../src/gtfs/schedule/csv/with-gtfs-csvs.js";
 import { env } from "./env.js";
 import { fetchGtfsRealtime } from "../../src/gtfs/realtime/fetch-gtfs-realtime.js";
 

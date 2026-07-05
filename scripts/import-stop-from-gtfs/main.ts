@@ -1,7 +1,7 @@
 import { stopGtfsIds } from "../../src/config/gtfs/stop-gtfs-ids.js";
 import { StopsCsvTree } from "../utils/gtfs/stops-csv-tree.js";
-import { readGtfsCsvs } from "../../src/gtfs/schedule/read-gtfs-csvs.js";
-import { withGtfsCsvs } from "../../src/gtfs/schedule/with-gtfs-csvs.js";
+import { readGtfsCsvs } from "../../src/gtfs/schedule/csv/read-gtfs-csvs.js";
+import { withGtfsCsvs } from "../../src/gtfs/schedule/csv/with-gtfs-csvs.js";
 import { askWhichStopToImport } from "./ask-which-stop-to-import.js";
 import { env } from "./env.js";
 import { findUnseenGtfsIds } from "./find-unseen-gtfs-ids.js";

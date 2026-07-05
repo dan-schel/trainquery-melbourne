@@ -1,6 +1,6 @@
 import { nonNull } from "@dan-schel/js-utils";
 import type { StopGtfsIdMapping } from "../../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
-import type { StopTimesCsv } from "../../../../src/gtfs/schedule/csv-schemas.js";
+import type { StopTimesCsv } from "../../../../src/gtfs/schedule/csv/csv-schemas.js";
 
 export class StoppingPattern {
   constructor(readonly stops: number[]) {}

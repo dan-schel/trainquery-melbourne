@@ -1,5 +1,5 @@
 import type { GtfsSchedule } from "./data/gtfs-schedule.js";
-import type { GtfsCsvData } from "./read-gtfs-csvs.js";
+import type { GtfsCsvData } from "./csv/read-gtfs-csvs.js";
 
 export class GtfsScheduleParser {
   constructor(

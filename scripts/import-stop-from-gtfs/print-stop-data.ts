@@ -13,7 +13,7 @@ import {
   GTFS_REPLACEMENT_BUS_PLATFORM_CODE,
   NONSENSE_GTFS_STOP_ID_REGEX,
 } from "../utils/gtfs/magic-values.js";
-import type { Subfeed } from "../../src/gtfs/schedule/utils/subfeed.js";
+import type { Subfeed } from "../../src/gtfs/subfeed.js";
 
 export async function printStopData(stop: StopsCsvTreeNode) {
   const name = cleanupStopName(stop.stop_name);
