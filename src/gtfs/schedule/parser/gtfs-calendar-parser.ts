@@ -12,6 +12,8 @@ import {
   type GtfsCalendarParsingError,
 } from "./errors.js";
 
+// TODO: All these parsers need unit tests :)
+
 const CALENDAR_DATE_EXCEPTION_TYPE_ADDED = 1;
 const CALENDAR_DATE_EXCEPTION_TYPE_REMOVED = 2;
 

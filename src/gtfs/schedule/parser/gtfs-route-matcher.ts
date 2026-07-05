@@ -14,6 +14,11 @@ import type { GtfsTripServicedStop, GtfsTripStop } from "../data/gtfs-trip.js";
 import { GtfsStopTime } from "../data/gtfs-stop-time.js";
 import { isSubsequence } from "../../../utils/is-subsequence.js";
 
+const STOP_TIME_PICKUP_TYPE_REGULAR = 0;
+const STOP_TIME_PICKUP_TYPE_NO_PICKUP = 1;
+const STOP_TIME_DROP_OFF_TYPE_REGULAR = 0;
+const STOP_TIME_DROP_OFF_TYPE_NO_DROP_OFF = 1;
+
 type MatchedRoute = {
   stops: readonly GtfsTripStop[];
   color: Color;
@@ -200,9 +205,9 @@ export class GtfsRouteMatcher {
   }
 
   private _doesPickUp(stopTime: StopTimesCsvRow): boolean {
-    if (stopTime.pickup_type === 0) {
+    if (stopTime.pickup_type === STOP_TIME_PICKUP_TYPE_REGULAR) {
       return true;
-    } else if (stopTime.pickup_type === 1) {
+    } else if (stopTime.pickup_type === STOP_TIME_PICKUP_TYPE_NO_PICKUP) {
       return false;
     } else {
       this._onError(
@@ -221,9 +226,9 @@ export class GtfsRouteMatcher {
   }
 
   private _doesDropOff(stopTime: StopTimesCsvRow): boolean {
-    if (stopTime.drop_off_type === 0) {
+    if (stopTime.drop_off_type === STOP_TIME_DROP_OFF_TYPE_REGULAR) {
       return true;
-    } else if (stopTime.drop_off_type === 1) {
+    } else if (stopTime.drop_off_type === STOP_TIME_DROP_OFF_TYPE_NO_DROP_OFF) {
       return false;
     } else {
       this._onError(
