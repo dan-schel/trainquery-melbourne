@@ -41,6 +41,11 @@ export class GtfsRouteMatcher {
     const match = this._matchToRoute(stops, routesForLine);
     if (match == null) {
       const stopIds = stops.map((stop) => stop.stopId);
+
+      // TODO: It feels unclear to me at which level I should be logging errors
+      // like this, e.g. for _convertToStops it gets logged inside the method,
+      // but for _matchToRoute I need to remember to do it here. How can I be
+      // consistent/ensure that it's not missed or duplicated?
       this._onError(new NoMatchingRouteError(gtfsTripId, stopIds));
       return null;
     }
