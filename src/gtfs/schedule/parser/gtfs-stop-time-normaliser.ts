@@ -96,17 +96,15 @@ export class InvalidStopSequenceError extends Error {
   constructor(readonly stopTimes: StopTimesCsv) {
     super();
   }
-  get tripId() {
-    return this.stopTimes[0]?.trip_id ?? null;
-  }
+  // The trip_id is accessible, e.g.:
+  // get tripId() {
+  //   return this.stopTimes[0]?.trip_id ?? null;
+  // }
 }
 
 export class MultipleStopSequencesError extends Error {
   readonly type = "multiple-stop-sequences";
   constructor(readonly stopTimes: StopTimesCsv) {
     super();
-  }
-  get tripId() {
-    return this.stopTimes[0]?.trip_id ?? null;
   }
 }

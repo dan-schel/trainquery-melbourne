@@ -18,10 +18,15 @@ import {
   GtfsRouteMatcher,
   type GtfsRouteMatchingError,
 } from "./gtfs-route-matcher.js";
+import {
+  type GtfsTransferConnectionError,
+  GtfsTransferConnector,
+} from "./gtfs-transfer-connector.js";
 
 export class GtfsTripParser {
   private readonly _stopTimeNormaliser: GtfsStopTimeNormaliser;
   private readonly _routeMatcher: GtfsRouteMatcher;
+  private readonly _transferConnector: GtfsTransferConnector;
 
   constructor(
     // Unlike csvs, lineGtfsIdMapping, and stopGtfsIdMapping, these are not
@@ -32,6 +37,7 @@ export class GtfsTripParser {
   ) {
     this._stopTimeNormaliser = new GtfsStopTimeNormaliser(this._onError);
     this._routeMatcher = new GtfsRouteMatcher(this._onError);
+    this._transferConnector = new GtfsTransferConnector(this._onError);
   }
 
   parse(
@@ -45,7 +51,7 @@ export class GtfsTripParser {
     const calendarMap = this._buildCalendarMap(calendars);
     const rowsByTrip = this._organiseStopTimesIntoTrips(trips, stopTimes);
 
-    const result: GtfsTrip[] = [];
+    const unconnectedTrips: GtfsTrip[] = [];
 
     for (const { trip, stopTimes } of rowsByTrip) {
       const calendar = calendarMap.get(trip.service_id);
@@ -81,28 +87,22 @@ export class GtfsTripParser {
       // Route matcher reports its own errors.
       if (routeMatchResult == null) continue;
 
-      // TODO-NEXT: It can't actually work like this, just popped this here so I
-      // don't forget. Once all trips constructed in a mutable sense, use the
-      // transfers.txt to link them together.
-      const previousTrip = null;
-      const nextTrip = null;
-
-      result.push(
-        new GtfsTrip(
-          trip.trip_id,
-          trip.route_id,
+      unconnectedTrips.push(
+        new GtfsTrip({
+          gtfsTripId: trip.trip_id,
+          gtfsRouteId: trip.route_id,
           calendar,
-          routeMatchResult.stops,
-          lineIdMatch.lineId,
-          routeMatchResult.color,
-          routeMatchResult.serviceTags,
-          null,
-          null,
-        ),
+          stops: routeMatchResult.stops,
+          lineId: lineIdMatch.lineId,
+          color: routeMatchResult.color,
+          serviceTags: routeMatchResult.serviceTags,
+          previousTrip: null,
+          nextTrip: null,
+        }),
       );
     }
 
-    return result;
+    return this._transferConnector.connect(unconnectedTrips, transfers);
   }
 
   private _organiseStopTimesIntoTrips(
@@ -163,7 +163,8 @@ export type GtfsTripParsingError =
   | TripReferencesNonExistentCalendarError
   | TripReferencesUnmappedRouteIdError
   | GtfsStopTimeNormalisationError
-  | GtfsRouteMatchingError;
+  | GtfsRouteMatchingError
+  | GtfsTransferConnectionError;
 
 export class StopTimeReferencesNonExistentTripError extends Error {
   readonly type = "stop-time-references-non-existent-trip";
