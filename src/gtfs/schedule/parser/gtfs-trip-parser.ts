@@ -9,16 +9,15 @@ import type {
 } from "../csv/csv-schemas.js";
 import type { GtfsCalendar } from "../data/gtfs-calendar.js";
 import { GtfsTrip } from "../data/gtfs-trip.js";
-import {
-  CalendarNotFoundForTripError,
-  DuplicateTripIdError,
-  RouteIdNotMappedError,
-  StopTimeWithoutTripError,
-  type GtfsTripParsingError,
-} from "./errors.js";
 import type { LineRoutesConfig } from "../../../config/gtfs/types.js";
-import { GtfsStopTimeNormaliser } from "./gtfs-stop-time-normaliser.js";
-import { GtfsRouteMatcher } from "./gtfs-route-matcher.js";
+import {
+  GtfsStopTimeNormaliser,
+  type GtfsStopTimeNormalisationError,
+} from "./gtfs-stop-time-normaliser.js";
+import {
+  GtfsRouteMatcher,
+  type GtfsRouteMatchingError,
+} from "./gtfs-route-matcher.js";
 
 export class GtfsTripParser {
   private readonly _stopTimeNormaliser: GtfsStopTimeNormaliser;
@@ -51,20 +50,21 @@ export class GtfsTripParser {
     for (const { trip, stopTimes } of rowsByTrip) {
       const calendar = calendarMap.get(trip.service_id);
       if (calendar == null) {
-        const { trip_id, service_id } = trip;
-        this._onError(new CalendarNotFoundForTripError(trip_id, service_id));
+        this._onError(new TripReferencesNonExistentCalendarError(trip));
         continue;
       }
 
       const lineIdMatch = lineGtfsIdMapping.tryResolve(trip.route_id);
       if (lineIdMatch == null) {
-        this._onError(new RouteIdNotMappedError(trip.route_id));
+        this._onError(new TripReferencesUnmappedRouteIdError(trip));
         continue;
       }
 
       if (lineIdMatch.type === "replacement-bus") continue;
 
       const normalizedStopTimes = this._stopTimeNormaliser.normalise(stopTimes);
+      // Stop time normaliser reports its own errors.
+      if (normalizedStopTimes == null) continue;
 
       // TODO: Instead of using the line routes config object, we should be
       // using a domain model sort of class which handles this default value
@@ -74,7 +74,6 @@ export class GtfsTripParser {
       const routesForLine = this._lineRoutes[lineIdMatch.lineId] ?? [];
 
       const routeMatchResult = this._routeMatcher.match(
-        trip.trip_id,
         normalizedStopTimes,
         routesForLine,
         stopGtfsIdMapping,
@@ -82,7 +81,7 @@ export class GtfsTripParser {
       // Route matcher reports its own errors.
       if (routeMatchResult == null) continue;
 
-      // TODO: It can't actually work like this, just popped this here so I
+      // TODO-NEXT: It can't actually work like this, just popped this here so I
       // don't forget. Once all trips constructed in a mutable sense, use the
       // transfers.txt to link them together.
       const previousTrip = null;
@@ -116,7 +115,8 @@ export class GtfsTripParser {
     // Step 1: Build a map from everything in trips.txt.
     for (const trip of trips) {
       if (result.has(trip.trip_id)) {
-        this._onError(new DuplicateTripIdError(trip.trip_id));
+        // We only keep the first trip we see for a given trip_id, I guess.
+        this._onError(new DuplicateTripIdError(trip));
         continue;
       }
 
@@ -133,14 +133,17 @@ export class GtfsTripParser {
         // stop_times.txt rows will reference it. However, I consider it out of
         // scope for the parser to group those errors. Something which listens
         // for the errors (i.e. to build some report) is responsible for that.
-        this._onError(new StopTimeWithoutTripError(stopTime.trip_id));
+        this._onError(new StopTimeReferencesNonExistentTripError(stopTime));
         continue;
       }
 
       trip.stopTimes.push(stopTime);
     }
 
-    // Step 3: Convert to an array and sort the stop times by stop_sequence.
+    // Step 3: Convert to an array. Do NOT sort by stop_sequence, as the stop
+    // time normaliser is interested in the original order of the rows in
+    // stop_times.txt for some special case handling (i.e. PTV has published
+    // invalid data, but we can still interpret it).
     return Array.from(result.values()).map((group) => ({
       ...group,
       stopTimes: group.stopTimes.sort(
@@ -151,5 +154,41 @@ export class GtfsTripParser {
 
   private _buildCalendarMap(calendars: readonly GtfsCalendar[]) {
     return new Map<string, GtfsCalendar>(calendars.map((c) => [c.id, c]));
+  }
+}
+
+export type GtfsTripParsingError =
+  | StopTimeReferencesNonExistentTripError
+  | DuplicateTripIdError
+  | TripReferencesNonExistentCalendarError
+  | TripReferencesUnmappedRouteIdError
+  | GtfsStopTimeNormalisationError
+  | GtfsRouteMatchingError;
+
+export class StopTimeReferencesNonExistentTripError extends Error {
+  readonly type = "stop-time-references-non-existent-trip";
+  constructor(readonly stopTime: StopTimesCsvRow) {
+    super();
+  }
+}
+
+export class DuplicateTripIdError extends Error {
+  readonly type = "duplicate-trip-id";
+  constructor(readonly subsequentRowWithDuplicateId: TripsCsvRow) {
+    super();
+  }
+}
+
+export class TripReferencesNonExistentCalendarError extends Error {
+  readonly type = "trip-references-non-existent-calendar";
+  constructor(readonly trip: TripsCsvRow) {
+    super();
+  }
+}
+
+export class TripReferencesUnmappedRouteIdError extends Error {
+  readonly type = "trip-references-unmapped-route-id";
+  constructor(readonly trip: TripsCsvRow) {
+    super();
   }
 }

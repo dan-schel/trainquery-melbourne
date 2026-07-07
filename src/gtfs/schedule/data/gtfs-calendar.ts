@@ -16,9 +16,6 @@ export class GtfsCalendar {
   ) {}
 
   occursOn(date: Temporal.PlainDate): boolean {
-    // Note: The GTFS spec doesn't seem to specify what would happen if a date
-    // was both added and removed, so I'm making an assumption that added dates
-    // take precedence over removed dates.
     if (this._isDateAdded(date)) {
       return true;
     }

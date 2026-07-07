@@ -1,13 +1,5 @@
 import type { Color } from "corequery";
 import type { RouteConfig } from "../../../config/gtfs/types.js";
-import {
-  InvalidGtfsTimeStringError,
-  NoMatchingRouteError,
-  StopIdNotMappedError,
-  UnexpectedDropOffTypeError,
-  UnexpectedPickupTypeError,
-  type GtfsRouteMatchingError,
-} from "./errors.js";
 import type { StopTimesCsv, StopTimesCsvRow } from "../csv/csv-schemas.js";
 import type { StopGtfsIdMapping } from "../../ids/stop-gtfs-id-mapping.js";
 import type { GtfsTripServicedStop, GtfsTripStop } from "../data/gtfs-trip.js";
@@ -31,16 +23,11 @@ export class GtfsRouteMatcher {
   ) {}
 
   match(
-    gtfsTripId: string,
     stopTimes: StopTimesCsv,
     routesForLine: readonly RouteConfig[],
     stopGtfsIdMapping: StopGtfsIdMapping,
   ): MatchedRoute | null {
-    const stops = this._convertToStops(
-      gtfsTripId,
-      stopTimes,
-      stopGtfsIdMapping,
-    );
+    const stops = this._convertToStops(stopTimes, stopGtfsIdMapping);
     if (stops == null) return null;
 
     const match = this._matchToRoute(stops, routesForLine);
@@ -51,7 +38,7 @@ export class GtfsRouteMatcher {
       // like this, e.g. for _convertToStops it gets logged inside the method,
       // but for _matchToRoute I need to remember to do it here. How can I be
       // consistent/ensure that it's not missed or duplicated?
-      this._onError(new NoMatchingRouteError(gtfsTripId, stopIds));
+      this._onError(new NoMatchingRouteError(stopTimes, stopIds));
       return null;
     }
 
@@ -145,18 +132,15 @@ export class GtfsRouteMatcher {
    * later once we've matched the trip to a route.
    */
   private _convertToStops(
-    gtfsTripId: string,
     stopTimes: StopTimesCsv,
     stopGtfsIdMapping: StopGtfsIdMapping,
   ): readonly GtfsTripServicedStop[] | null {
     const result: GtfsTripServicedStop[] = [];
 
     for (const stopTime of stopTimes) {
-      const gtfsStopId = stopTime.stop_id;
-
-      const gtfsIdMetadata = stopGtfsIdMapping.tryResolve(gtfsStopId);
+      const gtfsIdMetadata = stopGtfsIdMapping.tryResolve(stopTime.stop_id);
       if (gtfsIdMetadata == null) {
-        this._onError(new StopIdNotMappedError(gtfsTripId, gtfsStopId));
+        this._onError(new StopTimeReferencesUnmappedStopIdError(stopTime));
         return null;
       }
 
@@ -165,26 +149,14 @@ export class GtfsRouteMatcher {
 
       const arrivalTime = GtfsStopTime.tryParse(stopTime.arrival_time);
       if (arrivalTime == null) {
-        this._onError(
-          new InvalidGtfsTimeStringError(
-            gtfsTripId,
-            gtfsStopId,
-            stopTime.arrival_time,
-            "arrival_time",
-          ),
-        );
+        this._onError(new InvalidGtfsTimeStringError(stopTime, "arrival_time"));
         return null;
       }
 
       const departureTime = GtfsStopTime.tryParse(stopTime.departure_time);
       if (departureTime == null) {
         this._onError(
-          new InvalidGtfsTimeStringError(
-            gtfsTripId,
-            gtfsStopId,
-            stopTime.departure_time,
-            "departure_time",
-          ),
+          new InvalidGtfsTimeStringError(stopTime, "departure_time"),
         );
         return null;
       }
@@ -210,13 +182,7 @@ export class GtfsRouteMatcher {
     } else if (stopTime.pickup_type === STOP_TIME_PICKUP_TYPE_NO_PICKUP) {
       return false;
     } else {
-      this._onError(
-        new UnexpectedPickupTypeError(
-          stopTime.trip_id,
-          stopTime.stop_id,
-          stopTime.pickup_type,
-        ),
-      );
+      this._onError(new UnexpectedPickupTypeError(stopTime));
 
       // If pickup_type is unexpected, let's just treat it like a normal stop. I
       // don't think we need to exclude the whole trip for something as minor as
@@ -231,18 +197,60 @@ export class GtfsRouteMatcher {
     } else if (stopTime.drop_off_type === STOP_TIME_DROP_OFF_TYPE_NO_DROP_OFF) {
       return false;
     } else {
-      this._onError(
-        new UnexpectedDropOffTypeError(
-          stopTime.trip_id,
-          stopTime.stop_id,
-          stopTime.drop_off_type,
-        ),
-      );
+      this._onError(new UnexpectedDropOffTypeError(stopTime));
 
       // If drop_off_type is unexpected, let's just treat it like a normal stop.
       // I don't think we need to exclude the whole trip for something as minor
       // as mislabelling drop off only stops.
       return true;
     }
+  }
+}
+
+export type GtfsRouteMatchingError =
+  | NoMatchingRouteError
+  | StopTimeReferencesUnmappedStopIdError
+  | UnexpectedPickupTypeError
+  | UnexpectedDropOffTypeError
+  | InvalidGtfsTimeStringError;
+
+export class NoMatchingRouteError extends Error {
+  readonly type = "no-matching-route";
+  constructor(
+    readonly stopTimes: StopTimesCsv,
+    readonly resolvedStopIds: readonly number[],
+  ) {
+    super();
+  }
+}
+
+export class StopTimeReferencesUnmappedStopIdError extends Error {
+  readonly type = "stop-time-references-unmapped-stop-id";
+  constructor(readonly stopTime: StopTimesCsvRow) {
+    super();
+  }
+}
+
+export class UnexpectedPickupTypeError extends Error {
+  readonly type = "unexpected-pickup-type";
+  constructor(readonly stopTime: StopTimesCsvRow) {
+    super();
+  }
+}
+
+export class UnexpectedDropOffTypeError extends Error {
+  readonly type = "unexpected-drop-off-type";
+  constructor(readonly stopTime: StopTimesCsvRow) {
+    super();
+  }
+}
+
+export class InvalidGtfsTimeStringError extends Error {
+  readonly type = "invalid-gtfs-time-string";
+  constructor(
+    readonly stopTime: StopTimesCsvRow,
+    readonly field: "arrival_time" | "departure_time",
+  ) {
+    super();
   }
 }

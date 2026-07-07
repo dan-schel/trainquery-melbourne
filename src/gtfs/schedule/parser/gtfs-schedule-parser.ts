@@ -1,8 +1,13 @@
 import { GtfsSchedule } from "../data/gtfs-schedule.js";
 import type { GtfsFeedCsv } from "../csv/read-gtfs-csvs.js";
-import { GtfsCalendarParser } from "./gtfs-calendar-parser.js";
-import type { GtfsParsingError } from "./errors.js";
-import { GtfsTripParser } from "./gtfs-trip-parser.js";
+import {
+  GtfsCalendarParser,
+  type GtfsCalendarParsingError,
+} from "./gtfs-calendar-parser.js";
+import {
+  GtfsTripParser,
+  type GtfsTripParsingError,
+} from "./gtfs-trip-parser.js";
 import type { LineRoutesConfig } from "../../../config/gtfs/types.js";
 import type { LineGtfsIdMapping } from "../../ids/line-gtfs-id-mapping.js";
 import type { StopGtfsIdMapping } from "../../ids/stop-gtfs-id-mapping.js";
@@ -40,3 +45,5 @@ export class GtfsScheduleParser {
     return new GtfsSchedule(parsedTrips);
   }
 }
+
+export type GtfsParsingError = GtfsCalendarParsingError | GtfsTripParsingError;

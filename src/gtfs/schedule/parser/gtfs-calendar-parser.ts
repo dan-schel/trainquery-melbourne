@@ -2,15 +2,10 @@ import type {
   CalendarCsv,
   CalendarCsvRow,
   CalendarDatesCsv,
+  CalendarDatesCsvRow,
 } from "../csv/csv-schemas.js";
 import { GtfsCalendar } from "../data/gtfs-calendar.js";
 import { PlainDateRange } from "../../departures/plain-date-range.js";
-import {
-  DuplicateCalendarIdError,
-  InvalidCalendarDateRangeError,
-  UnexpectedCalendarDateExceptionTypeError,
-  type GtfsCalendarParsingError,
-} from "./errors.js";
 
 // TODO: All these parsers need unit tests :)
 
@@ -39,8 +34,8 @@ export class GtfsCalendarParser {
     // Step 1: Process rows in calendar.txt.
     for (const row of calendarCsv) {
       if (calendarData.has(row.service_id)) {
-        this._onError(new DuplicateCalendarIdError(row.service_id));
-        calendarsToIgnore.add(row.service_id);
+        // We only keep the calendar we see for a given service_id, I guess.
+        this._onError(new DuplicateCalendarIdError(row));
         continue;
       }
 
@@ -71,6 +66,15 @@ export class GtfsCalendarParser {
         addedDates: [],
         removedDates: [],
       };
+
+      if (
+        calendar.addedDates.includes(row.date) ||
+        calendar.removedDates.includes(row.date)
+      ) {
+        // Report this weirdness, but keep going. My GtfsCalendar implementation
+        // will ultimately give added dates priority.
+        this._onError(new MultipleExceptionsForSameDateError(row));
+      }
 
       if (row.exception_type === CALENDAR_DATE_EXCEPTION_TYPE_ADDED) {
         calendar.addedDates.push(row.date);
@@ -113,5 +117,39 @@ export class GtfsCalendarParser {
         data.removedDates,
       );
     });
+  }
+}
+
+export type GtfsCalendarParsingError =
+  | DuplicateCalendarIdError
+  | UnexpectedCalendarDateExceptionTypeError
+  | InvalidCalendarDateRangeError
+  | MultipleExceptionsForSameDateError;
+
+export class DuplicateCalendarIdError extends Error {
+  readonly type = "duplicate-calendar";
+  constructor(readonly subsequentRowWithDuplicateId: CalendarCsvRow) {
+    super();
+  }
+}
+
+export class InvalidCalendarDateRangeError extends Error {
+  readonly type = "invalid-calendar-date-range";
+  constructor(readonly row: CalendarCsvRow) {
+    super();
+  }
+}
+
+export class UnexpectedCalendarDateExceptionTypeError extends Error {
+  readonly type = "unexpected-calendar-date-exception-type";
+  constructor(readonly row: CalendarDatesCsvRow) {
+    super();
+  }
+}
+
+export class MultipleExceptionsForSameDateError extends Error {
+  readonly type = "multiple-exceptions-for-same-date";
+  constructor(readonly subsequentRowForSameDate: CalendarDatesCsvRow) {
+    super();
   }
 }
