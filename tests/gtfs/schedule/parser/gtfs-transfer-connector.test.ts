@@ -4,10 +4,6 @@ import {
   TransferIsNotInSeatTransferError,
   type GtfsTransferConnectionError,
 } from "../../../../src/gtfs/schedule/parser/gtfs-transfer-connector.js";
-import { GtfsTrip } from "../../../../src/gtfs/schedule/data/gtfs-trip.js";
-import { GtfsCalendar } from "../../../../src/gtfs/schedule/data/gtfs-calendar.js";
-import { GtfsStopTime } from "../../../../src/gtfs/schedule/data/gtfs-stop-time.js";
-import { PlainDateRange } from "../../../../src/gtfs/departures/plain-date-range.js";
 import {
   TransferIsNotFromTerminusError,
   TransferIsNotToOriginError,
@@ -15,6 +11,7 @@ import {
   TransferReferencesTripAlreadyConnectedError,
 } from "../../../../src/gtfs/schedule/parser/gtfs-transfer-connector.js";
 import { itsOk } from "@dan-schel/js-utils";
+import { makeTrip, transfer } from "./factories.js";
 
 describe("GtfsTransferConnector", () => {
   it("connects trips using in-seat transfers", () => {
@@ -156,74 +153,3 @@ describe("GtfsTransferConnector", () => {
     );
   });
 });
-
-function makeTrip(id: string, originId: string, terminusId: string) {
-  const calendar = new GtfsCalendar(
-    "svc",
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    new PlainDateRange(null, null),
-    [],
-    [],
-  );
-
-  return new GtfsTrip({
-    gtfsTripId: id,
-    gtfsRouteId: "route-1",
-    calendar,
-    stops: [servicedStop(originId, 1), servicedStop(terminusId, 2)],
-    lineId: 1,
-    color: "red",
-    serviceTags: [],
-    previousTrip: null,
-    nextTrip: null,
-  });
-}
-
-function servicedStop(stopId: string, positionId: number) {
-  return {
-    type: "serviced" as const,
-    stopId: positionId,
-    positionId,
-    arrivalTime: GtfsStopTime.fromSecondsSinceMidnight(0),
-    departureTime: GtfsStopTime.fromSecondsSinceMidnight(60),
-    picksUp: true,
-    dropsOff: true,
-    gtfsIdMetadata: {
-      type: "platform" as const,
-      id: stopId,
-      stopId: positionId,
-      positionId,
-    },
-  };
-}
-
-function transfer(
-  overrides: Partial<{
-    from_stop_id: string;
-    to_stop_id: string;
-    from_route_id: string;
-    to_route_id: string;
-    from_trip_id: string;
-    to_trip_id: string;
-    transfer_type: number;
-    min_transfer_time: string;
-  }> = {},
-) {
-  return {
-    from_stop_id: "B",
-    to_stop_id: "B",
-    from_route_id: "route-1",
-    to_route_id: "route-1",
-    from_trip_id: "from",
-    to_trip_id: "to",
-    transfer_type: 4,
-    min_transfer_time: "0",
-    ...overrides,
-  };
-}

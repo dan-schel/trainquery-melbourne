@@ -9,10 +9,7 @@ import {
   type GtfsRouteMatchingError,
 } from "../../../../src/gtfs/schedule/parser/gtfs-route-matcher.js";
 import { Route } from "../../../../src/gtfs/route/route.js";
-import { RouteStop } from "../../../../src/gtfs/route/route-stop.js";
-import { StopGtfsIdCollection } from "../../../../src/gtfs/ids/stop-gtfs-id-collection.js";
-import { StopGtfsIdMapping } from "../../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
-import type { StopTimesCsvRow } from "../../../../src/gtfs/schedule/csv/csv-schemas.js";
+import { routeStops, stopMapping, stopTime } from "./factories.js";
 
 describe("GtfsRouteMatcher", () => {
   it("matches the shortest compatible route and injects express stops", () => {
@@ -54,7 +51,7 @@ describe("GtfsRouteMatcher", () => {
         }),
       ],
       routes,
-      stopMapping(),
+      stopMapping(["A", "B", "C", "D", "E"]),
     );
 
     expect(errors).toEqual([]);
@@ -89,7 +86,7 @@ describe("GtfsRouteMatcher", () => {
           serviceTags: [],
         }),
       ],
-      stopMapping(),
+      stopMapping(["A", "B", "C", "D", "E"]),
     );
 
     expect(result).toBeNull();
@@ -110,7 +107,7 @@ describe("GtfsRouteMatcher", () => {
           serviceTags: [],
         }),
       ],
-      stopMapping(),
+      stopMapping(["A", "B", "C", "D", "E"]),
     );
 
     expect(result).toBeNull();
@@ -134,7 +131,7 @@ describe("GtfsRouteMatcher", () => {
           serviceTags: [],
         }),
       ],
-      stopMapping(),
+      stopMapping(["A", "B", "C", "D", "E"]),
     );
 
     expect(errors).toHaveLength(1);
@@ -158,7 +155,7 @@ describe("GtfsRouteMatcher", () => {
           serviceTags: [],
         }),
       ],
-      stopMapping(),
+      stopMapping(["A", "B", "C", "D", "E"]),
     );
 
     expect(errors).toHaveLength(1);
@@ -185,7 +182,7 @@ describe("GtfsRouteMatcher", () => {
           serviceTags: [],
         }),
       ],
-      stopMapping(),
+      stopMapping(["A", "B", "C", "D", "E"]),
     );
 
     expect(result).toBeNull();
@@ -193,36 +190,3 @@ describe("GtfsRouteMatcher", () => {
     expect(errors[0]).toBeInstanceOf(InvalidGtfsTimeStringError);
   });
 });
-
-function stopMapping() {
-  return new StopGtfsIdMapping(
-    new Map([
-      [1, new StopGtfsIdCollection(1, "A", [], new Map(), [])],
-      [2, new StopGtfsIdCollection(2, "B", [], new Map(), [])],
-      [3, new StopGtfsIdCollection(3, "C", [], new Map(), [])],
-      [4, new StopGtfsIdCollection(4, "D", [], new Map(), [])],
-      [5, new StopGtfsIdCollection(5, "E", [], new Map(), [])],
-    ]),
-  );
-}
-
-function routeStops(stopIds: readonly number[]) {
-  return stopIds.map(
-    (stopId) => new RouteStop({ stopId, collapseInStoppingPatterns: false }),
-  );
-}
-
-function stopTime(overrides: Partial<StopTimesCsvRow> = {}): StopTimesCsvRow {
-  return {
-    trip_id: "trip-1",
-    arrival_time: "00:00:00",
-    departure_time: "00:00:00",
-    stop_id: "A",
-    stop_sequence: 1,
-    stop_headsign: "",
-    pickup_type: 0,
-    drop_off_type: 0,
-    shape_dist_traveled: 0,
-    ...overrides,
-  };
-}

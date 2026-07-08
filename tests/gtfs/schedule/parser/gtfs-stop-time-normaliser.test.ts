@@ -5,7 +5,7 @@ import {
   MultipleStopSequencesError,
   type GtfsStopTimeNormalisationError,
 } from "../../../../src/gtfs/schedule/parser/gtfs-stop-time-normaliser.js";
-import type { StopTimesCsvRow } from "../../../../src/gtfs/schedule/csv/csv-schemas.js";
+import { stopTime } from "./factories.js";
 
 describe("GtfsStopTimeNormaliser", () => {
   it("returns already regular stop sequences unchanged", () => {
@@ -71,18 +71,3 @@ describe("GtfsStopTimeNormaliser", () => {
     expect(errors[0]).toBeInstanceOf(MultipleStopSequencesError);
   });
 });
-
-function stopTime(overrides: Partial<StopTimesCsvRow> = {}): StopTimesCsvRow {
-  return {
-    trip_id: "trip-1",
-    arrival_time: "00:00:00",
-    departure_time: "00:00:00",
-    stop_id: "stop",
-    stop_sequence: 1,
-    stop_headsign: "",
-    pickup_type: 0,
-    drop_off_type: 0,
-    shape_dist_traveled: 0,
-    ...overrides,
-  };
-}

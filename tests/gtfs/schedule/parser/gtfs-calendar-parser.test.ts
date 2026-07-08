@@ -7,7 +7,7 @@ import {
   UnexpectedCalendarDateExceptionTypeError,
   type GtfsCalendarParsingError,
 } from "../../../../src/gtfs/schedule/parser/gtfs-calendar-parser.js";
-import type { CalendarCsvRow } from "../../../../src/gtfs/schedule/csv/csv-schemas.js";
+import { calendarRow } from "./factories.js";
 
 describe("GtfsCalendarParser", () => {
   it("parses base calendars and calendar date exceptions", () => {
@@ -168,19 +168,3 @@ describe("GtfsCalendarParser", () => {
     expect(calendars).toHaveLength(1);
   });
 });
-
-function calendarRow(overrides: Partial<CalendarCsvRow> = {}): CalendarCsvRow {
-  return {
-    service_id: "svc",
-    monday: true,
-    tuesday: false,
-    wednesday: false,
-    thursday: false,
-    friday: false,
-    saturday: false,
-    sunday: false,
-    start_date: Temporal.PlainDate.from({ year: 2026, month: 6, day: 15 }),
-    end_date: Temporal.PlainDate.from({ year: 2026, month: 6, day: 21 }),
-    ...overrides,
-  };
-}
