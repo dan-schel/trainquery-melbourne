@@ -1,10 +1,9 @@
 import type { Color } from "corequery";
-import type { RouteConfig } from "../../config/routes.js";
 import type { StopTimesCsv, StopTimesCsvRow } from "../csv/csv-schemas.js";
 import type { StopGtfsIdMapping } from "../../ids/stop-gtfs-id-mapping.js";
 import type { GtfsTripServicedStop, GtfsTripStop } from "../data/gtfs-trip.js";
 import { GtfsStopTime } from "../data/gtfs-stop-time.js";
-import { isSubsequence } from "../../../utils/is-subsequence.js";
+import type { Route } from "../../route/route.js";
 
 const STOP_TIME_PICKUP_TYPE_REGULAR = 0;
 const STOP_TIME_PICKUP_TYPE_NO_PICKUP = 1;
@@ -24,7 +23,7 @@ export class GtfsRouteMatcher {
 
   match(
     stopTimes: StopTimesCsv,
-    routesForLine: readonly RouteConfig[],
+    routesForLine: readonly Route[],
     stopGtfsIdMapping: StopGtfsIdMapping,
   ): MatchedRoute | null {
     const stops = this._convertToStops(stopTimes, stopGtfsIdMapping);
@@ -42,17 +41,15 @@ export class GtfsRouteMatcher {
 
   private _matchToRoute(
     servedStops: readonly GtfsTripServicedStop[],
-    routesForLine: readonly RouteConfig[],
+    routesForLine: readonly Route[],
   ): MatchedRoute | null {
     // Step 1: Find the shortest route for this line which contains all the
     // stops listed in the trip as a subsequence.
     const shortestMatch = routesForLine
-      .filter((route) => {
-        const routeStops = route.stops.map((stop) => stop.stopId);
-        const tripStops = servedStops.map((stop) => stop.stopId);
-        return isSubsequence(tripStops, routeStops);
-      })
-      .reduce<RouteConfig | null>((prev, me) => {
+      .filter((route) =>
+        route.matchesStoppingOrder(servedStops.map((stop) => stop.stopId)),
+      )
+      .reduce<Route | null>((prev, me) => {
         return prev == null || me.stops.length < prev.stops.length ? me : prev;
       }, null);
 
@@ -70,7 +67,7 @@ export class GtfsRouteMatcher {
 
   private _addExpressStopsFromRoute(
     stops: readonly GtfsTripServicedStop[],
-    matchingRoute: RouteConfig,
+    matchingRoute: Route,
   ) {
     const result: GtfsTripStop[] = [];
 

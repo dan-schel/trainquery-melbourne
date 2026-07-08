@@ -9,9 +9,9 @@ import {
   type LineDiagramShapeConfig,
 } from "corequery";
 import { getStopName } from "../../../src/utils/get-stop-name.js";
-import { isSubsequence } from "../../../src/utils/is-subsequence.js";
 import * as line from "../../../src/config/corequery/lines/line-ids.js";
 import * as stop from "../../../src/config/corequery/stops/stop-ids.js";
+import { Route } from "../../../src/gtfs/route/route.js";
 
 const linesExemptedFromHavingRoutes: number[] = [];
 
@@ -184,8 +184,8 @@ describe("lineRoutes", () => {
     for (const line of lines) {
       if (linesExemptedFromHavingCompatibleDiagrams.includes(line.id)) continue;
 
-      const routes = lineRoutes[line.id] ?? [];
-      const routeStopLists = routes.map((r) => r.stops.map((s) => s.stopId));
+      const routeConfigs = lineRoutes[line.id] ?? [];
+      const routes = routeConfigs.map((r) => Route.build(r));
 
       for (const diagram of line.diagram.entries) {
         const stopLists = toLinearStopLists(diagram.shape);
@@ -196,7 +196,7 @@ describe("lineRoutes", () => {
             .join(", ");
 
           assert(
-            routeStopLists.some((r) => isSubsequence(stopList, r)),
+            routes.some((r) => r.matchesStoppingOrder(stopList)),
             `No routes on ${line.name} line (#${line.id}) are compatible with stopping pattern from diagram: ${stopNames}.`,
           );
         }

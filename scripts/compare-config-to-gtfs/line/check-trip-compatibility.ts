@@ -4,13 +4,13 @@ import type { IndexedStopTimes } from "./utils/indexed-stop-times.js";
 import type { IssueCollector } from "../issue-collector.js";
 import type { LineGtfsIdCollection } from "../../../src/gtfs/ids/line-gtfs-id-collection.js";
 import type { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
-import { isSubsequence } from "../../../src/utils/is-subsequence.js";
 import { Trip } from "./utils/trip.js";
 import {
   UniqueStoppingPatternTracker,
   type UniqueStoppingPattern,
 } from "./utils/unique-stopping-pattern-tracker.js";
 import type { RouteConfig } from "../../../src/gtfs/config/routes.js";
+import { Route } from "../../../src/gtfs/route/route.js";
 
 export function checkLineTripCompatibility({
   config,
@@ -74,6 +74,5 @@ function isCompatible(
   instance: UniqueStoppingPattern,
   route: RouteConfig,
 ): boolean {
-  const routeStops = route.stops.map((s) => s.stopId);
-  return isSubsequence(instance.pattern.stops, routeStops);
+  return Route.build(route).matchesStoppingOrder(instance.pattern.stops);
 }

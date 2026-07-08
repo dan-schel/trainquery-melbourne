@@ -9,7 +9,6 @@ import type {
 } from "../csv/csv-schemas.js";
 import type { GtfsCalendar } from "../data/gtfs-calendar.js";
 import { GtfsTrip } from "../data/gtfs-trip.js";
-import type { LineRoutesConfig } from "../../config/routes.js";
 import {
   GtfsStopTimeNormaliser,
   type GtfsStopTimeNormalisationError,
@@ -22,6 +21,7 @@ import {
   type GtfsTransferConnectionError,
   GtfsTransferConnector,
 } from "./gtfs-transfer-connector.js";
+import type { LineRoutes } from "../../route/line-routes.js";
 
 export class GtfsTripParser {
   private readonly _stopTimeNormaliser: GtfsStopTimeNormaliser;
@@ -31,7 +31,7 @@ export class GtfsTripParser {
   constructor(
     // Unlike csvs, lineGtfsIdMapping, and stopGtfsIdMapping, these are not
     // subfeed-dependent, so I'm opting to make them constructor args.
-    private readonly _lineRoutes: LineRoutesConfig,
+    private readonly _lineRoutes: LineRoutes,
 
     private readonly _onError: (error: GtfsTripParsingError) => void,
   ) {
@@ -72,12 +72,7 @@ export class GtfsTripParser {
       // Stop time normaliser reports its own errors.
       if (normalizedStopTimes == null) continue;
 
-      // TODO: Instead of using the line routes config object, we should be
-      // using a domain model sort of class which handles this default value
-      // logic for us. Follows the general principle of `...Config` class is
-      // nice for configuration (i.e. is informal, allows optional values), and
-      // domain model class is nice for actual usage.
-      const routesForLine = this._lineRoutes[lineIdMatch.lineId] ?? [];
+      const routesForLine = this._lineRoutes.forLine(lineIdMatch.lineId);
 
       const routeMatchResult = this._routeMatcher.match(
         normalizedStopTimes,

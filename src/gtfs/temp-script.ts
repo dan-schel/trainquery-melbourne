@@ -9,8 +9,11 @@ import {
   type GtfsParsingError,
 } from "./schedule/parser/gtfs-schedule-parser.js";
 import type { GtfsConfig } from "./config/index.js";
+import { LineRoutes } from "./route/line-routes.js";
 
 export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
+  const lineRoutes = LineRoutes.build(config.lineRoutes);
+
   console.log("Downloading/reading...");
   const gtfsData = await withGtfsCsvs(env.RELAY_KEY, readGtfsCsvs);
 
@@ -18,7 +21,7 @@ export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
   const start = performance.now();
 
   const errors: GtfsParsingError[] = [];
-  const parser = new GtfsScheduleParser(config.lineRoutes, (error) =>
+  const parser = new GtfsScheduleParser(lineRoutes, (error) =>
     errors.push(error),
   );
 
