@@ -6,7 +6,7 @@ import { compareStops } from "./stop/index.js";
 import type { GtfsFeedCsv } from "../../src/gtfs/schedule/csv/read-gtfs-csvs.js";
 import type { StopGtfsIdMapping } from "../../src/gtfs/ids/stop-gtfs-id-mapping.js";
 import type { LineGtfsIdMapping } from "../../src/gtfs/ids/line-gtfs-id-mapping.js";
-import type { LineRoutesConfig } from "../../src/config/gtfs/types.js";
+import type { LineRoutesConfig } from "../../src/gtfs/config/routes.js";
 import { getStopName } from "../../src/utils/get-stop-name.js";
 
 export function compareSubfeed({

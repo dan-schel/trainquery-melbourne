@@ -4,9 +4,11 @@ import { LineGtfsIdMapping } from "./ids/line-gtfs-id-mapping.js";
 import { StopGtfsIdMapping } from "./ids/stop-gtfs-id-mapping.js";
 import { readGtfsCsvs } from "./schedule/csv/read-gtfs-csvs.js";
 import { withGtfsCsvs } from "./schedule/csv/with-gtfs-csvs.js";
-import { GtfsScheduleParser } from "./schedule/parser/gtfs-schedule-parser.js";
-import type { GtfsConfig } from "../config/gtfs/types.js";
-import type { GtfsParsingError } from "./schedule/parser/errors.js";
+import {
+  GtfsScheduleParser,
+  type GtfsParsingError,
+} from "./schedule/parser/gtfs-schedule-parser.js";
+import type { GtfsConfig } from "./config/index.js";
 
 export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
   console.log("Downloading/reading...");

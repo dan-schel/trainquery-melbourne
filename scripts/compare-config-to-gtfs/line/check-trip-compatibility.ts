@@ -10,7 +10,7 @@ import {
   UniqueStoppingPatternTracker,
   type UniqueStoppingPattern,
 } from "./utils/unique-stopping-pattern-tracker.js";
-import type { RouteConfig } from "../../../src/config/gtfs/types.js";
+import type { RouteConfig } from "../../../src/gtfs/config/routes.js";
 
 export function checkLineTripCompatibility({
   config,

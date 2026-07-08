@@ -1,5 +1,5 @@
 import type { Color } from "corequery";
-import type { RouteConfig } from "../../../config/gtfs/types.js";
+import type { RouteConfig } from "../../config/routes.js";
 import type { StopTimesCsv, StopTimesCsvRow } from "../csv/csv-schemas.js";
 import type { StopGtfsIdMapping } from "../../ids/stop-gtfs-id-mapping.js";
 import type { GtfsTripServicedStop, GtfsTripStop } from "../data/gtfs-trip.js";
@@ -33,11 +33,6 @@ export class GtfsRouteMatcher {
     const match = this._matchToRoute(stops, routesForLine);
     if (match == null) {
       const stopIds = stops.map((stop) => stop.stopId);
-
-      // TODO: It feels unclear to me at which level I should be logging errors
-      // like this, e.g. for _convertToStops it gets logged inside the method,
-      // but for _matchToRoute I need to remember to do it here. How can I be
-      // consistent/ensure that it's not missed or duplicated?
       this._onError(new NoMatchingRouteError(stopTimes, stopIds));
       return null;
     }

@@ -9,7 +9,7 @@ import type {
 } from "../csv/csv-schemas.js";
 import type { GtfsCalendar } from "../data/gtfs-calendar.js";
 import { GtfsTrip } from "../data/gtfs-trip.js";
-import type { LineRoutesConfig } from "../../../config/gtfs/types.js";
+import type { LineRoutesConfig } from "../../config/routes.js";
 import {
   GtfsStopTimeNormaliser,
   type GtfsStopTimeNormalisationError,

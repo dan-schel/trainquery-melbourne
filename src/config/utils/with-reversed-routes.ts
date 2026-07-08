@@ -1,4 +1,4 @@
-import type { RouteConfig } from "../gtfs/types.js";
+import type { RouteConfig } from "../../gtfs/config/routes.js";
 import * as tag from "../corequery/lines/service-tags.js";
 import { getTagName } from "../../utils/get-tag-name.js";
 
