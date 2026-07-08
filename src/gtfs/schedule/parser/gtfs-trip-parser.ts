@@ -141,9 +141,7 @@ export class GtfsTripParser {
     // invalid data, but we can still interpret it).
     return Array.from(result.values()).map((group) => ({
       ...group,
-      stopTimes: group.stopTimes.sort(
-        (a, b) => a.stop_sequence - b.stop_sequence,
-      ),
+      stopTimes: group.stopTimes,
     }));
   }
 

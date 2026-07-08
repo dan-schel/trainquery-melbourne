@@ -28,10 +28,10 @@ export class GtfsStopTimeNormaliser {
     // stops, we should use the earliest departure times for each stop to be
     // pessimistic (and still show the other sequence of stopping times as a
     // disruption about having ambiguous stopping times).
-    if (this._isMultipleRegularSequences(sortedStopTimes)) {
+    if (this._isMultipleRegularSequences(stopTimes)) {
       this._onError(new MultipleStopSequencesError(stopTimes));
 
-      return this._extractFirstRegularSequence(sortedStopTimes);
+      return this._extractFirstRegularSequence(stopTimes);
     }
 
     // Are there any other cases we can handle gracefully? I expect we might see
