@@ -2,7 +2,7 @@ import type { PlainDateRange } from "../../departures/plain-date-range.js";
 
 export class GtfsCalendar {
   constructor(
-    readonly id: string,
+    readonly gtfsCalendarId: string,
     readonly monday: boolean,
     readonly tuesday: boolean,
     readonly wednesday: boolean,

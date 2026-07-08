@@ -148,7 +148,9 @@ export class GtfsTripParser {
   }
 
   private _buildCalendarMap(calendars: readonly GtfsCalendar[]) {
-    return new Map<string, GtfsCalendar>(calendars.map((c) => [c.id, c]));
+    return new Map<string, GtfsCalendar>(
+      calendars.map((c) => [c.gtfsCalendarId, c]),
+    );
   }
 }
 
