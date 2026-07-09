@@ -1,4 +1,3 @@
-import type { StopGtfsIdMetadata } from "../../ids/stop-gtfs-id-metadata.js";
 import type {
   GtfsTrip,
   GtfsTripServicedStop,
