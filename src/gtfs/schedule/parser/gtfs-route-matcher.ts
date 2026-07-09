@@ -2,7 +2,6 @@ import type { Color } from "corequery";
 import type { StopTimesCsv, StopTimesCsvRow } from "../csv/csv-schemas.js";
 import type { StopGtfsIdMapping } from "../../ids/stop-gtfs-id-mapping.js";
 import type { GtfsTripServicedStop, GtfsTripStop } from "../data/gtfs-trip.js";
-import { GtfsStopTime } from "../data/gtfs-stop-time.js";
 import type { Route } from "../../route/route.js";
 
 const STOP_TIME_PICKUP_TYPE_REGULAR = 0;
@@ -139,29 +138,16 @@ export class GtfsRouteMatcher {
       const positionId =
         gtfsIdMetadata.type === "platform" ? gtfsIdMetadata.positionId : null;
 
-      const arrivalTime = GtfsStopTime.tryParse(stopTime.arrival_time);
-      if (arrivalTime == null) {
-        this._onError(new InvalidGtfsTimeStringError(stopTime, "arrival_time"));
-        return null;
-      }
-
-      const departureTime = GtfsStopTime.tryParse(stopTime.departure_time);
-      if (departureTime == null) {
-        this._onError(
-          new InvalidGtfsTimeStringError(stopTime, "departure_time"),
-        );
-        return null;
-      }
-
       result.push({
         type: "serviced",
         stopId: gtfsIdMetadata.stopId,
         positionId,
-        arrivalTime,
-        departureTime,
+        arrivalTime: stopTime.arrival_time,
+        departureTime: stopTime.departure_time,
         picksUp: this._doesPickUp(stopTime),
         dropsOff: this._doesDropOff(stopTime),
         gtfsIdMetadata,
+        gtfsStopSequence: stopTime.stop_sequence,
       });
     }
 
@@ -203,8 +189,7 @@ export type GtfsRouteMatchingError =
   | NoMatchingRouteError
   | StopTimeReferencesUnmappedStopIdError
   | UnexpectedPickupTypeError
-  | UnexpectedDropOffTypeError
-  | InvalidGtfsTimeStringError;
+  | UnexpectedDropOffTypeError;
 
 export class NoMatchingRouteError extends Error {
   readonly type = "no-matching-route";
@@ -233,16 +218,6 @@ export class UnexpectedPickupTypeError extends Error {
 export class UnexpectedDropOffTypeError extends Error {
   readonly type = "unexpected-drop-off-type";
   constructor(readonly stopTime: StopTimesCsvRow) {
-    super();
-  }
-}
-
-export class InvalidGtfsTimeStringError extends Error {
-  readonly type = "invalid-gtfs-time-string";
-  constructor(
-    readonly stopTime: StopTimesCsvRow,
-    readonly field: "arrival_time" | "departure_time",
-  ) {
     super();
   }
 }

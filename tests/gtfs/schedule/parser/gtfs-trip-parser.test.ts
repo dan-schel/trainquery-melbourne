@@ -16,6 +16,7 @@ import {
   stopTime,
   tripRow,
 } from "./factories.js";
+import { GtfsStopTime } from "../../../../src/gtfs/schedule/data/gtfs-stop-time.js";
 
 describe("GtfsTripParser", () => {
   it("parses one simple trip end-to-end", () => {
@@ -28,14 +29,14 @@ describe("GtfsTripParser", () => {
         stopTime({
           stop_id: "A",
           stop_sequence: 1,
-          arrival_time: "00:00:00",
-          departure_time: "00:00:00",
+          arrival_time: GtfsStopTime.parse("00:00:00"),
+          departure_time: GtfsStopTime.parse("00:00:00"),
         }),
         stopTime({
           stop_id: "B",
           stop_sequence: 2,
-          arrival_time: "00:10:00",
-          departure_time: "00:10:00",
+          arrival_time: GtfsStopTime.parse("00:10:00"),
+          departure_time: GtfsStopTime.parse("00:10:00"),
         }),
       ],
       [],
@@ -70,26 +71,26 @@ describe("GtfsTripParser", () => {
         stopTime({
           stop_id: "A",
           stop_sequence: 1,
-          arrival_time: "00:00:00",
-          departure_time: "00:00:00",
+          arrival_time: GtfsStopTime.parse("00:00:00"),
+          departure_time: GtfsStopTime.parse("00:00:00"),
         }),
         stopTime({
           stop_id: "B",
           stop_sequence: 2,
-          arrival_time: "00:10:00",
-          departure_time: "00:10:00",
+          arrival_time: GtfsStopTime.parse("00:10:00"),
+          departure_time: GtfsStopTime.parse("00:10:00"),
         }),
         stopTime({
           stop_id: "A",
           stop_sequence: 1,
-          arrival_time: "01:00:00",
-          departure_time: "01:00:00",
+          arrival_time: GtfsStopTime.parse("01:00:00"),
+          departure_time: GtfsStopTime.parse("01:00:00"),
         }),
         stopTime({
           stop_id: "B",
           stop_sequence: 2,
-          arrival_time: "01:10:00",
-          departure_time: "01:10:00",
+          arrival_time: GtfsStopTime.parse("01:10:00"),
+          departure_time: GtfsStopTime.parse("01:10:00"),
         }),
       ],
       [],

@@ -1,13 +1,11 @@
 import z from "zod";
-import { createSchemaHelpers, buildZodTransform } from "@dan-schel/js-utils";
-
-const { intStringSchema, floatStringSchema } = createSchemaHelpers(z);
-
-const gtfsBooleanSchema = intStringSchema.transform((value) => value !== 0);
-const gtfsDateSchema = z
-  .string()
-  .refine((val) => /^\d{8}$/.test(val))
-  .transform(buildZodTransform((val) => Temporal.PlainDate.from(val)));
+import {
+  floatStringSchema,
+  gtfsBooleanSchema,
+  gtfsDateSchema,
+  gtfsStopTimeSchema,
+  intStringSchema,
+} from "../../utils/zod.js";
 
 export type StopsCsvRow = z.infer<typeof stopsCsvSchema>;
 export type StopsCsv = readonly StopsCsvRow[];
@@ -18,10 +16,10 @@ export const stopsCsvSchema = z
     stop_lat: floatStringSchema,
     stop_lon: floatStringSchema,
     stop_url: z.string(),
-    location_type: z.string(),
+    // location_type: z.string(),
     parent_station: z.string(),
-    wheelchair_boarding: z.string(),
-    level_id: z.string(),
+    // wheelchair_boarding: z.string(),
+    // level_id: z.string(),
     platform_code: z.string().optional(),
   })
   .readonly();
@@ -31,12 +29,12 @@ export type RoutesCsv = readonly RoutesCsvRow[];
 export const routesCsvSchema = z
   .object({
     route_id: z.string(),
-    agency_id: z.string(),
-    route_short_name: z.string(),
+    // agency_id: z.string(),
+    // route_short_name: z.string(),
     route_long_name: z.string(),
-    route_type: intStringSchema,
-    route_color: z.string(),
-    route_text_color: z.string(),
+    // route_type: intStringSchema,
+    // route_color: z.string(),
+    // route_text_color: z.string(),
   })
   .readonly();
 
@@ -47,12 +45,12 @@ export const tripsCsvSchema = z
     route_id: z.string(),
     service_id: z.string(),
     trip_id: z.string(),
-    shape_id: z.string(),
-    trip_headsign: z.string(),
-    direction_id: z.string(),
-    block_id: z.string(),
-    wheelchair_accessible: intStringSchema,
-    bikes_allowed: intStringSchema,
+    // shape_id: z.string(),
+    // trip_headsign: z.string(),
+    // direction_id: z.string(),
+    // block_id: z.string(),
+    // wheelchair_accessible: intStringSchema,
+    // bikes_allowed: intStringSchema,
   })
   .readonly();
 
@@ -61,14 +59,14 @@ export type StopTimesCsv = readonly StopTimesCsvRow[];
 export const stopTimesCsvSchema = z
   .object({
     trip_id: z.string(),
-    arrival_time: z.string(),
-    departure_time: z.string(),
+    arrival_time: gtfsStopTimeSchema,
+    departure_time: gtfsStopTimeSchema,
     stop_id: z.string(),
     stop_sequence: intStringSchema,
-    stop_headsign: z.string(),
+    // stop_headsign: z.string(),
     pickup_type: intStringSchema,
     drop_off_type: intStringSchema,
-    shape_dist_traveled: floatStringSchema,
+    // shape_dist_traveled: floatStringSchema,
   })
   .readonly();
 
@@ -105,8 +103,8 @@ export const transfersCsvSchema = z
   .object({
     from_stop_id: z.string(),
     to_stop_id: z.string(),
-    from_route_id: z.string(),
-    to_route_id: z.string(),
+    // from_route_id: z.string(),
+    // to_route_id: z.string(),
     from_trip_id: z.string(),
     to_trip_id: z.string(),
     transfer_type: intStringSchema,

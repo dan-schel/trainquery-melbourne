@@ -24,8 +24,6 @@ describe("GtfsTransferConnector", () => {
         {
           from_stop_id: "B",
           to_stop_id: "B",
-          from_route_id: "route-1",
-          to_route_id: "route-1",
           from_trip_id: "from",
           to_trip_id: "to",
           transfer_type: 4,

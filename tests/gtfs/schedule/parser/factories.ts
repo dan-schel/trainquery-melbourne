@@ -39,12 +39,6 @@ export function tripRow(overrides: Partial<TripsCsvRow> = {}): TripsCsvRow {
     route_id: "route-1",
     service_id: "svc",
     trip_id: "trip-1",
-    shape_id: "shape-1",
-    trip_headsign: "",
-    direction_id: "0",
-    block_id: "",
-    wheelchair_accessible: 0,
-    bikes_allowed: 0,
     ...overrides,
   };
 }
@@ -54,14 +48,12 @@ export function stopTime(
 ): StopTimesCsvRow {
   return {
     trip_id: "trip-1",
-    arrival_time: "00:00:00",
-    departure_time: "00:00:00",
+    arrival_time: GtfsStopTime.parse("00:00:00"),
+    departure_time: GtfsStopTime.parse("00:00:00"),
     stop_id: "A",
     stop_sequence: 1,
-    stop_headsign: "",
     pickup_type: 0,
     drop_off_type: 0,
-    shape_dist_traveled: 0,
     ...overrides,
   };
 }
@@ -147,7 +139,7 @@ export function makeTrip(id: string, originId: string, terminusId: string) {
     gtfsTripId: id,
     gtfsRouteId: "route-1",
     calendar: calendar(),
-    stops: [servicedStop(originId, 1), servicedStop(terminusId, 2)],
+    stops: [servicedStop(originId, 1, 1), servicedStop(terminusId, 2, 2)],
     lineId: 1,
     color: "red",
     serviceTags: [],
@@ -156,7 +148,11 @@ export function makeTrip(id: string, originId: string, terminusId: string) {
   });
 }
 
-export function servicedStop(stopGtfsId: string, positionId: number) {
+function servicedStop(
+  gtfsStopId: string,
+  positionId: number,
+  gtfsStopSequence: number,
+) {
   return {
     type: "serviced" as const,
     stopId: positionId,
@@ -167,10 +163,11 @@ export function servicedStop(stopGtfsId: string, positionId: number) {
     dropsOff: true,
     gtfsIdMetadata: {
       type: "platform" as const,
-      id: stopGtfsId,
+      id: gtfsStopId,
       stopId: positionId,
       positionId,
     },
+    gtfsStopSequence: gtfsStopSequence,
   };
 }
 
@@ -180,8 +177,6 @@ export function transfer(
   return {
     from_stop_id: "B",
     to_stop_id: "B",
-    from_route_id: "route-1",
-    to_route_id: "route-1",
     from_trip_id: "from",
     to_trip_id: "to",
     transfer_type: 4,

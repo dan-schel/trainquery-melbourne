@@ -36,6 +36,12 @@ export class GtfsStopTimeNormaliser {
 
     // Are there any other cases we can handle gracefully? I expect we might see
     // some other cases pop up in the future, but this is all I know for now!
+    //
+    // ⚠️ IMPORTANT: This class is meant to output the stop times in the order
+    // they should be interpreted as for TrainQuery. It should NOT modify the
+    // stop_sequence values themselves (i.e. if there's gaps, leave them in)
+    // because we may need to use those when matching updates in the GTFS-RT
+    // feed to certain stops on the trip.
     this._onError(new InvalidStopSequenceError(stopTimes));
     return null;
   }
@@ -45,6 +51,8 @@ export class GtfsStopTimeNormaliser {
    * is at least of length 2.
    */
   private _isRegular(stopTimes: StopTimesCsv): boolean {
+    // TODO: Check every stop time arrival/departure time occurs in sequence.
+
     // stopTimes is guaranteed to be sorted by stop_sequence by this stage in
     // the parsing process.
     return (

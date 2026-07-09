@@ -27,6 +27,12 @@ export class GtfsStopTime {
     return GtfsStopTime.fromSecondsSinceMidnight(h * 60 * 60 + m * 60 + s);
   }
 
+  static parse(input: string): GtfsStopTime {
+    const parsed = GtfsStopTime.tryParse(input);
+    if (parsed == null) throw new Error(`Invalid GTFS stop time: ${input}`);
+    return parsed;
+  }
+
   /**
    * Returns a value `0 <= x < 24 * 60 * 60`. Combines with `dayOffset` to
    * provide the full picture.

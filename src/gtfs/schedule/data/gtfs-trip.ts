@@ -15,9 +15,10 @@ export type GtfsTripServicedStop = {
   picksUp: boolean;
   dropsOff: boolean;
   gtfsIdMetadata: StopGtfsIdMetadata;
+  gtfsStopSequence: number;
 };
 
-export type GtfsTripExpressStop = {
+type GtfsTripExpressStop = {
   type: "express";
   stopId: number;
 };

@@ -1,3 +1,6 @@
+// TODO: Remove this.
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import type { GtfsStopTime } from "../schedule/data/gtfs-stop-time.js";
 
 export class ServiceDay {

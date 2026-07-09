@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
   GtfsRouteMatcher,
-  InvalidGtfsTimeStringError,
   NoMatchingRouteError,
   StopTimeReferencesUnmappedStopIdError,
   UnexpectedDropOffTypeError,
@@ -10,6 +9,7 @@ import {
 } from "../../../../src/gtfs/schedule/parser/gtfs-route-matcher.js";
 import { Route } from "../../../../src/gtfs/route/route.js";
 import { routeStops, stopMapping, stopTime } from "./factories.js";
+import { GtfsStopTime } from "../../../../src/gtfs/schedule/data/gtfs-stop-time.js";
 
 describe("GtfsRouteMatcher", () => {
   it("matches the shortest compatible route and injects express stops", () => {
@@ -33,20 +33,20 @@ describe("GtfsRouteMatcher", () => {
       [
         stopTime({
           stop_id: "A",
-          arrival_time: "00:01:00",
-          departure_time: "00:01:00",
+          arrival_time: GtfsStopTime.parse("00:01:00"),
+          departure_time: GtfsStopTime.parse("00:01:00"),
           stop_sequence: 1,
         }),
         stopTime({
           stop_id: "C",
-          arrival_time: "00:03:00",
-          departure_time: "00:03:00",
+          arrival_time: GtfsStopTime.parse("00:03:00"),
+          departure_time: GtfsStopTime.parse("00:03:00"),
           stop_sequence: 2,
         }),
         stopTime({
           stop_id: "D",
-          arrival_time: "00:04:00",
-          departure_time: "00:04:00",
+          arrival_time: GtfsStopTime.parse("00:04:00"),
+          departure_time: GtfsStopTime.parse("00:04:00"),
           stop_sequence: 3,
         }),
       ],
@@ -161,32 +161,5 @@ describe("GtfsRouteMatcher", () => {
     expect(errors).toHaveLength(1);
     expect(errors[0]).toBeInstanceOf(UnexpectedDropOffTypeError);
     expect(result).not.toBeNull();
-  });
-
-  it("reports invalid GTFS time strings", () => {
-    const errors: GtfsRouteMatchingError[] = [];
-    const matcher = new GtfsRouteMatcher((error) => errors.push(error));
-
-    const result = matcher.match(
-      [
-        stopTime({
-          stop_id: "A",
-          stop_sequence: 1,
-          arrival_time: "not-a-time",
-        }),
-      ],
-      [
-        new Route({
-          color: "red",
-          stops: routeStops([1]),
-          serviceTags: [],
-        }),
-      ],
-      stopMapping(["A", "B", "C", "D", "E"]),
-    );
-
-    expect(result).toBeNull();
-    expect(errors).toHaveLength(1);
-    expect(errors[0]).toBeInstanceOf(InvalidGtfsTimeStringError);
   });
 });

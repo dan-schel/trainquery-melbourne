@@ -12,13 +12,10 @@ type Patch = (gtfsData: GtfsCsvData) => GtfsCsvData;
 // rule checking for the mismatch should be configurable to ignore the check for
 // Jolimont station.
 //
-// e.g. duplicate stop times appearing in stop_times.txt DOES get a patch,
-// because it runtime TrainQuery will fail to match the trip to any route, and
-// would presumably show double stops even if it could.
-const activePatches: Patch[] = [
-  // NOTE: Intentionally disabling this patch (see comments in patch file).
-  // patchDuplicateStopTimes
-];
+// e.g. a stop time being given in an invalid format SHOULD get a patch, because
+// PTV would be violating the GTFS spec and TrainQuery wouldn't be able to parse
+// the data at all.
+const activePatches: Patch[] = [];
 
 export function applyPatches(gtfsData: GtfsCsvData): GtfsCsvData {
   return activePatches.reduce((data, patch) => patch(data), gtfsData);

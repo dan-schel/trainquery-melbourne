@@ -1,3 +1,6 @@
+// TODO: Remove this.
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import type { DepartureSearchDirection } from "./corequery-departure-iterator.js";
 import { DeparturesBlock } from "./departures-block.js";
 import type { ServiceDay } from "./service-day.js";
