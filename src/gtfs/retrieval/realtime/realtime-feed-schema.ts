@@ -15,6 +15,31 @@ import {
 // we're seeing, but still continue processing the data we DO know how to
 // handle. e.g. If PTV starts using GTFS-RT to publish added adhoc trips, we
 // wouldn't want that to crash our ability to mark scheduled trips as delayed.
+
+export type StopTimeUpdateJson = z.infer<typeof stopTimeUpdateSchema>;
+export const stopTimeUpdateSchema = z
+  .object({
+    stopSequence: z.number().optional(),
+    arrival: z
+      .object({
+        delay: z.number().optional(),
+        time: floatStringSchema.optional(),
+      })
+      .readonly()
+      .optional(),
+    departure: z
+      .object({
+        delay: z.number().optional(),
+        time: floatStringSchema.optional(),
+      })
+      .readonly()
+      .optional(),
+    stopId: z.string().optional(),
+    scheduleRelationship: z.string().default("SCHEDULED"),
+  })
+  .readonly();
+
+export type RealtimeFeedJson = z.infer<typeof realtimeFeedSchema>;
 export const realtimeFeedSchema = z
   .object({
     tripUpdates: z
@@ -27,29 +52,7 @@ export const realtimeFeedSchema = z
             scheduleRelationship: z.string().optional(),
           })
           .readonly(),
-        stopTimeUpdate: z
-          .object({
-            stopSequence: z.number().optional(),
-            arrival: z
-              .object({
-                delay: z.number().optional(),
-                time: floatStringSchema.optional(),
-              })
-              .readonly()
-              .optional(),
-            departure: z
-              .object({
-                delay: z.number().optional(),
-                time: floatStringSchema.optional(),
-              })
-              .readonly()
-              .optional(),
-            stopId: z.string().optional(),
-            scheduleRelationship: z.string().default("SCHEDULED"),
-          })
-          .readonly()
-          .array()
-          .optional(),
+        stopTimeUpdate: stopTimeUpdateSchema.array().optional(),
       })
       .readonly()
       .array()

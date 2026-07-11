@@ -7,7 +7,7 @@ import { withGtfsCsvs } from "./retrieval/schedule/with-gtfs-csvs.js";
 import {
   GtfsScheduleParser,
   type GtfsParsingError,
-} from "./parser/gtfs-schedule-parser.js";
+} from "./parser/schedule/gtfs-schedule-parser.js";
 import type { GtfsConfig } from "./config/index.js";
 import { LineRoutes } from "./data/route/line-routes.js";
 

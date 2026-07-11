@@ -4,8 +4,8 @@ import {
   InvalidStopSequenceError,
   MultipleStopSequencesError,
   type GtfsStopTimeNormalisationError,
-} from "../../../src/gtfs/parser/schedule/gtfs-stop-time-normaliser.js";
-import { stopTime } from "./schedule/factories.js";
+} from "../../../../src/gtfs/parser/schedule/gtfs-stop-time-normaliser.js";
+import { stopTime } from "./factories.js";
 
 describe("GtfsStopTimeNormaliser", () => {
   it("returns already regular stop sequences unchanged", () => {

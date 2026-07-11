@@ -3,9 +3,9 @@ import type {
   CalendarCsvRow,
   CalendarDatesCsv,
   CalendarDatesCsvRow,
-} from "../retrieval/schedule/csv-schemas.js";
-import { GtfsCalendar } from "../data/gtfs-calendar.js";
-import { PlainDateRange } from "../departures/plain-date-range.js";
+} from "../../retrieval/schedule/csv-schemas.js";
+import { GtfsCalendar } from "../../data/gtfs-calendar.js";
+import { PlainDateRange } from "../../departures/plain-date-range.js";
 
 // TODO: All these parsers need unit tests :)
 

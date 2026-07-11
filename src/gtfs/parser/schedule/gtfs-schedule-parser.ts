@@ -1,16 +1,16 @@
-import { GtfsSchedule } from "../data/gtfs-schedule.js";
-import type { GtfsFeedCsv } from "../retrieval/schedule/read-gtfs-csvs.js";
+import { GtfsSchedule } from "../../data/gtfs-schedule.js";
+import type { GtfsFeedCsv } from "../../retrieval/schedule/read-gtfs-csvs.js";
 import {
   GtfsCalendarParser,
   type GtfsCalendarParsingError,
-} from "./schedule/gtfs-calendar-parser.js";
+} from "./gtfs-calendar-parser.js";
 import {
   GtfsTripParser,
   type GtfsTripParsingError,
-} from "./gtfs-trip-parser.js";
-import type { LineGtfsIdMapping } from "../data/ids/line-gtfs-id-mapping.js";
-import type { StopGtfsIdMapping } from "../data/ids/stop-gtfs-id-mapping.js";
-import type { LineRoutes } from "../data/route/line-routes.js";
+} from "../gtfs-trip-parser.js";
+import type { LineGtfsIdMapping } from "../../data/ids/line-gtfs-id-mapping.js";
+import type { StopGtfsIdMapping } from "../../data/ids/stop-gtfs-id-mapping.js";
+import type { LineRoutes } from "../../data/route/line-routes.js";
 
 export class GtfsScheduleParser {
   private readonly _calendarParser: GtfsCalendarParser;

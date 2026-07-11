@@ -1,8 +1,8 @@
 import type {
   TransfersCsv,
   TransfersCsvRow,
-} from "../retrieval/schedule/csv-schemas.js";
-import { GtfsTrip } from "../data/gtfs-trip.js";
+} from "../../retrieval/schedule/csv-schemas.js";
+import { GtfsTrip } from "../../data/gtfs-trip.js";
 
 const TRANSFER_TYPE_IN_SEAT_TRANSFER = 4;
 

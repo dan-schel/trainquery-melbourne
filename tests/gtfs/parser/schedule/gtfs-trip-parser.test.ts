@@ -6,8 +6,8 @@ import {
   TripReferencesNonExistentCalendarError,
   TripReferencesUnmappedRouteIdError,
   type GtfsTripParsingError,
-} from "../../../src/gtfs/parser/schedule/gtfs-trip-parser.js";
-import { MultipleStopSequencesError } from "../../../src/gtfs/parser/schedule/gtfs-stop-time-normaliser.js";
+} from "../../../../src/gtfs/parser/schedule/gtfs-trip-parser.js";
+import { MultipleStopSequencesError } from "../../../../src/gtfs/parser/schedule/gtfs-stop-time-normaliser.js";
 import {
   calendar,
   lineMapping,
@@ -15,8 +15,8 @@ import {
   stopMapping,
   stopTime,
   tripRow,
-} from "./schedule/factories.js";
-import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
+} from "./factories.js";
+import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 
 describe("GtfsTripParser", () => {
   it("parses one simple trip end-to-end", () => {
