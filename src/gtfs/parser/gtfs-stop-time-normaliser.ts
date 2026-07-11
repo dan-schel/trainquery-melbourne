@@ -1,4 +1,4 @@
-import type { StopTimesCsv } from "../csv/csv-schemas.js";
+import type { StopTimesCsv } from "../schedule/csv/csv-schemas.js";
 
 /**
  * Responsible for checking that in a list of stop times, the stop_sequence

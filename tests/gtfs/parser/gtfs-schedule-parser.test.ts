@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { GtfsScheduleParser } from "../../../../src/gtfs/schedule/parser/gtfs-schedule-parser.js";
+import { GtfsScheduleParser } from "../../../src/gtfs/parser/gtfs-schedule-parser.js";
 import {
   calendarRow,
   lineMapping,
@@ -8,7 +8,7 @@ import {
   stopTime,
   tripRow,
 } from "./factories.js";
-import { GtfsStopTime } from "../../../../src/gtfs/schedule/data/gtfs-stop-time.js";
+import { GtfsStopTime } from "../../../src/gtfs/schedule/data/gtfs-stop-time.js";
 
 describe("GtfsScheduleParser", () => {
   it("builds a schedule from parsed calendars and trips", () => {

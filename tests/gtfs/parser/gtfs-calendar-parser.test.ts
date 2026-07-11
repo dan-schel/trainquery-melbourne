@@ -6,7 +6,7 @@ import {
   MultipleExceptionsForSameDateError,
   UnexpectedCalendarDateExceptionTypeError,
   type GtfsCalendarParsingError,
-} from "../../../../src/gtfs/schedule/parser/gtfs-calendar-parser.js";
+} from "../../../src/gtfs/parser/gtfs-calendar-parser.js";
 import { calendarRow } from "./factories.js";
 
 describe("GtfsCalendarParser", () => {

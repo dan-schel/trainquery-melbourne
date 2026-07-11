@@ -4,7 +4,7 @@ import {
   InvalidStopSequenceError,
   MultipleStopSequencesError,
   type GtfsStopTimeNormalisationError,
-} from "../../../../src/gtfs/schedule/parser/gtfs-stop-time-normaliser.js";
+} from "../../../src/gtfs/parser/gtfs-stop-time-normaliser.js";
 import { stopTime } from "./factories.js";
 
 describe("GtfsStopTimeNormaliser", () => {

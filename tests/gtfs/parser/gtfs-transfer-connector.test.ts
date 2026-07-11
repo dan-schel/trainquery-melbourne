@@ -3,13 +3,13 @@ import {
   GtfsTransferConnector,
   TransferIsNotInSeatTransferError,
   type GtfsTransferConnectionError,
-} from "../../../../src/gtfs/schedule/parser/gtfs-transfer-connector.js";
+} from "../../../src/gtfs/parser/gtfs-transfer-connector.js";
 import {
   TransferIsNotFromTerminusError,
   TransferIsNotToOriginError,
   TransferReferencesNonExistentTrip,
   TransferReferencesTripAlreadyConnectedError,
-} from "../../../../src/gtfs/schedule/parser/gtfs-transfer-connector.js";
+} from "../../../src/gtfs/parser/gtfs-transfer-connector.js";
 import { itsOk } from "@dan-schel/js-utils";
 import { makeTrip, transfer } from "./factories.js";
 

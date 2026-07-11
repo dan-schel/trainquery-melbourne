@@ -1,8 +1,14 @@
 import type { Color } from "corequery";
-import type { StopTimesCsv, StopTimesCsvRow } from "../csv/csv-schemas.js";
-import type { StopGtfsIdMapping } from "../../ids/stop-gtfs-id-mapping.js";
-import type { GtfsTripServicedStop, GtfsTripStop } from "../data/gtfs-trip.js";
-import type { Route } from "../../route/route.js";
+import type {
+  StopTimesCsv,
+  StopTimesCsvRow,
+} from "../schedule/csv/csv-schemas.js";
+import type { StopGtfsIdMapping } from "../ids/stop-gtfs-id-mapping.js";
+import type {
+  GtfsTripServicedStop,
+  GtfsTripStop,
+} from "../schedule/data/gtfs-trip.js";
+import type { Route } from "../route/route.js";
 
 const STOP_TIME_PICKUP_TYPE_REGULAR = 0;
 const STOP_TIME_PICKUP_TYPE_NO_PICKUP = 1;
