@@ -7,7 +7,7 @@ import {
 import {
   GtfsTripParser,
   type GtfsTripParsingError,
-} from "../gtfs-trip-parser.js";
+} from "./gtfs-trip-parser.js";
 import type { LineGtfsIdMapping } from "../../data/ids/line-gtfs-id-mapping.js";
 import type { StopGtfsIdMapping } from "../../data/ids/stop-gtfs-id-mapping.js";
 import type { LineRoutes } from "../../data/route/line-routes.js";
