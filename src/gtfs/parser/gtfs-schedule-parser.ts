@@ -1,5 +1,5 @@
-import { GtfsSchedule } from "../schedule/data/gtfs-schedule.js";
-import type { GtfsFeedCsv } from "../schedule/csv/read-gtfs-csvs.js";
+import { GtfsSchedule } from "../data/gtfs-schedule.js";
+import type { GtfsFeedCsv } from "../retrieval/schedule/read-gtfs-csvs.js";
 import {
   GtfsCalendarParser,
   type GtfsCalendarParsingError,

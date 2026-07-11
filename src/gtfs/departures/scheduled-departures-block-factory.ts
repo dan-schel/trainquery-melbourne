@@ -1,6 +1,6 @@
 import { ScheduledDeparturesBlock } from "./scheduled-departures-block.js";
 import { ServiceDay } from "./service-day.js";
-import type { GtfsStopTime } from "../schedule/data/gtfs-stop-time.js";
+import type { GtfsStopTime } from "../data/gtfs-stop-time.js";
 
 const MELBOURNE_TIMEZONE = "Australia/Melbourne";
 

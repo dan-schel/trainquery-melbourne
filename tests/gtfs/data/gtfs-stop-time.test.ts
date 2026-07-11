@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { GtfsStopTime } from "../../../src/gtfs/schedule/data/gtfs-stop-time.js";
+import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
 
 // TODO: Move to corequery.
 

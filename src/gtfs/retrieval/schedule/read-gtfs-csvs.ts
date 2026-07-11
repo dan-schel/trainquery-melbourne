@@ -18,7 +18,7 @@ import path from "path";
 import { type GtfsDirectories } from "./with-gtfs-csvs.js";
 import type z from "zod";
 import { readCsv } from "./utils/read-csv.js";
-import { applyPatches } from "./patches/index.js";
+import { applyPatches } from "../../schedule/csv/patches/index.js";
 
 export type GtfsCsvData = {
   readonly suburban: GtfsFeedCsv;

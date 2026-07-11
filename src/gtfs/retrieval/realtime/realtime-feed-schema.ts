@@ -3,7 +3,7 @@ import {
   floatStringSchema,
   gtfsDateSchema,
   gtfsStopTimeSchema,
-} from "../utils/zod.js";
+} from "../../utils/zod.js";
 
 // This schema is designed to be a strict subset of the GTFS-RT spec itself.
 // Even the fields we actually rely on in practice must be marked as optional if
@@ -15,7 +15,7 @@ import {
 // we're seeing, but still continue processing the data we DO know how to
 // handle. e.g. If PTV starts using GTFS-RT to publish added adhoc trips, we
 // wouldn't want that to crash our ability to mark scheduled trips as delayed.
-export const feedSchema = z
+export const realtimeFeedSchema = z
   .object({
     tripUpdates: z
       .object({

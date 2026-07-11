@@ -6,7 +6,7 @@ import type { LineGtfsIdCollection } from "../../../src/gtfs/ids/line-gtfs-id-co
 import type {
   RoutesCsv,
   RoutesCsvRow,
-} from "../../../src/gtfs/schedule/csv/csv-schemas.js";
+} from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 type OnMatchCallback = (
   config: LineConfig,

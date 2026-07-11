@@ -1,7 +1,4 @@
-import type {
-  GtfsTrip,
-  GtfsTripServicedStop,
-} from "../../schedule/data/gtfs-trip.js";
+import type { GtfsTrip, GtfsTripServicedStop } from "./gtfs-trip.js";
 
 export class GtfsScheduledTripStopTimeUpdate {
   constructor(

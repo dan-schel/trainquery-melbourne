@@ -2,8 +2,8 @@ import type { Corequery } from "corequery";
 import { env } from "../env.js";
 import { LineGtfsIdMapping } from "./ids/line-gtfs-id-mapping.js";
 import { StopGtfsIdMapping } from "./ids/stop-gtfs-id-mapping.js";
-import { readGtfsCsvs } from "./schedule/csv/read-gtfs-csvs.js";
-import { withGtfsCsvs } from "./schedule/csv/with-gtfs-csvs.js";
+import { readGtfsCsvs } from "./retrieval/schedule/read-gtfs-csvs.js";
+import { withGtfsCsvs } from "./retrieval/schedule/with-gtfs-csvs.js";
 import {
   GtfsScheduleParser,
   type GtfsParsingError,

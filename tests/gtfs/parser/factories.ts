@@ -6,15 +6,15 @@ import { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js
 import { Route } from "../../../src/gtfs/route/route.js";
 import { LineRoutes } from "../../../src/gtfs/route/line-routes.js";
 import { RouteStop } from "../../../src/gtfs/route/route-stop.js";
-import { GtfsCalendar } from "../../../src/gtfs/schedule/data/gtfs-calendar.js";
-import { GtfsStopTime } from "../../../src/gtfs/schedule/data/gtfs-stop-time.js";
-import { GtfsTrip } from "../../../src/gtfs/schedule/data/gtfs-trip.js";
+import { GtfsCalendar } from "../../../src/gtfs/data/gtfs-calendar.js";
+import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
+import { GtfsTrip } from "../../../src/gtfs/data/gtfs-trip.js";
 import type {
   CalendarCsvRow,
   StopTimesCsvRow,
   TransfersCsvRow,
   TripsCsvRow,
-} from "../../../src/gtfs/schedule/csv/csv-schemas.js";
+} from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 export function calendarRow(
   overrides: Partial<CalendarCsvRow> = {},

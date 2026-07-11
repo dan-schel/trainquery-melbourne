@@ -2,8 +2,8 @@
 import "temporal-polyfill/global";
 
 import { env } from "./env.js";
-import { withGtfsCsvs } from "../../src/gtfs/schedule/csv/with-gtfs-csvs.js";
-import { readGtfsCsvs } from "../../src/gtfs/schedule/csv/read-gtfs-csvs.js";
+import { withGtfsCsvs } from "../../src/gtfs/retrieval/schedule/with-gtfs-csvs.js";
+import { readGtfsCsvs } from "../../src/gtfs/retrieval/schedule/read-gtfs-csvs.js";
 import { IssueCollector } from "./issue-collector.js";
 import { extractConfigForSubfeed } from "./extract-config-for-subfeed.js";
 import { compareSubfeed } from "./compare-subfeed.js";

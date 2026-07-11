@@ -16,7 +16,7 @@ import {
   stopTime,
   tripRow,
 } from "./factories.js";
-import { GtfsStopTime } from "../../../src/gtfs/schedule/data/gtfs-stop-time.js";
+import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
 
 describe("GtfsTripParser", () => {
   it("parses one simple trip end-to-end", () => {

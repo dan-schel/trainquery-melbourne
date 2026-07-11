@@ -8,7 +8,7 @@ import {
   stopTime,
   tripRow,
 } from "./factories.js";
-import { GtfsStopTime } from "../../../src/gtfs/schedule/data/gtfs-stop-time.js";
+import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
 
 describe("GtfsScheduleParser", () => {
   it("builds a schedule from parsed calendars and trips", () => {
