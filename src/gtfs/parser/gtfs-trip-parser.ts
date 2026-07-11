@@ -1,5 +1,5 @@
-import type { LineGtfsIdMapping } from "../ids/line-gtfs-id-mapping.js";
-import type { StopGtfsIdMapping } from "../ids/stop-gtfs-id-mapping.js";
+import type { LineGtfsIdMapping } from "../data/ids/line-gtfs-id-mapping.js";
+import type { StopGtfsIdMapping } from "../data/ids/stop-gtfs-id-mapping.js";
 import type {
   StopTimesCsv,
   StopTimesCsvRow,
@@ -21,7 +21,7 @@ import {
   type GtfsTransferConnectionError,
   GtfsTransferConnector,
 } from "./gtfs-transfer-connector.js";
-import type { LineRoutes } from "../route/line-routes.js";
+import type { LineRoutes } from "../data/route/line-routes.js";
 
 export class GtfsTripParser {
   private readonly _stopTimeNormaliser: GtfsStopTimeNormaliser;

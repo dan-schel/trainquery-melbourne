@@ -4,8 +4,8 @@ import { IssueCollector } from "./issue-collector.js";
 import { compareLines } from "./line/index.js";
 import { compareStops } from "./stop/index.js";
 import type { GtfsFeedCsv } from "../../src/gtfs/retrieval/schedule/read-gtfs-csvs.js";
-import type { StopGtfsIdMapping } from "../../src/gtfs/ids/stop-gtfs-id-mapping.js";
-import type { LineGtfsIdMapping } from "../../src/gtfs/ids/line-gtfs-id-mapping.js";
+import type { StopGtfsIdMapping } from "../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
+import type { LineGtfsIdMapping } from "../../src/gtfs/data/ids/line-gtfs-id-mapping.js";
 import type { LineRoutesConfig } from "../../src/gtfs/config/routes.js";
 import { getStopName } from "../../src/utils/get-stop-name.js";
 

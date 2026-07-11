@@ -2,15 +2,15 @@ import type { LineConfig } from "corequery";
 import type { TripsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 import type { IndexedStopTimes } from "./utils/indexed-stop-times.js";
 import type { IssueCollector } from "../issue-collector.js";
-import type { LineGtfsIdCollection } from "../../../src/gtfs/ids/line-gtfs-id-collection.js";
-import type { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
+import type { LineGtfsIdCollection } from "../../../src/gtfs/data/ids/line-gtfs-id-collection.js";
+import type { StopGtfsIdMapping } from "../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
 import { Trip } from "./utils/trip.js";
 import {
   UniqueStoppingPatternTracker,
   type UniqueStoppingPattern,
 } from "./utils/unique-stopping-pattern-tracker.js";
 import type { RouteConfig } from "../../../src/gtfs/config/routes.js";
-import { Route } from "../../../src/gtfs/route/route.js";
+import { Route } from "../../../src/gtfs/data/route/route.js";
 
 export function checkLineTripCompatibility({
   config,

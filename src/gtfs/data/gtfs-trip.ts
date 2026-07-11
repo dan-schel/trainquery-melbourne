@@ -1,7 +1,7 @@
 import type { Color } from "corequery";
 import type { GtfsCalendar } from "./gtfs-calendar.js";
 import type { GtfsStopTime } from "./gtfs-stop-time.js";
-import type { StopGtfsIdMetadata } from "../ids/stop-gtfs-id-metadata.js";
+import type { StopGtfsIdMetadata } from "./ids/stop-gtfs-id-metadata.js";
 import { itsOk } from "@dan-schel/js-utils";
 
 export type GtfsTripStop = GtfsTripServicedStop | GtfsTripExpressStop;

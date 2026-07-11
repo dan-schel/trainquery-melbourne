@@ -1,7 +1,7 @@
 import type { Corequery } from "corequery";
 import { env } from "../env.js";
-import { LineGtfsIdMapping } from "./ids/line-gtfs-id-mapping.js";
-import { StopGtfsIdMapping } from "./ids/stop-gtfs-id-mapping.js";
+import { LineGtfsIdMapping } from "./data/ids/line-gtfs-id-mapping.js";
+import { StopGtfsIdMapping } from "./data/ids/stop-gtfs-id-mapping.js";
 import { readGtfsCsvs } from "./retrieval/schedule/read-gtfs-csvs.js";
 import { withGtfsCsvs } from "./retrieval/schedule/with-gtfs-csvs.js";
 import {
@@ -9,7 +9,7 @@ import {
   type GtfsParsingError,
 } from "./parser/gtfs-schedule-parser.js";
 import type { GtfsConfig } from "./config/index.js";
-import { LineRoutes } from "./route/line-routes.js";
+import { LineRoutes } from "./data/route/line-routes.js";
 
 export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
   const lineRoutes = LineRoutes.build(config.lineRoutes);

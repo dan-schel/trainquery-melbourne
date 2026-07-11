@@ -5,8 +5,8 @@ import {
 } from "../../utils/gtfs/stops-csv-tree.js";
 import { compareArrays, nonNull } from "@dan-schel/js-utils";
 import type { IssueCollector } from "../issue-collector.js";
-import type { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
-import type { StopGtfsIdCollection } from "../../../src/gtfs/ids/stop-gtfs-id-collection.js";
+import type { StopGtfsIdMapping } from "../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
+import type { StopGtfsIdCollection } from "../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
 import type { StopsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 type OnMatchCallback = (

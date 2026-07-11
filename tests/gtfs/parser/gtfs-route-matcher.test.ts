@@ -7,7 +7,7 @@ import {
   UnexpectedPickupTypeError,
   type GtfsRouteMatchingError,
 } from "../../../src/gtfs/parser/gtfs-route-matcher.js";
-import { Route } from "../../../src/gtfs/route/route.js";
+import { Route } from "../../../src/gtfs/data/route/route.js";
 import { routeStops, stopMapping, stopTime } from "./factories.js";
 import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
 
