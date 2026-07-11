@@ -1,4 +1,4 @@
-import type { GtfsCsvData } from "../../../retrieval/schedule/read-gtfs-csvs.js";
+import type { GtfsCsvData } from "../read-gtfs-csvs.js";
 // import { patchDuplicateStopTimes } from "./patch-duplicate-stop-times.js";
 
 type Patch = (gtfsData: GtfsCsvData) => GtfsCsvData;
