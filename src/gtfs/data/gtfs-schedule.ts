@@ -9,5 +9,19 @@ export class GtfsSchedule {
   // `StopGtfsIdMapping` class has reverse mappings within it, so it wouldn't be
   // unprecedented. Maybe??
 
-  constructor(readonly trips: readonly GtfsTrip[]) {}
+  private readonly _tripsById: Map<string, GtfsTrip>;
+
+  constructor(private readonly _trips: readonly GtfsTrip[]) {
+    this._tripsById = new Map<string, GtfsTrip>(
+      _trips.map((trip) => [trip.gtfsTripId, trip]),
+    );
+  }
+
+  allTrips(): readonly GtfsTrip[] {
+    return this._trips;
+  }
+
+  getTripById(gtfsTripId: string): GtfsTrip | null {
+    return this._tripsById.get(gtfsTripId) ?? null;
+  }
 }

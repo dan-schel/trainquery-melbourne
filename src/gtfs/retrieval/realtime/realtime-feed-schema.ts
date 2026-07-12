@@ -39,23 +39,24 @@ export const stopTimeUpdateSchema = z
   })
   .readonly();
 
+export type TripUpdateJson = z.infer<typeof tripUpdateSchema>;
+export const tripUpdateSchema = z
+  .object({
+    trip: z
+      .object({
+        tripId: z.string().optional(),
+        startTime: gtfsStopTimeSchema.optional(),
+        startDate: gtfsDateSchema.optional(),
+        scheduleRelationship: z.string().optional(),
+      })
+      .readonly(),
+    stopTimeUpdate: stopTimeUpdateSchema.array().optional(),
+  })
+  .readonly();
+
 export type RealtimeFeedJson = z.infer<typeof realtimeFeedSchema>;
 export const realtimeFeedSchema = z
   .object({
-    tripUpdates: z
-      .object({
-        trip: z
-          .object({
-            tripId: z.string().optional(),
-            startTime: gtfsStopTimeSchema.optional(),
-            startDate: gtfsDateSchema.optional(),
-            scheduleRelationship: z.string().optional(),
-          })
-          .readonly(),
-        stopTimeUpdate: stopTimeUpdateSchema.array().optional(),
-      })
-      .readonly()
-      .array()
-      .default([]),
+    tripUpdates: tripUpdateSchema.array().default([]),
   })
   .readonly();

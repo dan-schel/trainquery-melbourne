@@ -41,9 +41,10 @@ describe("GtfsScheduleParser", () => {
       stopMapping(),
     );
 
-    expect(schedule.trips).toHaveLength(1);
+    const trips = schedule.allTrips();
+    expect(trips).toHaveLength(1);
 
-    const trip = schedule.trips[0];
+    const trip = trips[0];
     if (trip == null) throw new Error("Expected one trip.");
 
     expect(trip.gtfsTripId).toBe("trip-1");

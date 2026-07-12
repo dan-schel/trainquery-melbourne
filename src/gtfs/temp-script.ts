@@ -47,7 +47,9 @@ export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
     return;
   }
 
-  const tripLines = [...suburban.trips, ...regional.trips].map((x) => x.lineId);
+  const tripLines = [...suburban.allTrips(), ...regional.allTrips()].map(
+    (x) => x.lineId,
+  );
 
   console.log("\nTrip counts:");
   for (const line of ctx.lines.all()) {
