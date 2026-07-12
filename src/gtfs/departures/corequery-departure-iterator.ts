@@ -8,6 +8,8 @@ export type Departure = {
 
 export type DepartureSearchDirection = "forwards" | "backwards";
 
+// TODO: Something call this DepartureQuery maybe? Idk. Iterator probably
+// describes it well.
 export abstract class DepartureIterator {
   constructor(
     protected readonly _stopId: number,
