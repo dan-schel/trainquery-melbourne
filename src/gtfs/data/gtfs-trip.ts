@@ -18,7 +18,7 @@ export type GtfsTripServicedStop = {
   gtfsStopSequence: number;
 };
 
-type GtfsTripExpressStop = {
+export type GtfsTripExpressStop = {
   type: "express";
   stopId: number;
 };
@@ -35,6 +35,7 @@ export type GtfsTripFields = {
   readonly nextTrip: GtfsTrip | null;
 };
 
+// TODO: Should we rename this to GtfsScheduledTrip?
 export class GtfsTrip {
   readonly gtfsTripId: string;
   readonly gtfsRouteId: string;

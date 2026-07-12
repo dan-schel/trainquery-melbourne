@@ -1,8 +1,11 @@
+// TODO: Can remove once NodeJS v26 becomes LTS (expected in October 2026).
+import "temporal-polyfill/global";
+
 import fsp from "fs/promises";
 import path from "path";
 import { withGtfsCsvs } from "../../src/gtfs/retrieval/schedule/with-gtfs-csvs.js";
 import { env } from "./env.js";
-import { fetchGtfsRealtime } from "../../src/gtfs/retrieval/realtime/fetch-gtfs-realtime.js";
+import { fetchGtfsRealtimeRaw } from "../../src/gtfs/retrieval/realtime/fetch-gtfs-realtime.js";
 
 const saveDirectory = "./local/gtfs";
 const saveSuburbanDirectory = path.join(saveDirectory, "suburban");
@@ -28,7 +31,7 @@ async function main() {
   });
 
   console.log("Fetching GTFS Realtime data...");
-  const realtime = await fetchGtfsRealtime(env.RELAY_KEY);
+  const realtime = await fetchGtfsRealtimeRaw(env.RELAY_KEY);
   await fsp.writeFile(realtimePath, JSON.stringify(realtime, null, 2), "utf-8");
 
   console.log("✅ Done!");

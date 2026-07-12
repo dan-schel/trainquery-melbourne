@@ -166,9 +166,9 @@ function formatStats(
   ].map((x) => x.lineId);
 
   const tripUpdateLines = [
-    ...suburbanRealtimeData.scheduledTripStopTimeUpdates,
-    ...regionalRealtimeData.scheduledTripStopTimeUpdates,
-  ].map((x) => x.trip.lineId);
+    ...suburbanRealtimeData.updatedTrips,
+    ...regionalRealtimeData.updatedTrips,
+  ].map((x) => x.scheduledTrip.lineId);
 
   let output = "Trip counts:";
   for (const line of ctx.lines.all()) {
