@@ -1,8 +1,34 @@
-import type { GtfsRealtimeData } from "../../data/gtfs-realtime-data.js";
+import { GtfsRealtimeData } from "../../data/gtfs-realtime-data.js";
 import type { GtfsSchedule } from "../../data/gtfs-schedule.js";
+import type { GtfsScheduledTripStopTimeUpdate } from "../../data/gtfs-scheduled-trip-stop-time-update.js";
+import type { RealtimeFeedJson } from "../../retrieval/realtime/realtime-feed-schema.js";
+import {
+  GtfsTripUpdateParser,
+  type GtfsTripUpdateParsingError,
+} from "./gtfs-trip-update-parser.js";
 
 export class GtfsRealtimeDataParser {
-  constructor() {}
+  private readonly _tripUpdateParser: GtfsTripUpdateParser;
 
-  parse(scheduleData: GtfsSchedule): GtfsRealtimeData {}
+  constructor(onError: (error: GtfsRealtimeDataParsingError) => void) {
+    this._tripUpdateParser = new GtfsTripUpdateParser(onError);
+  }
+
+  parse(
+    realtimeData: RealtimeFeedJson,
+    scheduleData: GtfsSchedule,
+  ): GtfsRealtimeData {
+    const scheduledTripStopTimeUpdates: GtfsScheduledTripStopTimeUpdate[] = [];
+
+    for (const tripUpdates of realtimeData.tripUpdates) {
+      const result = this._tripUpdateParser.parse(tripUpdates, scheduleData);
+      if (result != null) {
+        scheduledTripStopTimeUpdates.push(result);
+      }
+    }
+
+    return new GtfsRealtimeData(scheduledTripStopTimeUpdates);
+  }
 }
+
+export type GtfsRealtimeDataParsingError = GtfsTripUpdateParsingError;

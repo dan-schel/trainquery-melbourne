@@ -1,3 +1,5 @@
+import { realtimeFeedSchema } from "./realtime-feed-schema.js";
+
 const gtfsRealtimeUrl = "https://vtar.trainquery.com/gtfs-realtime.json";
 
 export async function fetchGtfsRealtime(relayKey: string) {
@@ -7,5 +9,5 @@ export async function fetchGtfsRealtime(relayKey: string) {
 
   if (!res.ok) throw new Error(`Got ${res.status} error when fetching GTFS-R.`);
 
-  return await res.json();
+  return realtimeFeedSchema.parse(await res.json());
 }

@@ -18,7 +18,7 @@ export class GtfsScheduleParser {
 
   constructor(
     lineRoutes: LineRoutes,
-    onError: (error: GtfsParsingError) => void,
+    onError: (error: GtfsScheduleParsingError) => void,
   ) {
     this._calendarParser = new GtfsCalendarParser(onError);
     this._tripParser = new GtfsTripParser(lineRoutes, onError);
@@ -46,4 +46,6 @@ export class GtfsScheduleParser {
   }
 }
 
-export type GtfsParsingError = GtfsCalendarParsingError | GtfsTripParsingError;
+export type GtfsScheduleParsingError =
+  | GtfsCalendarParsingError
+  | GtfsTripParsingError;
