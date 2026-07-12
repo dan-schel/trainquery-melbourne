@@ -147,8 +147,16 @@ function parseRealtime(
     splitter.split(fullRealtimeData);
 
   const parser = new GtfsRealtimeDataParser((e) => errors.push(e));
-  const suburbanRealtimeData = parser.parse(suburbanJson, suburbanSchedule);
-  const regionalRealtimeData = parser.parse(regionalJson, regionalSchedule);
+  const suburbanRealtimeData = parser.parse(
+    suburbanJson,
+    suburbanSchedule,
+    config.suburbanStopGtfsIdMapping,
+  );
+  const regionalRealtimeData = parser.parse(
+    regionalJson,
+    regionalSchedule,
+    config.regionalStopGtfsIdMapping,
+  );
 
   return { suburbanRealtimeData, regionalRealtimeData };
 }
