@@ -25,6 +25,7 @@ import {
 import type { RealtimeFeedJson } from "./retrieval/realtime/realtime-feed-schema.js";
 import type { GtfsSchedule } from "./data/gtfs-schedule.js";
 import type { GtfsRealtimeData } from "./data/gtfs-realtime-data.js";
+import { MELBOURNE_TIMEZONE } from "./departures/scheduled-departures-block-factory.js";
 
 type GtfsParsingError =
   | GtfsScheduleParsingError
@@ -146,7 +147,9 @@ function parseRealtime(
   const { suburban: suburbanJson, regional: regionalJson } =
     splitter.split(fullRealtimeData);
 
-  const parser = new GtfsRealtimeDataParser((e) => errors.push(e));
+  const parser = new GtfsRealtimeDataParser(MELBOURNE_TIMEZONE, (e) =>
+    errors.push(e),
+  );
   const suburbanRealtimeData = parser.parse(
     suburbanJson,
     suburbanSchedule,

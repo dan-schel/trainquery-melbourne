@@ -2,7 +2,7 @@ import { ScheduledDeparturesBlock } from "./scheduled-departures-block.js";
 import { ServiceDay } from "./service-day.js";
 import type { GtfsStopTime } from "../data/gtfs-stop-time.js";
 
-const MELBOURNE_TIMEZONE = "Australia/Melbourne";
+export const MELBOURNE_TIMEZONE = "Australia/Melbourne";
 
 // While we could cast a much wider net (+/- 24 hours) to handle all possible
 // timezones, we know that for Melbourne it's either +10 in AEDT or +11 in AEST.

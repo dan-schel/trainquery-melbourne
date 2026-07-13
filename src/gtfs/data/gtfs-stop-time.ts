@@ -27,6 +27,7 @@ export class GtfsStopTime {
     return GtfsStopTime.fromSecondsSinceMidnight(h * 60 * 60 + m * 60 + s);
   }
 
+  /** Parses strings like `05:30:00` or `25:04:42`. */
   static parse(input: string): GtfsStopTime {
     const parsed = GtfsStopTime.tryParse(input);
     if (parsed == null) throw new Error(`Invalid GTFS stop time: ${input}`);
@@ -47,5 +48,42 @@ export class GtfsStopTime {
    */
   get dayOffset(): number {
     return Math.floor(this.secondsSinceMidnight / (24 * 60 * 60));
+  }
+
+  toInstant(
+    serviceDay: Temporal.PlainDate,
+    timezone: string,
+  ): Temporal.Instant {
+    const offset = GtfsStopTime.offsetSecondsAtMiddayFor(serviceDay, timezone);
+    const midnightUtc = serviceDay.toZonedDateTime("UTC");
+
+    return midnightUtc
+      .add({ seconds: this.secondsSinceMidnight + offset })
+      .toInstant();
+  }
+
+  static offsetSecondsAtMiddayFor(
+    date: Temporal.PlainDate,
+    timezone: string,
+  ): number {
+    const nanoseconds = Temporal.ZonedDateTime.from(
+      {
+        timeZone: timezone,
+        year: date.year,
+        month: date.month,
+        day: date.day,
+        hour: 12,
+        minute: 0,
+      },
+      {
+        // Throws an error if this is ambiguous (just like 2:30am can be
+        // ambiguous during DST changes in Melbourne). The GTFS spec operates on
+        // the timezone as at 12pm that day, as do we, and so that should mean
+        // it's never a problem (both for Melbourne, and elsewhere).
+        disambiguation: "reject",
+      },
+    ).offsetNanoseconds;
+
+    return nanoseconds / 1_000_000_000;
   }
 }

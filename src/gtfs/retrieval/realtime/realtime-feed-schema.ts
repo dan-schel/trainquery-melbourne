@@ -27,24 +27,20 @@ export const tripDescriptorSchema = z
   })
   .readonly();
 
+export type UpdatedTimeJson = z.infer<typeof updatedTimeJson>;
+export const updatedTimeJson = z
+  .object({
+    delay: z.number().optional(),
+    time: floatStringSchema.optional(),
+  })
+  .readonly();
+
 export type StopTimeUpdateJson = z.infer<typeof stopTimeUpdateSchema>;
 export const stopTimeUpdateSchema = z
   .object({
     stopSequence: z.number().optional(),
-    arrival: z
-      .object({
-        delay: z.number().optional(),
-        time: floatStringSchema.optional(),
-      })
-      .readonly()
-      .optional(),
-    departure: z
-      .object({
-        delay: z.number().optional(),
-        time: floatStringSchema.optional(),
-      })
-      .readonly()
-      .optional(),
+    arrival: updatedTimeJson.optional(),
+    departure: updatedTimeJson.optional(),
     stopId: z.string().optional(),
     scheduleRelationship: z.string().default("SCHEDULED"),
   })

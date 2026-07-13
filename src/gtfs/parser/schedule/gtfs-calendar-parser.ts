@@ -7,8 +7,6 @@ import type {
 import { GtfsCalendar } from "../../data/gtfs-calendar.js";
 import { PlainDateRange } from "../../departures/plain-date-range.js";
 
-// TODO: All these parsers need unit tests :)
-
 const CALENDAR_DATE_EXCEPTION_TYPE_ADDED = 1;
 const CALENDAR_DATE_EXCEPTION_TYPE_REMOVED = 2;
 

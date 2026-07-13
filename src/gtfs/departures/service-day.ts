@@ -28,6 +28,7 @@ export class ServiceDay {
     throw new Error("Method not implemented.");
   }
 
+  // TODO: Remove this (it's on GtfsStopTime now instead), and move test.
   static offsetSecondsAtMiddayFor(
     date: Temporal.PlainDate,
     timezone: string,
