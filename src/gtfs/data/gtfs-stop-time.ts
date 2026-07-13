@@ -50,20 +50,19 @@ export class GtfsStopTime {
     return Math.floor(this.secondsSinceMidnight / (24 * 60 * 60));
   }
 
-  // TODO: Unit test.
   toInstant(
     serviceDay: Temporal.PlainDate,
     timezone: string,
   ): Temporal.Instant {
     const midnightUtc = serviceDay.toZonedDateTime("UTC").toInstant();
-    const offset = GtfsStopTime.offsetSecondsAtMiddayFor(serviceDay, timezone);
+    const offset = GtfsStopTime._getOffsetSecondsAtMidday(serviceDay, timezone);
 
     // Subtract the offset because we're converting a local time to UTC, i.e.
     // 11am AEST becomes 1am UTC.
     return midnightUtc.add({ seconds: this.secondsSinceMidnight - offset });
   }
 
-  static offsetSecondsAtMiddayFor(
+  private static _getOffsetSecondsAtMidday(
     date: Temporal.PlainDate,
     timezone: string,
   ): number {
