@@ -331,6 +331,7 @@ export class GtfsTripUpdateParser {
     // We'll press on (this check is only meant for reporting/my interest), but
     // the something's probably gonna be very broken for this trip!
     if (fromTime != null && fromDelay != null && !fromTime.equals(fromDelay)) {
+      console.log(fromTime.toString(), fromDelay.toString());
       const Err = TimeAndDelayDisagreeWithEachOtherError;
       this._onError(
         new Err(

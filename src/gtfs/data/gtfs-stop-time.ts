@@ -54,12 +54,12 @@ export class GtfsStopTime {
     serviceDay: Temporal.PlainDate,
     timezone: string,
   ): Temporal.Instant {
+    const midnightUtc = serviceDay.toZonedDateTime("UTC").toInstant();
     const offset = GtfsStopTime.offsetSecondsAtMiddayFor(serviceDay, timezone);
-    const midnightUtc = serviceDay.toZonedDateTime("UTC");
 
-    return midnightUtc
-      .add({ seconds: this.secondsSinceMidnight + offset })
-      .toInstant();
+    // Subtract the offset because we're converting a local time to UTC, i.e.
+    // 11am AEST becomes 1am UTC.
+    return midnightUtc.add({ seconds: this.secondsSinceMidnight - offset });
   }
 
   static offsetSecondsAtMiddayFor(
