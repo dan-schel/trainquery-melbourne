@@ -50,6 +50,7 @@ export class GtfsStopTime {
     return Math.floor(this.secondsSinceMidnight / (24 * 60 * 60));
   }
 
+  // TODO: Unit test.
   toInstant(
     serviceDay: Temporal.PlainDate,
     timezone: string,
