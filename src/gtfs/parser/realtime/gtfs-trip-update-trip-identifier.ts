@@ -48,6 +48,9 @@ export class GtfsTripUpdateTripIdentifier {
       return null;
     }
 
+    // TODO: Report if the startTime in the descriptor doesn't match the
+    // scheduled time of the trip's origin stop.
+
     return { trip, serviceDay: tripDescriptor.startDate };
   }
 }
