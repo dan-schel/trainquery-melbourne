@@ -1,9 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
 
-// TODO: Move to corequery.
-
-describe("CoreServiceTime", () => {
+describe("GtfsStopTime", () => {
   describe("#secondOfDay", () => {
     function run(secondsSinceMidnight: number) {
       return GtfsStopTime.fromSecondsSinceMidnight(secondsSinceMidnight)

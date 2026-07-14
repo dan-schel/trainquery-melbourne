@@ -9,7 +9,7 @@ import {
   NeitherTimeNorDelayGivenError,
   NoStopTimeUpdateFieldGivenError,
   StopTimeUpdateEntryChangesStopError,
-  StopTimeUpdateEntryReferencesNonExistentStopIdError,
+  StopTimeUpdateEntryReferencesUnmappedStopIdError,
   StopTimeUpdateEntryReferencesNonExistentStopSequenceError,
   TimeAndDelayDisagreeWithEachOtherError,
   UnsupportedStopTimeUpdateEntryScheduleRelationshipError,
@@ -40,6 +40,9 @@ describe("GtfsTripUpdateParser", () => {
     const realtimeArrival = firstStop.arrivalTime
       .toInstant(day, "Australia/Melbourne")
       .add({ seconds: 120 });
+    const realtimeDeparture = firstStop.departureTime
+      .toInstant(day, "Australia/Melbourne")
+      .add({ seconds: 120 });
 
     const parsed = parser.parse(
       tripUpdate({
@@ -68,9 +71,9 @@ describe("GtfsTripUpdateParser", () => {
     expect(updatedFirstStop.realtimeArrivalTime?.equals(realtimeArrival)).toBe(
       true,
     );
-
-    // TODO: Validate the real time?
-    expect(updatedFirstStop.realtimeDepartureTime).not.toBeNull();
+    expect(
+      updatedFirstStop.realtimeDepartureTime?.equals(realtimeDeparture),
+    ).toBe(true);
   });
 
   it("parses cancelled trip updates", () => {
@@ -237,7 +240,7 @@ describe("GtfsTripUpdateParser", () => {
     );
   });
 
-  it("reports non-existent stop IDs in stop time updates", () => {
+  it("reports unmapped stop IDs in stop time updates", () => {
     const errors: GtfsTripUpdateParsingError[] = [];
     const parser = new GtfsTripUpdateParser("Australia/Melbourne", (e) =>
       errors.push(e),
@@ -258,8 +261,7 @@ describe("GtfsTripUpdateParser", () => {
     expect(parsed).toBeNull();
     expect(errors).toHaveLength(1);
     expect(errors[0]).toBeInstanceOf(
-      // TODO: Renamed to unmapped stop id?
-      StopTimeUpdateEntryReferencesNonExistentStopIdError,
+      StopTimeUpdateEntryReferencesUnmappedStopIdError,
     );
   });
 

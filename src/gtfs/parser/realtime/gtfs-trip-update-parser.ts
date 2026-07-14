@@ -226,7 +226,7 @@ export class GtfsTripUpdateParser {
       // allow the platform/position ID to change, not the overall stop/station.
       const stopGtfsIdMetadata = stopGtfsIdMapping.tryResolve(entry.stopId);
       if (stopGtfsIdMetadata == null) {
-        const Err = StopTimeUpdateEntryReferencesNonExistentStopIdError;
+        const Err = StopTimeUpdateEntryReferencesUnmappedStopIdError;
         this._onError(new Err(tripUpdate, entry));
         return null;
       }
@@ -374,7 +374,7 @@ export type GtfsTripUpdateParsingError =
   | NecessaryFieldNotInStopTimeUpdateEntryError
   | StopTimeUpdateEntryReferencesNonExistentStopSequenceError
   | MultipleStopTimeUpdateEntriesForSameStopIndexError
-  | StopTimeUpdateEntryReferencesNonExistentStopIdError
+  | StopTimeUpdateEntryReferencesUnmappedStopIdError
   | StopTimeUpdateEntryChangesStopError
   | NeitherTimeNorDelayGivenError
   | TimeAndDelayDisagreeWithEachOtherError
@@ -439,8 +439,8 @@ export class MultipleStopTimeUpdateEntriesForSameStopIndexError extends Error {
   }
 }
 
-export class StopTimeUpdateEntryReferencesNonExistentStopIdError extends Error {
-  readonly type = "stop-time-update-entry-references-non-existent-stop-id";
+export class StopTimeUpdateEntryReferencesUnmappedStopIdError extends Error {
+  readonly type = "stop-time-update-entry-references-unmapped-stop-id";
   constructor(
     readonly tripUpdate: TripUpdateJson,
     readonly stopTimeUpdateEntry: StopTimeUpdateJson,
