@@ -5,7 +5,8 @@ import {
   TripDescriptorReferencesUnmappedRouteIdError,
   type GtfsRealtimeFeedSplittingError,
 } from "../../../../src/gtfs/parser/realtime/gtfs-realtime-feed-splitter.js";
-import { lineMapping, realtimeFeed, tripUpdate } from "./factories.js";
+import { realtimeFeed, tripUpdate } from "./factories.js";
+import { lineMapping } from "../factories.js";
 
 describe("GtfsRealtimeFeedSplitter", () => {
   it("splits trip updates into suburban and regional buckets", () => {

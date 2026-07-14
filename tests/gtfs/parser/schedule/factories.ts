@@ -8,9 +8,6 @@ import type {
   TransfersCsvRow,
   TripsCsvRow,
 } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
-import { calendar, lineMapping, makeTrip, stopMapping } from "../factories.js";
-
-export { calendar, lineMapping, makeTrip, stopMapping };
 
 export function calendarRow(
   overrides: Partial<CalendarCsvRow> = {},

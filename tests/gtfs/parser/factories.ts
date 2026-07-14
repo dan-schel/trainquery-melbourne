@@ -7,6 +7,20 @@ import { LineGtfsIdMapping } from "../../../src/gtfs/data/ids/line-gtfs-id-mappi
 import { StopGtfsIdCollection } from "../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
 import { StopGtfsIdMapping } from "../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
 
+export const CALENDAR_EVERYDAY = new GtfsCalendar(
+  "svc",
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  new PlainDateRange(null, null),
+  [],
+  [],
+);
+
 export function lineMapping(
   options: { lineId?: number; routeId?: string } = {},
 ) {
@@ -30,27 +44,11 @@ export function stopMapping(gtfsStopIds: readonly string[] = ["A", "B"]) {
   return new StopGtfsIdMapping(mapping);
 }
 
-export function calendar() {
-  return new GtfsCalendar(
-    "svc",
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    new PlainDateRange(null, null),
-    [],
-    [],
-  );
-}
-
 export function makeTrip(id: string, originId: string, terminusId: string) {
   return new GtfsTrip({
     gtfsTripId: id,
     gtfsRouteId: "route-1",
-    calendar: calendar(),
+    calendar: CALENDAR_EVERYDAY,
     stops: [servicedStop(originId, 1, 1), servicedStop(terminusId, 2, 2)],
     lineId: 1,
     color: "red",

@@ -19,11 +19,11 @@ import {
 import {
   scheduleWithTrip,
   serviceDay,
-  stopMapping,
   stopTimeUpdate,
   tripDescriptor,
   tripUpdate,
 } from "./factories.js";
+import { stopMapping } from "../factories.js";
 
 describe("GtfsTripUpdateParser", () => {
   it("parses a scheduled trip update and applies realtime stop times", () => {

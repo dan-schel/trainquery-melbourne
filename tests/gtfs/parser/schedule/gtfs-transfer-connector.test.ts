@@ -11,7 +11,8 @@ import {
   TransferReferencesTripAlreadyConnectedError,
 } from "../../../../src/gtfs/parser/schedule/gtfs-transfer-connector.js";
 import { itsOk } from "@dan-schel/js-utils";
-import { makeTrip, transfer } from "./factories.js";
+import { transfer } from "./factories.js";
+import { makeTrip } from "../factories.js";
 
 describe("GtfsTransferConnector", () => {
   it("connects trips using in-seat transfers", () => {

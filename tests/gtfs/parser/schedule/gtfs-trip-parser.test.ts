@@ -8,15 +8,9 @@ import {
   type GtfsTripParsingError,
 } from "../../../../src/gtfs/parser/schedule/gtfs-trip-parser.js";
 import { MultipleStopSequencesError } from "../../../../src/gtfs/parser/schedule/gtfs-stop-time-normaliser.js";
-import {
-  calendar,
-  lineMapping,
-  routes,
-  stopMapping,
-  stopTime,
-  tripRow,
-} from "./factories.js";
+import { routes, stopTime, tripRow } from "./factories.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
+import { CALENDAR_EVERYDAY, lineMapping, stopMapping } from "../factories.js";
 
 describe("GtfsTripParser", () => {
   it("parses one simple trip end-to-end", () => {
@@ -40,7 +34,7 @@ describe("GtfsTripParser", () => {
         }),
       ],
       [],
-      [calendar()],
+      [CALENDAR_EVERYDAY],
       lineMapping(),
       stopMapping(["A", "B"]),
     );
@@ -94,7 +88,7 @@ describe("GtfsTripParser", () => {
         }),
       ],
       [],
-      [calendar()],
+      [CALENDAR_EVERYDAY],
       lineMapping(),
       stopMapping(["A", "B"]),
     );
@@ -120,7 +114,7 @@ describe("GtfsTripParser", () => {
         stopTime({ stop_id: "B", stop_sequence: 2 }),
       ],
       [],
-      [calendar()],
+      [CALENDAR_EVERYDAY],
       lineMapping(),
       stopMapping(["A", "B"]),
     );
@@ -142,7 +136,7 @@ describe("GtfsTripParser", () => {
         stopTime({ trip_id: "missing-trip", stop_id: "A", stop_sequence: 1 }),
       ],
       [],
-      [calendar()],
+      [CALENDAR_EVERYDAY],
       lineMapping(),
       stopMapping(["A", "B"]),
     );
@@ -163,7 +157,7 @@ describe("GtfsTripParser", () => {
         stopTime({ stop_id: "B", stop_sequence: 2 }),
       ],
       [],
-      [calendar()],
+      [CALENDAR_EVERYDAY],
       lineMapping(),
       stopMapping(["A", "B"]),
     );
@@ -184,7 +178,7 @@ describe("GtfsTripParser", () => {
         stopTime({ stop_id: "B", stop_sequence: 2 }),
       ],
       [],
-      [calendar()],
+      [CALENDAR_EVERYDAY],
       lineMapping(),
       stopMapping(["A", "B"]),
     );

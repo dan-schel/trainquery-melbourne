@@ -8,7 +8,7 @@ import type {
   TripUpdateJson,
   UpdatedTimeJson,
 } from "../../../../src/gtfs/retrieval/realtime/realtime-feed-schema.js";
-import { lineMapping, makeTrip, stopMapping } from "../factories.js";
+import { makeTrip } from "../factories.js";
 
 export function serviceDay(
   overrides: Partial<{ year: number; month: number; day: number }> = {},
@@ -93,5 +93,3 @@ export function scheduleWithTrip(
     trip,
   };
 }
-
-export { lineMapping, stopMapping };

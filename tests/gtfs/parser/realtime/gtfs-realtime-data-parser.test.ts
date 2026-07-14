@@ -7,11 +7,11 @@ import {
 import {
   realtimeFeed,
   scheduleWithTrip,
-  stopMapping,
   stopTimeUpdate,
   tripDescriptor,
   tripUpdate,
 } from "./factories.js";
+import { stopMapping } from "../factories.js";
 
 describe("GtfsRealtimeDataParser", () => {
   it("parses realtime feed into updated trips and drops invalid updates", () => {

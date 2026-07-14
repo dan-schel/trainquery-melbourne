@@ -8,8 +8,9 @@ import {
   type GtfsRouteMatchingError,
 } from "../../../../src/gtfs/parser/schedule/gtfs-route-matcher.js";
 import { Route } from "../../../../src/gtfs/data/route/route.js";
-import { routeStops, stopMapping, stopTime } from "./factories.js";
+import { routeStops, stopTime } from "./factories.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
+import { stopMapping } from "../factories.js";
 
 describe("GtfsRouteMatcher", () => {
   it("matches the shortest compatible route and injects express stops", () => {
