@@ -15,23 +15,20 @@ export class GtfsTripUpdateTripIdentifier {
     // identifying the trip. We'll rely on them being present unless it later
     // turns out we can't.
     if (tripDescriptor.tripId == null) {
-      this._onError(
-        new NecessaryFieldNotInTripDescriptorError(tripDescriptor, "tripId"),
-      );
+      const Err = NecessaryFieldNotInTripDescriptorError;
+      this._onError(new Err(tripDescriptor, "tripId"));
       return null;
     }
     if (tripDescriptor.startDate == null) {
-      this._onError(
-        new NecessaryFieldNotInTripDescriptorError(tripDescriptor, "startDate"),
-      );
+      const Err = NecessaryFieldNotInTripDescriptorError;
+      this._onError(new Err(tripDescriptor, "startDate"));
       return null;
     }
 
     const trip = scheduleData.getTripById(tripDescriptor.tripId);
     if (trip == null) {
-      this._onError(
-        new TripDescriptorReferencesNonExistentTripIdError(tripDescriptor),
-      );
+      const Err = TripDescriptorReferencesNonExistentTripIdError;
+      this._onError(new Err(tripDescriptor));
       return null;
     }
 
@@ -48,8 +45,17 @@ export class GtfsTripUpdateTripIdentifier {
       return null;
     }
 
-    // TODO: Report if the startTime in the descriptor doesn't match the
-    // scheduled time of the trip's origin stop.
+    // If a startTime is given, check that it matches the trip we've identified.
+    // If it doesn't, it might indicate a bug with our matching logic. For now,
+    // I've decided only to report it rather than return null, but idk, this
+    // might be a strong enough case to say we've matched incorrectly.
+    if (
+      tripDescriptor.startTime != null &&
+      !tripDescriptor.startTime.equals(trip.origin.departureTime)
+    ) {
+      const Err = TripDescriptorStartTimeDoesNotMatchTripOriginStopTimeError;
+      this._onError(new Err(tripDescriptor, trip));
+    }
 
     return { trip, serviceDay: tripDescriptor.startDate };
   }
@@ -58,7 +64,8 @@ export class GtfsTripUpdateTripIdentifier {
 export type GtfsTripUpdateTripIdentificationError =
   | NecessaryFieldNotInTripDescriptorError
   | TripDescriptorReferencesNonExistentTripIdError
-  | TripDoesNotOccurOnStartDateError;
+  | TripDoesNotOccurOnStartDateError
+  | TripDescriptorStartTimeDoesNotMatchTripOriginStopTimeError;
 
 // Naming "necessary" rather that "required" since "required" implies that it
 // breaks the GTFS-RT spec, but in reality it's just that we don't support other
@@ -82,6 +89,17 @@ export class TripDescriptorReferencesNonExistentTripIdError extends Error {
 
 export class TripDoesNotOccurOnStartDateError extends Error {
   readonly type = "trip-does-not-occur-on-start-date";
+  constructor(
+    readonly tripDescriptor: TripDescriptorJson,
+    readonly trip: GtfsTrip,
+  ) {
+    super();
+  }
+}
+
+export class TripDescriptorStartTimeDoesNotMatchTripOriginStopTimeError extends Error {
+  readonly type =
+    "trip-descriptor-start-time-does-not-match-trip-origin-stop-time";
   constructor(
     readonly tripDescriptor: TripDescriptorJson,
     readonly trip: GtfsTrip,

@@ -26,7 +26,7 @@ export function tripDescriptor(
 ): TripDescriptorJson {
   return {
     tripId: "trip-1",
-    startTime: GtfsStopTime.parse("00:00:00"),
+    startTime: GtfsStopTime.parse("00:01:00"),
     startDate: serviceDay(),
     scheduleRelationship: "SCHEDULED",
     routeId: "route-1",

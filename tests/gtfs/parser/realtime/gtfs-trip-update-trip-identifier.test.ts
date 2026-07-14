@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   GtfsTripUpdateTripIdentifier,
   NecessaryFieldNotInTripDescriptorError,
+  TripDescriptorStartTimeDoesNotMatchTripOriginStopTimeError,
   TripDescriptorReferencesNonExistentTripIdError,
   TripDoesNotOccurOnStartDateError,
   type GtfsTripUpdateTripIdentificationError,
@@ -114,7 +115,30 @@ describe("GtfsTripUpdateTripIdentifier", () => {
   it("identifies overnight trips where startTime is over 24:00:00", () => {
     const errors: GtfsTripUpdateTripIdentificationError[] = [];
     const identifier = new GtfsTripUpdateTripIdentifier((e) => errors.push(e));
-    const { schedule, trip } = scheduleWithTrip();
+    const { trip } = scheduleWithTrip();
+
+    const originStop = trip.stops[0];
+    const terminusStop = trip.stops[1];
+    if (originStop?.type !== "serviced")
+      throw new Error("Expected origin stop.");
+    if (terminusStop?.type !== "serviced")
+      throw new Error("Expected terminus stop.");
+
+    const overnightTrip = trip.with({
+      stops: [
+        {
+          ...originStop,
+          arrivalTime: GtfsStopTime.parse("25:05:00"),
+          departureTime: GtfsStopTime.parse("25:05:00"),
+        },
+        {
+          ...terminusStop,
+          arrivalTime: GtfsStopTime.parse("25:15:00"),
+          departureTime: GtfsStopTime.parse("25:16:00"),
+        },
+      ],
+    });
+    const schedule = new GtfsSchedule([overnightTrip]);
 
     const startDate = Temporal.PlainDate.from({
       year: 2026,
@@ -124,7 +148,7 @@ describe("GtfsTripUpdateTripIdentifier", () => {
 
     const result = identifier.identify(
       tripDescriptor({
-        tripId: trip.gtfsTripId,
+        tripId: overnightTrip.gtfsTripId,
         startDate,
         startTime: GtfsStopTime.parse("25:05:00"),
       }),
@@ -135,7 +159,27 @@ describe("GtfsTripUpdateTripIdentifier", () => {
     expect(result).not.toBeNull();
 
     if (result == null) throw new Error("Expected matching trip.");
-    expect(result.trip.gtfsTripId).toBe(trip.gtfsTripId);
+    expect(result.trip.gtfsTripId).toBe(overnightTrip.gtfsTripId);
     expect(result.serviceDay.equals(startDate)).toBe(true);
+  });
+
+  it("reports mismatching startTime values but still identifies the trip", () => {
+    const errors: GtfsTripUpdateTripIdentificationError[] = [];
+    const identifier = new GtfsTripUpdateTripIdentifier((e) => errors.push(e));
+    const { schedule, trip } = scheduleWithTrip();
+
+    const result = identifier.identify(
+      tripDescriptor({
+        tripId: trip.gtfsTripId,
+        startTime: GtfsStopTime.parse("00:00:00"),
+      }),
+      schedule,
+    );
+
+    expect(result).not.toBeNull();
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toBeInstanceOf(
+      TripDescriptorStartTimeDoesNotMatchTripOriginStopTimeError,
+    );
   });
 });

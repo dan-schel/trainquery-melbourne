@@ -50,6 +50,10 @@ export class GtfsStopTime {
     return Math.floor(this.secondsSinceMidnight / (24 * 60 * 60));
   }
 
+  equals(other: GtfsStopTime): boolean {
+    return this.secondsSinceMidnight === other.secondsSinceMidnight;
+  }
+
   toInstant(
     serviceDay: Temporal.PlainDate,
     timezone: string,
