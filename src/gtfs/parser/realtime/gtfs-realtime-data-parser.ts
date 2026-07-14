@@ -8,8 +8,6 @@ import {
   type GtfsTripUpdateParsingError,
 } from "./gtfs-trip-update-parser.js";
 
-// TODO: All these parsers need unit tests :)
-
 export class GtfsRealtimeDataParser {
   private readonly _tripUpdateParser: GtfsTripUpdateParser;
 

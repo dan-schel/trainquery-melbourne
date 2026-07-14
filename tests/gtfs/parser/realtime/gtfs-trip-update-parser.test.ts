@@ -18,7 +18,7 @@ import {
 } from "../../../../src/gtfs/parser/realtime/gtfs-trip-update-parser.js";
 import {
   scheduleWithTrip,
-  serviceDay,
+  SERVICE_DAY_2026_07_14,
   stopTimeUpdate,
   tripDescriptor,
   tripUpdate,
@@ -31,7 +31,7 @@ describe("GtfsTripUpdateParser", () => {
     const parser = new GtfsTripUpdateParser("Australia/Melbourne", (e) =>
       errors.push(e),
     );
-    const day = serviceDay();
+    const day = SERVICE_DAY_2026_07_14;
     const { schedule, trip } = scheduleWithTrip();
 
     const firstStop = trip.stops[0];
@@ -319,7 +319,7 @@ describe("GtfsTripUpdateParser", () => {
     const parser = new GtfsTripUpdateParser("Australia/Melbourne", (e) =>
       errors.push(e),
     );
-    const day = serviceDay();
+    const day = SERVICE_DAY_2026_07_14;
     const { schedule, trip } = scheduleWithTrip();
 
     const firstStop = trip.stops[0];

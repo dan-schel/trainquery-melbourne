@@ -6,20 +6,14 @@ import type {
   StopTimeUpdateJson,
   TripDescriptorJson,
   TripUpdateJson,
-  UpdatedTimeJson,
 } from "../../../../src/gtfs/retrieval/realtime/realtime-feed-schema.js";
 import { makeTrip } from "../factories.js";
 
-export function serviceDay(
-  overrides: Partial<{ year: number; month: number; day: number }> = {},
-) {
-  return Temporal.PlainDate.from({
-    year: 2026,
-    month: 7,
-    day: 14,
-    ...overrides,
-  });
-}
+export const SERVICE_DAY_2026_07_14 = Temporal.PlainDate.from({
+  year: 2026,
+  month: 7,
+  day: 14,
+});
 
 export function tripDescriptor(
   overrides: Partial<TripDescriptorJson> = {},
@@ -27,18 +21,9 @@ export function tripDescriptor(
   return {
     tripId: "trip-1",
     startTime: GtfsStopTime.parse("00:01:00"),
-    startDate: serviceDay(),
+    startDate: SERVICE_DAY_2026_07_14,
     scheduleRelationship: "SCHEDULED",
     routeId: "route-1",
-    ...overrides,
-  };
-}
-
-function updatedTime(
-  overrides: Partial<UpdatedTimeJson> = {},
-): UpdatedTimeJson {
-  return {
-    delay: 0,
     ...overrides,
   };
 }
@@ -49,8 +34,8 @@ export function stopTimeUpdate(
   return {
     stopSequence: 1,
     stopId: "A",
-    arrival: updatedTime(),
-    departure: updatedTime(),
+    arrival: { delay: 0 },
+    departure: { delay: 0 },
     scheduleRelationship: "SCHEDULED",
     ...overrides,
   };
@@ -74,20 +59,8 @@ export function realtimeFeed(
   };
 }
 
-export function scheduleWithTrip(
-  overrides: {
-    tripId?: string;
-    originGtfsStopId?: string;
-    terminusGtfsStopId?: string;
-  } = {},
-): { schedule: GtfsSchedule; trip: GtfsTrip } {
-  const {
-    tripId = "trip-1",
-    originGtfsStopId = "A",
-    terminusGtfsStopId = "B",
-  } = overrides;
-
-  const trip = makeTrip(tripId, originGtfsStopId, terminusGtfsStopId);
+export function scheduleWithTrip(): { schedule: GtfsSchedule; trip: GtfsTrip } {
+  const trip = makeTrip("trip-1", "A", "B");
   return {
     schedule: new GtfsSchedule([trip]),
     trip,

@@ -57,30 +57,16 @@ export function routeStops(stopIds: readonly number[]) {
   );
 }
 
-export function routes(
-  options: {
-    lineId?: number;
-    color?: "red" | "blue";
-    stopIds?: readonly number[];
-    serviceTags?: readonly number[];
-  } = {},
-) {
-  const {
-    lineId = 1,
-    color = "blue",
-    stopIds = [1, 2],
-    serviceTags = [7],
-  } = options;
-
+export function routes() {
   return new LineRoutes(
     new Map([
       [
-        lineId,
+        1,
         [
           new Route({
-            color,
-            stops: routeStops(stopIds),
-            serviceTags: [...serviceTags],
+            color: "blue",
+            stops: routeStops([1, 2]),
+            serviceTags: [7],
           }),
         ],
       ],

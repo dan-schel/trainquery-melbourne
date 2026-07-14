@@ -12,7 +12,7 @@ export type GtfsUpdatedTripStop =
   | GtfsUpdatedTripServicedStop
   | GtfsUpdatedTripExpressStop;
 
-export type GtfsUpdatedTripServicedStop = Omit<
+type GtfsUpdatedTripServicedStop = Omit<
   GtfsTripServicedStop,
   "arrivalTime" | "departureTime" | "positionId" | "gtfsIdMetadata"
 > & {
@@ -38,7 +38,7 @@ export type GtfsUpdatedTripServicedStop = Omit<
 };
 
 // There's no additional metadata for express stops.
-export type GtfsUpdatedTripExpressStop = GtfsTripExpressStop;
+type GtfsUpdatedTripExpressStop = GtfsTripExpressStop;
 
 export class GtfsUpdatedTrip {
   constructor(

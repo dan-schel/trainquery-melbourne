@@ -17,7 +17,7 @@ import {
 // wouldn't want that to crash our ability to mark scheduled trips as delayed.
 
 export type TripDescriptorJson = z.infer<typeof tripDescriptorSchema>;
-export const tripDescriptorSchema = z
+const tripDescriptorSchema = z
   .object({
     tripId: z.string().optional(),
     startTime: gtfsStopTimeSchema.optional(),
@@ -28,7 +28,7 @@ export const tripDescriptorSchema = z
   .readonly();
 
 export type UpdatedTimeJson = z.infer<typeof updatedTimeJson>;
-export const updatedTimeJson = z
+const updatedTimeJson = z
   .object({
     delay: z.number().optional(),
     time: floatStringSchema.optional(),
@@ -36,7 +36,7 @@ export const updatedTimeJson = z
   .readonly();
 
 export type StopTimeUpdateJson = z.infer<typeof stopTimeUpdateSchema>;
-export const stopTimeUpdateSchema = z
+const stopTimeUpdateSchema = z
   .object({
     stopSequence: z.number().optional(),
     arrival: updatedTimeJson.optional(),
@@ -47,7 +47,7 @@ export const stopTimeUpdateSchema = z
   .readonly();
 
 export type TripUpdateJson = z.infer<typeof tripUpdateSchema>;
-export const tripUpdateSchema = z
+const tripUpdateSchema = z
   .object({
     trip: tripDescriptorSchema,
     stopTimeUpdate: stopTimeUpdateSchema.array().optional(),
