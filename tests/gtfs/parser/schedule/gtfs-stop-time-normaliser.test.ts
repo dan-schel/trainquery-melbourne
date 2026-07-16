@@ -6,6 +6,7 @@ import {
   type GtfsStopTimeNormalisationError,
 } from "../../../../src/gtfs/parser/schedule/gtfs-stop-time-normaliser.js";
 import { stopTime } from "./factories.js";
+import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 
 describe("GtfsStopTimeNormaliser", () => {
   it("returns already regular stop sequences unchanged", () => {
@@ -69,5 +70,29 @@ describe("GtfsStopTimeNormaliser", () => {
     ]);
     expect(errors).toHaveLength(1);
     expect(errors[0]).toBeInstanceOf(MultipleStopSequencesError);
+  });
+
+  it("returns null if the stopping sequence requires time travel", () => {
+    const errors: GtfsStopTimeNormalisationError[] = [];
+    const normaliser = new GtfsStopTimeNormaliser((e) => errors.push(e));
+
+    const stopTimes = [
+      stopTime({
+        stop_sequence: 1,
+        stop_id: "a",
+        arrival_time: GtfsStopTime.parse("10:00:00"),
+        departure_time: GtfsStopTime.parse("10:05:00"),
+      }),
+      stopTime({
+        stop_sequence: 2,
+        stop_id: "b",
+        arrival_time: GtfsStopTime.parse("10:04:00"), // 1 min before previous departure
+        departure_time: GtfsStopTime.parse("10:10:00"),
+      }),
+    ];
+
+    expect(normaliser.normalise(stopTimes)).toBeNull();
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toBeInstanceOf(InvalidStopSequenceError);
   });
 });

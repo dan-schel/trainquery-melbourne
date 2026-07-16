@@ -54,6 +54,23 @@ export class GtfsStopTime {
     return this.secondsSinceMidnight === other.secondsSinceMidnight;
   }
 
+  static compare(a: GtfsStopTime, b: GtfsStopTime): number {
+    return Math.sign(a.secondsSinceMidnight - b.secondsSinceMidnight);
+  }
+
+  isBefore(other: GtfsStopTime): boolean {
+    return GtfsStopTime.compare(this, other) < 0;
+  }
+  isBeforeOrEqual(other: GtfsStopTime): boolean {
+    return GtfsStopTime.compare(this, other) <= 0;
+  }
+  isAfter(other: GtfsStopTime): boolean {
+    return GtfsStopTime.compare(this, other) > 0;
+  }
+  isAfterOrEqual(other: GtfsStopTime): boolean {
+    return GtfsStopTime.compare(this, other) >= 0;
+  }
+
   toInstant(
     serviceDay: Temporal.PlainDate,
     timezone: string,

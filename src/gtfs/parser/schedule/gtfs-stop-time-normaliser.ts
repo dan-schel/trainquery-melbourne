@@ -12,8 +12,8 @@ export class GtfsStopTimeNormaliser {
     private readonly _onError: (error: GtfsStopTimeNormalisationError) => void,
   ) {}
 
-  normalise(stopTimes: StopTimesCsv): StopTimesCsv | null {
-    const sortedStopTimes = [...stopTimes].sort(
+  normalise(unsortedStopTimes: StopTimesCsv): StopTimesCsv | null {
+    const sortedStopTimes = [...unsortedStopTimes].sort(
       (a, b) => a.stop_sequence - b.stop_sequence,
     );
 
@@ -28,10 +28,10 @@ export class GtfsStopTimeNormaliser {
     // stops, we should use the earliest departure times for each stop to be
     // pessimistic (and still show the other sequence of stopping times as a
     // disruption about having ambiguous stopping times).
-    if (this._isMultipleRegularSequences(stopTimes)) {
-      this._onError(new MultipleStopSequencesError(stopTimes));
+    if (this._isMultipleRegularSequences(unsortedStopTimes)) {
+      this._onError(new MultipleStopSequencesError(unsortedStopTimes));
 
-      return this._extractFirstRegularSequence(stopTimes);
+      return this._extractFirstRegularSequence(unsortedStopTimes);
     }
 
     // Are there any other cases we can handle gracefully? I expect we might see
@@ -42,7 +42,7 @@ export class GtfsStopTimeNormaliser {
     // stop_sequence values themselves (i.e. if there's gaps, leave them in)
     // because we may need to use those when matching updates in the GTFS-RT
     // feed to certain stops on the trip.
-    this._onError(new InvalidStopSequenceError(stopTimes));
+    this._onError(new InvalidStopSequenceError(unsortedStopTimes));
     return null;
   }
 
@@ -50,14 +50,11 @@ export class GtfsStopTimeNormaliser {
    * Returns true if the stop times make a perfect sequence starting from 1, and
    * is at least of length 2.
    */
-  private _isRegular(stopTimes: StopTimesCsv): boolean {
-    // TODO: Check every stop time arrival/departure time occurs in sequence.
-
-    // stopTimes is guaranteed to be sorted by stop_sequence by this stage in
-    // the parsing process.
+  private _isRegular(sortedStopTimes: StopTimesCsv): boolean {
     return (
-      stopTimes.length >= 2 &&
-      stopTimes.every((x, i) => x.stop_sequence === i + 1)
+      sortedStopTimes.length >= 2 &&
+      sortedStopTimes.every((x, i) => x.stop_sequence === i + 1) &&
+      !this._requiresTimeTravelInFirstRegularSequence(sortedStopTimes)
     );
   }
 
@@ -76,22 +73,54 @@ export class GtfsStopTimeNormaliser {
    * - `1`
    * - `1, 1, 1`
    */
-  private _isMultipleRegularSequences(stopTimes: StopTimesCsv): boolean {
+  private _isMultipleRegularSequences(
+    unsortedStopTimes: StopTimesCsv,
+  ): boolean {
     let expectedStopSequence = 1;
-    for (const stopTime of stopTimes) {
+    for (const stopTime of unsortedStopTimes) {
       if (stopTime.stop_sequence === expectedStopSequence) {
         expectedStopSequence++;
-      } else if (stopTime.stop_sequence === 1 || expectedStopSequence > 2) {
+      } else if (stopTime.stop_sequence === 1 && expectedStopSequence > 2) {
         expectedStopSequence = 2;
       } else {
         return false;
       }
     }
-    return expectedStopSequence > 2;
+
+    // If we left the loop where we'd next expect a 3 (or more), then we must've
+    // found (at least) 2 stops in the last sequence.
+    const lastSequenceHadAtLeastTwoStops = expectedStopSequence > 2;
+
+    return (
+      lastSequenceHadAtLeastTwoStops &&
+      !this._requiresTimeTravelInFirstRegularSequence(unsortedStopTimes)
+    );
   }
 
   private _extractFirstRegularSequence(stopTimes: StopTimesCsv): StopTimesCsv {
     return stopTimes.filter((x, i) => x.stop_sequence === i + 1);
+  }
+
+  private _requiresTimeTravelInFirstRegularSequence(
+    stopTimes: StopTimesCsv,
+  ): boolean {
+    return stopTimes.some((x, i) => {
+      // We're ignoring everything after the first regular sequence.
+      if (x.stop_sequence !== i + 1) return false;
+
+      if (x.arrival_time.isAfter(x.departure_time)) return true;
+
+      const previousStopTime = stopTimes[i - 1];
+
+      if (
+        previousStopTime != null &&
+        previousStopTime.departure_time.isAfter(x.arrival_time)
+      ) {
+        return true;
+      }
+
+      return false;
+    });
   }
 }
 
