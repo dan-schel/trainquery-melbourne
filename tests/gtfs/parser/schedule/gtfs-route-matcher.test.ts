@@ -13,7 +13,7 @@ import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 import { stopMapping } from "../factories.js";
 
 describe("GtfsRouteMatcher", () => {
-  it("matches the shortest compatible route and injects express stops", () => {
+  it("matches the shortest compatible route and injects passing movements", () => {
     const errors: GtfsRouteMatchingError[] = [];
     const matcher = new GtfsRouteMatcher((error) => errors.push(error));
 
@@ -62,13 +62,15 @@ describe("GtfsRouteMatcher", () => {
 
     expect(result.color).toBe("red");
     expect(result.serviceTags).toEqual([10]);
-    expect(result.stops.map((stop) => stop.type)).toEqual([
-      "serviced",
-      "express",
-      "serviced",
-      "serviced",
+    expect(result.movements.map((movement) => movement.type)).toEqual([
+      "servicing",
+      "passing",
+      "servicing",
+      "servicing",
     ]);
-    expect(result.stops.map((stop) => stop.stopId)).toEqual([1, 2, 3, 4]);
+    expect(result.movements.map((movement) => movement.stopId)).toEqual([
+      1, 2, 3, 4,
+    ]);
   });
 
   it("reports when no route matches the served stop order", () => {

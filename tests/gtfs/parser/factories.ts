@@ -1,7 +1,10 @@
 import { PlainDateRange } from "../../../src/gtfs/data/plain-date-range.js";
 import { GtfsCalendar } from "../../../src/gtfs/data/gtfs-calendar.js";
 import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
-import { GtfsTrip } from "../../../src/gtfs/data/gtfs-trip.js";
+import {
+  GtfsTrip,
+  type GtfsTripServicingMovement,
+} from "../../../src/gtfs/data/gtfs-trip.js";
 import { LineGtfsIdCollection } from "../../../src/gtfs/data/ids/line-gtfs-id-collection.js";
 import { LineGtfsIdMapping } from "../../../src/gtfs/data/ids/line-gtfs-id-mapping.js";
 import { StopGtfsIdCollection } from "../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
@@ -49,7 +52,10 @@ export function makeTrip(id: string, originId: string, terminusId: string) {
     gtfsTripId: id,
     gtfsRouteId: "route-1",
     calendar: CALENDAR_EVERYDAY,
-    stops: [servicedStop(originId, 1, 1), servicedStop(terminusId, 2, 2)],
+    movements: [
+      servicingMovement(originId, 1, 1),
+      servicingMovement(terminusId, 2, 2),
+    ],
     lineId: 1,
     color: "red",
     serviceTags: [],
@@ -58,13 +64,13 @@ export function makeTrip(id: string, originId: string, terminusId: string) {
   });
 }
 
-function servicedStop(
+function servicingMovement(
   gtfsStopId: string,
   positionId: number,
   gtfsStopSequence: number,
-) {
+): GtfsTripServicingMovement {
   return {
-    type: "serviced" as const,
+    type: "servicing" as const,
     stopId: positionId,
     positionId,
     arrivalTime: GtfsStopTime.fromSecondsSinceMidnight(0),

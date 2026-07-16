@@ -87,7 +87,7 @@ export class GtfsTripParser {
           gtfsTripId: trip.trip_id,
           gtfsRouteId: trip.route_id,
           calendar,
-          stops: routeMatchResult.stops,
+          movements: routeMatchResult.movements,
           lineId: lineIdMatch.lineId,
           color: routeMatchResult.color,
           serviceTags: routeMatchResult.serviceTags,

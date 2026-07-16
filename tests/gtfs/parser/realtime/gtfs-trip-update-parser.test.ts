@@ -3,7 +3,7 @@ import { StopGtfsIdCollection } from "../../../../src/gtfs/data/ids/stop-gtfs-id
 import { StopGtfsIdMapping } from "../../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
 import {
   GtfsTripUpdateParser,
-  MultipleStopTimeUpdateEntriesForSameStopIndexError,
+  MultipleStopTimeUpdateEntriesForSameMovementIndexError,
   NecessaryFieldNotInStopTimeUpdateEntryError,
   NeitherArrivalNorDepartureGivenError,
   NeitherTimeNorDelayGivenError,
@@ -34,13 +34,13 @@ describe("GtfsTripUpdateParser", () => {
     const day = SERVICE_DAY_2026_07_14;
     const { schedule, trip } = scheduleWithTrip();
 
-    const firstStop = trip.stops[0];
-    if (firstStop?.type !== "serviced") throw new Error();
+    const firstMovement = trip.movements[0];
+    if (firstMovement?.type !== "servicing") throw new Error();
 
-    const realtimeArrival = firstStop.arrivalTime
+    const realtimeArrival = firstMovement.arrivalTime
       .toInstant(day, "Australia/Melbourne")
       .add({ seconds: 120 });
-    const realtimeDeparture = firstStop.departureTime
+    const realtimeDeparture = firstMovement.departureTime
       .toInstant(day, "Australia/Melbourne")
       .add({ seconds: 120 });
 
@@ -49,7 +49,7 @@ describe("GtfsTripUpdateParser", () => {
         trip: tripDescriptor({ tripId: trip.gtfsTripId, startDate: day }),
         stopTimeUpdate: [
           stopTimeUpdate({
-            stopSequence: firstStop.gtfsStopSequence,
+            stopSequence: firstMovement.gtfsStopSequence,
             stopId: "A",
             arrival: { time: realtimeArrival.epochMilliseconds / 1000 },
             departure: { delay: 120 },
@@ -64,15 +64,15 @@ describe("GtfsTripUpdateParser", () => {
     if (parsed == null) throw new Error("Expected updated trip.");
     expect(parsed.isCancelled).toBe(false);
 
-    const updatedFirstStop = parsed.stops[0];
-    if (updatedFirstStop?.type !== "serviced")
-      throw new Error("Expected serviced stop.");
+    const updatedFirstMovement = parsed.movements[0];
+    if (updatedFirstMovement?.type !== "servicing")
+      throw new Error("Expected servicing movement.");
 
-    expect(updatedFirstStop.realtimeArrivalTime?.equals(realtimeArrival)).toBe(
-      true,
-    );
     expect(
-      updatedFirstStop.realtimeDepartureTime?.equals(realtimeDeparture),
+      updatedFirstMovement.realtimeArrivalTime?.equals(realtimeArrival),
+    ).toBe(true);
+    expect(
+      updatedFirstMovement.realtimeDepartureTime?.equals(realtimeDeparture),
     ).toBe(true);
   });
 
@@ -236,7 +236,7 @@ describe("GtfsTripUpdateParser", () => {
     expect(parsed).toBeNull();
     expect(errors).toHaveLength(1);
     expect(errors[0]).toBeInstanceOf(
-      MultipleStopTimeUpdateEntriesForSameStopIndexError,
+      MultipleStopTimeUpdateEntriesForSameMovementIndexError,
     );
   });
 
@@ -322,12 +322,12 @@ describe("GtfsTripUpdateParser", () => {
     const day = SERVICE_DAY_2026_07_14;
     const { schedule, trip } = scheduleWithTrip();
 
-    const firstStop = trip.stops[0];
-    if (firstStop?.type !== "serviced")
-      throw new Error("Expected serviced stop.");
+    const firstMovement = trip.movements[0];
+    if (firstMovement?.type !== "servicing")
+      throw new Error("Expected servicing movement.");
 
     const scheduledArrivalEpoch =
-      firstStop.arrivalTime.toInstant(day, "Australia/Melbourne")
+      firstMovement.arrivalTime.toInstant(day, "Australia/Melbourne")
         .epochMilliseconds / 1000;
 
     const parsed = parser.parse(
@@ -436,12 +436,12 @@ describe("GtfsTripUpdateParser", () => {
     expect(errors).toEqual([]);
     expect(parsed).not.toBeNull();
 
-    const updatedFirstStop = parsed?.stops[0];
-    if (updatedFirstStop?.type !== "serviced")
-      throw new Error("Expected serviced stop.");
+    const updatedFirstMovement = parsed?.movements[0];
+    if (updatedFirstMovement?.type !== "servicing")
+      throw new Error("Expected servicing movement.");
 
-    expect(updatedFirstStop.stopId).toBe(1);
-    expect(updatedFirstStop.originalPositionId).toBe(1);
-    expect(updatedFirstStop.updatedPositionId).toBe(2);
+    expect(updatedFirstMovement.stopId).toBe(1);
+    expect(updatedFirstMovement.originalPositionId).toBe(1);
+    expect(updatedFirstMovement.updatedPositionId).toBe(2);
   });
 });

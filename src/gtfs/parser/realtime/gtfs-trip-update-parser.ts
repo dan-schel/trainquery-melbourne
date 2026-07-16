@@ -2,7 +2,7 @@ import type { GtfsSchedule } from "../../data/gtfs-schedule.js";
 import type { GtfsTrip } from "../../data/gtfs-trip.js";
 import {
   GtfsUpdatedTrip,
-  type GtfsUpdatedTripStop,
+  type GtfsUpdatedTripMovement,
 } from "../../data/gtfs-updated-trip.js";
 import type {
   StopTimeUpdateJson,
@@ -70,7 +70,7 @@ export class GtfsTripUpdateParser {
       return null;
     }
 
-    const updatedStopsByIndex = new Map<number, GtfsUpdatedTripStop>();
+    const updatedMovementsByIndex = new Map<number, GtfsUpdatedTripMovement>();
 
     for (const entry of tripUpdate.stopTimeUpdate) {
       // This `scheduleRelationship` field is probably how altered routes work.
@@ -96,61 +96,59 @@ export class GtfsTripUpdateParser {
 
       // Find the stop in the scheduled trip that this update is supposed to be
       // for.
-      const stopIndex = trip.stops.findIndex(
-        (s) =>
-          s.type === "serviced" && s.gtfsStopSequence === entry.stopSequence,
+      const movementIndex = trip.movements.findIndex(
+        (m) =>
+          m.type === "servicing" && m.gtfsStopSequence === entry.stopSequence,
       );
-      if (stopIndex === -1) {
+      if (movementIndex === -1) {
         const Err = StopTimeUpdateEntryReferencesNonExistentStopSequenceError;
         this._onError(new Err(tripUpdate, entry, trip));
         return null;
       }
 
       // Enforced by findIndex above.
-      const scheduledStop = trip.stops[stopIndex];
-      if (scheduledStop?.type !== "serviced") throw new Error();
+      const scheduledMovement = trip.movements[movementIndex];
+      if (scheduledMovement?.type !== "servicing") throw new Error();
 
       // Check that we haven't already matched a stop time update entry to this
-      // stop index. (Would happen if `stopSequence` was the same value twice, I
-      // guess.)
-      if (updatedStopsByIndex.has(stopIndex)) {
-        const Err = MultipleStopTimeUpdateEntriesForSameStopIndexError;
-        this._onError(new Err(tripUpdate, entry, trip, stopIndex));
+      // movement index. (Would happen if `stopSequence` was the same value
+      // twice, I guess.)
+      if (updatedMovementsByIndex.has(movementIndex)) {
+        const Err = MultipleStopTimeUpdateEntriesForSameMovementIndexError;
+        this._onError(new Err(tripUpdate, entry, trip, movementIndex));
         return null;
       }
 
       // Look up the stop GTFS ID given in the stop time update entry, and check
       // whether it still maps to the same (CoreQuery) stop. In this way, we
       // allow the platform/position ID to change, not the overall stop/station.
-      const stopGtfsIdMetadata = stopGtfsIdMapping.tryResolve(entry.stopId);
-      if (stopGtfsIdMetadata == null) {
+      const gtfsIdMetadata = stopGtfsIdMapping.tryResolve(entry.stopId);
+      if (gtfsIdMetadata == null) {
         const Err = StopTimeUpdateEntryReferencesUnmappedStopIdError;
         this._onError(new Err(tripUpdate, entry));
         return null;
       }
-      if (stopGtfsIdMetadata.stopId !== scheduledStop.gtfsIdMetadata.stopId) {
+      if (gtfsIdMetadata.stopId !== scheduledMovement.gtfsIdMetadata.stopId) {
         const Err = StopTimeUpdateEntryChangesStopError;
-        this._onError(new Err(tripUpdate, entry, trip, stopIndex));
+        this._onError(new Err(tripUpdate, entry, trip, movementIndex));
         return null;
       }
 
       const updatedPositionId =
-        stopGtfsIdMetadata.type === "platform"
-          ? stopGtfsIdMetadata.positionId
-          : null;
+        gtfsIdMetadata.type === "platform" ? gtfsIdMetadata.positionId : null;
 
       // Parse the updated times from the `arrivalTime` and `departureTime`
       // fields.
       const realtimeArrivalTime = this._parseUpdatedTime(
         entry.arrival ?? null,
-        scheduledStop.arrivalTime,
+        scheduledMovement.arrivalTime,
         serviceDay,
         tripUpdate,
         entry,
       );
       const realtimeDepartureTime = this._parseUpdatedTime(
         entry.departure ?? null,
-        scheduledStop.departureTime,
+        scheduledMovement.departureTime,
         serviceDay,
         tripUpdate,
         entry,
@@ -161,29 +159,33 @@ export class GtfsTripUpdateParser {
         return null;
       }
 
-      updatedStopsByIndex.set(stopIndex, {
-        type: "serviced",
-        stopId: stopGtfsIdMetadata.stopId,
-        picksUp: scheduledStop.picksUp,
-        dropsOff: scheduledStop.dropsOff,
+      updatedMovementsByIndex.set(movementIndex, {
+        type: "servicing",
+        stopId: gtfsIdMetadata.stopId,
+        picksUp: scheduledMovement.picksUp,
+        dropsOff: scheduledMovement.dropsOff,
         gtfsStopSequence: entry.stopSequence,
 
-        scheduledArrivalTime: scheduledStop.arrivalTime,
-        scheduledDepartureTime: scheduledStop.departureTime,
+        scheduledArrivalTime: scheduledMovement.arrivalTime,
+        scheduledDepartureTime: scheduledMovement.departureTime,
         realtimeArrivalTime,
         realtimeDepartureTime,
 
-        originalPositionId: scheduledStop.positionId,
+        originalPositionId: scheduledMovement.positionId,
         updatedPositionId,
-        originalGtfsIdMetadata: scheduledStop.gtfsIdMetadata,
-        updatedGtfsIdMetadata: stopGtfsIdMetadata,
+        originalGtfsIdMetadata: scheduledMovement.gtfsIdMetadata,
+        updatedGtfsIdMetadata: gtfsIdMetadata,
       });
     }
 
-    let stops = GtfsUpdatedTrip.createStopsWithNoRealtimeData(trip.stops);
-    stops = stops.map((s, i) => updatedStopsByIndex.get(i) ?? s);
+    let movements = GtfsUpdatedTrip.createMovementsWithNoRealtimeData(
+      trip.movements,
+    );
+    movements = movements.map((movement, i) => {
+      return updatedMovementsByIndex.get(i) ?? movement;
+    });
 
-    return new GtfsUpdatedTrip(trip, serviceDay, stops, false);
+    return new GtfsUpdatedTrip(trip, serviceDay, movements, false);
   }
 
   private _parseForCancelledTrip(
@@ -194,8 +196,10 @@ export class GtfsTripUpdateParser {
     if (result == null) return null;
     const { trip, serviceDay } = result;
 
-    const stops = GtfsUpdatedTrip.createStopsWithNoRealtimeData(trip.stops);
-    return new GtfsUpdatedTrip(trip, serviceDay, stops, true);
+    const movements = GtfsUpdatedTrip.createMovementsWithNoRealtimeData(
+      trip.movements,
+    );
+    return new GtfsUpdatedTrip(trip, serviceDay, movements, true);
   }
 
   private _parseUpdatedTime(
@@ -271,7 +275,7 @@ export type GtfsTripUpdateParsingError =
   | UnsupportedStopTimeUpdateEntryScheduleRelationshipError
   | NecessaryFieldNotInStopTimeUpdateEntryError
   | StopTimeUpdateEntryReferencesNonExistentStopSequenceError
-  | MultipleStopTimeUpdateEntriesForSameStopIndexError
+  | MultipleStopTimeUpdateEntriesForSameMovementIndexError
   | StopTimeUpdateEntryReferencesUnmappedStopIdError
   | StopTimeUpdateEntryChangesStopError
   | NeitherTimeNorDelayGivenError
@@ -325,13 +329,13 @@ export class StopTimeUpdateEntryReferencesNonExistentStopSequenceError extends E
   }
 }
 
-export class MultipleStopTimeUpdateEntriesForSameStopIndexError extends Error {
-  readonly type = "multiple-stop-time-update-entries-for-same-stop-index";
+export class MultipleStopTimeUpdateEntriesForSameMovementIndexError extends Error {
+  readonly type = "multiple-stop-time-update-entries-for-same-movement-index";
   constructor(
     readonly tripUpdate: TripUpdateJson,
     readonly stopTimeUpdateEntry: StopTimeUpdateJson,
     readonly matchedTrip: GtfsTrip,
-    readonly matchedStopIndex: number,
+    readonly matchedMovementIndex: number,
   ) {
     super();
   }
@@ -347,14 +351,15 @@ export class StopTimeUpdateEntryReferencesUnmappedStopIdError extends Error {
   }
 }
 
-// i.e. It changes the stop, not just the platform (which we support).
+// i.e. It doesn't just change the platform (which we're fine with), but the
+// entire stop.
 export class StopTimeUpdateEntryChangesStopError extends Error {
   readonly type = "stop-time-update-entry-changes-stop";
   constructor(
     readonly tripUpdate: TripUpdateJson,
     readonly stopTimeUpdateEntry: StopTimeUpdateJson,
     readonly matchedTrip: GtfsTrip,
-    readonly matchedStopIndex: number,
+    readonly matchedMovementIndex: number,
   ) {
     super();
   }

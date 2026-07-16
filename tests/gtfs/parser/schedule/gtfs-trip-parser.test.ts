@@ -46,7 +46,7 @@ describe("GtfsTripParser", () => {
     if (trip == null) throw new Error("Expected one trip.");
 
     expect(trip.gtfsTripId).toBe("trip-1");
-    expect(trip.stops.map((stop) => stop.stopId)).toEqual([1, 2]);
+    expect(trip.movements.map((stop) => stop.stopId)).toEqual([1, 2]);
   });
 
   it("reports the correct error when multiple stop time sequences are given for a trip", () => {
@@ -100,7 +100,7 @@ describe("GtfsTripParser", () => {
     const trip = trips[0];
     if (trip == null) throw new Error("Expected one trip.");
 
-    expect(trip.stops.map((stop) => stop.stopId)).toEqual([1, 2]);
+    expect(trip.movements.map((stop) => stop.stopId)).toEqual([1, 2]);
   });
 
   it("reports duplicate trip rows and keeps the first one", () => {

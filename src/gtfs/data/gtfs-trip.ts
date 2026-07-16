@@ -4,10 +4,12 @@ import type { GtfsStopTime } from "./gtfs-stop-time.js";
 import type { StopGtfsIdMetadata } from "./ids/stop-gtfs-id-metadata.js";
 import { itsOk } from "@dan-schel/js-utils";
 
-export type GtfsTripStop = GtfsTripServicedStop | GtfsTripExpressStop;
+export type GtfsTripMovement =
+  | GtfsTripServicingMovement
+  | GtfsTripPassingMovement;
 
-export type GtfsTripServicedStop = {
-  type: "serviced";
+export type GtfsTripServicingMovement = {
+  type: "servicing";
   stopId: number;
   positionId: number | null;
   arrivalTime: GtfsStopTime;
@@ -18,8 +20,8 @@ export type GtfsTripServicedStop = {
   gtfsStopSequence: number;
 };
 
-export type GtfsTripExpressStop = {
-  type: "express";
+export type GtfsTripPassingMovement = {
+  type: "passing";
   stopId: number;
 };
 
@@ -27,7 +29,7 @@ export type GtfsTripFields = {
   readonly gtfsTripId: string;
   readonly gtfsRouteId: string;
   readonly calendar: GtfsCalendar;
-  readonly stops: readonly GtfsTripStop[];
+  readonly movements: readonly GtfsTripMovement[];
 
   // TODO: Corequery supports multiple lineIds per service leg, e.g. for Westall
   // trains which are both Cranbourne & Pakenham line, and we should here too,
@@ -70,7 +72,7 @@ export class GtfsTrip {
   readonly gtfsTripId: string;
   readonly gtfsRouteId: string;
   readonly calendar: GtfsCalendar;
-  readonly stops: readonly GtfsTripStop[];
+  readonly movements: readonly GtfsTripMovement[];
   readonly lineId: number;
   readonly color: Color;
   readonly serviceTags: readonly number[];
@@ -81,19 +83,19 @@ export class GtfsTrip {
     this.gtfsTripId = fields.gtfsTripId;
     this.gtfsRouteId = fields.gtfsRouteId;
     this.calendar = fields.calendar;
-    this.stops = fields.stops;
+    this.movements = fields.movements;
     this.lineId = fields.lineId;
     this.color = fields.color;
     this.serviceTags = fields.serviceTags;
     this.previousTrip = fields.previousTrip;
     this.nextTrip = fields.nextTrip;
 
-    if (this.stops.length < 2) throw new Error("Must have 2 or more stops.");
+    if (this.movements.length < 2) throw new Error("Must have 2+ movements.");
 
-    const firstStopOk = itsOk(this.stops[0]).type === "serviced";
-    const lastStopOk = itsOk(this.stops.at(-1)).type === "serviced";
-    if (!firstStopOk) throw new Error("First stop must be serviced.");
-    if (!lastStopOk) throw new Error("Last stop must be serviced");
+    const firstMovementOk = itsOk(this.movements[0]).type === "servicing";
+    const lastMovementOk = itsOk(this.movements.at(-1)).type === "servicing";
+    if (!firstMovementOk) throw new Error("First movement must be servicing.");
+    if (!lastMovementOk) throw new Error("Last movement must be servicing");
   }
 
   with(newValues: Partial<GtfsTripFields>): GtfsTrip {
@@ -104,16 +106,17 @@ export class GtfsTrip {
     return [from.with({ nextTrip: to }), to.with({ previousTrip: from })];
   }
 
-  get origin(): GtfsTripServicedStop {
-    if (this.stops[0]?.type === "serviced") return this.stops[0];
+  get origin(): GtfsTripServicingMovement {
+    const firstMovement = this.movements[0];
+    if (firstMovement?.type === "servicing") return firstMovement;
 
     // Can't happen. Checked in constructor.
     throw new Error();
   }
 
-  get terminus(): GtfsTripServicedStop {
-    const lastStop = this.stops.at(-1);
-    if (lastStop?.type === "serviced") return lastStop;
+  get terminus(): GtfsTripServicingMovement {
+    const lastMovement = this.movements.at(-1);
+    if (lastMovement?.type === "servicing") return lastMovement;
 
     // Can't happen. Checked in constructor.
     throw new Error();

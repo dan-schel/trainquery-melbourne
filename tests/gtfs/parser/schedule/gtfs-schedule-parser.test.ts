@@ -44,7 +44,7 @@ describe("GtfsScheduleParser", () => {
     expect(trip.gtfsTripId).toBe("trip-1");
     expect(trip.color).toBe("blue");
     expect(trip.serviceTags).toEqual([7]);
-    expect(trip.stops.map((stop) => stop.stopId)).toEqual([1, 2]);
+    expect(trip.movements.map((stop) => stop.stopId)).toEqual([1, 2]);
     expect(trip.calendar.gtfsCalendarId).toBe("svc");
     expect(trip.calendar.monday).toBe(true);
   });
