@@ -12,8 +12,14 @@ export type GtfsTripServicingMovement = {
   type: "servicing";
   stopId: number;
   positionId: number | null;
+
+  // TODO: These need to be nullable for the terminating and originating
+  // movements. I think they should actually be separate types, i.e.
+  // `type: "originating"`, and then drop the fields entirely which make no
+  // sense, e.g. arrivalTime, departureTime, picksUp, and dropsOff.
   arrivalTime: GtfsStopTime;
   departureTime: GtfsStopTime;
+
   picksUp: boolean;
   dropsOff: boolean;
   gtfsIdMetadata: StopGtfsIdMetadata;
