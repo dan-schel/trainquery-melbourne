@@ -25,7 +25,7 @@ import {
 import type { RealtimeFeedJson } from "./retrieval/realtime/realtime-feed-schema.js";
 import type { GtfsSchedule } from "./data/gtfs-schedule.js";
 import type { GtfsRealtimeData } from "./data/gtfs-realtime-data.js";
-import { MELBOURNE_TIMEZONE } from "./departures/scheduled-departures-block-factory.js";
+import { MELBOURNE_TIMEZONE } from "./departures-old/scheduled-departures-block-factory.js";
 
 type GtfsParsingError =
   | GtfsScheduleParsingError

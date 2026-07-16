@@ -1,4 +1,4 @@
-import { PlainDateRange } from "../../../src/gtfs/departures/plain-date-range.js";
+import { PlainDateRange } from "../../../src/gtfs/data/plain-date-range.js";
 import { GtfsCalendar } from "../../../src/gtfs/data/gtfs-calendar.js";
 import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
 import { GtfsTrip } from "../../../src/gtfs/data/gtfs-trip.js";
