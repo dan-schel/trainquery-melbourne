@@ -24,8 +24,8 @@ export class GtfsTripUpdateParser {
   private readonly _tripIdentifier: GtfsTripUpdateTripIdentifier;
 
   constructor(
-    // TODO: Should this field come from the GtfsSchedule object instead? It's
-    // in the schedule feed agency.txt (which we currently don't read).
+    // We could maybe store this in the GtfsSchedule obj itself if we wanted,
+    // since you can parse it from agency.txt.
     private readonly _timezone: string,
 
     private readonly _onError: (error: GtfsTripUpdateParsingError) => void,
@@ -69,108 +69,6 @@ export class GtfsTripUpdateParser {
       this._onError(new NoStopTimeUpdateFieldGivenError(tripUpdate));
       return null;
     }
-
-    // TODO: Nothing about this method of parsing implemented below would
-    // support a trip changing routes, e.g. terminating early. I'm yet to see
-    // how that's represented in the realtime feed and/or if PTV uses it anyway.
-    // Given the mention of "changed routes" at the link below, it sounds like
-    // they might:
-    //
-    // https://opendata.transport.vic.gov.au/dataset/gtfs-realtime
-    //
-    // Update: Yeah they do.
-    //
-    //            ⬇️⬇️
-    // UnsupportedTripUpdateScheduleRelationshipError
-    //     at GtfsTripUpdateParser.parse (/home/dan/repos/trainquery-melbourne/src/gtfs/parser/realtime/gtfs-trip-update-parser.ts:47:9)
-    //     at GtfsRealtimeDataParser.parse (/home/dan/repos/trainquery-melbourne/src/gtfs/parser/realtime/gtfs-realtime-data-parser.ts:26:45)
-    //     at parseRealtime (/home/dan/repos/trainquery-melbourne/src/gtfs/temp-script.ts:150:39)
-    //     at runGtfsTempScript (/home/dan/repos/trainquery-melbourne/src/gtfs/temp-script.ts:51:58)
-    //     at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
-    //     at async main (/home/dan/repos/trainquery-melbourne/src/index.ts:18:3) {
-    //   tripUpdate: {
-    //     trip: {
-    //       tripId: 'vic:02FKN:_:H:vpt._Frankston_7419_20260712',
-    //       startTime: [GtfsStopTime],
-    //       startDate: PlainDate [Temporal.PlainDate] {},
-    //       scheduleRelationship: 'ADDED', ⬅️ ⬅️ ⬅️
-    //       routeId: 'aus:vic:vic-02-FKN:'
-    //     },
-    //     stopTimeUpdate: [
-    //       [Object], [Object],
-    //       [Object], [Object],
-    //       [Object], [Object],
-    //       [Object], [Object],
-    //       [Object], [Object],
-    //       [Object], [Object],
-    //       [Object], [Object]
-    //     ]
-    //   },
-    //   type: 'unsupported-trip-update-schedule-relationship'
-    // }
-    //
-    //            ⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️
-    // UnsupportedStopTimeUpdateEntryScheduleRelationshipError
-    //     at GtfsTripUpdateParser._parseForScheduledTrip (/home/dan/repos/trainquery-melbourne/src/gtfs/parser/realtime/gtfs-trip-update-parser.ts:81:23)
-    //     at GtfsTripUpdateParser.parse (/home/dan/repos/trainquery-melbourne/src/gtfs/parser/realtime/gtfs-trip-update-parser.ts:38:19)
-    //     at GtfsRealtimeDataParser.parse (/home/dan/repos/trainquery-melbourne/src/gtfs/parser/realtime/gtfs-realtime-data-parser.ts:26:45)
-    //     at parseRealtime (/home/dan/repos/trainquery-melbourne/src/gtfs/temp-script.ts:155:39)
-    //     at runGtfsTempScript (/home/dan/repos/trainquery-melbourne/src/gtfs/temp-script.ts:51:58)
-    //     at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
-    //     at async main (/home/dan/repos/trainquery-melbourne/src/index.ts:18:3) {
-    //   tripUpdate: {
-    //     trip: {
-    //       tripId: '01-ABY--5-T3-8630',
-    //       startTime: [GtfsStopTime],
-    //       startDate: PlainDate [Temporal.PlainDate] {},
-    //       scheduleRelationship: 'SCHEDULED',
-    //       routeId: 'aus:vic:vic-01-ABY:'
-    //     },
-    //     stopTimeUpdate: [ [Object], [Object], [Object], [Object], [Object], [Object] ]
-    //   },
-    //   stopTimeUpdateEntry: {
-    //     stopSequence: 6,
-    //     arrival: { time: 1783845360 },
-    //     departure: { time: 1783845480 },
-    //     stopId: '20295',
-    //     scheduleRelationship: 'SKIPPED' ⬅️ ⬅️ ⬅️
-    //   },
-    //   type: 'unsupported-stop-time-update-entry-schedule-relationship'
-    // }
-    //
-    //            ⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️
-    // UnsupportedStopTimeUpdateEntryScheduleRelationshipError
-    //     at GtfsTripUpdateParser._parseForScheduledTrip (/home/dan/repos/trainquery-melbourne/src/gtfs/parser/realtime/gtfs-trip-update-parser.ts:81:23)
-    //     at GtfsTripUpdateParser.parse (/home/dan/repos/trainquery-melbourne/src/gtfs/parser/realtime/gtfs-trip-update-parser.ts:38:19)
-    //     at GtfsRealtimeDataParser.parse (/home/dan/repos/trainquery-melbourne/src/gtfs/parser/realtime/gtfs-realtime-data-parser.ts:26:45)
-    //     at parseRealtime (/home/dan/repos/trainquery-melbourne/src/gtfs/temp-script.ts:155:39)
-    //     at runGtfsTempScript (/home/dan/repos/trainquery-melbourne/src/gtfs/temp-script.ts:51:58)
-    //     at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
-    //     at async main (/home/dan/repos/trainquery-melbourne/src/index.ts:18:3) {
-    //   tripUpdate: {
-    //     trip: {
-    //       tripId: '01-ABY--5-T3-8625',
-    //       startTime: [GtfsStopTime],
-    //       startDate: PlainDate [Temporal.PlainDate] {},
-    //       scheduleRelationship: 'SCHEDULED',
-    //       routeId: 'aus:vic:vic-01-ABY:'
-    //     },
-    //     stopTimeUpdate: [
-    //       [Object], [Object],
-    //       [Object], [Object],
-    //       [Object], [Object],
-    //       [Object]
-    //     ]
-    //   },
-    //   stopTimeUpdateEntry: {
-    //     stopSequence: 5,
-    //     arrival: { time: 1783850160 },
-    //     departure: { time: 1783850160 },
-    //     stopId: '20312',
-    //     scheduleRelationship: 'SKIPPED' ⬅️ ⬅️ ⬅️
-    //   },
-    //   type: 'unsupported-stop-time-update-entry-schedule-relationship'
-    // }
 
     const updatedStopsByIndex = new Map<number, GtfsUpdatedTripStop>();
 
