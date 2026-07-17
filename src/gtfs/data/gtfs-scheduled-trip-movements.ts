@@ -1,0 +1,224 @@
+import type { GtfsStopTime } from "./gtfs-stop-time.js";
+import {
+  GtfsUpdatedTripOriginatingMovement,
+  GtfsUpdatedTripPassingMovement,
+  GtfsUpdatedTripServicingMovement,
+  GtfsUpdatedTripTerminatingMovement,
+  type GtfsUpdatedTripMovement,
+} from "./gtfs-updated-trip-movements.js";
+import type { StopGtfsIdMetadata } from "./ids/stop-gtfs-id-metadata.js";
+
+export type GtfsScheduledTripMovement =
+  | GtfsScheduledTripOriginatingMovement
+  | GtfsScheduledTripServicingMovement
+  | GtfsScheduledTripTerminatingMovement
+  | GtfsScheduledTripPassingMovement;
+
+// I don't normally use interfaces, but here they're just acting as a way to
+// force the classes to conform to a particular consistent set of properties,
+// while stilll allowing them to further narrow the type, e.g. the `type`
+// property isn't generically typed as `string` as it would be if I used an
+// abstract class.
+interface IGtfsScheduledTripMovement {
+  readonly stopId: number;
+
+  get type(): string;
+  get isNonPassing(): boolean;
+  get isInBetween(): boolean;
+  asHollowUpdatedTripMovement(): GtfsUpdatedTripMovement;
+}
+interface IGtfsScheduledTripNonPassingMovement extends IGtfsScheduledTripMovement {
+  readonly positionId: number | null;
+  readonly gtfsIdMetadata: StopGtfsIdMetadata;
+  readonly gtfsStopSequence: number;
+
+  get isNonPassing(): true;
+}
+
+type GtfsScheduledTripOriginatingMovementFields = {
+  readonly stopId: number;
+  readonly positionId: number | null;
+  readonly departureTime: GtfsStopTime;
+  readonly gtfsIdMetadata: StopGtfsIdMetadata;
+  readonly gtfsStopSequence: number;
+};
+
+type GtfsScheduledTripServicingMovementFields = {
+  readonly stopId: number;
+  readonly positionId: number | null;
+  readonly arrivalTime: GtfsStopTime;
+  readonly departureTime: GtfsStopTime;
+  readonly picksUp: boolean;
+  readonly dropsOff: boolean;
+  readonly gtfsIdMetadata: StopGtfsIdMetadata;
+  readonly gtfsStopSequence: number;
+};
+
+type GtfsScheduledTripTerminatingMovementFields = {
+  readonly stopId: number;
+  readonly positionId: number | null;
+  readonly arrivalTime: GtfsStopTime;
+  readonly gtfsIdMetadata: StopGtfsIdMetadata;
+  readonly gtfsStopSequence: number;
+};
+
+type GtfsScheduledTripPassingMovementFields = {
+  readonly stopId: number;
+};
+
+export class GtfsScheduledTripOriginatingMovement implements IGtfsScheduledTripNonPassingMovement {
+  readonly stopId: number;
+  readonly positionId: number | null;
+  readonly departureTime: GtfsStopTime;
+  readonly gtfsIdMetadata: StopGtfsIdMetadata;
+  readonly gtfsStopSequence: number;
+
+  constructor(fields: GtfsScheduledTripOriginatingMovementFields) {
+    this.stopId = fields.stopId;
+    this.positionId = fields.positionId;
+    this.departureTime = fields.departureTime;
+    this.gtfsIdMetadata = fields.gtfsIdMetadata;
+    this.gtfsStopSequence = fields.gtfsStopSequence;
+  }
+
+  get type() {
+    return "originating" as const;
+  }
+  get isNonPassing() {
+    return true as const;
+  }
+  get isInBetween() {
+    return false as const;
+  }
+
+  asHollowUpdatedTripMovement(): GtfsUpdatedTripOriginatingMovement {
+    return new GtfsUpdatedTripOriginatingMovement({
+      stopId: this.stopId,
+      originalPositionId: this.positionId,
+      scheduledDepartureTime: this.departureTime,
+      originalGtfsIdMetadata: this.gtfsIdMetadata,
+      gtfsStopSequence: this.gtfsStopSequence,
+
+      // But no realtime data.
+      realtimeDepartureTime: null,
+      updatedPositionId: this.positionId,
+      updatedGtfsIdMetadata: this.gtfsIdMetadata,
+    });
+  }
+}
+
+export class GtfsScheduledTripServicingMovement implements IGtfsScheduledTripNonPassingMovement {
+  readonly stopId: number;
+  readonly positionId: number | null;
+  readonly arrivalTime: GtfsStopTime;
+  readonly departureTime: GtfsStopTime;
+  readonly picksUp: boolean;
+  readonly dropsOff: boolean;
+  readonly gtfsIdMetadata: StopGtfsIdMetadata;
+  readonly gtfsStopSequence: number;
+
+  constructor(fields: GtfsScheduledTripServicingMovementFields) {
+    this.stopId = fields.stopId;
+    this.positionId = fields.positionId;
+    this.arrivalTime = fields.arrivalTime;
+    this.departureTime = fields.departureTime;
+    this.picksUp = fields.picksUp;
+    this.dropsOff = fields.dropsOff;
+    this.gtfsIdMetadata = fields.gtfsIdMetadata;
+    this.gtfsStopSequence = fields.gtfsStopSequence;
+  }
+
+  get type() {
+    return "servicing" as const;
+  }
+  get isNonPassing() {
+    return true as const;
+  }
+  get isInBetween() {
+    return true as const;
+  }
+
+  asHollowUpdatedTripMovement(): GtfsUpdatedTripServicingMovement {
+    return new GtfsUpdatedTripServicingMovement({
+      stopId: this.stopId,
+      originalPositionId: this.positionId,
+      scheduledArrivalTime: this.arrivalTime,
+      scheduledDepartureTime: this.departureTime,
+      picksUp: this.picksUp,
+      dropsOff: this.dropsOff,
+      originalGtfsIdMetadata: this.gtfsIdMetadata,
+      gtfsStopSequence: this.gtfsStopSequence,
+
+      // But no realtime data.
+      realtimeArrivalTime: null,
+      realtimeDepartureTime: null,
+      updatedPositionId: this.positionId,
+      updatedGtfsIdMetadata: this.gtfsIdMetadata,
+    });
+  }
+}
+
+export class GtfsScheduledTripTerminatingMovement implements IGtfsScheduledTripNonPassingMovement {
+  readonly stopId: number;
+  readonly positionId: number | null;
+  readonly arrivalTime: GtfsStopTime;
+  readonly gtfsIdMetadata: StopGtfsIdMetadata;
+  readonly gtfsStopSequence: number;
+
+  constructor(fields: GtfsScheduledTripTerminatingMovementFields) {
+    this.stopId = fields.stopId;
+    this.positionId = fields.positionId;
+    this.arrivalTime = fields.arrivalTime;
+    this.gtfsIdMetadata = fields.gtfsIdMetadata;
+    this.gtfsStopSequence = fields.gtfsStopSequence;
+  }
+
+  get type() {
+    return "terminating" as const;
+  }
+  get isNonPassing() {
+    return true as const;
+  }
+  get isInBetween() {
+    return false as const;
+  }
+
+  asHollowUpdatedTripMovement(): GtfsUpdatedTripTerminatingMovement {
+    return new GtfsUpdatedTripTerminatingMovement({
+      stopId: this.stopId,
+      originalPositionId: this.positionId,
+      scheduledArrivalTime: this.arrivalTime,
+      originalGtfsIdMetadata: this.gtfsIdMetadata,
+      gtfsStopSequence: this.gtfsStopSequence,
+
+      // But no realtime data.
+      realtimeArrivalTime: null,
+      updatedPositionId: this.positionId,
+      updatedGtfsIdMetadata: this.gtfsIdMetadata,
+    });
+  }
+}
+
+export class GtfsScheduledTripPassingMovement implements IGtfsScheduledTripMovement {
+  readonly stopId: number;
+
+  constructor(fields: GtfsScheduledTripPassingMovementFields) {
+    this.stopId = fields.stopId;
+  }
+
+  get type() {
+    return "passing" as const;
+  }
+  get isNonPassing() {
+    return false as const;
+  }
+  get isInBetween() {
+    return true as const;
+  }
+
+  asHollowUpdatedTripMovement(): GtfsUpdatedTripPassingMovement {
+    return new GtfsUpdatedTripPassingMovement({
+      stopId: this.stopId,
+    });
+  }
+}

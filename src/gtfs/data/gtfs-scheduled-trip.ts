@@ -1,41 +1,17 @@
 import type { Color } from "corequery";
 import type { GtfsCalendar } from "./gtfs-calendar.js";
-import type { GtfsStopTime } from "./gtfs-stop-time.js";
-import type { StopGtfsIdMetadata } from "./ids/stop-gtfs-id-metadata.js";
 import { itsOk } from "@dan-schel/js-utils";
+import type {
+  GtfsScheduledTripMovement,
+  GtfsScheduledTripOriginatingMovement,
+  GtfsScheduledTripTerminatingMovement,
+} from "./gtfs-scheduled-trip-movements.js";
 
-export type GtfsTripMovement =
-  | GtfsTripServicingMovement
-  | GtfsTripPassingMovement;
-
-export type GtfsTripServicingMovement = {
-  type: "servicing";
-  stopId: number;
-  positionId: number | null;
-
-  // TODO: These need to be nullable for the terminating and originating
-  // movements. I think they should actually be separate types, i.e.
-  // `type: "originating"`, and then drop the fields entirely which make no
-  // sense, e.g. arrivalTime, departureTime, picksUp, and dropsOff.
-  arrivalTime: GtfsStopTime;
-  departureTime: GtfsStopTime;
-
-  picksUp: boolean;
-  dropsOff: boolean;
-  gtfsIdMetadata: StopGtfsIdMetadata;
-  gtfsStopSequence: number;
-};
-
-export type GtfsTripPassingMovement = {
-  type: "passing";
-  stopId: number;
-};
-
-export type GtfsTripFields = {
+export type GtfsScheduledTripFields = {
   readonly gtfsTripId: string;
   readonly gtfsRouteId: string;
   readonly calendar: GtfsCalendar;
-  readonly movements: readonly GtfsTripMovement[];
+  readonly movements: readonly GtfsScheduledTripMovement[];
 
   // TODO: Corequery supports multiple lineIds per service leg, e.g. for Westall
   // trains which are both Cranbourne & Pakenham line, and we should here too,
@@ -69,23 +45,22 @@ export type GtfsTripFields = {
 
   readonly color: Color;
   readonly serviceTags: readonly number[];
-  readonly previousTrip: GtfsTrip | null;
-  readonly nextTrip: GtfsTrip | null;
+  readonly previousTrip: GtfsScheduledTrip | null;
+  readonly nextTrip: GtfsScheduledTrip | null;
 };
 
-// TODO: Should we rename this to GtfsScheduledTrip?
-export class GtfsTrip {
+export class GtfsScheduledTrip {
   readonly gtfsTripId: string;
   readonly gtfsRouteId: string;
   readonly calendar: GtfsCalendar;
-  readonly movements: readonly GtfsTripMovement[];
+  readonly movements: readonly GtfsScheduledTripMovement[];
   readonly lineId: number;
   readonly color: Color;
   readonly serviceTags: readonly number[];
-  readonly previousTrip: GtfsTrip | null;
-  readonly nextTrip: GtfsTrip | null;
+  readonly previousTrip: GtfsScheduledTrip | null;
+  readonly nextTrip: GtfsScheduledTrip | null;
 
-  constructor(fields: GtfsTripFields) {
+  constructor(fields: GtfsScheduledTripFields) {
     this.gtfsTripId = fields.gtfsTripId;
     this.gtfsRouteId = fields.gtfsRouteId;
     this.calendar = fields.calendar;
@@ -98,31 +73,36 @@ export class GtfsTrip {
 
     if (this.movements.length < 2) throw new Error("Must have 2+ movements.");
 
-    const firstMovementOk = itsOk(this.movements[0]).type === "servicing";
-    const lastMovementOk = itsOk(this.movements.at(-1)).type === "servicing";
-    if (!firstMovementOk) throw new Error("First movement must be servicing.");
-    if (!lastMovementOk) throw new Error("Last movement must be servicing");
+    const originOk = itsOk(this.movements[0]).type === "originating";
+    const terminusOk = itsOk(this.movements.at(-1)).type === "terminating";
+    const othersOk = this.movements.slice(1, -1).every((m) => m.isInBetween);
+    if (!originOk) throw new Error("First movement of wrong type.");
+    if (!terminusOk) throw new Error("Last movement of wrong type");
+    if (!othersOk) throw new Error("Some in-between movements of wrong type.");
   }
 
-  with(newValues: Partial<GtfsTripFields>): GtfsTrip {
-    return new GtfsTrip({ ...this, ...newValues });
+  with(newValues: Partial<GtfsScheduledTripFields>): GtfsScheduledTrip {
+    return new GtfsScheduledTrip({ ...this, ...newValues });
   }
 
-  static connect(from: GtfsTrip, to: GtfsTrip): readonly [GtfsTrip, GtfsTrip] {
+  static connectAsTransfer(
+    from: GtfsScheduledTrip,
+    to: GtfsScheduledTrip,
+  ): readonly [GtfsScheduledTrip, GtfsScheduledTrip] {
     return [from.with({ nextTrip: to }), to.with({ previousTrip: from })];
   }
 
-  get origin(): GtfsTripServicingMovement {
+  get origination(): GtfsScheduledTripOriginatingMovement {
     const firstMovement = this.movements[0];
-    if (firstMovement?.type === "servicing") return firstMovement;
+    if (firstMovement?.type === "originating") return firstMovement;
 
     // Can't happen. Checked in constructor.
     throw new Error();
   }
 
-  get terminus(): GtfsTripServicingMovement {
+  get termination(): GtfsScheduledTripTerminatingMovement {
     const lastMovement = this.movements.at(-1);
-    if (lastMovement?.type === "servicing") return lastMovement;
+    if (lastMovement?.type === "terminating") return lastMovement;
 
     // Can't happen. Checked in constructor.
     throw new Error();
