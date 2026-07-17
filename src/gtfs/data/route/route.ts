@@ -35,6 +35,10 @@ export class Route {
     const routeStops = this.stops.map((stop) => stop.stopId);
     return isSubsequence(stopIds, routeStops);
   }
+
+  isShorterThan(other: Route): boolean {
+    return this.stops.length < other.stops.length;
+  }
 }
 
 function isSubsequence(

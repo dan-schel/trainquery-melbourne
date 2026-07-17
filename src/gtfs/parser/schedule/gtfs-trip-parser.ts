@@ -8,7 +8,7 @@ import type {
   TripsCsvRow,
 } from "../../retrieval/schedule/csv-schemas.js";
 import type { GtfsCalendar } from "../../data/gtfs-calendar.js";
-import { GtfsTrip } from "../../data/gtfs-trip.js";
+import { GtfsScheduledTrip } from "../../data/gtfs-scheduled-trip.js";
 import {
   GtfsStopTimeNormaliser,
   type GtfsStopTimeNormalisationError,
@@ -47,11 +47,11 @@ export class GtfsTripParser {
     calendars: readonly GtfsCalendar[],
     lineGtfsIdMapping: LineGtfsIdMapping,
     stopGtfsIdMapping: StopGtfsIdMapping,
-  ): readonly GtfsTrip[] {
+  ): readonly GtfsScheduledTrip[] {
     const calendarMap = this._buildCalendarMap(calendars);
     const rowsByTrip = this._organiseStopTimesIntoTrips(trips, stopTimes);
 
-    const unconnectedTrips: GtfsTrip[] = [];
+    const unconnectedTrips: GtfsScheduledTrip[] = [];
 
     for (const { trip, stopTimes } of rowsByTrip) {
       const calendar = calendarMap.get(trip.service_id);
@@ -83,7 +83,7 @@ export class GtfsTripParser {
       if (routeMatchResult == null) continue;
 
       unconnectedTrips.push(
-        new GtfsTrip({
+        new GtfsScheduledTrip({
           gtfsTripId: trip.trip_id,
           gtfsRouteId: trip.route_id,
           calendar,

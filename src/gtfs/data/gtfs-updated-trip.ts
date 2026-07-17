@@ -1,5 +1,10 @@
+import { itsOk } from "@dan-schel/js-utils";
 import type { GtfsScheduledTrip } from "./gtfs-scheduled-trip.js";
-import type { GtfsUpdatedTripMovement } from "./gtfs-updated-trip-movements.js";
+import type {
+  GtfsUpdatedTripMovement,
+  GtfsUpdatedTripOriginatingMovement,
+  GtfsUpdatedTripTerminatingMovement,
+} from "./gtfs-updated-trip-movements.js";
 
 type GtfsUpdatedTripFields = {
   readonly scheduledTrip: GtfsScheduledTrip;
@@ -25,5 +30,30 @@ export class GtfsUpdatedTrip {
     this.serviceDay = fields.serviceDay;
     this.movements = fields.movements;
     this.isCancelled = fields.isCancelled;
+
+    if (this.movements.length < 2) throw new Error("Must have 2+ movements.");
+
+    const originOk = itsOk(this.movements[0]).type === "originating";
+    const terminusOk = itsOk(this.movements.at(-1)).type === "terminating";
+    const othersOk = this.movements.slice(1, -1).every((m) => m.isInBetween);
+    if (!originOk) throw new Error("First movement of wrong type.");
+    if (!terminusOk) throw new Error("Last movement of wrong type");
+    if (!othersOk) throw new Error("Some in-between movements of wrong type.");
+  }
+
+  get origination(): GtfsUpdatedTripOriginatingMovement {
+    const firstMovement = this.movements[0];
+    if (firstMovement?.type === "originating") return firstMovement;
+
+    // Can't happen. Checked in constructor.
+    throw new Error();
+  }
+
+  get termination(): GtfsUpdatedTripTerminatingMovement {
+    const lastMovement = this.movements.at(-1);
+    if (lastMovement?.type === "terminating") return lastMovement;
+
+    // Can't happen. Checked in constructor.
+    throw new Error();
   }
 }

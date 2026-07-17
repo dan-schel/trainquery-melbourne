@@ -1,6 +1,6 @@
 import { GtfsSchedule } from "../../../../src/gtfs/data/gtfs-schedule.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
-import type { GtfsTrip } from "../../../../src/gtfs/data/gtfs-trip.js";
+import type { GtfsScheduledTrip } from "../../../../src/gtfs/data/gtfs-scheduled-trip.js";
 import type {
   RealtimeFeedJson,
   StopTimeUpdateJson,
@@ -59,7 +59,10 @@ export function realtimeFeed(
   };
 }
 
-export function scheduleWithTrip(): { schedule: GtfsSchedule; trip: GtfsTrip } {
+export function scheduleWithTrip(): {
+  schedule: GtfsSchedule;
+  trip: GtfsScheduledTrip;
+} {
   const trip = makeTrip("trip-1", "A", "B");
   return {
     schedule: new GtfsSchedule([trip]),

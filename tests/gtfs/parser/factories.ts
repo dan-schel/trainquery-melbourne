@@ -1,14 +1,15 @@
 import { PlainDateRange } from "../../../src/gtfs/data/plain-date-range.js";
 import { GtfsCalendar } from "../../../src/gtfs/data/gtfs-calendar.js";
 import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
-import {
-  GtfsTrip,
-  type GtfsTripServicingMovement,
-} from "../../../src/gtfs/data/gtfs-trip.js";
+import { GtfsScheduledTrip } from "../../../src/gtfs/data/gtfs-scheduled-trip.js";
 import { LineGtfsIdCollection } from "../../../src/gtfs/data/ids/line-gtfs-id-collection.js";
 import { LineGtfsIdMapping } from "../../../src/gtfs/data/ids/line-gtfs-id-mapping.js";
 import { StopGtfsIdCollection } from "../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
 import { StopGtfsIdMapping } from "../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
+import {
+  GtfsScheduledTripOriginatingMovement,
+  GtfsScheduledTripTerminatingMovement,
+} from "../../../src/gtfs/data/gtfs-scheduled-trip-movements.js";
 
 export const CALENDAR_EVERYDAY = new GtfsCalendar(
   "svc",
@@ -48,13 +49,13 @@ export function stopMapping(gtfsStopIds: readonly string[] = ["A", "B"]) {
 }
 
 export function makeTrip(id: string, originId: string, terminusId: string) {
-  return new GtfsTrip({
+  return new GtfsScheduledTrip({
     gtfsTripId: id,
     gtfsRouteId: "route-1",
     calendar: CALENDAR_EVERYDAY,
     movements: [
-      servicingMovement(originId, 1, 1),
-      servicingMovement(terminusId, 2, 2),
+      originatingMovement(originId, 1, 1),
+      terminatingMovement(terminusId, 2, 2),
     ],
     lineId: 1,
     color: "red",
@@ -64,19 +65,15 @@ export function makeTrip(id: string, originId: string, terminusId: string) {
   });
 }
 
-function servicingMovement(
+function originatingMovement(
   gtfsStopId: string,
   positionId: number,
   gtfsStopSequence: number,
-): GtfsTripServicingMovement {
-  return {
-    type: "servicing" as const,
+): GtfsScheduledTripOriginatingMovement {
+  return new GtfsScheduledTripOriginatingMovement({
     stopId: positionId,
     positionId,
-    arrivalTime: GtfsStopTime.fromSecondsSinceMidnight(0),
     departureTime: GtfsStopTime.fromSecondsSinceMidnight(60),
-    picksUp: true,
-    dropsOff: true,
     gtfsIdMetadata: {
       type: "platform" as const,
       id: gtfsStopId,
@@ -84,5 +81,24 @@ function servicingMovement(
       positionId,
     },
     gtfsStopSequence: gtfsStopSequence,
-  };
+  });
+}
+
+function terminatingMovement(
+  gtfsStopId: string,
+  positionId: number,
+  gtfsStopSequence: number,
+): GtfsScheduledTripTerminatingMovement {
+  return new GtfsScheduledTripTerminatingMovement({
+    stopId: positionId,
+    positionId,
+    arrivalTime: GtfsStopTime.fromSecondsSinceMidnight(0),
+    gtfsIdMetadata: {
+      type: "platform" as const,
+      id: gtfsStopId,
+      stopId: positionId,
+      positionId,
+    },
+    gtfsStopSequence: gtfsStopSequence,
+  });
 }

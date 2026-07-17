@@ -117,25 +117,14 @@ describe("GtfsTripUpdateTripIdentifier", () => {
     const identifier = new GtfsTripUpdateTripIdentifier((e) => errors.push(e));
     const { trip } = scheduleWithTrip();
 
-    const originStop = trip.movements[0];
-    const terminusStop = trip.movements[1];
-    if (originStop?.type !== "servicing")
-      throw new Error("Expected origin stop.");
-    if (terminusStop?.type !== "servicing")
-      throw new Error("Expected terminus stop.");
-
     const overnightTrip = trip.with({
       movements: [
-        {
-          ...originStop,
-          arrivalTime: GtfsStopTime.parse("25:05:00"),
+        trip.origination.with({
           departureTime: GtfsStopTime.parse("25:05:00"),
-        },
-        {
-          ...terminusStop,
+        }),
+        trip.termination.with({
           arrivalTime: GtfsStopTime.parse("25:15:00"),
-          departureTime: GtfsStopTime.parse("25:16:00"),
-        },
+        }),
       ],
     });
     const schedule = new GtfsSchedule([overnightTrip]);

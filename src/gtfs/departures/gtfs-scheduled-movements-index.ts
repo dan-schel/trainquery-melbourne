@@ -1,27 +1,28 @@
 import { itsOk } from "@dan-schel/js-utils";
 import type { GtfsSchedule } from "../data/gtfs-schedule.js";
 import { GtfsStopTime } from "../data/gtfs-stop-time.js";
-import type { GtfsTrip, GtfsTripServicingMovement } from "../data/gtfs-trip.js";
+import type { GtfsScheduledTrip } from "../data/gtfs-scheduled-trip.js";
+import type { GtfsScheduledTripNonPassingMovement } from "../data/gtfs-scheduled-trip-movements.js";
 
 export type GtfsMovementsIndexEntry = {
-  readonly trip: GtfsTrip;
+  readonly trip: GtfsScheduledTrip;
   readonly time: GtfsStopTime;
-  readonly movement: GtfsTripServicingMovement;
+  readonly movement: GtfsScheduledTripNonPassingMovement;
 };
 
-export class GtfsMovementsIndex {
+export class GtfsScheduledMovementsIndex {
   private constructor(
     private readonly _index: Map<number, readonly GtfsMovementsIndexEntry[]>,
     private readonly _earliestMovementByStop: Map<number, GtfsStopTime>,
     private readonly _latestMovementByStop: Map<number, GtfsStopTime>,
   ) {}
 
-  static build(schedule: GtfsSchedule): GtfsMovementsIndex {
+  static build(schedule: GtfsSchedule): GtfsScheduledMovementsIndex {
     const index = new Map<number, GtfsMovementsIndexEntry[]>();
 
     for (const trip of schedule.allTrips()) {
       for (const movement of trip.movements) {
-        if (movement.type !== "servicing") continue;
+        if (!movement.isNonPassing) continue;
 
         // Filter out "fake" arrivals. If a train is not ACTUALLY terminating
         // but continuing as another service, then that next service's
@@ -31,12 +32,15 @@ export class GtfsMovementsIndex {
         // duplicates, e.g. at Town Hall where an ex-East Pakenham train is
         // "arriving and terminating" at the same time as a Sunbury train is
         // "originating and departing".
-        if (movement === trip.terminus && trip.nextTrip != null) continue;
+        if (movement.type === "terminating" && trip.nextTrip != null) continue;
 
         const entry: GtfsMovementsIndexEntry = {
           trip,
           movement,
-          time: itsOk(movement.departureTime ?? movement.arrivalTime),
+
+          // The departure time, unless it's a terminating movement, in which
+          // case it's the arrival time.
+          time: movement.timeRelevantToDeparturesAlgorithm,
         };
 
         if (!index.has(movement.stopId)) {
@@ -54,14 +58,16 @@ export class GtfsMovementsIndex {
     for (const [stopId, entries] of index.entries()) {
       entries.sort((a, b) => GtfsStopTime.compare(a.time, b.time));
 
-      const firstMovement = itsOk(entries[0]).movement;
-      const lastMovement = itsOk(entries.at(-1)).movement;
+      // Can guarantee `entries` will definitely have at least one entry,
+      // otherwise the stopId wouldn't be registered in the index.
+      const first = itsOk(entries[0]);
+      const last = itsOk(entries.at(-1));
 
-      earliestMovementByStop.set(stopId, firstMovement.departureTime);
-      latestMovementByStop.set(stopId, lastMovement.departureTime);
+      earliestMovementByStop.set(stopId, first.time);
+      latestMovementByStop.set(stopId, last.time);
     }
 
-    return new GtfsMovementsIndex(
+    return new GtfsScheduledMovementsIndex(
       index,
       earliestMovementByStop,
       latestMovementByStop,

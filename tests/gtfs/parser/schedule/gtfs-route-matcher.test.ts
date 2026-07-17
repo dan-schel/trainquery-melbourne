@@ -63,10 +63,10 @@ describe("GtfsRouteMatcher", () => {
     expect(result.color).toBe("red");
     expect(result.serviceTags).toEqual([10]);
     expect(result.movements.map((movement) => movement.type)).toEqual([
-      "servicing",
+      "originating",
       "passing",
       "servicing",
-      "servicing",
+      "terminating",
     ]);
     expect(result.movements.map((movement) => movement.stopId)).toEqual([
       1, 2, 3, 4,
@@ -124,13 +124,14 @@ describe("GtfsRouteMatcher", () => {
 
     const result = matcher.match(
       [
-        stopTime({ stop_id: "A", stop_sequence: 1, pickup_type: 2 }),
-        stopTime({ stop_id: "B", stop_sequence: 2 }),
+        stopTime({ stop_id: "A", stop_sequence: 1 }),
+        stopTime({ stop_id: "B", stop_sequence: 2, pickup_type: 2 }),
+        stopTime({ stop_id: "C", stop_sequence: 3 }),
       ],
       [
         new Route({
           color: "red",
-          stops: routeStops([1, 2]),
+          stops: routeStops([1, 2, 3]),
           serviceTags: [],
         }),
       ],
@@ -148,13 +149,14 @@ describe("GtfsRouteMatcher", () => {
 
     const result = matcher.match(
       [
-        stopTime({ stop_id: "A", stop_sequence: 1, drop_off_type: 2 }),
-        stopTime({ stop_id: "B", stop_sequence: 2 }),
+        stopTime({ stop_id: "A", stop_sequence: 1 }),
+        stopTime({ stop_id: "B", stop_sequence: 2, drop_off_type: 2 }),
+        stopTime({ stop_id: "C", stop_sequence: 3 }),
       ],
       [
         new Route({
           color: "red",
-          stops: routeStops([1, 2]),
+          stops: routeStops([1, 2, 3]),
           serviceTags: [],
         }),
       ],

@@ -2,7 +2,7 @@ import type {
   TransfersCsv,
   TransfersCsvRow,
 } from "../../retrieval/schedule/csv-schemas.js";
-import { GtfsTrip } from "../../data/gtfs-trip.js";
+import { GtfsScheduledTrip } from "../../data/gtfs-scheduled-trip.js";
 
 const TRANSFER_TYPE_IN_SEAT_TRANSFER = 4;
 
@@ -12,10 +12,10 @@ export class GtfsTransferConnector {
   ) {}
 
   connect(
-    trips: readonly GtfsTrip[],
+    trips: readonly GtfsScheduledTrip[],
     transfers: TransfersCsv,
-  ): readonly GtfsTrip[] {
-    const tripMap = new Map<string, GtfsTrip>(
+  ): readonly GtfsScheduledTrip[] {
+    const tripMap = new Map<string, GtfsScheduledTrip>(
       trips.map((trip) => [trip.gtfsTripId, trip]),
     );
 
@@ -49,11 +49,11 @@ export class GtfsTransferConnector {
         continue;
       }
 
-      if (fromTrip.terminus.gtfsIdMetadata.id !== transfer.from_stop_id) {
+      if (fromTrip.termination.gtfsIdMetadata.id !== transfer.from_stop_id) {
         this._onError(new TransferIsNotFromTerminusError(transfer, fromTrip));
         continue;
       }
-      if (toTrip.origin.gtfsIdMetadata.id !== transfer.to_stop_id) {
+      if (toTrip.origination.gtfsIdMetadata.id !== transfer.to_stop_id) {
         this._onError(new TransferIsNotToOriginError(transfer, toTrip));
         continue;
       }
@@ -71,9 +71,12 @@ export class GtfsTransferConnector {
         continue;
       }
 
-      const [newFromTrip, newToTrip] = GtfsTrip.connect(fromTrip, toTrip);
-      tripMap.set(fromTrip.gtfsTripId, newFromTrip);
-      tripMap.set(toTrip.gtfsTripId, newToTrip);
+      const [newFrom, newTo] = GtfsScheduledTrip.connectAsTransfer(
+        fromTrip,
+        toTrip,
+      );
+      tripMap.set(fromTrip.gtfsTripId, newFrom);
+      tripMap.set(toTrip.gtfsTripId, newTo);
     }
 
     return Array.from(tripMap.values());
@@ -101,7 +104,7 @@ export class TransferIsNotFromTerminusError extends Error {
   readonly type = "transfer-is-not-from-terminus";
   constructor(
     readonly transfer: TransfersCsvRow,
-    readonly fromTrip: GtfsTrip,
+    readonly fromTrip: GtfsScheduledTrip,
   ) {
     super();
   }
@@ -111,7 +114,7 @@ export class TransferIsNotToOriginError extends Error {
   readonly type = "transfer-is-not-to-origin";
   constructor(
     readonly transfer: TransfersCsvRow,
-    readonly toTrip: GtfsTrip,
+    readonly toTrip: GtfsScheduledTrip,
   ) {
     super();
   }
@@ -121,7 +124,7 @@ export class TransferReferencesTripAlreadyConnectedError extends Error {
   readonly type = "transfer-references-trip-already-connected";
   constructor(
     readonly transfer: TransfersCsvRow,
-    readonly tripWithExistingConnection: GtfsTrip,
+    readonly tripWithExistingConnection: GtfsScheduledTrip,
   ) {
     super();
   }

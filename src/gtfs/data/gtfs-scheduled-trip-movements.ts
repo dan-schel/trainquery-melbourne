@@ -8,11 +8,25 @@ import {
 } from "./gtfs-updated-trip-movements.js";
 import type { StopGtfsIdMetadata } from "./ids/stop-gtfs-id-metadata.js";
 
+// TODO: Rename movements and categories as described in rename.png?
+
 export type GtfsScheduledTripMovement =
   | GtfsScheduledTripOriginatingMovement
   | GtfsScheduledTripServicingMovement
   | GtfsScheduledTripTerminatingMovement
   | GtfsScheduledTripPassingMovement;
+
+export type GtfsScheduledTripNonPassingMovement =
+  | GtfsScheduledTripOriginatingMovement
+  | GtfsScheduledTripServicingMovement
+  | GtfsScheduledTripTerminatingMovement;
+
+type PromotionToUpdatedTripFields = {
+  readonly arrivalTime: Temporal.Instant | null;
+  readonly departureTime: Temporal.Instant | null;
+  readonly updatedPositionId: number | null;
+  readonly updatedGtfsIdMetadata: StopGtfsIdMetadata;
+};
 
 // I don't normally use interfaces, but here they're just acting as a way to
 // force the classes to conform to a particular consistent set of properties,
@@ -33,6 +47,11 @@ interface IGtfsScheduledTripNonPassingMovement extends IGtfsScheduledTripMovemen
   readonly gtfsStopSequence: number;
 
   get isNonPassing(): true;
+  get timeRelevantToDeparturesAlgorithm(): GtfsStopTime;
+
+  asUpdatedTripMovement(
+    values: PromotionToUpdatedTripFields,
+  ): GtfsUpdatedTripMovement;
 }
 
 type GtfsScheduledTripOriginatingMovementFields = {
@@ -90,6 +109,15 @@ export class GtfsScheduledTripOriginatingMovement implements IGtfsScheduledTripN
   get isInBetween() {
     return false as const;
   }
+  get timeRelevantToDeparturesAlgorithm() {
+    return this.departureTime;
+  }
+
+  with(
+    newValues: Partial<GtfsScheduledTripOriginatingMovementFields>,
+  ): GtfsScheduledTripOriginatingMovement {
+    return new GtfsScheduledTripOriginatingMovement({ ...this, ...newValues });
+  }
 
   asHollowUpdatedTripMovement(): GtfsUpdatedTripOriginatingMovement {
     return new GtfsUpdatedTripOriginatingMovement({
@@ -103,6 +131,23 @@ export class GtfsScheduledTripOriginatingMovement implements IGtfsScheduledTripN
       realtimeDepartureTime: null,
       updatedPositionId: this.positionId,
       updatedGtfsIdMetadata: this.gtfsIdMetadata,
+    });
+  }
+
+  asUpdatedTripMovement(
+    values: PromotionToUpdatedTripFields,
+  ): GtfsUpdatedTripOriginatingMovement {
+    return new GtfsUpdatedTripOriginatingMovement({
+      stopId: this.stopId,
+      originalPositionId: this.positionId,
+      scheduledDepartureTime: this.departureTime,
+      originalGtfsIdMetadata: this.gtfsIdMetadata,
+      gtfsStopSequence: this.gtfsStopSequence,
+
+      // Realtime data.
+      realtimeDepartureTime: values.departureTime,
+      updatedPositionId: values.updatedPositionId,
+      updatedGtfsIdMetadata: values.updatedGtfsIdMetadata,
     });
   }
 }
@@ -137,6 +182,15 @@ export class GtfsScheduledTripServicingMovement implements IGtfsScheduledTripNon
   get isInBetween() {
     return true as const;
   }
+  get timeRelevantToDeparturesAlgorithm() {
+    return this.departureTime;
+  }
+
+  with(
+    newValues: Partial<GtfsScheduledTripServicingMovementFields>,
+  ): GtfsScheduledTripServicingMovement {
+    return new GtfsScheduledTripServicingMovement({ ...this, ...newValues });
+  }
 
   asHollowUpdatedTripMovement(): GtfsUpdatedTripServicingMovement {
     return new GtfsUpdatedTripServicingMovement({
@@ -154,6 +208,27 @@ export class GtfsScheduledTripServicingMovement implements IGtfsScheduledTripNon
       realtimeDepartureTime: null,
       updatedPositionId: this.positionId,
       updatedGtfsIdMetadata: this.gtfsIdMetadata,
+    });
+  }
+
+  asUpdatedTripMovement(
+    values: PromotionToUpdatedTripFields,
+  ): GtfsUpdatedTripServicingMovement {
+    return new GtfsUpdatedTripServicingMovement({
+      stopId: this.stopId,
+      originalPositionId: this.positionId,
+      scheduledArrivalTime: this.arrivalTime,
+      scheduledDepartureTime: this.departureTime,
+      picksUp: this.picksUp,
+      dropsOff: this.dropsOff,
+      originalGtfsIdMetadata: this.gtfsIdMetadata,
+      gtfsStopSequence: this.gtfsStopSequence,
+
+      // Realtime data.
+      realtimeArrivalTime: values.arrivalTime,
+      realtimeDepartureTime: values.departureTime,
+      updatedPositionId: values.updatedPositionId,
+      updatedGtfsIdMetadata: values.updatedGtfsIdMetadata,
     });
   }
 }
@@ -182,6 +257,15 @@ export class GtfsScheduledTripTerminatingMovement implements IGtfsScheduledTripN
   get isInBetween() {
     return false as const;
   }
+  get timeRelevantToDeparturesAlgorithm() {
+    return this.arrivalTime;
+  }
+
+  with(
+    newValues: Partial<GtfsScheduledTripTerminatingMovementFields>,
+  ): GtfsScheduledTripTerminatingMovement {
+    return new GtfsScheduledTripTerminatingMovement({ ...this, ...newValues });
+  }
 
   asHollowUpdatedTripMovement(): GtfsUpdatedTripTerminatingMovement {
     return new GtfsUpdatedTripTerminatingMovement({
@@ -195,6 +279,23 @@ export class GtfsScheduledTripTerminatingMovement implements IGtfsScheduledTripN
       realtimeArrivalTime: null,
       updatedPositionId: this.positionId,
       updatedGtfsIdMetadata: this.gtfsIdMetadata,
+    });
+  }
+
+  asUpdatedTripMovement(
+    values: PromotionToUpdatedTripFields,
+  ): GtfsUpdatedTripTerminatingMovement {
+    return new GtfsUpdatedTripTerminatingMovement({
+      stopId: this.stopId,
+      originalPositionId: this.positionId,
+      scheduledArrivalTime: this.arrivalTime,
+      originalGtfsIdMetadata: this.gtfsIdMetadata,
+      gtfsStopSequence: this.gtfsStopSequence,
+
+      // Realtime data.
+      realtimeArrivalTime: values.arrivalTime,
+      updatedPositionId: values.updatedPositionId,
+      updatedGtfsIdMetadata: values.updatedGtfsIdMetadata,
     });
   }
 }
@@ -214,6 +315,12 @@ export class GtfsScheduledTripPassingMovement implements IGtfsScheduledTripMovem
   }
   get isInBetween() {
     return true as const;
+  }
+
+  with(
+    newValues: Partial<GtfsScheduledTripPassingMovementFields>,
+  ): GtfsScheduledTripPassingMovement {
+    return new GtfsScheduledTripPassingMovement({ ...this, ...newValues });
   }
 
   asHollowUpdatedTripMovement(): GtfsUpdatedTripPassingMovement {

@@ -1,5 +1,5 @@
 import type { GtfsSchedule } from "../../data/gtfs-schedule.js";
-import type { GtfsTrip } from "../../data/gtfs-trip.js";
+import type { GtfsScheduledTrip } from "../../data/gtfs-scheduled-trip.js";
 import type { TripDescriptorJson } from "../../retrieval/realtime/realtime-feed-schema.js";
 
 export class GtfsTripUpdateTripIdentifier {
@@ -51,7 +51,7 @@ export class GtfsTripUpdateTripIdentifier {
     // might be a strong enough case to say we've matched incorrectly.
     if (
       tripDescriptor.startTime != null &&
-      !tripDescriptor.startTime.equals(trip.origin.departureTime)
+      !tripDescriptor.startTime.equals(trip.origination.departureTime)
     ) {
       const Err = TripDescriptorStartTimeDoesNotMatchTripOriginStopTimeError;
       this._onError(new Err(tripDescriptor, trip));
@@ -91,7 +91,7 @@ export class TripDoesNotOccurOnStartDateError extends Error {
   readonly type = "trip-does-not-occur-on-start-date";
   constructor(
     readonly tripDescriptor: TripDescriptorJson,
-    readonly trip: GtfsTrip,
+    readonly trip: GtfsScheduledTrip,
   ) {
     super();
   }
@@ -102,7 +102,7 @@ export class TripDescriptorStartTimeDoesNotMatchTripOriginStopTimeError extends 
     "trip-descriptor-start-time-does-not-match-trip-origin-stop-time";
   constructor(
     readonly tripDescriptor: TripDescriptorJson,
-    readonly trip: GtfsTrip,
+    readonly trip: GtfsScheduledTrip,
   ) {
     super();
   }

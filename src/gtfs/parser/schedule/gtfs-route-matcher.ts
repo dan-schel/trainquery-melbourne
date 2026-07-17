@@ -4,11 +4,16 @@ import type {
   StopTimesCsvRow,
 } from "../../retrieval/schedule/csv-schemas.js";
 import type { StopGtfsIdMapping } from "../../data/ids/stop-gtfs-id-mapping.js";
-import type {
-  GtfsTripServicingMovement,
-  GtfsTripMovement,
-} from "../../data/gtfs-trip.js";
 import type { Route } from "../../data/route/route.js";
+import {
+  GtfsScheduledTripOriginatingMovement,
+  GtfsScheduledTripPassingMovement,
+  GtfsScheduledTripServicingMovement,
+  GtfsScheduledTripTerminatingMovement,
+  type GtfsScheduledTripMovement,
+  type GtfsScheduledTripNonPassingMovement,
+} from "../../data/gtfs-scheduled-trip-movements.js";
+import { itsOk } from "@dan-schel/js-utils";
 
 const STOP_TIME_PICKUP_TYPE_REGULAR = 0;
 const STOP_TIME_PICKUP_TYPE_NO_PICKUP = 1;
@@ -16,7 +21,7 @@ const STOP_TIME_DROP_OFF_TYPE_REGULAR = 0;
 const STOP_TIME_DROP_OFF_TYPE_NO_DROP_OFF = 1;
 
 type MatchedRoute = {
-  movements: readonly GtfsTripMovement[];
+  movements: readonly GtfsScheduledTripMovement[];
   color: Color;
   serviceTags: readonly number[];
 };
@@ -31,15 +36,15 @@ export class GtfsRouteMatcher {
     routesForLine: readonly Route[],
     stopGtfsIdMapping: StopGtfsIdMapping,
   ): MatchedRoute | null {
-    const servicingMovements = this._convertToServicingMovements(
+    const nonPassingMovements = this._convertToNonPassingMovements(
       stopTimes,
       stopGtfsIdMapping,
     );
-    if (servicingMovements == null) return null;
+    if (nonPassingMovements == null) return null;
 
-    const match = this._matchToRoute(servicingMovements, routesForLine);
+    const match = this._matchToRoute(nonPassingMovements, routesForLine);
     if (match == null) {
-      const stopIds = servicingMovements.map((movement) => movement.stopId);
+      const stopIds = nonPassingMovements.map((movement) => movement.stopId);
       this._onError(new NoMatchingRouteError(stopTimes, stopIds));
       return null;
     }
@@ -48,18 +53,19 @@ export class GtfsRouteMatcher {
   }
 
   private _matchToRoute(
-    servicingMovements: readonly GtfsTripServicingMovement[],
+    nonPassingMovements: readonly GtfsScheduledTripNonPassingMovement[],
     routesForLine: readonly Route[],
   ): MatchedRoute | null {
     // Step 1: Find the shortest route for this line which contains all the
     // stops where the trip services as a subsequence.
     const shortestMatch = routesForLine
-      .filter((route) =>
-        route.matchesStoppingOrder(servicingMovements.map((m) => m.stopId)),
+      .filter((r) =>
+        r.matchesStoppingOrder(nonPassingMovements.map((m) => m.stopId)),
       )
-      .reduce<Route | null>((prev, me) => {
-        return prev == null || me.stops.length < prev.stops.length ? me : prev;
-      }, null);
+      .reduce<Route | null>(
+        (prev, me) => (prev == null || me.isShorterThan(prev) ? me : prev),
+        null,
+      );
 
     if (shortestMatch == null) return null;
     const { color, serviceTags } = shortestMatch;
@@ -69,7 +75,7 @@ export class GtfsRouteMatcher {
     // route as a guide for which stops the service skipped, and add those into
     // the list as passing movements.
     const movements = this._addPassingMovementsFromRoute(
-      servicingMovements,
+      nonPassingMovements,
       shortestMatch,
     );
 
@@ -77,10 +83,10 @@ export class GtfsRouteMatcher {
   }
 
   private _addPassingMovementsFromRoute(
-    servicingMovements: readonly GtfsTripServicingMovement[],
+    nonPassingMovements: readonly GtfsScheduledTripNonPassingMovement[],
     matchingRoute: Route,
   ) {
-    const result: GtfsTripMovement[] = [];
+    const result: GtfsScheduledTripMovement[] = [];
 
     let nextServicingMovementIndex = 0;
 
@@ -90,7 +96,7 @@ export class GtfsRouteMatcher {
     // passing movements otherwise.
     for (const routeStop of matchingRoute.stops) {
       const nextServicingMovement =
-        servicingMovements[nextServicingMovementIndex];
+        nonPassingMovements[nextServicingMovementIndex];
 
       // If there's no next servicing movement, then the index must be off the
       // end of the array, so we're done (the service has terminated).
@@ -120,10 +126,11 @@ export class GtfsRouteMatcher {
         // could consider adding the matched route itself as metadata to the
         // trip? Probably having the index of the route stop in this array will
         // be useful to reconcile the two.)
-        result.push({
-          type: "passing",
-          stopId: routeStop.stopId,
-        });
+        result.push(
+          new GtfsScheduledTripPassingMovement({
+            stopId: routeStop.stopId,
+          }),
+        );
       }
     }
 
@@ -135,13 +142,15 @@ export class GtfsRouteMatcher {
    * each. Note that passing movements are not added at this stage. They're
    * sprinkled in later once we've matched the trip to a route.
    */
-  private _convertToServicingMovements(
+  private _convertToNonPassingMovements(
     stopTimes: StopTimesCsv,
     stopGtfsIdMapping: StopGtfsIdMapping,
-  ): readonly GtfsTripServicingMovement[] | null {
-    const result: GtfsTripServicingMovement[] = [];
+  ): readonly GtfsScheduledTripNonPassingMovement[] | null {
+    const result: GtfsScheduledTripNonPassingMovement[] = [];
 
-    for (const stopTime of stopTimes) {
+    for (let i = 0; i < stopTimes.length; i++) {
+      const stopTime = itsOk(stopTimes[i]);
+
       const gtfsIdMetadata = stopGtfsIdMapping.tryResolve(stopTime.stop_id);
       if (gtfsIdMetadata == null) {
         this._onError(new StopTimeReferencesUnmappedStopIdError(stopTime));
@@ -151,17 +160,46 @@ export class GtfsRouteMatcher {
       const positionId =
         gtfsIdMetadata.type === "platform" ? gtfsIdMetadata.positionId : null;
 
-      result.push({
-        type: "servicing",
-        stopId: gtfsIdMetadata.stopId,
-        positionId,
-        arrivalTime: stopTime.arrival_time,
-        departureTime: stopTime.departure_time,
-        picksUp: this._doesPickUp(stopTime),
-        dropsOff: this._doesDropOff(stopTime),
-        gtfsIdMetadata,
-        gtfsStopSequence: stopTime.stop_sequence,
-      });
+      if (i === 0) {
+        result.push(
+          new GtfsScheduledTripOriginatingMovement({
+            stopId: gtfsIdMetadata.stopId,
+            positionId,
+            departureTime: stopTime.departure_time,
+            gtfsIdMetadata,
+            gtfsStopSequence: stopTime.stop_sequence,
+          }),
+        );
+      } else if (i === stopTimes.length - 1) {
+        result.push(
+          new GtfsScheduledTripTerminatingMovement({
+            stopId: gtfsIdMetadata.stopId,
+            positionId,
+            arrivalTime: stopTime.arrival_time,
+            gtfsIdMetadata,
+            gtfsStopSequence: stopTime.stop_sequence,
+          }),
+        );
+      } else {
+        result.push(
+          new GtfsScheduledTripServicingMovement({
+            stopId: gtfsIdMetadata.stopId,
+            positionId,
+            arrivalTime: stopTime.arrival_time,
+            departureTime: stopTime.departure_time,
+
+            // TODO: We're only checking these enum values for servicing
+            // movements, not originating or terminating movements (since in
+            // those cases we ignore it anyway). Is that good? I think it's a
+            // bit weird we don't check it.
+            picksUp: this._doesPickUp(stopTime),
+            dropsOff: this._doesDropOff(stopTime),
+
+            gtfsIdMetadata,
+            gtfsStopSequence: stopTime.stop_sequence,
+          }),
+        );
+      }
     }
 
     return result;
