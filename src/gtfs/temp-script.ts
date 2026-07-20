@@ -179,12 +179,12 @@ function formatStats(
   const tripLines = [
     ...suburbanSchedule.allTrips(),
     ...regionalSchedule.allTrips(),
-  ].map((x) => x.lineId);
+  ].flatMap((x) => x.lineIds);
 
   const tripUpdateLines = [
     ...suburbanRealtimeData.updatedTrips,
     ...regionalRealtimeData.updatedTrips,
-  ].map((x) => x.scheduledTrip.lineId);
+  ].flatMap((x) => x.scheduledTrip.lineIds);
 
   let output = "Trip counts:";
   for (const line of ctx.lines.all()) {

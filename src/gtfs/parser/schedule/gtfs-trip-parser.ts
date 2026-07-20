@@ -16,7 +16,6 @@ import {
 import {
   GtfsRouteMatcher,
   type GtfsRouteMatchingError,
-  type MatchedRoute,
 } from "./gtfs-route-matcher.js";
 import {
   type GtfsTransferConnectionError,
@@ -24,11 +23,11 @@ import {
 } from "./gtfs-transfer-connector.js";
 import type { LineRoutes } from "../../data/route/line-routes.js";
 import type { LineOverrides } from "../../data/route/line-overrides.js";
-import { unique } from "@dan-schel/js-utils";
 
 export class GtfsTripParser {
   private readonly _stopTimeNormaliser: GtfsStopTimeNormaliser;
-  private readonly _routeMatcher: GtfsRouteMatcher;
+  private readonly _primaryRouteMatcher: GtfsRouteMatcher;
+  private readonly _overrideRouteMatcher: GtfsRouteMatcher;
   private readonly _transferConnector: GtfsTransferConnector;
 
   constructor(
@@ -40,8 +39,12 @@ export class GtfsTripParser {
     private readonly _onError: (error: GtfsTripParsingError) => void,
   ) {
     this._stopTimeNormaliser = new GtfsStopTimeNormaliser(this._onError);
-    this._routeMatcher = new GtfsRouteMatcher(this._onError);
+    this._primaryRouteMatcher = new GtfsRouteMatcher(this._onError);
     this._transferConnector = new GtfsTransferConnector(this._onError);
+
+    // We don't care if an override route doesn't match. Most of the time, it
+    // won't.
+    this._overrideRouteMatcher = new GtfsRouteMatcher(() => {});
   }
 
   parse(
@@ -78,7 +81,7 @@ export class GtfsTripParser {
 
       const routesForLine = this._lineRoutes.forLine(lineIdMatch.lineId);
 
-      const routeMatchResult = this._routeMatcher.match(
+      const routeMatchResult = this._primaryRouteMatcher.match(
         normalizedStopTimes,
         routesForLine,
         stopGtfsIdMapping,
@@ -86,62 +89,26 @@ export class GtfsTripParser {
       // Route matcher reports its own errors.
       if (routeMatchResult == null) continue;
 
-      // TODO: Split the below into new function.
-      const overrideForLine = this._lineOverrides.forLine(lineIdMatch.lineId);
-      if (overrideForLine != null) {
-        const additionalMatches = overrideForLine.lines
-          .map((l) => ({
-            result: this._routeMatcher.match(
-              normalizedStopTimes,
-              this._lineRoutes.forLine(l),
-              stopGtfsIdMapping,
-            ),
-            lineId: l,
-          }))
-          .filter(
-            (r): r is { result: MatchedRoute; lineId: number } =>
-              r.result != null,
-          );
+      const { lineIds, serviceTags } = this._applyLineOverrides(
+        lineIdMatch.lineId,
+        routeMatchResult.serviceTags,
+        normalizedStopTimes,
+        stopGtfsIdMapping,
+      );
 
-        const replaceMode = overrideForLine.mode === "replace";
-
-        const lineIds = unique([
-          ...(replaceMode ? [] : [lineIdMatch.lineId]),
-          ...additionalMatches.map((match) => match.lineId),
-        ]);
-        const serviceTags = unique([
-          ...(replaceMode ? [] : routeMatchResult.serviceTags),
-          ...additionalMatches.flatMap((match) => match.result.serviceTags),
-        ]);
-
-        unconnectedTrips.push(
-          new GtfsScheduledTrip({
-            gtfsTripId: trip.trip_id,
-            gtfsRouteId: trip.route_id,
-            calendar,
-            movements: routeMatchResult.movements,
-            lineIds: lineIds,
-            color: routeMatchResult.color,
-            serviceTags: serviceTags,
-            previousTrip: null,
-            nextTrip: null,
-          }),
-        );
-      } else {
-        unconnectedTrips.push(
-          new GtfsScheduledTrip({
-            gtfsTripId: trip.trip_id,
-            gtfsRouteId: trip.route_id,
-            calendar,
-            movements: routeMatchResult.movements,
-            lineIds: [lineIdMatch.lineId],
-            color: routeMatchResult.color,
-            serviceTags: routeMatchResult.serviceTags,
-            previousTrip: null,
-            nextTrip: null,
-          }),
-        );
-      }
+      unconnectedTrips.push(
+        new GtfsScheduledTrip({
+          gtfsTripId: trip.trip_id,
+          gtfsRouteId: trip.route_id,
+          calendar,
+          movements: routeMatchResult.movements,
+          lineIds,
+          color: routeMatchResult.color,
+          serviceTags,
+          previousTrip: null,
+          nextTrip: null,
+        }),
+      );
     }
 
     return this._transferConnector.connect(unconnectedTrips, transfers);
@@ -190,6 +157,52 @@ export class GtfsTripParser {
       ...group,
       stopTimes: group.stopTimes,
     }));
+  }
+
+  private _applyLineOverrides(
+    mainRouteLineId: number,
+    mainRouteServiceTags: readonly number[],
+    normalizedStopTimes: StopTimesCsv,
+    stopGtfsIdMapping: StopGtfsIdMapping,
+  ) {
+    const override = this._lineOverrides.forLine(mainRouteLineId);
+    if (override == null) {
+      return { lineIds: [mainRouteLineId], serviceTags: mainRouteServiceTags };
+    }
+
+    // Go through all override lines, and collect the line IDs and service tags
+    // for any routes that match.
+    const lineIds = new Set<number>();
+    const serviceTags = new Set<number>();
+    for (const overrideLine of override.lines) {
+      const overrideMatchResult = this._overrideRouteMatcher.match(
+        normalizedStopTimes,
+        this._lineRoutes.forLine(overrideLine),
+        stopGtfsIdMapping,
+      );
+
+      if (overrideMatchResult != null) {
+        lineIds.add(overrideLine);
+        for (const serviceTag of overrideMatchResult.serviceTags) {
+          serviceTags.add(serviceTag);
+        }
+      }
+    }
+
+    // If in "replace" mode, we throw away the main route's line ID and tags if
+    // anything else matches. Otherwise they're added on.
+    const shouldReplace = lineIds.size > 0 && override.mode === "replace";
+    if (!shouldReplace) {
+      lineIds.add(mainRouteLineId);
+      for (const serviceTag of mainRouteServiceTags) {
+        serviceTags.add(serviceTag);
+      }
+    }
+
+    return {
+      lineIds: Array.from(lineIds),
+      serviceTags: Array.from(serviceTags),
+    };
   }
 
   private _buildCalendarMap(calendars: readonly GtfsCalendar[]) {
