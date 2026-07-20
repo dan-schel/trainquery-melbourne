@@ -11,6 +11,9 @@ import {
   GtfsScheduledTripTerminatingMovement,
 } from "../../../src/gtfs/data/gtfs-scheduled-trip-movements.js";
 
+// TODO: All the tests using these factories are really hard to change because
+// of all the shared stuff. Need a better solution.
+
 export const CALENDAR_EVERYDAY = new GtfsCalendar(
   "svc",
   true,
