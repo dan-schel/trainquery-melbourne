@@ -8,11 +8,23 @@ import {
   type GtfsRouteMatchingError,
 } from "../../../../src/gtfs/parser/schedule/gtfs-route-matcher.js";
 import { Route } from "../../../../src/gtfs/data/route/route.js";
-import { routeStops, stopTime } from "./factories.js";
+import { routeStops } from "./factories.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
-import { stopMapping } from "../factories.js";
+import type { StopTimesCsvRow } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+import { StopGtfsIdCollection } from "../../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
+import { StopGtfsIdMapping } from "../../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
 
 describe("GtfsRouteMatcher", () => {
+  const STOP_MAPPING = new StopGtfsIdMapping(
+    new Map([
+      [1, StopGtfsIdCollection.withParentOnly(1, "A")],
+      [2, StopGtfsIdCollection.withParentOnly(2, "B")],
+      [3, StopGtfsIdCollection.withParentOnly(3, "C")],
+      [4, StopGtfsIdCollection.withParentOnly(4, "D")],
+      [5, StopGtfsIdCollection.withParentOnly(5, "E")],
+    ]),
+  );
+
   it("matches the shortest compatible route and injects passing movements", () => {
     const errors: GtfsRouteMatchingError[] = [];
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
@@ -31,28 +43,9 @@ describe("GtfsRouteMatcher", () => {
     ];
 
     const result = matcher.match(
-      [
-        stopTime({
-          stop_id: "A",
-          arrival_time: GtfsStopTime.parse("00:01:00"),
-          departure_time: GtfsStopTime.parse("00:01:00"),
-          stop_sequence: 1,
-        }),
-        stopTime({
-          stop_id: "C",
-          arrival_time: GtfsStopTime.parse("00:03:00"),
-          departure_time: GtfsStopTime.parse("00:03:00"),
-          stop_sequence: 2,
-        }),
-        stopTime({
-          stop_id: "D",
-          arrival_time: GtfsStopTime.parse("00:04:00"),
-          departure_time: GtfsStopTime.parse("00:04:00"),
-          stop_sequence: 3,
-        }),
-      ],
+      [stopTime("A"), stopTime("C"), stopTime("D")],
       routes,
-      stopMapping(["A", "B", "C", "D", "E"]),
+      STOP_MAPPING,
     );
 
     expect(errors).toEqual([]);
@@ -78,10 +71,7 @@ describe("GtfsRouteMatcher", () => {
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
     const result = matcher.match(
-      [
-        stopTime({ stop_id: "A", stop_sequence: 1 }),
-        stopTime({ stop_id: "C", stop_sequence: 2 }),
-      ],
+      [stopTime("A"), stopTime("C")],
       [
         new Route({
           color: "red",
@@ -89,7 +79,7 @@ describe("GtfsRouteMatcher", () => {
           serviceTags: [],
         }),
       ],
-      stopMapping(["A", "B", "C", "D", "E"]),
+      STOP_MAPPING,
     );
 
     expect(result).toBeNull();
@@ -102,7 +92,7 @@ describe("GtfsRouteMatcher", () => {
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
     const result = matcher.match(
-      [stopTime({ stop_id: "missing", stop_sequence: 1 })],
+      [stopTime("missing")],
       [
         new Route({
           color: "red",
@@ -110,7 +100,7 @@ describe("GtfsRouteMatcher", () => {
           serviceTags: [],
         }),
       ],
-      stopMapping(["A", "B", "C", "D", "E"]),
+      STOP_MAPPING,
     );
 
     expect(result).toBeNull();
@@ -123,11 +113,7 @@ describe("GtfsRouteMatcher", () => {
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
     const result = matcher.match(
-      [
-        stopTime({ stop_id: "A", stop_sequence: 1 }),
-        stopTime({ stop_id: "B", stop_sequence: 2, pickup_type: 2 }),
-        stopTime({ stop_id: "C", stop_sequence: 3 }),
-      ],
+      [stopTime("A"), { ...stopTime("B"), pickup_type: 2 }, stopTime("C")],
       [
         new Route({
           color: "red",
@@ -135,7 +121,7 @@ describe("GtfsRouteMatcher", () => {
           serviceTags: [],
         }),
       ],
-      stopMapping(["A", "B", "C", "D", "E"]),
+      STOP_MAPPING,
     );
 
     expect(errors).toHaveLength(1);
@@ -148,11 +134,7 @@ describe("GtfsRouteMatcher", () => {
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
     const result = matcher.match(
-      [
-        stopTime({ stop_id: "A", stop_sequence: 1 }),
-        stopTime({ stop_id: "B", stop_sequence: 2, drop_off_type: 2 }),
-        stopTime({ stop_id: "C", stop_sequence: 3 }),
-      ],
+      [stopTime("A"), { ...stopTime("B"), drop_off_type: 2 }, stopTime("C")],
       [
         new Route({
           color: "red",
@@ -160,11 +142,28 @@ describe("GtfsRouteMatcher", () => {
           serviceTags: [],
         }),
       ],
-      stopMapping(["A", "B", "C", "D", "E"]),
+      STOP_MAPPING,
     );
 
     expect(errors).toHaveLength(1);
     expect(errors[0]).toBeInstanceOf(UnexpectedDropOffTypeError);
     expect(result).not.toBeNull();
   });
+
+  function stopTime(gtfsStopId: string): StopTimesCsvRow {
+    return {
+      stop_id: gtfsStopId,
+
+      // Nothing else matters for GtfsRouteMatcher, only the stop_id. Even
+      // stop_sequence is only passed through as metadata, since GtfsRouteMatcher
+      // handles the data after GtfsStopTimeNormaliser has already run, so takes
+      // the stop times in the order they're given.
+      trip_id: "",
+      stop_sequence: 1,
+      arrival_time: GtfsStopTime.parse("00:00:00"),
+      departure_time: GtfsStopTime.parse("00:00:00"),
+      pickup_type: 0,
+      drop_off_type: 0,
+    };
+  }
 });

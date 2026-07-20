@@ -11,10 +11,13 @@ import { MultipleStopSequencesError } from "../../../../src/gtfs/parser/schedule
 import { routes, stopTime, tripRow } from "./factories.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 import { lineMapping, stopMapping } from "../factories.js";
-import { CALENDAR_EVERYDAY } from "../helpers/calendars.js";
-import { LINE_OVERRIDES_NONE } from "../helpers/line-overrides.js";
+import { LineOverrides } from "../../../../src/gtfs/data/route/line-overrides.js";
+import { GtfsCalendar } from "../../../../src/gtfs/data/gtfs-calendar.js";
 
 describe("GtfsTripParser", () => {
+  const LINE_OVERRIDES_NONE = new LineOverrides(new Map());
+  const CALENDAR_EVERYDAY = GtfsCalendar.everyday("svc");
+
   it("parses one simple trip end-to-end", () => {
     const errors: GtfsTripParsingError[] = [];
     const parser = new GtfsTripParser(routes(), LINE_OVERRIDES_NONE, (e) =>

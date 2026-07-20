@@ -61,4 +61,8 @@ export class StopGtfsIdCollection {
       gtfsIdsForSubfeed.replacementBus ?? [],
     );
   }
+
+  static withParentOnly(stopId: number, parentGtfsId: string) {
+    return new StopGtfsIdCollection(stopId, parentGtfsId, [], new Map(), []);
+  }
 }

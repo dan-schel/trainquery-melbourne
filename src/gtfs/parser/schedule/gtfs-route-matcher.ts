@@ -138,9 +138,10 @@ export class GtfsRouteMatcher {
   }
 
   /**
-   * Take the rows from stop_times.txt and form GtfsTripServicingMovement for
-   * each. Note that passing movements are not added at this stage. They're
-   * sprinkled in later once we've matched the trip to a route.
+   * Take the rows from stop_times.txt and form a
+   * GtfsScheduledTripNonPassingMovement for each. Note that passing movements
+   * are not added at this stage. They're sprinkled in later once we've matched
+   * the trip to a route.
    */
   private _convertToNonPassingMovements(
     stopTimes: StopTimesCsv,

@@ -3,9 +3,11 @@ import { GtfsScheduleParser } from "../../../../src/gtfs/parser/schedule/gtfs-sc
 import { calendarRow, routes, stopTime, tripRow } from "./factories.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 import { lineMapping, stopMapping } from "../factories.js";
-import { LINE_OVERRIDES_NONE } from "../helpers/line-overrides.js";
+import { LineOverrides } from "../../../../src/gtfs/data/route/line-overrides.js";
 
 describe("GtfsScheduleParser", () => {
+  const LINE_OVERRIDES_NONE = new LineOverrides(new Map());
+
   it("builds a schedule from parsed calendars and trips", () => {
     const parser = new GtfsScheduleParser(
       routes(),

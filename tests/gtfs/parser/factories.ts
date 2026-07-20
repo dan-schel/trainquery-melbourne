@@ -8,7 +8,7 @@ import {
   GtfsScheduledTripOriginatingMovement,
   GtfsScheduledTripTerminatingMovement,
 } from "../../../src/gtfs/data/gtfs-scheduled-trip-movements.js";
-import { CALENDAR_EVERYDAY } from "./helpers/calendars.js";
+import { GtfsCalendar } from "../../../src/gtfs/data/gtfs-calendar.js";
 
 // TODO: All the tests using these factories are really hard to change because
 // of all the shared stuff. Need a better solution.
@@ -40,7 +40,7 @@ export function makeTrip(id: string, originId: string, terminusId: string) {
   return new GtfsScheduledTrip({
     gtfsTripId: id,
     gtfsRouteId: "route-1",
-    calendar: CALENDAR_EVERYDAY,
+    calendar: GtfsCalendar.everyday("svc"),
     movements: [
       originatingMovement(originId, 1, 1),
       terminatingMovement(terminusId, 2, 2),

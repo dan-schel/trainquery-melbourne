@@ -1,4 +1,4 @@
-import type { PlainDateRange } from "./plain-date-range.js";
+import { PlainDateRange } from "./plain-date-range.js";
 
 export class GtfsCalendar {
   constructor(
@@ -99,5 +99,21 @@ export class GtfsCalendar {
 
   private _containsAddedDateAfter(date: Temporal.PlainDate): boolean {
     return this.addedDates.some((a) => Temporal.PlainDate.compare(a, date) > 0);
+  }
+
+  static everyday(gtfsCalendarId: string): GtfsCalendar {
+    return new GtfsCalendar(
+      gtfsCalendarId,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      new PlainDateRange(null, null),
+      [],
+      [],
+    );
   }
 }
