@@ -10,8 +10,6 @@ import type {
 } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 import { LineOverrides } from "../../../../src/gtfs/data/route/line-overrides.js";
 
-export const EMPTY_LINE_OVERRIDES = new LineOverrides(new Map());
-
 export function calendarRow(
   overrides: Partial<CalendarCsvRow> = {},
 ): CalendarCsvRow {

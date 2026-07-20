@@ -1,5 +1,3 @@
-import { PlainDateRange } from "../../../src/gtfs/data/plain-date-range.js";
-import { GtfsCalendar } from "../../../src/gtfs/data/gtfs-calendar.js";
 import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
 import { GtfsScheduledTrip } from "../../../src/gtfs/data/gtfs-scheduled-trip.js";
 import { LineGtfsIdCollection } from "../../../src/gtfs/data/ids/line-gtfs-id-collection.js";
@@ -10,23 +8,10 @@ import {
   GtfsScheduledTripOriginatingMovement,
   GtfsScheduledTripTerminatingMovement,
 } from "../../../src/gtfs/data/gtfs-scheduled-trip-movements.js";
+import { CALENDAR_EVERYDAY } from "./helpers/calendars.js";
 
 // TODO: All the tests using these factories are really hard to change because
 // of all the shared stuff. Need a better solution.
-
-export const CALENDAR_EVERYDAY = new GtfsCalendar(
-  "svc",
-  true,
-  true,
-  true,
-  true,
-  true,
-  true,
-  true,
-  new PlainDateRange(null, null),
-  [],
-  [],
-);
 
 export function lineMapping(
   options: { lineId?: number; routeId?: string } = {},

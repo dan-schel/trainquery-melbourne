@@ -5,17 +5,32 @@ import {
   MultipleStopSequencesError,
   type GtfsStopTimeNormalisationError,
 } from "../../../../src/gtfs/parser/schedule/gtfs-stop-time-normaliser.js";
-import { stopTime } from "./factories.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
+import type { StopTimesCsvRow } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+
+function stopTime(overrides: Partial<StopTimesCsvRow> = {}): StopTimesCsvRow {
+  return {
+    trip_id: "",
+    stop_id: "",
+    stop_sequence: 1,
+    arrival_time: GtfsStopTime.parse("00:00:00"),
+    departure_time: GtfsStopTime.parse("00:00:00"),
+    pickup_type: 0,
+    drop_off_type: 0,
+    ...overrides,
+  };
+}
 
 describe("GtfsStopTimeNormaliser", () => {
   it("returns already regular stop sequences unchanged", () => {
     const errors: GtfsStopTimeNormalisationError[] = [];
     const normaliser = new GtfsStopTimeNormaliser((e) => errors.push(e));
 
-    const stopTimes = [1, 2, 3].map((stop_sequence) =>
-      stopTime({ stop_sequence, stop_id: `stop-${stop_sequence}` }),
-    );
+    const stopTimes = [
+      stopTime({ stop_sequence: 1, stop_id: "stop-1" }),
+      stopTime({ stop_sequence: 2, stop_id: "stop-2" }),
+      stopTime({ stop_sequence: 3, stop_id: "stop-3" }),
+    ];
 
     expect(normaliser.normalise(stopTimes)).toEqual(stopTimes);
     expect(errors).toEqual([]);
@@ -84,7 +99,10 @@ describe("GtfsStopTimeNormaliser", () => {
       stopTime({
         stop_sequence: 2,
         stop_id: "b",
-        arrival_time: GtfsStopTime.parse("10:04:00"), // 1 min before previous departure
+
+        // 1 min before previous departure
+        arrival_time: GtfsStopTime.parse("10:04:00"),
+
         departure_time: GtfsStopTime.parse("10:10:00"),
       }),
     ];

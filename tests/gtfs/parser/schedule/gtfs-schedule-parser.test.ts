@@ -1,20 +1,15 @@
 import { describe, expect, it } from "vitest";
 import { GtfsScheduleParser } from "../../../../src/gtfs/parser/schedule/gtfs-schedule-parser.js";
-import {
-  calendarRow,
-  EMPTY_LINE_OVERRIDES,
-  routes,
-  stopTime,
-  tripRow,
-} from "./factories.js";
+import { calendarRow, routes, stopTime, tripRow } from "./factories.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 import { lineMapping, stopMapping } from "../factories.js";
+import { LINE_OVERRIDES_NONE } from "../helpers/line-overrides.js";
 
 describe("GtfsScheduleParser", () => {
   it("builds a schedule from parsed calendars and trips", () => {
     const parser = new GtfsScheduleParser(
       routes(),
-      EMPTY_LINE_OVERRIDES,
+      LINE_OVERRIDES_NONE,
       () => {},
     );
 
