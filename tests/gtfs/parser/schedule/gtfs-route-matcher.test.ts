@@ -8,11 +8,11 @@ import {
   type GtfsRouteMatchingError,
 } from "../../../../src/gtfs/parser/schedule/gtfs-route-matcher.js";
 import { Route } from "../../../../src/gtfs/data/route/route.js";
-import { routeStops } from "./factories.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 import type { StopTimesCsvRow } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 import { StopGtfsIdCollection } from "../../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
 import { StopGtfsIdMapping } from "../../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
+import { RouteStop } from "../../../../src/gtfs/data/route/route-stop.js";
 
 describe("GtfsRouteMatcher", () => {
   const STOP_MAPPING = new StopGtfsIdMapping(
@@ -24,6 +24,14 @@ describe("GtfsRouteMatcher", () => {
       [5, StopGtfsIdCollection.withParentOnly(5, "E")],
     ]),
   );
+
+  const ROUTES_FOR_LINE = [
+    new Route({
+      color: "red",
+      stops: routeStops([1, 2, 3]),
+      serviceTags: [],
+    }),
+  ];
 
   it("matches the shortest compatible route and injects passing movements", () => {
     const errors: GtfsRouteMatchingError[] = [];
@@ -49,8 +57,6 @@ describe("GtfsRouteMatcher", () => {
     );
 
     expect(errors).toEqual([]);
-    expect(result).not.toBeNull();
-
     if (result == null) throw new Error("Expected a route match.");
 
     expect(result.color).toBe("red");
@@ -70,17 +76,8 @@ describe("GtfsRouteMatcher", () => {
     const errors: GtfsRouteMatchingError[] = [];
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
-    const result = matcher.match(
-      [stopTime("A"), stopTime("C")],
-      [
-        new Route({
-          color: "red",
-          stops: routeStops([1, 2]),
-          serviceTags: [],
-        }),
-      ],
-      STOP_MAPPING,
-    );
+    const stopTimes = [stopTime("A"), stopTime("D")];
+    const result = matcher.match(stopTimes, ROUTES_FOR_LINE, STOP_MAPPING);
 
     expect(result).toBeNull();
     expect(errors).toHaveLength(1);
@@ -91,17 +88,8 @@ describe("GtfsRouteMatcher", () => {
     const errors: GtfsRouteMatchingError[] = [];
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
-    const result = matcher.match(
-      [stopTime("missing")],
-      [
-        new Route({
-          color: "red",
-          stops: routeStops([1, 2]),
-          serviceTags: [],
-        }),
-      ],
-      STOP_MAPPING,
-    );
+    const stopTimes = [stopTime("missing")];
+    const result = matcher.match(stopTimes, ROUTES_FOR_LINE, STOP_MAPPING);
 
     expect(result).toBeNull();
     expect(errors).toHaveLength(1);
@@ -112,17 +100,12 @@ describe("GtfsRouteMatcher", () => {
     const errors: GtfsRouteMatchingError[] = [];
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
-    const result = matcher.match(
-      [stopTime("A"), { ...stopTime("B"), pickup_type: 2 }, stopTime("C")],
-      [
-        new Route({
-          color: "red",
-          stops: routeStops([1, 2, 3]),
-          serviceTags: [],
-        }),
-      ],
-      STOP_MAPPING,
-    );
+    const stopTimes = [
+      stopTime("A"),
+      { ...stopTime("B"), pickup_type: 2 },
+      stopTime("C"),
+    ];
+    const result = matcher.match(stopTimes, ROUTES_FOR_LINE, STOP_MAPPING);
 
     expect(errors).toHaveLength(1);
     expect(errors[0]).toBeInstanceOf(UnexpectedPickupTypeError);
@@ -133,17 +116,12 @@ describe("GtfsRouteMatcher", () => {
     const errors: GtfsRouteMatchingError[] = [];
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
-    const result = matcher.match(
-      [stopTime("A"), { ...stopTime("B"), drop_off_type: 2 }, stopTime("C")],
-      [
-        new Route({
-          color: "red",
-          stops: routeStops([1, 2, 3]),
-          serviceTags: [],
-        }),
-      ],
-      STOP_MAPPING,
-    );
+    const stopTimes = [
+      stopTime("A"),
+      { ...stopTime("B"), drop_off_type: 2 },
+      stopTime("C"),
+    ];
+    const result = matcher.match(stopTimes, ROUTES_FOR_LINE, STOP_MAPPING);
 
     expect(errors).toHaveLength(1);
     expect(errors[0]).toBeInstanceOf(UnexpectedDropOffTypeError);
@@ -165,5 +143,11 @@ describe("GtfsRouteMatcher", () => {
       pickup_type: 0,
       drop_off_type: 0,
     };
+  }
+
+  function routeStops(stopIds: readonly number[]) {
+    return stopIds.map(
+      (stopId) => new RouteStop({ stopId, collapseInStoppingPatterns: false }),
+    );
   }
 });
