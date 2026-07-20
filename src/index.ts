@@ -1,6 +1,4 @@
-// TODO: Can remove once NodeJS v26 becomes LTS (expected in October 2026).
 import "temporal-polyfill/global";
-
 import { Corequery } from "corequery";
 import { buildConfig } from "./config/corequery/index.js";
 import { runGtfsTempScript } from "./gtfs/temp-script.js";

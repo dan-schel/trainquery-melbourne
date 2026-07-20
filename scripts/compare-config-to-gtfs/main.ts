@@ -1,6 +1,4 @@
-// TODO: Can remove once NodeJS v26 becomes LTS (expected in October 2026).
 import "temporal-polyfill/global";
-
 import { env } from "./env.js";
 import { withGtfsCsvs } from "../../src/gtfs/retrieval/schedule/with-gtfs-csvs.js";
 import { readGtfsCsvs } from "../../src/gtfs/retrieval/schedule/read-gtfs-csvs.js";
