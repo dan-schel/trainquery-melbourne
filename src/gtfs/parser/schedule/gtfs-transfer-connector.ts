@@ -49,6 +49,10 @@ export class GtfsTransferConnector {
         continue;
       }
 
+      // TODO: Should I report if the transfer.from_stop_id is not the same as
+      // the transfer.to_stop_id? That would mean a "in-seat transfer" to a
+      // different platform, which should be impossible.
+
       if (fromTrip.termination.gtfsIdMetadata.id !== transfer.from_stop_id) {
         this._onError(new TransferIsNotFromTerminusError(transfer, fromTrip));
         continue;
