@@ -20,7 +20,7 @@ const STOP_TIME_PICKUP_TYPE_NO_PICKUP = 1;
 const STOP_TIME_DROP_OFF_TYPE_REGULAR = 0;
 const STOP_TIME_DROP_OFF_TYPE_NO_DROP_OFF = 1;
 
-type MatchedRoute = {
+export type MatchedRoute = {
   movements: readonly GtfsScheduledTripMovement[];
   color: Color;
   serviceTags: readonly number[];

@@ -1,8 +1,9 @@
 import type { LineGtfsIdsConfig, StopGtfsIdsConfig } from "./ids.js";
-import type { LineRoutesConfig } from "./routes.js";
+import type { LineOverridesConfig, LineRoutesConfig } from "./routes.js";
 
 export type GtfsConfig = {
-  lineGtfsIds: LineGtfsIdsConfig;
-  stopGtfsIds: StopGtfsIdsConfig;
-  lineRoutes: LineRoutesConfig;
+  readonly lineGtfsIds: LineGtfsIdsConfig;
+  readonly stopGtfsIds: StopGtfsIdsConfig;
+  readonly lineRoutes: LineRoutesConfig;
+  readonly lineOverrides?: LineOverridesConfig;
 };

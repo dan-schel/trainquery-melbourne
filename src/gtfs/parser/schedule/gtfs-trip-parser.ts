@@ -16,12 +16,15 @@ import {
 import {
   GtfsRouteMatcher,
   type GtfsRouteMatchingError,
+  type MatchedRoute,
 } from "./gtfs-route-matcher.js";
 import {
   type GtfsTransferConnectionError,
   GtfsTransferConnector,
 } from "./gtfs-transfer-connector.js";
 import type { LineRoutes } from "../../data/route/line-routes.js";
+import type { LineOverrides } from "../../data/route/line-overrides.js";
+import { unique } from "@dan-schel/js-utils";
 
 export class GtfsTripParser {
   private readonly _stopTimeNormaliser: GtfsStopTimeNormaliser;
@@ -32,6 +35,7 @@ export class GtfsTripParser {
     // Unlike csvs, lineGtfsIdMapping, and stopGtfsIdMapping, these are not
     // subfeed-dependent, so I'm opting to make them constructor args.
     private readonly _lineRoutes: LineRoutes,
+    private readonly _lineOverrides: LineOverrides,
 
     private readonly _onError: (error: GtfsTripParsingError) => void,
   ) {
@@ -82,19 +86,62 @@ export class GtfsTripParser {
       // Route matcher reports its own errors.
       if (routeMatchResult == null) continue;
 
-      unconnectedTrips.push(
-        new GtfsScheduledTrip({
-          gtfsTripId: trip.trip_id,
-          gtfsRouteId: trip.route_id,
-          calendar,
-          movements: routeMatchResult.movements,
-          lineId: lineIdMatch.lineId,
-          color: routeMatchResult.color,
-          serviceTags: routeMatchResult.serviceTags,
-          previousTrip: null,
-          nextTrip: null,
-        }),
-      );
+      // TODO: Split the below into new function.
+      const overrideForLine = this._lineOverrides.forLine(lineIdMatch.lineId);
+      if (overrideForLine != null) {
+        const additionalMatches = overrideForLine.lines
+          .map((l) => ({
+            result: this._routeMatcher.match(
+              normalizedStopTimes,
+              this._lineRoutes.forLine(l),
+              stopGtfsIdMapping,
+            ),
+            lineId: l,
+          }))
+          .filter(
+            (r): r is { result: MatchedRoute; lineId: number } =>
+              r.result != null,
+          );
+
+        const replaceMode = overrideForLine.mode === "replace";
+
+        const lineIds = unique([
+          ...(replaceMode ? [] : [lineIdMatch.lineId]),
+          ...additionalMatches.map((match) => match.lineId),
+        ]);
+        const serviceTags = unique([
+          ...(replaceMode ? [] : routeMatchResult.serviceTags),
+          ...additionalMatches.flatMap((match) => match.result.serviceTags),
+        ]);
+
+        unconnectedTrips.push(
+          new GtfsScheduledTrip({
+            gtfsTripId: trip.trip_id,
+            gtfsRouteId: trip.route_id,
+            calendar,
+            movements: routeMatchResult.movements,
+            lineIds: lineIds,
+            color: routeMatchResult.color,
+            serviceTags: serviceTags,
+            previousTrip: null,
+            nextTrip: null,
+          }),
+        );
+      } else {
+        unconnectedTrips.push(
+          new GtfsScheduledTrip({
+            gtfsTripId: trip.trip_id,
+            gtfsRouteId: trip.route_id,
+            calendar,
+            movements: routeMatchResult.movements,
+            lineIds: [lineIdMatch.lineId],
+            color: routeMatchResult.color,
+            serviceTags: routeMatchResult.serviceTags,
+            previousTrip: null,
+            nextTrip: null,
+          }),
+        );
+      }
     }
 
     return this._transferConnector.connect(unconnectedTrips, transfers);
