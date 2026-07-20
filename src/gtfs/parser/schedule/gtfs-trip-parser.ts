@@ -159,6 +159,11 @@ export class GtfsTripParser {
     }));
   }
 
+  // TODO: None of this is tested. I should test:
+  // - the happy path for line overrides
+  // - replace mode
+  // - replace mode does nothing if no lines match
+  // - no errors are logged for the override line matching
   private _applyLineOverrides(
     mainRouteLineId: number,
     mainRouteServiceTags: readonly number[],
