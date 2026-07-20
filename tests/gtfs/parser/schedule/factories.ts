@@ -5,10 +5,8 @@ import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 import type {
   CalendarCsvRow,
   StopTimesCsvRow,
-  TransfersCsvRow,
   TripsCsvRow,
 } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
-import { LineOverrides } from "../../../../src/gtfs/data/route/line-overrides.js";
 
 export function calendarRow(
   overrides: Partial<CalendarCsvRow> = {},
@@ -52,7 +50,7 @@ export function stopTime(
   };
 }
 
-export function routeStops(stopIds: readonly number[]) {
+function routeStops(stopIds: readonly number[]) {
   return stopIds.map(
     (stopId) => new RouteStop({ stopId, collapseInStoppingPatterns: false }),
   );
@@ -73,22 +71,4 @@ export function routes() {
       ],
     ]),
   );
-}
-
-export function overrides() {
-  return new LineOverrides(new Map());
-}
-
-export function transfer(
-  overrides: Partial<TransfersCsvRow> = {},
-): TransfersCsvRow {
-  return {
-    from_stop_id: "B",
-    to_stop_id: "B",
-    from_trip_id: "from",
-    to_trip_id: "to",
-    transfer_type: 4,
-    min_transfer_time: "0",
-    ...overrides,
-  };
 }
