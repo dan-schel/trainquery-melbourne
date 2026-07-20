@@ -60,7 +60,7 @@ export function makeTrip(id: string, originId: string, terminusId: string) {
       originatingMovement(originId, 1, 1),
       terminatingMovement(terminusId, 2, 2),
     ],
-    lineId: 1,
+    lineIds: [1],
     color: "red",
     serviceTags: [],
     previousTrip: null,

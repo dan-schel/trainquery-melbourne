@@ -15,7 +15,7 @@ import { stopMapping } from "../factories.js";
 describe("GtfsRouteMatcher", () => {
   it("matches the shortest compatible route and injects passing movements", () => {
     const errors: GtfsRouteMatchingError[] = [];
-    const matcher = new GtfsRouteMatcher((error) => errors.push(error));
+    const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
     const routes = [
       new Route({
@@ -75,7 +75,7 @@ describe("GtfsRouteMatcher", () => {
 
   it("reports when no route matches the served stop order", () => {
     const errors: GtfsRouteMatchingError[] = [];
-    const matcher = new GtfsRouteMatcher((error) => errors.push(error));
+    const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
     const result = matcher.match(
       [
@@ -99,7 +99,7 @@ describe("GtfsRouteMatcher", () => {
 
   it("reports stop IDs that are not in the GTFS stop mapping", () => {
     const errors: GtfsRouteMatchingError[] = [];
-    const matcher = new GtfsRouteMatcher((error) => errors.push(error));
+    const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
     const result = matcher.match(
       [stopTime({ stop_id: "missing", stop_sequence: 1 })],
@@ -120,7 +120,7 @@ describe("GtfsRouteMatcher", () => {
 
   it("reports unexpected pickup types but still matches the trip", () => {
     const errors: GtfsRouteMatchingError[] = [];
-    const matcher = new GtfsRouteMatcher((error) => errors.push(error));
+    const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
     const result = matcher.match(
       [
@@ -145,7 +145,7 @@ describe("GtfsRouteMatcher", () => {
 
   it("reports unexpected drop-off types but still matches the trip", () => {
     const errors: GtfsRouteMatchingError[] = [];
-    const matcher = new GtfsRouteMatcher((error) => errors.push(error));
+    const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
     const result = matcher.match(
       [

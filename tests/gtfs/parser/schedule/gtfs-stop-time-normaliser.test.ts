@@ -23,9 +23,7 @@ describe("GtfsStopTimeNormaliser", () => {
 
   it("sorts regular stop times by stop sequence number", () => {
     const errors: GtfsStopTimeNormalisationError[] = [];
-    const normaliser = new GtfsStopTimeNormaliser((error) =>
-      errors.push(error),
-    );
+    const normaliser = new GtfsStopTimeNormaliser((e) => errors.push(e));
 
     const stopTimes = [
       stopTime({ stop_sequence: 2, stop_id: "b" }),

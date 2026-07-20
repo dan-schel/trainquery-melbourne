@@ -17,7 +17,7 @@ import { makeTrip } from "../factories.js";
 describe("GtfsTransferConnector", () => {
   it("connects trips using in-seat transfers", () => {
     const errors: GtfsTransferConnectionError[] = [];
-    const connector = new GtfsTransferConnector((error) => errors.push(error));
+    const connector = new GtfsTransferConnector((e) => errors.push(e));
 
     const trips = connector.connect(
       [makeTrip("from", "A", "B"), makeTrip("to", "B", "C")],
@@ -43,7 +43,7 @@ describe("GtfsTransferConnector", () => {
 
   it("reports non in-seat transfers and leaves the trips disconnected", () => {
     const errors: GtfsTransferConnectionError[] = [];
-    const connector = new GtfsTransferConnector((error) => errors.push(error));
+    const connector = new GtfsTransferConnector((e) => errors.push(e));
 
     const trips = [makeTrip("from", "A", "B"), makeTrip("to", "B", "C")];
     const result = connector.connect(trips, [transfer({ transfer_type: 0 })]);
@@ -62,7 +62,7 @@ describe("GtfsTransferConnector", () => {
 
   it("reports transfers that reference a missing 'from' trip", () => {
     const errors: GtfsTransferConnectionError[] = [];
-    const connector = new GtfsTransferConnector((error) => errors.push(error));
+    const connector = new GtfsTransferConnector((e) => errors.push(e));
 
     const result = connector.connect(
       [makeTrip("to", "B", "C")],
@@ -76,7 +76,7 @@ describe("GtfsTransferConnector", () => {
 
   it("reports transfers that reference a missing 'to' trip", () => {
     const errors: GtfsTransferConnectionError[] = [];
-    const connector = new GtfsTransferConnector((error) => errors.push(error));
+    const connector = new GtfsTransferConnector((e) => errors.push(e));
 
     const result = connector.connect(
       [makeTrip("from", "A", "B")],
@@ -90,7 +90,7 @@ describe("GtfsTransferConnector", () => {
 
   it("reports transfers that do not start from the from trip terminus", () => {
     const errors: GtfsTransferConnectionError[] = [];
-    const connector = new GtfsTransferConnector((error) => errors.push(error));
+    const connector = new GtfsTransferConnector((e) => errors.push(e));
 
     const result = connector.connect(
       [makeTrip("from", "A", "B"), makeTrip("to", "B", "C")],
@@ -112,7 +112,7 @@ describe("GtfsTransferConnector", () => {
 
   it("reports transfers that do not end at the to trip origin", () => {
     const errors: GtfsTransferConnectionError[] = [];
-    const connector = new GtfsTransferConnector((error) => errors.push(error));
+    const connector = new GtfsTransferConnector((e) => errors.push(e));
 
     const result = connector.connect(
       [makeTrip("from", "A", "B"), makeTrip("to", "B", "C")],
@@ -134,7 +134,7 @@ describe("GtfsTransferConnector", () => {
 
   it("reports transfers involving trips that are already connected", () => {
     const errors: GtfsTransferConnectionError[] = [];
-    const connector = new GtfsTransferConnector((error) => errors.push(error));
+    const connector = new GtfsTransferConnector((e) => errors.push(e));
 
     const alreadyConnectedTrip = makeTrip("from", "A", "B").with({
       nextTrip: makeTrip("mid", "B", "C"),

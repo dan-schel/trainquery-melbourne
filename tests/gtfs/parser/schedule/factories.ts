@@ -8,6 +8,9 @@ import type {
   TransfersCsvRow,
   TripsCsvRow,
 } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+import { LineOverrides } from "../../../../src/gtfs/data/route/line-overrides.js";
+
+export const EMPTY_LINE_OVERRIDES = new LineOverrides(new Map());
 
 export function calendarRow(
   overrides: Partial<CalendarCsvRow> = {},
@@ -72,6 +75,10 @@ export function routes() {
       ],
     ]),
   );
+}
+
+export function overrides() {
+  return new LineOverrides(new Map());
 }
 
 export function transfer(

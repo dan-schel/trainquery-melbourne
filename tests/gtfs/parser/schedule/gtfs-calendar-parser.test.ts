@@ -12,7 +12,7 @@ import { calendarRow } from "./factories.js";
 describe("GtfsCalendarParser", () => {
   it("parses base calendars and calendar date exceptions", () => {
     const errors: GtfsCalendarParsingError[] = [];
-    const parser = new GtfsCalendarParser((error) => errors.push(error));
+    const parser = new GtfsCalendarParser((e) => errors.push(e));
 
     const addedDate = Temporal.PlainDate.from({
       year: 2026,
@@ -47,7 +47,7 @@ describe("GtfsCalendarParser", () => {
 
   it("creates calendars from calendar_dates only", () => {
     const errors: GtfsCalendarParsingError[] = [];
-    const parser = new GtfsCalendarParser((error) => errors.push(error));
+    const parser = new GtfsCalendarParser((e) => errors.push(e));
 
     const addedDate = Temporal.PlainDate.from({
       year: 2026,
@@ -73,7 +73,7 @@ describe("GtfsCalendarParser", () => {
 
   it("reports, but ultimately ignores subsequent rows with the same ID", () => {
     const errors: GtfsCalendarParsingError[] = [];
-    const parser = new GtfsCalendarParser((error) => errors.push(error));
+    const parser = new GtfsCalendarParser((e) => errors.push(e));
 
     const calendars = parser.parse(
       [
@@ -96,7 +96,7 @@ describe("GtfsCalendarParser", () => {
 
   it("does not create calendars which are invalid, even if rows in calendar_dates for that calendar exist", () => {
     const errors: GtfsCalendarParsingError[] = [];
-    const parser = new GtfsCalendarParser((error) => errors.push(error));
+    const parser = new GtfsCalendarParser((e) => errors.push(e));
 
     const calendars = parser.parse(
       [
@@ -132,7 +132,7 @@ describe("GtfsCalendarParser", () => {
 
   it("reports unexpected exception types in calendar_dates rows", () => {
     const errors: GtfsCalendarParsingError[] = [];
-    const parser = new GtfsCalendarParser((error) => errors.push(error));
+    const parser = new GtfsCalendarParser((e) => errors.push(e));
 
     const calendars = parser.parse(
       [],
@@ -152,7 +152,7 @@ describe("GtfsCalendarParser", () => {
 
   it("reports duplicate calendar_dates exceptions for the same date", () => {
     const errors: GtfsCalendarParsingError[] = [];
-    const parser = new GtfsCalendarParser((error) => errors.push(error));
+    const parser = new GtfsCalendarParser((e) => errors.push(e));
 
     const date = Temporal.PlainDate.from({ year: 2026, month: 6, day: 21 });
     const calendars = parser.parse(
