@@ -5,28 +5,45 @@ import {
   TripDescriptorReferencesUnmappedRouteIdError,
   type GtfsRealtimeFeedSplittingError,
 } from "../../../../src/gtfs/parser/realtime/gtfs-realtime-feed-splitter.js";
-import { realtimeFeed, tripUpdate } from "./factories.js";
-import { lineMapping } from "../factories.js";
+import { LineGtfsIdMapping } from "../../../../src/gtfs/data/ids/line-gtfs-id-mapping.js";
+import { LineGtfsIdCollection } from "../../../../src/gtfs/data/ids/line-gtfs-id-collection.js";
+import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 
 describe("GtfsRealtimeFeedSplitter", () => {
+  const SUBURBAN_LINE_GTFS_ID_MAPPING = new LineGtfsIdMapping(
+    new Map([[1, LineGtfsIdCollection.withParentOnly(1, "suburban-route")]]),
+  );
+  const REGIONAL_LINE_GTFS_ID_MAPPING = new LineGtfsIdMapping(
+    new Map([[2, LineGtfsIdCollection.withParentOnly(1, "regional-route")]]),
+  );
+
+  function tripUpdateWithRouteId(routeId: string | undefined) {
+    return {
+      trip: {
+        tripId: "trip-1",
+        startTime: GtfsStopTime.parse("00:00:00"),
+        startDate: Temporal.PlainDate.from({ year: 2026, month: 7, day: 14 }),
+        scheduleRelationship: "SCHEDULED",
+        routeId: routeId,
+      },
+      stopTimeUpdate: [],
+    };
+  }
+
   it("splits trip updates into suburban and regional buckets", () => {
     const errors: GtfsRealtimeFeedSplittingError[] = [];
     const splitter = new GtfsRealtimeFeedSplitter(
-      lineMapping({ lineId: 1, routeId: "suburban-route" }),
-      lineMapping({ lineId: 2, routeId: "regional-route" }),
+      SUBURBAN_LINE_GTFS_ID_MAPPING,
+      REGIONAL_LINE_GTFS_ID_MAPPING,
       (e) => errors.push(e),
     );
 
-    const result = splitter.split(
-      realtimeFeed([
-        tripUpdate({
-          trip: { ...tripUpdate().trip, routeId: "suburban-route" },
-        }),
-        tripUpdate({
-          trip: { ...tripUpdate().trip, routeId: "regional-route" },
-        }),
-      ]),
-    );
+    const result = splitter.split({
+      tripUpdates: [
+        tripUpdateWithRouteId("suburban-route"),
+        tripUpdateWithRouteId("regional-route"),
+      ],
+    });
 
     expect(errors).toEqual([]);
     expect(result.suburban.tripUpdates).toHaveLength(1);
@@ -36,16 +53,14 @@ describe("GtfsRealtimeFeedSplitter", () => {
   it("reports trip updates without route IDs", () => {
     const errors: GtfsRealtimeFeedSplittingError[] = [];
     const splitter = new GtfsRealtimeFeedSplitter(
-      lineMapping({ lineId: 1, routeId: "suburban-route" }),
-      lineMapping({ lineId: 2, routeId: "regional-route" }),
+      SUBURBAN_LINE_GTFS_ID_MAPPING,
+      REGIONAL_LINE_GTFS_ID_MAPPING,
       (e) => errors.push(e),
     );
 
-    const result = splitter.split(
-      realtimeFeed([
-        tripUpdate({ trip: { ...tripUpdate().trip, routeId: undefined } }),
-      ]),
-    );
+    const result = splitter.split({
+      tripUpdates: [tripUpdateWithRouteId(undefined)],
+    });
 
     expect(result.suburban.tripUpdates).toEqual([]);
     expect(result.regional.tripUpdates).toEqual([]);
@@ -56,18 +71,14 @@ describe("GtfsRealtimeFeedSplitter", () => {
   it("reports trip updates with unmapped route IDs", () => {
     const errors: GtfsRealtimeFeedSplittingError[] = [];
     const splitter = new GtfsRealtimeFeedSplitter(
-      lineMapping({ lineId: 1, routeId: "suburban-route" }),
-      lineMapping({ lineId: 2, routeId: "regional-route" }),
+      SUBURBAN_LINE_GTFS_ID_MAPPING,
+      REGIONAL_LINE_GTFS_ID_MAPPING,
       (e) => errors.push(e),
     );
 
-    const result = splitter.split(
-      realtimeFeed([
-        tripUpdate({
-          trip: { ...tripUpdate().trip, routeId: "unknown-route" },
-        }),
-      ]),
-    );
+    const result = splitter.split({
+      tripUpdates: [tripUpdateWithRouteId("unknown-route")],
+    });
 
     expect(result.suburban.tripUpdates).toEqual([]);
     expect(result.regional.tripUpdates).toEqual([]);
