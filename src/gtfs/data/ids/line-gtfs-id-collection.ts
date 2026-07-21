@@ -53,4 +53,8 @@ export class LineGtfsIdCollection {
       gtfsIdsForSubfeed.replacementBus ?? [],
     );
   }
+
+  static withParentOnly(lineId: number, parentGtfsId: string) {
+    return new LineGtfsIdCollection(lineId, parentGtfsId, [], []);
+  }
 }
