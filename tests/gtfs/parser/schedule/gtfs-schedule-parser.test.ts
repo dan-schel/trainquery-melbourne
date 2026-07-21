@@ -1,45 +1,100 @@
 import { describe, expect, it } from "vitest";
 import { GtfsScheduleParser } from "../../../../src/gtfs/parser/schedule/gtfs-schedule-parser.js";
-import { calendarRow, routes, stopTime, tripRow } from "./factories.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
-import { lineMapping, stopMapping } from "../factories.js";
 import { LineOverrides } from "../../../../src/gtfs/data/route/line-overrides.js";
+import { LineRoutes } from "../../../../src/gtfs/data/route/line-routes.js";
+import { LineGtfsIdMapping } from "../../../../src/gtfs/data/ids/line-gtfs-id-mapping.js";
+import { StopGtfsIdMapping } from "../../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
+import { StopGtfsIdCollection } from "../../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
+import { LineGtfsIdCollection } from "../../../../src/gtfs/data/ids/line-gtfs-id-collection.js";
 
 describe("GtfsScheduleParser", () => {
+  const LINE_ID = 1;
+  const LINE_GTFS_ID = "line-1";
+
+  const LINE_GTFS_ID_MAPPING = new LineGtfsIdMapping(
+    new Map([
+      [LINE_ID, LineGtfsIdCollection.withParentOnly(LINE_ID, LINE_GTFS_ID)],
+    ]),
+  );
+  const STOP_GTFS_ID_MAPPING = new StopGtfsIdMapping(
+    new Map([
+      [1, StopGtfsIdCollection.withParentOnly(1, "1")],
+      [2, StopGtfsIdCollection.withParentOnly(2, "2")],
+    ]),
+  );
+
+  const LINE_ROUTES = LineRoutes.build({
+    [LINE_ID]: [
+      {
+        color: "blue",
+        serviceTags: [7],
+        stops: [
+          { stopId: 1, collapseInStoppingPatterns: false },
+          { stopId: 2, collapseInStoppingPatterns: false },
+        ],
+      },
+    ],
+  });
+
   const LINE_OVERRIDES_NONE = new LineOverrides(new Map());
+
+  const CALENDAR = {
+    service_id: "svc",
+    monday: true,
+    tuesday: false,
+    wednesday: false,
+    thursday: false,
+    friday: false,
+    saturday: false,
+    sunday: false,
+    start_date: Temporal.PlainDate.from({ year: 2026, month: 6, day: 15 }),
+    end_date: Temporal.PlainDate.from({ year: 2026, month: 6, day: 21 }),
+  };
+
+  const TRIP = {
+    trip_id: "trip-1",
+    route_id: LINE_GTFS_ID,
+    service_id: CALENDAR.service_id,
+  };
+  const STOP_TIME_1 = {
+    trip_id: "trip-1",
+    arrival_time: GtfsStopTime.parse("00:00:00"),
+    departure_time: GtfsStopTime.parse("00:00:00"),
+    stop_id: "1",
+    stop_sequence: 1,
+    pickup_type: 0,
+    drop_off_type: 0,
+  };
+  const STOP_TIME_2 = {
+    trip_id: "trip-1",
+    arrival_time: GtfsStopTime.parse("00:10:00"),
+    departure_time: GtfsStopTime.parse("00:10:00"),
+    stop_id: "2",
+    stop_sequence: 2,
+    pickup_type: 0,
+    drop_off_type: 0,
+  };
 
   it("builds a schedule from parsed calendars and trips", () => {
     const parser = new GtfsScheduleParser(
-      routes(),
+      LINE_ROUTES,
       LINE_OVERRIDES_NONE,
       () => {},
     );
 
     const schedule = parser.parse(
       {
-        calendar: [calendarRow()],
+        calendar: [CALENDAR],
         calendarDates: [],
         routes: [],
         stops: [],
-        trips: [tripRow()],
-        stopTimes: [
-          stopTime({
-            stop_id: "A",
-            stop_sequence: 1,
-            arrival_time: GtfsStopTime.parse("00:00:00"),
-            departure_time: GtfsStopTime.parse("00:00:00"),
-          }),
-          stopTime({
-            stop_id: "B",
-            stop_sequence: 2,
-            arrival_time: GtfsStopTime.parse("00:10:00"),
-            departure_time: GtfsStopTime.parse("00:10:00"),
-          }),
-        ],
+        trips: [TRIP],
+        stopTimes: [STOP_TIME_1, STOP_TIME_2],
         transfers: [],
       },
-      lineMapping(),
-      stopMapping(),
+      LINE_GTFS_ID_MAPPING,
+      STOP_GTFS_ID_MAPPING,
     );
 
     const trips = schedule.allTrips();
