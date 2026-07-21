@@ -27,9 +27,9 @@ describe("GtfsStopTimeNormaliser", () => {
     const normaliser = new GtfsStopTimeNormaliser((e) => errors.push(e));
 
     const stopTimes = [
-      stopTime({ stop_sequence: 1, stop_id: "stop-1" }),
-      stopTime({ stop_sequence: 2, stop_id: "stop-2" }),
-      stopTime({ stop_sequence: 3, stop_id: "stop-3" }),
+      stopTime({ stop_sequence: 1, stop_id: "1" }),
+      stopTime({ stop_sequence: 2, stop_id: "2" }),
+      stopTime({ stop_sequence: 3, stop_id: "3" }),
     ];
 
     expect(normaliser.normalise(stopTimes)).toEqual(stopTimes);
@@ -41,14 +41,14 @@ describe("GtfsStopTimeNormaliser", () => {
     const normaliser = new GtfsStopTimeNormaliser((e) => errors.push(e));
 
     const stopTimes = [
-      stopTime({ stop_sequence: 2, stop_id: "b" }),
-      stopTime({ stop_sequence: 1, stop_id: "a" }),
-      stopTime({ stop_sequence: 3, stop_id: "c" }),
+      stopTime({ stop_sequence: 2, stop_id: "2" }),
+      stopTime({ stop_sequence: 1, stop_id: "1" }),
+      stopTime({ stop_sequence: 3, stop_id: "3" }),
     ];
 
     expect(
       normaliser.normalise(stopTimes)?.map((stopTime) => stopTime.stop_id),
-    ).toEqual(["a", "b", "c"]);
+    ).toEqual(["1", "2", "3"]);
     expect(errors).toEqual([]);
   });
 
@@ -57,8 +57,8 @@ describe("GtfsStopTimeNormaliser", () => {
     const normaliser = new GtfsStopTimeNormaliser((e) => errors.push(e));
 
     const stopTimes = [
-      stopTime({ stop_sequence: 1, stop_id: "a" }),
-      stopTime({ stop_sequence: 3, stop_id: "b" }),
+      stopTime({ stop_sequence: 1, stop_id: "1" }),
+      stopTime({ stop_sequence: 3, stop_id: "3" }),
     ];
 
     expect(normaliser.normalise(stopTimes)).toBeNull();
@@ -71,10 +71,10 @@ describe("GtfsStopTimeNormaliser", () => {
     const normaliser = new GtfsStopTimeNormaliser((e) => errors.push(e));
 
     const stopTimes = [
-      stopTime({ stop_sequence: 1, stop_id: "a1" }),
-      stopTime({ stop_sequence: 2, stop_id: "a2" }),
-      stopTime({ stop_sequence: 1, stop_id: "b1" }),
-      stopTime({ stop_sequence: 2, stop_id: "b2" }),
+      stopTime({ stop_sequence: 1, stop_id: "1-a" }),
+      stopTime({ stop_sequence: 2, stop_id: "2-a" }),
+      stopTime({ stop_sequence: 1, stop_id: "1-b" }),
+      stopTime({ stop_sequence: 2, stop_id: "2-b" }),
     ];
 
     expect(normaliser.normalise(stopTimes)).toEqual([
@@ -92,13 +92,13 @@ describe("GtfsStopTimeNormaliser", () => {
     const stopTimes = [
       stopTime({
         stop_sequence: 1,
-        stop_id: "a",
+        stop_id: "1",
         arrival_time: GtfsStopTime.parse("10:00:00"),
         departure_time: GtfsStopTime.parse("10:05:00"),
       }),
       stopTime({
         stop_sequence: 2,
-        stop_id: "b",
+        stop_id: "2",
 
         // 1 min before previous departure
         arrival_time: GtfsStopTime.parse("10:04:00"),

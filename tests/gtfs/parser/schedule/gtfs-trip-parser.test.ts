@@ -28,8 +28,8 @@ describe("GtfsTripParser", () => {
   );
   const STOP_GTFS_ID_MAPPING = new StopGtfsIdMapping(
     new Map([
-      [1, StopGtfsIdCollection.withParentOnly(1, "A")],
-      [2, StopGtfsIdCollection.withParentOnly(2, "B")],
+      [1, StopGtfsIdCollection.withParentOnly(1, "1")],
+      [2, StopGtfsIdCollection.withParentOnly(2, "2")],
     ]),
   );
 
@@ -58,7 +58,7 @@ describe("GtfsTripParser", () => {
     trip_id: TRIP_ROW.trip_id,
     arrival_time: GtfsStopTime.parse("00:00:00"),
     departure_time: GtfsStopTime.parse("00:00:00"),
-    stop_id: "A",
+    stop_id: "1",
     stop_sequence: 1,
     pickup_type: 0,
     drop_off_type: 0,
@@ -67,7 +67,7 @@ describe("GtfsTripParser", () => {
     trip_id: TRIP_ROW.trip_id,
     arrival_time: GtfsStopTime.parse("00:10:00"),
     departure_time: GtfsStopTime.parse("00:10:00"),
-    stop_id: "B",
+    stop_id: "2",
     stop_sequence: 2,
     pickup_type: 0,
     drop_off_type: 0,

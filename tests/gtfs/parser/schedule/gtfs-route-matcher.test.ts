@@ -17,11 +17,11 @@ import { RouteStop } from "../../../../src/gtfs/data/route/route-stop.js";
 describe("GtfsRouteMatcher", () => {
   const STOP_MAPPING = new StopGtfsIdMapping(
     new Map([
-      [1, StopGtfsIdCollection.withParentOnly(1, "A")],
-      [2, StopGtfsIdCollection.withParentOnly(2, "B")],
-      [3, StopGtfsIdCollection.withParentOnly(3, "C")],
-      [4, StopGtfsIdCollection.withParentOnly(4, "D")],
-      [5, StopGtfsIdCollection.withParentOnly(5, "E")],
+      [1, StopGtfsIdCollection.withParentOnly(1, "1")],
+      [2, StopGtfsIdCollection.withParentOnly(2, "2")],
+      [3, StopGtfsIdCollection.withParentOnly(3, "3")],
+      [4, StopGtfsIdCollection.withParentOnly(4, "4")],
+      [5, StopGtfsIdCollection.withParentOnly(5, "5")],
     ]),
   );
 
@@ -51,7 +51,7 @@ describe("GtfsRouteMatcher", () => {
     ];
 
     const result = matcher.match(
-      [stopTime("A"), stopTime("C"), stopTime("D")],
+      [stopTime("1"), stopTime("3"), stopTime("4")],
       routes,
       STOP_MAPPING,
     );
@@ -76,7 +76,7 @@ describe("GtfsRouteMatcher", () => {
     const errors: GtfsRouteMatchingError[] = [];
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
-    const stopTimes = [stopTime("A"), stopTime("D")];
+    const stopTimes = [stopTime("1"), stopTime("4")];
     const result = matcher.match(stopTimes, ROUTES_FOR_LINE, STOP_MAPPING);
 
     expect(result).toBeNull();
@@ -101,9 +101,9 @@ describe("GtfsRouteMatcher", () => {
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
     const stopTimes = [
-      stopTime("A"),
-      { ...stopTime("B"), pickup_type: 2 },
-      stopTime("C"),
+      stopTime("1"),
+      { ...stopTime("2"), pickup_type: 2 },
+      stopTime("3"),
     ];
     const result = matcher.match(stopTimes, ROUTES_FOR_LINE, STOP_MAPPING);
 
@@ -117,9 +117,9 @@ describe("GtfsRouteMatcher", () => {
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
     const stopTimes = [
-      stopTime("A"),
-      { ...stopTime("B"), drop_off_type: 2 },
-      stopTime("C"),
+      stopTime("1"),
+      { ...stopTime("2"), drop_off_type: 2 },
+      stopTime("3"),
     ];
     const result = matcher.match(stopTimes, ROUTES_FOR_LINE, STOP_MAPPING);
 
