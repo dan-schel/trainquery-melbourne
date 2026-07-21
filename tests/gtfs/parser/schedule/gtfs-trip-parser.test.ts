@@ -24,22 +24,25 @@ describe("GtfsTripParser", () => {
       errors.push(e),
     );
 
+    const tripsCsv = [tripRow()];
+    const stopTimesCsv = [
+      stopTime({
+        stop_id: "A",
+        stop_sequence: 1,
+        arrival_time: GtfsStopTime.parse("00:00:00"),
+        departure_time: GtfsStopTime.parse("00:00:00"),
+      }),
+      stopTime({
+        stop_id: "B",
+        stop_sequence: 2,
+        arrival_time: GtfsStopTime.parse("00:10:00"),
+        departure_time: GtfsStopTime.parse("00:10:00"),
+      }),
+    ];
+
     const trips = parser.parse(
-      [tripRow()],
-      [
-        stopTime({
-          stop_id: "A",
-          stop_sequence: 1,
-          arrival_time: GtfsStopTime.parse("00:00:00"),
-          departure_time: GtfsStopTime.parse("00:00:00"),
-        }),
-        stopTime({
-          stop_id: "B",
-          stop_sequence: 2,
-          arrival_time: GtfsStopTime.parse("00:10:00"),
-          departure_time: GtfsStopTime.parse("00:10:00"),
-        }),
-      ],
+      tripsCsv,
+      stopTimesCsv,
       [],
       [CALENDAR_EVERYDAY],
       lineMapping(),
@@ -50,7 +53,7 @@ describe("GtfsTripParser", () => {
     expect(trips).toHaveLength(1);
 
     const trip = trips[0];
-    if (trip == null) throw new Error("Expected one trip.");
+    if (trip == null) throw new Error();
 
     expect(trip.gtfsTripId).toBe("trip-1");
     expect(trip.movements.map((stop) => stop.stopId)).toEqual([1, 2]);
@@ -68,34 +71,37 @@ describe("GtfsTripParser", () => {
       errors.push(e),
     );
 
+    const tripsCsv = [tripRow()];
+    const stopTimesCsv = [
+      stopTime({
+        stop_id: "A",
+        stop_sequence: 1,
+        arrival_time: GtfsStopTime.parse("00:00:00"),
+        departure_time: GtfsStopTime.parse("00:00:00"),
+      }),
+      stopTime({
+        stop_id: "B",
+        stop_sequence: 2,
+        arrival_time: GtfsStopTime.parse("00:10:00"),
+        departure_time: GtfsStopTime.parse("00:10:00"),
+      }),
+      stopTime({
+        stop_id: "A",
+        stop_sequence: 1,
+        arrival_time: GtfsStopTime.parse("01:00:00"),
+        departure_time: GtfsStopTime.parse("01:00:00"),
+      }),
+      stopTime({
+        stop_id: "B",
+        stop_sequence: 2,
+        arrival_time: GtfsStopTime.parse("01:10:00"),
+        departure_time: GtfsStopTime.parse("01:10:00"),
+      }),
+    ];
+
     const trips = parser.parse(
-      [tripRow()],
-      [
-        stopTime({
-          stop_id: "A",
-          stop_sequence: 1,
-          arrival_time: GtfsStopTime.parse("00:00:00"),
-          departure_time: GtfsStopTime.parse("00:00:00"),
-        }),
-        stopTime({
-          stop_id: "B",
-          stop_sequence: 2,
-          arrival_time: GtfsStopTime.parse("00:10:00"),
-          departure_time: GtfsStopTime.parse("00:10:00"),
-        }),
-        stopTime({
-          stop_id: "A",
-          stop_sequence: 1,
-          arrival_time: GtfsStopTime.parse("01:00:00"),
-          departure_time: GtfsStopTime.parse("01:00:00"),
-        }),
-        stopTime({
-          stop_id: "B",
-          stop_sequence: 2,
-          arrival_time: GtfsStopTime.parse("01:10:00"),
-          departure_time: GtfsStopTime.parse("01:10:00"),
-        }),
-      ],
+      tripsCsv,
+      stopTimesCsv,
       [],
       [CALENDAR_EVERYDAY],
       lineMapping(),
@@ -118,12 +124,15 @@ describe("GtfsTripParser", () => {
       errors.push(e),
     );
 
+    const tripsCsv = [tripRow(), tripRow()];
+    const stopTimesCsv = [
+      stopTime({ stop_id: "A", stop_sequence: 1 }),
+      stopTime({ stop_id: "B", stop_sequence: 2 }),
+    ];
+
     const trips = parser.parse(
-      [tripRow(), tripRow()],
-      [
-        stopTime({ stop_id: "A", stop_sequence: 1 }),
-        stopTime({ stop_id: "B", stop_sequence: 2 }),
-      ],
+      tripsCsv,
+      stopTimesCsv,
       [],
       [CALENDAR_EVERYDAY],
       lineMapping(),
@@ -141,13 +150,16 @@ describe("GtfsTripParser", () => {
       errors.push(e),
     );
 
+    const tripsCsv = [tripRow()];
+    const stopTimesCsv = [
+      stopTime({ stop_id: "A", stop_sequence: 1 }),
+      stopTime({ stop_id: "B", stop_sequence: 2 }),
+      stopTime({ trip_id: "missing-trip", stop_id: "A", stop_sequence: 1 }),
+    ];
+
     const trips = parser.parse(
-      [tripRow()],
-      [
-        stopTime({ stop_id: "A", stop_sequence: 1 }),
-        stopTime({ stop_id: "B", stop_sequence: 2 }),
-        stopTime({ trip_id: "missing-trip", stop_id: "A", stop_sequence: 1 }),
-      ],
+      tripsCsv,
+      stopTimesCsv,
       [],
       [CALENDAR_EVERYDAY],
       lineMapping(),
@@ -165,12 +177,15 @@ describe("GtfsTripParser", () => {
       errors.push(e),
     );
 
+    const tripsCsv = [tripRow({ service_id: "missing-svc" })];
+    const stopTimesCsv = [
+      stopTime({ stop_id: "A", stop_sequence: 1 }),
+      stopTime({ stop_id: "B", stop_sequence: 2 }),
+    ];
+
     const trips = parser.parse(
-      [tripRow({ service_id: "missing-svc" })],
-      [
-        stopTime({ stop_id: "A", stop_sequence: 1 }),
-        stopTime({ stop_id: "B", stop_sequence: 2 }),
-      ],
+      tripsCsv,
+      stopTimesCsv,
       [],
       [CALENDAR_EVERYDAY],
       lineMapping(),
@@ -188,12 +203,15 @@ describe("GtfsTripParser", () => {
       errors.push(e),
     );
 
+    const tripsCsv = [tripRow({ route_id: "missing-route" })];
+    const stopTimesCsv = [
+      stopTime({ stop_id: "A", stop_sequence: 1 }),
+      stopTime({ stop_id: "B", stop_sequence: 2 }),
+    ];
+
     const trips = parser.parse(
-      [tripRow({ route_id: "missing-route" })],
-      [
-        stopTime({ stop_id: "A", stop_sequence: 1 }),
-        stopTime({ stop_id: "B", stop_sequence: 2 }),
-      ],
+      tripsCsv,
+      stopTimesCsv,
       [],
       [CALENDAR_EVERYDAY],
       lineMapping(),
