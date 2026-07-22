@@ -19,26 +19,24 @@ import {
 
 const TRIP_ORIGIN = new GtfsScheduledTripOriginatingMovement({
   stopId: 1,
-  positionId: 1,
+  positionId: null,
   departureTime: GtfsStopTime.parse("00:01:00"),
   gtfsIdMetadata: {
-    type: "platform" as const,
+    type: "parent",
     id: "1",
     stopId: 1,
-    positionId: 1,
   },
   gtfsStopSequence: 1,
 });
 
 const TRIP_TERMINUS = new GtfsScheduledTripTerminatingMovement({
   stopId: 2,
-  positionId: 2,
+  positionId: null,
   arrivalTime: GtfsStopTime.parse("00:02:00"),
   gtfsIdMetadata: {
-    type: "platform" as const,
+    type: "parent",
     id: "2",
     stopId: 2,
-    positionId: 2,
   },
   gtfsStopSequence: 2,
 });

@@ -29,26 +29,24 @@ const TIMEZONE = "Australia/Melbourne";
 
 const TRIP_ORIGIN = new GtfsScheduledTripOriginatingMovement({
   stopId: 1,
-  positionId: 1,
+  positionId: null,
   departureTime: GtfsStopTime.parse("00:01:00"),
   gtfsIdMetadata: {
-    type: "platform" as const,
-    id: "A",
+    type: "parent",
+    id: "1",
     stopId: 1,
-    positionId: 1,
   },
   gtfsStopSequence: 1,
 });
 
 const TRIP_TERMINUS = new GtfsScheduledTripTerminatingMovement({
   stopId: 2,
-  positionId: 2,
+  positionId: null,
   arrivalTime: GtfsStopTime.parse("00:02:00"),
   gtfsIdMetadata: {
-    type: "platform" as const,
-    id: "B",
+    type: "parent",
+    id: "2",
     stopId: 2,
-    positionId: 2,
   },
   gtfsStopSequence: 2,
 });
@@ -77,8 +75,8 @@ const TRIP_DESCRIPTOR = {
 
 const STOP_MAPPING = new StopGtfsIdMapping(
   new Map([
-    [1, StopGtfsIdCollection.withParentOnly(1, "A")],
-    [2, StopGtfsIdCollection.withParentOnly(2, "B")],
+    [1, StopGtfsIdCollection.withParentOnly(1, "1")],
+    [2, StopGtfsIdCollection.withParentOnly(2, "2")],
   ]),
 );
 
@@ -100,14 +98,14 @@ describe("GtfsTripUpdateParser", () => {
       stopTimeUpdate: [
         {
           stopSequence: TRIP.origination.gtfsStopSequence,
-          stopId: "A",
+          stopId: "1",
           arrival: { time: realtimeDeparture.epochMilliseconds / 1000 },
           departure: { time: realtimeDeparture.epochMilliseconds / 1000 },
           scheduleRelationship: "SCHEDULED",
         },
         {
           stopSequence: TRIP.termination.gtfsStopSequence,
-          stopId: "B",
+          stopId: "2",
           arrival: { delay: 120 },
           departure: { delay: 120 },
           scheduleRelationship: "SCHEDULED",
@@ -209,7 +207,7 @@ describe("GtfsTripUpdateParser", () => {
       stopTimeUpdate: [
         {
           stopSequence: undefined,
-          stopId: "A",
+          stopId: "1",
           arrival: { delay: 120 },
           departure: { delay: 120 },
           scheduleRelationship: "SCHEDULED",
@@ -235,7 +233,7 @@ describe("GtfsTripUpdateParser", () => {
       stopTimeUpdate: [
         {
           stopSequence: 999,
-          stopId: "A",
+          stopId: "1",
           arrival: { delay: 120 },
           departure: { delay: 120 },
           scheduleRelationship: "SCHEDULED",
@@ -261,14 +259,14 @@ describe("GtfsTripUpdateParser", () => {
       stopTimeUpdate: [
         {
           stopSequence: 1,
-          stopId: "A",
+          stopId: "1",
           arrival: { delay: 120 },
           departure: { delay: 120 },
           scheduleRelationship: "SCHEDULED",
         },
         {
           stopSequence: 1,
-          stopId: "A",
+          stopId: "1",
           arrival: { delay: 240 },
           departure: { delay: 240 },
           scheduleRelationship: "SCHEDULED",
@@ -320,7 +318,7 @@ describe("GtfsTripUpdateParser", () => {
       stopTimeUpdate: [
         {
           stopSequence: 1,
-          stopId: "B",
+          stopId: "2",
           arrival: { delay: 0 },
           departure: { delay: 0 },
           scheduleRelationship: "SCHEDULED",
@@ -344,7 +342,7 @@ describe("GtfsTripUpdateParser", () => {
       stopTimeUpdate: [
         {
           stopSequence: 1,
-          stopId: "A",
+          stopId: "1",
           arrival: {},
           departure: {},
           scheduleRelationship: "SCHEDULED",
@@ -374,7 +372,7 @@ describe("GtfsTripUpdateParser", () => {
       stopTimeUpdate: [
         {
           stopSequence: 1,
-          stopId: "A",
+          stopId: "1",
           arrival: { delay: 0 },
           departure: { time: scheduledDepartureSeconds + 60, delay: 120 },
           scheduleRelationship: "SCHEDULED",
@@ -402,14 +400,14 @@ describe("GtfsTripUpdateParser", () => {
   //       stopTimeUpdate: [
   //         stopTimeUpdate({
   //           stopSequence: 1,
-  //           stopId: "A",
+  //           stopId: "1",
   //           arrival: undefined,
   //           departure: undefined,
   //         }),
   //       ],
   //     }),
   //     schedule,
-  //     stopMapping(["A", "B"]),
+  //     stopMapping(["1", "2"]),
   //   );
 
   //   expect(parsed).toBeNull();
@@ -421,40 +419,40 @@ describe("GtfsTripUpdateParser", () => {
     const errors: GtfsTripUpdateParsingError[] = [];
     const parser = new GtfsTripUpdateParser(TIMEZONE, (e) => errors.push(e));
 
+    const stop1Platforms = new Map([
+      [1, ["1-PLATFORM-A"]],
+      [2, ["1-PLATFORM-B"]],
+    ]);
+
     const mapping = new StopGtfsIdMapping(
       new Map([
-        [
-          1,
-          new StopGtfsIdCollection(
-            1,
-            "A-parent",
-            [],
-            new Map([
-              [1, ["A"]],
-              [2, ["A-2"]],
-            ]),
-            [],
-          ),
-        ],
-        [
-          2,
-          new StopGtfsIdCollection(
-            2,
-            "B-parent",
-            [],
-            new Map([[1, ["B"]]]),
-            [],
-          ),
-        ],
+        [1, new StopGtfsIdCollection(1, "1", [], stop1Platforms, [])],
+        [2, StopGtfsIdCollection.withParentOnly(2, "2")],
       ]),
     );
+
+    const trip = TRIP.with({
+      movements: [
+        TRIP_ORIGIN.with({
+          positionId: 1,
+          gtfsIdMetadata: {
+            type: "platform",
+            id: "1-PLATFORM-A",
+            stopId: 1,
+            positionId: 1,
+          },
+        }),
+        TRIP_TERMINUS,
+      ],
+    });
+    const schedule = new GtfsSchedule([trip]);
 
     const tripUpdate = {
       trip: TRIP_DESCRIPTOR,
       stopTimeUpdate: [
         {
           stopSequence: 1,
-          stopId: "A-2",
+          stopId: "1-PLATFORM-B",
           arrival: { delay: 0 },
           departure: { delay: 0 },
           scheduleRelationship: "SCHEDULED",
@@ -462,7 +460,7 @@ describe("GtfsTripUpdateParser", () => {
       ],
     };
 
-    const parsed = parser.parse(tripUpdate, SCHEDULE, mapping);
+    const parsed = parser.parse(tripUpdate, schedule, mapping);
 
     expect(errors).toEqual([]);
     expect(parsed).not.toBeNull();
@@ -474,5 +472,7 @@ describe("GtfsTripUpdateParser", () => {
     expect(updatedFirstMovement.stopId).toBe(1);
     expect(updatedFirstMovement.originalPositionId).toBe(1);
     expect(updatedFirstMovement.updatedPositionId).toBe(2);
+    expect(updatedFirstMovement.originalGtfsIdMetadata.id).toBe("1-PLATFORM-A");
+    expect(updatedFirstMovement.updatedGtfsIdMetadata.id).toBe("1-PLATFORM-B");
   });
 });

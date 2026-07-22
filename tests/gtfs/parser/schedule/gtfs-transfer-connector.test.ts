@@ -141,26 +141,24 @@ describe("GtfsTransferConnector", () => {
   ) {
     const origin = new GtfsScheduledTripOriginatingMovement({
       stopId: 1,
-      positionId: 1,
+      positionId: null,
       departureTime: GtfsStopTime.fromSecondsSinceMidnight(60),
       gtfsIdMetadata: {
-        type: "platform" as const,
+        type: "parent",
         id: originGtfsStopId,
         stopId: 1,
-        positionId: 1,
       },
       gtfsStopSequence: 1,
     });
 
     const terminus = new GtfsScheduledTripTerminatingMovement({
       stopId: 2,
-      positionId: 1,
+      positionId: null,
       arrivalTime: GtfsStopTime.fromSecondsSinceMidnight(0),
       gtfsIdMetadata: {
-        type: "platform" as const,
+        type: "parent",
         id: terminusGtfsStopId,
         stopId: 2,
-        positionId: 1,
       },
       gtfsStopSequence: 2,
     });
