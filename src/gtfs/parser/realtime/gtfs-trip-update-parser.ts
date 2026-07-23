@@ -92,6 +92,11 @@ export class GtfsTripUpdateParser {
         this._onError(new Err(tripUpdate, entry, "stopId"));
         return null;
       }
+      if (entry.arrival == null && entry.departure == null) {
+        const Err = NeitherArrivalNorDepartureGivenError;
+        this._onError(new Err(tripUpdate, entry));
+        return null;
+      }
 
       // Find the stop in the scheduled trip that this update is supposed to be
       // for.
@@ -166,16 +171,6 @@ export class GtfsTripUpdateParser {
               entry,
             )
           : null;
-
-      // TODO: Do we need this?
-      // Maybe we do, but like how we should probably check all picksUp/dropsOff
-      // values first, and then apply updates, we could also check all these
-      // array entries first, well before this logic?
-      // if (realtimeArrivalTime == null && realtimeDepartureTime == null) {
-      //   const Err = NeitherArrivalNorDepartureGivenError;
-      //   this._onError(new Err(tripUpdate, entry));
-      //   return null;
-      // }
 
       updatedMovementsByIndex.set(
         movementIndex,
@@ -295,8 +290,8 @@ export type GtfsTripUpdateParsingError =
   | StopTimeUpdateEntryChangesStopError
   | StopTimeUpdateEntryChangesPlatformError
   | NeitherTimeNorDelayGivenError
-  | TimeAndDelayDisagreeWithEachOtherError;
-//  | NeitherArrivalNorDepartureGivenError;
+  | TimeAndDelayDisagreeWithEachOtherError
+  | NeitherArrivalNorDepartureGivenError;
 
 export class UnsupportedTripUpdateScheduleRelationshipError extends Error {
   readonly type = "unsupported-trip-update-schedule-relationship";
@@ -419,12 +414,12 @@ export class TimeAndDelayDisagreeWithEachOtherError extends Error {
   }
 }
 
-// export class NeitherArrivalNorDepartureGivenError extends Error {
-//   readonly type = "neither-arrival-nor-departure-given";
-//   constructor(
-//     readonly tripUpdate: TripUpdateJson,
-//     readonly stopTimeUpdateEntry: StopTimeUpdateJson,
-//   ) {
-//     super();
-//   }
-// }
+export class NeitherArrivalNorDepartureGivenError extends Error {
+  readonly type = "neither-arrival-nor-departure-given";
+  constructor(
+    readonly tripUpdate: TripUpdateJson,
+    readonly stopTimeUpdateEntry: StopTimeUpdateJson,
+  ) {
+    super();
+  }
+}

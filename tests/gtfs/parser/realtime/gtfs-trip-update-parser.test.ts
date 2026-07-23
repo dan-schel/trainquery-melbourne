@@ -5,7 +5,7 @@ import {
   GtfsTripUpdateParser,
   MultipleStopTimeUpdateEntriesForSameMovementIndexError,
   NecessaryFieldNotInStopTimeUpdateEntryError,
-  // NeitherArrivalNorDepartureGivenError,
+  NeitherArrivalNorDepartureGivenError,
   NeitherTimeNorDelayGivenError,
   NoStopTimeUpdateFieldGivenError,
   StopTimeUpdateEntryChangesStopError,
@@ -388,33 +388,27 @@ describe("GtfsTripUpdateParser", () => {
     expect(errors[0]).toBeInstanceOf(TimeAndDelayDisagreeWithEachOtherError);
   });
 
-  // it("reports entries where both arrival and departure updates are missing", () => {
-  //   const errors: GtfsTripUpdateParsingError[] = [];
-  //   const parser = new GtfsTripUpdateParser(TIMEZONE, (e) =>
-  //     errors.push(e),
-  //   );
-  //   const { schedule, trip } = scheduleWithTrip();
+  it("reports entries where both arrival and departure updates are missing", () => {
+    const errors: GtfsTripUpdateParsingError[] = [];
+    const parser = new GtfsTripUpdateParser(TIMEZONE, (e) => errors.push(e));
 
-  //   const parsed = parser.parse(
-  //     tripUpdate({
-  //       trip: tripDescriptor({ tripId: trip.gtfsTripId }),
-  //       stopTimeUpdate: [
-  //         stopTimeUpdate({
-  //           stopSequence: 1,
-  //           stopId: "1",
-  //           arrival: undefined,
-  //           departure: undefined,
-  //         }),
-  //       ],
-  //     }),
-  //     schedule,
-  //     stopMapping(["1", "2"]),
-  //   );
+    const tripUpdate = {
+      trip: TRIP_DESCRIPTOR,
+      stopTimeUpdate: [
+        {
+          stopSequence: 1,
+          stopId: "1",
+          scheduleRelationship: "SCHEDULED",
+        },
+      ],
+    };
 
-  //   expect(parsed).toBeNull();
-  //   expect(errors).toHaveLength(1);
-  //   expect(errors[0]).toBeInstanceOf(NeitherArrivalNorDepartureGivenError);
-  // });
+    const parsed = parser.parse(tripUpdate, SCHEDULE, STOP_MAPPING);
+
+    expect(parsed).toBeNull();
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toBeInstanceOf(NeitherArrivalNorDepartureGivenError);
+  });
 
   it("allows platform changes when they still map to the same stop", () => {
     const errors: GtfsTripUpdateParsingError[] = [];
