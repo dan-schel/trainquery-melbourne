@@ -2,12 +2,12 @@ import { itsOk } from "@dan-schel/js-utils";
 import type { GtfsSchedule } from "../data/gtfs-schedule.js";
 import { GtfsStopTime } from "../data/gtfs-stop-time.js";
 import type { GtfsScheduledTrip } from "../data/gtfs-scheduled-trip.js";
-import type { GtfsScheduledTripNonPassingMovement } from "../data/gtfs-scheduled-trip-movements.js";
+import type { GtfsScheduledTripServicingMovement } from "../data/gtfs-scheduled-trip-movements.js";
 
 export type GtfsMovementsIndexEntry = {
   readonly trip: GtfsScheduledTrip;
   readonly time: GtfsStopTime;
-  readonly movement: GtfsScheduledTripNonPassingMovement;
+  readonly movement: GtfsScheduledTripServicingMovement;
 };
 
 export class GtfsScheduledMovementsIndex {
@@ -22,7 +22,7 @@ export class GtfsScheduledMovementsIndex {
 
     for (const trip of schedule.allTrips()) {
       for (const movement of trip.movements) {
-        if (!movement.isNonPassing) continue;
+        if (!movement.isServicing) continue;
 
         // Filter out "fake" arrivals. If a train is not ACTUALLY terminating
         // but continuing as another service, then that next service's

@@ -16,10 +16,10 @@ interface IGtfsUpdatedTripMovement {
   readonly stopId: number;
 
   get type(): string;
-  get isNonPassing(): boolean;
+  get isServicing(): boolean;
   get isNonTerminal(): boolean;
 }
-interface IGtfsUpdatedTripNonPassingMovement extends IGtfsUpdatedTripMovement {
+interface IGtfsUpdatedTripServicingMovement extends IGtfsUpdatedTripMovement {
   // Original & updated to support platform changes. Can be removed in favour of
   // just having `positionId` and `gtfsIdMetadata` like the scheduled movements
   // have if it turns out PTV don't actually do platform changes like this (e.g.
@@ -44,7 +44,7 @@ interface IGtfsUpdatedTripNonPassingMovement extends IGtfsUpdatedTripMovement {
   // scheduled/original fields. (By the same argument, maybe we should have
   // GtfsCancelledTrip, instead of the `isCancelled` field.)
 
-  get isNonPassing(): true;
+  get isServicing(): true;
 }
 
 type GtfsUpdatedTripOriginatingMovementFields = {
@@ -88,7 +88,7 @@ type GtfsUpdatedTripPassingMovementFields = {
   readonly stopId: number;
 };
 
-export class GtfsUpdatedTripOriginatingMovement implements IGtfsUpdatedTripNonPassingMovement {
+export class GtfsUpdatedTripOriginatingMovement implements IGtfsUpdatedTripServicingMovement {
   readonly stopId: number;
   readonly originalPositionId: number | null;
   readonly updatedPositionId: number | null;
@@ -112,7 +112,7 @@ export class GtfsUpdatedTripOriginatingMovement implements IGtfsUpdatedTripNonPa
   get type() {
     return "originating" as const;
   }
-  get isNonPassing() {
+  get isServicing() {
     return true as const;
   }
   get isNonTerminal() {
@@ -120,7 +120,7 @@ export class GtfsUpdatedTripOriginatingMovement implements IGtfsUpdatedTripNonPa
   }
 }
 
-export class GtfsUpdatedTripRegularMovement implements IGtfsUpdatedTripNonPassingMovement {
+export class GtfsUpdatedTripRegularMovement implements IGtfsUpdatedTripServicingMovement {
   readonly stopId: number;
   readonly originalPositionId: number | null;
   readonly updatedPositionId: number | null;
@@ -152,7 +152,7 @@ export class GtfsUpdatedTripRegularMovement implements IGtfsUpdatedTripNonPassin
   get type() {
     return "regular" as const;
   }
-  get isNonPassing() {
+  get isServicing() {
     return true as const;
   }
   get isNonTerminal() {
@@ -160,7 +160,7 @@ export class GtfsUpdatedTripRegularMovement implements IGtfsUpdatedTripNonPassin
   }
 }
 
-export class GtfsUpdatedTripTerminatingMovement implements IGtfsUpdatedTripNonPassingMovement {
+export class GtfsUpdatedTripTerminatingMovement implements IGtfsUpdatedTripServicingMovement {
   readonly stopId: number;
   readonly originalPositionId: number | null;
   readonly updatedPositionId: number | null;
@@ -184,7 +184,7 @@ export class GtfsUpdatedTripTerminatingMovement implements IGtfsUpdatedTripNonPa
   get type() {
     return "terminating" as const;
   }
-  get isNonPassing() {
+  get isServicing() {
     return true as const;
   }
   get isNonTerminal() {
@@ -202,7 +202,7 @@ export class GtfsUpdatedTripPassingMovement implements IGtfsUpdatedTripMovement 
   get type() {
     return "passing" as const;
   }
-  get isNonPassing() {
+  get isServicing() {
     return false as const;
   }
   get isNonTerminal() {

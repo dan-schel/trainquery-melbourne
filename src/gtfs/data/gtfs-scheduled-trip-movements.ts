@@ -16,7 +16,7 @@ export type GtfsScheduledTripMovement =
   | GtfsScheduledTripTerminatingMovement
   | GtfsScheduledTripPassingMovement;
 
-export type GtfsScheduledTripNonPassingMovement =
+export type GtfsScheduledTripServicingMovement =
   | GtfsScheduledTripOriginatingMovement
   | GtfsScheduledTripRegularMovement
   | GtfsScheduledTripTerminatingMovement;
@@ -37,16 +37,16 @@ interface IGtfsScheduledTripMovement {
   readonly stopId: number;
 
   get type(): string;
-  get isNonPassing(): boolean;
+  get isServicing(): boolean;
   get isNonTerminal(): boolean;
   asHollowUpdatedTripMovement(): GtfsUpdatedTripMovement;
 }
-interface IGtfsScheduledTripNonPassingMovement extends IGtfsScheduledTripMovement {
+interface IGtfsScheduledTripServicingMovement extends IGtfsScheduledTripMovement {
   readonly positionId: number | null;
   readonly gtfsIdMetadata: StopGtfsIdMetadata;
   readonly gtfsStopSequence: number;
 
-  get isNonPassing(): true;
+  get isServicing(): true;
   get timeRelevantToDeparturesAlgorithm(): GtfsStopTime;
 
   asUpdatedTripMovement(
@@ -85,7 +85,7 @@ type GtfsScheduledTripPassingMovementFields = {
   readonly stopId: number;
 };
 
-export class GtfsScheduledTripOriginatingMovement implements IGtfsScheduledTripNonPassingMovement {
+export class GtfsScheduledTripOriginatingMovement implements IGtfsScheduledTripServicingMovement {
   readonly stopId: number;
   readonly positionId: number | null;
   readonly departureTime: GtfsStopTime;
@@ -103,7 +103,7 @@ export class GtfsScheduledTripOriginatingMovement implements IGtfsScheduledTripN
   get type() {
     return "originating" as const;
   }
-  get isNonPassing() {
+  get isServicing() {
     return true as const;
   }
   get isNonTerminal() {
@@ -152,7 +152,7 @@ export class GtfsScheduledTripOriginatingMovement implements IGtfsScheduledTripN
   }
 }
 
-export class GtfsScheduledTripRegularMovement implements IGtfsScheduledTripNonPassingMovement {
+export class GtfsScheduledTripRegularMovement implements IGtfsScheduledTripServicingMovement {
   readonly stopId: number;
   readonly positionId: number | null;
   readonly arrivalTime: GtfsStopTime;
@@ -176,7 +176,7 @@ export class GtfsScheduledTripRegularMovement implements IGtfsScheduledTripNonPa
   get type() {
     return "regular" as const;
   }
-  get isNonPassing() {
+  get isServicing() {
     return true as const;
   }
   get isNonTerminal() {
@@ -233,7 +233,7 @@ export class GtfsScheduledTripRegularMovement implements IGtfsScheduledTripNonPa
   }
 }
 
-export class GtfsScheduledTripTerminatingMovement implements IGtfsScheduledTripNonPassingMovement {
+export class GtfsScheduledTripTerminatingMovement implements IGtfsScheduledTripServicingMovement {
   readonly stopId: number;
   readonly positionId: number | null;
   readonly arrivalTime: GtfsStopTime;
@@ -251,7 +251,7 @@ export class GtfsScheduledTripTerminatingMovement implements IGtfsScheduledTripN
   get type() {
     return "terminating" as const;
   }
-  get isNonPassing() {
+  get isServicing() {
     return true as const;
   }
   get isNonTerminal() {
@@ -310,7 +310,7 @@ export class GtfsScheduledTripPassingMovement implements IGtfsScheduledTripMovem
   get type() {
     return "passing" as const;
   }
-  get isNonPassing() {
+  get isServicing() {
     return false as const;
   }
   get isNonTerminal() {

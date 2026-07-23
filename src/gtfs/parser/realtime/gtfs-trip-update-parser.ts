@@ -101,7 +101,7 @@ export class GtfsTripUpdateParser {
       // Find the stop in the scheduled trip that this update is supposed to be
       // for.
       const movementIndex = trip.movements.findIndex(
-        (m) => m.isNonPassing && m.gtfsStopSequence === entry.stopSequence,
+        (m) => m.isServicing && m.gtfsStopSequence === entry.stopSequence,
       );
       if (movementIndex === -1) {
         const Err = StopTimeUpdateEntryReferencesNonExistentStopSequenceError;
@@ -111,7 +111,7 @@ export class GtfsTripUpdateParser {
 
       // Enforced by findIndex above.
       const scheduledMovement = itsOk(trip.movements[movementIndex]);
-      if (!scheduledMovement.isNonPassing) throw new Error();
+      if (!scheduledMovement.isServicing) throw new Error();
 
       // Check that we haven't already matched a stop time update entry to this
       // movement index. (Would happen if `stopSequence` was the same value
