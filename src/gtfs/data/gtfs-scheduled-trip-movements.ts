@@ -2,7 +2,7 @@ import type { GtfsStopTime } from "./gtfs-stop-time.js";
 import {
   GtfsUpdatedTripOriginatingMovement,
   GtfsUpdatedTripPassingMovement,
-  GtfsUpdatedTripServicingMovement,
+  GtfsUpdatedTripRegularMovement,
   GtfsUpdatedTripTerminatingMovement,
   type GtfsUpdatedTripMovement,
 } from "./gtfs-updated-trip-movements.js";
@@ -12,13 +12,13 @@ import type { StopGtfsIdMetadata } from "./ids/stop-gtfs-id-metadata.js";
 
 export type GtfsScheduledTripMovement =
   | GtfsScheduledTripOriginatingMovement
-  | GtfsScheduledTripServicingMovement
+  | GtfsScheduledTripRegularMovement
   | GtfsScheduledTripTerminatingMovement
   | GtfsScheduledTripPassingMovement;
 
 export type GtfsScheduledTripNonPassingMovement =
   | GtfsScheduledTripOriginatingMovement
-  | GtfsScheduledTripServicingMovement
+  | GtfsScheduledTripRegularMovement
   | GtfsScheduledTripTerminatingMovement;
 
 type PromotionToUpdatedTripFields = {
@@ -62,7 +62,7 @@ type GtfsScheduledTripOriginatingMovementFields = {
   readonly gtfsStopSequence: number;
 };
 
-type GtfsScheduledTripServicingMovementFields = {
+type GtfsScheduledTripRegularMovementFields = {
   readonly stopId: number;
   readonly positionId: number | null;
   readonly arrivalTime: GtfsStopTime;
@@ -152,7 +152,7 @@ export class GtfsScheduledTripOriginatingMovement implements IGtfsScheduledTripN
   }
 }
 
-export class GtfsScheduledTripServicingMovement implements IGtfsScheduledTripNonPassingMovement {
+export class GtfsScheduledTripRegularMovement implements IGtfsScheduledTripNonPassingMovement {
   readonly stopId: number;
   readonly positionId: number | null;
   readonly arrivalTime: GtfsStopTime;
@@ -162,7 +162,7 @@ export class GtfsScheduledTripServicingMovement implements IGtfsScheduledTripNon
   readonly gtfsIdMetadata: StopGtfsIdMetadata;
   readonly gtfsStopSequence: number;
 
-  constructor(fields: GtfsScheduledTripServicingMovementFields) {
+  constructor(fields: GtfsScheduledTripRegularMovementFields) {
     this.stopId = fields.stopId;
     this.positionId = fields.positionId;
     this.arrivalTime = fields.arrivalTime;
@@ -174,7 +174,7 @@ export class GtfsScheduledTripServicingMovement implements IGtfsScheduledTripNon
   }
 
   get type() {
-    return "servicing" as const;
+    return "regular" as const;
   }
   get isNonPassing() {
     return true as const;
@@ -187,13 +187,13 @@ export class GtfsScheduledTripServicingMovement implements IGtfsScheduledTripNon
   }
 
   with(
-    newValues: Partial<GtfsScheduledTripServicingMovementFields>,
-  ): GtfsScheduledTripServicingMovement {
-    return new GtfsScheduledTripServicingMovement({ ...this, ...newValues });
+    newValues: Partial<GtfsScheduledTripRegularMovementFields>,
+  ): GtfsScheduledTripRegularMovement {
+    return new GtfsScheduledTripRegularMovement({ ...this, ...newValues });
   }
 
-  asHollowUpdatedTripMovement(): GtfsUpdatedTripServicingMovement {
-    return new GtfsUpdatedTripServicingMovement({
+  asHollowUpdatedTripMovement(): GtfsUpdatedTripRegularMovement {
+    return new GtfsUpdatedTripRegularMovement({
       stopId: this.stopId,
       originalPositionId: this.positionId,
       scheduledArrivalTime: this.arrivalTime,
@@ -213,8 +213,8 @@ export class GtfsScheduledTripServicingMovement implements IGtfsScheduledTripNon
 
   asUpdatedTripMovement(
     values: PromotionToUpdatedTripFields,
-  ): GtfsUpdatedTripServicingMovement {
-    return new GtfsUpdatedTripServicingMovement({
+  ): GtfsUpdatedTripRegularMovement {
+    return new GtfsUpdatedTripRegularMovement({
       stopId: this.stopId,
       originalPositionId: this.positionId,
       scheduledArrivalTime: this.arrivalTime,

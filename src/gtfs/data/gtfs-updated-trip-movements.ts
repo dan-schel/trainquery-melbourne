@@ -3,7 +3,7 @@ import type { StopGtfsIdMetadata } from "./ids/stop-gtfs-id-metadata.js";
 
 export type GtfsUpdatedTripMovement =
   | GtfsUpdatedTripOriginatingMovement
-  | GtfsUpdatedTripServicingMovement
+  | GtfsUpdatedTripRegularMovement
   | GtfsUpdatedTripTerminatingMovement
   | GtfsUpdatedTripPassingMovement;
 
@@ -58,7 +58,7 @@ type GtfsUpdatedTripOriginatingMovementFields = {
   readonly gtfsStopSequence: number;
 };
 
-type GtfsUpdatedTripServicingMovementFields = {
+type GtfsUpdatedTripRegularMovementFields = {
   readonly stopId: number;
   readonly originalPositionId: number | null;
   readonly updatedPositionId: number | null;
@@ -120,7 +120,7 @@ export class GtfsUpdatedTripOriginatingMovement implements IGtfsUpdatedTripNonPa
   }
 }
 
-export class GtfsUpdatedTripServicingMovement implements IGtfsUpdatedTripNonPassingMovement {
+export class GtfsUpdatedTripRegularMovement implements IGtfsUpdatedTripNonPassingMovement {
   readonly stopId: number;
   readonly originalPositionId: number | null;
   readonly updatedPositionId: number | null;
@@ -134,7 +134,7 @@ export class GtfsUpdatedTripServicingMovement implements IGtfsUpdatedTripNonPass
   readonly updatedGtfsIdMetadata: StopGtfsIdMetadata;
   readonly gtfsStopSequence: number;
 
-  constructor(fields: GtfsUpdatedTripServicingMovementFields) {
+  constructor(fields: GtfsUpdatedTripRegularMovementFields) {
     this.stopId = fields.stopId;
     this.originalPositionId = fields.originalPositionId;
     this.updatedPositionId = fields.updatedPositionId;
@@ -150,7 +150,7 @@ export class GtfsUpdatedTripServicingMovement implements IGtfsUpdatedTripNonPass
   }
 
   get type() {
-    return "servicing" as const;
+    return "regular" as const;
   }
   get isNonPassing() {
     return true as const;

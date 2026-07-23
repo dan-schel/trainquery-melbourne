@@ -64,7 +64,7 @@ describe("GtfsRouteMatcher", () => {
     expect(result.movements.map((movement) => movement.type)).toEqual([
       "originating",
       "passing",
-      "servicing",
+      "regular",
       "terminating",
     ]);
     expect(result.movements.map((movement) => movement.stopId)).toEqual([

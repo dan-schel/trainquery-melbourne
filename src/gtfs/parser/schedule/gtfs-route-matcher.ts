@@ -8,7 +8,7 @@ import type { Route } from "../../data/route/route.js";
 import {
   GtfsScheduledTripOriginatingMovement,
   GtfsScheduledTripPassingMovement,
-  GtfsScheduledTripServicingMovement,
+  GtfsScheduledTripRegularMovement,
   GtfsScheduledTripTerminatingMovement,
   type GtfsScheduledTripMovement,
   type GtfsScheduledTripNonPassingMovement,
@@ -88,36 +88,36 @@ export class GtfsRouteMatcher {
   ) {
     const result: GtfsScheduledTripMovement[] = [];
 
-    let nextServicingMovementIndex = 0;
+    let nextNonPassingMovementIndex = 0;
 
     // Broadly: Iterate through the route's stops, and step through the trip
     // movements simultaneously when they match. Add all route stops between
-    // first and last trip movements as servicing movements where found or
+    // first and last trip movements as non passing movements where found or
     // passing movements otherwise.
     for (const routeStop of matchingRoute.stops) {
-      const nextServicingMovement =
-        nonPassingMovements[nextServicingMovementIndex];
+      const nextNonPassingMovement =
+        nonPassingMovements[nextNonPassingMovementIndex];
 
-      // If there's no next servicing movement, then the index must be off the
+      // If there's no next non passing movement, then the index must be off the
       // end of the array, so we're done (the service has terminated).
-      if (nextServicingMovement == null) break;
+      if (nextNonPassingMovement == null) break;
 
-      if (routeStop.stopId === nextServicingMovement.stopId) {
+      if (routeStop.stopId === nextNonPassingMovement.stopId) {
         // When the next movement from the trip matches the one in the route
-        // we're up to, add a `type: "servicing"` movement.
-        result.push(nextServicingMovement);
-        nextServicingMovementIndex++;
+        // we're up to, add the non passing movement.
+        result.push(nextNonPassingMovement);
+        nextNonPassingMovementIndex++;
       } else if (
-        nextServicingMovementIndex > 0 &&
+        nextNonPassingMovementIndex > 0 &&
         !routeStop.collapseInStoppingPatterns
       ) {
         // Otherwise the stop from the route is an `type: "passing"` movement.
-        // `nextServicingMovementIndex > 0` stops us adding passing movements
+        // `nextNonPassingMovementIndex > 0` stops us adding passing movements
         // from the route before the service originates.
         //
         // For now, I'm skipping adding `collapseInStoppingPatterns` stops as
         // passing movements. This flag means we don't want this stop to show up
-        // in stopping patterns normally, unless it's servicing (e.g. East
+        // in stopping patterns normally, unless it's non passing (e.g. East
         // Pakenham on the Gippsland line is one of these). I'm assuming there's
         // nothing downstream that'll need to consider these collapsed stops.
         //
@@ -186,7 +186,7 @@ export class GtfsRouteMatcher {
         );
       } else {
         result.push(
-          new GtfsScheduledTripServicingMovement({
+          new GtfsScheduledTripRegularMovement({
             stopId: gtfsIdMetadata.stopId,
             positionId,
             arrivalTime: stopTime.arrival_time,
