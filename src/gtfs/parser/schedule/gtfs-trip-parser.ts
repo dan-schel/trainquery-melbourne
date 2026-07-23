@@ -158,11 +158,6 @@ export class GtfsTripParser {
     }));
   }
 
-  // TODO: None of this is tested. I should test:
-  // - the happy path for bonus lines
-  // - replace mode
-  // - replace mode does nothing if no lines match
-  // - no errors are logged for the bonus line matching
   private _applyBonusLines(
     mainRouteLineId: number,
     mainRouteServiceTags: readonly number[],

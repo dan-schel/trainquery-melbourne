@@ -24,7 +24,7 @@ describe("GtfsScheduleParser", () => {
     ]),
   );
 
-  const LINE_ROUTES = LineRoutesMapping.build({
+  const LINE_ROUTES_MAPPING = LineRoutesMapping.build({
     [LINE_ID]: [
       {
         color: "blue",
@@ -78,7 +78,7 @@ describe("GtfsScheduleParser", () => {
 
   it("builds a schedule from parsed calendars and trips", () => {
     const parser = new GtfsScheduleParser(
-      LINE_ROUTES,
+      LINE_ROUTES_MAPPING,
       BONUS_LINES_MAPPING,
       () => {},
     );

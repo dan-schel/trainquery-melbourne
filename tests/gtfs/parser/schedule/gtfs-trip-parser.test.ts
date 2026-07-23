@@ -16,6 +16,7 @@ import { LineGtfsIdMapping } from "../../../../src/gtfs/data/ids/line-gtfs-id-ma
 import { LineGtfsIdCollection } from "../../../../src/gtfs/data/ids/line-gtfs-id-collection.js";
 import { StopGtfsIdMapping } from "../../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
 import { StopGtfsIdCollection } from "../../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
+import { arraysMatch, itsOk } from "@dan-schel/js-utils";
 
 describe("GtfsTripParser", () => {
   const LINE_ID = 1;
@@ -33,7 +34,7 @@ describe("GtfsTripParser", () => {
     ]),
   );
 
-  const LINE_ROUTES = LineRoutesMapping.build({
+  const LINE_ROUTES_MAPPING = LineRoutesMapping.build({
     [LINE_ID]: [
       {
         color: "blue",
@@ -75,8 +76,10 @@ describe("GtfsTripParser", () => {
 
   it("parses one simple trip end-to-end", () => {
     const errors: GtfsTripParsingError[] = [];
-    const parser = new GtfsTripParser(LINE_ROUTES, BONUS_LINES_MAPPING, (e) =>
-      errors.push(e),
+    const parser = new GtfsTripParser(
+      LINE_ROUTES_MAPPING,
+      BONUS_LINES_MAPPING,
+      (e) => errors.push(e),
     );
 
     const tripsCsv = [TRIP_ROW];
@@ -109,8 +112,10 @@ describe("GtfsTripParser", () => {
     // doesn't do that sort!
 
     const errors: GtfsTripParsingError[] = [];
-    const parser = new GtfsTripParser(LINE_ROUTES, BONUS_LINES_MAPPING, (e) =>
-      errors.push(e),
+    const parser = new GtfsTripParser(
+      LINE_ROUTES_MAPPING,
+      BONUS_LINES_MAPPING,
+      (e) => errors.push(e),
     );
 
     const tripsCsv = [TRIP_ROW];
@@ -155,8 +160,10 @@ describe("GtfsTripParser", () => {
 
   it("reports duplicate trip rows and keeps the first one", () => {
     const errors: GtfsTripParsingError[] = [];
-    const parser = new GtfsTripParser(LINE_ROUTES, BONUS_LINES_MAPPING, (e) =>
-      errors.push(e),
+    const parser = new GtfsTripParser(
+      LINE_ROUTES_MAPPING,
+      BONUS_LINES_MAPPING,
+      (e) => errors.push(e),
     );
 
     const tripsCsv = [TRIP_ROW, TRIP_ROW];
@@ -178,8 +185,10 @@ describe("GtfsTripParser", () => {
 
   it("reports stop_times rows that reference non-existent trips", () => {
     const errors: GtfsTripParsingError[] = [];
-    const parser = new GtfsTripParser(LINE_ROUTES, BONUS_LINES_MAPPING, (e) =>
-      errors.push(e),
+    const parser = new GtfsTripParser(
+      LINE_ROUTES_MAPPING,
+      BONUS_LINES_MAPPING,
+      (e) => errors.push(e),
     );
 
     const tripsCsv = [TRIP_ROW];
@@ -205,8 +214,10 @@ describe("GtfsTripParser", () => {
 
   it("reports trips that reference non-existent calendars", () => {
     const errors: GtfsTripParsingError[] = [];
-    const parser = new GtfsTripParser(LINE_ROUTES, BONUS_LINES_MAPPING, (e) =>
-      errors.push(e),
+    const parser = new GtfsTripParser(
+      LINE_ROUTES_MAPPING,
+      BONUS_LINES_MAPPING,
+      (e) => errors.push(e),
     );
 
     const tripsCsv = [{ ...TRIP_ROW, service_id: "missing-cal" }];
@@ -228,8 +239,10 @@ describe("GtfsTripParser", () => {
 
   it("reports trips that reference unmapped route IDs", () => {
     const errors: GtfsTripParsingError[] = [];
-    const parser = new GtfsTripParser(LINE_ROUTES, BONUS_LINES_MAPPING, (e) =>
-      errors.push(e),
+    const parser = new GtfsTripParser(
+      LINE_ROUTES_MAPPING,
+      BONUS_LINES_MAPPING,
+      (e) => errors.push(e),
     );
 
     const tripsCsv = [{ ...TRIP_ROW, route_id: "missing-route" }];
@@ -247,5 +260,176 @@ describe("GtfsTripParser", () => {
     expect(errors).toHaveLength(1);
     expect(errors[0]).toBeInstanceOf(TripReferencesUnmappedRouteIdError);
     expect(trips).toEqual([]);
+  });
+
+  it("applies bonus lines to trips matching both lines' routes", () => {
+    const lineRoutesMapping = LineRoutesMapping.build({
+      [LINE_ID]: [
+        {
+          color: "blue",
+          serviceTags: [7],
+          stops: [
+            { stopId: 1, collapseInStoppingPatterns: false },
+            { stopId: 2, collapseInStoppingPatterns: false },
+          ],
+        },
+      ],
+      [2]: [
+        {
+          color: "red",
+          serviceTags: [8],
+          stops: [
+            { stopId: 1, collapseInStoppingPatterns: false },
+            { stopId: 2, collapseInStoppingPatterns: false },
+          ],
+        },
+      ],
+    });
+
+    const bonusLinesMapping = BonusLinesMapping.build({
+      [LINE_ID]: {
+        mode: "add",
+        lines: [2],
+      },
+    });
+
+    const errors: GtfsTripParsingError[] = [];
+    const parser = new GtfsTripParser(
+      lineRoutesMapping,
+      bonusLinesMapping,
+      (e) => errors.push(e),
+    );
+
+    const tripsCsv = [TRIP_ROW];
+    const stopTimesCsv = [STOP_TIME_1, STOP_TIME_2];
+
+    const trips = parser.parse(
+      tripsCsv,
+      stopTimesCsv,
+      [],
+      [CALENDAR_EVERYDAY],
+      LINE_GTFS_ID_MAPPING,
+      STOP_GTFS_ID_MAPPING,
+    );
+
+    expect(errors).toEqual([]);
+    expect(trips).toHaveLength(1);
+    const trip = itsOk(trips[0]);
+    expect(arraysMatch(trip.lineIds, [LINE_ID, 2])).toBe(true);
+    expect(arraysMatch(trip.serviceTags, [7, 8])).toBe(true);
+  });
+
+  it("replaces the mapped line with bonus lines when in replace mode", () => {
+    const lineRoutesMapping = LineRoutesMapping.build({
+      [LINE_ID]: [
+        {
+          color: "blue",
+          serviceTags: [7],
+          stops: [
+            { stopId: 1, collapseInStoppingPatterns: false },
+            { stopId: 2, collapseInStoppingPatterns: false },
+          ],
+        },
+      ],
+      [2]: [
+        {
+          color: "red",
+          serviceTags: [8],
+          stops: [
+            { stopId: 1, collapseInStoppingPatterns: false },
+            { stopId: 2, collapseInStoppingPatterns: false },
+          ],
+        },
+      ],
+    });
+
+    const bonusLinesMapping = BonusLinesMapping.build({
+      [LINE_ID]: {
+        mode: "replace",
+        lines: [2],
+      },
+    });
+
+    const errors: GtfsTripParsingError[] = [];
+    const parser = new GtfsTripParser(
+      lineRoutesMapping,
+      bonusLinesMapping,
+      (e) => errors.push(e),
+    );
+
+    const tripsCsv = [TRIP_ROW];
+    const stopTimesCsv = [STOP_TIME_1, STOP_TIME_2];
+
+    const trips = parser.parse(
+      tripsCsv,
+      stopTimesCsv,
+      [],
+      [CALENDAR_EVERYDAY],
+      LINE_GTFS_ID_MAPPING,
+      STOP_GTFS_ID_MAPPING,
+    );
+
+    expect(errors).toEqual([]);
+    expect(trips).toHaveLength(1);
+    const trip = itsOk(trips[0]);
+    expect(trip.lineIds).toStrictEqual([2]);
+    expect(trip.serviceTags).toStrictEqual([8]);
+  });
+
+  it("does not remove the mapped line when in replace mode if no bonus lines match", () => {
+    const lineRoutesMapping = LineRoutesMapping.build({
+      [LINE_ID]: [
+        {
+          color: "blue",
+          serviceTags: [7],
+          stops: [
+            { stopId: 1, collapseInStoppingPatterns: false },
+            { stopId: 2, collapseInStoppingPatterns: false },
+          ],
+        },
+      ],
+      [2]: [
+        {
+          color: "red",
+          serviceTags: [8],
+          stops: [
+            { stopId: 1, collapseInStoppingPatterns: false },
+            { stopId: 3, collapseInStoppingPatterns: false }, // Doesn't match the trip's route
+          ],
+        },
+      ],
+    });
+
+    const bonusLinesMapping = BonusLinesMapping.build({
+      [LINE_ID]: {
+        mode: "replace",
+        lines: [2],
+      },
+    });
+
+    const errors: GtfsTripParsingError[] = [];
+    const parser = new GtfsTripParser(
+      lineRoutesMapping,
+      bonusLinesMapping,
+      (e) => errors.push(e),
+    );
+
+    const tripsCsv = [TRIP_ROW];
+    const stopTimesCsv = [STOP_TIME_1, STOP_TIME_2];
+
+    const trips = parser.parse(
+      tripsCsv,
+      stopTimesCsv,
+      [],
+      [CALENDAR_EVERYDAY],
+      LINE_GTFS_ID_MAPPING,
+      STOP_GTFS_ID_MAPPING,
+    );
+
+    expect(errors).toEqual([]);
+    expect(trips).toHaveLength(1);
+    const trip = itsOk(trips[0]);
+    expect(trip.lineIds).toStrictEqual([LINE_ID]);
+    expect(trip.serviceTags).toStrictEqual([7]);
   });
 });
