@@ -8,8 +8,6 @@ import {
 } from "./gtfs-updated-trip-movements.js";
 import type { StopGtfsIdMetadata } from "./ids/stop-gtfs-id-metadata.js";
 
-// TODO: Rename movements and categories as described in rename.png?
-
 export type GtfsScheduledTripMovement =
   | GtfsScheduledTripOriginatingMovement
   | GtfsScheduledTripRegularMovement
