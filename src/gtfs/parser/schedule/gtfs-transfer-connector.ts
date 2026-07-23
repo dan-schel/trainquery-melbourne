@@ -49,10 +49,10 @@ export class GtfsTransferConnector {
         continue;
       }
 
-      // TODO: Should I report if the transfer.from_stop_id is not the same as
-      // the transfer.to_stop_id? That would mean a "in-seat transfer" to a
-      // different platform, which should be impossible.
-
+      if (transfer.from_stop_id !== transfer.to_stop_id) {
+        this._onError(new TransferIsNotSameStopAndPositionError(transfer));
+        continue;
+      }
       if (fromTrip.termination.gtfsIdMetadata.id !== transfer.from_stop_id) {
         this._onError(new TransferIsNotFromTerminusError(transfer, fromTrip));
         continue;
@@ -92,7 +92,8 @@ export type GtfsTransferConnectionError =
   | TransferIsNotFromTerminusError
   | TransferIsNotToOriginError
   | TransferReferencesTripAlreadyConnectedError
-  | TransferIsNotInSeatTransferError;
+  | TransferIsNotInSeatTransferError
+  | TransferIsNotSameStopAndPositionError;
 
 export class TransferReferencesNonExistentTrip extends Error {
   readonly type = "transfer-references-non-existent-trip";
@@ -136,6 +137,13 @@ export class TransferReferencesTripAlreadyConnectedError extends Error {
 
 export class TransferIsNotInSeatTransferError extends Error {
   readonly type = "transfer-is-not-in-seat-transfer";
+  constructor(readonly transfer: TransfersCsvRow) {
+    super();
+  }
+}
+
+export class TransferIsNotSameStopAndPositionError extends Error {
+  readonly type = "transfer-is-not-same-stop-and-position";
   constructor(readonly transfer: TransfersCsvRow) {
     super();
   }

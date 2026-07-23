@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   GtfsTransferConnector,
   TransferIsNotInSeatTransferError,
+  TransferIsNotSameStopAndPositionError,
   type GtfsTransferConnectionError,
 } from "../../../../src/gtfs/parser/schedule/gtfs-transfer-connector.js";
 import {
@@ -85,12 +86,13 @@ describe("GtfsTransferConnector", () => {
     expect(errors[0]).toBeInstanceOf(TransferReferencesNonExistentTrip);
   });
 
-  it("reports transfers that do not start from the from trip terminus", () => {
+  it("reports transfers that do not start from the 'from' trip terminus", () => {
     const errors: GtfsTransferConnectionError[] = [];
     const connector = new GtfsTransferConnector((e) => errors.push(e));
 
-    const transfersCsv = [{ ...TRANSFER, from_stop_id: "1" }];
-    const result = connector.connect(TRIPS, transfersCsv);
+    const trips = [makeTrip("trip-a", "1", "2"), makeTrip("trip-b", "1", "3")];
+    const transfersCsv = [{ ...TRANSFER, from_stop_id: "1", to_stop_id: "1" }];
+    const result = connector.connect(trips, transfersCsv);
 
     expect(result).toHaveLength(2);
     expect(errors).toHaveLength(1);
@@ -99,12 +101,13 @@ describe("GtfsTransferConnector", () => {
     expect(itsOk(result[1]).previousTrip).toBeNull();
   });
 
-  it("reports transfers that do not end at the to trip origin", () => {
+  it("reports transfers that do not end at the 'to' trip origin", () => {
     const errors: GtfsTransferConnectionError[] = [];
     const connector = new GtfsTransferConnector((e) => errors.push(e));
 
-    const transfersCsv = [{ ...TRANSFER, to_stop_id: "3" }];
-    const result = connector.connect(TRIPS, transfersCsv);
+    const trips = [makeTrip("trip-a", "1", "2"), makeTrip("trip-b", "3", "2")];
+    const transfersCsv = [{ ...TRANSFER, to_stop_id: "2", from_stop_id: "2" }];
+    const result = connector.connect(trips, transfersCsv);
 
     expect(result).toHaveLength(2);
     expect(errors).toHaveLength(1);
@@ -132,6 +135,19 @@ describe("GtfsTransferConnector", () => {
     expect(errors[0]).toBeInstanceOf(
       TransferReferencesTripAlreadyConnectedError,
     );
+  });
+
+  it("reports transfers where the 'from' stop & position is different to the 'to' stop & position", () => {
+    const errors: GtfsTransferConnectionError[] = [];
+    const connector = new GtfsTransferConnector((e) => errors.push(e));
+
+    const trips = [makeTrip("trip-a", "1", "2"), makeTrip("trip-b", "3", "4")];
+    const transfersCsv = [{ ...TRANSFER, from_stop_id: "2", to_stop_id: "3" }];
+    const result = connector.connect(trips, transfersCsv);
+
+    expect(result).toHaveLength(2);
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toBeInstanceOf(TransferIsNotSameStopAndPositionError);
   });
 
   function makeTrip(
