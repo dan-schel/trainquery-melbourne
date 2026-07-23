@@ -17,7 +17,7 @@ interface IGtfsUpdatedTripMovement {
 
   get type(): string;
   get isNonPassing(): boolean;
-  get isInBetween(): boolean;
+  get isNonTerminal(): boolean;
 }
 interface IGtfsUpdatedTripNonPassingMovement extends IGtfsUpdatedTripMovement {
   // Original & updated to support platform changes. Can be removed in favour of
@@ -115,7 +115,7 @@ export class GtfsUpdatedTripOriginatingMovement implements IGtfsUpdatedTripNonPa
   get isNonPassing() {
     return true as const;
   }
-  get isInBetween() {
+  get isNonTerminal() {
     return false as const;
   }
 }
@@ -155,7 +155,7 @@ export class GtfsUpdatedTripRegularMovement implements IGtfsUpdatedTripNonPassin
   get isNonPassing() {
     return true as const;
   }
-  get isInBetween() {
+  get isNonTerminal() {
     return true as const;
   }
 }
@@ -187,7 +187,7 @@ export class GtfsUpdatedTripTerminatingMovement implements IGtfsUpdatedTripNonPa
   get isNonPassing() {
     return true as const;
   }
-  get isInBetween() {
+  get isNonTerminal() {
     return false as const;
   }
 }
@@ -205,7 +205,7 @@ export class GtfsUpdatedTripPassingMovement implements IGtfsUpdatedTripMovement 
   get isNonPassing() {
     return false as const;
   }
-  get isInBetween() {
+  get isNonTerminal() {
     return true as const;
   }
 }

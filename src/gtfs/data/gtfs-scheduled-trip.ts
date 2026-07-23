@@ -46,10 +46,10 @@ export class GtfsScheduledTrip {
 
     const originOk = itsOk(this.movements[0]).type === "originating";
     const terminusOk = itsOk(this.movements.at(-1)).type === "terminating";
-    const othersOk = this.movements.slice(1, -1).every((m) => m.isInBetween);
+    const othersOk = this.movements.slice(1, -1).every((m) => m.isNonTerminal);
     if (!originOk) throw new Error("First movement of wrong type.");
     if (!terminusOk) throw new Error("Last movement of wrong type");
-    if (!othersOk) throw new Error("Some in-between movements of wrong type.");
+    if (!othersOk) throw new Error("Some terminal movements in wrong places.");
   }
 
   with(newValues: Partial<GtfsScheduledTripFields>): GtfsScheduledTrip {

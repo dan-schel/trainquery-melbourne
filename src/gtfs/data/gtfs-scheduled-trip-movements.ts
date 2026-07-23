@@ -38,7 +38,7 @@ interface IGtfsScheduledTripMovement {
 
   get type(): string;
   get isNonPassing(): boolean;
-  get isInBetween(): boolean;
+  get isNonTerminal(): boolean;
   asHollowUpdatedTripMovement(): GtfsUpdatedTripMovement;
 }
 interface IGtfsScheduledTripNonPassingMovement extends IGtfsScheduledTripMovement {
@@ -106,7 +106,7 @@ export class GtfsScheduledTripOriginatingMovement implements IGtfsScheduledTripN
   get isNonPassing() {
     return true as const;
   }
-  get isInBetween() {
+  get isNonTerminal() {
     return false as const;
   }
   get timeRelevantToDeparturesAlgorithm() {
@@ -179,7 +179,7 @@ export class GtfsScheduledTripRegularMovement implements IGtfsScheduledTripNonPa
   get isNonPassing() {
     return true as const;
   }
-  get isInBetween() {
+  get isNonTerminal() {
     return true as const;
   }
   get timeRelevantToDeparturesAlgorithm() {
@@ -254,7 +254,7 @@ export class GtfsScheduledTripTerminatingMovement implements IGtfsScheduledTripN
   get isNonPassing() {
     return true as const;
   }
-  get isInBetween() {
+  get isNonTerminal() {
     return false as const;
   }
   get timeRelevantToDeparturesAlgorithm() {
@@ -313,7 +313,7 @@ export class GtfsScheduledTripPassingMovement implements IGtfsScheduledTripMovem
   get isNonPassing() {
     return false as const;
   }
-  get isInBetween() {
+  get isNonTerminal() {
     return true as const;
   }
 
