@@ -22,19 +22,19 @@ import {
   GtfsTransferConnector,
 } from "./gtfs-transfer-connector.js";
 import type { LineRoutes } from "../../data/route/line-routes.js";
-import type { LineOverrides } from "../../data/route/line-overrides.js";
+import type { BonusLinesMapping } from "../../data/route/bonus-lines-mapping.js";
 
 export class GtfsTripParser {
   private readonly _stopTimeNormaliser: GtfsStopTimeNormaliser;
   private readonly _primaryRouteMatcher: GtfsRouteMatcher;
-  private readonly _overrideRouteMatcher: GtfsRouteMatcher;
+  private readonly _bonusRouteMatcher: GtfsRouteMatcher;
   private readonly _transferConnector: GtfsTransferConnector;
 
   constructor(
     // Unlike csvs, lineGtfsIdMapping, and stopGtfsIdMapping, these are not
     // subfeed-dependent, so I'm opting to make them constructor args.
     private readonly _lineRoutes: LineRoutes,
-    private readonly _lineOverrides: LineOverrides,
+    private readonly _bonusLinesMapping: BonusLinesMapping,
 
     private readonly _onError: (error: GtfsTripParsingError) => void,
   ) {
@@ -42,9 +42,8 @@ export class GtfsTripParser {
     this._primaryRouteMatcher = new GtfsRouteMatcher(this._onError);
     this._transferConnector = new GtfsTransferConnector(this._onError);
 
-    // We don't care if an override route doesn't match. Most of the time, it
-    // won't.
-    this._overrideRouteMatcher = new GtfsRouteMatcher(() => {});
+    // We don't care if a bonus route doesn't match. Most of the time, it won't!
+    this._bonusRouteMatcher = new GtfsRouteMatcher(() => {});
   }
 
   parse(
@@ -89,7 +88,7 @@ export class GtfsTripParser {
       // Route matcher reports its own errors.
       if (routeMatchResult == null) continue;
 
-      const { lineIds, serviceTags } = this._applyLineOverrides(
+      const { lineIds, serviceTags } = this._applyBonusLines(
         lineIdMatch.lineId,
         routeMatchResult.serviceTags,
         normalizedStopTimes,
@@ -160,35 +159,35 @@ export class GtfsTripParser {
   }
 
   // TODO: None of this is tested. I should test:
-  // - the happy path for line overrides
+  // - the happy path for bonus lines
   // - replace mode
   // - replace mode does nothing if no lines match
-  // - no errors are logged for the override line matching
-  private _applyLineOverrides(
+  // - no errors are logged for the bonus line matching
+  private _applyBonusLines(
     mainRouteLineId: number,
     mainRouteServiceTags: readonly number[],
     normalizedStopTimes: StopTimesCsv,
     stopGtfsIdMapping: StopGtfsIdMapping,
   ) {
-    const override = this._lineOverrides.forLine(mainRouteLineId);
-    if (override == null) {
+    const bonusLines = this._bonusLinesMapping.forLine(mainRouteLineId);
+    if (bonusLines == null) {
       return { lineIds: [mainRouteLineId], serviceTags: mainRouteServiceTags };
     }
 
-    // Go through all override lines, and collect the line IDs and service tags
+    // Go through all bonus lines, and collect the line IDs and service tags
     // for any routes that match.
     const lineIds = new Set<number>();
     const serviceTags = new Set<number>();
-    for (const overrideLine of override.lines) {
-      const overrideMatchResult = this._overrideRouteMatcher.match(
+    for (const bonusLine of bonusLines.lines) {
+      const matchResult = this._bonusRouteMatcher.match(
         normalizedStopTimes,
-        this._lineRoutes.forLine(overrideLine),
+        this._lineRoutes.forLine(bonusLine),
         stopGtfsIdMapping,
       );
 
-      if (overrideMatchResult != null) {
-        lineIds.add(overrideLine);
-        for (const serviceTag of overrideMatchResult.serviceTags) {
+      if (matchResult != null) {
+        lineIds.add(bonusLine);
+        for (const serviceTag of matchResult.serviceTags) {
           serviceTags.add(serviceTag);
         }
       }
@@ -196,7 +195,7 @@ export class GtfsTripParser {
 
     // If in "replace" mode, we throw away the main route's line ID and tags if
     // anything else matches. Otherwise they're added on.
-    const shouldReplace = lineIds.size > 0 && override.mode === "replace";
+    const shouldReplace = lineIds.size > 0 && bonusLines.mode === "replace";
     if (!shouldReplace) {
       lineIds.add(mainRouteLineId);
       for (const serviceTag of mainRouteServiceTags) {

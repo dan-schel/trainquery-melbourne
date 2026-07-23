@@ -1,9 +1,10 @@
-import type { LineOverridesConfig } from "../../gtfs/config/routes.js";
+import type { BonusLinesMappingConfig } from "../../gtfs/config/routes.js";
 import * as line from "../corequery/lines/line-ids.js";
 
-export const lineOverrides: LineOverridesConfig = {
-  // "Line overrides" is the ability to override which line we consider a
-  // service to be on. We can use it to add lines or as a replacement.
+export const bonusLinesMapping: BonusLinesMappingConfig = {
+  // "Bonus lines" is the ability to add additional lines that we consider a
+  // service to be on, other than just the line mapped to the GTFS route ID. We
+  // can use it to add lines or to replace the mapped line.
   //
   // e.g. any trains successfully parsed for the Cranbourne line (i.e. has a
   // GTFS route ID which is mapped to the Cranbourne line and matches one of its

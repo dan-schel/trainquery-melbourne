@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { GtfsScheduleParser } from "../../../../src/gtfs/parser/schedule/gtfs-schedule-parser.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
-import { LineOverrides } from "../../../../src/gtfs/data/route/line-overrides.js";
+import { BonusLinesMapping } from "../../../../src/gtfs/data/route/bonus-lines-mapping.js";
 import { LineRoutes } from "../../../../src/gtfs/data/route/line-routes.js";
 import { LineGtfsIdMapping } from "../../../../src/gtfs/data/ids/line-gtfs-id-mapping.js";
 import { StopGtfsIdMapping } from "../../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
@@ -37,7 +37,7 @@ describe("GtfsScheduleParser", () => {
     ],
   });
 
-  const LINE_OVERRIDES_NONE = new LineOverrides(new Map());
+  const BONUS_LINES_MAPPING = new BonusLinesMapping(new Map());
 
   const CALENDAR = {
     service_id: "svc",
@@ -79,7 +79,7 @@ describe("GtfsScheduleParser", () => {
   it("builds a schedule from parsed calendars and trips", () => {
     const parser = new GtfsScheduleParser(
       LINE_ROUTES,
-      LINE_OVERRIDES_NONE,
+      BONUS_LINES_MAPPING,
       () => {},
     );
 

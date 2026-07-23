@@ -11,19 +11,23 @@ import {
 import type { LineGtfsIdMapping } from "../../data/ids/line-gtfs-id-mapping.js";
 import type { StopGtfsIdMapping } from "../../data/ids/stop-gtfs-id-mapping.js";
 import type { LineRoutes } from "../../data/route/line-routes.js";
-import type { LineOverrides } from "../../data/route/line-overrides.js";
+import type { BonusLinesMapping } from "../../data/route/bonus-lines-mapping.js";
 
 export class GtfsScheduleParser {
   private readonly _calendarParser: GtfsCalendarParser;
   private readonly _tripParser: GtfsTripParser;
 
   constructor(
-    lineRoutes: LineRoutes,
-    lineOverrides: LineOverrides,
+    lineRoutes: LineRoutes, // TODO: Rename LineRoutesMapping for consistency?
+    bonusLinesMapping: BonusLinesMapping,
     onError: (error: GtfsScheduleParsingError) => void,
   ) {
     this._calendarParser = new GtfsCalendarParser(onError);
-    this._tripParser = new GtfsTripParser(lineRoutes, lineOverrides, onError);
+    this._tripParser = new GtfsTripParser(
+      lineRoutes,
+      bonusLinesMapping,
+      onError,
+    );
   }
 
   parse(

@@ -9,7 +9,7 @@ import {
 } from "../../../../src/gtfs/parser/schedule/gtfs-trip-parser.js";
 import { MultipleStopSequencesError } from "../../../../src/gtfs/parser/schedule/gtfs-stop-time-normaliser.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
-import { LineOverrides } from "../../../../src/gtfs/data/route/line-overrides.js";
+import { BonusLinesMapping } from "../../../../src/gtfs/data/route/bonus-lines-mapping.js";
 import { GtfsCalendar } from "../../../../src/gtfs/data/gtfs-calendar.js";
 import { LineRoutes } from "../../../../src/gtfs/data/route/line-routes.js";
 import { LineGtfsIdMapping } from "../../../../src/gtfs/data/ids/line-gtfs-id-mapping.js";
@@ -46,7 +46,7 @@ describe("GtfsTripParser", () => {
     ],
   });
 
-  const LINE_OVERRIDES_NONE = LineOverrides.build({});
+  const BONUS_LINES_MAPPING = BonusLinesMapping.build({});
   const CALENDAR_EVERYDAY = GtfsCalendar.everyday("cal");
 
   const TRIP_ROW = {
@@ -75,7 +75,7 @@ describe("GtfsTripParser", () => {
 
   it("parses one simple trip end-to-end", () => {
     const errors: GtfsTripParsingError[] = [];
-    const parser = new GtfsTripParser(LINE_ROUTES, LINE_OVERRIDES_NONE, (e) =>
+    const parser = new GtfsTripParser(LINE_ROUTES, BONUS_LINES_MAPPING, (e) =>
       errors.push(e),
     );
 
@@ -109,7 +109,7 @@ describe("GtfsTripParser", () => {
     // doesn't do that sort!
 
     const errors: GtfsTripParsingError[] = [];
-    const parser = new GtfsTripParser(LINE_ROUTES, LINE_OVERRIDES_NONE, (e) =>
+    const parser = new GtfsTripParser(LINE_ROUTES, BONUS_LINES_MAPPING, (e) =>
       errors.push(e),
     );
 
@@ -155,7 +155,7 @@ describe("GtfsTripParser", () => {
 
   it("reports duplicate trip rows and keeps the first one", () => {
     const errors: GtfsTripParsingError[] = [];
-    const parser = new GtfsTripParser(LINE_ROUTES, LINE_OVERRIDES_NONE, (e) =>
+    const parser = new GtfsTripParser(LINE_ROUTES, BONUS_LINES_MAPPING, (e) =>
       errors.push(e),
     );
 
@@ -178,7 +178,7 @@ describe("GtfsTripParser", () => {
 
   it("reports stop_times rows that reference non-existent trips", () => {
     const errors: GtfsTripParsingError[] = [];
-    const parser = new GtfsTripParser(LINE_ROUTES, LINE_OVERRIDES_NONE, (e) =>
+    const parser = new GtfsTripParser(LINE_ROUTES, BONUS_LINES_MAPPING, (e) =>
       errors.push(e),
     );
 
@@ -205,7 +205,7 @@ describe("GtfsTripParser", () => {
 
   it("reports trips that reference non-existent calendars", () => {
     const errors: GtfsTripParsingError[] = [];
-    const parser = new GtfsTripParser(LINE_ROUTES, LINE_OVERRIDES_NONE, (e) =>
+    const parser = new GtfsTripParser(LINE_ROUTES, BONUS_LINES_MAPPING, (e) =>
       errors.push(e),
     );
 
@@ -228,7 +228,7 @@ describe("GtfsTripParser", () => {
 
   it("reports trips that reference unmapped route IDs", () => {
     const errors: GtfsTripParsingError[] = [];
-    const parser = new GtfsTripParser(LINE_ROUTES, LINE_OVERRIDES_NONE, (e) =>
+    const parser = new GtfsTripParser(LINE_ROUTES, BONUS_LINES_MAPPING, (e) =>
       errors.push(e),
     );
 

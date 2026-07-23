@@ -26,7 +26,7 @@ import type { RealtimeFeedJson } from "./retrieval/realtime/realtime-feed-schema
 import type { GtfsSchedule } from "./data/gtfs-schedule.js";
 import type { GtfsRealtimeData } from "./data/gtfs-realtime-data.js";
 import { MELBOURNE_TIMEZONE } from "./departures-old/scheduled-departures-block-factory.js";
-import { LineOverrides } from "./data/route/line-overrides.js";
+import { BonusLinesMapping } from "./data/route/bonus-lines-mapping.js";
 import { itsOk, listifyAnd } from "@dan-schel/js-utils";
 
 type GtfsParsingError =
@@ -78,7 +78,9 @@ export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
 
 function formalizeConfig(config: GtfsConfig) {
   const lineRoutes = LineRoutes.build(config.lineRoutes);
-  const lineOverrides = LineOverrides.build(config.lineOverrides ?? {});
+  const bonusLinesMapping = BonusLinesMapping.build(
+    config.bonusLinesMapping ?? {},
+  );
 
   const suburbanLineGtfsIdMapping = LineGtfsIdMapping.build(
     config.lineGtfsIds,
@@ -100,7 +102,7 @@ function formalizeConfig(config: GtfsConfig) {
 
   return {
     lineRoutes,
-    lineOverrides,
+    bonusLinesMapping,
     suburbanLineGtfsIdMapping,
     regionalLineGtfsIdMapping,
     suburbanStopGtfsIdMapping,
@@ -115,7 +117,7 @@ function parseSchedule(
 ) {
   const parser = new GtfsScheduleParser(
     config.lineRoutes,
-    config.lineOverrides,
+    config.bonusLinesMapping,
     (e) => errors.push(e),
   );
 

@@ -13,9 +13,9 @@ export type RouteStopConfig = {
   readonly collapseInStoppingPatterns: boolean;
 };
 
-export type LineOverridesConfig = Record<number, LineOverrideConfig>;
+export type BonusLinesMappingConfig = Record<number, BonusLinesConfig>;
 
-export type LineOverrideConfig = {
+export type BonusLinesConfig = {
   readonly mode: "add" | "replace";
   readonly lines: readonly number[];
 };

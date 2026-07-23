@@ -2,11 +2,11 @@ import { lineGtfsIds } from "./line-gtfs-ids.js";
 import { lineRoutes } from "./line-routes.js";
 import { stopGtfsIds } from "./stop-gtfs-ids.js";
 import type { GtfsConfig } from "../../gtfs/config/index.js";
-import { lineOverrides } from "./line-overrides.js";
+import { bonusLinesMapping } from "./bonus-lines-mapping.js";
 
 export const gtfsConfig: GtfsConfig = {
   lineGtfsIds: lineGtfsIds,
   stopGtfsIds: stopGtfsIds,
   lineRoutes: lineRoutes,
-  lineOverrides: lineOverrides,
+  bonusLinesMapping: bonusLinesMapping,
 };
