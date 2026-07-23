@@ -1,7 +1,7 @@
 import { assert, describe, it } from "vitest";
 import { lines } from "../../../src/config/corequery/lines/index.js";
 import { stops } from "../../../src/config/corequery/stops/index.js";
-import { lineRoutes } from "../../../src/config/gtfs/line-routes.js";
+import { lineRoutesMapping } from "../../../src/config/gtfs/line-routes-mapping.js";
 import { assertNever, itsOk, unique } from "@dan-schel/js-utils";
 import {
   extractStopsFromLineDiagramShape,
@@ -59,12 +59,12 @@ const linesExemptedFromHavingReversedRoutes: number[] = [];
 
 const linesExemptedFromHavingCompatibleDiagrams: number[] = [];
 
-describe("lineRoutes", () => {
+describe("lineRoutesMapping", () => {
   it("has an entry for each line", () => {
     for (const line of lines) {
       if (linesExemptedFromHavingRoutes.includes(line.id)) continue;
 
-      const routes = lineRoutes[line.id] ?? [];
+      const routes = lineRoutesMapping[line.id] ?? [];
       assert(
         routes.length !== 0,
         `No routes found for ${line.name} line (#${line.id}).`,
@@ -74,7 +74,7 @@ describe("lineRoutes", () => {
 
   it("only includes stops which actually exist", () => {
     for (const line of lines) {
-      const routes = lineRoutes[line.id] ?? [];
+      const routes = lineRoutesMapping[line.id] ?? [];
 
       for (const route of routes) {
         for (const stop of route.stops) {
@@ -127,7 +127,7 @@ describe("lineRoutes", () => {
 
   it("has no routes with less than two stops", () => {
     for (const line of lines) {
-      const routes = lineRoutes[line.id] ?? [];
+      const routes = lineRoutesMapping[line.id] ?? [];
 
       for (let i = 0; i < routes.length; i++) {
         const route = itsOk(routes[i]);
@@ -141,7 +141,7 @@ describe("lineRoutes", () => {
 
   it("has no duplicate routes", () => {
     for (const line of lines) {
-      const routes = lineRoutes[line.id] ?? [];
+      const routes = lineRoutesMapping[line.id] ?? [];
       const seenRoutes = new Set<string>();
 
       for (let i = 0; i < routes.length; i++) {
@@ -164,7 +164,7 @@ describe("lineRoutes", () => {
     for (const line of lines) {
       if (linesExemptedFromHavingReversedRoutes.includes(line.id)) continue;
 
-      const routes = lineRoutes[line.id] ?? [];
+      const routes = lineRoutesMapping[line.id] ?? [];
       const stopLists = routes.map((r) => r.stops.map((s) => s.stopId));
 
       for (const stopList of stopLists) {
@@ -184,7 +184,7 @@ describe("lineRoutes", () => {
     for (const line of lines) {
       if (linesExemptedFromHavingCompatibleDiagrams.includes(line.id)) continue;
 
-      const routeConfigs = lineRoutes[line.id] ?? [];
+      const routeConfigs = lineRoutesMapping[line.id] ?? [];
       const routes = routeConfigs.map((r) => Route.build(r));
 
       for (const diagram of line.diagram.entries) {
@@ -209,7 +209,7 @@ function getStopsInRoutes(
   lineId: number,
   { includeCollasped = false } = {},
 ): number[] {
-  const routes = lineRoutes[lineId] ?? [];
+  const routes = lineRoutesMapping[lineId] ?? [];
   return unique(
     routes.flatMap((r) =>
       r.stops

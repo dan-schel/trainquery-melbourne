@@ -1,4 +1,4 @@
-import type { LineRoutesConfig } from "../../gtfs/config/routes.js";
+import type { LineRoutesMappingConfig } from "../../gtfs/config/routes.js";
 import * as line from "../corequery/lines/line-ids.js";
 import * as stop from "../corequery/stops/stop-ids.js";
 import * as tag from "../corequery/lines/service-tags.js";
@@ -9,7 +9,7 @@ import {
 import { formalizeRouteStops } from "../utils/formalize-stops.js";
 import { createCityLoopRoutes } from "../utils/city-loop.js";
 
-export const lineRoutes: LineRoutesConfig = {
+export const lineRoutesMapping: LineRoutesMappingConfig = {
   [line.ALAMEIN]: createCityLoopRoutes("blue", [
     stop.RICHMOND,
     stop.EAST_RICHMOND,

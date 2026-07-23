@@ -21,7 +21,7 @@ import {
   type GtfsTransferConnectionError,
   GtfsTransferConnector,
 } from "./gtfs-transfer-connector.js";
-import type { LineRoutes } from "../../data/route/line-routes.js";
+import type { LineRoutesMapping } from "../../data/route/line-routes-mapping.js";
 import type { BonusLinesMapping } from "../../data/route/bonus-lines-mapping.js";
 
 export class GtfsTripParser {
@@ -33,7 +33,7 @@ export class GtfsTripParser {
   constructor(
     // Unlike csvs, lineGtfsIdMapping, and stopGtfsIdMapping, these are not
     // subfeed-dependent, so I'm opting to make them constructor args.
-    private readonly _lineRoutes: LineRoutes,
+    private readonly _lineRoutesMapping: LineRoutesMapping,
     private readonly _bonusLinesMapping: BonusLinesMapping,
 
     private readonly _onError: (error: GtfsTripParsingError) => void,
@@ -78,7 +78,7 @@ export class GtfsTripParser {
       // Stop time normaliser reports its own errors.
       if (normalizedStopTimes == null) continue;
 
-      const routesForLine = this._lineRoutes.forLine(lineIdMatch.lineId);
+      const routesForLine = this._lineRoutesMapping.forLine(lineIdMatch.lineId);
 
       const routeMatchResult = this._primaryRouteMatcher.match(
         normalizedStopTimes,
@@ -181,7 +181,7 @@ export class GtfsTripParser {
     for (const bonusLine of bonusLines.lines) {
       const matchResult = this._bonusRouteMatcher.match(
         normalizedStopTimes,
-        this._lineRoutes.forLine(bonusLine),
+        this._lineRoutesMapping.forLine(bonusLine),
         stopGtfsIdMapping,
       );
 

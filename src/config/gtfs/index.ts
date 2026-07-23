@@ -1,5 +1,5 @@
 import { lineGtfsIds } from "./line-gtfs-ids.js";
-import { lineRoutes } from "./line-routes.js";
+import { lineRoutesMapping } from "./line-routes-mapping.js";
 import { stopGtfsIds } from "./stop-gtfs-ids.js";
 import type { GtfsConfig } from "../../gtfs/config/index.js";
 import { bonusLinesMapping } from "./bonus-lines-mapping.js";
@@ -7,6 +7,6 @@ import { bonusLinesMapping } from "./bonus-lines-mapping.js";
 export const gtfsConfig: GtfsConfig = {
   lineGtfsIds: lineGtfsIds,
   stopGtfsIds: stopGtfsIds,
-  lineRoutes: lineRoutes,
+  lineRoutesMapping: lineRoutesMapping,
   bonusLinesMapping: bonusLinesMapping,
 };

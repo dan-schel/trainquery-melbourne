@@ -12,7 +12,7 @@ import {
   type GtfsScheduleParsingError,
 } from "./parser/schedule/gtfs-schedule-parser.js";
 import type { GtfsConfig } from "./config/index.js";
-import { LineRoutes } from "./data/route/line-routes.js";
+import { LineRoutesMapping } from "./data/route/line-routes-mapping.js";
 import { fetchGtfsRealtime } from "./retrieval/realtime/fetch-gtfs-realtime.js";
 import {
   GtfsRealtimeDataParser,
@@ -77,7 +77,7 @@ export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
 }
 
 function formalizeConfig(config: GtfsConfig) {
-  const lineRoutes = LineRoutes.build(config.lineRoutes);
+  const lineRoutesMapping = LineRoutesMapping.build(config.lineRoutesMapping);
   const bonusLinesMapping = BonusLinesMapping.build(
     config.bonusLinesMapping ?? {},
   );
@@ -101,7 +101,7 @@ function formalizeConfig(config: GtfsConfig) {
   );
 
   return {
-    lineRoutes,
+    lineRoutesMapping,
     bonusLinesMapping,
     suburbanLineGtfsIdMapping,
     regionalLineGtfsIdMapping,
@@ -116,7 +116,7 @@ function parseSchedule(
   errors: GtfsParsingError[],
 ) {
   const parser = new GtfsScheduleParser(
-    config.lineRoutes,
+    config.lineRoutesMapping,
     config.bonusLinesMapping,
     (e) => errors.push(e),
   );

@@ -1,11 +1,11 @@
-import type { LineRoutesConfig } from "../../config/routes.js";
+import type { LineRoutesMappingConfig } from "../../config/routes.js";
 import { Route } from "./route.js";
 
-export class LineRoutes {
+export class LineRoutesMapping {
   constructor(private readonly _map: Map<number, readonly Route[]>) {}
 
-  static build(config: LineRoutesConfig) {
-    return new LineRoutes(
+  static build(config: LineRoutesMappingConfig) {
+    return new LineRoutesMapping(
       new Map(
         Object.entries(config).map(([lineId, routes]) => [
           Number(lineId),

@@ -1,6 +1,6 @@
 import type { Color } from "corequery";
 
-export type LineRoutesConfig = Record<number, readonly RouteConfig[]>;
+export type LineRoutesMappingConfig = Record<number, readonly RouteConfig[]>;
 
 export type RouteConfig = {
   readonly color: Color;

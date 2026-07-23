@@ -10,7 +10,7 @@ import {
 } from "./gtfs-trip-parser.js";
 import type { LineGtfsIdMapping } from "../../data/ids/line-gtfs-id-mapping.js";
 import type { StopGtfsIdMapping } from "../../data/ids/stop-gtfs-id-mapping.js";
-import type { LineRoutes } from "../../data/route/line-routes.js";
+import type { LineRoutesMapping } from "../../data/route/line-routes-mapping.js";
 import type { BonusLinesMapping } from "../../data/route/bonus-lines-mapping.js";
 
 export class GtfsScheduleParser {
@@ -18,13 +18,13 @@ export class GtfsScheduleParser {
   private readonly _tripParser: GtfsTripParser;
 
   constructor(
-    lineRoutes: LineRoutes, // TODO: Rename LineRoutesMapping for consistency?
+    lineRoutesMapping: LineRoutesMapping,
     bonusLinesMapping: BonusLinesMapping,
     onError: (error: GtfsScheduleParsingError) => void,
   ) {
     this._calendarParser = new GtfsCalendarParser(onError);
     this._tripParser = new GtfsTripParser(
-      lineRoutes,
+      lineRoutesMapping,
       bonusLinesMapping,
       onError,
     );

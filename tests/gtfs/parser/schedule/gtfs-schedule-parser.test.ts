@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { GtfsScheduleParser } from "../../../../src/gtfs/parser/schedule/gtfs-schedule-parser.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 import { BonusLinesMapping } from "../../../../src/gtfs/data/route/bonus-lines-mapping.js";
-import { LineRoutes } from "../../../../src/gtfs/data/route/line-routes.js";
+import { LineRoutesMapping } from "../../../../src/gtfs/data/route/line-routes-mapping.js";
 import { LineGtfsIdMapping } from "../../../../src/gtfs/data/ids/line-gtfs-id-mapping.js";
 import { StopGtfsIdMapping } from "../../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
 import { StopGtfsIdCollection } from "../../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
@@ -24,7 +24,7 @@ describe("GtfsScheduleParser", () => {
     ]),
   );
 
-  const LINE_ROUTES = LineRoutes.build({
+  const LINE_ROUTES = LineRoutesMapping.build({
     [LINE_ID]: [
       {
         color: "blue",
