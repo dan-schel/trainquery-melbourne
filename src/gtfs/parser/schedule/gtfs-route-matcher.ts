@@ -161,6 +161,9 @@ export class GtfsRouteMatcher {
       const positionId =
         gtfsIdMetadata.type === "platform" ? gtfsIdMetadata.positionId : null;
 
+      const picksUp = this._doesPickUp(stopTime);
+      const dropsOff = this._doesDropOff(stopTime);
+
       if (i === 0) {
         result.push(
           new GtfsScheduledTripOriginatingMovement({
@@ -188,14 +191,8 @@ export class GtfsRouteMatcher {
             positionId,
             arrivalTime: stopTime.arrival_time,
             departureTime: stopTime.departure_time,
-
-            // TODO: We're only checking these enum values for servicing
-            // movements, not originating or terminating movements (since in
-            // those cases we ignore it anyway). Is that good? I think it's a
-            // bit weird we don't check it.
-            picksUp: this._doesPickUp(stopTime),
-            dropsOff: this._doesDropOff(stopTime),
-
+            picksUp,
+            dropsOff,
             gtfsIdMetadata,
             gtfsStopSequence: stopTime.stop_sequence,
           }),

@@ -100,11 +100,7 @@ describe("GtfsRouteMatcher", () => {
     const errors: GtfsRouteMatchingError[] = [];
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
-    const stopTimes = [
-      stopTime("1"),
-      { ...stopTime("2"), pickup_type: 2 },
-      stopTime("3"),
-    ];
+    const stopTimes = [{ ...stopTime("1"), pickup_type: 2 }, stopTime("2")];
     const result = matcher.match(stopTimes, ROUTES_FOR_LINE, STOP_MAPPING);
 
     expect(errors).toHaveLength(1);
@@ -116,11 +112,7 @@ describe("GtfsRouteMatcher", () => {
     const errors: GtfsRouteMatchingError[] = [];
     const matcher = new GtfsRouteMatcher((e) => errors.push(e));
 
-    const stopTimes = [
-      stopTime("1"),
-      { ...stopTime("2"), drop_off_type: 2 },
-      stopTime("3"),
-    ];
+    const stopTimes = [stopTime("1"), { ...stopTime("2"), drop_off_type: 2 }];
     const result = matcher.match(stopTimes, ROUTES_FOR_LINE, STOP_MAPPING);
 
     expect(errors).toHaveLength(1);
