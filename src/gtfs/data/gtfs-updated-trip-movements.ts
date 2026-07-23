@@ -20,11 +20,10 @@ interface IGtfsUpdatedTripMovement {
   get isInBetween(): boolean;
 }
 interface IGtfsUpdatedTripNonPassingMovement extends IGtfsUpdatedTripMovement {
-  // Original & updated to support platform changes.
-  //
-  // TODO: I should add error reporting logging to see if this ever actually
-  // happens like this in the parser, or would PTV represent it as a new trip
-  // instead?
+  // Original & updated to support platform changes. Can be removed in favour of
+  // just having `positionId` and `gtfsIdMetadata` like the scheduled movements
+  // have if it turns out PTV don't actually do platform changes like this (e.g.
+  // they just remove this trip and create a new "ADDED" one instead, idk).
   readonly originalPositionId: number | null;
   readonly updatedPositionId: number | null;
   readonly originalGtfsIdMetadata: StopGtfsIdMetadata;

@@ -27,6 +27,7 @@ import type { GtfsSchedule } from "./data/gtfs-schedule.js";
 import type { GtfsRealtimeData } from "./data/gtfs-realtime-data.js";
 import { MELBOURNE_TIMEZONE } from "./departures-old/scheduled-departures-block-factory.js";
 import { LineOverrides } from "./data/route/line-overrides.js";
+import { itsOk, listifyAnd } from "@dan-schel/js-utils";
 
 type GtfsParsingError =
   | GtfsScheduleParsingError
@@ -62,21 +63,17 @@ export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
   const diff = end - start;
   console.log(`Done parsing! (${diff.toFixed(2)}ms)\n`);
 
-  if (errors.length === 0) {
-    const stats = formatStats(
-      ctx,
-      suburbanSchedule,
-      regionalSchedule,
-      suburbanRealtimeData,
-      regionalRealtimeData,
-    );
+  const statsStr = formatStats(
+    ctx,
+    suburbanSchedule,
+    regionalSchedule,
+    suburbanRealtimeData,
+    regionalRealtimeData,
+  );
+  console.log(statsStr + "\n");
 
-    console.log(stats);
-  } else {
-    for (const error of errors) {
-      console.error(error);
-    }
-  }
+  const errorsStr = formatErrors(errors);
+  console.log(errorsStr);
 }
 
 function formalizeConfig(config: GtfsConfig) {
@@ -176,21 +173,57 @@ function formatStats(
   suburbanRealtimeData: GtfsRealtimeData,
   regionalRealtimeData: GtfsRealtimeData,
 ) {
-  const tripLines = [
+  function lineNames({ lineIds }: { lineIds: readonly number[] }) {
+    return listifyAnd(lineIds.map((id) => ctx.lines.require(id).name).sort());
+  }
+
+  const allTrips = [
     ...suburbanSchedule.allTrips(),
     ...regionalSchedule.allTrips(),
-  ].flatMap((x) => x.lineIds);
-
-  const tripUpdateLines = [
+  ];
+  const allTripUpdates = [
     ...suburbanRealtimeData.updatedTrips,
     ...regionalRealtimeData.updatedTrips,
-  ].flatMap((x) => x.scheduledTrip.lineIds);
+  ];
+
+  const stats = new Map<string, { trips: number; tripUpdates: number }>();
+
+  for (const trip of allTrips) {
+    const lineName = lineNames(trip);
+    const stat = stats.get(lineName) ?? { trips: 0, tripUpdates: 0 };
+    stat.trips += 1;
+    stats.set(lineName, stat);
+  }
+
+  for (const tripUpdate of allTripUpdates) {
+    const lineName = lineNames(tripUpdate.scheduledTrip);
+    const stat = stats.get(lineName) ?? { trips: 0, tripUpdates: 0 };
+    stat.tripUpdates += 1;
+    stats.set(lineName, stat);
+  }
 
   let output = "Trip counts:";
-  for (const line of ctx.lines.all()) {
-    const count = tripLines.filter((x) => x === line.id).length;
-    const updateCount = tripUpdateLines.filter((x) => x === line.id).length;
-    output += `\n - ${line.name}: ${count} trips, ${updateCount} trip updates`;
+  for (const line of Array.from(stats.keys()).sort()) {
+    const { trips, tripUpdates } = itsOk(stats.get(line));
+    output += `\n - ${line}: ${trips} trips, ${tripUpdates} trip updates`;
+  }
+  return output;
+}
+
+function formatErrors(errors: GtfsParsingError[]) {
+  if (errors.length === 0) return "No errors!";
+
+  const stats = new Map<string, number>();
+  for (const error of errors) {
+    const type = error.type;
+    const count = stats.get(type) ?? 0;
+    stats.set(type, count + 1);
+  }
+
+  let output = "Error counts:";
+  for (const type of Array.from(stats.keys()).sort()) {
+    const count = itsOk(stats.get(type));
+    output += `\n - ${type}: ${count}`;
   }
   return output;
 }

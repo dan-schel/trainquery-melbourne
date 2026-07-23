@@ -15,6 +15,7 @@ import {
   UnsupportedStopTimeUpdateEntryScheduleRelationshipError,
   UnsupportedTripUpdateScheduleRelationshipError,
   type GtfsTripUpdateParsingError,
+  StopTimeUpdateEntryChangesPlatformError,
 } from "../../../../src/gtfs/parser/realtime/gtfs-trip-update-parser.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 import {
@@ -462,8 +463,13 @@ describe("GtfsTripUpdateParser", () => {
 
     const parsed = parser.parse(tripUpdate, schedule, mapping);
 
-    expect(errors).toEqual([]);
     expect(parsed).not.toBeNull();
+
+    // Despite parsing everything just fine (we SUPPORT platform changes), we
+    // still log an "error" just for my curiousity to see if this ever actually
+    // happens.
+    expect(errors).toHaveLength(1);
+    expect(errors[0]).toBeInstanceOf(StopTimeUpdateEntryChangesPlatformError);
 
     const updatedFirstMovement = parsed?.movements[0];
     if (updatedFirstMovement?.type !== "originating")
