@@ -1,4 +1,4 @@
-import { GtfsSchedule } from "../../data/gtfs-schedule.js";
+import { GtfsScheduleData } from "../../data/gtfs-schedule-data.js";
 import type { GtfsFeedCsv } from "../../retrieval/schedule/read-gtfs-csvs.js";
 import {
   GtfsCalendarParser,
@@ -34,7 +34,7 @@ export class GtfsScheduleParser {
     csvs: GtfsFeedCsv,
     lineGtfsIdMapping: LineGtfsIdMapping,
     stopGtfsIdMapping: StopGtfsIdMapping,
-  ): GtfsSchedule {
+  ): GtfsScheduleData {
     const { calendar, calendarDates, trips, stopTimes, transfers } = csvs;
 
     const parsedCalendars = this._calendarParser.parse(calendar, calendarDates);
@@ -48,7 +48,7 @@ export class GtfsScheduleParser {
       stopGtfsIdMapping,
     );
 
-    return new GtfsSchedule(parsedTrips);
+    return new GtfsScheduleData(parsedTrips);
   }
 }
 

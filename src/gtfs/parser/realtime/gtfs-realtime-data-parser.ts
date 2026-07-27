@@ -1,5 +1,5 @@
 import { GtfsRealtimeData } from "../../data/gtfs-realtime-data.js";
-import type { GtfsSchedule } from "../../data/gtfs-schedule.js";
+import type { GtfsScheduleData } from "../../data/gtfs-schedule-data.js";
 import type { GtfsUpdatedTrip } from "../../data/gtfs-updated-trip.js";
 import type { StopGtfsIdMapping } from "../../data/ids/stop-gtfs-id-mapping.js";
 import type { RealtimeFeedJson } from "../../retrieval/realtime/realtime-feed-schema.js";
@@ -20,7 +20,7 @@ export class GtfsRealtimeDataParser {
 
   parse(
     realtimeData: RealtimeFeedJson,
-    scheduleData: GtfsSchedule,
+    scheduleData: GtfsScheduleData,
     stopGtfsIdMapping: StopGtfsIdMapping,
   ): GtfsRealtimeData {
     const updatedTrips: GtfsUpdatedTrip[] = [];

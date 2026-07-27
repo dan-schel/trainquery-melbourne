@@ -1,4 +1,3 @@
-import type { GtfsStopTime } from "./gtfs-stop-time.js";
 import type { StopGtfsIdMetadata } from "./ids/stop-gtfs-id-metadata.js";
 
 export type GtfsUpdatedTripMovement =
@@ -6,6 +5,11 @@ export type GtfsUpdatedTripMovement =
   | GtfsUpdatedTripRegularMovement
   | GtfsUpdatedTripTerminatingMovement
   | GtfsUpdatedTripPassingMovement;
+
+export type GtfsUpdatedTripServicingMovement =
+  | GtfsUpdatedTripOriginatingMovement
+  | GtfsUpdatedTripRegularMovement
+  | GtfsUpdatedTripTerminatingMovement;
 
 // I don't normally use interfaces, but here they're just acting as a way to
 // force the classes to conform to a particular consistent set of properties,
@@ -45,13 +49,14 @@ interface IGtfsUpdatedTripServicingMovement extends IGtfsUpdatedTripMovement {
   // GtfsCancelledTrip, instead of the `isCancelled` field.)
 
   get isServicing(): true;
+  get timeRelevantToDeparturesAlgorithm(): Temporal.Instant;
 }
 
 type GtfsUpdatedTripOriginatingMovementFields = {
   readonly stopId: number;
   readonly originalPositionId: number | null;
   readonly updatedPositionId: number | null;
-  readonly scheduledDepartureTime: GtfsStopTime;
+  readonly scheduledDepartureTime: Temporal.Instant;
   readonly realtimeDepartureTime: Temporal.Instant | null;
   readonly originalGtfsIdMetadata: StopGtfsIdMetadata;
   readonly updatedGtfsIdMetadata: StopGtfsIdMetadata;
@@ -62,9 +67,9 @@ type GtfsUpdatedTripRegularMovementFields = {
   readonly stopId: number;
   readonly originalPositionId: number | null;
   readonly updatedPositionId: number | null;
-  readonly scheduledArrivalTime: GtfsStopTime;
+  readonly scheduledArrivalTime: Temporal.Instant;
   readonly realtimeArrivalTime: Temporal.Instant | null;
-  readonly scheduledDepartureTime: GtfsStopTime;
+  readonly scheduledDepartureTime: Temporal.Instant;
   readonly realtimeDepartureTime: Temporal.Instant | null;
   readonly picksUp: boolean;
   readonly dropsOff: boolean;
@@ -77,7 +82,7 @@ type GtfsUpdatedTripTerminatingMovementFields = {
   readonly stopId: number;
   readonly originalPositionId: number | null;
   readonly updatedPositionId: number | null;
-  readonly scheduledArrivalTime: GtfsStopTime;
+  readonly scheduledArrivalTime: Temporal.Instant;
   readonly realtimeArrivalTime: Temporal.Instant | null;
   readonly originalGtfsIdMetadata: StopGtfsIdMetadata;
   readonly updatedGtfsIdMetadata: StopGtfsIdMetadata;
@@ -92,7 +97,7 @@ export class GtfsUpdatedTripOriginatingMovement implements IGtfsUpdatedTripServi
   readonly stopId: number;
   readonly originalPositionId: number | null;
   readonly updatedPositionId: number | null;
-  readonly scheduledDepartureTime: GtfsStopTime;
+  readonly scheduledDepartureTime: Temporal.Instant;
   readonly realtimeDepartureTime: Temporal.Instant | null;
   readonly originalGtfsIdMetadata: StopGtfsIdMetadata;
   readonly updatedGtfsIdMetadata: StopGtfsIdMetadata;
@@ -118,15 +123,18 @@ export class GtfsUpdatedTripOriginatingMovement implements IGtfsUpdatedTripServi
   get isNonTerminal() {
     return false as const;
   }
+  get timeRelevantToDeparturesAlgorithm() {
+    return this.realtimeDepartureTime ?? this.scheduledDepartureTime;
+  }
 }
 
 export class GtfsUpdatedTripRegularMovement implements IGtfsUpdatedTripServicingMovement {
   readonly stopId: number;
   readonly originalPositionId: number | null;
   readonly updatedPositionId: number | null;
-  readonly scheduledArrivalTime: GtfsStopTime;
+  readonly scheduledArrivalTime: Temporal.Instant;
   readonly realtimeArrivalTime: Temporal.Instant | null;
-  readonly scheduledDepartureTime: GtfsStopTime;
+  readonly scheduledDepartureTime: Temporal.Instant;
   readonly realtimeDepartureTime: Temporal.Instant | null;
   readonly picksUp: boolean;
   readonly dropsOff: boolean;
@@ -158,13 +166,16 @@ export class GtfsUpdatedTripRegularMovement implements IGtfsUpdatedTripServicing
   get isNonTerminal() {
     return true as const;
   }
+  get timeRelevantToDeparturesAlgorithm() {
+    return this.realtimeDepartureTime ?? this.scheduledDepartureTime;
+  }
 }
 
 export class GtfsUpdatedTripTerminatingMovement implements IGtfsUpdatedTripServicingMovement {
   readonly stopId: number;
   readonly originalPositionId: number | null;
   readonly updatedPositionId: number | null;
-  readonly scheduledArrivalTime: GtfsStopTime;
+  readonly scheduledArrivalTime: Temporal.Instant;
   readonly realtimeArrivalTime: Temporal.Instant | null;
   readonly originalGtfsIdMetadata: StopGtfsIdMetadata;
   readonly updatedGtfsIdMetadata: StopGtfsIdMetadata;
@@ -189,6 +200,9 @@ export class GtfsUpdatedTripTerminatingMovement implements IGtfsUpdatedTripServi
   }
   get isNonTerminal() {
     return false as const;
+  }
+  get timeRelevantToDeparturesAlgorithm() {
+    return this.realtimeArrivalTime ?? this.scheduledArrivalTime;
   }
 }
 

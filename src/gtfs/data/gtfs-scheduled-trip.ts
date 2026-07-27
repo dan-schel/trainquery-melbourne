@@ -15,6 +15,14 @@ export type GtfsScheduledTripFields = {
   readonly lineIds: readonly number[];
   readonly color: Color;
   readonly serviceTags: readonly number[];
+
+  // TODO: This only supports 1-1 connections. You could theoretically have a
+  // trip that runs to Ballarat, the train splits, and half goes to Ararat and
+  // half goes to Maryborough. In that case, the Ballarat trip would have 2 next
+  // trips. V/Line might also represent it as a train from Melbourne to Ararat
+  // and a train from Ballarat to Maryborough, where the transfer happens at
+  // Ballarat. Right now we expect the transfer to always be terminus to origin,
+  // but that could change in the future.
   readonly previousTrip: GtfsScheduledTrip | null;
   readonly nextTrip: GtfsScheduledTrip | null;
 };

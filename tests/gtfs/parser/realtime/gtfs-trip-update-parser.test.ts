@@ -24,7 +24,7 @@ import {
 } from "../../../../src/gtfs/data/gtfs-scheduled-trip-movements.js";
 import { GtfsScheduledTrip } from "../../../../src/gtfs/data/gtfs-scheduled-trip.js";
 import { GtfsCalendar } from "../../../../src/gtfs/data/gtfs-calendar.js";
-import { GtfsSchedule } from "../../../../src/gtfs/data/gtfs-schedule.js";
+import { GtfsScheduleData } from "../../../../src/gtfs/data/gtfs-schedule-data.js";
 
 const TIMEZONE = "Australia/Melbourne";
 
@@ -64,7 +64,7 @@ const TRIP = new GtfsScheduledTrip({
   nextTrip: null,
 });
 
-const SCHEDULE = new GtfsSchedule([TRIP]);
+const SCHEDULE = new GtfsScheduleData([TRIP]);
 
 const TRIP_DESCRIPTOR = {
   tripId: TRIP.gtfsTripId,
@@ -440,7 +440,7 @@ describe("GtfsTripUpdateParser", () => {
         TRIP_TERMINUS,
       ],
     });
-    const schedule = new GtfsSchedule([trip]);
+    const schedule = new GtfsScheduleData([trip]);
 
     const tripUpdate = {
       trip: TRIP_DESCRIPTOR,

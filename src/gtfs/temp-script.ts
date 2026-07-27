@@ -23,11 +23,13 @@ import {
   type GtfsRealtimeFeedSplittingError,
 } from "./parser/realtime/gtfs-realtime-feed-splitter.js";
 import type { RealtimeFeedJson } from "./retrieval/realtime/realtime-feed-schema.js";
-import type { GtfsSchedule } from "./data/gtfs-schedule.js";
+import type { GtfsScheduleData } from "./data/gtfs-schedule-data.js";
 import type { GtfsRealtimeData } from "./data/gtfs-realtime-data.js";
-import { MELBOURNE_TIMEZONE } from "./departures-old/scheduled-departures-block-factory.js";
 import { BonusLinesMapping } from "./data/route/bonus-lines-mapping.js";
 import { itsOk, listifyAnd } from "@dan-schel/js-utils";
+import { GtfsScheduledMovementsIndex } from "./departures/gtfs-scheduled-movements-index.js";
+
+const MELBOURNE_TIMEZONE = "Australia/Melbourne";
 
 type GtfsParsingError =
   | GtfsScheduleParsingError
@@ -37,6 +39,55 @@ type GtfsParsingError =
 export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
   const formalConfig = formalizeConfig(config);
 
+  const {
+    suburbanSchedule,
+    regionalSchedule,
+    suburbanRealtimeData,
+    regionalRealtimeData,
+  } = await parse(ctx, formalConfig);
+
+  const scheduledMovementsIndex =
+    GtfsScheduledMovementsIndex.build(suburbanSchedule);
+}
+
+function formalizeConfig(config: GtfsConfig) {
+  const lineRoutesMapping = LineRoutesMapping.build(config.lineRoutesMapping);
+  const bonusLinesMapping = BonusLinesMapping.build(
+    config.bonusLinesMapping ?? {},
+  );
+
+  const suburbanLineGtfsIdMapping = LineGtfsIdMapping.build(
+    config.lineGtfsIds,
+    "suburban",
+  );
+  const regionalLineGtfsIdMapping = LineGtfsIdMapping.build(
+    config.lineGtfsIds,
+    "regional",
+  );
+
+  const suburbanStopGtfsIdMapping = StopGtfsIdMapping.build(
+    config.stopGtfsIds,
+    "suburban",
+  );
+  const regionalStopGtfsIdMapping = StopGtfsIdMapping.build(
+    config.stopGtfsIds,
+    "regional",
+  );
+
+  return {
+    lineRoutesMapping,
+    bonusLinesMapping,
+    suburbanLineGtfsIdMapping,
+    regionalLineGtfsIdMapping,
+    suburbanStopGtfsIdMapping,
+    regionalStopGtfsIdMapping,
+  };
+}
+
+async function parse(
+  ctx: Corequery,
+  formalConfig: ReturnType<typeof formalizeConfig>,
+) {
   console.log("Downloading/reading...");
   const gtfsData = await withGtfsCsvs(env.RELAY_KEY, readGtfsCsvs);
   const fullRealtimeData = await fetchGtfsRealtime(env.RELAY_KEY);
@@ -74,39 +125,13 @@ export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
 
   const errorsStr = formatErrors(errors);
   console.log(errorsStr);
-}
-
-function formalizeConfig(config: GtfsConfig) {
-  const lineRoutesMapping = LineRoutesMapping.build(config.lineRoutesMapping);
-  const bonusLinesMapping = BonusLinesMapping.build(
-    config.bonusLinesMapping ?? {},
-  );
-
-  const suburbanLineGtfsIdMapping = LineGtfsIdMapping.build(
-    config.lineGtfsIds,
-    "suburban",
-  );
-  const regionalLineGtfsIdMapping = LineGtfsIdMapping.build(
-    config.lineGtfsIds,
-    "regional",
-  );
-
-  const suburbanStopGtfsIdMapping = StopGtfsIdMapping.build(
-    config.stopGtfsIds,
-    "suburban",
-  );
-  const regionalStopGtfsIdMapping = StopGtfsIdMapping.build(
-    config.stopGtfsIds,
-    "regional",
-  );
 
   return {
-    lineRoutesMapping,
-    bonusLinesMapping,
-    suburbanLineGtfsIdMapping,
-    regionalLineGtfsIdMapping,
-    suburbanStopGtfsIdMapping,
-    regionalStopGtfsIdMapping,
+    suburbanSchedule,
+    regionalSchedule,
+    suburbanRealtimeData,
+    regionalRealtimeData,
+    errors,
   };
 }
 
@@ -138,8 +163,8 @@ function parseSchedule(
 
 function parseRealtime(
   fullRealtimeData: RealtimeFeedJson,
-  suburbanSchedule: GtfsSchedule,
-  regionalSchedule: GtfsSchedule,
+  suburbanSchedule: GtfsScheduleData,
+  regionalSchedule: GtfsScheduleData,
   config: ReturnType<typeof formalizeConfig>,
   errors: GtfsParsingError[],
 ) {
@@ -170,8 +195,8 @@ function parseRealtime(
 
 function formatStats(
   ctx: Corequery,
-  suburbanSchedule: GtfsSchedule,
-  regionalSchedule: GtfsSchedule,
+  suburbanSchedule: GtfsScheduleData,
+  regionalSchedule: GtfsScheduleData,
   suburbanRealtimeData: GtfsRealtimeData,
   regionalRealtimeData: GtfsRealtimeData,
 ) {

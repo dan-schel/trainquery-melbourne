@@ -24,6 +24,8 @@ type PromotionToUpdatedTripFields = {
   readonly departureTime: Temporal.Instant | null;
   readonly updatedPositionId: number | null;
   readonly updatedGtfsIdMetadata: StopGtfsIdMetadata;
+  readonly serviceDay: Temporal.PlainDate;
+  readonly timezone: string;
 };
 
 // I don't normally use interfaces, but here they're just acting as a way to
@@ -37,7 +39,10 @@ interface IGtfsScheduledTripMovement {
   get type(): string;
   get isServicing(): boolean;
   get isNonTerminal(): boolean;
-  asHollowUpdatedTripMovement(): GtfsUpdatedTripMovement;
+  asHollowUpdatedTripMovement(
+    serviceDay: Temporal.PlainDate,
+    timezone: string,
+  ): GtfsUpdatedTripMovement;
 }
 interface IGtfsScheduledTripServicingMovement extends IGtfsScheduledTripMovement {
   readonly positionId: number | null;
@@ -117,11 +122,17 @@ export class GtfsScheduledTripOriginatingMovement implements IGtfsScheduledTripS
     return new GtfsScheduledTripOriginatingMovement({ ...this, ...newValues });
   }
 
-  asHollowUpdatedTripMovement(): GtfsUpdatedTripOriginatingMovement {
+  asHollowUpdatedTripMovement(
+    serviceDay: Temporal.PlainDate,
+    timezone: string,
+  ): GtfsUpdatedTripOriginatingMovement {
     return new GtfsUpdatedTripOriginatingMovement({
       stopId: this.stopId,
       originalPositionId: this.positionId,
-      scheduledDepartureTime: this.departureTime,
+      scheduledDepartureTime: this.departureTime.toInstant(
+        serviceDay,
+        timezone,
+      ),
       originalGtfsIdMetadata: this.gtfsIdMetadata,
       gtfsStopSequence: this.gtfsStopSequence,
 
@@ -138,7 +149,10 @@ export class GtfsScheduledTripOriginatingMovement implements IGtfsScheduledTripS
     return new GtfsUpdatedTripOriginatingMovement({
       stopId: this.stopId,
       originalPositionId: this.positionId,
-      scheduledDepartureTime: this.departureTime,
+      scheduledDepartureTime: this.departureTime.toInstant(
+        values.serviceDay,
+        values.timezone,
+      ),
       originalGtfsIdMetadata: this.gtfsIdMetadata,
       gtfsStopSequence: this.gtfsStopSequence,
 
@@ -190,12 +204,18 @@ export class GtfsScheduledTripRegularMovement implements IGtfsScheduledTripServi
     return new GtfsScheduledTripRegularMovement({ ...this, ...newValues });
   }
 
-  asHollowUpdatedTripMovement(): GtfsUpdatedTripRegularMovement {
+  asHollowUpdatedTripMovement(
+    serviceDay: Temporal.PlainDate,
+    timezone: string,
+  ): GtfsUpdatedTripRegularMovement {
     return new GtfsUpdatedTripRegularMovement({
       stopId: this.stopId,
       originalPositionId: this.positionId,
-      scheduledArrivalTime: this.arrivalTime,
-      scheduledDepartureTime: this.departureTime,
+      scheduledArrivalTime: this.arrivalTime.toInstant(serviceDay, timezone),
+      scheduledDepartureTime: this.departureTime.toInstant(
+        serviceDay,
+        timezone,
+      ),
       picksUp: this.picksUp,
       dropsOff: this.dropsOff,
       originalGtfsIdMetadata: this.gtfsIdMetadata,
@@ -215,8 +235,14 @@ export class GtfsScheduledTripRegularMovement implements IGtfsScheduledTripServi
     return new GtfsUpdatedTripRegularMovement({
       stopId: this.stopId,
       originalPositionId: this.positionId,
-      scheduledArrivalTime: this.arrivalTime,
-      scheduledDepartureTime: this.departureTime,
+      scheduledArrivalTime: this.arrivalTime.toInstant(
+        values.serviceDay,
+        values.timezone,
+      ),
+      scheduledDepartureTime: this.departureTime.toInstant(
+        values.serviceDay,
+        values.timezone,
+      ),
       picksUp: this.picksUp,
       dropsOff: this.dropsOff,
       originalGtfsIdMetadata: this.gtfsIdMetadata,
@@ -265,11 +291,14 @@ export class GtfsScheduledTripTerminatingMovement implements IGtfsScheduledTripS
     return new GtfsScheduledTripTerminatingMovement({ ...this, ...newValues });
   }
 
-  asHollowUpdatedTripMovement(): GtfsUpdatedTripTerminatingMovement {
+  asHollowUpdatedTripMovement(
+    serviceDay: Temporal.PlainDate,
+    timezone: string,
+  ): GtfsUpdatedTripTerminatingMovement {
     return new GtfsUpdatedTripTerminatingMovement({
       stopId: this.stopId,
       originalPositionId: this.positionId,
-      scheduledArrivalTime: this.arrivalTime,
+      scheduledArrivalTime: this.arrivalTime.toInstant(serviceDay, timezone),
       originalGtfsIdMetadata: this.gtfsIdMetadata,
       gtfsStopSequence: this.gtfsStopSequence,
 
@@ -286,7 +315,10 @@ export class GtfsScheduledTripTerminatingMovement implements IGtfsScheduledTripS
     return new GtfsUpdatedTripTerminatingMovement({
       stopId: this.stopId,
       originalPositionId: this.positionId,
-      scheduledArrivalTime: this.arrivalTime,
+      scheduledArrivalTime: this.arrivalTime.toInstant(
+        values.serviceDay,
+        values.timezone,
+      ),
       originalGtfsIdMetadata: this.gtfsIdMetadata,
       gtfsStopSequence: this.gtfsStopSequence,
 
@@ -321,7 +353,10 @@ export class GtfsScheduledTripPassingMovement implements IGtfsScheduledTripMovem
     return new GtfsScheduledTripPassingMovement({ ...this, ...newValues });
   }
 
-  asHollowUpdatedTripMovement(): GtfsUpdatedTripPassingMovement {
+  asHollowUpdatedTripMovement(
+    _serviceDay: Temporal.PlainDate,
+    _timezone: string,
+  ): GtfsUpdatedTripPassingMovement {
     return new GtfsUpdatedTripPassingMovement({
       stopId: this.stopId,
     });

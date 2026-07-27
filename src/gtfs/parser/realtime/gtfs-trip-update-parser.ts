@@ -1,4 +1,4 @@
-import type { GtfsSchedule } from "../../data/gtfs-schedule.js";
+import type { GtfsScheduleData } from "../../data/gtfs-schedule-data.js";
 import type { GtfsScheduledTrip } from "../../data/gtfs-scheduled-trip.js";
 import { GtfsUpdatedTrip } from "../../data/gtfs-updated-trip.js";
 import type {
@@ -34,7 +34,7 @@ export class GtfsTripUpdateParser {
 
   parse(
     tripUpdate: TripUpdateJson,
-    scheduleData: GtfsSchedule,
+    scheduleData: GtfsScheduleData,
     stopGtfsIdMapping: StopGtfsIdMapping,
   ) {
     const sr = tripUpdate.trip.scheduleRelationship;
@@ -57,7 +57,7 @@ export class GtfsTripUpdateParser {
 
   private _parseForScheduledTrip(
     tripUpdate: TripUpdateJson,
-    scheduleData: GtfsSchedule,
+    scheduleData: GtfsScheduleData,
     stopGtfsIdMapping: StopGtfsIdMapping,
   ): GtfsUpdatedTrip | null {
     const result = this._tripIdentifier.identify(tripUpdate.trip, scheduleData);
@@ -179,11 +179,15 @@ export class GtfsTripUpdateParser {
           departureTime: realtimeDepartureTime,
           updatedPositionId,
           updatedGtfsIdMetadata: gtfsIdMetadata,
+          serviceDay,
+          timezone: this._timezone,
         }),
       );
     }
 
-    let movements = trip.movements.map((m) => m.asHollowUpdatedTripMovement());
+    let movements = trip.movements.map((m) =>
+      m.asHollowUpdatedTripMovement(serviceDay, this._timezone),
+    );
     movements = movements.map((movement, i) => {
       return updatedMovementsByIndex.get(i) ?? movement;
     });
@@ -198,7 +202,7 @@ export class GtfsTripUpdateParser {
 
   private _parseForCancelledTrip(
     tripUpdate: TripUpdateJson,
-    scheduleData: GtfsSchedule,
+    scheduleData: GtfsScheduleData,
   ): GtfsUpdatedTrip | null {
     const result = this._tripIdentifier.identify(tripUpdate.trip, scheduleData);
     if (result == null) return null;
@@ -207,7 +211,9 @@ export class GtfsTripUpdateParser {
     return new GtfsUpdatedTrip({
       scheduledTrip: trip,
       serviceDay,
-      movements: trip.movements.map((m) => m.asHollowUpdatedTripMovement()),
+      movements: trip.movements.map((m) =>
+        m.asHollowUpdatedTripMovement(serviceDay, this._timezone),
+      ),
       isCancelled: true,
     });
   }

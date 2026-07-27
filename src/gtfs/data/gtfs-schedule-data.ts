@@ -1,6 +1,6 @@
 import type { GtfsScheduledTrip } from "./gtfs-scheduled-trip.js";
 
-export class GtfsSchedule {
+export class GtfsScheduleData {
   private readonly _tripsById: Map<string, GtfsScheduledTrip>;
 
   constructor(private readonly _trips: readonly GtfsScheduledTrip[]) {

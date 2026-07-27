@@ -1,4 +1,4 @@
-import type { GtfsSchedule } from "../../data/gtfs-schedule.js";
+import type { GtfsScheduleData } from "../../data/gtfs-schedule-data.js";
 import type { GtfsScheduledTrip } from "../../data/gtfs-scheduled-trip.js";
 import type { TripDescriptorJson } from "../../retrieval/realtime/realtime-feed-schema.js";
 
@@ -9,7 +9,7 @@ export class GtfsTripUpdateTripIdentifier {
     ) => void,
   ) {}
 
-  identify(tripDescriptor: TripDescriptorJson, scheduleData: GtfsSchedule) {
+  identify(tripDescriptor: TripDescriptorJson, scheduleData: GtfsScheduleData) {
     // Currently it seems like PTV always gives `tripId` and `startDate` in the
     // trip descriptor, even though the GTFS-RT spec allows other methods of
     // identifying the trip. We'll rely on them being present unless it later

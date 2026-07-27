@@ -8,7 +8,7 @@ import {
   type GtfsTripUpdateTripIdentificationError,
 } from "../../../../src/gtfs/parser/realtime/gtfs-trip-update-trip-identifier.js";
 import { GtfsCalendar } from "../../../../src/gtfs/data/gtfs-calendar.js";
-import { GtfsSchedule } from "../../../../src/gtfs/data/gtfs-schedule.js";
+import { GtfsScheduleData } from "../../../../src/gtfs/data/gtfs-schedule-data.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 import { PlainDateRange } from "../../../../src/gtfs/data/plain-date-range.js";
 import { GtfsScheduledTrip } from "../../../../src/gtfs/data/gtfs-scheduled-trip.js";
@@ -53,7 +53,7 @@ const TRIP = new GtfsScheduledTrip({
   nextTrip: null,
 });
 
-const SCHEDULE = new GtfsSchedule([TRIP]);
+const SCHEDULE = new GtfsScheduleData([TRIP]);
 
 const TRIP_DESCRIPTOR = {
   tripId: TRIP.gtfsTripId,
@@ -137,7 +137,7 @@ describe("GtfsTripUpdateTripIdentifier", () => {
         [],
       ),
     });
-    const schedule = new GtfsSchedule([tripOutsideDate]);
+    const schedule = new GtfsScheduleData([tripOutsideDate]);
 
     const tripDescriptor = {
       ...TRIP_DESCRIPTOR,
@@ -166,7 +166,7 @@ describe("GtfsTripUpdateTripIdentifier", () => {
         }),
       ],
     });
-    const schedule = new GtfsSchedule([overnightTrip]);
+    const schedule = new GtfsScheduleData([overnightTrip]);
 
     const tripDescriptor = {
       ...TRIP_DESCRIPTOR,

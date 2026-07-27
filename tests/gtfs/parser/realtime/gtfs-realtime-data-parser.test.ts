@@ -11,7 +11,7 @@ import {
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 import { GtfsScheduledTrip } from "../../../../src/gtfs/data/gtfs-scheduled-trip.js";
 import { GtfsCalendar } from "../../../../src/gtfs/data/gtfs-calendar.js";
-import { GtfsSchedule } from "../../../../src/gtfs/data/gtfs-schedule.js";
+import { GtfsScheduleData } from "../../../../src/gtfs/data/gtfs-schedule-data.js";
 import { itsOk } from "@dan-schel/js-utils";
 import { StopGtfsIdCollection } from "../../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
 import { StopGtfsIdMapping } from "../../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
@@ -54,7 +54,7 @@ const TRIP = new GtfsScheduledTrip({
   nextTrip: null,
 });
 
-const SCHEDULE = new GtfsSchedule([TRIP]);
+const SCHEDULE = new GtfsScheduleData([TRIP]);
 
 const TRIP_DESCRIPTOR = {
   tripId: TRIP.gtfsTripId,

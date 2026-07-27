@@ -1,24 +1,32 @@
 import { itsOk } from "@dan-schel/js-utils";
-import type { GtfsSchedule } from "../data/gtfs-schedule.js";
+import type { GtfsScheduleData } from "../data/gtfs-schedule-data.js";
 import { GtfsStopTime } from "../data/gtfs-stop-time.js";
-import type { GtfsScheduledTrip } from "../data/gtfs-scheduled-trip.js";
-import type { GtfsScheduledTripServicingMovement } from "../data/gtfs-scheduled-trip-movements.js";
-
-export type GtfsMovementsIndexEntry = {
-  readonly trip: GtfsScheduledTrip;
-  readonly time: GtfsStopTime;
-  readonly movement: GtfsScheduledTripServicingMovement;
-};
+import type { ScheduledDeparturesBlockEntry } from "./scheduled-departures-block.js";
 
 export class GtfsScheduledMovementsIndex {
   private constructor(
-    private readonly _index: Map<number, readonly GtfsMovementsIndexEntry[]>,
+    private readonly _index: Map<
+      number,
+      readonly ScheduledDeparturesBlockEntry[]
+    >,
     private readonly _earliestMovementByStop: Map<number, GtfsStopTime>,
     private readonly _latestMovementByStop: Map<number, GtfsStopTime>,
   ) {}
 
-  static build(schedule: GtfsSchedule): GtfsScheduledMovementsIndex {
-    const index = new Map<number, GtfsMovementsIndexEntry[]>();
+  getMovementsForStop(
+    stopId: number,
+  ): readonly ScheduledDeparturesBlockEntry[] {
+    return this._index.get(stopId) ?? [];
+  }
+  getEarliestMovementForStop(stopId: number): GtfsStopTime | null {
+    return this._earliestMovementByStop.get(stopId) ?? null;
+  }
+  getLatestMovementForStop(stopId: number): GtfsStopTime | null {
+    return this._latestMovementByStop.get(stopId) ?? null;
+  }
+
+  static build(schedule: GtfsScheduleData): GtfsScheduledMovementsIndex {
+    const index = new Map<number, ScheduledDeparturesBlockEntry[]>();
 
     for (const trip of schedule.allTrips()) {
       for (const movement of trip.movements) {
@@ -32,9 +40,24 @@ export class GtfsScheduledMovementsIndex {
         // duplicates, e.g. at Town Hall where an ex-East Pakenham train is
         // "arriving and terminating" at the same time as a Sunbury train is
         // "originating and departing".
+        //
+        // TODO: This assumes both trips have the same calendar, i.e. that the
+        // next trip is actually running on the same day as this terminating
+        // trip. The GTFS spec doesn't seem to mention that, so I don't know if
+        // it's supposed to be true or not. If one trip wasn't running today,
+        // would the transfer just not apply for that day, or would that
+        // situation be considered invalid data?
+        //
+        // If the above can happen, maybe we need to include these in the index
+        // for now, and then filter them out at query time once we're talking
+        // about a specific service day (when we can check if the next trip is
+        // running).
+        //
+        // In fact I think I have to remove this, because the next trip might
+        // get cancelled in the realtime data! You don't know until you query!
         if (movement.type === "terminating" && trip.nextTrip != null) continue;
 
-        const entry: GtfsMovementsIndexEntry = {
+        const entry: ScheduledDeparturesBlockEntry = {
           trip,
           movement,
 
