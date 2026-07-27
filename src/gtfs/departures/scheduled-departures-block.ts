@@ -12,32 +12,11 @@ export type ScheduledDeparturesBlockEntry = {
 };
 
 export class ScheduledDeparturesBlock extends DeparturesBlock {
-  private constructor(
+  constructor(
     readonly movements: readonly ScheduledDeparturesBlockEntry[],
     earliestDepartureInstant: Temporal.Instant,
     latestDepartureInstant: Temporal.Instant,
   ) {
     super(earliestDepartureInstant, latestDepartureInstant);
-  }
-
-  static tryBuild(
-    stopId: number,
-    index: GtfsScheduledMovementsIndex,
-    serviceDay: Temporal.PlainDate,
-    timezone: string,
-  ): ScheduledDeparturesBlock | null {
-    const movements = index.getMovementsForStop(stopId);
-    if (movements.length === 0) return null;
-
-    const first = itsOk(movements[0]);
-    const last = itsOk(movements[movements.length - 1]);
-    const earliestDepartureInstant = first.time.toInstant(serviceDay, timezone);
-    const latestDepartureInstant = last.time.toInstant(serviceDay, timezone);
-
-    return new ScheduledDeparturesBlock(
-      movements,
-      earliestDepartureInstant,
-      latestDepartureInstant,
-    );
   }
 }

@@ -19,7 +19,7 @@ export class RealtimeDeparturesBlock extends DeparturesBlock {
     super(earliestDepartureInstant, latestDepartureInstant);
   }
 
-  build(
+  static tryBuild(
     stopId: number,
 
     // No point using an index for the realtime data, since it can change every
