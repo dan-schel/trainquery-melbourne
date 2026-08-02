@@ -1,4 +1,4 @@
-import { InstantRange } from "../data/instant-range.js";
+import { BoundedInstantRange } from "../data/bounded-instant-range.js";
 
 export abstract class DeparturesBlock {
   constructor(
@@ -6,8 +6,8 @@ export abstract class DeparturesBlock {
     readonly latestDepartureInstant: Temporal.Instant,
   ) {}
 
-  get instantRange(): InstantRange {
-    return new InstantRange(
+  get instantRange(): BoundedInstantRange {
+    return new BoundedInstantRange(
       this.earliestDepartureInstant,
       this.latestDepartureInstant,
     );

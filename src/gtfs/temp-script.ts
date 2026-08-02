@@ -28,8 +28,16 @@ import type { GtfsRealtimeData } from "./data/gtfs-realtime-data.js";
 import { BonusLinesMapping } from "./data/route/bonus-lines-mapping.js";
 import { itsOk, listifyAnd } from "@dan-schel/js-utils";
 import { GtfsScheduledMovementsIndex } from "./departures/gtfs-scheduled-movements-index.js";
+import { DeparturesBlocksBuilder } from "./departures/departures-blocks-builder.js";
+import * as stop from "../config/corequery/stops/stop-ids.js";
+import { BoundedInstantRange } from "./data/bounded-instant-range.js";
 
 const MELBOURNE_TIMEZONE = "Australia/Melbourne";
+
+// While we could cast a much wider net (+/- 24 hours) to handle all possible
+// timezones, we know that for Melbourne it's either +10 in AEST or +11 in AEDT.
+const MELBOURNE_MINIMUM_VIABLE_OFFSET_SECONDS = 10 * 60 * 60;
+const MELBOURNE_MAXIMUM_VIABLE_OFFSET_SECONDS = 11 * 60 * 60;
 
 type GtfsParsingError =
   | GtfsScheduleParsingError
@@ -40,14 +48,36 @@ export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
   const formalConfig = formalizeConfig(config);
 
   const {
-    suburbanSchedule,
+    // suburbanSchedule,
+    // suburbanRealtimeData,
     regionalSchedule,
-    suburbanRealtimeData,
     regionalRealtimeData,
   } = await parse(ctx, formalConfig);
 
+  console.log("\n-----\n");
+
   const scheduledMovementsIndex =
-    GtfsScheduledMovementsIndex.build(suburbanSchedule);
+    GtfsScheduledMovementsIndex.build(regionalSchedule);
+
+  const timezoneData = {
+    timezone: MELBOURNE_TIMEZONE,
+    minimumViableOffsetSeconds: MELBOURNE_MINIMUM_VIABLE_OFFSET_SECONDS,
+    maximumViableOffsetSeconds: MELBOURNE_MAXIMUM_VIABLE_OFFSET_SECONDS,
+  };
+
+  const builder = DeparturesBlocksBuilder.build(
+    stop.DROUIN,
+    scheduledMovementsIndex,
+    regionalRealtimeData,
+    timezoneData,
+  );
+
+  builder.allBlocksWithinTimeRange(
+    new BoundedInstantRange(
+      Temporal.Instant.from("2026-08-02T00:00:00+10:00"),
+      Temporal.Instant.from("2026-08-03T00:00:00+10:00"),
+    ),
+  );
 }
 
 function formalizeConfig(config: GtfsConfig) {
