@@ -126,9 +126,6 @@ export class DeparturesBlocksBuilder {
 
     ------------------------------------------------------------------------- */
 
-    // TODO: When testing, ensure that service days are included when the last
-    // movement of the service day is EXACTLY on the query start time.
-
     // startDate: Aug 1, startSecondOfDayUtc: 50400 (14:00 UTC)
     const { date: startDate, secondOfDayUtc: startSecondOfDayUtc } =
       this._splitDateAndSecondOfDayUtc(range.start);
