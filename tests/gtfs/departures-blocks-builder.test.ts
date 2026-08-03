@@ -41,6 +41,101 @@ describe("ScheduledDeparturesBlock", () => {
           },
         ],
       });
+
+      expectScheduledBlocks({
+        builder,
+        queryStart: "2026-08-02T02:08:00+10:00",
+        queryEnd: "2026-08-03T00:00:00+10:00",
+        result: [
+          {
+            serviceDay: "2026-08-01",
+            earliest: "2026-08-01T05:18:00+10:00",
+            latest: "2026-08-02T02:08:00+10:00",
+          },
+          {
+            serviceDay: "2026-08-02",
+            earliest: "2026-08-02T05:18:00+10:00",
+            latest: "2026-08-03T02:08:00+10:00",
+          },
+        ],
+      });
+
+      expectScheduledBlocks({
+        builder,
+        queryStart: "2026-08-02T00:00:00+10:00",
+        queryEnd: "2026-08-02T05:18:00+10:00",
+        result: [
+          {
+            serviceDay: "2026-08-01",
+            earliest: "2026-08-01T05:18:00+10:00",
+            latest: "2026-08-02T02:08:00+10:00",
+          },
+          {
+            serviceDay: "2026-08-02",
+            earliest: "2026-08-02T05:18:00+10:00",
+            latest: "2026-08-03T02:08:00+10:00",
+          },
+        ],
+      });
+
+      expectScheduledBlocks({
+        builder,
+        queryStart: "2026-08-02T05:18:00+10:00",
+        queryEnd: "2026-08-02T05:18:00+10:00",
+        result: [
+          {
+            serviceDay: "2026-08-02",
+            earliest: "2026-08-02T05:18:00+10:00",
+            latest: "2026-08-03T02:08:00+10:00",
+          },
+        ],
+      });
+
+      expectScheduledBlocks({
+        builder,
+        queryStart: "2026-08-02T05:17:00+10:00",
+        queryEnd: "2026-08-02T05:17:00+10:00",
+        result: [],
+      });
+
+      expectScheduledBlocks({
+        builder,
+        queryStart: "2026-08-02T02:08:00+10:00",
+        queryEnd: "2026-08-02T02:08:00+10:00",
+        result: [
+          {
+            serviceDay: "2026-08-01",
+            earliest: "2026-08-01T05:18:00+10:00",
+            latest: "2026-08-02T02:08:00+10:00",
+          },
+        ],
+      });
+
+      expectScheduledBlocks({
+        builder,
+        queryStart: "2026-08-02T02:09:00+10:00",
+        queryEnd: "2026-08-02T02:09:00+10:00",
+        result: [],
+      });
+    });
+
+    it("returns an empty array if there's no scheduled movements", () => {
+      const builder = new DeparturesBlocksBuilder(
+        [],
+        null,
+        MELBOURNE_TIMEZONE_DATA,
+      );
+
+      expectScheduledBlocks({
+        builder,
+        queryStart: "2026-08-02T00:00:00+10:00",
+        queryEnd: "2026-08-03T00:00:00+10:00",
+        result: [],
+      });
+    });
+
+    it("returns a realtime departures block if it falls within the time range", () => {
+      // TODO: Implement this test!
     });
   });
 });
