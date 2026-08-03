@@ -31,13 +31,10 @@ import { GtfsScheduledMovementsIndex } from "./departures/gtfs-scheduled-movemen
 import { DeparturesBlocksBuilder } from "./departures/departures-blocks-builder.js";
 import * as stop from "../config/corequery/stops/stop-ids.js";
 import { BoundedInstantRange } from "./data/bounded-instant-range.js";
-
-const MELBOURNE_TIMEZONE = "Australia/Melbourne";
-
-// While we could cast a much wider net (+/- 24 hours) to handle all possible
-// timezones, we know that for Melbourne it's either +10 in AEST or +11 in AEDT.
-const MELBOURNE_MINIMUM_VIABLE_OFFSET_SECONDS = 10 * 60 * 60;
-const MELBOURNE_MAXIMUM_VIABLE_OFFSET_SECONDS = 11 * 60 * 60;
+import {
+  MELBOURNE_TIMEZONE,
+  MELBOURNE_TIMEZONE_DATA,
+} from "./utils/melbourne-timezone-data.js";
 
 type GtfsParsingError =
   | GtfsScheduleParsingError
@@ -59,17 +56,11 @@ export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
   const scheduledMovementsIndex =
     GtfsScheduledMovementsIndex.build(regionalSchedule);
 
-  const timezoneData = {
-    timezone: MELBOURNE_TIMEZONE,
-    minimumViableOffsetSeconds: MELBOURNE_MINIMUM_VIABLE_OFFSET_SECONDS,
-    maximumViableOffsetSeconds: MELBOURNE_MAXIMUM_VIABLE_OFFSET_SECONDS,
-  };
-
   const builder = DeparturesBlocksBuilder.build(
     stop.DROUIN,
     scheduledMovementsIndex,
     regionalRealtimeData,
-    timezoneData,
+    MELBOURNE_TIMEZONE_DATA,
   );
 
   builder.allBlocksWithinTimeRange(
