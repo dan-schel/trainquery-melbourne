@@ -207,7 +207,7 @@ export class DeparturesBlocksBuilder {
     ) {
       const block = this._buildScheduledBlockForServiceDay(date);
 
-      if (block.instantRange.intersects(range)) {
+      if (block.instantRange.touches(range)) {
         blocks.push(block);
       }
     }
@@ -220,7 +220,7 @@ export class DeparturesBlocksBuilder {
   ): RealtimeDeparturesBlock[] {
     if (
       this._realtimeBlock !== null &&
-      this._realtimeBlock.instantRange.intersects(range)
+      this._realtimeBlock.instantRange.touches(range)
     ) {
       return [this._realtimeBlock];
     } else {
