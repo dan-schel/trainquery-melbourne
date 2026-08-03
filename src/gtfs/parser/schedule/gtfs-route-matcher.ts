@@ -22,7 +22,7 @@ const STOP_TIME_DROP_OFF_TYPE_NO_DROP_OFF = 1;
 
 export type MatchedRoute = {
   movements: readonly GtfsScheduledTripMovement[];
-  color: Color;
+  color: Color | null;
   serviceTags: readonly number[];
 };
 
