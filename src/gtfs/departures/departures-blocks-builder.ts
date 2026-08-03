@@ -35,9 +35,22 @@ export class DeparturesBlocksBuilder {
 
   allBlocksWithinTimeRange(range: BoundedInstantRange): DeparturesBlock[] {
     return [
-      ...this._allScheduledBlocksWithinTimeRange(range),
       ...this._allRealtimeBlocksWithinTimeRange(range),
+      ...this._allScheduledBlocksWithinTimeRange(range),
     ];
+  }
+
+  private _allRealtimeBlocksWithinTimeRange(
+    range: BoundedInstantRange,
+  ): RealtimeDeparturesBlock[] {
+    if (
+      this._realtimeBlock !== null &&
+      this._realtimeBlock.instantRange.touches(range)
+    ) {
+      return [this._realtimeBlock];
+    } else {
+      return [];
+    }
   }
 
   private _allScheduledBlocksWithinTimeRange(
@@ -83,11 +96,19 @@ export class DeparturesBlocksBuilder {
 
     ------------------------------------------------------------------------- */
 
-    // [18:18 -1d]
-    const earliest = this._secondsSinceMidnightUtcOfEarliestPossibleMovement();
+    const maxViableOffsetSecs = this._timezoneData.maximumViableOffsetSeconds;
+    const minViableOffsetSecs = this._timezoneData.minimumViableOffsetSeconds;
 
-    // [16:08 +0d]
-    const latest = this._secondsSinceMidnightUtcOfLatestPossibleMovement();
+    const firstMvmt = itsOk(this._scheduledMovements[0]);
+    const lastMvmt = itsOk(this._scheduledMovements.at(-1));
+    const firstMvmtSecondsSinceMidnight = firstMvmt.time.secondsSinceMidnight;
+    const lastMvmtSecondsSinceMidnight = lastMvmt.time.secondsSinceMidnight;
+
+    // -20520 (represents [18:18 -1d] in seconds since [00:00 +0d])
+    const e = firstMvmtSecondsSinceMidnight - maxViableOffsetSecs;
+
+    // 58080 (represents [16:08 +0d] in seconds since [00:00 +0d])
+    const l = lastMvmtSecondsSinceMidnight - minViableOffsetSecs;
 
     /* -------------------------------------------------------------------------
 
@@ -120,23 +141,19 @@ export class DeparturesBlocksBuilder {
     - If the service day ends 1.089 days after the query, shift by -1 days.
     - If the service day ends -0.036 days after the query, shift by +1 days.
 
-    i.e. We're shifting by -floor(numOfDays).
+    i.e. We're shifting by `-floor(numOfDays)`.
 
     (Floor always moves values toward negative infinity, i.e. -0.05 -> -1) 
 
     ------------------------------------------------------------------------- */
 
-    // startDate: Aug 1, startSecondOfDayUtc: 50400 (14:00 UTC)
-    const { date: startDate, secondOfDayUtc: startSecondOfDayUtc } =
-      this._splitDateAndSecondOfDayUtc(range.start);
+    const startSplit = this._splitDateAndSecondOfDayUtc(range.start);
+    const startDate = startSplit.date; // Aug 1
+    const startSecondOfDayUtc = startSplit.secondOfDayUtc; // 50400 (14:00 UTC)
 
-    // 0.089
-    const daysAfterStart = (latest - startSecondOfDayUtc) / (24 * 60 * 60);
-
-    // Aug 1
-    const firstServiceDayInRange = startDate.add({
-      days: -Math.floor(daysAfterStart),
-    });
+    const daysAfterStart = (l - startSecondOfDayUtc) / (24 * 60 * 60); // 0.089
+    const daysToShiftStart = -Math.floor(daysAfterStart); // 0
+    const firstServiceDay = startDate.add({ days: daysToShiftStart }); // Aug 1
 
     /* -------------------------------------------------------------------------
 
@@ -166,21 +183,17 @@ export class DeparturesBlocksBuilder {
     - If the service days starts 1.821 days before the query, shift by +1 days.
     - If the service days starts -0.036 days before the query, shift by -1 days.
 
-    i.e. We're shifting by floor(numOfDays).
+    i.e. We're shifting by `floor(numOfDays)`.
 
     ------------------------------------------------------------------------- */
 
-    // endDate: Aug 2, endSecondOfDayUtc: 50400 (14:00 UTC)
-    const { date: endDate, secondOfDayUtc: endSecondOfDayUtc } =
-      this._splitDateAndSecondOfDayUtc(range.end);
+    const endSplit = this._splitDateAndSecondOfDayUtc(range.end);
+    const endDate = endSplit.date; // Aug 2
+    const endSecondOfDayUtc = endSplit.secondOfDayUtc; // 50400 (14:00 UTC)
 
-    // 0.821
-    const daysBeforeEnd = (endSecondOfDayUtc - earliest) / (24 * 60 * 60);
-
-    // Aug 2
-    const lastServiceDayInRange = endDate.add({
-      days: Math.floor(daysBeforeEnd),
-    });
+    const daysBeforeEnd = (endSecondOfDayUtc - e) / (24 * 60 * 60); // 0.821
+    const daysToShiftEnd = Math.floor(daysBeforeEnd); // 0
+    const lastServiceDay = endDate.add({ days: daysToShiftEnd }); // Aug 2
 
     /* -------------------------------------------------------------------------
 
@@ -201,59 +214,21 @@ export class DeparturesBlocksBuilder {
     const blocks: ScheduledDeparturesBlock[] = [];
 
     for (
-      let date = firstServiceDayInRange;
-      Temporal.PlainDate.compare(date, lastServiceDayInRange) <= 0;
+      let date = firstServiceDay;
+      Temporal.PlainDate.compare(date, lastServiceDay) <= 0;
       date = date.add({ days: 1 })
     ) {
       const block = this._buildScheduledBlockForServiceDay(date);
 
+      // Use `touches`, not `intersects`, so that the first and last movements
+      // of a block are included if the query range starts or ends exactly at
+      // the same time as them.
       if (block.instantRange.touches(range)) {
         blocks.push(block);
       }
     }
 
     return blocks;
-  }
-
-  private _allRealtimeBlocksWithinTimeRange(
-    range: BoundedInstantRange,
-  ): RealtimeDeparturesBlock[] {
-    if (
-      this._realtimeBlock !== null &&
-      this._realtimeBlock.instantRange.touches(range)
-    ) {
-      return [this._realtimeBlock];
-    } else {
-      return [];
-    }
-  }
-
-  private _secondsSinceMidnightUtcOfEarliestPossibleMovement() {
-    // Use the maximum viable offset (+11 for Melbourne) because we're
-    // interested to know about the earliest possible time in UTC that a service
-    // could run, as if it can run 5:18am AEST and 5:18am AEDT, AEDT (+11) makes
-    // it earlier in UTC time (19:18 vs 18:18).
-    //
-    // Subtract the offset because we're converting a local (+10/+11) time BACK
-    // to UTC.
-    return (
-      itsOk(this._scheduledMovements[0]).time.secondsSinceMidnight -
-      this._timezoneData.maximumViableOffsetSeconds
-    );
-  }
-
-  private _secondsSinceMidnightUtcOfLatestPossibleMovement() {
-    // Use the minimum viable offset (+10 for Melbourne) because we're
-    // interested to know about the latest possible time in UTC that a service
-    // could run, as if it can run 2:08am AEST and 2:08am AEDT, AEST (+10) makes
-    // it later in UTC time (16:08 vs 15:08).
-    //
-    // Subtract the offset because we're converting a local (+10/+11) time BACK
-    // to UTC.
-    return (
-      itsOk(this._scheduledMovements.at(-1)).time.secondsSinceMidnight -
-      this._timezoneData.minimumViableOffsetSeconds
-    );
   }
 
   private _splitDateAndSecondOfDayUtc(instant: Temporal.Instant) {
