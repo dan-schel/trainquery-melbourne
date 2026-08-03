@@ -17,13 +17,13 @@ import { GtfsStopTime } from "../../src/gtfs/data/gtfs-stop-time.js";
 
 describe("ScheduledDeparturesBlock", () => {
   describe("allBlocksWithinTimeRange", () => {
-    it("returns all scheduled departures blocks within the time range", () => {
-      const builder = new DeparturesBlocksBuilder(
-        createMovements({ earliest: "05:18:00", latest: "26:08:00" }),
-        null,
-        MELBOURNE_TIMEZONE_DATA,
-      );
+    const builder = new DeparturesBlocksBuilder(
+      createMovements({ earliest: "05:18:00", latest: "26:08:00" }),
+      null,
+      MELBOURNE_TIMEZONE_DATA,
+    );
 
+    it("returns all scheduled departures blocks within the time range", () => {
       expectScheduledBlocks({
         builder,
         queryStart: "2026-08-02T00:00:00+10:00",
@@ -42,6 +42,36 @@ describe("ScheduledDeparturesBlock", () => {
         ],
       });
 
+      expectScheduledBlocks({
+        builder,
+        queryStart: "2026-08-02T00:00:00+10:00",
+        queryEnd: "2026-08-05T00:00:00+10:00",
+        result: [
+          {
+            serviceDay: "2026-08-01",
+            earliest: "2026-08-01T05:18:00+10:00",
+            latest: "2026-08-02T02:08:00+10:00",
+          },
+          {
+            serviceDay: "2026-08-02",
+            earliest: "2026-08-02T05:18:00+10:00",
+            latest: "2026-08-03T02:08:00+10:00",
+          },
+          {
+            serviceDay: "2026-08-03",
+            earliest: "2026-08-03T05:18:00+10:00",
+            latest: "2026-08-04T02:08:00+10:00",
+          },
+          {
+            serviceDay: "2026-08-04",
+            earliest: "2026-08-04T05:18:00+10:00",
+            latest: "2026-08-05T02:08:00+10:00",
+          },
+        ],
+      });
+    });
+
+    it("doesn't omit the last movement of the day if the query equals it's exact time", () => {
       expectScheduledBlocks({
         builder,
         queryStart: "2026-08-02T02:08:00+10:00",
@@ -59,7 +89,9 @@ describe("ScheduledDeparturesBlock", () => {
           },
         ],
       });
+    });
 
+    it("doesn't omit the first movement of the day if the query equals it's exact time", () => {
       expectScheduledBlocks({
         builder,
         queryStart: "2026-08-02T00:00:00+10:00",
@@ -77,7 +109,9 @@ describe("ScheduledDeparturesBlock", () => {
           },
         ],
       });
+    });
 
+    it("works correctly at the boundaries", () => {
       expectScheduledBlocks({
         builder,
         queryStart: "2026-08-02T05:18:00+10:00",
@@ -115,6 +149,60 @@ describe("ScheduledDeparturesBlock", () => {
         builder,
         queryStart: "2026-08-02T02:09:00+10:00",
         queryEnd: "2026-08-02T02:09:00+10:00",
+        result: [],
+      });
+    });
+
+    it("handles transition out of DST correctly", () => {
+      expectScheduledBlocks({
+        builder,
+        queryStart: "2026-04-05T01:00:00+11:00",
+        queryEnd: "2026-04-05T05:30:00+10:00",
+        result: [
+          {
+            serviceDay: "2026-04-04",
+            earliest: "2026-04-04T05:18:00+11:00",
+            latest: "2026-04-05T02:08:00+11:00",
+          },
+          {
+            serviceDay: "2026-04-05",
+            earliest: "2026-04-05T05:18:00+10:00",
+            latest: "2026-04-06T02:08:00+10:00",
+          },
+        ],
+      });
+
+      expectScheduledBlocks({
+        builder,
+        queryStart: "2026-04-05T02:09:00+11:00",
+        queryEnd: "2026-04-05T05:17:00+10:00",
+        result: [],
+      });
+    });
+
+    it("handles transition into DST correctly", () => {
+      expectScheduledBlocks({
+        builder,
+        queryStart: "2026-10-04T01:00:00+10:00",
+        queryEnd: "2026-10-04T05:30:00+11:00",
+        result: [
+          {
+            serviceDay: "2026-10-03",
+            earliest: "2026-10-03T05:18:00+10:00",
+            latest: "2026-10-04T02:08:00+10:00",
+          },
+          {
+            serviceDay: "2026-10-04",
+            earliest: "2026-10-04T05:18:00+11:00",
+            latest: "2026-10-05T02:08:00+11:00",
+          },
+        ],
+      });
+
+      expectScheduledBlocks({
+        builder,
+        queryStart: "2026-10-04T02:09:00+10:00",
+        queryEnd: "2026-10-04T05:17:00+11:00",
         result: [],
       });
     });
