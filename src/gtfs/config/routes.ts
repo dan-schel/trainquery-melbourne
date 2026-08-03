@@ -3,7 +3,7 @@ import type { Color } from "corequery";
 export type LineRoutesMappingConfig = Record<number, readonly RouteConfig[]>;
 
 export type RouteConfig = {
-  readonly color: Color;
+  readonly color: Color | null;
   readonly stops: readonly RouteStopConfig[];
   readonly serviceTags: readonly number[];
 };

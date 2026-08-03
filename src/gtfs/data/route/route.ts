@@ -3,13 +3,13 @@ import { RouteStop } from "./route-stop.js";
 import type { RouteConfig } from "../../config/routes.js";
 
 type RouteFields = {
-  readonly color: Color;
+  readonly color: Color | null;
   readonly stops: readonly RouteStop[];
   readonly serviceTags: readonly number[];
 };
 
 export class Route {
-  readonly color: Color;
+  readonly color: Color | null;
   readonly stops: readonly RouteStop[];
   readonly serviceTags: readonly number[];
 

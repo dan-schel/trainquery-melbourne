@@ -13,7 +13,7 @@ export type GtfsScheduledTripFields = {
   readonly calendar: GtfsCalendar;
   readonly movements: readonly GtfsScheduledTripMovement[];
   readonly lineIds: readonly number[];
-  readonly color: Color;
+  readonly color: Color | null;
   readonly serviceTags: readonly number[];
 
   // TODO: This only supports 1-1 connections. You could theoretically have a
@@ -33,7 +33,7 @@ export class GtfsScheduledTrip {
   readonly calendar: GtfsCalendar;
   readonly movements: readonly GtfsScheduledTripMovement[];
   readonly lineIds: readonly number[];
-  readonly color: Color;
+  readonly color: Color | null;
   readonly serviceTags: readonly number[];
   readonly previousTrip: GtfsScheduledTrip | null;
   readonly nextTrip: GtfsScheduledTrip | null;
