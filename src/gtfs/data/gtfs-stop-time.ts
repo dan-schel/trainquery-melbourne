@@ -95,6 +95,19 @@ export class GtfsStopTime {
     return `${hStr}:${mStr}:${sStr}`;
   }
 
+  plus({
+    hours = 0,
+    minutes = 0,
+    seconds = 0,
+  }: {
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+  }): GtfsStopTime {
+    const s = hours * 3600 + minutes * 60 + seconds;
+    return GtfsStopTime.fromSecondsSinceMidnight(this.secondsSinceMidnight + s);
+  }
+
   private static _getOffsetSecondsAtMidday(
     date: Temporal.PlainDate,
     timezone: string,

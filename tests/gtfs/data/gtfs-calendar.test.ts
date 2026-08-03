@@ -6,7 +6,7 @@ describe("GtfsCalendar", () => {
   describe("#mayOccurAgainAfter", () => {
     it("returns false for the last date in range", () => {
       const cal = new GtfsCalendar(
-        "cal1",
+        "cal-1",
         true,
         true,
         true,

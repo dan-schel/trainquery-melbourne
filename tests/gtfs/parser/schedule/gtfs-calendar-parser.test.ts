@@ -15,7 +15,7 @@ describe("GtfsCalendarParser", () => {
   const PLAIN_DATE_2026_06_21 = Temporal.PlainDate.from("2026-06-21");
 
   const STANDARD_CALENDAR: CalendarCsvRow = {
-    service_id: "cal1",
+    service_id: "cal-1",
     monday: false,
     tuesday: false,
     wednesday: false,
