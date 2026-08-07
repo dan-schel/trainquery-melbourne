@@ -1,13 +1,20 @@
 import { itsOk } from "@dan-schel/js-utils";
 import type { GtfsScheduleData } from "../data/gtfs-schedule-data.js";
 import { GtfsStopTime } from "../data/gtfs-stop-time.js";
-import type { ScheduledDeparturesBlockEntry } from "./scheduled-departures-block.js";
+import type { GtfsScheduledTrip } from "../data/gtfs-scheduled-trip.js";
+import type { GtfsScheduledTripServicingMovement } from "../data/gtfs-scheduled-trip-movements.js";
+
+export type GtfsScheduledMovementsIndexEntry = {
+  readonly trip: GtfsScheduledTrip;
+  readonly time: GtfsStopTime;
+  readonly movement: GtfsScheduledTripServicingMovement;
+};
 
 export class GtfsScheduledMovementsIndex {
   private constructor(
     private readonly _index: Map<
       number,
-      readonly ScheduledDeparturesBlockEntry[]
+      readonly GtfsScheduledMovementsIndexEntry[]
     >,
     private readonly _earliestMovementByStop: Map<number, GtfsStopTime>,
     private readonly _latestMovementByStop: Map<number, GtfsStopTime>,
@@ -15,7 +22,7 @@ export class GtfsScheduledMovementsIndex {
 
   getMovementsForStop(
     stopId: number,
-  ): readonly ScheduledDeparturesBlockEntry[] {
+  ): readonly GtfsScheduledMovementsIndexEntry[] {
     return this._index.get(stopId) ?? [];
   }
   getEarliestMovementForStop(stopId: number): GtfsStopTime | null {
@@ -26,7 +33,7 @@ export class GtfsScheduledMovementsIndex {
   }
 
   static build(schedule: GtfsScheduleData): GtfsScheduledMovementsIndex {
-    const index = new Map<number, ScheduledDeparturesBlockEntry[]>();
+    const index = new Map<number, GtfsScheduledMovementsIndexEntry[]>();
 
     for (const trip of schedule.allTrips()) {
       for (const movement of trip.movements) {
@@ -57,7 +64,7 @@ export class GtfsScheduledMovementsIndex {
         // get cancelled in the realtime data! You don't know until you query!
         if (movement.type === "terminating" && trip.nextTrip != null) continue;
 
-        const entry: ScheduledDeparturesBlockEntry = {
+        const entry: GtfsScheduledMovementsIndexEntry = {
           trip,
           movement,
 

@@ -8,6 +8,13 @@ export class BoundedInstantRange {
     }
   }
 
+  includes(instant: Temporal.Instant): boolean {
+    return (
+      Temporal.Instant.compare(this.start, instant) <= 0 &&
+      Temporal.Instant.compare(instant, this.end) <= 0
+    );
+  }
+
   intersects(other: BoundedInstantRange): boolean {
     return (
       Temporal.Instant.compare(this.start, other.end) < 0 &&

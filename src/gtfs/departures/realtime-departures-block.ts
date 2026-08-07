@@ -3,16 +3,18 @@ import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
 import type { GtfsUpdatedTripServicingMovement } from "../data/gtfs-updated-trip-movements.js";
 import type { GtfsUpdatedTrip } from "../data/gtfs-updated-trip.js";
 import { DeparturesBlock } from "./departures-block.js";
+import { RealtimeDeparturesBlockIterator } from "./realtime-departures-block-iterator.js";
+import type { ScheduledDeparturesBlockIterator } from "./scheduled-departures-block-iterator.js";
 
 export type RealtimeDeparturesBlockEntry = {
   readonly trip: GtfsUpdatedTrip;
-  readonly time: Temporal.Instant;
+  readonly instant: Temporal.Instant;
   readonly movement: GtfsUpdatedTripServicingMovement;
 };
 
 export class RealtimeDeparturesBlock extends DeparturesBlock {
   private constructor(
-    readonly movements: readonly RealtimeDeparturesBlockEntry[],
+    readonly entries: readonly RealtimeDeparturesBlockEntry[],
     earliestDepartureInstant: Temporal.Instant,
     latestDepartureInstant: Temporal.Instant,
   ) {
@@ -34,7 +36,7 @@ export class RealtimeDeparturesBlock extends DeparturesBlock {
 
         movements.push({
           trip,
-          time: movement.timeRelevantToDeparturesAlgorithm,
+          instant: movement.timeRelevantToDeparturesAlgorithm,
           movement,
         });
       }
@@ -42,13 +44,45 @@ export class RealtimeDeparturesBlock extends DeparturesBlock {
 
     if (movements.length === 0) return null;
 
-    const earliestDepartureInstant = itsOk(movements[0]).time;
-    const latestDepartureInstant = itsOk(movements[movements.length - 1]).time;
+    const earliestDepartureInstant = itsOk(movements[0]).instant;
+    const latestDepartureInstant = itsOk(
+      movements[movements.length - 1],
+    ).instant;
 
     return new RealtimeDeparturesBlock(
       movements,
       earliestDepartureInstant,
       latestDepartureInstant,
     );
+  }
+
+  /**
+   * Returns the index of the first movement that is at or after the given time.
+   * If all movements come before the given time, returns the length of the
+   * movements array, i.e. the index _after_ all movements.
+   */
+  getIterationIndexOfNextFrom(instant: Temporal.Instant): number {
+    const result = this.entries.findIndex(
+      (m) => Temporal.Instant.compare(m.instant, instant) >= 0,
+    );
+    return result !== -1 ? result : this.entries.length;
+  }
+
+  /**
+   * Returns the index of the last movement that is at or before the given time.
+   * If all movements come after the given time, returns -1, i.e. the index
+   * _before_ all movements.
+   */
+  getInterationIndexOfPreviousFrom(instant: Temporal.Instant): number {
+    // No need to handle -1, because we'd want to return -1 in that case anyway!
+    return this.entries.findLastIndex(
+      (m) => Temporal.Instant.compare(m.instant, instant) <= 0,
+    );
+  }
+
+  override createIterator():
+    | RealtimeDeparturesBlockIterator
+    | ScheduledDeparturesBlockIterator {
+    return new RealtimeDeparturesBlockIterator(this);
   }
 }

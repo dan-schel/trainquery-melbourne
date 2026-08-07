@@ -2,12 +2,12 @@ import { itsOk } from "@dan-schel/js-utils";
 import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
 import type { BoundedInstantRange } from "../data/bounded-instant-range.js";
 import type { DeparturesBlock } from "./departures-block.js";
-import type { GtfsScheduledMovementsIndex } from "./gtfs-scheduled-movements-index.js";
+import type {
+  GtfsScheduledMovementsIndex,
+  GtfsScheduledMovementsIndexEntry,
+} from "./gtfs-scheduled-movements-index.js";
 import { RealtimeDeparturesBlock } from "./realtime-departures-block.js";
-import {
-  ScheduledDeparturesBlock,
-  type ScheduledDeparturesBlockEntry,
-} from "./scheduled-departures-block.js";
+import { ScheduledDeparturesBlock } from "./scheduled-departures-block.js";
 
 export type TimezoneData = {
   readonly timezone: string;
@@ -17,7 +17,7 @@ export type TimezoneData = {
 
 export class DeparturesBlocksBuilder {
   constructor(
-    private readonly _scheduledMovements: readonly ScheduledDeparturesBlockEntry[],
+    private readonly _scheduledMovements: readonly GtfsScheduledMovementsIndexEntry[],
     private readonly _realtimeBlock: RealtimeDeparturesBlock | null,
     private readonly _timezoneData: TimezoneData,
   ) {}
