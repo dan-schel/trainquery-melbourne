@@ -57,7 +57,14 @@ type GtfsUpdatedTripOriginatingMovementFields = {
   readonly originalPositionId: number | null;
   readonly updatedPositionId: number | null;
   readonly scheduledDepartureTime: Temporal.Instant;
+
+  // TODO: We need to distinguish between knownRealtimeDepartureTime and
+  // assumedRealtimeDepartureTime. Only the assumed time will be available when
+  // incomplete realtime data is provided, and will be calculated based on the
+  // delta between scheduled and realtime departure times of the nearest known
+  // realtime departure time.
   readonly realtimeDepartureTime: Temporal.Instant | null;
+
   readonly originalGtfsIdMetadata: StopGtfsIdMetadata;
   readonly updatedGtfsIdMetadata: StopGtfsIdMetadata;
   readonly gtfsStopSequence: number;
