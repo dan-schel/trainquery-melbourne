@@ -126,7 +126,7 @@ export class DeparturesBlocksBuilder {
     For this station, the first movement of the day is 5:18am, and last is 
     2:08am the next day. That means:
     
-    Local time zone    =>   [05:18 +0d]   to   [02:18 +1d]
+    Local time zone    =>   [05:18 +0d]   to   [02:08 +1d]
     UTC, during AEST   =>   [19:18 -1d]   to   [16:08 +0d]   (-10hrs from local)
     UTC, during AEDT   =>   [18:18 -1d]   to   [15:08 +0d]   (-11hrs from local)
 
@@ -258,8 +258,10 @@ export class DeparturesBlocksBuilder {
     actually intersect our query range, hence the check before adding it to the
     final result.
 
-    (Because realtime trips are filtered out of the scheduled blocks, this can
-    be another contributing factor to reducing the block's time range.)
+    (Because not every trip runs every day, and realtime trips are filtered out 
+    of the scheduled blocks for the relevant day, this can be another 
+    contributing factor to a block's time range being narrower once constructed
+    than what this algorithm assumes.)
 
     ------------------------------------------------------------------------- */
 
@@ -292,7 +294,21 @@ export class DeparturesBlocksBuilder {
   }
 
   private _buildScheduledBlockForServiceDay(serviceDay: Temporal.PlainDate) {
-    const entries = this._getScheduledMovementsWithoutRealtimeData(serviceDay);
+    // TODO: I have an ongoing question about whether it's best to do this
+    // filtering where we evaluate the entire array upfront when building
+    // blocks and reallocate a new array, or whether it'd be better to have the
+    // ScheduledDeparturesBlockIterator skip these trips automatically when we
+    // come across them as I'd originally planned. What's better for
+    // performance? For _allScheduledBlocksWithinTimeRange(), it isn't impacted
+    // whichever one we choose (aside from needing to update a comment near the
+    // end).
+    //
+    // The only weird thing about skipping in the iterator is we'd have to pass
+    // the realtime block or realtime data to it somehow, hopefully not through
+    // the block. Note that there's another unsolved TODO about transfers not
+    // connecting when calendars mismatch or trips get cancelled in realtime, so
+    // I reckon it might have a related solution.
+    const entries = this._getScheduledMovementsForDay(serviceDay);
     if (entries.length === 0) return null;
 
     return ScheduledDeparturesBlock.build(
@@ -302,11 +318,15 @@ export class DeparturesBlocksBuilder {
     );
   }
 
-  private _getScheduledMovementsWithoutRealtimeData(
+  private _getScheduledMovementsForDay(
     serviceDay: Temporal.PlainDate,
   ): readonly GtfsScheduledMovementsIndexEntry[] {
+    // TODO: Add unit test to ensure trip occurs on service day within the
+    // calendar, as I initially forgot to add this :)
     return this._scheduledMovements.filter(
-      (m) => !this._hasRealtimeDataFor(m.trip.gtfsTripId, serviceDay),
+      (m) =>
+        m.trip.calendar.occursOn(serviceDay) &&
+        !this._hasRealtimeDataFor(m.trip.gtfsTripId, serviceDay),
     );
   }
 

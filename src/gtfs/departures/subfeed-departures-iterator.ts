@@ -151,7 +151,7 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
       const nextValueInstant = iterator.getNextValueInstant();
       if (nextValue == null || nextValueInstant == null) continue;
 
-      if (best == null || this._isSooner(best.instant, nextValueInstant)) {
+      if (best == null || this._isBetter(best.instant, nextValueInstant)) {
         best = this._enhance(nextValue, iterator);
         bestIterator = iterator;
       }
@@ -176,14 +176,14 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
     }
   }
 
-  private _isSooner(
-    currentInstant: Temporal.Instant,
-    candidateInstant: Temporal.Instant,
+  private _isBetter(
+    currentBest: Temporal.Instant,
+    candidate: Temporal.Instant,
   ): boolean {
     if (this._direction === "forwards") {
-      return Temporal.Instant.compare(candidateInstant, currentInstant) < 0;
+      return Temporal.Instant.compare(candidate, currentBest) < 0;
     } else if (this._direction === "backwards") {
-      return Temporal.Instant.compare(candidateInstant, currentInstant) > 0;
+      return Temporal.Instant.compare(candidate, currentBest) > 0;
     } else {
       assertNever(this._direction);
     }
