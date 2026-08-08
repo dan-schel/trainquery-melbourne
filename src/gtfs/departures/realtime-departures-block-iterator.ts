@@ -30,12 +30,16 @@ export class RealtimeDeparturesBlockIterator implements IDeparturesIterator<Real
   }
 
   getNextValueInstant(): Temporal.Instant | null {
-    return this._getNextValue()?.instant ?? null;
+    return this.peek()?.instant ?? null;
+  }
+
+  peek(): RealtimeDeparturesBlockEntry | null {
+    return this.block.entries[this._index] ?? null;
   }
 
   take(): RealtimeDeparturesBlockEntry {
-    const value = this._getNextValue();
-    if (value === null) throw new Error("Nothing to take.");
+    const value = this.peek();
+    if (value == null) throw new Error("Nothing to take.");
 
     if (this._direction === "forwards") {
       this._index++;
@@ -46,9 +50,5 @@ export class RealtimeDeparturesBlockIterator implements IDeparturesIterator<Real
     }
 
     return value;
-  }
-
-  private _getNextValue() {
-    return this.block.entries[this._index] ?? null;
   }
 }

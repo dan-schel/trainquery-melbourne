@@ -18,15 +18,15 @@ export class PlainDateRange {
 
   startsAfter(date: Temporal.PlainDate): boolean {
     return (
-      this.start !== null && Temporal.PlainDate.compare(date, this.start) < 0
+      this.start != null && Temporal.PlainDate.compare(date, this.start) < 0
     );
   }
 
   endsBefore(date: Temporal.PlainDate): boolean {
-    return this.end !== null && Temporal.PlainDate.compare(date, this.end) > 0;
+    return this.end != null && Temporal.PlainDate.compare(date, this.end) > 0;
   }
 
   endsAfter(date: Temporal.PlainDate): boolean {
-    return this.end === null || Temporal.PlainDate.compare(date, this.end) < 0;
+    return this.end == null || Temporal.PlainDate.compare(date, this.end) < 0;
   }
 }

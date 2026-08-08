@@ -37,9 +37,13 @@ export class ScheduledDeparturesBlockIterator implements IDeparturesIterator<Sch
     return this._nextValueInstant;
   }
 
+  peek(): ScheduledDeparturesBlockEntry | null {
+    return this.block.entries[this._index] ?? null;
+  }
+
   take(): ScheduledDeparturesBlockEntry {
-    const value = this._getNextValue();
-    if (value === null) throw new Error("Nothing to take.");
+    const value = this.peek();
+    if (value == null) throw new Error("Nothing to take.");
 
     if (this._direction === "forwards") {
       this._setIndex(this._index + 1);
@@ -57,13 +61,9 @@ export class ScheduledDeparturesBlockIterator implements IDeparturesIterator<Sch
     this._nextValueInstant = this._calculateNextValueInstant();
   }
 
-  private _getNextValue(): ScheduledDeparturesBlockEntry | null {
-    return this.block.entries[this._index] ?? null;
-  }
-
   private _calculateNextValueInstant(): Temporal.Instant | null {
-    const nextValue = this._getNextValue();
-    if (nextValue === null) return null;
+    const nextValue = this.peek();
+    if (nextValue == null) return null;
 
     return nextValue.time.toInstant(this.block.serviceDay, this.block.timezone);
   }

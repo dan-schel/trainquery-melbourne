@@ -26,10 +26,6 @@ type Result =
   | RealtimeDeparturesBlockEntry
   | EnhancedScheduledDeparturesBlockEntry;
 
-// TODO: The unknown needs to be replaced. For scheduled departures we need to
-// attach the service day and timezone so that after filtering we can convert it
-// to a fully-fledged service with the correct date to form the Instants from
-// GtfsStopTimes.
 export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
   private _loadedRange: BoundedInstantRange | null;
   private _iterators: InnerDeparturesBlockIterator[];
@@ -52,7 +48,11 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
   }
 
   getNextValueInstant(): Temporal.Instant | null {
-    return this._nextValue?.instant ?? null;
+    return this.peek()?.instant ?? null;
+  }
+
+  peek(): Result | null {
+    return this._nextValue;
   }
 
   take(): Result {
@@ -127,8 +127,9 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
     let bestIterator: InnerDeparturesBlockIterator | null = null;
 
     for (const iterator of this._iterators) {
-      const nextValue = iterator.getNextValueInstant();
-      if (nextValue === null) continue;
+      const nextValue = iterator.peek();
+      const nextValueInstant = iterator.getNextValueInstant();
+      if (nextValue == null || nextValueInstant == null) continue;
 
       // TODO: We need to skip over departures from scheduled blocks for which
       // realtime data exists. I think we should probably make it the
@@ -136,9 +137,8 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
       // which realtime data exists, before passing it to
       // ScheduledDeparturesBlock.build.
 
-      if (best == null || this._isSooner(best.instant, nextValue)) {
-        // TODO: This shouldn't be take! I guess we need a peek() method afterall.
-        best = this._enhance(iterator.take(), iterator);
+      if (best == null || this._isSooner(best.instant, nextValueInstant)) {
+        best = this._enhance(nextValue, iterator);
         bestIterator = iterator;
       }
     }

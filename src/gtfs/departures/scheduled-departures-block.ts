@@ -31,11 +31,10 @@ export class ScheduledDeparturesBlock extends DeparturesBlock {
   ) {
     if (movements.length === 0) throw new Error("Movements cannot be empty");
 
-    const entries = movements.map<ScheduledDeparturesBlockEntry>((m) => ({
-      trip: m.trip,
-      time: m.time,
-      movement: m.movement,
-    }));
+    // Right now it happens that GtfsScheduledMovementsIndexEntry and
+    // ScheduledDeparturesBlockEntry are identical. I don't expect that to
+    // necessarily continue to be the case forever though.
+    const entries: readonly ScheduledDeparturesBlockEntry[] = movements;
 
     const firstEntry = itsOk(entries[0]);
     const lastEntry = itsOk(entries[entries.length - 1]);
