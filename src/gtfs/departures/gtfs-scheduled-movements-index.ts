@@ -91,6 +91,12 @@ export class GtfsScheduledMovementsIndex {
       }
     }
 
+    // TODO: Add unit test to ensure this isn't accidentally removed like
+    // just I did earlier :)
+    for (const entries of index.values()) {
+      entries.sort((a, b) => GtfsStopTime.compare(a.time, b.time));
+    }
+
     const rangeEncompassingAllCalendarsByStop = new Map<
       number,
       PlainDateRange

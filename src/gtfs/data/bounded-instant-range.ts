@@ -4,7 +4,7 @@ export class BoundedInstantRange {
     readonly end: Temporal.Instant,
   ) {
     if (Temporal.Instant.compare(start, end) > 0) {
-      throw new Error(`Start must be later than end.`);
+      throw new Error(`Start must be earlier than end.`);
     }
   }
 

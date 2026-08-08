@@ -23,9 +23,9 @@ export class ScheduledDeparturesBlockIterator implements IDeparturesIterator<Sch
     const time = this.block.toGtfsStopTime(instant);
 
     if (direction === "forwards") {
-      this._index = this.block.getIterationIndexOfNextFrom(time);
+      this._setIndex(this.block.getIterationIndexOfNextFrom(time));
     } else if (direction === "backwards") {
-      this._index = this.block.getInterationIndexOfPreviousFrom(time);
+      this._setIndex(this.block.getInterationIndexOfPreviousFrom(time));
     } else {
       assertNever(direction);
     }

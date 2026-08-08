@@ -73,7 +73,7 @@ export class RealtimeDeparturesBlock extends DeparturesBlock {
    * If all movements come after the given time, returns -1, i.e. the index
    * _before_ all movements.
    */
-  getInterationIndexOfPreviousFrom(instant: Temporal.Instant): number {
+  getIterationIndexOfPreviousFrom(instant: Temporal.Instant): number {
     // No need to handle -1, because we'd want to return -1 in that case anyway!
     return this.entries.findLastIndex(
       (m) => Temporal.Instant.compare(m.instant, instant) <= 0,

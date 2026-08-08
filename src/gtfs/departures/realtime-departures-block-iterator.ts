@@ -21,7 +21,7 @@ export class RealtimeDeparturesBlockIterator implements IDeparturesIterator<Real
     if (direction === "forwards") {
       this._index = this.block.getIterationIndexOfNextFrom(instant);
     } else if (direction === "backwards") {
-      this._index = this.block.getInterationIndexOfPreviousFrom(instant);
+      this._index = this.block.getIterationIndexOfPreviousFrom(instant);
     } else {
       assertNever(direction);
     }
