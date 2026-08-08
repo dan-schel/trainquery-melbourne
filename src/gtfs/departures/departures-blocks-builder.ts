@@ -209,6 +209,9 @@ export class DeparturesBlocksBuilder {
     actually intersect our query range, hence the check before adding it to the
     final result.
 
+    (Because realtime trips are filtered out of the scheduled blocks, this can
+    be another contributing factor to reducing the block's time range.)
+
     ------------------------------------------------------------------------- */
 
     const blocks: ScheduledDeparturesBlock[] = [];
@@ -223,7 +226,7 @@ export class DeparturesBlocksBuilder {
       // Use `touches`, not `intersects`, so that the first and last movements
       // of a block are included if the query range starts or ends exactly at
       // the same time as them.
-      if (block.instantRange.touches(range)) {
+      if (block != null && block.instantRange.touches(range)) {
         blocks.push(block);
       }
     }
@@ -240,10 +243,34 @@ export class DeparturesBlocksBuilder {
   }
 
   private _buildScheduledBlockForServiceDay(serviceDay: Temporal.PlainDate) {
+    const entries = this._getScheduledMovementsWithoutRealtimeData(serviceDay);
+    if (entries.length === 0) return null;
+
     return ScheduledDeparturesBlock.build(
-      this._scheduledMovements,
+      entries,
       serviceDay,
       this._timezoneData.timezone,
+    );
+  }
+
+  private _getScheduledMovementsWithoutRealtimeData(
+    serviceDay: Temporal.PlainDate,
+  ): readonly GtfsScheduledMovementsIndexEntry[] {
+    return this._scheduledMovements.filter(
+      (m) => !this._hasRealtimeDataFor(m.trip.gtfsTripId, serviceDay),
+    );
+  }
+
+  private _hasRealtimeDataFor(
+    gtfsTripId: string,
+    serviceDay: Temporal.PlainDate,
+  ): boolean {
+    if (this._realtimeBlock === null) return false;
+
+    return this._realtimeBlock.entries.some(
+      (e) =>
+        e.trip.scheduledTrip.gtfsTripId === gtfsTripId &&
+        e.trip.serviceDay.equals(serviceDay),
     );
   }
 }

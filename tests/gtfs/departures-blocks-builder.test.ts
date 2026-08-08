@@ -275,14 +275,20 @@ describe("ScheduledDeparturesBlock", () => {
     });
 
     it("returns a realtime departures block if it falls within the time range", () => {
+      const scheduledMovements = createMovements({
+        earliest: "05:18:00",
+        latest: "26:08:00",
+      });
+
       const realtimeBlock = createRealtimeBlock({
+        tripId: itsOk(scheduledMovements[0]).trip.gtfsTripId,
         tripUpdateServiceDay: Temporal.PlainDate.from("2026-08-02"),
         originationTime: GtfsStopTime.parse("12:00:00"),
         delayMins: 2,
       });
 
       const builder = new DeparturesBlocksBuilder(
-        createMovements({ earliest: "05:18:00", latest: "26:08:00" }),
+        scheduledMovements,
         realtimeBlock,
         MELBOURNE_TIMEZONE_DATA,
       );
@@ -348,23 +354,91 @@ describe("ScheduledDeparturesBlock", () => {
         queryEnd: "2026-08-02T12:01:00+10:00",
         result: [],
       });
+    });
+
+    it("removes scheduled movements that have realtime data from the scheduled departures blocks", () => {
+      const scheduledMovements = createMovements({
+        earliest: "05:18:00",
+        latest: "26:08:00",
+      });
+
+      const realtimeBlock = createRealtimeBlock({
+        tripId: itsOk(scheduledMovements[0]).trip.gtfsTripId,
+        tripUpdateServiceDay: Temporal.PlainDate.from("2026-08-02"),
+        originationTime: GtfsStopTime.parse("05:18:00"),
+        delayMins: 2,
+      });
+
+      const builder = new DeparturesBlocksBuilder(
+        scheduledMovements,
+        realtimeBlock,
+        MELBOURNE_TIMEZONE_DATA,
+      );
 
       expectScheduledBlocks({
         builder,
-        queryStart: "2026-08-02T12:00:00+10:00",
-        queryEnd: "2026-08-02T12:05:00+10:00",
+        queryStart: "2026-08-02T00:00:00+10:00",
+        queryEnd: "2026-08-04T00:00:00+10:00",
         result: [
           {
+            serviceDay: "2026-08-01",
+            earliest: "2026-08-01T05:18:00+10:00",
+            latest: "2026-08-02T02:08:00+10:00",
+          },
+
+          // Unlike the other scheduled blocks, 2026-08-02 is cut short because
+          // the first movement has realtime data and so was removed.
+          {
             serviceDay: "2026-08-02",
-            earliest: "2026-08-02T05:18:00+10:00",
+            earliest: "2026-08-03T02:08:00+10:00",
             latest: "2026-08-03T02:08:00+10:00",
+          },
+
+          {
+            serviceDay: "2026-08-03",
+            earliest: "2026-08-03T05:18:00+10:00",
+            latest: "2026-08-04T02:08:00+10:00",
           },
         ],
       });
     });
 
+    it("removes scheduled blocks entirely if all movements have realtime data", () => {
+      const originationTime = GtfsStopTime.parse("05:18:00");
+
+      const trip1 = createTrip({
+        tripId: "trip-1",
+        originationTime: originationTime,
+      });
+
+      const realtimeBlock = createRealtimeBlock({
+        tripId: trip1.gtfsTripId,
+        tripUpdateServiceDay: Temporal.PlainDate.from("2026-08-02"),
+        originationTime,
+        delayMins: 2,
+      });
+
+      const scheduledMovements = [
+        { trip: trip1, time: originationTime, movement: trip1.origination },
+      ];
+
+      const builder = new DeparturesBlocksBuilder(
+        scheduledMovements,
+        realtimeBlock,
+        MELBOURNE_TIMEZONE_DATA,
+      );
+
+      expectScheduledBlocks({
+        builder,
+        queryStart: "2026-08-02T00:00:00+10:00",
+        queryEnd: "2026-08-03T00:00:00+10:00",
+        result: [],
+      });
+    });
+
     it("still returns realtime departures block if there are no scheduled movements", () => {
       const realtimeBlock = createRealtimeBlock({
+        tripId: "trip-1",
         tripUpdateServiceDay: Temporal.PlainDate.from("2026-08-02"),
         originationTime: GtfsStopTime.parse("12:00:00"),
         delayMins: 2,
@@ -454,18 +528,17 @@ function createTrip({
 }
 
 function createRealtimeBlock({
+  tripId,
   tripUpdateServiceDay,
   originationTime,
   delayMins,
 }: {
+  tripId: string;
   tripUpdateServiceDay: Temporal.PlainDate;
   originationTime: GtfsStopTime;
   delayMins: number;
 }) {
-  const scheduledTrip = createTrip({
-    tripId: "trip-1",
-    originationTime,
-  });
+  const scheduledTrip = createTrip({ tripId, originationTime });
 
   const newOriginationTime = scheduledTrip.origination.departureTime
     .plus({ minutes: delayMins })

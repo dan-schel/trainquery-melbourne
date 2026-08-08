@@ -131,12 +131,6 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
       const nextValueInstant = iterator.getNextValueInstant();
       if (nextValue == null || nextValueInstant == null) continue;
 
-      // TODO: We need to skip over departures from scheduled blocks for which
-      // realtime data exists. I think we should probably make it the
-      // DeparturesBlockBuilders's job to filter out scheduled departures for
-      // which realtime data exists, before passing it to
-      // ScheduledDeparturesBlock.build.
-
       if (best == null || this._isSooner(best.instant, nextValueInstant)) {
         best = this._enhance(nextValue, iterator);
         bestIterator = iterator;
@@ -174,6 +168,7 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
     entry: RealtimeDeparturesBlockEntry | ScheduledDeparturesBlockEntry,
     iterator: InnerDeparturesBlockIterator,
   ): Result {
+    // TODO: We'd be able to do better if checks if these were classes.
     if ("instant" in entry) {
       return entry;
     } else if ("time" in entry) {
