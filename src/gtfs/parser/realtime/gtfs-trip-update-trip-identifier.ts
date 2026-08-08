@@ -25,7 +25,7 @@ export class GtfsTripUpdateTripIdentifier {
       return null;
     }
 
-    const trip = scheduleData.getTripById(tripDescriptor.tripId);
+    const trip = scheduleData.getTrip(tripDescriptor.tripId);
     if (trip == null) {
       const Err = TripDescriptorReferencesNonExistentTripIdError;
       this._onError(new Err(tripDescriptor));

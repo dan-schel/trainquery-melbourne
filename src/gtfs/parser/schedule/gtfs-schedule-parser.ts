@@ -48,7 +48,7 @@ export class GtfsScheduleParser {
       stopGtfsIdMapping,
     );
 
-    return new GtfsScheduleData(parsedTrips);
+    return new GtfsScheduleData(parsedTrips, parsedCalendars);
   }
 }
 

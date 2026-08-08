@@ -3,6 +3,7 @@ import type { GtfsScheduleData } from "../data/gtfs-schedule-data.js";
 import { GtfsStopTime } from "../data/gtfs-stop-time.js";
 import type { GtfsScheduledTrip } from "../data/gtfs-scheduled-trip.js";
 import type { GtfsScheduledTripServicingMovement } from "../data/gtfs-scheduled-trip-movements.js";
+import { PlainDateRange } from "../data/plain-date-range.js";
 
 export type GtfsScheduledMovementsIndexEntry = {
   readonly trip: GtfsScheduledTrip;
@@ -16,8 +17,10 @@ export class GtfsScheduledMovementsIndex {
       number,
       readonly GtfsScheduledMovementsIndexEntry[]
     >,
-    private readonly _earliestMovementByStop: Map<number, GtfsStopTime>,
-    private readonly _latestMovementByStop: Map<number, GtfsStopTime>,
+    private readonly _rangeEncompassingAllCalendarsByStop: Map<
+      number,
+      PlainDateRange
+    >,
   ) {}
 
   getMovementsForStop(
@@ -25,15 +28,16 @@ export class GtfsScheduledMovementsIndex {
   ): readonly GtfsScheduledMovementsIndexEntry[] {
     return this._index.get(stopId) ?? [];
   }
-  getEarliestMovementForStop(stopId: number): GtfsStopTime | null {
-    return this._earliestMovementByStop.get(stopId) ?? null;
-  }
-  getLatestMovementForStop(stopId: number): GtfsStopTime | null {
-    return this._latestMovementByStop.get(stopId) ?? null;
+
+  getRangeEncompassingAllCalendarsForStop(
+    stopId: number,
+  ): PlainDateRange | null {
+    return this._rangeEncompassingAllCalendarsByStop.get(stopId) ?? null;
   }
 
   static build(schedule: GtfsScheduleData): GtfsScheduledMovementsIndex {
     const index = new Map<number, GtfsScheduledMovementsIndexEntry[]>();
+    const calendarsByStop = new Map<number, Set<string>>();
 
     for (const trip of schedule.allTrips()) {
       for (const movement of trip.movements) {
@@ -76,31 +80,44 @@ export class GtfsScheduledMovementsIndex {
         if (!index.has(movement.stopId)) {
           index.set(movement.stopId, []);
         }
-
         const existingEntries = itsOk(index.get(movement.stopId));
-        existingEntries?.push(entry);
+        existingEntries.push(entry);
+
+        if (!calendarsByStop.has(movement.stopId)) {
+          calendarsByStop.set(movement.stopId, new Set());
+        }
+        const existingCalendars = itsOk(calendarsByStop.get(movement.stopId));
+        existingCalendars.add(trip.calendar.gtfsCalendarId);
       }
     }
 
-    const earliestMovementByStop = new Map<number, GtfsStopTime>();
-    const latestMovementByStop = new Map<number, GtfsStopTime>();
+    const rangeEncompassingAllCalendarsByStop = new Map<
+      number,
+      PlainDateRange
+    >();
 
-    for (const [stopId, entries] of index.entries()) {
-      entries.sort((a, b) => GtfsStopTime.compare(a.time, b.time));
+    for (const [stopId, calendarIds] of calendarsByStop.entries()) {
+      let range: PlainDateRange | null = null;
 
-      // Can guarantee `entries` will definitely have at least one entry,
-      // otherwise the stopId wouldn't be registered in the index.
-      const first = itsOk(entries[0]);
-      const last = itsOk(entries.at(-1));
+      for (const calendarId of calendarIds) {
+        const calendar = schedule.requireCalendar(calendarId);
+        const calendarFullDateRange = calendar.getFullDateRange();
 
-      earliestMovementByStop.set(stopId, first.time);
-      latestMovementByStop.set(stopId, last.time);
+        if (range == null) {
+          range = calendarFullDateRange;
+        } else {
+          range = PlainDateRange.encompassing(range, calendarFullDateRange);
+        }
+      }
+
+      if (range != null) {
+        rangeEncompassingAllCalendarsByStop.set(stopId, range);
+      }
     }
 
     return new GtfsScheduledMovementsIndex(
       index,
-      earliestMovementByStop,
-      latestMovementByStop,
+      rangeEncompassingAllCalendarsByStop,
     );
   }
 }

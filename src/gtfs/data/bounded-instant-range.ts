@@ -28,4 +28,12 @@ export class BoundedInstantRange {
       Temporal.Instant.compare(other.start, this.end) <= 0
     );
   }
+
+  startsBefore(instant: Temporal.Instant): boolean {
+    return Temporal.Instant.compare(this.start, instant) < 0;
+  }
+
+  endsAfter(instant: Temporal.Instant): boolean {
+    return Temporal.Instant.compare(this.end, instant) > 0;
+  }
 }

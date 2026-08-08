@@ -8,6 +8,7 @@ import type {
 } from "./gtfs-scheduled-movements-index.js";
 import { RealtimeDeparturesBlock } from "./realtime-departures-block.js";
 import { ScheduledDeparturesBlock } from "./scheduled-departures-block.js";
+import type { PlainDateRange } from "../data/plain-date-range.js";
 
 export type TimezoneData = {
   readonly timezone: string;
@@ -20,6 +21,7 @@ export class DeparturesBlocksBuilder {
     private readonly _scheduledMovements: readonly GtfsScheduledMovementsIndexEntry[],
     private readonly _realtimeBlock: RealtimeDeparturesBlock | null,
     private readonly _timezoneData: TimezoneData,
+    private readonly _rangeEncompassingAllCalendars: PlainDateRange | null,
   ) {}
 
   static build(
@@ -28,9 +30,12 @@ export class DeparturesBlocksBuilder {
     realtimeData: GtfsRealtimeData,
     timezoneData: TimezoneData,
   ): DeparturesBlocksBuilder {
-    const realtime = RealtimeDeparturesBlock.tryBuild(stopId, realtimeData);
-    const scheduled = scheduledMovementsIndex.getMovementsForStop(stopId);
-    return new DeparturesBlocksBuilder(scheduled, realtime, timezoneData);
+    return new DeparturesBlocksBuilder(
+      scheduledMovementsIndex.getMovementsForStop(stopId),
+      RealtimeDeparturesBlock.tryBuild(stopId, realtimeData),
+      timezoneData,
+      scheduledMovementsIndex.getRangeEncompassingAllCalendarsForStop(stopId),
+    );
   }
 
   allBlocksWithinTimeRange(range: BoundedInstantRange): DeparturesBlock[] {
@@ -38,6 +43,50 @@ export class DeparturesBlocksBuilder {
       ...this._allRealtimeBlocksWithinTimeRange(range),
       ...this._allScheduledBlocksWithinTimeRange(range),
     ];
+  }
+
+  hasBlocksBefore(instant: Temporal.Instant): boolean {
+    const realtimeStartsEarlier =
+      this._realtimeBlock != null &&
+      this._realtimeBlock.instantRange.startsBefore(instant);
+    if (realtimeStartsEarlier) return true;
+
+    const scheduledMovementsExist =
+      this._scheduledMovements.length > 0 &&
+      this._rangeEncompassingAllCalendars != null;
+    if (!scheduledMovementsExist) return false;
+
+    if (this._rangeEncompassingAllCalendars.start == null) return true;
+
+    const firstMovement = itsOk(this._scheduledMovements[0]);
+    const firstMovementInstant = firstMovement.time.toInstant(
+      this._rangeEncompassingAllCalendars.start,
+      this._timezoneData.timezone,
+    );
+
+    return Temporal.Instant.compare(firstMovementInstant, instant) < 0;
+  }
+
+  hasBlocksAfter(instant: Temporal.Instant): boolean {
+    const realtimeEndsLater =
+      this._realtimeBlock != null &&
+      this._realtimeBlock.instantRange.endsAfter(instant);
+    if (realtimeEndsLater) return true;
+
+    const scheduledMovementsExist =
+      this._scheduledMovements.length > 0 &&
+      this._rangeEncompassingAllCalendars != null;
+    if (!scheduledMovementsExist) return false;
+
+    if (this._rangeEncompassingAllCalendars.end == null) return true;
+
+    const lastMovement = itsOk(this._scheduledMovements.at(-1));
+    const lastMovementInstant = lastMovement.time.toInstant(
+      this._rangeEncompassingAllCalendars.end,
+      this._timezoneData.timezone,
+    );
+
+    return Temporal.Instant.compare(lastMovementInstant, instant) > 0;
   }
 
   private _allRealtimeBlocksWithinTimeRange(

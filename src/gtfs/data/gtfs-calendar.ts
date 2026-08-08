@@ -28,28 +28,25 @@ export class GtfsCalendar {
   }
 
   /**
-   * Returns false if this GTFS calendar has no further eligible dates after the
-   * given date. Note that a return value of true does not guarantee that there
-   * are future dates, only that there _may_ be.
+   * Returns a PlainDateRange which is guaranteed to encompass every date this
+   * calendar includes, including added ones. It is _not_ guaranteed to tightly
+   * fit the range.
    *
-   * (This function is designed to be used to determine when departures from a
-   * certain stop should be considered exhausted, as when we iterate through the
-   * departures for a given stop, we will track which departures will never
-   * occur again, and when all departures never occur again, stop iterating
-   * (which is necessary given that the GTFS feed is not infinite). For this
-   * purpose, I have determined that it's probably not worth the computational
-   * cost of truly figuring out if a service never occurs again, as to do so
-   * properly would require iterating though all dates between the given date
-   * and the end date and returning true if we find a date which has not been
-   * removed and where the weekday is included. Typically this will end early
-   * when the first eligible date is found, but could theoretically be
-   * expensive.)
+   * (Designed to be used when determining if departures from a certain stop are
+   * exhausted, to prevent infinite loops, so exactness at the boundaries is not
+   * necessary as long as we don't miss any departures.)
    */
-  mayOccurAgainAfter(date: Temporal.PlainDate): boolean {
-    return (
-      this._containsAddedDateAfter(date) ||
-      (this.isRecurring && this.dateRange.endsAfter(date))
+  getFullDateRange(): PlainDateRange {
+    if (this.addedDates.length === 0) return this.dateRange;
+
+    // TODO: Unit test to ensure the check above isn't skipped, otherwise having
+    // no added dates would result in an infinite time range!
+    const addedDateRange = new PlainDateRange(
+      this._earliestAddedDate(),
+      this._latestAddedDate(),
     );
+
+    return PlainDateRange.encompassing(this.dateRange, addedDateRange);
   }
 
   /**
@@ -97,8 +94,24 @@ export class GtfsCalendar {
     return this.removedDates.some((removedDate) => removedDate.equals(date));
   }
 
-  private _containsAddedDateAfter(date: Temporal.PlainDate): boolean {
-    return this.addedDates.some((a) => Temporal.PlainDate.compare(a, date) > 0);
+  private _earliestAddedDate(): Temporal.PlainDate | null {
+    let earliest: Temporal.PlainDate | null = null;
+    for (const date of this.addedDates) {
+      if (earliest == null || Temporal.PlainDate.compare(date, earliest) < 0) {
+        earliest = date;
+      }
+    }
+    return earliest;
+  }
+
+  private _latestAddedDate(): Temporal.PlainDate | null {
+    let latest: Temporal.PlainDate | null = null;
+    for (const date of this.addedDates) {
+      if (latest == null || Temporal.PlainDate.compare(date, latest) > 0) {
+        latest = date;
+      }
+    }
+    return latest;
   }
 
   static everyday(gtfsCalendarId: string): GtfsCalendar {
@@ -111,7 +124,7 @@ export class GtfsCalendar {
       true,
       true,
       true,
-      new PlainDateRange(null, null),
+      PlainDateRange.infinite,
       [],
       [],
     );

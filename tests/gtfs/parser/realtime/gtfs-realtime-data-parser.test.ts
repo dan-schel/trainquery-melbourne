@@ -54,7 +54,7 @@ const TRIP = new GtfsScheduledTrip({
   nextTrip: null,
 });
 
-const SCHEDULE = new GtfsScheduleData([TRIP]);
+const SCHEDULE = new GtfsScheduleData([TRIP], [TRIP.calendar]);
 
 const TRIP_DESCRIPTOR = {
   tripId: TRIP.gtfsTripId,

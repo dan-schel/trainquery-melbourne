@@ -17,6 +17,7 @@ import { GtfsStopTime } from "../../src/gtfs/data/gtfs-stop-time.js";
 import { RealtimeDeparturesBlock } from "../../src/gtfs/departures/realtime-departures-block.js";
 import { GtfsUpdatedTrip } from "../../src/gtfs/data/gtfs-updated-trip.js";
 import { GtfsRealtimeData } from "../../src/gtfs/data/gtfs-realtime-data.js";
+import { PlainDateRange } from "../../src/gtfs/data/plain-date-range.js";
 
 describe("ScheduledDeparturesBlock", () => {
   describe("allBlocksWithinTimeRange", () => {
@@ -24,6 +25,7 @@ describe("ScheduledDeparturesBlock", () => {
       createMovements({ earliest: "05:18:00", latest: "26:08:00" }),
       null,
       MELBOURNE_TIMEZONE_DATA,
+      PlainDateRange.infinite,
     );
 
     it("returns all scheduled departures blocks within the time range", () => {
@@ -215,6 +217,7 @@ describe("ScheduledDeparturesBlock", () => {
         createMovements({ earliest: "05:18:00", latest: "55:08:00" }),
         null,
         MELBOURNE_TIMEZONE_DATA,
+        PlainDateRange.infinite,
       );
 
       expectScheduledBlocks({
@@ -264,6 +267,7 @@ describe("ScheduledDeparturesBlock", () => {
         [],
         null,
         MELBOURNE_TIMEZONE_DATA,
+        null,
       );
 
       expectScheduledBlocks({
@@ -291,6 +295,7 @@ describe("ScheduledDeparturesBlock", () => {
         scheduledMovements,
         realtimeBlock,
         MELBOURNE_TIMEZONE_DATA,
+        PlainDateRange.infinite,
       );
 
       expectRealtimeBlocks({
@@ -373,6 +378,7 @@ describe("ScheduledDeparturesBlock", () => {
         scheduledMovements,
         realtimeBlock,
         MELBOURNE_TIMEZONE_DATA,
+        PlainDateRange.infinite,
       );
 
       expectScheduledBlocks({
@@ -426,6 +432,7 @@ describe("ScheduledDeparturesBlock", () => {
         scheduledMovements,
         realtimeBlock,
         MELBOURNE_TIMEZONE_DATA,
+        PlainDateRange.infinite,
       );
 
       expectScheduledBlocks({
@@ -448,6 +455,7 @@ describe("ScheduledDeparturesBlock", () => {
         [],
         realtimeBlock,
         MELBOURNE_TIMEZONE_DATA,
+        null,
       );
 
       expectRealtimeBlocks({
