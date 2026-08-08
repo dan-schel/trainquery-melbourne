@@ -1,5 +1,5 @@
-import { assertNever, itsOk } from "@dan-schel/js-utils";
-import type { DeparturesBlocksBuilder } from "./departures-blocks-builder.js";
+import { assertNever, itsOk, removeIf } from "@dan-schel/js-utils";
+import { DeparturesBlocksBuilder } from "./departures-blocks-builder.js";
 import type {
   DeparturesSearchDirection,
   IDeparturesIterator,
@@ -27,14 +27,14 @@ type Result =
   | EnhancedScheduledDeparturesBlockEntry;
 
 export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
-  private _loadedRange: BoundedInstantRange | null;
+  private _searchRange: BoundedInstantRange | null;
   private _iterators: InnerDeparturesBlockIterator[];
   private _nextValue: Result | null;
   private _nextValueIterator: InnerDeparturesBlockIterator | null;
   private _direction: DeparturesSearchDirection;
 
-  constructor(private readonly _blockBuilders: DeparturesBlocksBuilder) {
-    this._loadedRange = null;
+  constructor(private readonly _blockBuilder: DeparturesBlocksBuilder) {
+    this._searchRange = null;
     this._iterators = [];
     this._nextValue = null;
     this._nextValueIterator = null;
@@ -42,8 +42,13 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
   }
 
   set(instant: Temporal.Instant, direction: DeparturesSearchDirection): void {
+    this._searchRange = this._createSearchRange(instant, direction);
+    this._iterators = [];
+    this._nextValue = null;
+    this._nextValueIterator = null;
     this._direction = direction;
-    this._applySearchRange(instant);
+
+    this._addBlocksForSearchRange();
     this._calculateNextValue();
   }
 
@@ -69,20 +74,30 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
     return value;
   }
 
-  private _applySearchRange(instant: Temporal.Instant) {
-    const searchRange = this._getSearchRange(instant, this._direction);
-    const blocks = this._blockBuilders.allBlocksWithinTimeRange(searchRange);
-    const iterators = blocks.map((b) => b.createIterator());
+  private _addBlocksForSearchRange() {
+    const searchRange = this._searchRange;
+    if (searchRange == null) throw new Error("Search range not set.");
 
-    for (const iterator of iterators) {
-      iterator.set(instant, this._direction);
+    const blocks = this._blockBuilder.allBlocksWithinTimeRange(searchRange);
+
+    for (const block of blocks) {
+      const alreadyIteratingThisBlock = this._iterators.some((i) =>
+        DeparturesBlocksBuilder.isSameBlock(i.block, block),
+      );
+
+      if (!alreadyIteratingThisBlock) {
+        const iterator = block.createIterator();
+        iterator.set(this._getFrontOfSearchRange(), this._direction);
+        this._iterators.push(iterator);
+      }
     }
 
-    this._loadedRange = searchRange;
-    this._iterators = iterators;
+    // Might as well cleanup spent iterators while we're adding new ones, so
+    // that list doesn't just keep growing forever until the search completes.
+    removeIf(this._iterators, (i) => i.peek() == null);
   }
 
-  private _getSearchRange(
+  private _createSearchRange(
     time: Temporal.Instant,
     direction: DeparturesSearchDirection,
   ): BoundedInstantRange {
@@ -97,23 +112,31 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
     }
   }
 
-  private _getNextSearchRangeStart(): Temporal.Instant {
+  private _getFrontOfSearchRange(): Temporal.Instant {
     if (this._direction === "forwards") {
-      return itsOk(this._loadedRange).end;
+      return itsOk(this._searchRange).start;
     } else if (this._direction === "backwards") {
-      return itsOk(this._loadedRange).start;
+      return itsOk(this._searchRange).end;
+    } else {
+      assertNever(this._direction);
+    }
+  }
+
+  private _getBackOfSearchRange(): Temporal.Instant {
+    if (this._direction === "forwards") {
+      return itsOk(this._searchRange).end;
+    } else if (this._direction === "backwards") {
+      return itsOk(this._searchRange).start;
     } else {
       assertNever(this._direction);
     }
   }
 
   private _isWorthSearchingForMore(): boolean {
-    const nextSearchRangeStart = this._getNextSearchRangeStart();
-
     if (this._direction === "forwards") {
-      return this._blockBuilders.hasBlocksAfter(nextSearchRangeStart);
+      return this._blockBuilder.hasBlocksAfter(this._getBackOfSearchRange());
     } else if (this._direction === "backwards") {
-      return this._blockBuilders.hasBlocksBefore(nextSearchRangeStart);
+      return this._blockBuilder.hasBlocksBefore(this._getBackOfSearchRange());
     } else {
       assertNever(this._direction);
     }
@@ -134,13 +157,15 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
       }
     }
 
-    const loadedRange = itsOk(this._loadedRange);
+    const loadedRange = itsOk(this._searchRange);
 
     if (best != null && loadedRange.includes(best.instant)) {
       this._nextValue = best;
       this._nextValueIterator = bestIterator;
     } else if (this._isWorthSearchingForMore()) {
-      this._applySearchRange(this._getNextSearchRangeStart());
+      const currentEnd = this._getBackOfSearchRange();
+      this._searchRange = this._createSearchRange(currentEnd, this._direction);
+      this._addBlocksForSearchRange();
 
       // TODO: I'd prefer this wasn't a recursive algorithm. I find we should
       // rewrite it using a loop instead.

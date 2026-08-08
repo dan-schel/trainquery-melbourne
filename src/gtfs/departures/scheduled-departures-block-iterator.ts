@@ -25,7 +25,7 @@ export class ScheduledDeparturesBlockIterator implements IDeparturesIterator<Sch
     if (direction === "forwards") {
       this._setIndex(this.block.getIterationIndexOfNextFrom(time));
     } else if (direction === "backwards") {
-      this._setIndex(this.block.getInterationIndexOfPreviousFrom(time));
+      this._setIndex(this.block.getIterationIndexOfPreviousFrom(time));
     } else {
       assertNever(direction);
     }

@@ -322,4 +322,26 @@ export class DeparturesBlocksBuilder {
         e.trip.serviceDay.equals(serviceDay),
     );
   }
+
+  /**
+   * Returns true if two blocks are equivalent. This function assumes both given
+   * blocks were built by the same `DeparturesBlocksBuilder`, and as such, only
+   * checks if either (a) both are realtime blocks, or (b) both are scheduled
+   * blocks for the same service day.
+   */
+  static isSameBlock(a: DeparturesBlock, b: DeparturesBlock): boolean {
+    if (
+      a instanceof RealtimeDeparturesBlock &&
+      b instanceof RealtimeDeparturesBlock
+    ) {
+      return true;
+    } else if (
+      a instanceof ScheduledDeparturesBlock &&
+      b instanceof ScheduledDeparturesBlock
+    ) {
+      return a.serviceDay.equals(b.serviceDay);
+    } else {
+      return false;
+    }
+  }
 }

@@ -74,7 +74,7 @@ export class ScheduledDeparturesBlock extends DeparturesBlock {
    * If all movements come after the given time, returns -1, i.e. the index
    * _before_ all movements.
    */
-  getInterationIndexOfPreviousFrom(time: GtfsStopTime): number {
+  getIterationIndexOfPreviousFrom(time: GtfsStopTime): number {
     // No need to handle -1, because we'd want to return -1 in that case anyway!
     return this.entries.findLastIndex((m) => m.time.isBeforeOrEqual(time));
   }

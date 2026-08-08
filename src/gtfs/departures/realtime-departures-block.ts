@@ -44,6 +44,8 @@ export class RealtimeDeparturesBlock extends DeparturesBlock {
 
     if (movements.length === 0) return null;
 
+    movements.sort((a, b) => Temporal.Instant.compare(a.instant, b.instant));
+
     const earliestDepartureInstant = itsOk(movements[0]).instant;
     const latestDepartureInstant = itsOk(
       movements[movements.length - 1],
