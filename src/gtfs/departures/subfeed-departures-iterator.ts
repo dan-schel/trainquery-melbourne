@@ -107,22 +107,19 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
     }
   }
 
-  private _calculateNextValue() {
-    // TODO: Need to take exhaustion into account (i.e. all calendars ending).
-    //
-    // Probably the `GtfsScheduledMovementsIndex` could keep track of all unique
-    // calendars for the stop, and then we can call a new method on the
-    // `DepartureBlocksBuilder` which can tell us for a given instant if all
-    // future scheduled departure blocks would be for service days beyond all
-    // calendars AND we're beyond all realtime departure blocks.
-    //
-    // Or, maybe when constructing a `DepartureBlocksBuilder`, we determine the
-    // last service day for all calendars for that stop (oh, and earliest, for
-    // `direction = "backwards"`), and then use that to know when there's no
-    // scheduled departure blocks it can build. I guess we still need the second
-    // method, because `allBlocksWithinTimeRange` returning an empty array
-    // doesn't necessarily mean there are no more blocks in the future.
+  private _isWorthSearchingForMore(): boolean {
+    const nextSearchRangeStart = this._getNextSearchRangeStart();
 
+    if (this._direction === "forwards") {
+      return this._blockBuilders.hasBlocksAfter(nextSearchRangeStart);
+    } else if (this._direction === "backwards") {
+      return this._blockBuilders.hasBlocksBefore(nextSearchRangeStart);
+    } else {
+      assertNever(this._direction);
+    }
+  }
+
+  private _calculateNextValue() {
     let best: Result | null = null;
     let bestIterator: InnerDeparturesBlockIterator | null = null;
 
@@ -142,12 +139,15 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
     if (best != null && loadedRange.includes(best.instant)) {
       this._nextValue = best;
       this._nextValueIterator = bestIterator;
-    } else {
+    } else if (this._isWorthSearchingForMore()) {
       this._applySearchRange(this._getNextSearchRangeStart());
 
       // TODO: I'd prefer this wasn't a recursive algorithm. I find we should
       // rewrite it using a loop instead.
       this._calculateNextValue();
+    } else {
+      this._nextValue = null;
+      this._nextValueIterator = null;
     }
   }
 
