@@ -17,10 +17,3 @@ export class DeparturesIteratorResult {
     readonly movement: GtfsTripServicingMovement,
   ) {}
 }
-
-// TODO: Delete this.
-export interface IDeparturesIterator<T> {
-  set(instant: Temporal.Instant, direction: DeparturesSearchDirection): void;
-  peek(): T | null;
-  take(): T;
-}

@@ -78,7 +78,7 @@ export class GtfsTransferConnector {
 
       // TODO: I'm gonna let this one slide, so long as we remember to:
       // - When filtering out arrivals for trips which ultimately continue, make
-      //   sure to check the next trip runs on that service day.
+      //   sure to check the next trip runs on that service day. ✅
       // - When building the services for corequery (either through the
       //   departures algorithm, or lookup by ID), only add the extra leg if the
       //   next trip runs on that service day.

@@ -39,14 +39,8 @@ export class GtfsCalendar {
   getFullDateRange(): PlainDateRange {
     if (this.addedDates.length === 0) return this.dateRange;
 
-    // TODO: Unit test to ensure the check above isn't skipped, otherwise having
-    // no added dates would result in an infinite time range!
-    const addedDateRange = new PlainDateRange(
-      this._earliestAddedDate(),
-      this._latestAddedDate(),
-    );
-
-    return PlainDateRange.encompassing(this.dateRange, addedDateRange);
+    const addedDatesRange = this._getAddedDatesRange();
+    return PlainDateRange.encompassing(this.dateRange, addedDatesRange);
   }
 
   /**
@@ -94,24 +88,21 @@ export class GtfsCalendar {
     return this.removedDates.some((removedDate) => removedDate.equals(date));
   }
 
-  private _earliestAddedDate(): Temporal.PlainDate | null {
+  private _getAddedDatesRange() {
     let earliest: Temporal.PlainDate | null = null;
+    let latest: Temporal.PlainDate | null = null;
+
     for (const date of this.addedDates) {
       if (earliest == null || Temporal.PlainDate.compare(date, earliest) < 0) {
         earliest = date;
       }
-    }
-    return earliest;
-  }
-
-  private _latestAddedDate(): Temporal.PlainDate | null {
-    let latest: Temporal.PlainDate | null = null;
-    for (const date of this.addedDates) {
       if (latest == null || Temporal.PlainDate.compare(date, latest) > 0) {
         latest = date;
       }
     }
-    return latest;
+
+    if (earliest == null || latest == null) throw new Error("No added dates.");
+    return new PlainDateRange(earliest, latest);
   }
 
   static everyday(gtfsCalendarId: string): GtfsCalendar {
