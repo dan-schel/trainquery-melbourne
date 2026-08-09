@@ -14,8 +14,11 @@ export type TimezoneData = {
 };
 
 export class ScheduledDeparturesBlocksBuilder {
-  readonly earliestMovementInstant: Temporal.Instant | null;
-  readonly latestMovementInstant: Temporal.Instant | null;
+  /** If given, all movements are guaranteed to occur at/after this time. */
+  readonly earliestPossibleMovementInstant: Temporal.Instant | null;
+
+  /** If given, all movements are guaranteed to occur at/before this time. */
+  readonly latestPossibleMovementInstant: Temporal.Instant | null;
 
   constructor(
     private readonly _movements: readonly GtfsScheduledMovementsIndexEntry[],
@@ -26,22 +29,22 @@ export class ScheduledDeparturesBlocksBuilder {
 
     if (_rangeEncompassingAllCalendars.start != null) {
       const firstMovement = itsOk(_movements[0]);
-      this.earliestMovementInstant = firstMovement.time.toInstant(
+      this.earliestPossibleMovementInstant = firstMovement.time.toInstant(
         _rangeEncompassingAllCalendars.start,
         _timezoneData.timezone,
       );
     } else {
-      this.earliestMovementInstant = null;
+      this.earliestPossibleMovementInstant = null;
     }
 
     if (_rangeEncompassingAllCalendars.end != null) {
       const lastMovement = itsOk(_movements.at(-1));
-      this.latestMovementInstant = lastMovement.time.toInstant(
+      this.latestPossibleMovementInstant = lastMovement.time.toInstant(
         _rangeEncompassingAllCalendars.end,
         _timezoneData.timezone,
       );
     } else {
-      this.latestMovementInstant = null;
+      this.latestPossibleMovementInstant = null;
     }
   }
 
@@ -67,15 +70,17 @@ export class ScheduledDeparturesBlocksBuilder {
   }
 
   hasMoreBefore(instant: Temporal.Instant): boolean {
-    if (this.earliestMovementInstant == null) return true;
+    const earliest = this.earliestPossibleMovementInstant;
+    if (earliest == null) return true;
 
-    return Temporal.Instant.compare(this.earliestMovementInstant, instant) < 0;
+    return Temporal.Instant.compare(earliest, instant) < 0;
   }
 
   hasMoreAfter(instant: Temporal.Instant): boolean {
-    if (this.latestMovementInstant == null) return true;
+    const latest = this.latestPossibleMovementInstant;
+    if (latest == null) return true;
 
-    return Temporal.Instant.compare(this.latestMovementInstant, instant) > 0;
+    return Temporal.Instant.compare(latest, instant) > 0;
   }
 
   allWithinTimeRange(range: BoundedInstantRange): ScheduledDeparturesBlock[] {

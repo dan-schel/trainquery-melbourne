@@ -230,8 +230,8 @@ class SearchRange {
    * finding that none of them have any departures for those service days!
    */
   optimize(blocks: ScheduledDeparturesBlocksBuilder): SearchRange {
-    const earliest = blocks.earliestMovementInstant;
-    const latest = blocks.latestMovementInstant;
+    const earliest = blocks.earliestPossibleMovementInstant;
+    const latest = blocks.latestPossibleMovementInstant;
 
     if (
       this.direction === "forwards" &&

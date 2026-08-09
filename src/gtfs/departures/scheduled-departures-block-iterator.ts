@@ -49,6 +49,12 @@ export class ScheduledDeparturesBlockIterator extends DeparturesBlockIterator<
     // trip listed twice at stations like Flinders Street or Town Hall, once for
     // the arrival and then again for the departure of the continuing trip. We
     // just need to be sure the continuing trip is actually running!
+    //
+    // TODO: Might be worth checking that the next trip actually still
+    // originates from this stop, since in the realtime data (when we start
+    // handling it) stops can be skipped. I guess for that case we'd more need
+    // something to disconnect transfers. That's a bit ugly isn't it? Note that
+    // the same applies to the RealtimeDeparturesBlockIterator.
     const isArrivalWhichContinues =
       entry.movement.type === "terminating" &&
       entry.trip.nextTrip != null &&
