@@ -5,6 +5,15 @@ import { GtfsStopTime } from "../data/gtfs-stop-time.js";
 import type { GtfsScheduledTripServicingMovement } from "../data/gtfs-scheduled-trip-movements.js";
 import type { GtfsScheduledMovementsIndexEntry } from "./gtfs-scheduled-movements-index.js";
 
+// TODO: Somewhere else I make a comment that this should be a class so we can
+// implement .instant on it, memoized. I now disagree, because converting all
+// the movements to entries on build() would partially undermine my logic for
+// waiting until the iterator to skip irrelevant entries. If we're gonna
+// rebuild the array anyway, why not do the filtering then? I now think (see
+// TODO below) that we should drop this class, and instead lean in to the idea
+// that _entries is just a reference to the movements index for this stop.
+// Maybe GtfsScheduledMovementsForStop should be a class, equivalent to
+// GtfsScheduledMovementsIndexEntry[]?
 export type ScheduledDeparturesBlockEntry = {
   readonly trip: GtfsScheduledTrip;
   readonly time: GtfsStopTime;
@@ -13,7 +22,11 @@ export type ScheduledDeparturesBlockEntry = {
 
 export class ScheduledDeparturesBlock extends DeparturesBlock {
   constructor(
+    // TODO: I should rename this so it's clearer that this is just a reference
+    // to the movements index for this stop, and therefore includes movements
+    // which don't occur on the service day for this block.
     readonly entries: readonly ScheduledDeparturesBlockEntry[],
+
     readonly serviceDay: Temporal.PlainDate,
     earliestDepartureInstant: Temporal.Instant,
     latestDepartureInstant: Temporal.Instant,

@@ -43,31 +43,6 @@ export class GtfsScheduledMovementsIndex {
       for (const movement of trip.movements) {
         if (!movement.isServicing) continue;
 
-        // Filter out "fake" arrivals. If a train is not ACTUALLY terminating
-        // but continuing as another service, then that next service's
-        // originating movement will be the one that makes it into this array.
-        //
-        // This means users who aren't filtering out arrivals won't see
-        // duplicates, e.g. at Town Hall where an ex-East Pakenham train is
-        // "arriving and terminating" at the same time as a Sunbury train is
-        // "originating and departing".
-        //
-        // TODO: This assumes both trips have the same calendar, i.e. that the
-        // next trip is actually running on the same day as this terminating
-        // trip. The GTFS spec doesn't seem to mention that, so I don't know if
-        // it's supposed to be true or not. If one trip wasn't running today,
-        // would the transfer just not apply for that day, or would that
-        // situation be considered invalid data?
-        //
-        // If the above can happen, maybe we need to include these in the index
-        // for now, and then filter them out at query time once we're talking
-        // about a specific service day (when we can check if the next trip is
-        // running).
-        //
-        // In fact I think I have to remove this, because the next trip might
-        // get cancelled in the realtime data! You don't know until you query!
-        if (movement.type === "terminating" && trip.nextTrip != null) continue;
-
         const entry: GtfsScheduledMovementsIndexEntry = {
           trip,
           movement,

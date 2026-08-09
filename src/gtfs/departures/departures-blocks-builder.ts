@@ -305,54 +305,10 @@ export class DeparturesBlocksBuilder {
   }
 
   private _buildScheduledBlockForServiceDay(serviceDay: Temporal.PlainDate) {
-    // TODO: I have an ongoing question about whether it's best to do this
-    // filtering where we evaluate the entire array upfront when building
-    // blocks and reallocate a new array, or whether it'd be better to have the
-    // ScheduledDeparturesBlockIterator skip these trips automatically when we
-    // come across them as I'd originally planned. What's better for
-    // performance? For _allScheduledBlocksWithinTimeRange(), it isn't impacted
-    // whichever one we choose (aside from needing to update a comment near the
-    // end).
-    //
-    // The only weird thing about skipping in the iterator is we'd have to pass
-    // the realtime block or realtime data to it somehow, hopefully not through
-    // the block. Note that there's another unsolved TODO about transfers not
-    // connecting when calendars mismatch or trips get cancelled in realtime, so
-    // I reckon it might have a related solution.
-    const entries = this._getScheduledMovementsForDay(serviceDay);
-    if (entries.length === 0) return null;
-
     return ScheduledDeparturesBlock.build(
-      entries,
+      this._scheduledMovements,
       serviceDay,
       this._timezoneData.timezone,
-    );
-  }
-
-  private _getScheduledMovementsForDay(
-    serviceDay: Temporal.PlainDate,
-  ): readonly GtfsScheduledMovementsIndexEntry[] {
-    // TODO: Add unit test to ensure trip occurs on service day within the
-    // calendar, as I initially forgot to add this :)
-    return this._scheduledMovements.filter(
-      (m) =>
-        m.trip.calendar.occursOn(serviceDay) &&
-        !this._hasRealtimeDataFor(m.trip.gtfsTripId, serviceDay),
-    );
-  }
-
-  private _hasRealtimeDataFor(
-    gtfsTripId: string,
-    serviceDay: Temporal.PlainDate,
-  ): boolean {
-    if (this._realtimeBlock === null) return false;
-
-    // TODO: This is an example of the query we can make more efficient with
-    // realtime data as mentioned in the TODO in the constructor.
-    return this._realtimeBlock.entries.some(
-      (e) =>
-        e.trip.scheduledTrip.gtfsTripId === gtfsTripId &&
-        e.trip.serviceDay.equals(serviceDay),
     );
   }
 
