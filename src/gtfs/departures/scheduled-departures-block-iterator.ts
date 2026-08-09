@@ -55,6 +55,9 @@ export class ScheduledDeparturesBlockIterator extends DeparturesBlockIterator<
     // handling it) stops can be skipped. I guess for that case we'd more need
     // something to disconnect transfers. That's a bit ugly isn't it? Note that
     // the same applies to the RealtimeDeparturesBlockIterator.
+    //
+    // Maybe the solution is an array of broken transfers in GtfsRealtimeData,
+    // which would be a (fromGtfsTripId, toGtfsTripId, serviceDay) tuple.
     const isArrivalWhichContinues =
       entry.movement.type === "terminating" &&
       entry.trip.nextTrip != null &&
