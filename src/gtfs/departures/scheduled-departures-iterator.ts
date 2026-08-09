@@ -1,7 +1,8 @@
 import { assertNever, removeIf } from "@dan-schel/js-utils";
-import type {
-  DeparturesIteratorResult,
-  DeparturesSearchDirection,
+import {
+  DeparturesIterator,
+  type DeparturesIteratorResult,
+  type DeparturesSearchDirection,
 } from "./departures-iterator.js";
 import { BoundedInstantRange } from "../data/bounded-instant-range.js";
 import { ScheduledDeparturesBlockIterator } from "./scheduled-departures-block-iterator.js";
@@ -14,7 +15,7 @@ import {
 
 const BLOCK_SCAN_HRS = 48;
 
-export class ScheduledDeparturesIterator {
+export class ScheduledDeparturesIterator extends DeparturesIterator {
   private _direction: DeparturesSearchDirection;
   private _searchRange: SearchRange | null;
   private _iterators: ScheduledDeparturesBlockIterator[];
@@ -24,6 +25,8 @@ export class ScheduledDeparturesIterator {
     private readonly _blockBuilder: ScheduledDeparturesBlocksBuilder,
     private readonly _realtimeData: GtfsRealtimeData,
   ) {
+    super();
+
     this._direction = "forwards";
     this._searchRange = null;
     this._iterators = [];
