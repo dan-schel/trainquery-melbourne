@@ -21,7 +21,7 @@ export class ScheduledDeparturesIterator {
   private _nextIterator: ScheduledDeparturesBlockIterator | null;
 
   constructor(
-    private readonly _blocks: ScheduledDeparturesBlocksBuilder,
+    private readonly _blockBuilder: ScheduledDeparturesBlocksBuilder,
     private readonly _realtimeData: GtfsRealtimeData,
   ) {
     this._direction = "forwards";
@@ -49,7 +49,13 @@ export class ScheduledDeparturesIterator {
 
   set(instant: Temporal.Instant, direction: DeparturesSearchDirection): void {
     this._direction = direction;
-    this._searchRange = SearchRange.create(instant, direction, BLOCK_SCAN_HRS);
+
+    this._searchRange = SearchRange.create(
+      instant,
+      direction,
+      BLOCK_SCAN_HRS,
+    ).optimize(this._blockBuilder);
+
     this._iterators = [];
     this._nextIterator = null;
 
@@ -95,7 +101,9 @@ export class ScheduledDeparturesIterator {
   private _updateIteratorsForSearchRange() {
     if (this._searchRange == null) throw new Error("Search range not set.");
 
-    const blocks = this._blocks.allWithinTimeRange(this._searchRange.range);
+    const blocks = this._blockBuilder.allWithinTimeRange(
+      this._searchRange.range,
+    );
 
     for (const block of blocks) {
       const alreadyIteratingThisBlock = this._iterators.some((i) =>
@@ -147,9 +155,9 @@ export class ScheduledDeparturesIterator {
     if (this._searchRange == null) throw new Error("Search range not set.");
 
     if (this._direction === "forwards") {
-      return this._blocks.hasMoreAfter(this._searchRange.back);
+      return this._blockBuilder.hasMoreAfter(this._searchRange.back);
     } else if (this._direction === "backwards") {
-      return this._blocks.hasMoreBefore(this._searchRange.back);
+      return this._blockBuilder.hasMoreBefore(this._searchRange.back);
     } else {
       assertNever(this._direction);
     }
@@ -176,6 +184,13 @@ class SearchRange {
     }[this.direction];
   }
 
+  get durationHours(): number {
+    const startMillis = this.range.start.epochMilliseconds;
+    const endMillis = this.range.end.epochMilliseconds;
+    const durationMillis = endMillis - startMillis;
+    return durationMillis / (1000 * 60 * 60);
+  }
+
   getNextWithDuration(durationHours: number): SearchRange {
     return SearchRange.create(this.back, this.direction, durationHours);
   }
@@ -199,5 +214,38 @@ class SearchRange {
 
   includes(instant: Temporal.Instant): boolean {
     return this.range.includes(instant);
+  }
+
+  /**
+   * If the search range is beginning before the earliest movement (or after the
+   * latest if the direction is backwards) then we can optimise our search by
+   * pushing the range forward/backward so the first search occurs within the
+   * range of movements we have.
+   *
+   * This means someone searching for all departures from the year 1900 doesn't
+   * crash the server as it patiently searches through 120+ years of blocks,
+   * finding that none of them have any departures for those service days!
+   */
+  optimize(blocks: ScheduledDeparturesBlocksBuilder): SearchRange {
+    const earliest = blocks.earliestMovementInstant;
+    const latest = blocks.latestMovementInstant;
+
+    if (
+      this.direction === "forwards" &&
+      earliest != null &&
+      Temporal.Instant.compare(earliest, this.range.start) > 0
+    ) {
+      return SearchRange.create(earliest, this.direction, this.durationHours);
+    }
+
+    if (
+      this.direction === "backwards" &&
+      latest != null &&
+      Temporal.Instant.compare(latest, this.range.end) < 0
+    ) {
+      return SearchRange.create(latest, this.direction, this.durationHours);
+    }
+
+    return this;
   }
 }
