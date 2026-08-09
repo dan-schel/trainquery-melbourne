@@ -7,13 +7,17 @@ import type {
   DeparturesSearchDirection,
   IDeparturesIterator,
 } from "./departures-iterators.js";
+import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
 
 export class ScheduledDeparturesBlockIterator implements IDeparturesIterator<ScheduledDeparturesBlockEntry> {
   private _index: number;
   private _direction: DeparturesSearchDirection;
   private _nextValueInstant: Temporal.Instant | null;
 
-  constructor(readonly block: ScheduledDeparturesBlock) {
+  constructor(
+    readonly block: ScheduledDeparturesBlock,
+    readonly realtimeData: GtfsRealtimeData,
+  ) {
     this._index = -1;
     this._direction = "forwards";
     this._nextValueInstant = null;

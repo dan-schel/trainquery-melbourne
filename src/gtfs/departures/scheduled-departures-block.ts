@@ -4,8 +4,6 @@ import type { GtfsScheduledTrip } from "../data/gtfs-scheduled-trip.js";
 import { GtfsStopTime } from "../data/gtfs-stop-time.js";
 import type { GtfsScheduledTripServicingMovement } from "../data/gtfs-scheduled-trip-movements.js";
 import type { GtfsScheduledMovementsIndexEntry } from "./gtfs-scheduled-movements-index.js";
-import { ScheduledDeparturesBlockIterator } from "./scheduled-departures-block-iterator.js";
-import type { RealtimeDeparturesBlockIterator } from "./realtime-departures-block-iterator.js";
 
 export type ScheduledDeparturesBlockEntry = {
   readonly trip: GtfsScheduledTrip;
@@ -77,11 +75,5 @@ export class ScheduledDeparturesBlock extends DeparturesBlock {
   getIterationIndexOfPreviousFrom(time: GtfsStopTime): number {
     // No need to handle -1, because we'd want to return -1 in that case anyway!
     return this.entries.findLastIndex((m) => m.time.isBeforeOrEqual(time));
-  }
-
-  override createIterator():
-    | RealtimeDeparturesBlockIterator
-    | ScheduledDeparturesBlockIterator {
-    return new ScheduledDeparturesBlockIterator(this);
   }
 }

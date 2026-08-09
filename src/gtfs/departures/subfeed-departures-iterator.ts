@@ -10,8 +10,14 @@ import type {
 import { BoundedInstantRange } from "../data/bounded-instant-range.js";
 import { ScheduledDeparturesBlockIterator } from "./scheduled-departures-block-iterator.js";
 import { RealtimeDeparturesBlockIterator } from "./realtime-departures-block-iterator.js";
-import type { ScheduledDeparturesBlockEntry } from "./scheduled-departures-block.js";
-import type { RealtimeDeparturesBlockEntry } from "./realtime-departures-block.js";
+import {
+  ScheduledDeparturesBlock,
+  type ScheduledDeparturesBlockEntry,
+} from "./scheduled-departures-block.js";
+import {
+  RealtimeDeparturesBlock,
+  type RealtimeDeparturesBlockEntry,
+} from "./realtime-departures-block.js";
 import type { GtfsScheduledMovementsIndex } from "./gtfs-scheduled-movements-index.js";
 import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
 
@@ -110,7 +116,7 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
       );
 
       if (!alreadyIteratingThisBlock) {
-        const iterator = block.createIterator();
+        const iterator = this._createIteratorFor(block);
         iterator.set(this._getFrontOfSearchRange(), this._direction);
         this._iterators.push(iterator);
       }
@@ -235,6 +241,18 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
       };
     } else {
       assertNever(entry);
+    }
+  }
+
+  private _createIteratorFor(
+    block: ScheduledDeparturesBlock | RealtimeDeparturesBlock,
+  ): InnerDeparturesBlockIterator {
+    if (block instanceof RealtimeDeparturesBlock) {
+      return new RealtimeDeparturesBlockIterator(block);
+    } else if (block instanceof ScheduledDeparturesBlock) {
+      return new ScheduledDeparturesBlockIterator(block, this._realtimeData);
+    } else {
+      assertNever(block);
     }
   }
 }

@@ -3,8 +3,6 @@ import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
 import type { GtfsUpdatedTripServicingMovement } from "../data/gtfs-updated-trip-movements.js";
 import type { GtfsUpdatedTrip } from "../data/gtfs-updated-trip.js";
 import { DeparturesBlock } from "./departures-block.js";
-import { RealtimeDeparturesBlockIterator } from "./realtime-departures-block-iterator.js";
-import type { ScheduledDeparturesBlockIterator } from "./scheduled-departures-block-iterator.js";
 
 export type RealtimeDeparturesBlockEntry = {
   readonly trip: GtfsUpdatedTrip;
@@ -78,11 +76,5 @@ export class RealtimeDeparturesBlock extends DeparturesBlock {
     return this.entries.findLastIndex(
       (m) => Temporal.Instant.compare(m.instant, instant) <= 0,
     );
-  }
-
-  override createIterator():
-    | RealtimeDeparturesBlockIterator
-    | ScheduledDeparturesBlockIterator {
-    return new RealtimeDeparturesBlockIterator(this);
   }
 }

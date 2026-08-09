@@ -47,7 +47,9 @@ export class DeparturesBlocksBuilder {
     );
   }
 
-  allBlocksWithinTimeRange(range: BoundedInstantRange): DeparturesBlock[] {
+  allBlocksWithinTimeRange(
+    range: BoundedInstantRange,
+  ): (ScheduledDeparturesBlock | RealtimeDeparturesBlock)[] {
     return [
       ...this._allRealtimeBlocksWithinTimeRange(range),
       ...this._allScheduledBlocksWithinTimeRange(range),
