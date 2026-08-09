@@ -252,7 +252,7 @@ export class ScheduledDeparturesBlocksBuilder {
       // Use `touches`, not `intersects`, so that the first and last movements
       // of a block are included if the query range starts or ends exactly at
       // the same time as them.
-      if (block != null && block.instantRange.touches(range)) {
+      if (block.instantRange.touches(range)) {
         blocks.push(block);
       }
     }

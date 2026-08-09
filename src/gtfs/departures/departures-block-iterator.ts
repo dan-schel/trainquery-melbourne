@@ -16,7 +16,7 @@ export abstract class DeparturesBlockIterator<
 
   constructor(
     readonly block: BlockType,
-    readonly _entries: readonly EntryType[],
+    private readonly _entries: readonly EntryType[],
   ) {
     super();
 
