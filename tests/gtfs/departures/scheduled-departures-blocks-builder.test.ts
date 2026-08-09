@@ -1,36 +1,40 @@
 import { describe, expect, it } from "vitest";
-import { MELBOURNE_TIMEZONE_DATA } from "../../src/gtfs/utils/melbourne-timezone-data.js";
-import { DeparturesBlocksBuilder } from "../../src/gtfs/departures/departures-blocks-builder.js";
-import { BoundedInstantRange } from "../../src/gtfs/data/bounded-instant-range.js";
-import { ScheduledDeparturesBlock } from "../../src/gtfs/departures/scheduled-departures-block.js";
+import { MELBOURNE_TIMEZONE_DATA } from "../../../src/gtfs/utils/melbourne-timezone-data.js";
+import { BoundedInstantRange } from "../../../src/gtfs/data/bounded-instant-range.js";
 import { itsOk } from "@dan-schel/js-utils";
-import { GtfsScheduledTrip } from "../../src/gtfs/data/gtfs-scheduled-trip.js";
-import { GtfsCalendar } from "../../src/gtfs/data/gtfs-calendar.js";
+import { GtfsScheduledTrip } from "../../../src/gtfs/data/gtfs-scheduled-trip.js";
+import { GtfsCalendar } from "../../../src/gtfs/data/gtfs-calendar.js";
 import {
   GtfsScheduledTripOriginatingMovement,
   GtfsScheduledTripTerminatingMovement,
-} from "../../src/gtfs/data/gtfs-scheduled-trip-movements.js";
-import { GtfsStopTime } from "../../src/gtfs/data/gtfs-stop-time.js";
-import { RealtimeDeparturesBlock } from "../../src/gtfs/departures/realtime-departures-block.js";
-import { GtfsUpdatedTrip } from "../../src/gtfs/data/gtfs-updated-trip.js";
-import { GtfsRealtimeData } from "../../src/gtfs/data/gtfs-realtime-data.js";
-import { PlainDateRange } from "../../src/gtfs/data/plain-date-range.js";
-import type { GtfsScheduledMovementsIndexEntry } from "../../src/gtfs/departures/gtfs-scheduled-movements-index.js";
+} from "../../../src/gtfs/data/gtfs-scheduled-trip-movements.js";
+import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
+import { PlainDateRange } from "../../../src/gtfs/data/plain-date-range.js";
+import type { GtfsScheduledMovementsIndexEntry } from "../../../src/gtfs/departures/gtfs-scheduled-movements-index.js";
+import { ScheduledDeparturesBlocksBuilder } from "../../../src/gtfs/departures/scheduled-departures-blocks-builder.js";
 
-describe("ScheduledDeparturesBlock", () => {
-  const NO_REALTIME_DATA = new GtfsRealtimeData([]);
+describe("ScheduledDeparturesBlocksBuilder", () => {
+  describe("constructor", () => {
+    it("throws if no movements are given", () => {
+      expect(() => {
+        new ScheduledDeparturesBlocksBuilder(
+          [],
+          MELBOURNE_TIMEZONE_DATA,
+          PlainDateRange.infinite,
+        );
+      }).toThrow();
+    });
+  });
 
   describe("allBlocksWithinTimeRange", () => {
-    const builder = new DeparturesBlocksBuilder(
-      1,
+    const builder = new ScheduledDeparturesBlocksBuilder(
       createMovements({ earliest: "05:18:00", latest: "26:08:00" }),
-      NO_REALTIME_DATA,
       MELBOURNE_TIMEZONE_DATA,
       PlainDateRange.infinite,
     );
 
     it("returns all scheduled departures blocks within the time range", () => {
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-08-02T00:00:00+10:00",
         queryEnd: "2026-08-03T00:00:00+10:00",
@@ -48,7 +52,7 @@ describe("ScheduledDeparturesBlock", () => {
         ],
       });
 
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-08-02T00:00:00+10:00",
         queryEnd: "2026-08-05T00:00:00+10:00",
@@ -78,7 +82,7 @@ describe("ScheduledDeparturesBlock", () => {
     });
 
     it("doesn't omit the last movement of the day if the query equals it's exact time", () => {
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-08-02T02:08:00+10:00",
         queryEnd: "2026-08-03T00:00:00+10:00",
@@ -98,7 +102,7 @@ describe("ScheduledDeparturesBlock", () => {
     });
 
     it("doesn't omit the first movement of the day if the query equals it's exact time", () => {
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-08-02T00:00:00+10:00",
         queryEnd: "2026-08-02T05:18:00+10:00",
@@ -118,7 +122,7 @@ describe("ScheduledDeparturesBlock", () => {
     });
 
     it("works correctly at the boundaries", () => {
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-08-02T05:18:00+10:00",
         queryEnd: "2026-08-02T05:18:00+10:00",
@@ -131,14 +135,14 @@ describe("ScheduledDeparturesBlock", () => {
         ],
       });
 
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-08-02T05:17:00+10:00",
         queryEnd: "2026-08-02T05:17:00+10:00",
         result: [],
       });
 
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-08-02T02:08:00+10:00",
         queryEnd: "2026-08-02T02:08:00+10:00",
@@ -151,7 +155,7 @@ describe("ScheduledDeparturesBlock", () => {
         ],
       });
 
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-08-02T02:09:00+10:00",
         queryEnd: "2026-08-02T02:09:00+10:00",
@@ -160,7 +164,7 @@ describe("ScheduledDeparturesBlock", () => {
     });
 
     it("handles transition out of DST correctly", () => {
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-04-05T01:00:00+11:00",
         queryEnd: "2026-04-05T05:30:00+10:00",
@@ -178,7 +182,7 @@ describe("ScheduledDeparturesBlock", () => {
         ],
       });
 
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-04-05T02:09:00+11:00",
         queryEnd: "2026-04-05T05:17:00+10:00",
@@ -187,7 +191,7 @@ describe("ScheduledDeparturesBlock", () => {
     });
 
     it("handles transition into DST correctly", () => {
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-10-04T01:00:00+10:00",
         queryEnd: "2026-10-04T05:30:00+11:00",
@@ -205,7 +209,7 @@ describe("ScheduledDeparturesBlock", () => {
         ],
       });
 
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-10-04T02:09:00+10:00",
         queryEnd: "2026-10-04T05:17:00+11:00",
@@ -214,15 +218,13 @@ describe("ScheduledDeparturesBlock", () => {
     });
 
     it("handles cases where the last movement is within the next service day", () => {
-      const builder = new DeparturesBlocksBuilder(
-        1,
+      const builder = new ScheduledDeparturesBlocksBuilder(
         createMovements({ earliest: "05:18:00", latest: "55:08:00" }),
-        NO_REALTIME_DATA,
         MELBOURNE_TIMEZONE_DATA,
         PlainDateRange.infinite,
       );
 
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-08-02T06:00:00+10:00",
         queryEnd: "2026-08-02T06:00:00+10:00",
@@ -245,7 +247,7 @@ describe("ScheduledDeparturesBlock", () => {
         ],
       });
 
-      expectScheduledBlocks({
+      expectBlocks({
         builder,
         queryStart: "2026-08-02T07:09:00+10:00",
         queryEnd: "2026-08-02T07:09:00+10:00",
@@ -259,136 +261,6 @@ describe("ScheduledDeparturesBlock", () => {
             serviceDay: "2026-08-02",
             earliest: "2026-08-02T05:18:00+10:00",
             latest: "2026-08-04T07:08:00+10:00",
-          },
-        ],
-      });
-    });
-
-    it("returns an empty array if there's no scheduled movements", () => {
-      const builder = new DeparturesBlocksBuilder(
-        1,
-        [],
-        NO_REALTIME_DATA,
-        MELBOURNE_TIMEZONE_DATA,
-        null,
-      );
-
-      expectScheduledBlocks({
-        builder,
-        queryStart: "2026-08-02T00:00:00+10:00",
-        queryEnd: "2026-08-03T00:00:00+10:00",
-        result: [],
-      });
-    });
-
-    it("returns a realtime departures block if it falls within the time range", () => {
-      const scheduledMovements = createMovements({
-        earliest: "05:18:00",
-        latest: "26:08:00",
-      });
-
-      const realtimeData = createRealtimeData({
-        tripId: itsOk(scheduledMovements[0]).trip.gtfsTripId,
-        tripUpdateServiceDay: Temporal.PlainDate.from("2026-08-02"),
-        originationTime: GtfsStopTime.parse("12:00:00"),
-        delayMins: 2,
-      });
-
-      const builder = new DeparturesBlocksBuilder(
-        1,
-        scheduledMovements,
-        realtimeData,
-        MELBOURNE_TIMEZONE_DATA,
-        PlainDateRange.infinite,
-      );
-
-      expectRealtimeBlocks({
-        builder,
-        queryStart: "2026-08-02T12:00:00+10:00",
-        queryEnd: "2026-08-02T12:05:00+10:00",
-        result: [
-          {
-            earliest: "2026-08-02T12:02:00+10:00",
-            latest: "2026-08-02T12:02:00+10:00",
-          },
-        ],
-      });
-
-      expectRealtimeBlocks({
-        builder,
-        queryStart: "2026-08-02T12:02:00+10:00",
-        queryEnd: "2026-08-02T12:02:00+10:00",
-        result: [
-          {
-            earliest: "2026-08-02T12:02:00+10:00",
-            latest: "2026-08-02T12:02:00+10:00",
-          },
-        ],
-      });
-
-      expectRealtimeBlocks({
-        builder,
-        queryStart: "2026-08-02T12:01:00+10:00",
-        queryEnd: "2026-08-02T12:02:00+10:00",
-        result: [
-          {
-            earliest: "2026-08-02T12:02:00+10:00",
-            latest: "2026-08-02T12:02:00+10:00",
-          },
-        ],
-      });
-
-      expectRealtimeBlocks({
-        builder,
-        queryStart: "2026-08-02T12:02:00+10:00",
-        queryEnd: "2026-08-02T12:03:00+10:00",
-        result: [
-          {
-            earliest: "2026-08-02T12:02:00+10:00",
-            latest: "2026-08-02T12:02:00+10:00",
-          },
-        ],
-      });
-
-      expectRealtimeBlocks({
-        builder,
-        queryStart: "2026-08-02T12:03:00+10:00",
-        queryEnd: "2026-08-02T12:03:00+10:00",
-        result: [],
-      });
-
-      expectRealtimeBlocks({
-        builder,
-        queryStart: "2026-08-02T12:01:00+10:00",
-        queryEnd: "2026-08-02T12:01:00+10:00",
-        result: [],
-      });
-    });
-
-    it("still returns realtime departures block if there are no scheduled movements", () => {
-      const realtimeData = createRealtimeData({
-        tripId: "trip-1",
-        tripUpdateServiceDay: Temporal.PlainDate.from("2026-08-02"),
-        originationTime: GtfsStopTime.parse("12:00:00"),
-        delayMins: 2,
-      });
-
-      const builder = new DeparturesBlocksBuilder(
-        1,
-        [],
-        realtimeData,
-        MELBOURNE_TIMEZONE_DATA,
-        null,
-      );
-
-      expectRealtimeBlocks({
-        builder,
-        queryStart: "2026-08-02T12:00:00+10:00",
-        queryEnd: "2026-08-02T12:05:00+10:00",
-        result: [
-          {
-            earliest: "2026-08-02T12:02:00+10:00",
-            latest: "2026-08-02T12:02:00+10:00",
           },
         ],
       });
@@ -458,61 +330,13 @@ function createTrip({
   });
 }
 
-function createRealtimeData({
-  tripId,
-  tripUpdateServiceDay,
-  originationTime,
-  delayMins,
-}: {
-  tripId: string;
-  tripUpdateServiceDay: Temporal.PlainDate;
-  originationTime: GtfsStopTime;
-  delayMins: number;
-}) {
-  const scheduledTrip = createTrip({ tripId, originationTime });
-
-  const newOriginationTime = scheduledTrip.origination.departureTime
-    .plus({ minutes: delayMins })
-    .toInstant(tripUpdateServiceDay, MELBOURNE_TIMEZONE_DATA.timezone);
-
-  const newTerminationTime = scheduledTrip.termination.arrivalTime
-    .plus({ minutes: delayMins })
-    .toInstant(tripUpdateServiceDay, MELBOURNE_TIMEZONE_DATA.timezone);
-
-  const trip = new GtfsUpdatedTrip({
-    scheduledTrip,
-    serviceDay: tripUpdateServiceDay,
-    movements: [
-      scheduledTrip.origination.asUpdatedTripMovement({
-        arrivalTime: null,
-        departureTime: newOriginationTime,
-        updatedPositionId: null,
-        updatedGtfsIdMetadata: scheduledTrip.origination.gtfsIdMetadata,
-        serviceDay: tripUpdateServiceDay,
-        timezone: MELBOURNE_TIMEZONE_DATA.timezone,
-      }),
-      scheduledTrip.termination.asUpdatedTripMovement({
-        arrivalTime: newTerminationTime,
-        departureTime: null,
-        updatedPositionId: null,
-        updatedGtfsIdMetadata: scheduledTrip.termination.gtfsIdMetadata,
-        serviceDay: tripUpdateServiceDay,
-        timezone: MELBOURNE_TIMEZONE_DATA.timezone,
-      }),
-    ],
-    isCancelled: false,
-  });
-
-  return new GtfsRealtimeData([trip]);
-}
-
-function expectScheduledBlocks({
+function expectBlocks({
   builder,
   queryStart,
   queryEnd,
   result,
 }: {
-  builder: DeparturesBlocksBuilder;
+  builder: ScheduledDeparturesBlocksBuilder;
   queryStart: string;
   queryEnd: string;
   result: {
@@ -525,9 +349,7 @@ function expectScheduledBlocks({
   const queryEndInstant = Temporal.Instant.from(queryEnd);
   const range = new BoundedInstantRange(queryStartInstant, queryEndInstant);
 
-  const blocks = builder
-    .allBlocksWithinTimeRange(range)
-    .filter((block) => block instanceof ScheduledDeparturesBlock);
+  const blocks = builder.allWithinTimeRange(range);
 
   expect(blocks).toHaveLength(result.length);
 
@@ -539,41 +361,6 @@ function expectScheduledBlocks({
 
     const block = itsOk(blocks[i]);
     expect(block.serviceDay).toEqual(expectedServiceDay);
-    expect(block.instantRange.start).toEqual(expectedEarliest);
-    expect(block.instantRange.end).toEqual(expectedLatest);
-  }
-}
-
-function expectRealtimeBlocks({
-  builder,
-  queryStart,
-  queryEnd,
-  result,
-}: {
-  builder: DeparturesBlocksBuilder;
-  queryStart: string;
-  queryEnd: string;
-  result: {
-    earliest: string;
-    latest: string;
-  }[];
-}) {
-  const queryStartInstant = Temporal.Instant.from(queryStart);
-  const queryEndInstant = Temporal.Instant.from(queryEnd);
-  const range = new BoundedInstantRange(queryStartInstant, queryEndInstant);
-
-  const blocks = builder
-    .allBlocksWithinTimeRange(range)
-    .filter((block) => block instanceof RealtimeDeparturesBlock);
-
-  expect(blocks).toHaveLength(result.length);
-
-  for (let i = 0; i < result.length; i++) {
-    const expected = itsOk(result[i]);
-    const expectedEarliest = Temporal.Instant.from(expected.earliest);
-    const expectedLatest = Temporal.Instant.from(expected.latest);
-
-    const block = itsOk(blocks[i]);
     expect(block.instantRange.start).toEqual(expectedEarliest);
     expect(block.instantRange.end).toEqual(expectedLatest);
   }

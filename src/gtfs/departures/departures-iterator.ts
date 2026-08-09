@@ -17,3 +17,14 @@ export class DeparturesIteratorResult {
     readonly movement: GtfsTripServicingMovement,
   ) {}
 }
+
+export abstract class DeparturesIterator {
+  abstract set(
+    instant: Temporal.Instant,
+    direction: DeparturesSearchDirection,
+  ): void;
+
+  abstract peek(): DeparturesIteratorResult | null;
+
+  abstract take(): DeparturesIteratorResult;
+}

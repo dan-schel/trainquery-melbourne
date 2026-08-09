@@ -1,0 +1,203 @@
+import { assertNever, removeIf } from "@dan-schel/js-utils";
+import type {
+  DeparturesIteratorResult,
+  DeparturesSearchDirection,
+} from "./departures-iterator.js";
+import { BoundedInstantRange } from "../data/bounded-instant-range.js";
+import { ScheduledDeparturesBlockIterator } from "./scheduled-departures-block-iterator.js";
+import type { GtfsScheduledMovementsIndex } from "./gtfs-scheduled-movements-index.js";
+import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
+import {
+  ScheduledDeparturesBlocksBuilder,
+  type TimezoneData,
+} from "./scheduled-departures-blocks-builder.js";
+
+const BLOCK_SCAN_HRS = 48;
+
+export class ScheduledDeparturesIterator {
+  private _direction: DeparturesSearchDirection;
+  private _searchRange: SearchRange | null;
+  private _iterators: ScheduledDeparturesBlockIterator[];
+  private _nextIterator: ScheduledDeparturesBlockIterator | null;
+
+  constructor(
+    private readonly _blocks: ScheduledDeparturesBlocksBuilder,
+    private readonly _realtimeData: GtfsRealtimeData,
+  ) {
+    this._direction = "forwards";
+    this._searchRange = null;
+    this._iterators = [];
+    this._nextIterator = null;
+  }
+
+  static tryBuild(
+    stopId: number,
+    scheduledMovementsIndex: GtfsScheduledMovementsIndex,
+    realtimeData: GtfsRealtimeData,
+    timezoneData: TimezoneData,
+  ) {
+    const blockBuilder = ScheduledDeparturesBlocksBuilder.tryBuild(
+      stopId,
+      scheduledMovementsIndex,
+      timezoneData,
+    );
+
+    if (blockBuilder == null) return null;
+
+    return new ScheduledDeparturesIterator(blockBuilder, realtimeData);
+  }
+
+  set(instant: Temporal.Instant, direction: DeparturesSearchDirection): void {
+    this._direction = direction;
+    this._searchRange = SearchRange.create(instant, direction, BLOCK_SCAN_HRS);
+    this._iterators = [];
+    this._nextIterator = null;
+
+    this._updateIteratorsForSearchRange();
+    this._determineIteratorWithNextValue();
+  }
+
+  peek(): DeparturesIteratorResult | null {
+    return this._nextIterator?.peek() ?? null;
+  }
+
+  take(): DeparturesIteratorResult {
+    const iterator = this._nextIterator;
+    if (iterator == null) throw new Error("Nothing to take.");
+
+    const value = iterator.take();
+
+    this._determineIteratorWithNextValue();
+
+    return value;
+  }
+
+  private _determineIteratorWithNextValue() {
+    if (this._searchRange == null) throw new Error("Search range not set.");
+
+    let bestIterator = this._getBestOfCurrentIterators();
+    let bestValue = bestIterator?.peek() ?? null;
+
+    while (
+      (bestValue == null || !this._searchRange.includes(bestValue.instant)) &&
+      this._areMoreBlocksAvailable()
+    ) {
+      this._searchRange = this._searchRange.getNextWithDuration(BLOCK_SCAN_HRS);
+      this._updateIteratorsForSearchRange();
+
+      bestIterator = this._getBestOfCurrentIterators();
+      bestValue = bestIterator?.peek() ?? null;
+    }
+
+    this._nextIterator = bestIterator;
+  }
+
+  private _updateIteratorsForSearchRange() {
+    if (this._searchRange == null) throw new Error("Search range not set.");
+
+    const blocks = this._blocks.allWithinTimeRange(this._searchRange.range);
+
+    for (const block of blocks) {
+      const alreadyIteratingThisBlock = this._iterators.some((i) =>
+        i.block.isSameServiceDay(block),
+      );
+
+      if (!alreadyIteratingThisBlock) {
+        const rtData = this._realtimeData;
+        const iterator = new ScheduledDeparturesBlockIterator(block, rtData);
+        iterator.set(this._searchRange.front, this._direction);
+        this._iterators.push(iterator);
+      }
+    }
+
+    removeIf(this._iterators, (iterator) => iterator.peek() == null);
+  }
+
+  private _getBestOfCurrentIterators() {
+    let best: DeparturesIteratorResult | null = null;
+    let bestIterator: ScheduledDeparturesBlockIterator | null = null;
+
+    for (const iterator of this._iterators) {
+      const nextValue = iterator.peek();
+      if (nextValue == null) continue;
+
+      if (best == null || this._isBetter(best.instant, nextValue.instant)) {
+        best = nextValue;
+        bestIterator = iterator;
+      }
+    }
+
+    return bestIterator;
+  }
+
+  private _isBetter(
+    currentBest: Temporal.Instant,
+    candidate: Temporal.Instant,
+  ): boolean {
+    if (this._direction === "forwards") {
+      return Temporal.Instant.compare(candidate, currentBest) < 0;
+    } else if (this._direction === "backwards") {
+      return Temporal.Instant.compare(candidate, currentBest) > 0;
+    } else {
+      assertNever(this._direction);
+    }
+  }
+
+  private _areMoreBlocksAvailable(): boolean {
+    if (this._searchRange == null) throw new Error("Search range not set.");
+
+    if (this._direction === "forwards") {
+      return this._blocks.hasMoreAfter(this._searchRange.back);
+    } else if (this._direction === "backwards") {
+      return this._blocks.hasMoreBefore(this._searchRange.back);
+    } else {
+      assertNever(this._direction);
+    }
+  }
+}
+
+class SearchRange {
+  constructor(
+    readonly range: BoundedInstantRange,
+    readonly direction: DeparturesSearchDirection,
+  ) {}
+
+  get front(): Temporal.Instant {
+    return {
+      forwards: this.range.start,
+      backwards: this.range.end,
+    }[this.direction];
+  }
+
+  get back(): Temporal.Instant {
+    return {
+      forwards: this.range.end,
+      backwards: this.range.start,
+    }[this.direction];
+  }
+
+  getNextWithDuration(durationHours: number): SearchRange {
+    return SearchRange.create(this.back, this.direction, durationHours);
+  }
+
+  static create(
+    instant: Temporal.Instant,
+    direction: DeparturesSearchDirection,
+    durationHours: number,
+  ) {
+    const start = {
+      forwards: instant,
+      backwards: instant.subtract({ hours: durationHours }),
+    }[direction];
+    const end = {
+      forwards: instant.add({ hours: durationHours }),
+      backwards: instant,
+    }[direction];
+
+    return new SearchRange(new BoundedInstantRange(start, end), direction);
+  }
+
+  includes(instant: Temporal.Instant): boolean {
+    return this.range.includes(instant);
+  }
+}

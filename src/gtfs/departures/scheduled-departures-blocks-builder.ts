@@ -1,12 +1,9 @@
 import { itsOk } from "@dan-schel/js-utils";
-import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
 import type { BoundedInstantRange } from "../data/bounded-instant-range.js";
-import type { DeparturesBlock } from "./departures-block.js";
 import type {
   GtfsScheduledMovementsIndex,
   GtfsScheduledMovementsIndexEntry,
 } from "./gtfs-scheduled-movements-index.js";
-import { RealtimeDeparturesBlock } from "./realtime-departures-block.js";
 import { ScheduledDeparturesBlock } from "./scheduled-departures-block.js";
 import type { PlainDateRange } from "../data/plain-date-range.js";
 
@@ -16,60 +13,41 @@ export type TimezoneData = {
   readonly maximumViableOffsetSeconds: number;
 };
 
-export class DeparturesBlocksBuilder {
-  private readonly _realtimeBlock: RealtimeDeparturesBlock | null;
-
+export class ScheduledDeparturesBlocksBuilder {
   constructor(
-    private readonly _stopId: number,
-    private readonly _scheduledMovements: readonly GtfsScheduledMovementsIndexEntry[],
-    private readonly _realtimeData: GtfsRealtimeData,
+    private readonly _movements: readonly GtfsScheduledMovementsIndexEntry[],
     private readonly _timezoneData: TimezoneData,
-    private readonly _rangeEncompassingAllCalendars: PlainDateRange | null,
+    private readonly _rangeEncompassingAllCalendars: PlainDateRange,
   ) {
-    this._realtimeBlock = RealtimeDeparturesBlock.tryBuild(
-      _stopId,
-      _realtimeData,
-    );
+    if (_movements.length === 0) throw new Error("No movements given.");
   }
 
-  static build(
+  static tryBuild(
     stopId: number,
     scheduledMovementsIndex: GtfsScheduledMovementsIndex,
-    realtimeData: GtfsRealtimeData,
     timezoneData: TimezoneData,
-  ): DeparturesBlocksBuilder {
-    return new DeparturesBlocksBuilder(
-      stopId,
-      scheduledMovementsIndex.getMovementsForStop(stopId),
-      realtimeData,
+  ): ScheduledDeparturesBlocksBuilder | null {
+    const movements = scheduledMovementsIndex.getMovementsForStop(stopId);
+
+    const rangeEncompassingAllCalendars =
+      scheduledMovementsIndex.getRangeEncompassingAllCalendarsForStop(stopId);
+
+    if (movements.length === 0 || rangeEncompassingAllCalendars == null) {
+      return null;
+    }
+
+    return new ScheduledDeparturesBlocksBuilder(
+      movements,
       timezoneData,
-      scheduledMovementsIndex.getRangeEncompassingAllCalendarsForStop(stopId),
+      rangeEncompassingAllCalendars,
     );
   }
 
-  allBlocksWithinTimeRange(
-    range: BoundedInstantRange,
-  ): (ScheduledDeparturesBlock | RealtimeDeparturesBlock)[] {
-    return [
-      ...this._allRealtimeBlocksWithinTimeRange(range),
-      ...this._allScheduledBlocksWithinTimeRange(range),
-    ];
-  }
+  hasMoreBefore(instant: Temporal.Instant): boolean {
+    const goesToInfinity = this._rangeEncompassingAllCalendars.start == null;
+    if (goesToInfinity) return true;
 
-  hasBlocksBefore(instant: Temporal.Instant): boolean {
-    const realtimeStartsEarlier =
-      this._realtimeBlock != null &&
-      this._realtimeBlock.instantRange.startsBefore(instant);
-    if (realtimeStartsEarlier) return true;
-
-    const scheduledMovementsExist =
-      this._scheduledMovements.length > 0 &&
-      this._rangeEncompassingAllCalendars != null;
-    if (!scheduledMovementsExist) return false;
-
-    if (this._rangeEncompassingAllCalendars.start == null) return true;
-
-    const firstMovement = itsOk(this._scheduledMovements[0]);
+    const firstMovement = itsOk(this._movements[0]);
     const firstMovementInstant = firstMovement.time.toInstant(
       this._rangeEncompassingAllCalendars.start,
       this._timezoneData.timezone,
@@ -78,20 +56,11 @@ export class DeparturesBlocksBuilder {
     return Temporal.Instant.compare(firstMovementInstant, instant) < 0;
   }
 
-  hasBlocksAfter(instant: Temporal.Instant): boolean {
-    const realtimeEndsLater =
-      this._realtimeBlock != null &&
-      this._realtimeBlock.instantRange.endsAfter(instant);
-    if (realtimeEndsLater) return true;
+  hasMoreAfter(instant: Temporal.Instant): boolean {
+    const goesToInfinity = this._rangeEncompassingAllCalendars.end == null;
+    if (goesToInfinity) return true;
 
-    const scheduledMovementsExist =
-      this._scheduledMovements.length > 0 &&
-      this._rangeEncompassingAllCalendars != null;
-    if (!scheduledMovementsExist) return false;
-
-    if (this._rangeEncompassingAllCalendars.end == null) return true;
-
-    const lastMovement = itsOk(this._scheduledMovements.at(-1));
+    const lastMovement = itsOk(this._movements.at(-1));
     const lastMovementInstant = lastMovement.time.toInstant(
       this._rangeEncompassingAllCalendars.end,
       this._timezoneData.timezone,
@@ -100,24 +69,7 @@ export class DeparturesBlocksBuilder {
     return Temporal.Instant.compare(lastMovementInstant, instant) > 0;
   }
 
-  private _allRealtimeBlocksWithinTimeRange(
-    range: BoundedInstantRange,
-  ): RealtimeDeparturesBlock[] {
-    if (
-      this._realtimeBlock !== null &&
-      this._realtimeBlock.instantRange.touches(range)
-    ) {
-      return [this._realtimeBlock];
-    } else {
-      return [];
-    }
-  }
-
-  private _allScheduledBlocksWithinTimeRange(
-    range: BoundedInstantRange,
-  ): ScheduledDeparturesBlock[] {
-    if (this._scheduledMovements.length === 0) return [];
-
+  allWithinTimeRange(range: BoundedInstantRange): ScheduledDeparturesBlock[] {
     /* -------------------------------------------------------------------------
 
     Ok. Let's work this out!
@@ -159,8 +111,8 @@ export class DeparturesBlocksBuilder {
     const maxViableOffsetSecs = this._timezoneData.maximumViableOffsetSeconds;
     const minViableOffsetSecs = this._timezoneData.minimumViableOffsetSeconds;
 
-    const firstMvmt = itsOk(this._scheduledMovements[0]);
-    const lastMvmt = itsOk(this._scheduledMovements.at(-1));
+    const firstMvmt = itsOk(this._movements[0]);
+    const lastMvmt = itsOk(this._movements.at(-1));
     const firstMvmtSecondsSinceMidnight = firstMvmt.time.secondsSinceMidnight;
     const lastMvmtSecondsSinceMidnight = lastMvmt.time.secondsSinceMidnight;
 
@@ -283,7 +235,8 @@ export class DeparturesBlocksBuilder {
       Temporal.PlainDate.compare(date, lastServiceDay) <= 0;
       date = date.add({ days: 1 })
     ) {
-      const block = this._buildScheduledBlockForServiceDay(date);
+      const tz = this._timezoneData.timezone;
+      const block = ScheduledDeparturesBlock.build(this._movements, date, tz);
 
       // Use `touches`, not `intersects`, so that the first and last movements
       // of a block are included if the query range starts or ends exactly at
@@ -302,35 +255,5 @@ export class DeparturesBlocksBuilder {
       date: startOfDayUtc.toPlainDate(),
       secondOfDayUtc: instant.since(startOfDayUtc.toInstant()).total("seconds"),
     };
-  }
-
-  private _buildScheduledBlockForServiceDay(serviceDay: Temporal.PlainDate) {
-    return ScheduledDeparturesBlock.build(
-      this._scheduledMovements,
-      serviceDay,
-      this._timezoneData.timezone,
-    );
-  }
-
-  /**
-   * Returns true if two blocks are equivalent. This function assumes both given
-   * blocks were built by the same `DeparturesBlocksBuilder`, and as such, only
-   * checks if either (a) both are realtime blocks, or (b) both are scheduled
-   * blocks for the same service day.
-   */
-  static isSameBlock(a: DeparturesBlock, b: DeparturesBlock): boolean {
-    if (
-      a instanceof RealtimeDeparturesBlock &&
-      b instanceof RealtimeDeparturesBlock
-    ) {
-      return true;
-    } else if (
-      a instanceof ScheduledDeparturesBlock &&
-      b instanceof ScheduledDeparturesBlock
-    ) {
-      return a.serviceDay.equals(b.serviceDay);
-    } else {
-      return false;
-    }
   }
 }

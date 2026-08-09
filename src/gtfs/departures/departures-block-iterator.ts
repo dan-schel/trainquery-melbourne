@@ -1,14 +1,15 @@
 import { assertNever, itsOk } from "@dan-schel/js-utils";
-import type {
-  DeparturesIteratorResult,
-  DeparturesSearchDirection,
-} from "./departures-iterators.js";
+import {
+  DeparturesIterator,
+  type DeparturesIteratorResult,
+  type DeparturesSearchDirection,
+} from "./departures-iterator.js";
 import type { DeparturesBlock } from "./departures-block.js";
 
 export abstract class DeparturesBlockIterator<
   BlockType extends DeparturesBlock,
   EntryType,
-> {
+> extends DeparturesIterator {
   private _index: number;
   private _direction: DeparturesSearchDirection;
   private _nextValue: DeparturesIteratorResult | null;
@@ -17,12 +18,17 @@ export abstract class DeparturesBlockIterator<
     readonly block: BlockType,
     readonly _entries: readonly EntryType[],
   ) {
+    super();
+
     this._index = -1;
     this._direction = "forwards";
     this._nextValue = null;
   }
 
-  set(instant: Temporal.Instant, direction: DeparturesSearchDirection): void {
+  override set(
+    instant: Temporal.Instant,
+    direction: DeparturesSearchDirection,
+  ): void {
     this._direction = direction;
 
     if (direction === "forwards") {
@@ -36,11 +42,11 @@ export abstract class DeparturesBlockIterator<
     }
   }
 
-  peek(): DeparturesIteratorResult | null {
+  override peek(): DeparturesIteratorResult | null {
     return this._nextValue;
   }
 
-  take(): DeparturesIteratorResult {
+  override take(): DeparturesIteratorResult {
     const value = this.peek();
     if (value == null) throw new Error("Nothing to take.");
 

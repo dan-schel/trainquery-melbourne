@@ -28,13 +28,13 @@ import type { GtfsRealtimeData } from "./data/gtfs-realtime-data.js";
 import { BonusLinesMapping } from "./data/route/bonus-lines-mapping.js";
 import { itsOk, listifyAnd } from "@dan-schel/js-utils";
 import { GtfsScheduledMovementsIndex } from "./departures/gtfs-scheduled-movements-index.js";
-import { DeparturesBlocksBuilder } from "./departures/departures-blocks-builder.js";
 import * as stop from "../config/corequery/stops/stop-ids.js";
 import { BoundedInstantRange } from "./data/bounded-instant-range.js";
 import {
   MELBOURNE_TIMEZONE,
   MELBOURNE_TIMEZONE_DATA,
 } from "./utils/melbourne-timezone-data.js";
+import { ScheduledDeparturesBlocksBuilder } from "./departures/scheduled-departures-blocks-builder.js";
 
 type GtfsParsingError =
   | GtfsScheduleParsingError
@@ -48,7 +48,7 @@ export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
     // suburbanSchedule,
     // suburbanRealtimeData,
     regionalSchedule,
-    regionalRealtimeData,
+    // regionalRealtimeData,
   } = await parse(ctx, formalConfig);
 
   console.log("\n-----\n");
@@ -56,14 +56,13 @@ export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
   const scheduledMovementsIndex =
     GtfsScheduledMovementsIndex.build(regionalSchedule);
 
-  const builder = DeparturesBlocksBuilder.build(
+  const builder = ScheduledDeparturesBlocksBuilder.tryBuild(
     stop.DROUIN,
     scheduledMovementsIndex,
-    regionalRealtimeData,
     MELBOURNE_TIMEZONE_DATA,
   );
 
-  builder.allBlocksWithinTimeRange(
+  builder?.allWithinTimeRange(
     new BoundedInstantRange(
       Temporal.Instant.from("2026-08-02T00:00:00+10:00"),
       Temporal.Instant.from("2026-08-03T00:00:00+10:00"),

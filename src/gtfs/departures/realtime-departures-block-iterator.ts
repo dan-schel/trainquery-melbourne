@@ -1,4 +1,4 @@
-import { DeparturesIteratorResult } from "./departures-iterators.js";
+import { DeparturesIteratorResult } from "./departures-iterator.js";
 import type {
   RealtimeDeparturesBlock,
   RealtimeDeparturesBlockEntry,

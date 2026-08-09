@@ -71,4 +71,8 @@ export class ScheduledDeparturesBlock extends DeparturesBlock {
       m.time.isBeforeOrEqual(time),
     );
   }
+
+  isSameServiceDay(other: ScheduledDeparturesBlock): boolean {
+    return Temporal.PlainDate.compare(this.serviceDay, other.serviceDay) === 0;
+  }
 }

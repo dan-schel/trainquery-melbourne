@@ -1,4 +1,4 @@
-import type { TimezoneData } from "../departures/departures-blocks-builder.js";
+import type { TimezoneData } from "../departures/scheduled-departures-blocks-builder.js";
 
 export const MELBOURNE_TIMEZONE = "Australia/Melbourne";
 
