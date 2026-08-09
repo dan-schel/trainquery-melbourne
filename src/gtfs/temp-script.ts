@@ -29,12 +29,11 @@ import { BonusLinesMapping } from "./data/route/bonus-lines-mapping.js";
 import { itsOk, listifyAnd } from "@dan-schel/js-utils";
 import { GtfsScheduledMovementsIndex } from "./departures/gtfs-scheduled-movements-index.js";
 import * as stop from "../config/corequery/stops/stop-ids.js";
-import { BoundedInstantRange } from "./data/bounded-instant-range.js";
 import {
   MELBOURNE_TIMEZONE,
   MELBOURNE_TIMEZONE_DATA,
 } from "./utils/melbourne-timezone-data.js";
-import { ScheduledDeparturesBlocksBuilder } from "./departures/scheduled-departures-blocks-builder.js";
+import { ZipperDeparturesIterator } from "./departures/zipper-departures-iterator.js";
 
 type GtfsParsingError =
   | GtfsScheduleParsingError
@@ -45,29 +44,36 @@ export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
   const formalConfig = formalizeConfig(config);
 
   const {
-    // suburbanSchedule,
-    // suburbanRealtimeData,
+    suburbanSchedule,
+    suburbanRealtimeData,
     regionalSchedule,
-    // regionalRealtimeData,
+    regionalRealtimeData,
   } = await parse(ctx, formalConfig);
 
   console.log("\n-----\n");
 
-  const scheduledMovementsIndex =
-    GtfsScheduledMovementsIndex.build(regionalSchedule);
-
-  const builder = ScheduledDeparturesBlocksBuilder.tryBuild(
-    stop.DROUIN,
-    scheduledMovementsIndex,
-    MELBOURNE_TIMEZONE_DATA,
-  );
-
-  builder?.allWithinTimeRange(
-    new BoundedInstantRange(
-      Temporal.Instant.from("2026-08-02T00:00:00+10:00"),
-      Temporal.Instant.from("2026-08-03T00:00:00+10:00"),
+  // TODO: We still need a multifeed departures iterator (implemented with a
+  // zipper iterator) to inject the subfeed ID into the result.
+  const iterator = new ZipperDeparturesIterator([
+    ZipperDeparturesIterator.forSubfeed(
+      stop.DROUIN,
+      GtfsScheduledMovementsIndex.build(regionalSchedule),
+      regionalRealtimeData,
+      MELBOURNE_TIMEZONE_DATA,
     ),
-  );
+    ZipperDeparturesIterator.forSubfeed(
+      stop.DROUIN,
+      GtfsScheduledMovementsIndex.build(suburbanSchedule),
+      suburbanRealtimeData,
+      MELBOURNE_TIMEZONE_DATA,
+    ),
+  ]);
+
+  iterator.set(Temporal.Instant.from("2026-08-09T16:04:00+10:00"), "forwards");
+
+  const dep = iterator.peek();
+
+  console.log(dep);
 }
 
 function formalizeConfig(config: GtfsConfig) {

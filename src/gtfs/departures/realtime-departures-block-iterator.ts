@@ -1,7 +1,7 @@
 import { DeparturesIteratorResult } from "./departures-iterator.js";
-import type {
+import {
   RealtimeDeparturesBlock,
-  RealtimeDeparturesBlockEntry,
+  type RealtimeDeparturesBlockEntry,
 } from "./realtime-departures-block.js";
 import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
 import { DeparturesBlockIterator } from "./departures-block-iterator.js";
@@ -15,6 +15,13 @@ export class RealtimeDeparturesBlockIterator extends DeparturesBlockIterator<
     private readonly _realtimeData: GtfsRealtimeData,
   ) {
     super(block, block.entries);
+  }
+
+  static tryBuild(stopId: number, realtimeData: GtfsRealtimeData) {
+    const block = RealtimeDeparturesBlock.tryBuild(stopId, realtimeData);
+    if (block == null) return null;
+
+    return new RealtimeDeparturesBlockIterator(block, realtimeData);
   }
 
   protected override _convertEntryToResult(

@@ -1,9 +1,14 @@
-import { assertNever } from "@dan-schel/js-utils";
+import { assertNever, nonNull } from "@dan-schel/js-utils";
 import {
   DeparturesIterator,
   DeparturesIteratorResult,
   type DeparturesSearchDirection,
 } from "./departures-iterator.js";
+import { ScheduledDeparturesIterator } from "./scheduled-departures-iterator.js";
+import { RealtimeDeparturesBlockIterator } from "./realtime-departures-block-iterator.js";
+import type { GtfsScheduledMovementsIndex } from "./gtfs-scheduled-movements-index.js";
+import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
+import type { TimezoneData } from "./scheduled-departures-blocks-builder.js";
 
 export class ZipperDeparturesIterator extends DeparturesIterator {
   private _direction: DeparturesSearchDirection;
@@ -72,5 +77,29 @@ export class ZipperDeparturesIterator extends DeparturesIterator {
     } else {
       assertNever(this._direction);
     }
+  }
+
+  static forSubfeed(
+    stopId: number,
+    scheduledMovementsIndex: GtfsScheduledMovementsIndex,
+    realtimeData: GtfsRealtimeData,
+    timezoneData: TimezoneData,
+  ) {
+    const scheduled = ScheduledDeparturesIterator.tryBuild(
+      stopId,
+      scheduledMovementsIndex,
+      realtimeData,
+      timezoneData,
+    );
+
+    const realtime = RealtimeDeparturesBlockIterator.tryBuild(
+      stopId,
+      realtimeData,
+    );
+
+    const iterators = [scheduled, realtime].filter(nonNull);
+
+    // TODO: Unit test that a zipper iterator with no iterators works correctly.
+    return new ZipperDeparturesIterator(iterators);
   }
 }
