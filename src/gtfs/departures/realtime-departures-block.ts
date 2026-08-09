@@ -54,24 +54,14 @@ export class RealtimeDeparturesBlock extends DeparturesBlock {
     );
   }
 
-  /**
-   * Returns the index of the first movement that is at or after the given time.
-   * If all movements come before the given time, returns the length of the
-   * movements array, i.e. the index _after_ all movements.
-   */
-  getIterationIndexOfNextFrom(instant: Temporal.Instant): number {
+  override getIterationIndexOfNextFrom(instant: Temporal.Instant): number {
     const result = this.entries.findIndex(
       (m) => Temporal.Instant.compare(m.instant, instant) >= 0,
     );
     return result !== -1 ? result : this.entries.length;
   }
 
-  /**
-   * Returns the index of the last movement that is at or before the given time.
-   * If all movements come after the given time, returns -1, i.e. the index
-   * _before_ all movements.
-   */
-  getIterationIndexOfPreviousFrom(instant: Temporal.Instant): number {
+  override getIterationIndexOfPreviousFrom(instant: Temporal.Instant): number {
     // No need to handle -1, because we'd want to return -1 in that case anyway!
     return this.entries.findLastIndex(
       (m) => Temporal.Instant.compare(m.instant, instant) <= 0,

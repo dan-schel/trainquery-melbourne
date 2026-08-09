@@ -3,8 +3,12 @@ import type {
   DeparturesIteratorResult,
   DeparturesSearchDirection,
 } from "./departures-iterators.js";
+import type { DeparturesBlock } from "./departures-block.js";
 
-export abstract class DeparturesBlockIterator<BlockType, EntryType> {
+export abstract class DeparturesBlockIterator<
+  BlockType extends DeparturesBlock,
+  EntryType,
+> {
   private _index: number;
   private _direction: DeparturesSearchDirection;
 
@@ -17,8 +21,15 @@ export abstract class DeparturesBlockIterator<BlockType, EntryType> {
   }
 
   set(instant: Temporal.Instant, direction: DeparturesSearchDirection): void {
-    const index = this._getEntryIndexFor(instant, direction);
-    this._setIndexAndSkipUntilValidEntry(index, direction);
+    if (direction === "forwards") {
+      const index = this.block.getIterationIndexOfNextFrom(instant);
+      this._setIndexAndSkipUntilValidEntry(index, direction);
+    } else if (direction === "backwards") {
+      const index = this.block.getIterationIndexOfPreviousFrom(instant);
+      this._setIndexAndSkipUntilValidEntry(index, direction);
+    } else {
+      assertNever(direction);
+    }
   }
 
   peek(): DeparturesIteratorResult | null {
@@ -40,11 +51,6 @@ export abstract class DeparturesBlockIterator<BlockType, EntryType> {
 
     return value;
   }
-
-  protected abstract _getEntryIndexFor(
-    instant: Temporal.Instant,
-    direction: DeparturesSearchDirection,
-  ): number;
 
   protected abstract _convertEntryToResult(
     entry: EntryType,

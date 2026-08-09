@@ -1,8 +1,4 @@
-import { assertNever } from "@dan-schel/js-utils";
-import {
-  DeparturesIteratorResult,
-  type DeparturesSearchDirection,
-} from "./departures-iterators.js";
+import { DeparturesIteratorResult } from "./departures-iterators.js";
 import type {
   RealtimeDeparturesBlock,
   RealtimeDeparturesBlockEntry,
@@ -19,19 +15,6 @@ export class RealtimeDeparturesBlockIterator extends DeparturesBlockIterator<
     private readonly _realtimeData: GtfsRealtimeData,
   ) {
     super(block, block.entries);
-  }
-
-  protected override _getEntryIndexFor(
-    instant: Temporal.Instant,
-    direction: DeparturesSearchDirection,
-  ): number {
-    if (direction === "forwards") {
-      return this.block.getIterationIndexOfNextFrom(instant);
-    } else if (direction === "backwards") {
-      return this.block.getIterationIndexOfPreviousFrom(instant);
-    } else {
-      assertNever(direction);
-    }
   }
 
   protected override _convertEntryToResult(

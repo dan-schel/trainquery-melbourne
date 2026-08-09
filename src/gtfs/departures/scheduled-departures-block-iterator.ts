@@ -1,12 +1,8 @@
-import { assertNever } from "@dan-schel/js-utils";
 import type {
   ScheduledDeparturesBlock,
   ScheduledDeparturesBlockEntry,
 } from "./scheduled-departures-block.js";
-import {
-  DeparturesIteratorResult,
-  type DeparturesSearchDirection,
-} from "./departures-iterators.js";
+import { DeparturesIteratorResult } from "./departures-iterators.js";
 import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
 import { DeparturesBlockIterator } from "./departures-block-iterator.js";
 
@@ -19,24 +15,6 @@ export class ScheduledDeparturesBlockIterator extends DeparturesBlockIterator<
     private readonly _realtimeData: GtfsRealtimeData,
   ) {
     super(block, block.entries);
-  }
-
-  protected override _getEntryIndexFor(
-    instant: Temporal.Instant,
-    direction: DeparturesSearchDirection,
-  ): number {
-    const time = this.block.toGtfsStopTime(instant);
-
-    // TODO: Can avoid _getEntryIndexFor if we move getIterationIndexOfNextFrom and
-    // getIterationIndexOfPreviousFrom as abstract methods taking an instant to
-    // the block.
-    if (direction === "forwards") {
-      return this.block.getIterationIndexOfNextFrom(time);
-    } else if (direction === "backwards") {
-      return this.block.getIterationIndexOfPreviousFrom(time);
-    } else {
-      assertNever(direction);
-    }
   }
 
   protected override _convertEntryToResult(

@@ -70,22 +70,14 @@ export class ScheduledDeparturesBlock extends DeparturesBlock {
     return GtfsStopTime.fromSecondsSinceMidnight(secondsSinceMidnight);
   }
 
-  /**
-   * Returns the index of the first movement that is at or after the given time.
-   * If all movements come before the given time, returns the length of the
-   * movements array, i.e. the index _after_ all movements.
-   */
-  getIterationIndexOfNextFrom(time: GtfsStopTime): number {
+  override getIterationIndexOfNextFrom(instant: Temporal.Instant): number {
+    const time = this.toGtfsStopTime(instant);
     const result = this.entries.findIndex((m) => m.time.isAfterOrEqual(time));
     return result !== -1 ? result : this.entries.length;
   }
 
-  /**
-   * Returns the index of the last movement that is at or before the given time.
-   * If all movements come after the given time, returns -1, i.e. the index
-   * _before_ all movements.
-   */
-  getIterationIndexOfPreviousFrom(time: GtfsStopTime): number {
+  override getIterationIndexOfPreviousFrom(instant: Temporal.Instant): number {
+    const time = this.toGtfsStopTime(instant);
     // No need to handle -1, because we'd want to return -1 in that case anyway!
     return this.entries.findLastIndex((m) => m.time.isBeforeOrEqual(time));
   }
