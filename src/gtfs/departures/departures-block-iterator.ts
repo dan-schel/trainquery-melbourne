@@ -11,6 +11,7 @@ export abstract class DeparturesBlockIterator<
 > {
   private _index: number;
   private _direction: DeparturesSearchDirection;
+  private _nextValue: DeparturesIteratorResult | null;
 
   constructor(
     readonly block: BlockType,
@@ -18,9 +19,12 @@ export abstract class DeparturesBlockIterator<
   ) {
     this._index = -1;
     this._direction = "forwards";
+    this._nextValue = null;
   }
 
   set(instant: Temporal.Instant, direction: DeparturesSearchDirection): void {
+    this._direction = direction;
+
     if (direction === "forwards") {
       const index = this.block.getIterationIndexOfNextFrom(instant);
       this._setIndexAndSkipUntilValidEntry(index, direction);
@@ -33,11 +37,7 @@ export abstract class DeparturesBlockIterator<
   }
 
   peek(): DeparturesIteratorResult | null {
-    const value = this._entries[this._index] ?? null;
-    if (value == null) return null;
-
-    // Could consider memoizing this everytime the index changes.
-    return this._convertEntryToResult(value);
+    return this._nextValue;
   }
 
   take(): DeparturesIteratorResult {
@@ -58,7 +58,6 @@ export abstract class DeparturesBlockIterator<
 
   protected abstract _shouldSkipEntry(entry: EntryType): boolean;
 
-  // TODO: Rename this to indicate that it also sets direction.
   private _setIndexAndSkipUntilValidEntry(
     newIndex: number,
     direction: DeparturesSearchDirection,
@@ -74,7 +73,9 @@ export abstract class DeparturesBlockIterator<
     }
 
     this._index = index;
-    this._direction = direction;
+
+    const value = this._entries[index] ?? null;
+    this._nextValue = value == null ? null : this._convertEntryToResult(value);
   }
 
   private static _nextIndexValueFor(
