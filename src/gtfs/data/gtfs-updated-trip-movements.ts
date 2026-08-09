@@ -50,6 +50,8 @@ interface IGtfsUpdatedTripServicingMovement extends IGtfsUpdatedTripMovement {
 
   get isServicing(): true;
   get timeRelevantToDeparturesAlgorithm(): Temporal.Instant;
+  get realtimeTimeRelevantToDeparturesAlgorithm(): Temporal.Instant | null;
+  get scheduledTimeRelevantToDeparturesAlgorithm(): Temporal.Instant;
 }
 
 type GtfsUpdatedTripOriginatingMovementFields = {
@@ -133,6 +135,12 @@ export class GtfsUpdatedTripOriginatingMovement implements IGtfsUpdatedTripServi
   get timeRelevantToDeparturesAlgorithm() {
     return this.realtimeDepartureTime ?? this.scheduledDepartureTime;
   }
+  get realtimeTimeRelevantToDeparturesAlgorithm() {
+    return this.realtimeDepartureTime;
+  }
+  get scheduledTimeRelevantToDeparturesAlgorithm() {
+    return this.scheduledDepartureTime;
+  }
 }
 
 export class GtfsUpdatedTripRegularMovement implements IGtfsUpdatedTripServicingMovement {
@@ -176,6 +184,12 @@ export class GtfsUpdatedTripRegularMovement implements IGtfsUpdatedTripServicing
   get timeRelevantToDeparturesAlgorithm() {
     return this.realtimeDepartureTime ?? this.scheduledDepartureTime;
   }
+  get realtimeTimeRelevantToDeparturesAlgorithm() {
+    return this.realtimeDepartureTime;
+  }
+  get scheduledTimeRelevantToDeparturesAlgorithm() {
+    return this.scheduledDepartureTime;
+  }
 }
 
 export class GtfsUpdatedTripTerminatingMovement implements IGtfsUpdatedTripServicingMovement {
@@ -210,6 +224,12 @@ export class GtfsUpdatedTripTerminatingMovement implements IGtfsUpdatedTripServi
   }
   get timeRelevantToDeparturesAlgorithm() {
     return this.realtimeArrivalTime ?? this.scheduledArrivalTime;
+  }
+  get realtimeTimeRelevantToDeparturesAlgorithm() {
+    return this.realtimeArrivalTime;
+  }
+  get scheduledTimeRelevantToDeparturesAlgorithm() {
+    return this.scheduledArrivalTime;
   }
 }
 

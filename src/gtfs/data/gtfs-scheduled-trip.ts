@@ -86,4 +86,10 @@ export class GtfsScheduledTrip {
     // Can't happen. Checked in constructor.
     throw new Error();
   }
+
+  get finalTermination(): GtfsScheduledTripTerminatingMovement {
+    if (this.nextTrip == null) return this.termination;
+
+    return this.nextTrip.finalTermination;
+  }
 }
