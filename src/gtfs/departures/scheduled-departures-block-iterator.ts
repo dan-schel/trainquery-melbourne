@@ -1,95 +1,58 @@
-import { assertNever, itsOk } from "@dan-schel/js-utils";
+import { assertNever } from "@dan-schel/js-utils";
 import type {
   ScheduledDeparturesBlock,
   ScheduledDeparturesBlockEntry,
 } from "./scheduled-departures-block.js";
-import type {
-  DeparturesSearchDirection,
-  IDeparturesIterator,
+import {
+  DeparturesIteratorResult,
+  type DeparturesSearchDirection,
 } from "./departures-iterators.js";
 import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
+import { DeparturesBlockIterator } from "./departures-block-iterator.js";
 
-export class ScheduledDeparturesBlockIterator implements IDeparturesIterator<ScheduledDeparturesBlockEntry> {
-  private _index: number;
-  private _direction: DeparturesSearchDirection;
-  private _nextValueInstant: Temporal.Instant | null;
-
+export class ScheduledDeparturesBlockIterator extends DeparturesBlockIterator<
+  ScheduledDeparturesBlock,
+  ScheduledDeparturesBlockEntry
+> {
   constructor(
-    readonly block: ScheduledDeparturesBlock,
+    block: ScheduledDeparturesBlock,
     private readonly _realtimeData: GtfsRealtimeData,
   ) {
-    this._index = -1;
-    this._direction = "forwards";
-    this._nextValueInstant = null;
+    super(block, block.entries);
   }
 
-  set(instant: Temporal.Instant, direction: DeparturesSearchDirection): void {
+  protected override _getEntryIndexFor(
+    instant: Temporal.Instant,
+    direction: DeparturesSearchDirection,
+  ): number {
     const time = this.block.toGtfsStopTime(instant);
 
-    this._direction = direction;
-
+    // TODO: Can avoid _getEntryIndexFor if we move getIterationIndexOfNextFrom and
+    // getIterationIndexOfPreviousFrom as abstract methods taking an instant to
+    // the block.
     if (direction === "forwards") {
-      const index = this.block.getIterationIndexOfNextFrom(time);
-      this._setIndexAndSkipUntilValidEntry(index);
+      return this.block.getIterationIndexOfNextFrom(time);
     } else if (direction === "backwards") {
-      const index = this.block.getIterationIndexOfPreviousFrom(time);
-      this._setIndexAndSkipUntilValidEntry(index);
+      return this.block.getIterationIndexOfPreviousFrom(time);
     } else {
       assertNever(direction);
     }
   }
 
-  getNextValueInstant(): Temporal.Instant | null {
-    return this._nextValueInstant;
-  }
-
-  peek(): ScheduledDeparturesBlockEntry | null {
-    return this.block.entries[this._index] ?? null;
-  }
-
-  take(): ScheduledDeparturesBlockEntry {
-    const value = this.peek();
-    if (value == null) throw new Error("Nothing to take.");
-
-    const nextIndex = ScheduledDeparturesBlockIterator._nextIndexValueFor(
-      this._index,
-      this._direction,
+  protected override _convertEntryToResult(
+    entry: ScheduledDeparturesBlockEntry,
+  ): DeparturesIteratorResult {
+    return new DeparturesIteratorResult(
+      entry.trip,
+      this.block.serviceDay,
+      entry.time.toInstant(this.block.serviceDay, this.block.timezone),
+      entry.movement,
     );
-    this._setIndexAndSkipUntilValidEntry(nextIndex);
-
-    return value;
   }
 
-  private _setIndexAndSkipUntilValidEntry(newIndex: number) {
-    let index = newIndex;
-    while (index >= 0 && index < this.block.entries.length) {
-      // Ok due to while loop condition. Once we've exceed the bounds of the
-      // array (in either direction), we'll have stopped.
-      const entry = itsOk(this.block.entries[index]);
-      if (!this._shouldSkipEntry(entry)) break;
-
-      index = ScheduledDeparturesBlockIterator._nextIndexValueFor(
-        index,
-        this._direction,
-      );
-    }
-
-    this._setIndex(index);
-  }
-
-  private _setIndex(newIndex: number) {
-    this._index = newIndex;
-    this._nextValueInstant = this._calculateNextValueInstant();
-  }
-
-  private _calculateNextValueInstant(): Temporal.Instant | null {
-    const nextValue = this.peek();
-    if (nextValue == null) return null;
-
-    return nextValue.time.toInstant(this.block.serviceDay, this.block.timezone);
-  }
-
-  private _shouldSkipEntry(entry: ScheduledDeparturesBlockEntry): boolean {
+  protected override _shouldSkipEntry(
+    entry: ScheduledDeparturesBlockEntry,
+  ): boolean {
     // A scheduled departures block has all movements for a given stop, not just
     // the ones that occur today!
     //
@@ -123,18 +86,5 @@ export class ScheduledDeparturesBlockIterator implements IDeparturesIterator<Sch
   private _isTripCancelled(tripId: string): boolean {
     const realtimeTrip = this._realtimeData.getForScheduledTrip(tripId);
     return realtimeTrip?.isCancelled ?? false;
-  }
-
-  private static _nextIndexValueFor(
-    index: number,
-    direction: DeparturesSearchDirection,
-  ) {
-    if (direction === "forwards") {
-      return index + 1;
-    } else if (direction === "backwards") {
-      return index - 1;
-    } else {
-      assertNever(direction);
-    }
   }
 }

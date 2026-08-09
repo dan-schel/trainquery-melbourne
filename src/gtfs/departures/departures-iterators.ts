@@ -1,12 +1,26 @@
+import type { GtfsScheduledTripServicingMovement } from "../data/gtfs-scheduled-trip-movements.js";
+import type { GtfsScheduledTrip } from "../data/gtfs-scheduled-trip.js";
+import type { GtfsUpdatedTripServicingMovement } from "../data/gtfs-updated-trip-movements.js";
+import type { GtfsUpdatedTrip } from "../data/gtfs-updated-trip.js";
+
+type GtfsTripServicingMovement =
+  | GtfsScheduledTripServicingMovement
+  | GtfsUpdatedTripServicingMovement;
+
 export type DeparturesSearchDirection = "forwards" | "backwards";
 
+export class DeparturesIteratorResult {
+  constructor(
+    readonly trip: GtfsScheduledTrip | GtfsUpdatedTrip,
+    readonly serviceDay: Temporal.PlainDate,
+    readonly instant: Temporal.Instant,
+    readonly movement: GtfsTripServicingMovement,
+  ) {}
+}
+
+// TODO: Delete this.
 export interface IDeparturesIterator<T> {
   set(instant: Temporal.Instant, direction: DeparturesSearchDirection): void;
-
-  // TODO: We'd be able able to get rid of this if ScheduledDeparturesBlockEntry
-  // was a class and could calculate its own (memoized, if necessary) instant.
-  getNextValueInstant(): Temporal.Instant | null;
-
   peek(): T | null;
   take(): T;
 }

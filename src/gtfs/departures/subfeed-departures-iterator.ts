@@ -4,20 +4,14 @@ import {
   type TimezoneData,
 } from "./departures-blocks-builder.js";
 import type {
+  DeparturesIteratorResult,
   DeparturesSearchDirection,
-  IDeparturesIterator,
 } from "./departures-iterators.js";
 import { BoundedInstantRange } from "../data/bounded-instant-range.js";
 import { ScheduledDeparturesBlockIterator } from "./scheduled-departures-block-iterator.js";
 import { RealtimeDeparturesBlockIterator } from "./realtime-departures-block-iterator.js";
-import {
-  ScheduledDeparturesBlock,
-  type ScheduledDeparturesBlockEntry,
-} from "./scheduled-departures-block.js";
-import {
-  RealtimeDeparturesBlock,
-  type RealtimeDeparturesBlockEntry,
-} from "./realtime-departures-block.js";
+import { ScheduledDeparturesBlock } from "./scheduled-departures-block.js";
+import { RealtimeDeparturesBlock } from "./realtime-departures-block.js";
 import type { GtfsScheduledMovementsIndex } from "./gtfs-scheduled-movements-index.js";
 import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
 
@@ -27,20 +21,10 @@ type InnerDeparturesBlockIterator =
   | ScheduledDeparturesBlockIterator
   | RealtimeDeparturesBlockIterator;
 
-type EnhancedScheduledDeparturesBlockEntry = ScheduledDeparturesBlockEntry & {
-  readonly instant: Temporal.Instant;
-  readonly serviceDay: Temporal.PlainDate;
-  readonly timezone: string;
-};
-
-type Result =
-  | RealtimeDeparturesBlockEntry
-  | EnhancedScheduledDeparturesBlockEntry;
-
-export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
+export class SubfeedDeparturesIterator {
   private _searchRange: BoundedInstantRange | null;
   private _iterators: InnerDeparturesBlockIterator[];
-  private _nextValue: Result | null;
+  private _nextValue: DeparturesIteratorResult | null;
   private _nextValueIterator: InnerDeparturesBlockIterator | null;
   private _direction: DeparturesSearchDirection;
 
@@ -82,15 +66,11 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
     this._calculateNextValue();
   }
 
-  getNextValueInstant(): Temporal.Instant | null {
-    return this.peek()?.instant ?? null;
-  }
-
-  peek(): Result | null {
+  peek(): DeparturesIteratorResult | null {
     return this._nextValue;
   }
 
-  take(): Result {
+  take(): DeparturesIteratorResult {
     const value = this._nextValue;
     const iterator = this._nextValueIterator;
 
@@ -173,16 +153,15 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
   }
 
   private _calculateNextValue() {
-    let best: Result | null = null;
+    let best: DeparturesIteratorResult | null = null;
     let bestIterator: InnerDeparturesBlockIterator | null = null;
 
     for (const iterator of this._iterators) {
       const nextValue = iterator.peek();
-      const nextValueInstant = iterator.getNextValueInstant();
-      if (nextValue == null || nextValueInstant == null) continue;
+      if (nextValue == null) continue;
 
-      if (best == null || this._isBetter(best.instant, nextValueInstant)) {
-        best = this._enhance(nextValue, iterator);
+      if (best == null || this._isBetter(best.instant, nextValue.instant)) {
+        best = nextValue;
         bestIterator = iterator;
       }
     }
@@ -216,31 +195,6 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
       return Temporal.Instant.compare(candidate, currentBest) > 0;
     } else {
       assertNever(this._direction);
-    }
-  }
-
-  private _enhance(
-    entry: RealtimeDeparturesBlockEntry | ScheduledDeparturesBlockEntry,
-    iterator: InnerDeparturesBlockIterator,
-  ): Result {
-    // TODO: We'd be able to do better if checks if these were classes.
-    if ("instant" in entry) {
-      return entry;
-    } else if ("time" in entry) {
-      const rightType = iterator instanceof ScheduledDeparturesBlockIterator;
-      if (!rightType) throw new Error("Wrong iterator type.");
-
-      return {
-        ...entry,
-        instant: entry.time.toInstant(
-          iterator.block.serviceDay,
-          iterator.block.timezone,
-        ),
-        serviceDay: iterator.block.serviceDay,
-        timezone: iterator.block.timezone,
-      };
-    } else {
-      assertNever(entry);
     }
   }
 
