@@ -103,8 +103,8 @@ describe("GtfsRealtimeDataParser", () => {
 
     const parsed = parser.parse(realtimeFeed, SCHEDULE, STOP_MAPPING);
 
-    expect(parsed.updatedTrips).toHaveLength(1);
-    const updatedTrip = itsOk(parsed.updatedTrips[0]);
+    expect(parsed.allTrips()).toHaveLength(1);
+    const updatedTrip = itsOk(parsed.allTrips()[0]);
 
     expect(updatedTrip.scheduledTrip.gtfsTripId).toBe(TRIP.gtfsTripId);
     const parsedDepartureTime = updatedTrip.origination.realtimeDepartureTime;

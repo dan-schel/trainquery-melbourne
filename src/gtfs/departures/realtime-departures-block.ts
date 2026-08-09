@@ -29,7 +29,7 @@ export class RealtimeDeparturesBlock extends DeparturesBlock {
     realtimeData: GtfsRealtimeData,
   ): RealtimeDeparturesBlock | null {
     const movements: RealtimeDeparturesBlockEntry[] = [];
-    for (const trip of realtimeData.updatedTrips) {
+    for (const trip of realtimeData.allTrips()) {
       for (const movement of trip.movements) {
         if (!movement.isServicing) continue;
         if (movement.stopId !== stopId) continue;
@@ -46,15 +46,13 @@ export class RealtimeDeparturesBlock extends DeparturesBlock {
 
     movements.sort((a, b) => Temporal.Instant.compare(a.instant, b.instant));
 
-    const earliestDepartureInstant = itsOk(movements[0]).instant;
-    const latestDepartureInstant = itsOk(
-      movements[movements.length - 1],
-    ).instant;
+    const earliestDepInstant = itsOk(movements[0]).instant;
+    const latestDepInstant = itsOk(movements[movements.length - 1]).instant;
 
     return new RealtimeDeparturesBlock(
       movements,
-      earliestDepartureInstant,
-      latestDepartureInstant,
+      earliestDepInstant,
+      latestDepInstant,
     );
   }
 

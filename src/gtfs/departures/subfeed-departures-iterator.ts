@@ -1,5 +1,8 @@
 import { assertNever, itsOk, removeIf } from "@dan-schel/js-utils";
-import { DeparturesBlocksBuilder } from "./departures-blocks-builder.js";
+import {
+  DeparturesBlocksBuilder,
+  type TimezoneData,
+} from "./departures-blocks-builder.js";
 import type {
   DeparturesSearchDirection,
   IDeparturesIterator,
@@ -9,6 +12,8 @@ import { ScheduledDeparturesBlockIterator } from "./scheduled-departures-block-i
 import { RealtimeDeparturesBlockIterator } from "./realtime-departures-block-iterator.js";
 import type { ScheduledDeparturesBlockEntry } from "./scheduled-departures-block.js";
 import type { RealtimeDeparturesBlockEntry } from "./realtime-departures-block.js";
+import type { GtfsScheduledMovementsIndex } from "./gtfs-scheduled-movements-index.js";
+import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
 
 const BLOCK_SCAN_HOURS = 48;
 
@@ -33,12 +38,31 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
   private _nextValueIterator: InnerDeparturesBlockIterator | null;
   private _direction: DeparturesSearchDirection;
 
-  constructor(private readonly _blockBuilder: DeparturesBlocksBuilder) {
+  constructor(
+    private readonly _blocksBuilder: DeparturesBlocksBuilder,
+    private readonly _realtimeData: GtfsRealtimeData,
+  ) {
     this._searchRange = null;
     this._iterators = [];
     this._nextValue = null;
     this._nextValueIterator = null;
     this._direction = "forwards";
+  }
+
+  static build(
+    stopId: number,
+    scheduledMovementsIndex: GtfsScheduledMovementsIndex,
+    realtimeData: GtfsRealtimeData,
+    timezoneData: TimezoneData,
+  ) {
+    const blockBuilder = DeparturesBlocksBuilder.build(
+      stopId,
+      scheduledMovementsIndex,
+      realtimeData,
+      timezoneData,
+    );
+
+    return new SubfeedDeparturesIterator(blockBuilder, realtimeData);
   }
 
   set(instant: Temporal.Instant, direction: DeparturesSearchDirection): void {
@@ -78,7 +102,7 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
     const searchRange = this._searchRange;
     if (searchRange == null) throw new Error("Search range not set.");
 
-    const blocks = this._blockBuilder.allBlocksWithinTimeRange(searchRange);
+    const blocks = this._blocksBuilder.allBlocksWithinTimeRange(searchRange);
 
     for (const block of blocks) {
       const alreadyIteratingThisBlock = this._iterators.some((i) =>
@@ -134,9 +158,9 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
 
   private _isWorthSearchingForMore(): boolean {
     if (this._direction === "forwards") {
-      return this._blockBuilder.hasBlocksAfter(this._getBackOfSearchRange());
+      return this._blocksBuilder.hasBlocksAfter(this._getBackOfSearchRange());
     } else if (this._direction === "backwards") {
-      return this._blockBuilder.hasBlocksBefore(this._getBackOfSearchRange());
+      return this._blocksBuilder.hasBlocksBefore(this._getBackOfSearchRange());
     } else {
       assertNever(this._direction);
     }

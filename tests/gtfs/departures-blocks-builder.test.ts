@@ -20,10 +20,13 @@ import { GtfsRealtimeData } from "../../src/gtfs/data/gtfs-realtime-data.js";
 import { PlainDateRange } from "../../src/gtfs/data/plain-date-range.js";
 
 describe("ScheduledDeparturesBlock", () => {
+  const NO_REALTIME_DATA = new GtfsRealtimeData([]);
+
   describe("allBlocksWithinTimeRange", () => {
     const builder = new DeparturesBlocksBuilder(
+      1,
       createMovements({ earliest: "05:18:00", latest: "26:08:00" }),
-      null,
+      NO_REALTIME_DATA,
       MELBOURNE_TIMEZONE_DATA,
       PlainDateRange.infinite,
     );
@@ -214,8 +217,9 @@ describe("ScheduledDeparturesBlock", () => {
 
     it("handles cases where the last movement is within the next service day", () => {
       const builder = new DeparturesBlocksBuilder(
+        1,
         createMovements({ earliest: "05:18:00", latest: "55:08:00" }),
-        null,
+        NO_REALTIME_DATA,
         MELBOURNE_TIMEZONE_DATA,
         PlainDateRange.infinite,
       );
@@ -264,8 +268,9 @@ describe("ScheduledDeparturesBlock", () => {
 
     it("returns an empty array if there's no scheduled movements", () => {
       const builder = new DeparturesBlocksBuilder(
+        1,
         [],
-        null,
+        NO_REALTIME_DATA,
         MELBOURNE_TIMEZONE_DATA,
         null,
       );
@@ -284,7 +289,7 @@ describe("ScheduledDeparturesBlock", () => {
         latest: "26:08:00",
       });
 
-      const realtimeBlock = createRealtimeBlock({
+      const realtimeData = createRealtimeData({
         tripId: itsOk(scheduledMovements[0]).trip.gtfsTripId,
         tripUpdateServiceDay: Temporal.PlainDate.from("2026-08-02"),
         originationTime: GtfsStopTime.parse("12:00:00"),
@@ -292,8 +297,9 @@ describe("ScheduledDeparturesBlock", () => {
       });
 
       const builder = new DeparturesBlocksBuilder(
+        1,
         scheduledMovements,
-        realtimeBlock,
+        realtimeData,
         MELBOURNE_TIMEZONE_DATA,
         PlainDateRange.infinite,
       );
@@ -367,7 +373,7 @@ describe("ScheduledDeparturesBlock", () => {
         latest: "26:08:00",
       });
 
-      const realtimeBlock = createRealtimeBlock({
+      const realtimeData = createRealtimeData({
         tripId: itsOk(scheduledMovements[0]).trip.gtfsTripId,
         tripUpdateServiceDay: Temporal.PlainDate.from("2026-08-02"),
         originationTime: GtfsStopTime.parse("05:18:00"),
@@ -375,8 +381,9 @@ describe("ScheduledDeparturesBlock", () => {
       });
 
       const builder = new DeparturesBlocksBuilder(
+        1,
         scheduledMovements,
-        realtimeBlock,
+        realtimeData,
         MELBOURNE_TIMEZONE_DATA,
         PlainDateRange.infinite,
       );
@@ -417,7 +424,7 @@ describe("ScheduledDeparturesBlock", () => {
         originationTime: originationTime,
       });
 
-      const realtimeBlock = createRealtimeBlock({
+      const realtimeData = createRealtimeData({
         tripId: trip1.gtfsTripId,
         tripUpdateServiceDay: Temporal.PlainDate.from("2026-08-02"),
         originationTime,
@@ -429,8 +436,9 @@ describe("ScheduledDeparturesBlock", () => {
       ];
 
       const builder = new DeparturesBlocksBuilder(
+        1,
         scheduledMovements,
-        realtimeBlock,
+        realtimeData,
         MELBOURNE_TIMEZONE_DATA,
         PlainDateRange.infinite,
       );
@@ -444,7 +452,7 @@ describe("ScheduledDeparturesBlock", () => {
     });
 
     it("still returns realtime departures block if there are no scheduled movements", () => {
-      const realtimeBlock = createRealtimeBlock({
+      const realtimeData = createRealtimeData({
         tripId: "trip-1",
         tripUpdateServiceDay: Temporal.PlainDate.from("2026-08-02"),
         originationTime: GtfsStopTime.parse("12:00:00"),
@@ -452,8 +460,9 @@ describe("ScheduledDeparturesBlock", () => {
       });
 
       const builder = new DeparturesBlocksBuilder(
+        1,
         [],
-        realtimeBlock,
+        realtimeData,
         MELBOURNE_TIMEZONE_DATA,
         null,
       );
@@ -535,7 +544,7 @@ function createTrip({
   });
 }
 
-function createRealtimeBlock({
+function createRealtimeData({
   tripId,
   tripUpdateServiceDay,
   originationTime,
@@ -579,8 +588,8 @@ function createRealtimeBlock({
     ],
     isCancelled: false,
   });
-  const realtimeData = new GtfsRealtimeData([trip]);
-  return RealtimeDeparturesBlock.tryBuild(1, realtimeData);
+
+  return new GtfsRealtimeData([trip]);
 }
 
 function expectScheduledBlocks({

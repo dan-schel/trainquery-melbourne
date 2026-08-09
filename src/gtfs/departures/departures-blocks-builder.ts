@@ -17,22 +17,20 @@ export type TimezoneData = {
 };
 
 export class DeparturesBlocksBuilder {
+  private readonly _realtimeBlock: RealtimeDeparturesBlock | null;
+
   constructor(
+    private readonly _stopId: number,
     private readonly _scheduledMovements: readonly GtfsScheduledMovementsIndexEntry[],
-
-    // TODO: The queries that we'll need to do to ensure we filter out
-    // continuing arrivals correctly could be quite heavy unless we can lookup
-    // the realtime data by trip ID efficiently, and the block doesn't allow for
-    // that (nor should it). I think we should pass the realtime data here, not
-    // the block, and construct the block inside the builder (who would've
-    // thought lol), like we do for scheduled blocks. That way, we have the
-    // realtime data object to work with for those other queries, and we can
-    // have a map by trip ID in there (if not already) for those other queries.
-    private readonly _realtimeBlock: RealtimeDeparturesBlock | null,
-
+    private readonly _realtimeData: GtfsRealtimeData,
     private readonly _timezoneData: TimezoneData,
     private readonly _rangeEncompassingAllCalendars: PlainDateRange | null,
-  ) {}
+  ) {
+    this._realtimeBlock = RealtimeDeparturesBlock.tryBuild(
+      _stopId,
+      _realtimeData,
+    );
+  }
 
   static build(
     stopId: number,
@@ -41,8 +39,9 @@ export class DeparturesBlocksBuilder {
     timezoneData: TimezoneData,
   ): DeparturesBlocksBuilder {
     return new DeparturesBlocksBuilder(
+      stopId,
       scheduledMovementsIndex.getMovementsForStop(stopId),
-      RealtimeDeparturesBlock.tryBuild(stopId, realtimeData),
+      realtimeData,
       timezoneData,
       scheduledMovementsIndex.getRangeEncompassingAllCalendarsForStop(stopId),
     );

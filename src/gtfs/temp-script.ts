@@ -230,8 +230,8 @@ function formatStats(
     ...regionalSchedule.allTrips(),
   ];
   const allTripUpdates = [
-    ...suburbanRealtimeData.updatedTrips,
-    ...regionalRealtimeData.updatedTrips,
+    ...suburbanRealtimeData.allTrips(),
+    ...regionalRealtimeData.allTrips(),
   ];
 
   const stats = new Map<string, { trips: number; tripUpdates: number }>();
