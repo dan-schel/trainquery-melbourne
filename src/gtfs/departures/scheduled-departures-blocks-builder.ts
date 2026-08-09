@@ -244,6 +244,8 @@ export class ScheduledDeparturesBlocksBuilder {
       Temporal.PlainDate.compare(date, lastServiceDay) <= 0;
       date = date.add({ days: 1 })
     ) {
+      if (!this._rangeEncompassingAllCalendars.includes(date)) continue;
+
       const tz = this._timezoneData.timezone;
       const block = ScheduledDeparturesBlock.build(this._movements, date, tz);
 
