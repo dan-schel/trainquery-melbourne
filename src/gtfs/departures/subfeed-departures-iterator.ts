@@ -248,7 +248,7 @@ export class SubfeedDeparturesIterator implements IDeparturesIterator<Result> {
     block: ScheduledDeparturesBlock | RealtimeDeparturesBlock,
   ): InnerDeparturesBlockIterator {
     if (block instanceof RealtimeDeparturesBlock) {
-      return new RealtimeDeparturesBlockIterator(block);
+      return new RealtimeDeparturesBlockIterator(block, this._realtimeData);
     } else if (block instanceof ScheduledDeparturesBlock) {
       return new ScheduledDeparturesBlockIterator(block, this._realtimeData);
     } else {

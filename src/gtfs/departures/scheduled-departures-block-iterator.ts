@@ -94,8 +94,8 @@ export class ScheduledDeparturesBlockIterator implements IDeparturesIterator<Sch
     // the ones that occur today!
     //
     // TODO: Add a unit test for this since I forgot it initially!
-    const tripRunsToday = entry.trip.calendar.occursOn(this.block.serviceDay);
-    if (!tripRunsToday) return true;
+    const doesntRunToday = !entry.trip.calendar.occursOn(this.block.serviceDay);
+    if (doesntRunToday) return true;
 
     // Trips with realtime data will be supplied by the realtime departures
     // block, so we don't want to show duplicate entries by also showing them
