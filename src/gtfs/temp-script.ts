@@ -56,10 +56,17 @@ type Query = {
   direction: DeparturesSearchDirection;
 };
 
+const now = Temporal.Now.zonedDateTimeISO(MELBOURNE_TIMEZONE)
+  .round({
+    smallestUnit: "minute",
+    roundingMode: "floor",
+  })
+  .toInstant();
+
 const QUERY: Query = {
-  stopId: stop.DROUIN,
-  time: Temporal.Instant.from("2026-08-09T16:04:00+10:00"),
-  direction: "forwards",
+  stopId: stop.BAIRNSDALE,
+  time: now,
+  direction: "backwards",
 };
 
 export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
@@ -411,5 +418,5 @@ function formatDeparture(ctx: Corequery, departure: DeparturesIteratorResult) {
       ? terminus
       : `${finalTerminus} (via ${terminus})`;
 
-  return `${scheduledTime}   ${terminusStr.padEnd(50, " ")}   ${delayStr}`;
+  return `${scheduledTime.padEnd(18)}   ${terminusStr.padEnd(50, " ")}   ${delayStr}`;
 }
