@@ -14,12 +14,35 @@ export type TimezoneData = {
 };
 
 export class ScheduledDeparturesBlocksBuilder {
+  private readonly _earliestMovementInstant: Temporal.Instant | null;
+  private readonly _latestMovementInstant: Temporal.Instant | null;
+
   constructor(
     private readonly _movements: readonly GtfsScheduledMovementsIndexEntry[],
     private readonly _timezoneData: TimezoneData,
     private readonly _rangeEncompassingAllCalendars: PlainDateRange,
   ) {
     if (_movements.length === 0) throw new Error("No movements given.");
+
+    if (_rangeEncompassingAllCalendars.start != null) {
+      const firstMovement = itsOk(_movements[0]);
+      this._earliestMovementInstant = firstMovement.time.toInstant(
+        _rangeEncompassingAllCalendars.start,
+        _timezoneData.timezone,
+      );
+    } else {
+      this._earliestMovementInstant = null;
+    }
+
+    if (_rangeEncompassingAllCalendars.end != null) {
+      const lastMovement = itsOk(_movements.at(-1));
+      this._latestMovementInstant = lastMovement.time.toInstant(
+        _rangeEncompassingAllCalendars.end,
+        _timezoneData.timezone,
+      );
+    } else {
+      this._latestMovementInstant = null;
+    }
   }
 
   static tryBuild(
@@ -44,29 +67,15 @@ export class ScheduledDeparturesBlocksBuilder {
   }
 
   hasMoreBefore(instant: Temporal.Instant): boolean {
-    const goesToInfinity = this._rangeEncompassingAllCalendars.start == null;
-    if (goesToInfinity) return true;
+    if (this._earliestMovementInstant == null) return true;
 
-    const firstMovement = itsOk(this._movements[0]);
-    const firstMovementInstant = firstMovement.time.toInstant(
-      this._rangeEncompassingAllCalendars.start,
-      this._timezoneData.timezone,
-    );
-
-    return Temporal.Instant.compare(firstMovementInstant, instant) < 0;
+    return Temporal.Instant.compare(this._earliestMovementInstant, instant) < 0;
   }
 
   hasMoreAfter(instant: Temporal.Instant): boolean {
-    const goesToInfinity = this._rangeEncompassingAllCalendars.end == null;
-    if (goesToInfinity) return true;
+    if (this._latestMovementInstant == null) return true;
 
-    const lastMovement = itsOk(this._movements.at(-1));
-    const lastMovementInstant = lastMovement.time.toInstant(
-      this._rangeEncompassingAllCalendars.end,
-      this._timezoneData.timezone,
-    );
-
-    return Temporal.Instant.compare(lastMovementInstant, instant) > 0;
+    return Temporal.Instant.compare(this._latestMovementInstant, instant) > 0;
   }
 
   allWithinTimeRange(range: BoundedInstantRange): ScheduledDeparturesBlock[] {
@@ -235,6 +244,11 @@ export class ScheduledDeparturesBlocksBuilder {
       Temporal.PlainDate.compare(date, lastServiceDay) <= 0;
       date = date.add({ days: 1 })
     ) {
+      // Avoid making blocks for service days that we know all calendars are
+      // inactive for. Helps optimise queries that start before the first trips
+      // we have (or after if searching backwards).
+      if (!this._rangeEncompassingAllCalendars.includes(date)) continue;
+
       const tz = this._timezoneData.timezone;
       const block = ScheduledDeparturesBlock.build(this._movements, date, tz);
 
