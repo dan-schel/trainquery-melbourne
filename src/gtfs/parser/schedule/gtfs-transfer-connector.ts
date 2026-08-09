@@ -37,15 +37,13 @@ export class GtfsTransferConnector {
       }
 
       if (fromTrip == null) {
-        this._onError(
-          new TransferReferencesNonExistentTrip(transfer, "from_trip_id"),
-        );
+        const Err = TransferReferencesNonExistentTrip;
+        this._onError(new Err(transfer, "from_trip_id"));
         continue;
       }
       if (toTrip == null) {
-        this._onError(
-          new TransferReferencesNonExistentTrip(transfer, "to_trip_id"),
-        );
+        const Err = TransferReferencesNonExistentTrip;
+        this._onError(new Err(transfer, "to_trip_id"));
         continue;
       }
 
@@ -53,6 +51,12 @@ export class GtfsTransferConnector {
         this._onError(new TransferIsNotSameStopAndPositionError(transfer));
         continue;
       }
+
+      // As alluded to above, I suspect one day V/Line might make things
+      // difficult if they start (accurately, to be fair) considering their
+      // Maryborough shuttles as "in-seat" transfers because the trains couple
+      // at Ballarat. No idea how we'd even want to _display_ those, let alone
+      // model it!
       if (fromTrip.termination.gtfsIdMetadata.id !== transfer.from_stop_id) {
         this._onError(new TransferIsNotFromTerminusError(transfer, fromTrip));
         continue;
@@ -61,17 +65,43 @@ export class GtfsTransferConnector {
         this._onError(new TransferIsNotToOriginError(transfer, toTrip));
         continue;
       }
-
       if (fromTrip.nextTrip != null) {
-        this._onError(
-          new TransferReferencesTripAlreadyConnectedError(transfer, fromTrip),
-        );
+        const Err = TransferReferencesTripAlreadyConnectedError;
+        this._onError(new Err(transfer, fromTrip));
         continue;
       }
       if (toTrip.previousTrip != null) {
-        this._onError(
-          new TransferReferencesTripAlreadyConnectedError(transfer, toTrip),
-        );
+        const Err = TransferReferencesTripAlreadyConnectedError;
+        this._onError(new Err(transfer, toTrip));
+        continue;
+      }
+
+      // TODO: I'm gonna let this one slide, so long as we remember to:
+      // - When filtering out arrivals for trips which ultimately continue, make
+      //   sure to check the next trip runs on that service day.
+      // - When building the services for corequery (either through the
+      //   departures algorithm, or lookup by ID), only add the extra leg if the
+      //   next trip runs on that service day.
+      if (fromTrip.calendar.gtfsCalendarId !== toTrip.calendar.gtfsCalendarId) {
+        this._onError(new TransferCrossesCalendarsError(transfer));
+      }
+
+      // I'm assuming transfers would only be made by trips running on the same
+      // service day, not just "the next instance of this trip". If it were the
+      // latter you could have a trip terminating at 24:30 connecting to a trip
+      // originating at 00:32.
+      //
+      // (If that WERE to happen, it might be acceptable to just not connect
+      // them (as we're doing now) as it'd surely only be a couple weird
+      // overnight trips. Otherwise, would it be practical to shift the next
+      // trip into the same service day retroactively by rewriting its departure
+      // and arrival times and shifting its calendar by one day? Or would it be
+      // less destructive to have some transfer metadata to say the next trip is
+      // +1 day from this one.)
+      const fromArrivalTime = fromTrip.termination.arrivalTime;
+      const toDepartureTime = toTrip.origination.departureTime;
+      if (fromArrivalTime.isAfter(toDepartureTime)) {
+        this._onError(new TransferRequiresTimeTravelError(transfer));
         continue;
       }
 
@@ -93,7 +123,9 @@ export type GtfsTransferConnectionError =
   | TransferIsNotToOriginError
   | TransferReferencesTripAlreadyConnectedError
   | TransferIsNotInSeatTransferError
-  | TransferIsNotSameStopAndPositionError;
+  | TransferIsNotSameStopAndPositionError
+  | TransferCrossesCalendarsError
+  | TransferRequiresTimeTravelError;
 
 export class TransferReferencesNonExistentTrip extends Error {
   readonly type = "transfer-references-non-existent-trip";
@@ -144,6 +176,20 @@ export class TransferIsNotInSeatTransferError extends Error {
 
 export class TransferIsNotSameStopAndPositionError extends Error {
   readonly type = "transfer-is-not-same-stop-and-position";
+  constructor(readonly transfer: TransfersCsvRow) {
+    super();
+  }
+}
+
+export class TransferCrossesCalendarsError extends Error {
+  readonly type = "transfer-crosses-calendars";
+  constructor(readonly transfer: TransfersCsvRow) {
+    super();
+  }
+}
+
+export class TransferRequiresTimeTravelError extends Error {
+  readonly type = "transfer-requires-time-travel";
   constructor(readonly transfer: TransfersCsvRow) {
     super();
   }
