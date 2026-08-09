@@ -64,9 +64,9 @@ const now = Temporal.Now.zonedDateTimeISO(MELBOURNE_TIMEZONE)
   .toInstant();
 
 const QUERY: Query = {
-  stopId: stop.BAIRNSDALE,
+  stopId: stop.CLAYTON,
   time: now,
-  direction: "backwards",
+  direction: "forwards",
 };
 
 export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
