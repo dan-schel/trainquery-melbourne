@@ -2,10 +2,7 @@ import { describe, expect, it } from "vitest";
 import { MELBOURNE_TIMEZONE_DATA } from "../../src/gtfs/utils/melbourne-timezone-data.js";
 import { DeparturesBlocksBuilder } from "../../src/gtfs/departures/departures-blocks-builder.js";
 import { BoundedInstantRange } from "../../src/gtfs/data/bounded-instant-range.js";
-import {
-  ScheduledDeparturesBlock,
-  type ScheduledDeparturesBlockEntry,
-} from "../../src/gtfs/departures/scheduled-departures-block.js";
+import { ScheduledDeparturesBlock } from "../../src/gtfs/departures/scheduled-departures-block.js";
 import { itsOk } from "@dan-schel/js-utils";
 import { GtfsScheduledTrip } from "../../src/gtfs/data/gtfs-scheduled-trip.js";
 import { GtfsCalendar } from "../../src/gtfs/data/gtfs-calendar.js";
@@ -18,6 +15,7 @@ import { RealtimeDeparturesBlock } from "../../src/gtfs/departures/realtime-depa
 import { GtfsUpdatedTrip } from "../../src/gtfs/data/gtfs-updated-trip.js";
 import { GtfsRealtimeData } from "../../src/gtfs/data/gtfs-realtime-data.js";
 import { PlainDateRange } from "../../src/gtfs/data/plain-date-range.js";
+import type { GtfsScheduledMovementsIndexEntry } from "../../src/gtfs/departures/gtfs-scheduled-movements-index.js";
 
 describe("ScheduledDeparturesBlock", () => {
   const NO_REALTIME_DATA = new GtfsRealtimeData([]);
@@ -404,7 +402,7 @@ function createMovements({
 }: {
   earliest: string;
   latest: string;
-}): ScheduledDeparturesBlockEntry[] {
+}): GtfsScheduledMovementsIndexEntry[] {
   const earliestTime = GtfsStopTime.parse(earliest);
   const latestTime = GtfsStopTime.parse(latest);
 

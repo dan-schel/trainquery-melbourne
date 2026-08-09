@@ -1,24 +1,22 @@
-import type {
-  ScheduledDeparturesBlock,
-  ScheduledDeparturesBlockEntry,
-} from "./scheduled-departures-block.js";
+import type { ScheduledDeparturesBlock } from "./scheduled-departures-block.js";
 import { DeparturesIteratorResult } from "./departures-iterators.js";
 import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
 import { DeparturesBlockIterator } from "./departures-block-iterator.js";
+import type { GtfsScheduledMovementsIndexEntry } from "./gtfs-scheduled-movements-index.js";
 
 export class ScheduledDeparturesBlockIterator extends DeparturesBlockIterator<
   ScheduledDeparturesBlock,
-  ScheduledDeparturesBlockEntry
+  GtfsScheduledMovementsIndexEntry
 > {
   constructor(
     block: ScheduledDeparturesBlock,
     private readonly _realtimeData: GtfsRealtimeData,
   ) {
-    super(block, block.entries);
+    super(block, block.allMovementsAtStop);
   }
 
   protected override _convertEntryToResult(
-    entry: ScheduledDeparturesBlockEntry,
+    entry: GtfsScheduledMovementsIndexEntry,
   ): DeparturesIteratorResult {
     return new DeparturesIteratorResult(
       entry.trip,
@@ -29,7 +27,7 @@ export class ScheduledDeparturesBlockIterator extends DeparturesBlockIterator<
   }
 
   protected override _shouldSkipEntry(
-    entry: ScheduledDeparturesBlockEntry,
+    entry: GtfsScheduledMovementsIndexEntry,
   ): boolean {
     // A scheduled departures block has all movements for a given stop, not just
     // the ones that occur today!

@@ -1,31 +1,19 @@
 import { itsOk } from "@dan-schel/js-utils";
 import { DeparturesBlock } from "./departures-block.js";
-import type { GtfsScheduledTrip } from "../data/gtfs-scheduled-trip.js";
 import { GtfsStopTime } from "../data/gtfs-stop-time.js";
-import type { GtfsScheduledTripServicingMovement } from "../data/gtfs-scheduled-trip-movements.js";
 import type { GtfsScheduledMovementsIndexEntry } from "./gtfs-scheduled-movements-index.js";
-
-// TODO: Somewhere else I make a comment that this should be a class so we can
-// implement .instant on it, memoized. I now disagree, because converting all
-// the movements to entries on build() would partially undermine my logic for
-// waiting until the iterator to skip irrelevant entries. If we're gonna
-// rebuild the array anyway, why not do the filtering then? I now think (see
-// TODO below) that we should drop this class, and instead lean in to the idea
-// that _entries is just a reference to the movements index for this stop.
-// Maybe GtfsScheduledMovementsForStop should be a class, equivalent to
-// GtfsScheduledMovementsIndexEntry[]?
-export type ScheduledDeparturesBlockEntry = {
-  readonly trip: GtfsScheduledTrip;
-  readonly time: GtfsStopTime;
-  readonly movement: GtfsScheduledTripServicingMovement;
-};
 
 export class ScheduledDeparturesBlock extends DeparturesBlock {
   constructor(
-    // TODO: I should rename this so it's clearer that this is just a reference
-    // to the movements index for this stop, and therefore includes movements
-    // which don't occur on the service day for this block.
-    readonly entries: readonly ScheduledDeparturesBlockEntry[],
+    // Note that we pass ALL movements for this stop into the block, not just
+    // ones which occur on this service day. That filtering is done at the
+    // `ScheduledDeparturesBlockIterator` level instead (by skipping over
+    // values when we reach them in the iteration), and that way we avoid
+    // doing a bunch of computation upfront for each movement at the stop here
+    // (for the whole day), which might be useless if we're at a big stop like
+    // Southern Cross with thousands of movements and we end up only iterating
+    // through of them.
+    readonly allMovementsAtStop: readonly GtfsScheduledMovementsIndexEntry[],
 
     readonly serviceDay: Temporal.PlainDate,
     earliestDepartureInstant: Temporal.Instant,
@@ -42,16 +30,11 @@ export class ScheduledDeparturesBlock extends DeparturesBlock {
   ) {
     if (movements.length === 0) throw new Error("Movements cannot be empty");
 
-    // Right now it happens that GtfsScheduledMovementsIndexEntry and
-    // ScheduledDeparturesBlockEntry are identical. I don't expect that to
-    // necessarily continue to be the case forever though.
-    const entries: readonly ScheduledDeparturesBlockEntry[] = movements;
-
-    const firstEntry = itsOk(entries[0]);
-    const lastEntry = itsOk(entries[entries.length - 1]);
+    const firstEntry = itsOk(movements[0]);
+    const lastEntry = itsOk(movements[movements.length - 1]);
 
     return new ScheduledDeparturesBlock(
-      entries,
+      movements,
       serviceDay,
       firstEntry.time.toInstant(serviceDay, timezone),
       lastEntry.time.toInstant(serviceDay, timezone),
@@ -72,13 +55,20 @@ export class ScheduledDeparturesBlock extends DeparturesBlock {
 
   override getIterationIndexOfNextFrom(instant: Temporal.Instant): number {
     const time = this.toGtfsStopTime(instant);
-    const result = this.entries.findIndex((m) => m.time.isAfterOrEqual(time));
-    return result !== -1 ? result : this.entries.length;
+
+    const result = this.allMovementsAtStop.findIndex((m) =>
+      m.time.isAfterOrEqual(time),
+    );
+
+    return result !== -1 ? result : this.allMovementsAtStop.length;
   }
 
   override getIterationIndexOfPreviousFrom(instant: Temporal.Instant): number {
     const time = this.toGtfsStopTime(instant);
+
     // No need to handle -1, because we'd want to return -1 in that case anyway!
-    return this.entries.findLastIndex((m) => m.time.isBeforeOrEqual(time));
+    return this.allMovementsAtStop.findLastIndex((m) =>
+      m.time.isBeforeOrEqual(time),
+    );
   }
 }
