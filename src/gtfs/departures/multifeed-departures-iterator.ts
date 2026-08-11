@@ -3,7 +3,6 @@ import {
   DeparturesIteratorResult,
   type DeparturesSearchDirection,
 } from "./departures-iterator.js";
-import type { Subfeed } from "../subfeed.js";
 import type { GtfsScheduledTrip } from "../data/gtfs-scheduled-trip.js";
 import type { GtfsUpdatedTrip } from "../data/gtfs-updated-trip.js";
 import type { GtfsTripServicingMovement } from "../data/utils.js";
@@ -11,7 +10,7 @@ import { ZipperDeparturesIterator } from "./zipper-departures-iterator.js";
 
 export class MultifeedDeparturesIteratorResult extends DeparturesIteratorResult {
   constructor(
-    readonly feed: Subfeed,
+    readonly feed: string,
     trip: GtfsScheduledTrip | GtfsUpdatedTrip,
     serviceDay: Temporal.PlainDate,
     instant: Temporal.Instant,
@@ -21,7 +20,7 @@ export class MultifeedDeparturesIteratorResult extends DeparturesIteratorResult 
   }
 
   static from(
-    feed: Subfeed,
+    feed: string,
     result: DeparturesIteratorResult,
   ): MultifeedDeparturesIteratorResult {
     return new MultifeedDeparturesIteratorResult(
@@ -37,16 +36,16 @@ export class MultifeedDeparturesIteratorResult extends DeparturesIteratorResult 
 export class MultifeedDeparturesIterator {
   private _zipper: ZipperDeparturesIterator;
 
-  constructor(private readonly _iterators: Map<DeparturesIterator, Subfeed>) {
+  constructor(private readonly _iterators: Map<DeparturesIterator, string>) {
     this._zipper = new ZipperDeparturesIterator(Array.from(_iterators.keys()));
   }
 
   static build(
-    config: Record<Subfeed, DeparturesIterator>,
+    config: Record<string, DeparturesIterator>,
   ): MultifeedDeparturesIterator {
-    const iterators = new Map<DeparturesIterator, Subfeed>();
+    const iterators = new Map<DeparturesIterator, string>();
     for (const [feed, iterator] of Object.entries(config)) {
-      iterators.set(iterator, feed as Subfeed);
+      iterators.set(iterator, feed);
     }
 
     return new MultifeedDeparturesIterator(iterators);

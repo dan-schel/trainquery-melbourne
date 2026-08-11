@@ -102,8 +102,6 @@ export class ZipperDeparturesIterator extends DeparturesIterator {
     );
 
     const iterators = [scheduled, realtime].filter(nonNull);
-
-    // TODO: Unit test that a zipper iterator with no iterators works correctly.
     return new ZipperDeparturesIterator(iterators);
   }
 }

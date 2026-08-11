@@ -41,6 +41,10 @@ export class GtfsUpdatedTrip {
     if (!othersOk) throw new Error("Some terminal movements in wrong places.");
   }
 
+  get gtfsTripId(): string {
+    return this.scheduledTrip.gtfsTripId;
+  }
+
   get origination(): GtfsUpdatedTripOriginatingMovement {
     const firstMovement = this.movements[0];
     if (firstMovement?.type === "originating") return firstMovement;
