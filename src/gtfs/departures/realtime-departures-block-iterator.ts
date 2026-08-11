@@ -48,14 +48,23 @@ export class RealtimeDeparturesBlockIterator extends DeparturesBlockIterator<
       movement.type === "terminating" &&
       trip.scheduledTrip.nextTrip != null &&
       trip.scheduledTrip.nextTrip.calendar.occursOn(trip.serviceDay) &&
-      !this._isTripCancelled(trip.scheduledTrip.nextTrip.gtfsTripId);
+      !this._isTripCancelled(
+        trip.scheduledTrip.nextTrip.gtfsTripId,
+        entry.trip.serviceDay,
+      );
     if (isArrivalWhichContinues) return true;
 
     return false;
   }
 
-  private _isTripCancelled(tripId: string): boolean {
-    const realtimeTrip = this._realtimeData.getForScheduledTrip(tripId);
+  private _isTripCancelled(
+    tripId: string,
+    serviceDay: Temporal.PlainDate,
+  ): boolean {
+    const realtimeTrip = this._realtimeData.getForScheduledTrip(
+      tripId,
+      serviceDay,
+    );
     return realtimeTrip?.isCancelled ?? false;
   }
 }

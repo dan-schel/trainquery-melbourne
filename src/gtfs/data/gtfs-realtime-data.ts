@@ -14,7 +14,12 @@ export class GtfsRealtimeData {
     return this._updatedTrips;
   }
 
-  getForScheduledTrip(gtfsTripId: string): GtfsUpdatedTrip | null {
-    return this._tripsByScheduledTripId.get(gtfsTripId) ?? null;
+  getForScheduledTrip(
+    gtfsTripId: string,
+    serviceDay: Temporal.PlainDate,
+  ): GtfsUpdatedTrip | null {
+    const trip = this._tripsByScheduledTripId.get(gtfsTripId);
+    if (trip == null || !trip.serviceDay.equals(serviceDay)) return null;
+    return trip;
   }
 }

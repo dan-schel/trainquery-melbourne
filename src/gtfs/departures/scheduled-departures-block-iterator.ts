@@ -41,7 +41,10 @@ export class ScheduledDeparturesBlockIterator extends DeparturesBlockIterator<
     // from the scheduled departures block (at the outdated departure time/order
     // too!).
     const tripId = entry.trip.gtfsTripId;
-    const realtimeTrip = this._realtimeData.getForScheduledTrip(tripId);
+    const realtimeTrip = this._realtimeData.getForScheduledTrip(
+      tripId,
+      this.block.serviceDay,
+    );
     const isOverriddenByRealtimeTrip = realtimeTrip != null;
     if (isOverriddenByRealtimeTrip) return true;
 
@@ -50,14 +53,14 @@ export class ScheduledDeparturesBlockIterator extends DeparturesBlockIterator<
     // the arrival and then again for the departure of the continuing trip. We
     // just need to be sure the continuing trip is actually running!
     //
-    // TODO: Might be worth checking that the next trip actually still
-    // originates from this stop, since in the realtime data (when we start
-    // handling it) stops can be skipped. I guess for that case we'd more need
-    // something to disconnect transfers. That's a bit ugly isn't it? Note that
-    // the same applies to the RealtimeDeparturesBlockIterator.
-    //
-    // Maybe the solution is an array of broken transfers in GtfsRealtimeData,
-    // which would be a (fromGtfsTripId, toGtfsTripId, serviceDay) tuple.
+    // TODO: Realtime trips which connect to other trips must cause those
+    // scheduled trips to become realtime trips too, and realtime trips need to
+    // have their own `nextTrip` and `prevTrip` properties, otherwise fetching
+    // `nextTrip` here can lead to outdated info (the next trip might have been
+    // altered and no longer connects with this one). Alternatively, having
+    // `nextTrip` and `prevTrip` was a mistake, and we just only have trip IDs
+    // in their place, or maybe an entirely separate list of transfers which
+    // lives outside the trip (and supports other future transfer types).
     const isArrivalWhichContinues =
       entry.movement.type === "terminating" &&
       entry.trip.nextTrip != null &&
@@ -69,7 +72,10 @@ export class ScheduledDeparturesBlockIterator extends DeparturesBlockIterator<
   }
 
   private _isTripCancelled(tripId: string): boolean {
-    const realtimeTrip = this._realtimeData.getForScheduledTrip(tripId);
+    const realtimeTrip = this._realtimeData.getForScheduledTrip(
+      tripId,
+      this.block.serviceDay,
+    );
     return realtimeTrip?.isCancelled ?? false;
   }
 }
