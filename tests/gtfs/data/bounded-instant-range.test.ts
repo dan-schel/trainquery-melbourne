@@ -27,7 +27,7 @@ describe("BoundedInstantRange", () => {
     Temporal.Instant.from("2026-06-17T11:30:00Z"),
   );
 
-  describe("intersects", () => {
+  describe("#intersects", () => {
     it("works", () => {
       expect(a.intersects(a)).toBe(true);
       expect(a.intersects(b)).toBe(true);
@@ -43,7 +43,7 @@ describe("BoundedInstantRange", () => {
     });
   });
 
-  describe("touches", () => {
+  describe("#touches", () => {
     it("works", () => {
       expect(a.touches(a)).toBe(true);
       expect(a.touches(b)).toBe(true);

@@ -26,7 +26,7 @@ describe("ScheduledDeparturesBlocksBuilder", () => {
     });
   });
 
-  describe("allBlocksWithinTimeRange", () => {
+  describe("#allBlocksWithinTimeRange", () => {
     const builder = new ScheduledDeparturesBlocksBuilder(
       createMovements({ earliest: "05:18:00", latest: "26:08:00" }),
       MELBOURNE_TIMEZONE_DATA,

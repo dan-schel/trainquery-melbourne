@@ -9,8 +9,8 @@ import {
   type TagType,
 } from "../../../src/utils/get-tag-name.js";
 
-describe("tags", () => {
-  it("line tags", () => {
+describe("line tags", () => {
+  it("matches the snapshot", () => {
     let output = "";
 
     for (const line of sortedByName(lines)) {
@@ -21,8 +21,10 @@ describe("tags", () => {
 
     expect(`\n${output}`).toMatchSnapshot();
   });
+});
 
-  it("stop tags", () => {
+describe("stop tags", () => {
+  it("matches the snapshot", () => {
     let output = "";
 
     for (const stop of sortedByName(stops)) {

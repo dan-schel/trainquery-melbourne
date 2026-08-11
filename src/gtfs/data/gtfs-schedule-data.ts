@@ -43,4 +43,14 @@ export class GtfsScheduleData {
     }
     return calendar;
   }
+
+  static fromTrips(trips: readonly GtfsScheduledTrip[]): GtfsScheduleData {
+    const calendars = new Map<string, GtfsCalendar>();
+    for (const trip of trips) {
+      if (!calendars.has(trip.calendar.gtfsCalendarId)) {
+        calendars.set(trip.calendar.gtfsCalendarId, trip.calendar);
+      }
+    }
+    return new GtfsScheduleData(trips, [...calendars.values()]);
+  }
 }
