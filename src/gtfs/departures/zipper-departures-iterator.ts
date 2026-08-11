@@ -38,6 +38,10 @@ export class ZipperDeparturesIterator extends DeparturesIterator {
     return this._nextIterator?.peek() ?? null;
   }
 
+  peekAtIterator(): DeparturesIterator | null {
+    return this._nextIterator;
+  }
+
   override take(): DeparturesIteratorResult {
     const iterator = this._nextIterator;
     if (iterator == null) throw new Error("Nothing to take.");

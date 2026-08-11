@@ -36,12 +36,12 @@ import {
 import { ZipperDeparturesIterator } from "./departures/zipper-departures-iterator.js";
 import { GtfsScheduledTrip } from "./data/gtfs-scheduled-trip.js";
 import { GtfsUpdatedTrip } from "./data/gtfs-updated-trip.js";
-import type { GtfsScheduledTripServicingMovement } from "./data/gtfs-scheduled-trip-movements.js";
-import type { GtfsUpdatedTripServicingMovement } from "./data/gtfs-updated-trip-movements.js";
-import type {
-  DeparturesIteratorResult,
-  DeparturesSearchDirection,
-} from "./departures/departures-iterator.js";
+import type { DeparturesSearchDirection } from "./departures/departures-iterator.js";
+import type { GtfsTripServicingMovement } from "./data/utils.js";
+import {
+  MultifeedDeparturesIterator,
+  MultifeedDeparturesIteratorResult,
+} from "./departures/multifeed-departures-iterator.js";
 
 type GtfsParsingError =
   | GtfsScheduleParsingError
@@ -304,24 +304,24 @@ function queryDepartures(ctx: Corequery, data: TotalGtfsData) {
 
   // TODO: We still need a multifeed departures iterator (implemented with a
   // zipper iterator) to inject the subfeed ID into the result.
-  const iterator = new ZipperDeparturesIterator([
-    ZipperDeparturesIterator.forSubfeed(
+  const iterator = MultifeedDeparturesIterator.build({
+    regional: ZipperDeparturesIterator.forSubfeed(
       QUERY.stopId,
       regionalIndex,
       regionalRealtimeData,
       MELBOURNE_TIMEZONE_DATA,
     ),
-    ZipperDeparturesIterator.forSubfeed(
+    suburban: ZipperDeparturesIterator.forSubfeed(
       QUERY.stopId,
       suburbanIndex,
       suburbanRealtimeData,
       MELBOURNE_TIMEZONE_DATA,
     ),
-  ]);
+  });
 
   iterator.set(QUERY.time, QUERY.direction);
 
-  const result = [];
+  const result: MultifeedDeparturesIteratorResult[] = [];
   while (iterator.peek() != null && result.length < 10) {
     const dep = iterator.take();
     result.push(dep);
@@ -357,11 +357,10 @@ function buildIndices(
   return { regionalIndex, suburbanIndex };
 }
 
-function formatDeparture(ctx: Corequery, departure: DeparturesIteratorResult) {
-  type GtfsTripServicingMovement =
-    | GtfsScheduledTripServicingMovement
-    | GtfsUpdatedTripServicingMovement;
-
+function formatDeparture(
+  ctx: Corequery,
+  departure: MultifeedDeparturesIteratorResult,
+) {
   function getScheduledTripInfo(trip: GtfsScheduledTrip | GtfsUpdatedTrip) {
     if (trip instanceof GtfsScheduledTrip) {
       return trip;

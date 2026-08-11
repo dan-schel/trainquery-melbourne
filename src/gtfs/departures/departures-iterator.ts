@@ -1,11 +1,6 @@
-import type { GtfsScheduledTripServicingMovement } from "../data/gtfs-scheduled-trip-movements.js";
 import type { GtfsScheduledTrip } from "../data/gtfs-scheduled-trip.js";
-import type { GtfsUpdatedTripServicingMovement } from "../data/gtfs-updated-trip-movements.js";
 import type { GtfsUpdatedTrip } from "../data/gtfs-updated-trip.js";
-
-type GtfsTripServicingMovement =
-  | GtfsScheduledTripServicingMovement
-  | GtfsUpdatedTripServicingMovement;
+import type { GtfsTripServicingMovement } from "../data/utils.js";
 
 export type DeparturesSearchDirection = "forwards" | "backwards";
 
