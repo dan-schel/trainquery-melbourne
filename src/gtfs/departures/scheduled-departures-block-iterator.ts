@@ -31,8 +31,6 @@ export class ScheduledDeparturesBlockIterator extends DeparturesBlockIterator<
   ): boolean {
     // A scheduled departures block has all movements for a given stop, not just
     // the ones that occur today!
-    //
-    // TODO: Add a unit test for this since I forgot it initially!
     const doesntRunToday = !entry.trip.calendar.occursOn(this.block.serviceDay);
     if (doesntRunToday) return true;
 
@@ -61,6 +59,8 @@ export class ScheduledDeparturesBlockIterator extends DeparturesBlockIterator<
     // `nextTrip` and `prevTrip` was a mistake, and we just only have trip IDs
     // in their place, or maybe an entirely separate list of transfers which
     // lives outside the trip (and supports other future transfer types).
+    //
+    // TODO: Wherever this logic ends up living, make sure it's tested.
     const isArrivalWhichContinues =
       entry.movement.type === "terminating" &&
       entry.trip.nextTrip != null &&
