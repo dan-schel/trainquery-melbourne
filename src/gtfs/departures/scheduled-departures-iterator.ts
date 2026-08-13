@@ -21,6 +21,9 @@ export class ScheduledDeparturesIterator extends DeparturesIterator {
   private _iterators: ScheduledDeparturesBlockIterator[];
   private _nextIterator: ScheduledDeparturesBlockIterator | null;
 
+  private _blockSearchesRan = 0;
+  private _subiteratorsCreated = 0;
+
   constructor(
     private readonly _blockBuilder: ScheduledDeparturesBlocksBuilder,
     private readonly _realtimeData: GtfsRealtimeData,
@@ -48,6 +51,13 @@ export class ScheduledDeparturesIterator extends DeparturesIterator {
     if (blockBuilder == null) return null;
 
     return new ScheduledDeparturesIterator(blockBuilder, realtimeData);
+  }
+
+  getStats() {
+    return {
+      blockSearchesRan: this._blockSearchesRan,
+      subiteratorsCreated: this._subiteratorsCreated,
+    };
   }
 
   set(instant: Temporal.Instant, direction: DeparturesSearchDirection): void {
@@ -104,6 +114,8 @@ export class ScheduledDeparturesIterator extends DeparturesIterator {
   private _updateIteratorsForSearchRange() {
     if (this._searchRange == null) throw new Error("Search range not set.");
 
+    this._blockSearchesRan++;
+
     const blocks = this._blockBuilder.allWithinTimeRange(
       this._searchRange.range,
     );
@@ -114,6 +126,8 @@ export class ScheduledDeparturesIterator extends DeparturesIterator {
       );
 
       if (!alreadyIteratingThisBlock) {
+        this._subiteratorsCreated++;
+
         const rtData = this._realtimeData;
         const iterator = new ScheduledDeparturesBlockIterator(block, rtData);
         iterator.set(this._searchRange.front, this._direction);

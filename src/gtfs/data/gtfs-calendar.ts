@@ -40,6 +40,8 @@ export class GtfsCalendar {
     if (this.addedDates.length === 0) return this.dateRange;
 
     const addedDatesRange = this._getAddedDatesRange();
+    if (!this.isRecurring) return addedDatesRange;
+
     return PlainDateRange.encompassing(this.dateRange, addedDatesRange);
   }
 
