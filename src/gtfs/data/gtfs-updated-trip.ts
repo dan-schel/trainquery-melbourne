@@ -41,6 +41,10 @@ export class GtfsUpdatedTrip {
     if (!othersOk) throw new Error("Some terminal movements in wrong places.");
   }
 
+  with(newValues: Partial<GtfsUpdatedTripFields>): GtfsUpdatedTrip {
+    return new GtfsUpdatedTrip({ ...this, ...newValues });
+  }
+
   get gtfsTripId(): string {
     return this.scheduledTrip.gtfsTripId;
   }
@@ -59,5 +63,20 @@ export class GtfsUpdatedTrip {
 
     // Can't happen. Checked in constructor.
     throw new Error();
+  }
+
+  static unmodified(
+    trip: GtfsScheduledTrip,
+    serviceDay: Temporal.PlainDate,
+    timezone: string,
+  ): GtfsUpdatedTrip {
+    return new GtfsUpdatedTrip({
+      scheduledTrip: trip,
+      serviceDay,
+      movements: trip.movements.map((m) =>
+        m.asHollowUpdatedTripMovement(serviceDay, timezone),
+      ),
+      isCancelled: false,
+    });
   }
 }

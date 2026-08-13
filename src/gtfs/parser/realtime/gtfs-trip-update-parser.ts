@@ -208,12 +208,7 @@ export class GtfsTripUpdateParser {
     if (result == null) return null;
     const { trip, serviceDay } = result;
 
-    return new GtfsUpdatedTrip({
-      scheduledTrip: trip,
-      serviceDay,
-      movements: trip.movements.map((m) =>
-        m.asHollowUpdatedTripMovement(serviceDay, this._timezone),
-      ),
+    return GtfsUpdatedTrip.unmodified(trip, serviceDay, this._timezone).with({
       isCancelled: true,
     });
   }

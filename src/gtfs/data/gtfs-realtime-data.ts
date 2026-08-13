@@ -3,6 +3,8 @@ import type { GtfsUpdatedTrip } from "./gtfs-updated-trip.js";
 export class GtfsRealtimeData {
   private readonly _tripsByScheduledTripId: Map<string, GtfsUpdatedTrip>;
 
+  static readonly empty = new GtfsRealtimeData([]);
+
   constructor(private readonly _updatedTrips: readonly GtfsUpdatedTrip[]) {
     this._tripsByScheduledTripId = new Map<string, GtfsUpdatedTrip>(
       _updatedTrips.map((trip) => [trip.scheduledTrip.gtfsTripId, trip]),

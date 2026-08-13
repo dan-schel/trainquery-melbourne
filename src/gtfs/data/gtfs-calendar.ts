@@ -139,4 +139,23 @@ export class GtfsCalendar {
       [],
     );
   }
+
+  static singleDay(
+    gtfsCalendarId: string,
+    date: Temporal.PlainDate,
+  ): GtfsCalendar {
+    return new GtfsCalendar(
+      gtfsCalendarId,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      new PlainDateRange(null, null),
+      [date],
+      [],
+    );
+  }
 }
