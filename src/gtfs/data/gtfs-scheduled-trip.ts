@@ -97,14 +97,18 @@ export class GtfsScheduledTrip {
   static simple({
     gtfsTripId,
     originStopId,
+    originGtfsStopId = `stop-${originStopId}`,
     originationTime,
     terminusStopId,
     terminationTime,
+    terminusGtfsStopId = `stop-${terminusStopId}`,
   }: {
     gtfsTripId: string;
     originStopId: number;
+    originGtfsStopId?: string;
     originationTime: GtfsStopTime;
     terminusStopId: number;
+    terminusGtfsStopId?: string;
     terminationTime: GtfsStopTime;
   }) {
     return new GtfsScheduledTrip({
@@ -118,7 +122,7 @@ export class GtfsScheduledTrip {
           departureTime: originationTime,
           gtfsIdMetadata: {
             type: "parent",
-            id: `stop-${originStopId}`,
+            id: originGtfsStopId,
             stopId: originStopId,
           },
           gtfsStopSequence: 1,
@@ -129,7 +133,7 @@ export class GtfsScheduledTrip {
           arrivalTime: terminationTime,
           gtfsIdMetadata: {
             type: "parent",
-            id: `stop-${terminusStopId}`,
+            id: terminusGtfsStopId,
             stopId: terminusStopId,
           },
           gtfsStopSequence: 2,

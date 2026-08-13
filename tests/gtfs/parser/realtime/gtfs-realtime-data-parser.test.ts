@@ -4,13 +4,8 @@ import {
   UnsupportedTripUpdateScheduleRelationshipError,
   type GtfsTripUpdateParsingError,
 } from "../../../../src/gtfs/parser/realtime/gtfs-trip-update-parser.js";
-import {
-  GtfsScheduledTripOriginatingMovement,
-  GtfsScheduledTripTerminatingMovement,
-} from "../../../../src/gtfs/data/gtfs-scheduled-trip-movements.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 import { GtfsScheduledTrip } from "../../../../src/gtfs/data/gtfs-scheduled-trip.js";
-import { GtfsCalendar } from "../../../../src/gtfs/data/gtfs-calendar.js";
 import { GtfsScheduleData } from "../../../../src/gtfs/data/gtfs-schedule-data.js";
 import { itsOk } from "@dan-schel/js-utils";
 import { StopGtfsIdCollection } from "../../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
@@ -18,40 +13,12 @@ import { StopGtfsIdMapping } from "../../../../src/gtfs/data/ids/stop-gtfs-id-ma
 
 const TIMEZONE = "Australia/Melbourne";
 
-const TRIP_ORIGIN = new GtfsScheduledTripOriginatingMovement({
-  stopId: 1,
-  positionId: null,
-  departureTime: GtfsStopTime.parse("00:01:00"),
-  gtfsIdMetadata: {
-    type: "parent",
-    id: "1",
-    stopId: 1,
-  },
-  gtfsStopSequence: 1,
-});
-
-const TRIP_TERMINUS = new GtfsScheduledTripTerminatingMovement({
-  stopId: 2,
-  positionId: null,
-  arrivalTime: GtfsStopTime.parse("00:02:00"),
-  gtfsIdMetadata: {
-    type: "parent",
-    id: "2",
-    stopId: 2,
-  },
-  gtfsStopSequence: 2,
-});
-
-const TRIP = new GtfsScheduledTrip({
+const TRIP = GtfsScheduledTrip.simple({
   gtfsTripId: "trip-1",
-  gtfsRouteId: "route-1",
-  calendar: GtfsCalendar.everyday("cal"),
-  movements: [TRIP_ORIGIN, TRIP_TERMINUS],
-  lineIds: [1],
-  color: "red",
-  serviceTags: [],
-  previousTrip: null,
-  nextTrip: null,
+  originStopId: 1,
+  originationTime: GtfsStopTime.parse("00:01:00"),
+  terminusStopId: 2,
+  terminationTime: GtfsStopTime.parse("00:02:00"),
 });
 
 const SCHEDULE = new GtfsScheduleData([TRIP], [TRIP.calendar]);
@@ -59,15 +26,15 @@ const SCHEDULE = new GtfsScheduleData([TRIP], [TRIP.calendar]);
 const TRIP_DESCRIPTOR = {
   tripId: TRIP.gtfsTripId,
   routeId: TRIP.gtfsRouteId,
-  startTime: TRIP_ORIGIN.departureTime,
+  startTime: TRIP.origination.departureTime,
   startDate: Temporal.PlainDate.from("2026-07-14"),
   scheduleRelationship: "SCHEDULED",
 };
 
 const STOP_MAPPING = new StopGtfsIdMapping(
   new Map([
-    [1, StopGtfsIdCollection.withParentOnly(1, "1")],
-    [2, StopGtfsIdCollection.withParentOnly(2, "2")],
+    [1, StopGtfsIdCollection.withParentOnly(1, "stop-1")],
+    [2, StopGtfsIdCollection.withParentOnly(2, "stop-2")],
   ]),
 );
 
@@ -84,7 +51,7 @@ describe("GtfsRealtimeDataParser", () => {
           stopTimeUpdate: [
             {
               stopSequence: TRIP.origination.gtfsStopSequence,
-              stopId: "1",
+              stopId: "stop-1",
               arrival: { delay: 120 },
               departure: { delay: 120 },
               scheduleRelationship: "SCHEDULED",

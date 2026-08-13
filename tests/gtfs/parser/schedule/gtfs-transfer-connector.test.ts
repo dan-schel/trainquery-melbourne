@@ -251,40 +251,14 @@ describe("GtfsTransferConnector", () => {
     originDepartureTime: GtfsStopTime;
     terminusArrivalTime: GtfsStopTime;
   }) {
-    const origin = new GtfsScheduledTripOriginatingMovement({
-      stopId: 1,
-      positionId: null,
-      departureTime: originDepartureTime,
-      gtfsIdMetadata: {
-        type: "parent",
-        id: originGtfsStopId,
-        stopId: 1,
-      },
-      gtfsStopSequence: 1,
-    });
-
-    const terminus = new GtfsScheduledTripTerminatingMovement({
-      stopId: 2,
-      positionId: null,
-      arrivalTime: terminusArrivalTime,
-      gtfsIdMetadata: {
-        type: "parent",
-        id: terminusGtfsStopId,
-        stopId: 2,
-      },
-      gtfsStopSequence: 2,
-    });
-
-    return new GtfsScheduledTrip({
+    return GtfsScheduledTrip.simple({
       gtfsTripId,
-      gtfsRouteId: "",
-      calendar: GtfsCalendar.everyday(""),
-      movements: [origin, terminus],
-      lineIds: [1],
-      color: "red",
-      serviceTags: [],
-      previousTrip: null,
-      nextTrip: null,
+      originStopId: 1,
+      originGtfsStopId,
+      originationTime: originDepartureTime,
+      terminusStopId: 2,
+      terminusGtfsStopId,
+      terminationTime: terminusArrivalTime,
     });
   }
 });

@@ -3,11 +3,6 @@ import { MELBOURNE_TIMEZONE_DATA } from "../../../src/gtfs/utils/melbourne-timez
 import { BoundedInstantRange } from "../../../src/gtfs/data/bounded-instant-range.js";
 import { itsOk } from "@dan-schel/js-utils";
 import { GtfsScheduledTrip } from "../../../src/gtfs/data/gtfs-scheduled-trip.js";
-import { GtfsCalendar } from "../../../src/gtfs/data/gtfs-calendar.js";
-import {
-  GtfsScheduledTripOriginatingMovement,
-  GtfsScheduledTripTerminatingMovement,
-} from "../../../src/gtfs/data/gtfs-scheduled-trip-movements.js";
 import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
 import { PlainDateRange } from "../../../src/gtfs/data/plain-date-range.js";
 import type { GtfsScheduledMovementsIndexEntry } from "../../../src/gtfs/departures/gtfs-scheduled-movements-index.js";
@@ -294,39 +289,12 @@ function createTrip({
   tripId: string;
   originationTime: GtfsStopTime;
 }) {
-  return new GtfsScheduledTrip({
+  return GtfsScheduledTrip.simple({
     gtfsTripId: tripId,
-    gtfsRouteId: "route-1",
-    calendar: GtfsCalendar.everyday("cal-1"),
-    movements: [
-      new GtfsScheduledTripOriginatingMovement({
-        stopId: 1,
-        positionId: null,
-        departureTime: originationTime,
-        gtfsIdMetadata: {
-          type: "parent",
-          id: "stop-1",
-          stopId: 1,
-        },
-        gtfsStopSequence: 1,
-      }),
-      new GtfsScheduledTripTerminatingMovement({
-        stopId: 2,
-        positionId: null,
-        arrivalTime: originationTime.plus({ minutes: 5 }),
-        gtfsIdMetadata: {
-          type: "parent",
-          id: "stop-2",
-          stopId: 2,
-        },
-        gtfsStopSequence: 2,
-      }),
-    ],
-    lineIds: [1],
-    color: null,
-    serviceTags: [],
-    previousTrip: null,
-    nextTrip: null,
+    originStopId: 1,
+    originationTime,
+    terminusStopId: 2,
+    terminationTime: originationTime.plus({ minutes: 5 }),
   });
 }
 
