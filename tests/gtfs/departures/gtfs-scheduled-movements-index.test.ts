@@ -2,10 +2,6 @@ import { it, describe, expect } from "vitest";
 import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
 import { GtfsScheduledTrip } from "../../../src/gtfs/data/gtfs-scheduled-trip.js";
 import { GtfsCalendar } from "../../../src/gtfs/data/gtfs-calendar.js";
-import {
-  GtfsScheduledTripOriginatingMovement,
-  GtfsScheduledTripTerminatingMovement,
-} from "../../../src/gtfs/data/gtfs-scheduled-trip-movements.js";
 import { GtfsScheduledMovementsIndex } from "../../../src/gtfs/departures/gtfs-scheduled-movements-index.js";
 import { GtfsScheduleData } from "../../../src/gtfs/data/gtfs-schedule-data.js";
 import { PlainDateRange } from "../../../src/gtfs/data/plain-date-range.js";
@@ -135,39 +131,14 @@ function createTrip({
   originStopId?: number;
   calendar?: GtfsCalendar;
 }) {
-  return new GtfsScheduledTrip({
+  return GtfsScheduledTrip.simple({
     gtfsTripId: tripId,
-    gtfsRouteId: "route-1",
+    originStopId: originStopId,
+    originationTime: originationTime,
+    terminusStopId: 2,
+    terminationTime: originationTime.plus({ minutes: 5 }),
+  }).with({
     calendar: calendar,
-    movements: [
-      new GtfsScheduledTripOriginatingMovement({
-        stopId: originStopId,
-        positionId: null,
-        departureTime: originationTime,
-        gtfsIdMetadata: {
-          type: "parent",
-          id: `stop-${originStopId}`,
-          stopId: originStopId,
-        },
-        gtfsStopSequence: 1,
-      }),
-      new GtfsScheduledTripTerminatingMovement({
-        stopId: 2,
-        positionId: null,
-        arrivalTime: originationTime.plus({ minutes: 5 }),
-        gtfsIdMetadata: {
-          type: "parent",
-          id: "stop-2",
-          stopId: 2,
-        },
-        gtfsStopSequence: 2,
-      }),
-    ],
-    lineIds: [1],
-    color: null,
-    serviceTags: [],
-    previousTrip: null,
-    nextTrip: null,
   });
 }
 
@@ -176,20 +147,9 @@ function createCalendar(
   starting: string | null,
   ending: string | null,
 ) {
-  return new GtfsCalendar(
-    id,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    true,
-    new PlainDateRange(
-      starting != null ? Temporal.PlainDate.from(starting) : null,
-      ending != null ? Temporal.PlainDate.from(ending) : null,
-    ),
-    [],
-    [],
+  const range = new PlainDateRange(
+    starting != null ? Temporal.PlainDate.from(starting) : null,
+    ending != null ? Temporal.PlainDate.from(ending) : null,
   );
+  return GtfsCalendar.everydayWithinRange(id, range);
 }

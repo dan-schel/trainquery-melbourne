@@ -120,4 +120,23 @@ export class GtfsCalendar {
       [],
     );
   }
+
+  static everydayWithinRange(
+    gtfsCalendarId: string,
+    dateRange: PlainDateRange,
+  ): GtfsCalendar {
+    return new GtfsCalendar(
+      gtfsCalendarId,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      dateRange,
+      [],
+      [],
+    );
+  }
 }

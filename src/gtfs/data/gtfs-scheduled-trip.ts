@@ -1,11 +1,12 @@
 import type { Color } from "corequery";
-import type { GtfsCalendar } from "./gtfs-calendar.js";
+import { GtfsCalendar } from "./gtfs-calendar.js";
 import { itsOk } from "@dan-schel/js-utils";
-import type {
-  GtfsScheduledTripMovement,
+import {
   GtfsScheduledTripOriginatingMovement,
   GtfsScheduledTripTerminatingMovement,
+  type GtfsScheduledTripMovement,
 } from "./gtfs-scheduled-trip-movements.js";
+import type { GtfsStopTime } from "./gtfs-stop-time.js";
 
 export type GtfsScheduledTripFields = {
   readonly gtfsTripId: string;
@@ -91,5 +92,54 @@ export class GtfsScheduledTrip {
     if (this.nextTrip == null) return this.termination;
 
     return this.nextTrip.finalTermination;
+  }
+
+  static simple({
+    gtfsTripId,
+    originStopId,
+    originationTime,
+    terminusStopId,
+    terminationTime,
+  }: {
+    gtfsTripId: string;
+    originStopId: number;
+    originationTime: GtfsStopTime;
+    terminusStopId: number;
+    terminationTime: GtfsStopTime;
+  }) {
+    return new GtfsScheduledTrip({
+      gtfsTripId,
+      gtfsRouteId: "route-1",
+      calendar: GtfsCalendar.everyday("cal-1"),
+      movements: [
+        new GtfsScheduledTripOriginatingMovement({
+          stopId: originStopId,
+          positionId: null,
+          departureTime: originationTime,
+          gtfsIdMetadata: {
+            type: "parent",
+            id: `stop-${originStopId}`,
+            stopId: originStopId,
+          },
+          gtfsStopSequence: 1,
+        }),
+        new GtfsScheduledTripTerminatingMovement({
+          stopId: terminusStopId,
+          positionId: null,
+          arrivalTime: terminationTime,
+          gtfsIdMetadata: {
+            type: "parent",
+            id: `stop-${terminusStopId}`,
+            stopId: terminusStopId,
+          },
+          gtfsStopSequence: 2,
+        }),
+      ],
+      lineIds: [1],
+      color: null,
+      serviceTags: [],
+      previousTrip: null,
+      nextTrip: null,
+    });
   }
 }
