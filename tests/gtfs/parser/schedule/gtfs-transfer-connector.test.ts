@@ -16,10 +16,6 @@ import {
 import { itsOk } from "@dan-schel/js-utils";
 import { GtfsScheduledTrip } from "../../../../src/gtfs/data/gtfs-scheduled-trip.js";
 import { GtfsCalendar } from "../../../../src/gtfs/data/gtfs-calendar.js";
-import {
-  GtfsScheduledTripOriginatingMovement,
-  GtfsScheduledTripTerminatingMovement,
-} from "../../../../src/gtfs/data/gtfs-scheduled-trip-movements.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 
 describe("GtfsTransferConnector", () => {

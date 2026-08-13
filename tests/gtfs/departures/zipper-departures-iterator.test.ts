@@ -5,7 +5,8 @@ import {
   type DeparturesSearchDirection,
 } from "../../../src/gtfs/departures/departures-iterator.js";
 import { ZipperDeparturesIterator } from "../../../src/gtfs/departures/zipper-departures-iterator.js";
-import { fake } from "../../utils.js";
+import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
+import { GtfsScheduledTrip } from "../../../src/gtfs/data/gtfs-scheduled-trip.js";
 
 describe("ZipperDeparturesIterator", () => {
   it("returns departures in order of instant", () => {
@@ -66,12 +67,26 @@ describe("ZipperDeparturesIterator", () => {
 });
 
 function departure({ instant, tripId }: { instant: string; tripId: string }) {
-  // ZipperDeparturesIterator only cares about comparing instants, and the
-  // trip ID is just to help us see in our tests which trip is returned.
-  return fake<DeparturesIteratorResult>({
-    instant,
-    trip: { gtfsTripId: tripId },
+  const instantObj = Temporal.Instant.from(instant);
+  const startOfDayUtc = instantObj.toZonedDateTimeISO("UTC").startOfDay();
+  const serviceDay = startOfDayUtc.toPlainDate();
+  const secOfDay = instantObj.since(startOfDayUtc.toInstant()).total("seconds");
+  const stopTime = GtfsStopTime.fromSecondsSinceMidnight(secOfDay);
+
+  const trip = GtfsScheduledTrip.simple({
+    gtfsTripId: tripId,
+    originStopId: 1,
+    originationTime: stopTime,
+    terminusStopId: 2,
+    terminationTime: stopTime.plus({ minutes: 5 }),
   });
+
+  return new DeparturesIteratorResult(
+    trip,
+    serviceDay,
+    instantObj,
+    trip.origination,
+  );
 }
 
 class DummyIterator extends DeparturesIterator {
