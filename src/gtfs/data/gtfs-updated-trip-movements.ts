@@ -123,6 +123,12 @@ export class GtfsUpdatedTripOriginatingMovement implements IGtfsUpdatedTripServi
     this.gtfsStopSequence = fields.gtfsStopSequence;
   }
 
+  with(
+    newValues: Partial<GtfsUpdatedTripOriginatingMovementFields>,
+  ): GtfsUpdatedTripOriginatingMovement {
+    return new GtfsUpdatedTripOriginatingMovement({ ...this, ...newValues });
+  }
+
   get type() {
     return "originating" as const;
   }
@@ -172,6 +178,12 @@ export class GtfsUpdatedTripRegularMovement implements IGtfsUpdatedTripServicing
     this.gtfsStopSequence = fields.gtfsStopSequence;
   }
 
+  with(
+    newValues: Partial<GtfsUpdatedTripRegularMovementFields>,
+  ): GtfsUpdatedTripRegularMovement {
+    return new GtfsUpdatedTripRegularMovement({ ...this, ...newValues });
+  }
+
   get type() {
     return "regular" as const;
   }
@@ -213,6 +225,12 @@ export class GtfsUpdatedTripTerminatingMovement implements IGtfsUpdatedTripServi
     this.gtfsStopSequence = fields.gtfsStopSequence;
   }
 
+  with(
+    newValues: Partial<GtfsUpdatedTripTerminatingMovementFields>,
+  ): GtfsUpdatedTripTerminatingMovement {
+    return new GtfsUpdatedTripTerminatingMovement({ ...this, ...newValues });
+  }
+
   get type() {
     return "terminating" as const;
   }
@@ -238,6 +256,12 @@ export class GtfsUpdatedTripPassingMovement implements IGtfsUpdatedTripMovement 
 
   constructor(fields: GtfsUpdatedTripPassingMovementFields) {
     this.stopId = fields.stopId;
+  }
+
+  with(
+    newValues: Partial<GtfsUpdatedTripPassingMovementFields>,
+  ): GtfsUpdatedTripPassingMovement {
+    return new GtfsUpdatedTripPassingMovement({ ...this, ...newValues });
   }
 
   get type() {

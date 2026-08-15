@@ -43,6 +43,11 @@ interface IGtfsScheduledTripMovement {
     serviceDay: Temporal.PlainDate,
     timezone: string,
   ): GtfsUpdatedTripMovement;
+  asDelayedUpdatedTripMovement(
+    serviceDay: Temporal.PlainDate,
+    timezone: string,
+    delayMins: number,
+  ): GtfsUpdatedTripMovement;
 }
 interface IGtfsScheduledTripServicingMovement extends IGtfsScheduledTripMovement {
   readonly positionId: number | null;
@@ -162,6 +167,18 @@ export class GtfsScheduledTripOriginatingMovement implements IGtfsScheduledTripS
       updatedGtfsIdMetadata: values.updatedGtfsIdMetadata,
     });
   }
+
+  asDelayedUpdatedTripMovement(
+    serviceDay: Temporal.PlainDate,
+    timezone: string,
+    delayMins: number,
+  ): GtfsUpdatedTripOriginatingMovement {
+    return this.asHollowUpdatedTripMovement(serviceDay, timezone).with({
+      realtimeDepartureTime: this.departureTime
+        .toInstant(serviceDay, timezone)
+        .add({ minutes: delayMins }),
+    });
+  }
 }
 
 export class GtfsScheduledTripRegularMovement implements IGtfsScheduledTripServicingMovement {
@@ -255,6 +272,21 @@ export class GtfsScheduledTripRegularMovement implements IGtfsScheduledTripServi
       updatedGtfsIdMetadata: values.updatedGtfsIdMetadata,
     });
   }
+
+  asDelayedUpdatedTripMovement(
+    serviceDay: Temporal.PlainDate,
+    timezone: string,
+    delayMins: number,
+  ): GtfsUpdatedTripRegularMovement {
+    return this.asHollowUpdatedTripMovement(serviceDay, timezone).with({
+      realtimeArrivalTime: this.arrivalTime
+        .toInstant(serviceDay, timezone)
+        .add({ minutes: delayMins }),
+      realtimeDepartureTime: this.departureTime
+        .toInstant(serviceDay, timezone)
+        .add({ minutes: delayMins }),
+    });
+  }
 }
 
 export class GtfsScheduledTripTerminatingMovement implements IGtfsScheduledTripServicingMovement {
@@ -328,6 +360,18 @@ export class GtfsScheduledTripTerminatingMovement implements IGtfsScheduledTripS
       updatedGtfsIdMetadata: values.updatedGtfsIdMetadata,
     });
   }
+
+  asDelayedUpdatedTripMovement(
+    serviceDay: Temporal.PlainDate,
+    timezone: string,
+    delayMins: number,
+  ): GtfsUpdatedTripTerminatingMovement {
+    return this.asHollowUpdatedTripMovement(serviceDay, timezone).with({
+      realtimeArrivalTime: this.arrivalTime
+        .toInstant(serviceDay, timezone)
+        .add({ minutes: delayMins }),
+    });
+  }
 }
 
 export class GtfsScheduledTripPassingMovement implements IGtfsScheduledTripMovement {
@@ -356,6 +400,16 @@ export class GtfsScheduledTripPassingMovement implements IGtfsScheduledTripMovem
   asHollowUpdatedTripMovement(
     _serviceDay: Temporal.PlainDate,
     _timezone: string,
+  ): GtfsUpdatedTripPassingMovement {
+    return new GtfsUpdatedTripPassingMovement({
+      stopId: this.stopId,
+    });
+  }
+
+  asDelayedUpdatedTripMovement(
+    _serviceDay: Temporal.PlainDate,
+    _timezone: string,
+    _delayMins: number,
   ): GtfsUpdatedTripPassingMovement {
     return new GtfsUpdatedTripPassingMovement({
       stopId: this.stopId,
