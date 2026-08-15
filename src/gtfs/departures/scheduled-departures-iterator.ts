@@ -97,6 +97,16 @@ export class ScheduledDeparturesIterator extends DeparturesIterator {
     let bestIterator = this._getBestOfCurrentIterators();
     let bestValue = bestIterator?.peek() ?? null;
 
+    // TODO: Allow the maximum number of iterations to be configurable. Even
+    // though I've gone to great effort to make an algorithm which gives
+    // theoretically correct results and stops once all calendars are exhausted,
+    // reality can be messy, and there could be giant gaps between services
+    // matching certain criteria (e.g. terminating in an unusual location), and
+    // we probably don't want to make it super easy to DDOS the server by making
+    // it perform searches which require it to search through several months of
+    // blocks. Maybe instead of a max number of iterations, we could do a max
+    // number of days from the start time or something (effectively the same
+    // thing, but without relying on the value of BLOCK_SCAN_HRS).
     while (
       (bestValue == null || !this._searchRange.includes(bestValue.instant)) &&
       this._areMoreBlocksAvailable()
