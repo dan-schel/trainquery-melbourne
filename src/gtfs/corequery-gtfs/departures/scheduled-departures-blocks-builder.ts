@@ -7,6 +7,7 @@ import type {
 import { ScheduledDeparturesBlock } from "./scheduled-departures-block.js";
 import type { PlainDateRange } from "../data/plain-date-range.js";
 
+// TODO: Move to config folder.
 export type TimezoneData = {
   readonly timezone: string;
   readonly minimumViableOffsetSeconds: number;

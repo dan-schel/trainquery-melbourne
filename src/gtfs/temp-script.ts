@@ -38,6 +38,7 @@ import {
   MultifeedDeparturesIterator,
   MultifeedDeparturesIteratorResult,
 } from "./corequery-gtfs/departures/multifeed-departures-iterator.js";
+import fs from "fs";
 
 type GtfsParsingError =
   | GtfsScheduleParsingError
@@ -207,6 +208,15 @@ function parseRealtime(
   );
   const { suburban: suburbanJson, regional: regionalJson } =
     splitter.split(fullRealtimeData);
+
+  fs.writeFileSync(
+    "realtime-suburban.json",
+    JSON.stringify(suburbanJson, null, 2),
+  );
+  fs.writeFileSync(
+    "realtime-regional.json",
+    JSON.stringify(regionalJson, null, 2),
+  );
 
   const parser = new GtfsRealtimeDataParser(config.timezoneData.timezone, (e) =>
     errors.push(e),
