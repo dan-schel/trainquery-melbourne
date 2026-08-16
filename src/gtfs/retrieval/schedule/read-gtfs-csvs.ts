@@ -1,50 +1,34 @@
-import {
-  type CalendarCsv,
-  calendarCsvSchema,
-  type CalendarDatesCsv,
-  calendarDatesCsvSchema,
-  type RoutesCsv,
-  routesCsvSchema,
-  type StopsCsv,
-  stopsCsvSchema,
-  type StopTimesCsv,
-  stopTimesCsvSchema,
-  type TransfersCsv,
-  transfersCsvSchema,
-  type TripsCsv,
-  tripsCsvSchema,
-} from "../../corequery-gtfs/data/raw/schedule-csvs.js";
 import path from "path";
 import { type GtfsDirectories } from "./with-gtfs-csvs.js";
 import type z from "zod";
 import { readCsv } from "./utils/read-csv.js";
 import { applyPatches } from "./patches/index.js";
+import {
+  calendarCsvSchema,
+  calendarDatesCsvSchema,
+  routesCsvSchema,
+  stopsCsvSchema,
+  stopTimesCsvSchema,
+  transfersCsvSchema,
+  tripsCsvSchema,
+  type FullGtfsFeedCsv,
+} from "./csv-schemas.js";
 
-export type GtfsCsvData = {
-  readonly suburban: GtfsFeedCsv;
-  readonly regional: GtfsFeedCsv;
-};
-
-export type GtfsFeedCsv = {
-  readonly stops: StopsCsv;
-  readonly routes: RoutesCsv;
-  readonly trips: TripsCsv;
-  readonly stopTimes: StopTimesCsv;
-  readonly calendar: CalendarCsv;
-  readonly calendarDates: CalendarDatesCsv;
-  readonly transfers: TransfersCsv;
+export type MelbourneGtfsCsvData = {
+  readonly suburban: FullGtfsFeedCsv;
+  readonly regional: FullGtfsFeedCsv;
 };
 
 export async function readGtfsCsvs(
   dirs: GtfsDirectories,
-): Promise<GtfsCsvData> {
+): Promise<MelbourneGtfsCsvData> {
   return applyPatches({
     suburban: await readFeed(dirs.suburban),
     regional: await readFeed(dirs.regional),
   });
 }
 
-async function readFeed(dir: string): Promise<GtfsFeedCsv> {
+async function readFeed(dir: string): Promise<FullGtfsFeedCsv> {
   async function read<T extends z.ZodType>(file: string, schema: T) {
     return await readCsv(path.join(dir, file), schema);
   }

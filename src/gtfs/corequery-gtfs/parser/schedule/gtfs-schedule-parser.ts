@@ -1,5 +1,4 @@
 import { GtfsScheduleData } from "../../data/gtfs-schedule-data.js";
-import type { GtfsFeedCsv } from "../../../retrieval/schedule/read-gtfs-csvs.js";
 import {
   GtfsCalendarParser,
   type GtfsCalendarParsingError,
@@ -12,6 +11,7 @@ import type { LineGtfsIdMapping } from "../../data/ids/line-gtfs-id-mapping.js";
 import type { StopGtfsIdMapping } from "../../data/ids/stop-gtfs-id-mapping.js";
 import type { LineRoutesMapping } from "../../data/route/line-routes-mapping.js";
 import type { BonusLinesMapping } from "../../data/route/bonus-lines-mapping.js";
+import type { GtfsFeedCsv } from "../../data/raw/schedule-csvs.js";
 
 // TODO: Rename GtfsScheduleDataParser.
 export class GtfsScheduleParser {

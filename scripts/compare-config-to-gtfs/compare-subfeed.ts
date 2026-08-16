@@ -3,11 +3,11 @@ import type { ComparisonOptions } from "./comparison-options.js";
 import { IssueCollector } from "./issue-collector.js";
 import { compareLines } from "./line/index.js";
 import { compareStops } from "./stop/index.js";
-import type { GtfsFeedCsv } from "../../src/gtfs/retrieval/schedule/read-gtfs-csvs.js";
 import type { StopGtfsIdMapping } from "../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import type { LineGtfsIdMapping } from "../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
 import type { LineRoutesMappingConfig } from "../../src/gtfs/corequery-gtfs/config/routes.js";
 import { getStopName } from "../../src/utils/get-stop-name.js";
+import type { FullGtfsFeedCsv } from "../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 export function compareSubfeed({
   stops,
@@ -24,7 +24,7 @@ export function compareSubfeed({
   stopIdMapping: StopGtfsIdMapping;
   lineIdMapping: LineGtfsIdMapping;
   routes: LineRoutesMappingConfig;
-  gtfsFeed: GtfsFeedCsv;
+  gtfsFeed: FullGtfsFeedCsv;
   issues: IssueCollector;
   options: ComparisonOptions;
 }) {

@@ -11,6 +11,10 @@ import { reportToGithub } from "./output-to-github/report-to-github.js";
 import { GithubClient } from "./output-to-github/github-client.js";
 import { createGithubIssueFlag } from "./output-to-github/constants.js";
 
+// TODO: There's probably bits of this linting process which are general (not
+// Melbourne-specific). One day we could consider moving this to the
+// corequery-gtfs package rather than having it here.
+
 async function main() {
   const args = process.argv.slice(2);
   const outputToGithub = args.includes(createGithubIssueFlag);

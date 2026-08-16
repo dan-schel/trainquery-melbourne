@@ -1,113 +1,79 @@
-import z from "zod";
-import {
-  floatStringSchema,
-  gtfsBooleanSchema,
-  gtfsDateSchema,
-  gtfsStopTimeSchema,
-  intStringSchema,
-} from "../../../utils/zod.js";
+import type { GtfsStopTime } from "../gtfs-stop-time.js";
 
-export type StopsCsvRow = z.infer<typeof stopsCsvSchema>;
+// TODO: [DS] Some stuff in there isn't relavent to corequery-gtfs, and is only
+// used by the gtfs linting scripts in trainquery-melbourne, so we can drop it
+// from these types.
+export type StopsCsvRow = {
+  stop_id: string;
+  stop_name: string;
+  stop_lat: number;
+  stop_lon: number;
+  stop_url: string;
+  parent_station: string;
+  platform_code?: string;
+};
 export type StopsCsv = readonly StopsCsvRow[];
-export const stopsCsvSchema = z
-  .object({
-    stop_id: z.string(),
-    stop_name: z.string(),
-    stop_lat: floatStringSchema,
-    stop_lon: floatStringSchema,
-    stop_url: z.string(),
-    // location_type: z.string(),
-    parent_station: z.string(),
-    // wheelchair_boarding: z.string(),
-    // level_id: z.string(),
-    platform_code: z.string().optional(),
-  })
-  .readonly();
 
-export type RoutesCsvRow = z.infer<typeof routesCsvSchema>;
+export type RoutesCsvRow = {
+  route_id: string;
+  route_long_name: string;
+};
 export type RoutesCsv = readonly RoutesCsvRow[];
-export const routesCsvSchema = z
-  .object({
-    route_id: z.string(),
-    // agency_id: z.string(),
-    // route_short_name: z.string(),
-    route_long_name: z.string(),
-    // route_type: intStringSchema,
-    // route_color: z.string(),
-    // route_text_color: z.string(),
-  })
-  .readonly();
 
-export type TripsCsvRow = z.infer<typeof tripsCsvSchema>;
+export type TripsCsvRow = {
+  route_id: string;
+  service_id: string;
+  trip_id: string;
+};
 export type TripsCsv = readonly TripsCsvRow[];
-export const tripsCsvSchema = z
-  .object({
-    route_id: z.string(),
-    service_id: z.string(),
-    trip_id: z.string(),
-    // shape_id: z.string(),
-    // trip_headsign: z.string(),
-    // direction_id: z.string(),
-    // block_id: z.string(),
-    // wheelchair_accessible: intStringSchema,
-    // bikes_allowed: intStringSchema,
-  })
-  .readonly();
 
-export type StopTimesCsvRow = z.infer<typeof stopTimesCsvSchema>;
+export type StopTimesCsvRow = {
+  trip_id: string;
+  arrival_time: GtfsStopTime;
+  departure_time: GtfsStopTime;
+  stop_id: string;
+  stop_sequence: number;
+  pickup_type: number;
+  drop_off_type: number;
+};
 export type StopTimesCsv = readonly StopTimesCsvRow[];
-export const stopTimesCsvSchema = z
-  .object({
-    trip_id: z.string(),
-    arrival_time: gtfsStopTimeSchema,
-    departure_time: gtfsStopTimeSchema,
-    stop_id: z.string(),
-    stop_sequence: intStringSchema,
-    // stop_headsign: z.string(),
-    pickup_type: intStringSchema,
-    drop_off_type: intStringSchema,
-    // shape_dist_traveled: floatStringSchema,
-  })
-  .readonly();
 
-export type CalendarCsvRow = z.infer<typeof calendarCsvSchema>;
+export type CalendarCsvRow = {
+  service_id: string;
+  monday: boolean;
+  tuesday: boolean;
+  wednesday: boolean;
+  thursday: boolean;
+  friday: boolean;
+  saturday: boolean;
+  sunday: boolean;
+  start_date: Temporal.PlainDate;
+  end_date: Temporal.PlainDate;
+};
 export type CalendarCsv = readonly CalendarCsvRow[];
-export const calendarCsvSchema = z
-  .object({
-    service_id: z.string(),
-    monday: gtfsBooleanSchema,
-    tuesday: gtfsBooleanSchema,
-    wednesday: gtfsBooleanSchema,
-    thursday: gtfsBooleanSchema,
-    friday: gtfsBooleanSchema,
-    saturday: gtfsBooleanSchema,
-    sunday: gtfsBooleanSchema,
-    start_date: gtfsDateSchema,
-    end_date: gtfsDateSchema,
-  })
-  .readonly();
 
-export type CalendarDatesCsvRow = z.infer<typeof calendarDatesCsvSchema>;
+export type CalendarDatesCsvRow = {
+  service_id: string;
+  date: Temporal.PlainDate;
+  exception_type: number;
+};
 export type CalendarDatesCsv = readonly CalendarDatesCsvRow[];
-export const calendarDatesCsvSchema = z
-  .object({
-    service_id: z.string(),
-    date: gtfsDateSchema,
-    exception_type: intStringSchema,
-  })
-  .readonly();
 
-export type TransfersCsvRow = z.infer<typeof transfersCsvSchema>;
+export type TransfersCsvRow = {
+  from_stop_id: string;
+  to_stop_id: string;
+  from_trip_id: string;
+  to_trip_id: string;
+  transfer_type: number;
+};
 export type TransfersCsv = readonly TransfersCsvRow[];
-export const transfersCsvSchema = z
-  .object({
-    from_stop_id: z.string(),
-    to_stop_id: z.string(),
-    // from_route_id: z.string(),
-    // to_route_id: z.string(),
-    from_trip_id: z.string(),
-    to_trip_id: z.string(),
-    transfer_type: intStringSchema,
-    min_transfer_time: z.string(),
-  })
-  .readonly();
+
+export type GtfsFeedCsv = {
+  readonly stops: StopsCsv;
+  readonly routes: RoutesCsv;
+  readonly trips: TripsCsv;
+  readonly stopTimes: StopTimesCsv;
+  readonly calendar: CalendarCsv;
+  readonly calendarDates: CalendarDatesCsv;
+  readonly transfers: TransfersCsv;
+};

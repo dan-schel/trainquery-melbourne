@@ -4,7 +4,7 @@ import { LineGtfsIdMapping } from "./corequery-gtfs/data/ids/line-gtfs-id-mappin
 import { StopGtfsIdMapping } from "./corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import {
   readGtfsCsvs,
-  type GtfsCsvData,
+  type MelbourneGtfsCsvData,
 } from "./retrieval/schedule/read-gtfs-csvs.js";
 import { withGtfsCsvs } from "./retrieval/schedule/with-gtfs-csvs.js";
 import {
@@ -162,7 +162,7 @@ async function parse(
 }
 
 function parseSchedule(
-  gtfsData: GtfsCsvData,
+  gtfsData: MelbourneGtfsCsvData,
   config: ReturnType<typeof formalizeConfig>,
   errors: GtfsParsingError[],
 ) {

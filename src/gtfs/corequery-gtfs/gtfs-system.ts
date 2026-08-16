@@ -9,8 +9,8 @@ import { GtfsFeedParser } from "./parser/gtfs-feed-parser.js";
 import type { GtfsRealtimeDataParsingError } from "./parser/realtime/gtfs-realtime-data-parser.js";
 import type { GtfsScheduleParsingError } from "./parser/schedule/gtfs-schedule-parser.js";
 import type { RealtimeFeedJson } from "../retrieval/realtime/realtime-feed-schema.js";
-import type { GtfsFeedCsv } from "../retrieval/schedule/read-gtfs-csvs.js";
 import type { Subfeed } from "../subfeed.js";
+import type { GtfsFeedCsv } from "./data/raw/schedule-csvs.js";
 
 export class GtfsSystem {
   // TODO: The parsers are designed assuming that the same instance will be used
