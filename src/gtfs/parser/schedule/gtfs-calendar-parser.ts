@@ -4,8 +4,8 @@ import type {
   CalendarDatesCsv,
   CalendarDatesCsvRow,
 } from "../../retrieval/schedule/csv-schemas.js";
-import { GtfsCalendar } from "../../data/gtfs-calendar.js";
-import { PlainDateRange } from "../../data/plain-date-range.js";
+import { GtfsCalendar } from "../../corequery-gtfs/data/gtfs-calendar.js";
+import { PlainDateRange } from "../../corequery-gtfs/data/plain-date-range.js";
 
 const CALENDAR_DATE_EXCEPTION_TYPE_ADDED = 1;
 const CALENDAR_DATE_EXCEPTION_TYPE_REMOVED = 2;

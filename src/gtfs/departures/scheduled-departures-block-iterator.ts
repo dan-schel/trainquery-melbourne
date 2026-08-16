@@ -1,6 +1,6 @@
 import type { ScheduledDeparturesBlock } from "./scheduled-departures-block.js";
 import { DeparturesIteratorResult } from "./departures-iterator.js";
-import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
+import type { GtfsRealtimeData } from "../corequery-gtfs/data/gtfs-realtime-data.js";
 import { DeparturesBlockIterator } from "./departures-block-iterator.js";
 import type { GtfsScheduledMovementsIndexEntry } from "./gtfs-scheduled-movements-index.js";
 

@@ -8,7 +8,7 @@ import {
   type GtfsRouteMatchingError,
 } from "../../../../src/gtfs/parser/schedule/gtfs-route-matcher.js";
 import { Route } from "../../../../src/gtfs/corequery-gtfs/data/route/route.js";
-import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
+import { GtfsStopTime } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
 import type { StopTimesCsvRow } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 import { StopGtfsIdCollection } from "../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-collection.js";
 import { StopGtfsIdMapping } from "../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";

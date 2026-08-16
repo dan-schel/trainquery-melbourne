@@ -1,9 +1,9 @@
 import { describe, it, expect } from "vitest";
 import { RealtimeDeparturesBlockIterator } from "../../../src/gtfs/departures/realtime-departures-block-iterator.js";
-import { GtfsRealtimeData } from "../../../src/gtfs/data/gtfs-realtime-data.js";
-import { GtfsUpdatedTrip } from "../../../src/gtfs/data/gtfs-updated-trip.js";
-import { GtfsScheduledTrip } from "../../../src/gtfs/data/gtfs-scheduled-trip.js";
-import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
+import { GtfsRealtimeData } from "../../../src/gtfs/corequery-gtfs/data/gtfs-realtime-data.js";
+import { GtfsUpdatedTrip } from "../../../src/gtfs/corequery-gtfs/data/gtfs-updated-trip.js";
+import { GtfsScheduledTrip } from "../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
+import { GtfsStopTime } from "../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
 
 const MELBOURNE_TIMEZONE = "Australia/Melbourne";
 

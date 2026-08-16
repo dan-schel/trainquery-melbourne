@@ -23,17 +23,17 @@ import {
   type GtfsRealtimeFeedSplittingError,
 } from "./parser/realtime/gtfs-realtime-feed-splitter.js";
 import type { RealtimeFeedJson } from "./retrieval/realtime/realtime-feed-schema.js";
-import type { GtfsScheduleData } from "./data/gtfs-schedule-data.js";
-import type { GtfsRealtimeData } from "./data/gtfs-realtime-data.js";
+import type { GtfsScheduleData } from "./corequery-gtfs/data/gtfs-schedule-data.js";
+import type { GtfsRealtimeData } from "./corequery-gtfs/data/gtfs-realtime-data.js";
 import { BonusLinesMapping } from "./corequery-gtfs/data/route/bonus-lines-mapping.js";
 import { assertNever, itsOk, listifyAnd } from "@dan-schel/js-utils";
 import { GtfsScheduledMovementsIndex } from "./departures/gtfs-scheduled-movements-index.js";
 import * as stop from "../config/corequery/stops/stop-ids.js";
 import { ZipperDeparturesIterator } from "./departures/zipper-departures-iterator.js";
-import { GtfsScheduledTrip } from "./data/gtfs-scheduled-trip.js";
-import { GtfsUpdatedTrip } from "./data/gtfs-updated-trip.js";
+import { GtfsScheduledTrip } from "./corequery-gtfs/data/gtfs-scheduled-trip.js";
+import { GtfsUpdatedTrip } from "./corequery-gtfs/data/gtfs-updated-trip.js";
 import type { DeparturesSearchDirection } from "./departures/departures-iterator.js";
-import type { GtfsTripServicingMovement } from "./data/utils.js";
+import type { GtfsTripServicingMovement } from "./corequery-gtfs/data/utils.js";
 import {
   MultifeedDeparturesIterator,
   MultifeedDeparturesIteratorResult,

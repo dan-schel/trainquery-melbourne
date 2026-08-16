@@ -1,6 +1,6 @@
-import type { GtfsScheduledTrip } from "../data/gtfs-scheduled-trip.js";
-import type { GtfsUpdatedTrip } from "../data/gtfs-updated-trip.js";
-import type { GtfsTripServicingMovement } from "../data/utils.js";
+import type { GtfsScheduledTrip } from "../corequery-gtfs/data/gtfs-scheduled-trip.js";
+import type { GtfsUpdatedTrip } from "../corequery-gtfs/data/gtfs-updated-trip.js";
+import type { GtfsTripServicingMovement } from "../corequery-gtfs/data/utils.js";
 
 export type DeparturesSearchDirection = "forwards" | "backwards";
 

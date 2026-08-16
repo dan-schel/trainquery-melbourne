@@ -1,4 +1,4 @@
-import { BoundedInstantRange } from "../data/bounded-instant-range.js";
+import { BoundedInstantRange } from "../corequery-gtfs/data/bounded-instant-range.js";
 
 export abstract class DeparturesBlock {
   constructor(

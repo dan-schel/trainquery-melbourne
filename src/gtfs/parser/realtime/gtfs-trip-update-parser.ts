@@ -1,6 +1,6 @@
-import type { GtfsScheduleData } from "../../data/gtfs-schedule-data.js";
-import type { GtfsScheduledTrip } from "../../data/gtfs-scheduled-trip.js";
-import { GtfsUpdatedTrip } from "../../data/gtfs-updated-trip.js";
+import type { GtfsScheduleData } from "../../corequery-gtfs/data/gtfs-schedule-data.js";
+import type { GtfsScheduledTrip } from "../../corequery-gtfs/data/gtfs-scheduled-trip.js";
+import { GtfsUpdatedTrip } from "../../corequery-gtfs/data/gtfs-updated-trip.js";
 import type {
   StopTimeUpdateJson,
   TripUpdateJson,
@@ -11,9 +11,9 @@ import {
   type GtfsTripUpdateTripIdentificationError,
 } from "./gtfs-trip-update-trip-identifier.js";
 import type { StopGtfsIdMapping } from "../../corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
-import type { GtfsStopTime } from "../../data/gtfs-stop-time.js";
+import type { GtfsStopTime } from "../../corequery-gtfs/data/gtfs-stop-time.js";
 import { itsOk } from "@dan-schel/js-utils";
-import type { GtfsUpdatedTripMovement } from "../../data/gtfs-updated-trip-movements.js";
+import type { GtfsUpdatedTripMovement } from "../../corequery-gtfs/data/gtfs-updated-trip-movements.js";
 
 const TRIP_UPDATE_SCHEDULE_RELATIONSHIP_SCHEDULED = "SCHEDULED";
 const TRIP_UPDATE_SCHEDULE_RELATIONSHIP_CANCELLED = "CANCELED";

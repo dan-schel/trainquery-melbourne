@@ -17,9 +17,9 @@ import {
   type GtfsTripUpdateParsingError,
   StopTimeUpdateEntryChangesPlatformError,
 } from "../../../../src/gtfs/parser/realtime/gtfs-trip-update-parser.js";
-import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
-import { GtfsScheduledTrip } from "../../../../src/gtfs/data/gtfs-scheduled-trip.js";
-import { GtfsScheduleData } from "../../../../src/gtfs/data/gtfs-schedule-data.js";
+import { GtfsStopTime } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
+import { GtfsScheduledTrip } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
+import { GtfsScheduleData } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-schedule-data.js";
 
 const TIMEZONE = "Australia/Melbourne";
 

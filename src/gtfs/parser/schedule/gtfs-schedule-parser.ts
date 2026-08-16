@@ -1,4 +1,4 @@
-import { GtfsScheduleData } from "../../data/gtfs-schedule-data.js";
+import { GtfsScheduleData } from "../../corequery-gtfs/data/gtfs-schedule-data.js";
 import type { GtfsFeedCsv } from "../../retrieval/schedule/read-gtfs-csvs.js";
 import {
   GtfsCalendarParser,

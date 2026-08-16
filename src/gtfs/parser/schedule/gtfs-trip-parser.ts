@@ -7,8 +7,8 @@ import type {
   TripsCsv,
   TripsCsvRow,
 } from "../../retrieval/schedule/csv-schemas.js";
-import type { GtfsCalendar } from "../../data/gtfs-calendar.js";
-import { GtfsScheduledTrip } from "../../data/gtfs-scheduled-trip.js";
+import type { GtfsCalendar } from "../../corequery-gtfs/data/gtfs-calendar.js";
+import { GtfsScheduledTrip } from "../../corequery-gtfs/data/gtfs-scheduled-trip.js";
 import {
   GtfsStopTimeNormaliser,
   type GtfsStopTimeNormalisationError,

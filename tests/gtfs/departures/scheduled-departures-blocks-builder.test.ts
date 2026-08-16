@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { BoundedInstantRange } from "../../../src/gtfs/data/bounded-instant-range.js";
+import { BoundedInstantRange } from "../../../src/gtfs/corequery-gtfs/data/bounded-instant-range.js";
 import { itsOk } from "@dan-schel/js-utils";
-import { GtfsScheduledTrip } from "../../../src/gtfs/data/gtfs-scheduled-trip.js";
-import { GtfsStopTime } from "../../../src/gtfs/data/gtfs-stop-time.js";
-import { PlainDateRange } from "../../../src/gtfs/data/plain-date-range.js";
+import { GtfsScheduledTrip } from "../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
+import { GtfsStopTime } from "../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
+import { PlainDateRange } from "../../../src/gtfs/corequery-gtfs/data/plain-date-range.js";
 import type { GtfsScheduledMovementsIndexEntry } from "../../../src/gtfs/departures/gtfs-scheduled-movements-index.js";
 import { ScheduledDeparturesBlocksBuilder } from "../../../src/gtfs/departures/scheduled-departures-blocks-builder.js";
 

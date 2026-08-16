@@ -1,4 +1,4 @@
-import { GtfsFeed } from "../data/gtfs-feed.js";
+import { GtfsFeed } from "../corequery-gtfs/data/gtfs-feed.js";
 import type { LineGtfsIdMapping } from "../corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
 import type { StopGtfsIdMapping } from "../corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import type { BonusLinesMapping } from "../corequery-gtfs/data/route/bonus-lines-mapping.js";
