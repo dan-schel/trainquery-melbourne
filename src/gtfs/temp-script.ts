@@ -29,10 +29,6 @@ import { BonusLinesMapping } from "./data/route/bonus-lines-mapping.js";
 import { assertNever, itsOk, listifyAnd } from "@dan-schel/js-utils";
 import { GtfsScheduledMovementsIndex } from "./departures/gtfs-scheduled-movements-index.js";
 import * as stop from "../config/corequery/stops/stop-ids.js";
-import {
-  MELBOURNE_TIMEZONE,
-  MELBOURNE_TIMEZONE_DATA,
-} from "./utils/melbourne-timezone-data.js";
 import { ZipperDeparturesIterator } from "./departures/zipper-departures-iterator.js";
 import { GtfsScheduledTrip } from "./data/gtfs-scheduled-trip.js";
 import { GtfsUpdatedTrip } from "./data/gtfs-updated-trip.js";
@@ -56,7 +52,7 @@ type Query = {
   direction: DeparturesSearchDirection;
 };
 
-const now = Temporal.Now.zonedDateTimeISO(MELBOURNE_TIMEZONE)
+const now = Temporal.Now.zonedDateTimeISO("Australia/Melbourne")
   .round({
     smallestUnit: "minute",
     roundingMode: "floor",
@@ -76,7 +72,7 @@ export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
 
   console.log("\n-----\n");
 
-  queryDepartures(ctx, data);
+  queryDepartures(ctx, data, formalConfig);
 }
 
 function formalizeConfig(config: GtfsConfig) {
@@ -110,6 +106,7 @@ function formalizeConfig(config: GtfsConfig) {
     regionalLineGtfsIdMapping,
     suburbanStopGtfsIdMapping,
     regionalStopGtfsIdMapping,
+    timezoneData: config.timezoneData,
   };
 }
 
@@ -205,7 +202,7 @@ function parseRealtime(
   const { suburban: suburbanJson, regional: regionalJson } =
     splitter.split(fullRealtimeData);
 
-  const parser = new GtfsRealtimeDataParser(MELBOURNE_TIMEZONE, (e) =>
+  const parser = new GtfsRealtimeDataParser(config.timezoneData.timezone, (e) =>
     errors.push(e),
   );
   const suburbanRealtimeData = parser.parse(
@@ -284,7 +281,11 @@ function formatErrors(errors: GtfsParsingError[]) {
   return output;
 }
 
-function queryDepartures(ctx: Corequery, data: TotalGtfsData) {
+function queryDepartures(
+  ctx: Corequery,
+  data: TotalGtfsData,
+  config: ReturnType<typeof formalizeConfig>,
+) {
   const {
     suburbanSchedule,
     suburbanRealtimeData,
@@ -305,17 +306,17 @@ function queryDepartures(ctx: Corequery, data: TotalGtfsData) {
   // TODO: We still need a multifeed departures iterator (implemented with a
   // zipper iterator) to inject the subfeed ID into the result.
   const iterator = MultifeedDeparturesIterator.build({
-    regional: ZipperDeparturesIterator.forSubfeed(
+    regional: ZipperDeparturesIterator.forFeed(
       QUERY.stopId,
       regionalIndex,
       regionalRealtimeData,
-      MELBOURNE_TIMEZONE_DATA,
+      config.timezoneData,
     ),
-    suburban: ZipperDeparturesIterator.forSubfeed(
+    suburban: ZipperDeparturesIterator.forFeed(
       QUERY.stopId,
       suburbanIndex,
       suburbanRealtimeData,
-      MELBOURNE_TIMEZONE_DATA,
+      config.timezoneData,
     ),
   });
 
@@ -333,7 +334,7 @@ function queryDepartures(ctx: Corequery, data: TotalGtfsData) {
 
   console.log(`Departures:\n`);
   for (const dep of result) {
-    console.log(formatDeparture(ctx, dep));
+    console.log(formatDeparture(ctx, dep, config));
   }
   if (result.length === 0) {
     console.log("None.");
@@ -360,6 +361,7 @@ function buildIndices(
 function formatDeparture(
   ctx: Corequery,
   departure: MultifeedDeparturesIteratorResult,
+  config: ReturnType<typeof formalizeConfig>,
 ) {
   function getScheduledTripInfo(trip: GtfsScheduledTrip | GtfsUpdatedTrip) {
     if (trip instanceof GtfsScheduledTrip) {
@@ -392,7 +394,7 @@ function formatDeparture(
     } else {
       return movement.timeRelevantToDeparturesAlgorithm.toInstant(
         departure.serviceDay,
-        MELBOURNE_TIMEZONE,
+        config.timezoneData.timezone,
       );
     }
   }
@@ -404,7 +406,7 @@ function formatDeparture(
     {
       timeStyle: "short",
       dateStyle: "short",
-      timeZone: MELBOURNE_TIMEZONE,
+      timeZone: config.timezoneData.timezone,
     },
   );
   const terminus = ctx.stops.require(scheduledTrip.termination.stopId).name;

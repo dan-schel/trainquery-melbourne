@@ -83,7 +83,7 @@ export class ZipperDeparturesIterator extends DeparturesIterator {
     }
   }
 
-  static forSubfeed(
+  static forFeed(
     stopId: number,
     scheduledMovementsIndex: GtfsScheduledMovementsIndex,
     realtimeData: GtfsRealtimeData,
