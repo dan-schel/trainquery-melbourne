@@ -1,8 +1,8 @@
-import type { StopGtfsIdsConfig } from "../../gtfs/corequery-gtfs/config/ids.js";
+import type { MultifeedStopGtfsIdsConfig } from "../../gtfs/ids.js";
 import * as stop from "../corequery/stops/stop-ids.js";
 import * as position from "../corequery/stops/stop-position-ids.js";
 
-export const stopGtfsIds: StopGtfsIdsConfig = {
+export const stopGtfsIds: MultifeedStopGtfsIdsConfig = {
   [stop.AIRCRAFT]: {
     suburban: {
       parent: "vic:rail:ACF",

@@ -2,7 +2,7 @@ import "temporal-polyfill/global";
 import { Corequery } from "corequery";
 import { buildConfig } from "./config/corequery/index.js";
 import { runGtfsTempScript } from "./gtfs/temp-script.js";
-import { gtfsConfig } from "./config/gtfs/index.js";
+import { regionalGtfsConfig, suburbanGtfsConfig } from "./config/gtfs/index.js";
 
 async function main() {
   // TODO: Need to investigate why frontend version is changing on every
@@ -13,7 +13,7 @@ async function main() {
   // TEMPORARILY COMMENTED OUT FOR TEMP SCRIPT BELOW.
   // await trainquery.start();
 
-  await runGtfsTempScript(trainquery, gtfsConfig);
+  await runGtfsTempScript(trainquery, suburbanGtfsConfig, regionalGtfsConfig);
 }
 
 main().catch((error) => {

@@ -1,6 +1,5 @@
 import { parseIntThrow } from "@dan-schel/js-utils";
 import type { StopGtfsIdsConfig } from "../../config/ids.js";
-import type { Subfeed } from "../../../subfeed.js";
 import type { StopGtfsIdMetadata } from "./stop-gtfs-id-metadata.js";
 import { StopGtfsIdCollection } from "./stop-gtfs-id-collection.js";
 
@@ -41,17 +40,12 @@ export class StopGtfsIdMapping {
     return [...this._fromGtfsIdMapping.values()];
   }
 
-  static build(config: StopGtfsIdsConfig, subfeed: Subfeed): StopGtfsIdMapping {
+  static build(config: StopGtfsIdsConfig): StopGtfsIdMapping {
     const result = new Map<number, StopGtfsIdCollection>();
 
-    for (const [stopIdStr, gtfsIdsBySubfeed] of Object.entries(config)) {
+    for (const [stopIdStr, gtfsIds] of Object.entries(config)) {
       const stopId = parseIntThrow(stopIdStr);
-      const gtfsIds = gtfsIdsBySubfeed[subfeed];
-
-      // This stop might not have IDs for this subfeed.
-      if (gtfsIds != null) {
-        result.set(stopId, StopGtfsIdCollection.build(stopId, gtfsIds));
-      }
+      result.set(stopId, StopGtfsIdCollection.build(stopId, gtfsIds));
     }
 
     return new StopGtfsIdMapping(result);

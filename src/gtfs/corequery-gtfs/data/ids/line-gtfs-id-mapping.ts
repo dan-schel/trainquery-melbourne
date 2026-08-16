@@ -1,6 +1,5 @@
 import { parseIntThrow } from "@dan-schel/js-utils";
 import type { LineGtfsIdsConfig } from "../../config/ids.js";
-import type { Subfeed } from "../../../subfeed.js";
 import type { LineGtfsIdMetadata } from "./line-gtfs-id-metadata.js";
 import { LineGtfsIdCollection } from "./line-gtfs-id-collection.js";
 
@@ -41,17 +40,12 @@ export class LineGtfsIdMapping {
     return [...this._fromGtfsIdMapping.values()];
   }
 
-  static build(config: LineGtfsIdsConfig, subfeed: Subfeed): LineGtfsIdMapping {
+  static build(config: LineGtfsIdsConfig): LineGtfsIdMapping {
     const result = new Map<number, LineGtfsIdCollection>();
 
-    for (const [lineIdStr, gtfsIdsBySubfeed] of Object.entries(config)) {
+    for (const [lineIdStr, gtfsIds] of Object.entries(config)) {
       const lineId = parseIntThrow(lineIdStr);
-      const gtfsIds = gtfsIdsBySubfeed[subfeed];
-
-      // Each line (probably) only has IDs for one subfeed, so expect nulls.
-      if (gtfsIds != null) {
-        result.set(lineId, LineGtfsIdCollection.build(lineId, gtfsIds));
-      }
+      result.set(lineId, LineGtfsIdCollection.build(lineId, gtfsIds));
     }
 
     return new LineGtfsIdMapping(result);

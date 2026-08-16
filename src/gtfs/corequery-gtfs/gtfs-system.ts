@@ -9,7 +9,6 @@ import { GtfsFeedParser } from "./parser/gtfs-feed-parser.js";
 import type { GtfsRealtimeDataParsingError } from "./parser/realtime/gtfs-realtime-data-parser.js";
 import type { GtfsScheduleParsingError } from "./parser/schedule/gtfs-schedule-parser.js";
 import type { RealtimeDataJson } from "./data/raw/realtime-data-json.js";
-import type { Subfeed } from "../subfeed.js";
 import type { GtfsFeedCsv } from "./data/raw/schedule-csvs.js";
 
 export class GtfsSystem {
@@ -60,20 +59,11 @@ export class GtfsSystem {
     this._realtimeParsingErrors = [];
   }
 
-  static build(
-    corequeryDataSourceId: string,
-    config: GtfsConfig,
-
-    // TODO: This shouldn't be here, but is currently needed while the config
-    // intertwines regional and suburban IDs into one mapping. While that's
-    // convenient for the config, trainquery-melbourne should be responsible for
-    // splitting those before they're passed to the corequery-gtfs module.
-    feed: Subfeed,
-  ) {
+  static build(corequeryDataSourceId: string, config: GtfsConfig) {
     return new GtfsSystem(
       corequeryDataSourceId,
-      LineGtfsIdMapping.build(config.lineGtfsIds, feed),
-      StopGtfsIdMapping.build(config.stopGtfsIds, feed),
+      LineGtfsIdMapping.build(config.lineGtfsIds),
+      StopGtfsIdMapping.build(config.stopGtfsIds),
       LineRoutesMapping.build(config.lineRoutesMapping),
       BonusLinesMapping.build(config.bonusLinesMapping ?? {}),
       config.timezoneData,

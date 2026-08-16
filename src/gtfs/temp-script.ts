@@ -65,8 +65,12 @@ const QUERY: Query = {
   direction: "forwards",
 };
 
-export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
-  const formalConfig = formalizeConfig(config);
+export async function runGtfsTempScript(
+  ctx: Corequery,
+  suburbanConfig: GtfsConfig,
+  regionalConfig: GtfsConfig,
+) {
+  const formalConfig = formalizeConfig(suburbanConfig, regionalConfig);
 
   const data = await parse(ctx, formalConfig);
 
@@ -75,28 +79,30 @@ export async function runGtfsTempScript(ctx: Corequery, config: GtfsConfig) {
   queryDepartures(ctx, data, formalConfig);
 }
 
-function formalizeConfig(config: GtfsConfig) {
-  const lineRoutesMapping = LineRoutesMapping.build(config.lineRoutesMapping);
+function formalizeConfig(
+  suburbanConfig: GtfsConfig,
+  regionalConfig: GtfsConfig,
+) {
+  // Temporary hack: using the suburban config since it's identical in both.
+  const lineRoutesMapping = LineRoutesMapping.build(
+    suburbanConfig.lineRoutesMapping,
+  );
   const bonusLinesMapping = BonusLinesMapping.build(
-    config.bonusLinesMapping ?? {},
+    suburbanConfig.bonusLinesMapping ?? {},
   );
 
   const suburbanLineGtfsIdMapping = LineGtfsIdMapping.build(
-    config.lineGtfsIds,
-    "suburban",
+    suburbanConfig.lineGtfsIds,
   );
   const regionalLineGtfsIdMapping = LineGtfsIdMapping.build(
-    config.lineGtfsIds,
-    "regional",
+    regionalConfig.lineGtfsIds,
   );
 
   const suburbanStopGtfsIdMapping = StopGtfsIdMapping.build(
-    config.stopGtfsIds,
-    "suburban",
+    suburbanConfig.stopGtfsIds,
   );
   const regionalStopGtfsIdMapping = StopGtfsIdMapping.build(
-    config.stopGtfsIds,
-    "regional",
+    regionalConfig.stopGtfsIds,
   );
 
   return {
@@ -106,7 +112,7 @@ function formalizeConfig(config: GtfsConfig) {
     regionalLineGtfsIdMapping,
     suburbanStopGtfsIdMapping,
     regionalStopGtfsIdMapping,
-    timezoneData: config.timezoneData,
+    timezoneData: suburbanConfig.timezoneData,
   };
 }
 
