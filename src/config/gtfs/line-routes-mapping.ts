@@ -1,4 +1,4 @@
-import type { LineRoutesMappingConfig } from "../../gtfs/config/routes.js";
+import type { LineRoutesMappingConfig } from "../../gtfs/corequery-gtfs/config/routes.js";
 import * as line from "../corequery/lines/line-ids.js";
 import * as stop from "../corequery/stops/stop-ids.js";
 import * as tag from "../corequery/lines/service-tags.js";

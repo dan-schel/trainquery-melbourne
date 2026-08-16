@@ -1,4 +1,4 @@
-import type { BonusLinesMappingConfig } from "../../gtfs/config/routes.js";
+import type { BonusLinesMappingConfig } from "../../gtfs/corequery-gtfs/config/routes.js";
 import * as line from "../corequery/lines/line-ids.js";
 
 export const bonusLinesMapping: BonusLinesMappingConfig = {

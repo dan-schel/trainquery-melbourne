@@ -1,5 +1,5 @@
 import type { LineGtfsIdMetadata } from "./line-gtfs-id-metadata.js";
-import type { LineGtfsIdCollectionConfig } from "../../config/ids.js";
+import type { LineGtfsIdCollectionConfig } from "../../corequery-gtfs/config/ids.js";
 
 export class LineGtfsIdCollection {
   constructor(

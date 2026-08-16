@@ -1,4 +1,4 @@
-import type { LineGtfsIdsConfig } from "../../gtfs/config/ids.js";
+import type { LineGtfsIdsConfig } from "../../gtfs/corequery-gtfs/config/ids.js";
 import * as line from "../corequery/lines/line-ids.js";
 
 export const lineGtfsIds: LineGtfsIdsConfig = {

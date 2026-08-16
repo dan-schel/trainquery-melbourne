@@ -1,4 +1,4 @@
-import type { StopGtfsIdsConfig } from "../../gtfs/config/ids.js";
+import type { StopGtfsIdsConfig } from "../../gtfs/corequery-gtfs/config/ids.js";
 import * as stop from "../corequery/stops/stop-ids.js";
 import * as position from "../corequery/stops/stop-position-ids.js";
 

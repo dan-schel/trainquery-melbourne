@@ -1,4 +1,4 @@
-import type { GtfsConfig } from "./config/index.js";
+import type { GtfsConfig } from "./corequery-gtfs/config/index.js";
 import type { GtfsFeed } from "./data/gtfs-feed.js";
 import { LineGtfsIdMapping } from "./data/ids/line-gtfs-id-mapping.js";
 import { StopGtfsIdMapping } from "./data/ids/stop-gtfs-id-mapping.js";

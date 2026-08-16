@@ -1,4 +1,4 @@
-import type { TimezoneData } from "../departures/scheduled-departures-blocks-builder.js";
+import type { TimezoneData } from "../../departures/scheduled-departures-blocks-builder.js";
 import type { LineGtfsIdsConfig, StopGtfsIdsConfig } from "./ids.js";
 import type {
   BonusLinesMappingConfig,

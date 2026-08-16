@@ -11,7 +11,7 @@ import {
   GtfsScheduleParser,
   type GtfsScheduleParsingError,
 } from "./parser/schedule/gtfs-schedule-parser.js";
-import type { GtfsConfig } from "./config/index.js";
+import type { GtfsConfig } from "./corequery-gtfs/config/index.js";
 import { LineRoutesMapping } from "./data/route/line-routes-mapping.js";
 import { fetchGtfsRealtime } from "./retrieval/realtime/fetch-gtfs-realtime.js";
 import {

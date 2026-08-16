@@ -15,7 +15,7 @@ import { IndexedStopTimes } from "./utils/indexed-stop-times.js";
 import type { StopGtfsIdMapping } from "../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
 import { checkAllTripsAssignedToALine } from "./check-all-trips-assigned-to-a-line.js";
 import type { Trip } from "./utils/trip.js";
-import type { LineRoutesMappingConfig } from "../../../src/gtfs/config/routes.js";
+import type { LineRoutesMappingConfig } from "../../../src/gtfs/corequery-gtfs/config/routes.js";
 
 export function compareLines({
   lines,
