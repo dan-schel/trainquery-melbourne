@@ -1,9 +1,9 @@
 import type { LineGtfsIdMapping } from "../../data/ids/line-gtfs-id-mapping.js";
 import type {
-  RealtimeFeedJson,
+  RealtimeDataJson,
   TripDescriptorJson,
   TripUpdateJson,
-} from "../../../retrieval/realtime/realtime-feed-schema.js";
+} from "../../data/raw/realtime-data-json.js";
 
 // TODO: Right now, VTAR combines all the GTFS realtime data for the regional
 // and suburban subfeeds into one output. We're very intentional in this repo
@@ -23,7 +23,7 @@ export class GtfsRealtimeFeedSplitter {
     private readonly _onError: (error: GtfsRealtimeFeedSplittingError) => void,
   ) {}
 
-  split(realtimeData: RealtimeFeedJson) {
+  split(realtimeData: RealtimeDataJson) {
     const suburbanTripUpdates: TripUpdateJson[] = [];
     const regionalTripUpdates: TripUpdateJson[] = [];
 

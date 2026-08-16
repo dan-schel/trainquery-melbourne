@@ -1,4 +1,4 @@
-import { realtimeFeedSchema } from "./realtime-feed-schema.js";
+import { realtimeFeedSchema } from "./realtime-json-schemas.js";
 
 const gtfsRealtimeUrl = "https://vtar.trainquery.com/gtfs-realtime.json";
 

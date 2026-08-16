@@ -8,7 +8,7 @@ import type { TimezoneData } from "./departures/scheduled-departures-blocks-buil
 import { GtfsFeedParser } from "./parser/gtfs-feed-parser.js";
 import type { GtfsRealtimeDataParsingError } from "./parser/realtime/gtfs-realtime-data-parser.js";
 import type { GtfsScheduleParsingError } from "./parser/schedule/gtfs-schedule-parser.js";
-import type { RealtimeFeedJson } from "../retrieval/realtime/realtime-feed-schema.js";
+import type { RealtimeDataJson } from "./data/raw/realtime-data-json.js";
 import type { Subfeed } from "../subfeed.js";
 import type { GtfsFeedCsv } from "./data/raw/schedule-csvs.js";
 
@@ -89,7 +89,7 @@ export class GtfsSystem {
     return this._feed;
   }
 
-  onNewScheduleData(scheduleCsvs: GtfsFeedCsv, realtimeJson: RealtimeFeedJson) {
+  onNewScheduleData(scheduleCsvs: GtfsFeedCsv, realtimeJson: RealtimeDataJson) {
     this._scheduleParsingErrors = [];
     this._realtimeParsingErrors = [];
 
@@ -104,7 +104,7 @@ export class GtfsSystem {
     this._feed = result;
   }
 
-  onNewRealtimeData(realtimeJson: RealtimeFeedJson) {
+  onNewRealtimeData(realtimeJson: RealtimeDataJson) {
     if (this._feed == null) throw new Error("No schedule data parsed yet.");
 
     this._realtimeParsingErrors = [];

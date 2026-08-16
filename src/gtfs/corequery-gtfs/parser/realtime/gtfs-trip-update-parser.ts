@@ -5,7 +5,7 @@ import type {
   StopTimeUpdateJson,
   TripUpdateJson,
   UpdatedTimeJson,
-} from "../../../retrieval/realtime/realtime-feed-schema.js";
+} from "../../data/raw/realtime-data-json.js";
 import {
   GtfsTripUpdateTripIdentifier,
   type GtfsTripUpdateTripIdentificationError,

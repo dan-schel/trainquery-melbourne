@@ -4,7 +4,7 @@ import type { StopGtfsIdMapping } from "../data/ids/stop-gtfs-id-mapping.js";
 import type { BonusLinesMapping } from "../data/route/bonus-lines-mapping.js";
 import type { LineRoutesMapping } from "../data/route/line-routes-mapping.js";
 import type { TimezoneData } from "../departures/scheduled-departures-blocks-builder.js";
-import type { RealtimeFeedJson } from "../../retrieval/realtime/realtime-feed-schema.js";
+import type { RealtimeDataJson } from "../data/raw/realtime-data-json.js";
 import {
   GtfsRealtimeDataParser,
   type GtfsRealtimeDataParsingError,
@@ -40,7 +40,7 @@ export class GtfsFeedParser {
   parse(
     corequeryDataSourceId: string,
     scheduleCsvs: GtfsFeedCsv,
-    realtimeJson: RealtimeFeedJson,
+    realtimeJson: RealtimeDataJson,
     lineGtfsIdMapping: LineGtfsIdMapping,
     stopGtfsIdMapping: StopGtfsIdMapping,
   ): GtfsFeed {
@@ -65,7 +65,7 @@ export class GtfsFeedParser {
 
   updateWithNewRealtimeData(
     gtfsFeed: GtfsFeed,
-    realtimeData: RealtimeFeedJson,
+    realtimeData: RealtimeDataJson,
     stopGtfsIdMapping: StopGtfsIdMapping,
   ): GtfsFeed {
     const updatedRealtime = this._realtimeParser.parse(

@@ -16,7 +16,6 @@ import {
 // handle. e.g. If PTV starts using GTFS-RT to publish added adhoc trips, we
 // wouldn't want that to crash our ability to mark scheduled trips as delayed.
 
-export type TripDescriptorJson = z.infer<typeof tripDescriptorSchema>;
 const tripDescriptorSchema = z
   .object({
     tripId: z.string().optional(),
@@ -27,7 +26,6 @@ const tripDescriptorSchema = z
   })
   .readonly();
 
-export type UpdatedTimeJson = z.infer<typeof updatedTimeJson>;
 const updatedTimeJson = z
   .object({
     delay: z.number().optional(),
@@ -35,7 +33,6 @@ const updatedTimeJson = z
   })
   .readonly();
 
-export type StopTimeUpdateJson = z.infer<typeof stopTimeUpdateSchema>;
 const stopTimeUpdateSchema = z
   .object({
     stopSequence: z.number().optional(),
@@ -46,7 +43,6 @@ const stopTimeUpdateSchema = z
   })
   .readonly();
 
-export type TripUpdateJson = z.infer<typeof tripUpdateSchema>;
 const tripUpdateSchema = z
   .object({
     trip: tripDescriptorSchema,
@@ -54,7 +50,6 @@ const tripUpdateSchema = z
   })
   .readonly();
 
-export type RealtimeFeedJson = z.infer<typeof realtimeFeedSchema>;
 export const realtimeFeedSchema = z
   .object({
     tripUpdates: tripUpdateSchema.array().default([]),

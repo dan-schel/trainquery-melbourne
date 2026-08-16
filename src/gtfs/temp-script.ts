@@ -22,7 +22,7 @@ import {
   GtfsRealtimeFeedSplitter,
   type GtfsRealtimeFeedSplittingError,
 } from "./corequery-gtfs/parser/realtime/gtfs-realtime-feed-splitter.js";
-import type { RealtimeFeedJson } from "./retrieval/realtime/realtime-feed-schema.js";
+import type { RealtimeDataJson } from "./corequery-gtfs/data/raw/realtime-data-json.js";
 import type { GtfsScheduleData } from "./corequery-gtfs/data/gtfs-schedule-data.js";
 import type { GtfsRealtimeData } from "./corequery-gtfs/data/gtfs-realtime-data.js";
 import { BonusLinesMapping } from "./corequery-gtfs/data/route/bonus-lines-mapping.js";
@@ -188,7 +188,7 @@ function parseSchedule(
 }
 
 function parseRealtime(
-  fullRealtimeData: RealtimeFeedJson,
+  fullRealtimeData: RealtimeDataJson,
   suburbanSchedule: GtfsScheduleData,
   regionalSchedule: GtfsScheduleData,
   config: ReturnType<typeof formalizeConfig>,

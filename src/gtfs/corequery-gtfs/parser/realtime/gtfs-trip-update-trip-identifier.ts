@@ -1,6 +1,6 @@
 import type { GtfsScheduleData } from "../../data/gtfs-schedule-data.js";
 import type { GtfsScheduledTrip } from "../../data/gtfs-scheduled-trip.js";
-import type { TripDescriptorJson } from "../../../retrieval/realtime/realtime-feed-schema.js";
+import type { TripDescriptorJson } from "../../data/raw/realtime-data-json.js";
 
 export class GtfsTripUpdateTripIdentifier {
   constructor(
