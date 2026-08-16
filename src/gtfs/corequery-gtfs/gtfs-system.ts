@@ -1,16 +1,16 @@
-import type { GtfsConfig } from "./corequery-gtfs/config/index.js";
-import type { GtfsFeed } from "./corequery-gtfs/data/gtfs-feed.js";
-import { LineGtfsIdMapping } from "./corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
-import { StopGtfsIdMapping } from "./corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
-import { BonusLinesMapping } from "./corequery-gtfs/data/route/bonus-lines-mapping.js";
-import { LineRoutesMapping } from "./corequery-gtfs/data/route/line-routes-mapping.js";
-import type { TimezoneData } from "./corequery-gtfs/departures/scheduled-departures-blocks-builder.js";
-import { GtfsFeedParser } from "./corequery-gtfs/parser/gtfs-feed-parser.js";
-import type { GtfsRealtimeDataParsingError } from "./corequery-gtfs/parser/realtime/gtfs-realtime-data-parser.js";
-import type { GtfsScheduleParsingError } from "./corequery-gtfs/parser/schedule/gtfs-schedule-parser.js";
-import type { RealtimeFeedJson } from "./retrieval/realtime/realtime-feed-schema.js";
-import type { GtfsFeedCsv } from "./retrieval/schedule/read-gtfs-csvs.js";
-import type { Subfeed } from "./subfeed.js";
+import type { GtfsConfig } from "./config/index.js";
+import type { GtfsFeed } from "./data/gtfs-feed.js";
+import { LineGtfsIdMapping } from "./data/ids/line-gtfs-id-mapping.js";
+import { StopGtfsIdMapping } from "./data/ids/stop-gtfs-id-mapping.js";
+import { BonusLinesMapping } from "./data/route/bonus-lines-mapping.js";
+import { LineRoutesMapping } from "./data/route/line-routes-mapping.js";
+import type { TimezoneData } from "./departures/scheduled-departures-blocks-builder.js";
+import { GtfsFeedParser } from "./parser/gtfs-feed-parser.js";
+import type { GtfsRealtimeDataParsingError } from "./parser/realtime/gtfs-realtime-data-parser.js";
+import type { GtfsScheduleParsingError } from "./parser/schedule/gtfs-schedule-parser.js";
+import type { RealtimeFeedJson } from "../retrieval/realtime/realtime-feed-schema.js";
+import type { GtfsFeedCsv } from "../retrieval/schedule/read-gtfs-csvs.js";
+import type { Subfeed } from "../subfeed.js";
 
 export class GtfsSystem {
   // TODO: The parsers are designed assuming that the same instance will be used
