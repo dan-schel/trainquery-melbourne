@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { GtfsScheduleParser } from "../../../../src/gtfs/parser/schedule/gtfs-schedule-parser.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
-import { BonusLinesMapping } from "../../../../src/gtfs/data/route/bonus-lines-mapping.js";
-import { LineRoutesMapping } from "../../../../src/gtfs/data/route/line-routes-mapping.js";
+import { BonusLinesMapping } from "../../../../src/gtfs/corequery-gtfs/data/route/bonus-lines-mapping.js";
+import { LineRoutesMapping } from "../../../../src/gtfs/corequery-gtfs/data/route/line-routes-mapping.js";
 import { LineGtfsIdMapping } from "../../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
 import { StopGtfsIdMapping } from "../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import { StopGtfsIdCollection } from "../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-collection.js";

@@ -1,7 +1,7 @@
 import type {
   BonusLinesMappingConfig,
   BonusLinesConfig,
-} from "../../corequery-gtfs/config/routes.js";
+} from "../../config/routes.js";
 
 export class BonusLinesMapping {
   constructor(private readonly _map: Map<number, BonusLines>) {}

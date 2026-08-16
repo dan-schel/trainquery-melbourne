@@ -4,7 +4,7 @@ import type {
   StopTimesCsvRow,
 } from "../../retrieval/schedule/csv-schemas.js";
 import type { StopGtfsIdMapping } from "../../corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
-import type { Route } from "../../data/route/route.js";
+import type { Route } from "../../corequery-gtfs/data/route/route.js";
 import {
   GtfsScheduledTripOriginatingMovement,
   GtfsScheduledTripPassingMovement,

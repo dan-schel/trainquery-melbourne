@@ -10,8 +10,8 @@ import {
 } from "./gtfs-trip-parser.js";
 import type { LineGtfsIdMapping } from "../../corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
 import type { StopGtfsIdMapping } from "../../corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
-import type { LineRoutesMapping } from "../../data/route/line-routes-mapping.js";
-import type { BonusLinesMapping } from "../../data/route/bonus-lines-mapping.js";
+import type { LineRoutesMapping } from "../../corequery-gtfs/data/route/line-routes-mapping.js";
+import type { BonusLinesMapping } from "../../corequery-gtfs/data/route/bonus-lines-mapping.js";
 
 // TODO: Rename GtfsScheduleDataParser.
 export class GtfsScheduleParser {

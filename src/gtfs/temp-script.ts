@@ -12,7 +12,7 @@ import {
   type GtfsScheduleParsingError,
 } from "./parser/schedule/gtfs-schedule-parser.js";
 import type { GtfsConfig } from "./corequery-gtfs/config/index.js";
-import { LineRoutesMapping } from "./data/route/line-routes-mapping.js";
+import { LineRoutesMapping } from "./corequery-gtfs/data/route/line-routes-mapping.js";
 import { fetchGtfsRealtime } from "./retrieval/realtime/fetch-gtfs-realtime.js";
 import {
   GtfsRealtimeDataParser,
@@ -25,7 +25,7 @@ import {
 import type { RealtimeFeedJson } from "./retrieval/realtime/realtime-feed-schema.js";
 import type { GtfsScheduleData } from "./data/gtfs-schedule-data.js";
 import type { GtfsRealtimeData } from "./data/gtfs-realtime-data.js";
-import { BonusLinesMapping } from "./data/route/bonus-lines-mapping.js";
+import { BonusLinesMapping } from "./corequery-gtfs/data/route/bonus-lines-mapping.js";
 import { assertNever, itsOk, listifyAnd } from "@dan-schel/js-utils";
 import { GtfsScheduledMovementsIndex } from "./departures/gtfs-scheduled-movements-index.js";
 import * as stop from "../config/corequery/stops/stop-ids.js";

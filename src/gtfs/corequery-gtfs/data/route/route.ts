@@ -1,6 +1,6 @@
 import type { Color } from "corequery";
 import { RouteStop } from "./route-stop.js";
-import type { RouteConfig } from "../../corequery-gtfs/config/routes.js";
+import type { RouteConfig } from "../../config/routes.js";
 
 type RouteFields = {
   readonly color: Color | null;

@@ -21,8 +21,8 @@ import {
   type GtfsTransferConnectionError,
   GtfsTransferConnector,
 } from "./gtfs-transfer-connector.js";
-import type { LineRoutesMapping } from "../../data/route/line-routes-mapping.js";
-import type { BonusLinesMapping } from "../../data/route/bonus-lines-mapping.js";
+import type { LineRoutesMapping } from "../../corequery-gtfs/data/route/line-routes-mapping.js";
+import type { BonusLinesMapping } from "../../corequery-gtfs/data/route/bonus-lines-mapping.js";
 
 export class GtfsTripParser {
   private readonly _stopTimeNormaliser: GtfsStopTimeNormaliser;

@@ -1,4 +1,4 @@
-import type { LineRoutesMappingConfig } from "../../corequery-gtfs/config/routes.js";
+import type { LineRoutesMappingConfig } from "../../config/routes.js";
 import { Route } from "./route.js";
 
 export class LineRoutesMapping {

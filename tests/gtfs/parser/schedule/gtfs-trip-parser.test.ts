@@ -9,9 +9,9 @@ import {
 } from "../../../../src/gtfs/parser/schedule/gtfs-trip-parser.js";
 import { MultipleStopSequencesError } from "../../../../src/gtfs/parser/schedule/gtfs-stop-time-normaliser.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
-import { BonusLinesMapping } from "../../../../src/gtfs/data/route/bonus-lines-mapping.js";
+import { BonusLinesMapping } from "../../../../src/gtfs/corequery-gtfs/data/route/bonus-lines-mapping.js";
 import { GtfsCalendar } from "../../../../src/gtfs/data/gtfs-calendar.js";
-import { LineRoutesMapping } from "../../../../src/gtfs/data/route/line-routes-mapping.js";
+import { LineRoutesMapping } from "../../../../src/gtfs/corequery-gtfs/data/route/line-routes-mapping.js";
 import { LineGtfsIdMapping } from "../../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
 import { LineGtfsIdCollection } from "../../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-collection.js";
 import { StopGtfsIdMapping } from "../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";

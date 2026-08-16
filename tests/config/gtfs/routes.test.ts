@@ -11,7 +11,7 @@ import {
 import { getStopName } from "../../../src/utils/get-stop-name.js";
 import * as line from "../../../src/config/corequery/lines/line-ids.js";
 import * as stop from "../../../src/config/corequery/stops/stop-ids.js";
-import { Route } from "../../../src/gtfs/data/route/route.js";
+import { Route } from "../../../src/gtfs/corequery-gtfs/data/route/route.js";
 
 const linesExemptedFromHavingRoutes: number[] = [];
 

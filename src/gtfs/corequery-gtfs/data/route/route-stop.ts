@@ -1,4 +1,4 @@
-import type { RouteStopConfig } from "../../corequery-gtfs/config/routes.js";
+import type { RouteStopConfig } from "../../config/routes.js";
 
 export type RouteStopFields = {
   readonly stopId: number;
