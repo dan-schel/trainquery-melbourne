@@ -3,7 +3,7 @@ import type {
   CalendarCsvRow,
   CalendarDatesCsv,
   CalendarDatesCsvRow,
-} from "../../../retrieval/schedule/csv-schemas.js";
+} from "../../data/raw/schedule-csvs.js";
 import { GtfsCalendar } from "../../data/gtfs-calendar.js";
 import { PlainDateRange } from "../../data/plain-date-range.js";
 

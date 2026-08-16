@@ -13,7 +13,7 @@ import {
   transfersCsvSchema,
   type TripsCsv,
   tripsCsvSchema,
-} from "./csv-schemas.js";
+} from "../../corequery-gtfs/data/raw/schedule-csvs.js";
 import path from "path";
 import { type GtfsDirectories } from "./with-gtfs-csvs.js";
 import type z from "zod";

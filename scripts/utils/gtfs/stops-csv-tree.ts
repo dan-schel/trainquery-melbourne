@@ -2,7 +2,7 @@ import { isPresent, unique } from "@dan-schel/js-utils";
 import type {
   StopsCsv,
   StopsCsvRow,
-} from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+} from "../../../src/gtfs/corequery-gtfs/data/raw/schedule-csvs.js";
 import type { Subfeed } from "../../../src/gtfs/subfeed.js";
 import type { GtfsCsvData } from "../../../src/gtfs/retrieval/schedule/read-gtfs-csvs.js";
 

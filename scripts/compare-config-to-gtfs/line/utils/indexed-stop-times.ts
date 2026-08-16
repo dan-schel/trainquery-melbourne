@@ -1,7 +1,7 @@
 import type {
   StopTimesCsv,
   StopTimesCsvRow,
-} from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+} from "../../../../src/gtfs/corequery-gtfs/data/raw/schedule-csvs.js";
 
 export class IndexedStopTimes {
   constructor(private _stopTimesByTripId: Map<string, StopTimesCsv>) {}

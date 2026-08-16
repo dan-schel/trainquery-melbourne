@@ -1,4 +1,4 @@
-import type { TripsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+import type { TripsCsv } from "../../../src/gtfs/corequery-gtfs/data/raw/schedule-csvs.js";
 import type { IndexedStopTimes } from "./utils/indexed-stop-times.js";
 import type { IssueCollector } from "../issue-collector.js";
 import type { StopGtfsIdMapping } from "../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";

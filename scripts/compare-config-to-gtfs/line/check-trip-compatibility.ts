@@ -1,5 +1,5 @@
 import type { LineConfig } from "corequery";
-import type { TripsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+import type { TripsCsv } from "../../../src/gtfs/corequery-gtfs/data/raw/schedule-csvs.js";
 import type { IndexedStopTimes } from "./utils/indexed-stop-times.js";
 import type { IssueCollector } from "../issue-collector.js";
 import type { LineGtfsIdCollection } from "../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-collection.js";

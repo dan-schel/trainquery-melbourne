@@ -5,7 +5,7 @@ import {
   gtfsDateSchema,
   gtfsStopTimeSchema,
   intStringSchema,
-} from "../../utils/zod.js";
+} from "../../../utils/zod.js";
 
 export type StopsCsvRow = z.infer<typeof stopsCsvSchema>;
 export type StopsCsv = readonly StopsCsvRow[];

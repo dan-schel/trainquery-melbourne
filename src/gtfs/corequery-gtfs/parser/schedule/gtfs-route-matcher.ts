@@ -2,7 +2,7 @@ import type { Color } from "corequery";
 import type {
   StopTimesCsv,
   StopTimesCsvRow,
-} from "../../../retrieval/schedule/csv-schemas.js";
+} from "../../data/raw/schedule-csvs.js";
 import type { StopGtfsIdMapping } from "../../data/ids/stop-gtfs-id-mapping.js";
 import type { Route } from "../../data/route/route.js";
 import {

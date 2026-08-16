@@ -2,7 +2,7 @@ import type { StopGtfsIdMapping } from "../../../../src/gtfs/corequery-gtfs/data
 import type {
   StopTimesCsv,
   TripsCsvRow,
-} from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+} from "../../../../src/gtfs/corequery-gtfs/data/raw/schedule-csvs.js";
 import { StoppingPattern } from "./stopping-pattern.js";
 
 export class Trip {

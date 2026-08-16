@@ -7,7 +7,7 @@ import type {
   RoutesCsvRow,
   StopTimesCsv,
   TripsCsv,
-} from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+} from "../../../src/gtfs/corequery-gtfs/data/raw/schedule-csvs.js";
 import type { LineLintOptions } from "../comparison-options.js";
 import { compareLineItems } from "./compare-items.js";
 import type { LineGtfsIdCollection } from "../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-collection.js";
