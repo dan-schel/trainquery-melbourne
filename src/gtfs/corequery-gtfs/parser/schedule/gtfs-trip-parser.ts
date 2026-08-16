@@ -1,14 +1,14 @@
-import type { LineGtfsIdMapping } from "../../corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
-import type { StopGtfsIdMapping } from "../../corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
+import type { LineGtfsIdMapping } from "../../data/ids/line-gtfs-id-mapping.js";
+import type { StopGtfsIdMapping } from "../../data/ids/stop-gtfs-id-mapping.js";
 import type {
   StopTimesCsv,
   StopTimesCsvRow,
   TransfersCsv,
   TripsCsv,
   TripsCsvRow,
-} from "../../retrieval/schedule/csv-schemas.js";
-import type { GtfsCalendar } from "../../corequery-gtfs/data/gtfs-calendar.js";
-import { GtfsScheduledTrip } from "../../corequery-gtfs/data/gtfs-scheduled-trip.js";
+} from "../../../retrieval/schedule/csv-schemas.js";
+import type { GtfsCalendar } from "../../data/gtfs-calendar.js";
+import { GtfsScheduledTrip } from "../../data/gtfs-scheduled-trip.js";
 import {
   GtfsStopTimeNormaliser,
   type GtfsStopTimeNormalisationError,
@@ -21,8 +21,8 @@ import {
   type GtfsTransferConnectionError,
   GtfsTransferConnector,
 } from "./gtfs-transfer-connector.js";
-import type { LineRoutesMapping } from "../../corequery-gtfs/data/route/line-routes-mapping.js";
-import type { BonusLinesMapping } from "../../corequery-gtfs/data/route/bonus-lines-mapping.js";
+import type { LineRoutesMapping } from "../../data/route/line-routes-mapping.js";
+import type { BonusLinesMapping } from "../../data/route/bonus-lines-mapping.js";
 
 export class GtfsTripParser {
   private readonly _stopTimeNormaliser: GtfsStopTimeNormaliser;

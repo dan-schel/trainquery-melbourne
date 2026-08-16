@@ -6,8 +6,8 @@ import {
   TripReferencesNonExistentCalendarError,
   TripReferencesUnmappedRouteIdError,
   type GtfsTripParsingError,
-} from "../../../../src/gtfs/parser/schedule/gtfs-trip-parser.js";
-import { MultipleStopSequencesError } from "../../../../src/gtfs/parser/schedule/gtfs-stop-time-normaliser.js";
+} from "../../../../src/gtfs/corequery-gtfs/parser/schedule/gtfs-trip-parser.js";
+import { MultipleStopSequencesError } from "../../../../src/gtfs/corequery-gtfs/parser/schedule/gtfs-stop-time-normaliser.js";
 import { GtfsStopTime } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
 import { BonusLinesMapping } from "../../../../src/gtfs/corequery-gtfs/data/route/bonus-lines-mapping.js";
 import { GtfsCalendar } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-calendar.js";

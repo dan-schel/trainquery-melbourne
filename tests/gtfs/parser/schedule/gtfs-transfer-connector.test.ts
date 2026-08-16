@@ -6,13 +6,13 @@ import {
   TransferIsNotSameStopAndPositionError,
   TransferRequiresTimeTravelError,
   type GtfsTransferConnectionError,
-} from "../../../../src/gtfs/parser/schedule/gtfs-transfer-connector.js";
+} from "../../../../src/gtfs/corequery-gtfs/parser/schedule/gtfs-transfer-connector.js";
 import {
   TransferIsNotFromTerminusError,
   TransferIsNotToOriginError,
   TransferReferencesNonExistentTrip,
   TransferReferencesTripAlreadyConnectedError,
-} from "../../../../src/gtfs/parser/schedule/gtfs-transfer-connector.js";
+} from "../../../../src/gtfs/corequery-gtfs/parser/schedule/gtfs-transfer-connector.js";
 import { itsOk } from "@dan-schel/js-utils";
 import { GtfsScheduledTrip } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
 import { GtfsCalendar } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-calendar.js";

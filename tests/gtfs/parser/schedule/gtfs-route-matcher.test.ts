@@ -6,7 +6,7 @@ import {
   UnexpectedDropOffTypeError,
   UnexpectedPickupTypeError,
   type GtfsRouteMatchingError,
-} from "../../../../src/gtfs/parser/schedule/gtfs-route-matcher.js";
+} from "../../../../src/gtfs/corequery-gtfs/parser/schedule/gtfs-route-matcher.js";
 import { Route } from "../../../../src/gtfs/corequery-gtfs/data/route/route.js";
 import { GtfsStopTime } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
 import type { StopTimesCsvRow } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";

@@ -2,9 +2,9 @@ import type { Color } from "corequery";
 import type {
   StopTimesCsv,
   StopTimesCsvRow,
-} from "../../retrieval/schedule/csv-schemas.js";
-import type { StopGtfsIdMapping } from "../../corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
-import type { Route } from "../../corequery-gtfs/data/route/route.js";
+} from "../../../retrieval/schedule/csv-schemas.js";
+import type { StopGtfsIdMapping } from "../../data/ids/stop-gtfs-id-mapping.js";
+import type { Route } from "../../data/route/route.js";
 import {
   GtfsScheduledTripOriginatingMovement,
   GtfsScheduledTripPassingMovement,
@@ -12,7 +12,7 @@ import {
   GtfsScheduledTripTerminatingMovement,
   type GtfsScheduledTripMovement,
   type GtfsScheduledTripServicingMovement,
-} from "../../corequery-gtfs/data/gtfs-scheduled-trip-movements.js";
+} from "../../data/gtfs-scheduled-trip-movements.js";
 import { itsOk } from "@dan-schel/js-utils";
 
 const STOP_TIME_PICKUP_TYPE_REGULAR = 0;

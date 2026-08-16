@@ -10,7 +10,7 @@ import { withGtfsCsvs } from "./retrieval/schedule/with-gtfs-csvs.js";
 import {
   GtfsScheduleParser,
   type GtfsScheduleParsingError,
-} from "./parser/schedule/gtfs-schedule-parser.js";
+} from "./corequery-gtfs/parser/schedule/gtfs-schedule-parser.js";
 import type { GtfsConfig } from "./corequery-gtfs/config/index.js";
 import { LineRoutesMapping } from "./corequery-gtfs/data/route/line-routes-mapping.js";
 import { fetchGtfsRealtime } from "./retrieval/realtime/fetch-gtfs-realtime.js";
