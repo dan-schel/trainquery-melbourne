@@ -3,8 +3,8 @@ import {
   DeparturesIterator,
   DeparturesIteratorResult,
   type DeparturesSearchDirection,
-} from "../../../src/gtfs/departures/departures-iterator.js";
-import { MultifeedDeparturesIterator } from "../../../src/gtfs/departures/multifeed-departures-iterator.js";
+} from "../../../src/gtfs/corequery-gtfs/departures/departures-iterator.js";
+import { MultifeedDeparturesIterator } from "../../../src/gtfs/corequery-gtfs/departures/multifeed-departures-iterator.js";
 import { GtfsScheduledTrip } from "../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
 import { GtfsStopTime } from "../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
 

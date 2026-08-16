@@ -1,6 +1,6 @@
 import { itsOk } from "@dan-schel/js-utils";
 import { DeparturesBlock } from "./departures-block.js";
-import { GtfsStopTime } from "../corequery-gtfs/data/gtfs-stop-time.js";
+import { GtfsStopTime } from "../data/gtfs-stop-time.js";
 import type { GtfsScheduledMovementsIndexEntry } from "./gtfs-scheduled-movements-index.js";
 
 export class ScheduledDeparturesBlock extends DeparturesBlock {

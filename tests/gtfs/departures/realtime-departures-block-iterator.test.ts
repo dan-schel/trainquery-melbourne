@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { RealtimeDeparturesBlockIterator } from "../../../src/gtfs/departures/realtime-departures-block-iterator.js";
+import { RealtimeDeparturesBlockIterator } from "../../../src/gtfs/corequery-gtfs/departures/realtime-departures-block-iterator.js";
 import { GtfsRealtimeData } from "../../../src/gtfs/corequery-gtfs/data/gtfs-realtime-data.js";
 import { GtfsUpdatedTrip } from "../../../src/gtfs/corequery-gtfs/data/gtfs-updated-trip.js";
 import { GtfsScheduledTrip } from "../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";

@@ -1,11 +1,11 @@
 import { itsOk } from "@dan-schel/js-utils";
-import type { BoundedInstantRange } from "../corequery-gtfs/data/bounded-instant-range.js";
+import type { BoundedInstantRange } from "../data/bounded-instant-range.js";
 import type {
   GtfsScheduledMovementsIndex,
   GtfsScheduledMovementsIndexEntry,
 } from "./gtfs-scheduled-movements-index.js";
 import { ScheduledDeparturesBlock } from "./scheduled-departures-block.js";
-import type { PlainDateRange } from "../corequery-gtfs/data/plain-date-range.js";
+import type { PlainDateRange } from "../data/plain-date-range.js";
 
 export type TimezoneData = {
   readonly timezone: string;

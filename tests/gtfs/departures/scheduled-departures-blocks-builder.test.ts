@@ -4,8 +4,8 @@ import { itsOk } from "@dan-schel/js-utils";
 import { GtfsScheduledTrip } from "../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
 import { GtfsStopTime } from "../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
 import { PlainDateRange } from "../../../src/gtfs/corequery-gtfs/data/plain-date-range.js";
-import type { GtfsScheduledMovementsIndexEntry } from "../../../src/gtfs/departures/gtfs-scheduled-movements-index.js";
-import { ScheduledDeparturesBlocksBuilder } from "../../../src/gtfs/departures/scheduled-departures-blocks-builder.js";
+import type { GtfsScheduledMovementsIndexEntry } from "../../../src/gtfs/corequery-gtfs/departures/gtfs-scheduled-movements-index.js";
+import { ScheduledDeparturesBlocksBuilder } from "../../../src/gtfs/corequery-gtfs/departures/scheduled-departures-blocks-builder.js";
 
 const MELBOURNE_TIMEZONE_DATA = {
   timezone: "Australia/Melbourne",

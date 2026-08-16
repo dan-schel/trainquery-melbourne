@@ -4,7 +4,7 @@ import { LineGtfsIdMapping } from "./corequery-gtfs/data/ids/line-gtfs-id-mappin
 import { StopGtfsIdMapping } from "./corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import { BonusLinesMapping } from "./corequery-gtfs/data/route/bonus-lines-mapping.js";
 import { LineRoutesMapping } from "./corequery-gtfs/data/route/line-routes-mapping.js";
-import type { TimezoneData } from "./departures/scheduled-departures-blocks-builder.js";
+import type { TimezoneData } from "./corequery-gtfs/departures/scheduled-departures-blocks-builder.js";
 import { GtfsFeedParser } from "./parser/gtfs-feed-parser.js";
 import type { GtfsRealtimeDataParsingError } from "./parser/realtime/gtfs-realtime-data-parser.js";
 import type { GtfsScheduleParsingError } from "./parser/schedule/gtfs-schedule-parser.js";

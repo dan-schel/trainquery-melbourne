@@ -3,8 +3,8 @@ import {
   DeparturesIterator,
   DeparturesIteratorResult,
   type DeparturesSearchDirection,
-} from "../../../src/gtfs/departures/departures-iterator.js";
-import { ZipperDeparturesIterator } from "../../../src/gtfs/departures/zipper-departures-iterator.js";
+} from "../../../src/gtfs/corequery-gtfs/departures/departures-iterator.js";
+import { ZipperDeparturesIterator } from "../../../src/gtfs/corequery-gtfs/departures/zipper-departures-iterator.js";
 import { GtfsStopTime } from "../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
 import { GtfsScheduledTrip } from "../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
 

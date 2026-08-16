@@ -5,12 +5,12 @@ import { GtfsStopTime } from "../../../src/gtfs/corequery-gtfs/data/gtfs-stop-ti
 import {
   ScheduledDeparturesBlocksBuilder,
   type TimezoneData,
-} from "../../../src/gtfs/departures/scheduled-departures-blocks-builder.js";
-import { GtfsScheduledMovementsIndex } from "../../../src/gtfs/departures/gtfs-scheduled-movements-index.js";
+} from "../../../src/gtfs/corequery-gtfs/departures/scheduled-departures-blocks-builder.js";
+import { GtfsScheduledMovementsIndex } from "../../../src/gtfs/corequery-gtfs/departures/gtfs-scheduled-movements-index.js";
 import { GtfsScheduleData } from "../../../src/gtfs/corequery-gtfs/data/gtfs-schedule-data.js";
 import { itsOk } from "@dan-schel/js-utils";
 import { GtfsRealtimeData } from "../../../src/gtfs/corequery-gtfs/data/gtfs-realtime-data.js";
-import { ScheduledDeparturesIterator } from "../../../src/gtfs/departures/scheduled-departures-iterator.js";
+import { ScheduledDeparturesIterator } from "../../../src/gtfs/corequery-gtfs/departures/scheduled-departures-iterator.js";
 import { PlainDateRange } from "../../../src/gtfs/corequery-gtfs/data/plain-date-range.js";
 
 export const MELBOURNE_TIMEZONE_DATA: TimezoneData = {

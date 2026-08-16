@@ -4,10 +4,10 @@ import {
   type DeparturesIteratorResult,
   type DeparturesSearchDirection,
 } from "./departures-iterator.js";
-import { BoundedInstantRange } from "../corequery-gtfs/data/bounded-instant-range.js";
+import { BoundedInstantRange } from "../data/bounded-instant-range.js";
 import { ScheduledDeparturesBlockIterator } from "./scheduled-departures-block-iterator.js";
 import type { GtfsScheduledMovementsIndex } from "./gtfs-scheduled-movements-index.js";
-import type { GtfsRealtimeData } from "../corequery-gtfs/data/gtfs-realtime-data.js";
+import type { GtfsRealtimeData } from "../data/gtfs-realtime-data.js";
 import {
   ScheduledDeparturesBlocksBuilder,
   type TimezoneData,

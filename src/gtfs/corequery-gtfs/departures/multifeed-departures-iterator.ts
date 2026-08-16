@@ -3,9 +3,9 @@ import {
   DeparturesIteratorResult,
   type DeparturesSearchDirection,
 } from "./departures-iterator.js";
-import type { GtfsScheduledTrip } from "../corequery-gtfs/data/gtfs-scheduled-trip.js";
-import type { GtfsUpdatedTrip } from "../corequery-gtfs/data/gtfs-updated-trip.js";
-import type { GtfsTripServicingMovement } from "../corequery-gtfs/data/utils.js";
+import type { GtfsScheduledTrip } from "../data/gtfs-scheduled-trip.js";
+import type { GtfsUpdatedTrip } from "../data/gtfs-updated-trip.js";
+import type { GtfsTripServicingMovement } from "../data/utils.js";
 import { ZipperDeparturesIterator } from "./zipper-departures-iterator.js";
 
 export class MultifeedDeparturesIteratorResult extends DeparturesIteratorResult {

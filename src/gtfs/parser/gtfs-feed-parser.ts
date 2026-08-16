@@ -3,7 +3,7 @@ import type { LineGtfsIdMapping } from "../corequery-gtfs/data/ids/line-gtfs-id-
 import type { StopGtfsIdMapping } from "../corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import type { BonusLinesMapping } from "../corequery-gtfs/data/route/bonus-lines-mapping.js";
 import type { LineRoutesMapping } from "../corequery-gtfs/data/route/line-routes-mapping.js";
-import type { TimezoneData } from "../departures/scheduled-departures-blocks-builder.js";
+import type { TimezoneData } from "../corequery-gtfs/departures/scheduled-departures-blocks-builder.js";
 import type { RealtimeFeedJson } from "../retrieval/realtime/realtime-feed-schema.js";
 import type { GtfsFeedCsv } from "../retrieval/schedule/read-gtfs-csvs.js";
 import {

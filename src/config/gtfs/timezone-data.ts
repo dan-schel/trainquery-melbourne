@@ -1,4 +1,4 @@
-import type { TimezoneData } from "../../gtfs/departures/scheduled-departures-blocks-builder.js";
+import type { TimezoneData } from "../../gtfs/corequery-gtfs/departures/scheduled-departures-blocks-builder.js";
 
 export const timezoneData: TimezoneData = {
   timezone: "Australia/Melbourne",
