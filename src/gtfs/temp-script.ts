@@ -1,7 +1,7 @@
 import type { Corequery } from "corequery";
 import { env } from "../env.js";
-import { LineGtfsIdMapping } from "./data/ids/line-gtfs-id-mapping.js";
-import { StopGtfsIdMapping } from "./data/ids/stop-gtfs-id-mapping.js";
+import { LineGtfsIdMapping } from "./corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
+import { StopGtfsIdMapping } from "./corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import {
   readGtfsCsvs,
   type GtfsCsvData,

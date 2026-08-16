@@ -3,10 +3,10 @@ import { compareStopNames } from "./compare-names.js";
 import { compareStopLocations } from "./compare-locations.js";
 import { compareStopGtfsIds } from "./compare-gtfs-ids.js";
 import type { StopConfig } from "corequery";
-import type { StopGtfsIdMapping } from "../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
+import type { StopGtfsIdMapping } from "../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import { compareStopItems } from "./compare-items.js";
 import type { StopLintOptions } from "../comparison-options.js";
-import type { StopGtfsIdCollection } from "../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
+import type { StopGtfsIdCollection } from "../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-collection.js";
 import type { StopsCsvTreeNode } from "../../utils/gtfs/stops-csv-tree.js";
 import type { StopsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 

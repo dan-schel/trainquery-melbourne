@@ -1,4 +1,4 @@
-import type { StopGtfsIdMapping } from "../../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
+import type { StopGtfsIdMapping } from "../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import type {
   StopTimesCsv,
   TripsCsvRow,

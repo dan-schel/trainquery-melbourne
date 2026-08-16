@@ -4,7 +4,7 @@ import { lines } from "../../../src/config/corequery/lines/index.js";
 import { lineGtfsIds } from "../../../src/config/gtfs/line-gtfs-ids.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import { getSubfeedsWithLine } from "../../../src/gtfs/utils/get-subfeeds-with.js";
-import { LineGtfsIdMapping } from "../../../src/gtfs/data/ids/line-gtfs-id-mapping.js";
+import { LineGtfsIdMapping } from "../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
 import { itsOk } from "@dan-schel/js-utils";
 
 const linesExemptedFromHavingGtfsId: number[] = [];

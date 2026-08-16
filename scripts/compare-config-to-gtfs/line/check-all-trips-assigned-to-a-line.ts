@@ -1,8 +1,8 @@
 import type { TripsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 import type { IndexedStopTimes } from "./utils/indexed-stop-times.js";
 import type { IssueCollector } from "../issue-collector.js";
-import type { StopGtfsIdMapping } from "../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
-import type { LineGtfsIdMapping } from "../../../src/gtfs/data/ids/line-gtfs-id-mapping.js";
+import type { StopGtfsIdMapping } from "../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
+import type { LineGtfsIdMapping } from "../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
 import { Trip } from "./utils/trip.js";
 import { UniqueStoppingPatternTracker } from "./utils/unique-stopping-pattern-tracker.js";
 

@@ -10,7 +10,7 @@ import {
   GtfsTripUpdateTripIdentifier,
   type GtfsTripUpdateTripIdentificationError,
 } from "./gtfs-trip-update-trip-identifier.js";
-import type { StopGtfsIdMapping } from "../../data/ids/stop-gtfs-id-mapping.js";
+import type { StopGtfsIdMapping } from "../../corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import type { GtfsStopTime } from "../../data/gtfs-stop-time.js";
 import { itsOk } from "@dan-schel/js-utils";
 import type { GtfsUpdatedTripMovement } from "../../data/gtfs-updated-trip-movements.js";

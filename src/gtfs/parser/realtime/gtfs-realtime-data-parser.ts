@@ -1,7 +1,7 @@
 import { GtfsRealtimeData } from "../../data/gtfs-realtime-data.js";
 import type { GtfsScheduleData } from "../../data/gtfs-schedule-data.js";
 import type { GtfsUpdatedTrip } from "../../data/gtfs-updated-trip.js";
-import type { StopGtfsIdMapping } from "../../data/ids/stop-gtfs-id-mapping.js";
+import type { StopGtfsIdMapping } from "../../corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import type { RealtimeFeedJson } from "../../retrieval/realtime/realtime-feed-schema.js";
 import {
   GtfsTripUpdateParser,

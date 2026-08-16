@@ -10,8 +10,8 @@ import {
 import { Route } from "../../../../src/gtfs/data/route/route.js";
 import { GtfsStopTime } from "../../../../src/gtfs/data/gtfs-stop-time.js";
 import type { StopTimesCsvRow } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
-import { StopGtfsIdCollection } from "../../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
-import { StopGtfsIdMapping } from "../../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
+import { StopGtfsIdCollection } from "../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-collection.js";
+import { StopGtfsIdMapping } from "../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import { RouteStop } from "../../../../src/gtfs/data/route/route-stop.js";
 
 describe("GtfsRouteMatcher", () => {

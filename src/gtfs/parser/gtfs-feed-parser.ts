@@ -1,6 +1,6 @@
 import { GtfsFeed } from "../data/gtfs-feed.js";
-import type { LineGtfsIdMapping } from "../data/ids/line-gtfs-id-mapping.js";
-import type { StopGtfsIdMapping } from "../data/ids/stop-gtfs-id-mapping.js";
+import type { LineGtfsIdMapping } from "../corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
+import type { StopGtfsIdMapping } from "../corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import type { BonusLinesMapping } from "../data/route/bonus-lines-mapping.js";
 import type { LineRoutesMapping } from "../data/route/line-routes-mapping.js";
 import type { TimezoneData } from "../departures/scheduled-departures-blocks-builder.js";

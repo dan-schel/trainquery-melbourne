@@ -1,7 +1,7 @@
 import type { GtfsConfig } from "./corequery-gtfs/config/index.js";
 import type { GtfsFeed } from "./data/gtfs-feed.js";
-import { LineGtfsIdMapping } from "./data/ids/line-gtfs-id-mapping.js";
-import { StopGtfsIdMapping } from "./data/ids/stop-gtfs-id-mapping.js";
+import { LineGtfsIdMapping } from "./corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
+import { StopGtfsIdMapping } from "./corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import { BonusLinesMapping } from "./data/route/bonus-lines-mapping.js";
 import { LineRoutesMapping } from "./data/route/line-routes-mapping.js";
 import type { TimezoneData } from "./departures/scheduled-departures-blocks-builder.js";

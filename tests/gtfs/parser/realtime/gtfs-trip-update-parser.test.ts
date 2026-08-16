@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { StopGtfsIdCollection } from "../../../../src/gtfs/data/ids/stop-gtfs-id-collection.js";
-import { StopGtfsIdMapping } from "../../../../src/gtfs/data/ids/stop-gtfs-id-mapping.js";
+import { StopGtfsIdCollection } from "../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-collection.js";
+import { StopGtfsIdMapping } from "../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import {
   GtfsTripUpdateParser,
   MultipleStopTimeUpdateEntriesForSameMovementIndexError,

@@ -1,4 +1,4 @@
-import type { StopGtfsIdMetadata } from "./ids/stop-gtfs-id-metadata.js";
+import type { StopGtfsIdMetadata } from "../corequery-gtfs/data/ids/stop-gtfs-id-metadata.js";
 
 export type GtfsUpdatedTripMovement =
   | GtfsUpdatedTripOriginatingMovement

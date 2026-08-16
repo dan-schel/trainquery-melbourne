@@ -1,4 +1,4 @@
-import type { LineGtfsIdMapping } from "../../data/ids/line-gtfs-id-mapping.js";
+import type { LineGtfsIdMapping } from "../../corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
 import type {
   RealtimeFeedJson,
   TripDescriptorJson,
