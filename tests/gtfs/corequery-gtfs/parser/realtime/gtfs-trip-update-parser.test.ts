@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { StopGtfsIdCollection } from "../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-collection.js";
-import { StopGtfsIdMapping } from "../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
+import { StopGtfsIdCollection } from "../../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-collection.js";
+import { StopGtfsIdMapping } from "../../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import {
   GtfsTripUpdateParser,
   MultipleStopTimeUpdateEntriesForSameMovementIndexError,
@@ -16,10 +16,10 @@ import {
   UnsupportedTripUpdateScheduleRelationshipError,
   type GtfsTripUpdateParsingError,
   StopTimeUpdateEntryChangesPlatformError,
-} from "../../../../src/gtfs/corequery-gtfs/parser/realtime/gtfs-trip-update-parser.js";
-import { GtfsStopTime } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
-import { GtfsScheduledTrip } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
-import { GtfsScheduleData } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-schedule-data.js";
+} from "../../../../../src/gtfs/corequery-gtfs/parser/realtime/gtfs-trip-update-parser.js";
+import { GtfsStopTime } from "../../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
+import { GtfsScheduledTrip } from "../../../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
+import { GtfsScheduleData } from "../../../../../src/gtfs/corequery-gtfs/data/gtfs-schedule-data.js";
 
 const TIMEZONE = "Australia/Melbourne";
 

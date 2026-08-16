@@ -6,8 +6,8 @@ import {
   MultipleExceptionsForSameDateError,
   UnexpectedCalendarDateExceptionTypeError,
   type GtfsCalendarParsingError,
-} from "../../../../src/gtfs/corequery-gtfs/parser/schedule/gtfs-calendar-parser.js";
-import type { CalendarCsvRow } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+} from "../../../../../src/gtfs/corequery-gtfs/parser/schedule/gtfs-calendar-parser.js";
+import type { CalendarCsvRow } from "../../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 describe("GtfsCalendarParser", () => {
   const PLAIN_DATE_2026_06_17 = Temporal.PlainDate.from("2026-06-17");

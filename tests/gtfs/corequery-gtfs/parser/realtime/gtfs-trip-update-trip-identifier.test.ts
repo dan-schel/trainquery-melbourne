@@ -6,12 +6,12 @@ import {
   TripDescriptorReferencesNonExistentTripIdError,
   TripDoesNotOccurOnStartDateError,
   type GtfsTripUpdateTripIdentificationError,
-} from "../../../../src/gtfs/corequery-gtfs/parser/realtime/gtfs-trip-update-trip-identifier.js";
-import { GtfsCalendar } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-calendar.js";
-import { GtfsScheduleData } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-schedule-data.js";
-import { GtfsStopTime } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
-import { PlainDateRange } from "../../../../src/gtfs/corequery-gtfs/data/plain-date-range.js";
-import { GtfsScheduledTrip } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
+} from "../../../../../src/gtfs/corequery-gtfs/parser/realtime/gtfs-trip-update-trip-identifier.js";
+import { GtfsCalendar } from "../../../../../src/gtfs/corequery-gtfs/data/gtfs-calendar.js";
+import { GtfsScheduleData } from "../../../../../src/gtfs/corequery-gtfs/data/gtfs-schedule-data.js";
+import { GtfsStopTime } from "../../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
+import { PlainDateRange } from "../../../../../src/gtfs/corequery-gtfs/data/plain-date-range.js";
+import { GtfsScheduledTrip } from "../../../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
 
 const TRIP = GtfsScheduledTrip.simple({
   gtfsTripId: "trip-1",

@@ -3,13 +3,13 @@ import {
   DeparturesIterator,
   DeparturesIteratorResult,
   type DeparturesSearchDirection,
-} from "../../../src/gtfs/corequery-gtfs/departures/departures-iterator.js";
-import { MultifeedDeparturesIterator } from "../../../src/gtfs/corequery-gtfs/departures/multifeed-departures-iterator.js";
-import { GtfsScheduledTrip } from "../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
-import { GtfsStopTime } from "../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
+} from "../../../../src/gtfs/corequery-gtfs/departures/departures-iterator.js";
+import { ZipperDeparturesIterator } from "../../../../src/gtfs/corequery-gtfs/departures/zipper-departures-iterator.js";
+import { GtfsStopTime } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
+import { GtfsScheduledTrip } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
 
-describe("MultifeedDeparturesIterator", () => {
-  it("returns departures in order of instant, and tags them with their feed ID", () => {
+describe("ZipperDeparturesIterator", () => {
+  it("returns departures in order of instant", () => {
     const iterator1 = new DummyIterator([
       departure({ instant: "2026-01-01T00:00:00Z", tripId: "A" }),
       departure({ instant: "2026-01-01T00:04:00Z", tripId: "B" }),
@@ -18,61 +18,51 @@ describe("MultifeedDeparturesIterator", () => {
       departure({ instant: "2026-01-01T00:01:00Z", tripId: "C" }),
       departure({ instant: "2026-01-01T00:02:00Z", tripId: "D" }),
     ]);
-    const multifeedIterator = MultifeedDeparturesIterator.build({
-      feed1: iterator1,
-      feed2: iterator2,
-    });
+    const zipperIterator = new ZipperDeparturesIterator([iterator1, iterator2]);
 
-    multifeedIterator.set(
+    zipperIterator.set(
       Temporal.Instant.from("2026-01-01T00:00:00Z"),
       "forwards",
     );
-    const result1 = multifeedIterator.take();
-    const result2 = multifeedIterator.take();
-    const result3 = multifeedIterator.take();
-    const result4 = multifeedIterator.take();
+    const result1 = zipperIterator.take();
+    const result2 = zipperIterator.take();
+    const result3 = zipperIterator.take();
+    const result4 = zipperIterator.take();
 
-    expect(multifeedIterator.peek()).toBeNull();
-    expect(() => multifeedIterator.take()).toThrow();
+    expect(zipperIterator.peek()).toBeNull();
+    expect(() => zipperIterator.take()).toThrow();
 
     expect(result1.trip.gtfsTripId).toEqual("A");
-    expect(result1.feed).toEqual("feed1");
     expect(result2.trip.gtfsTripId).toEqual("C");
-    expect(result2.feed).toEqual("feed2");
     expect(result3.trip.gtfsTripId).toEqual("D");
-    expect(result3.feed).toEqual("feed2");
     expect(result4.trip.gtfsTripId).toEqual("B");
-    expect(result4.feed).toEqual("feed1");
   });
 
   it("works correctly if no feeds given", () => {
-    const multifeedIterator = new MultifeedDeparturesIterator(new Map());
+    const zipperIterator = new ZipperDeparturesIterator([]);
 
-    multifeedIterator.set(
+    zipperIterator.set(
       Temporal.Instant.from("2026-01-01T00:00:00Z"),
       "forwards",
     );
 
-    expect(multifeedIterator.peek()).toBeNull();
-    expect(() => multifeedIterator.take()).toThrow();
+    expect(zipperIterator.peek()).toBeNull();
+    expect(() => zipperIterator.take()).toThrow();
   });
 
   it("works correctly if all iterators are empty", () => {
     const iterator1 = new DummyIterator([]);
     const iterator2 = new DummyIterator([]);
 
-    const multifeedIterator = MultifeedDeparturesIterator.build({
-      feed1: iterator1,
-      feed2: iterator2,
-    });
+    const zipperIterator = new ZipperDeparturesIterator([iterator1, iterator2]);
 
-    multifeedIterator.set(
+    zipperIterator.set(
       Temporal.Instant.from("2026-01-01T00:00:00Z"),
       "forwards",
     );
 
-    expect(multifeedIterator.peek()).toBeNull();
-    expect(() => multifeedIterator.take()).toThrow();
+    expect(zipperIterator.peek()).toBeNull();
+    expect(() => zipperIterator.take()).toThrow();
   });
 });
 

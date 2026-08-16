@@ -4,9 +4,9 @@ import {
   InvalidStopSequenceError,
   MultipleStopSequencesError,
   type GtfsStopTimeNormalisationError,
-} from "../../../../src/gtfs/corequery-gtfs/parser/schedule/gtfs-stop-time-normaliser.js";
-import { GtfsStopTime } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
-import type { StopTimesCsvRow } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+} from "../../../../../src/gtfs/corequery-gtfs/parser/schedule/gtfs-stop-time-normaliser.js";
+import { GtfsStopTime } from "../../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
+import type { StopTimesCsvRow } from "../../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 function stopTime(overrides: Partial<StopTimesCsvRow> = {}): StopTimesCsvRow {
   return {

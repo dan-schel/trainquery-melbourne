@@ -1,17 +1,17 @@
 import { it, describe, expect } from "vitest";
-import { ScheduledDeparturesBlock } from "../../../src/gtfs/corequery-gtfs/departures/scheduled-departures-block.js";
-import { GtfsScheduledTrip } from "../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
+import { ScheduledDeparturesBlock } from "../../../../src/gtfs/corequery-gtfs/departures/scheduled-departures-block.js";
+import { GtfsScheduledTrip } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-scheduled-trip.js";
 import {
   GtfsScheduledMovementsIndex,
   type GtfsScheduledMovementsIndexEntry,
-} from "../../../src/gtfs/corequery-gtfs/departures/gtfs-scheduled-movements-index.js";
-import { GtfsStopTime } from "../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
-import { ScheduledDeparturesBlockIterator } from "../../../src/gtfs/corequery-gtfs/departures/scheduled-departures-block-iterator.js";
-import { GtfsRealtimeData } from "../../../src/gtfs/corequery-gtfs/data/gtfs-realtime-data.js";
-import { GtfsCalendar } from "../../../src/gtfs/corequery-gtfs/data/gtfs-calendar.js";
-import { GtfsUpdatedTrip } from "../../../src/gtfs/corequery-gtfs/data/gtfs-updated-trip.js";
+} from "../../../../src/gtfs/corequery-gtfs/departures/gtfs-scheduled-movements-index.js";
+import { GtfsStopTime } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";
+import { ScheduledDeparturesBlockIterator } from "../../../../src/gtfs/corequery-gtfs/departures/scheduled-departures-block-iterator.js";
+import { GtfsRealtimeData } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-realtime-data.js";
+import { GtfsCalendar } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-calendar.js";
+import { GtfsUpdatedTrip } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-updated-trip.js";
 import { itsOk } from "@dan-schel/js-utils";
-import { GtfsScheduleData } from "../../../src/gtfs/corequery-gtfs/data/gtfs-schedule-data.js";
+import { GtfsScheduleData } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-schedule-data.js";
 
 describe("ScheduledDeparturesBlockIterator", () => {
   const MOVEMENTS = [
