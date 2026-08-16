@@ -1,9 +1,9 @@
-import type { LineGtfsIdMapping } from "../../corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
+import type { LineGtfsIdMapping } from "../../data/ids/line-gtfs-id-mapping.js";
 import type {
   RealtimeFeedJson,
   TripDescriptorJson,
   TripUpdateJson,
-} from "../../retrieval/realtime/realtime-feed-schema.js";
+} from "../../../retrieval/realtime/realtime-feed-schema.js";
 
 // TODO: Right now, VTAR combines all the GTFS realtime data for the regional
 // and suburban subfeeds into one output. We're very intentional in this repo

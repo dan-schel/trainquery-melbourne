@@ -6,7 +6,7 @@ import {
   TripDescriptorReferencesNonExistentTripIdError,
   TripDoesNotOccurOnStartDateError,
   type GtfsTripUpdateTripIdentificationError,
-} from "../../../../src/gtfs/parser/realtime/gtfs-trip-update-trip-identifier.js";
+} from "../../../../src/gtfs/corequery-gtfs/parser/realtime/gtfs-trip-update-trip-identifier.js";
 import { GtfsCalendar } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-calendar.js";
 import { GtfsScheduleData } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-schedule-data.js";
 import { GtfsStopTime } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";

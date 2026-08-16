@@ -4,7 +4,7 @@ import {
   RouteIdNotInTripDescriptorError,
   TripDescriptorReferencesUnmappedRouteIdError,
   type GtfsRealtimeFeedSplittingError,
-} from "../../../../src/gtfs/parser/realtime/gtfs-realtime-feed-splitter.js";
+} from "../../../../src/gtfs/corequery-gtfs/parser/realtime/gtfs-realtime-feed-splitter.js";
 import { LineGtfsIdMapping } from "../../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
 import { LineGtfsIdCollection } from "../../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-collection.js";
 import { GtfsStopTime } from "../../../../src/gtfs/corequery-gtfs/data/gtfs-stop-time.js";

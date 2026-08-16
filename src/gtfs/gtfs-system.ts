@@ -6,7 +6,7 @@ import { BonusLinesMapping } from "./corequery-gtfs/data/route/bonus-lines-mappi
 import { LineRoutesMapping } from "./corequery-gtfs/data/route/line-routes-mapping.js";
 import type { TimezoneData } from "./corequery-gtfs/departures/scheduled-departures-blocks-builder.js";
 import { GtfsFeedParser } from "./parser/gtfs-feed-parser.js";
-import type { GtfsRealtimeDataParsingError } from "./parser/realtime/gtfs-realtime-data-parser.js";
+import type { GtfsRealtimeDataParsingError } from "./corequery-gtfs/parser/realtime/gtfs-realtime-data-parser.js";
 import type { GtfsScheduleParsingError } from "./parser/schedule/gtfs-schedule-parser.js";
 import type { RealtimeFeedJson } from "./retrieval/realtime/realtime-feed-schema.js";
 import type { GtfsFeedCsv } from "./retrieval/schedule/read-gtfs-csvs.js";

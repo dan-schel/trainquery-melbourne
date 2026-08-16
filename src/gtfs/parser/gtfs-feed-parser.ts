@@ -9,7 +9,7 @@ import type { GtfsFeedCsv } from "../retrieval/schedule/read-gtfs-csvs.js";
 import {
   GtfsRealtimeDataParser,
   type GtfsRealtimeDataParsingError,
-} from "./realtime/gtfs-realtime-data-parser.js";
+} from "../corequery-gtfs/parser/realtime/gtfs-realtime-data-parser.js";
 import {
   GtfsScheduleParser,
   type GtfsScheduleParsingError,

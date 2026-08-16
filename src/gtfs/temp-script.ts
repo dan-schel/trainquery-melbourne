@@ -17,11 +17,11 @@ import { fetchGtfsRealtime } from "./retrieval/realtime/fetch-gtfs-realtime.js";
 import {
   GtfsRealtimeDataParser,
   type GtfsRealtimeDataParsingError,
-} from "./parser/realtime/gtfs-realtime-data-parser.js";
+} from "./corequery-gtfs/parser/realtime/gtfs-realtime-data-parser.js";
 import {
   GtfsRealtimeFeedSplitter,
   type GtfsRealtimeFeedSplittingError,
-} from "./parser/realtime/gtfs-realtime-feed-splitter.js";
+} from "./corequery-gtfs/parser/realtime/gtfs-realtime-feed-splitter.js";
 import type { RealtimeFeedJson } from "./retrieval/realtime/realtime-feed-schema.js";
 import type { GtfsScheduleData } from "./corequery-gtfs/data/gtfs-schedule-data.js";
 import type { GtfsRealtimeData } from "./corequery-gtfs/data/gtfs-realtime-data.js";
