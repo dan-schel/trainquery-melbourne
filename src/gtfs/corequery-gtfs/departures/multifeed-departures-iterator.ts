@@ -8,6 +8,9 @@ import type { GtfsUpdatedTrip } from "../data/gtfs-updated-trip.js";
 import type { GtfsTripServicingMovement } from "../data/utils.js";
 import { ZipperDeparturesIterator } from "./zipper-departures-iterator.js";
 
+// TODO: [DS] Delete this. We're gonna combine feeds at the corequery departure
+// iterator level, not within the GTFS ecosystem.
+
 export class MultifeedDeparturesIteratorResult extends DeparturesIteratorResult {
   constructor(
     readonly feed: string,

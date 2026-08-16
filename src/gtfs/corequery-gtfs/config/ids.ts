@@ -1,15 +1,10 @@
-// TODO: [DS] This is how IDs are expressed for Melbourne, using terms like
-// suburban, regional, platforms, replacement bus, etc. I'd like to keep this
-// for trainquery-melbourne, but do a conversion step before passing it to
-// corequery-gtfs which should obviously be agnostic to those terms and operate
-// at the feed-level.
 export type StopGtfsIdsConfig = Record<number, StopGtfsIdCollectionConfig>;
 export type LineGtfsIdsConfig = Record<number, LineGtfsIdCollectionConfig>;
 
-// Using terms like platforms, and replacment bus feels like a domain leak for
-// corequery-gtfs. The concept of "certain GTFS ID means this position ID" is
-// general enough, but calling it "platforms" is not. Same goes with the concept
-// of "IDs we'll ignore" being called "replacement bus".
+// TODO: Using terms like platforms, and replacment bus feels like a domain leak
+// for corequery-gtfs. The concept of "certain GTFS ID means this position ID"
+// is general enough, but calling it "platforms" is not. Same goes with the
+// concept of "IDs we'll ignore" being called "replacement bus".
 export type StopGtfsIdCollectionConfig = {
   readonly parent: string;
   readonly general?: readonly string[];

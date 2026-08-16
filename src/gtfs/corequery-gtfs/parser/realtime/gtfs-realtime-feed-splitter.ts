@@ -5,6 +5,8 @@ import type {
   TripUpdateJson,
 } from "../../data/raw/realtime-data-json.js";
 
+// TODO: Move this outside corequery-gtfs.
+
 // TODO: Right now, VTAR combines all the GTFS realtime data for the regional
 // and suburban subfeeds into one output. We're very intentional in this repo
 // to process and suburban and regional GTFS feeds independently (as there's a
