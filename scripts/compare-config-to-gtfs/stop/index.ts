@@ -59,6 +59,9 @@ export function compareStops({
         (options.ignoredIdsMissingFromGtfs?.includes(gtfsId.id) ?? false) ||
         (options.ignoreIdMissingFromGtfs?.(gtfsId) ?? false),
     });
+
+    // TODO: Use the `https://transport.vic.gov.au/stop/...` urls to check that
+    // our PTV API mapping is correct.
   }
 
   compareStopItems({

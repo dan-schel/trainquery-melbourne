@@ -98,4 +98,6 @@ export function compareLines({
     issues,
     isTripNotAssignedToALineIgnored,
   });
+
+  // TODO: Check for unused routes?
 }

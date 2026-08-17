@@ -44,6 +44,9 @@ export function compareStopGtfsIds({
 
     // Note: We're not comparing the ID types, or the platform codes here. Just
     // checking that the list of IDs matches up.
+    //
+    // TODO: Checking platform_code should be implemented too though, maybe as
+    // a separate check.
     aKeyFunc: (a) => a.stop_id,
     bKeyFunc: (b) => b.id,
 
