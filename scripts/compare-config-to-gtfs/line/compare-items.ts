@@ -1,17 +1,16 @@
 import type { LineConfig } from "corequery";
 import { compareArrays, nonNull } from "@dan-schel/js-utils";
 import type { IssueCollector } from "../issue-collector.js";
-import type { LineGtfsIdMapping } from "../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
-import type { LineGtfsIdCollection } from "../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-collection.js";
+import type { LineGtfsIdMapping, LineGtfsIdCollection } from "corequery-gtfs";
 import type {
-  RoutesCsv,
-  RoutesCsvRow,
-} from "../../../src/gtfs/corequery-gtfs/data/raw/schedule-csvs.js";
+  FullRoutesCsv,
+  FullRoutesCsvRow,
+} from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 type OnMatchCallback = (
   config: LineConfig,
   mappedIds: LineGtfsIdCollection,
-  gtfsRow: RoutesCsvRow,
+  gtfsRow: FullRoutesCsvRow,
 ) => void;
 
 export function compareLineItems({
@@ -25,10 +24,10 @@ export function compareLineItems({
 }: {
   lines: readonly LineConfig[];
   idMapping: LineGtfsIdMapping;
-  gtfsRoutes: RoutesCsv;
+  gtfsRoutes: FullRoutesCsv;
   issues: IssueCollector;
   onMatch: OnMatchCallback;
-  isLineMissingFromConfigIgnored: (gtfsId: RoutesCsvRow) => boolean;
+  isLineMissingFromConfigIgnored: (gtfsId: FullRoutesCsvRow) => boolean;
   isLineMissingFromGtfsIgnored: (config: LineConfig) => boolean;
 }) {
   function reportLineMissingFromGtfs(
@@ -42,7 +41,7 @@ export function compareLineItems({
     });
   }
 
-  function reportLineMissingFromConfig(line: RoutesCsvRow) {
+  function reportLineMissingFromConfig(line: FullRoutesCsvRow) {
     // The `compareArrays` below is only comparing against GTFS IDs mapped as
     // "primary" IDs, so let's check first if it's mapped as a non-primary ID
     // before declaring it "missing".

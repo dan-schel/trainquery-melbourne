@@ -1,21 +1,23 @@
 import type { IssueCollector } from "../issue-collector.js";
 import { checkLineTripCompatibility } from "./check-trip-compatibility.js";
 import type { LineConfig } from "corequery";
-import type { LineGtfsIdMapping } from "../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
-import type {
-  RoutesCsv,
-  RoutesCsvRow,
-  StopTimesCsv,
-  TripsCsv,
-} from "../../../src/gtfs/corequery-gtfs/data/raw/schedule-csvs.js";
 import type { LineLintOptions } from "../comparison-options.js";
 import { compareLineItems } from "./compare-items.js";
-import type { LineGtfsIdCollection } from "../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-collection.js";
 import { IndexedStopTimes } from "./utils/indexed-stop-times.js";
-import type { StopGtfsIdMapping } from "../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import { checkAllTripsAssignedToALine } from "./check-all-trips-assigned-to-a-line.js";
 import type { Trip } from "./utils/trip.js";
-import type { LineRoutesMappingConfig } from "../../../src/gtfs/corequery-gtfs/config/routes.js";
+import type {
+  LineRoutesMappingConfig,
+  StopGtfsIdMapping,
+  LineGtfsIdMapping,
+  LineGtfsIdCollection,
+} from "corequery-gtfs";
+import type {
+  FullRoutesCsv,
+  FullRoutesCsvRow,
+  FullStopTimesCsv,
+  FullTripsCsv,
+} from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 export function compareLines({
   lines,
@@ -34,14 +36,14 @@ export function compareLines({
   lines: readonly LineConfig[];
   idMapping: LineGtfsIdMapping;
   routes: LineRoutesMappingConfig;
-  gtfsRoutes: RoutesCsv;
-  gtfsTrips: TripsCsv;
-  gtfsStopTimes: StopTimesCsv;
+  gtfsRoutes: FullRoutesCsv;
+  gtfsTrips: FullTripsCsv;
+  gtfsStopTimes: FullStopTimesCsv;
   stopIdMapping: StopGtfsIdMapping;
   getStopName: (stopId: number) => string | null;
   issues: IssueCollector;
   getOptionsForLine: (lineId: number) => LineLintOptions;
-  isLineMissingFromConfigIgnored: (gtfsRow: RoutesCsvRow) => boolean;
+  isLineMissingFromConfigIgnored: (gtfsRow: FullRoutesCsvRow) => boolean;
   isTripNotAssignedToALineIgnored: (trip: Trip) => boolean;
 }) {
   // Somewhat expensive, so do it once and share it between lines.
@@ -50,7 +52,7 @@ export function compareLines({
   function compareLine(
     config: LineConfig,
     mappedIds: LineGtfsIdCollection,
-    _gtfsRow: RoutesCsvRow,
+    _gtfsRow: FullRoutesCsvRow,
   ) {
     const options = getOptionsForLine(config.id);
     checkLineTripCompatibility({

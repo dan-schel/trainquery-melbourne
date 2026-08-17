@@ -1,44 +1,22 @@
 import type { Corequery } from "corequery";
 import { env } from "../env.js";
-import { LineGtfsIdMapping } from "./corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
-import { StopGtfsIdMapping } from "./corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import {
-  readGtfsCsvs,
-  type MelbourneGtfsCsvData,
-} from "./retrieval/schedule/read-gtfs-csvs.js";
-import { withGtfsCsvs } from "./retrieval/schedule/with-gtfs-csvs.js";
-import {
-  GtfsScheduleParser,
-  type GtfsScheduleParsingError,
-} from "./corequery-gtfs/parser/schedule/gtfs-schedule-parser.js";
-import type { GtfsConfig } from "./corequery-gtfs/config/index.js";
-import { LineRoutesMapping } from "./corequery-gtfs/data/route/line-routes-mapping.js";
-import { fetchGtfsRealtime } from "./retrieval/realtime/fetch-gtfs-realtime.js";
-import {
-  GtfsRealtimeDataParser,
-  type GtfsRealtimeDataParsingError,
-} from "./corequery-gtfs/parser/realtime/gtfs-realtime-data-parser.js";
-import type { RealtimeDataJson } from "./corequery-gtfs/data/raw/realtime-data-json.js";
-import type { GtfsScheduleData } from "./corequery-gtfs/data/gtfs-schedule-data.js";
-import type { GtfsRealtimeData } from "./corequery-gtfs/data/gtfs-realtime-data.js";
-import { BonusLinesMapping } from "./corequery-gtfs/data/route/bonus-lines-mapping.js";
-import { assertNever, itsOk, listifyAnd } from "@dan-schel/js-utils";
-import { GtfsScheduledMovementsIndex } from "./corequery-gtfs/departures/gtfs-scheduled-movements-index.js";
-import * as stop from "../config/corequery/stops/stop-ids.js";
-import { ZipperDeparturesIterator } from "./corequery-gtfs/departures/zipper-departures-iterator.js";
-import { GtfsScheduledTrip } from "./corequery-gtfs/data/gtfs-scheduled-trip.js";
-import { GtfsUpdatedTrip } from "./corequery-gtfs/data/gtfs-updated-trip.js";
-import type { DeparturesSearchDirection } from "./corequery-gtfs/departures/departures-iterator.js";
-import type { GtfsTripServicingMovement } from "./corequery-gtfs/data/utils.js";
-import {
+  type GtfsConfig,
+  GtfsScheduledTrip,
+  GtfsSystem,
+  type GtfsTripServicingMovement,
+  GtfsUpdatedTrip,
   MultifeedDeparturesIterator,
   MultifeedDeparturesIteratorResult,
-} from "./corequery-gtfs/departures/multifeed-departures-iterator.js";
-import fs from "fs";
+} from "corequery-gtfs";
+import * as stop from "../config/corequery/stops/stop-ids.js";
+import { withGtfsCsvs } from "./retrieval/schedule/with-gtfs-csvs.js";
+import { readGtfsCsvs } from "./retrieval/schedule/read-gtfs-csvs.js";
+import { fetchGtfsRealtime } from "./retrieval/realtime/fetch-gtfs-realtime.js";
+import { assertNever, itsOk, listifyAnd } from "@dan-schel/js-utils";
 
-type GtfsParsingError = GtfsScheduleParsingError | GtfsRealtimeDataParsingError;
-
-type TotalGtfsData = Awaited<ReturnType<typeof parse>>;
+// TODO: [DS] Should be given by corequery.
+type DeparturesSearchDirection = "forwards" | "backwards";
 
 type Query = {
   stopId: number;
@@ -64,183 +42,51 @@ export async function runGtfsTempScript(
   suburbanConfig: GtfsConfig,
   regionalConfig: GtfsConfig,
 ) {
-  const formalConfig = formalizeConfig(suburbanConfig, regionalConfig);
+  const suburbanFeed = GtfsSystem.build("gtfs-suburban", suburbanConfig);
+  const regionalFeed = GtfsSystem.build("gtfs-regional", regionalConfig);
 
-  const data = await parse(ctx, formalConfig);
-
-  console.log("\n-----\n");
-
-  queryDepartures(ctx, data, formalConfig);
-}
-
-function formalizeConfig(
-  suburbanConfig: GtfsConfig,
-  regionalConfig: GtfsConfig,
-) {
-  // Temporary hack: using the suburban config since it's identical in both.
-  const lineRoutesMapping = LineRoutesMapping.build(
-    suburbanConfig.lineRoutesMapping,
-  );
-  const bonusLinesMapping = BonusLinesMapping.build(
-    suburbanConfig.bonusLinesMapping ?? {},
-  );
-
-  const suburbanLineGtfsIdMapping = LineGtfsIdMapping.build(
-    suburbanConfig.lineGtfsIds,
-  );
-  const regionalLineGtfsIdMapping = LineGtfsIdMapping.build(
-    regionalConfig.lineGtfsIds,
-  );
-
-  const suburbanStopGtfsIdMapping = StopGtfsIdMapping.build(
-    suburbanConfig.stopGtfsIds,
-  );
-  const regionalStopGtfsIdMapping = StopGtfsIdMapping.build(
-    regionalConfig.stopGtfsIds,
-  );
-
-  return {
-    lineRoutesMapping,
-    bonusLinesMapping,
-    suburbanLineGtfsIdMapping,
-    regionalLineGtfsIdMapping,
-    suburbanStopGtfsIdMapping,
-    regionalStopGtfsIdMapping,
-    timezoneData: suburbanConfig.timezoneData,
-  };
-}
-
-async function parse(
-  ctx: Corequery,
-  formalConfig: ReturnType<typeof formalizeConfig>,
-) {
   console.log("Downloading/reading...");
+
   const gtfsData = await withGtfsCsvs(env.RELAY_KEY, readGtfsCsvs);
   const suburbanJson = await fetchGtfsRealtime(env.RELAY_KEY, "suburban");
   const regionalJson = await fetchGtfsRealtime(env.RELAY_KEY, "regional");
 
   console.log("Parsing...");
+
   const start = performance.now();
-  const errors: GtfsParsingError[] = [];
-
-  const { suburbanSchedule, regionalSchedule } = parseSchedule(
-    gtfsData,
-    formalConfig,
-    errors,
-  );
-
-  const { suburbanRealtimeData, regionalRealtimeData } = parseRealtime(
-    suburbanJson,
-    regionalJson,
-    suburbanSchedule,
-    regionalSchedule,
-    formalConfig,
-    errors,
-  );
-
+  suburbanFeed.onNewScheduleData(gtfsData.suburban, suburbanJson);
+  regionalFeed.onNewScheduleData(gtfsData.regional, regionalJson);
   const end = performance.now();
   const diff = end - start;
+
   console.log(`Done parsing! (${diff.toFixed(2)}ms)\n`);
 
-  const statsStr = formatStats(
-    ctx,
-    suburbanSchedule,
-    regionalSchedule,
-    suburbanRealtimeData,
-    regionalRealtimeData,
-  );
+  const statsStr = formatStats(ctx, suburbanFeed, regionalFeed);
   console.log(statsStr + "\n");
-
-  const errorsStr = formatErrors(errors);
+  const errorsStr = formatErrors(suburbanFeed, regionalFeed);
   console.log(errorsStr);
 
-  return {
-    suburbanSchedule,
-    regionalSchedule,
-    suburbanRealtimeData,
-    regionalRealtimeData,
-    errors,
-  };
-}
+  console.log("\n-----\n");
 
-function parseSchedule(
-  gtfsData: MelbourneGtfsCsvData,
-  config: ReturnType<typeof formalizeConfig>,
-  errors: GtfsParsingError[],
-) {
-  const parser = new GtfsScheduleParser(
-    config.lineRoutesMapping,
-    config.bonusLinesMapping,
-    (e) => errors.push(e),
-  );
-
-  const suburbanSchedule = parser.parse(
-    gtfsData.suburban,
-    config.suburbanLineGtfsIdMapping,
-    config.suburbanStopGtfsIdMapping,
-  );
-
-  const regionalSchedule = parser.parse(
-    gtfsData.regional,
-    config.regionalLineGtfsIdMapping,
-    config.regionalStopGtfsIdMapping,
-  );
-
-  return { suburbanSchedule, regionalSchedule };
-}
-
-function parseRealtime(
-  suburbanJson: RealtimeDataJson,
-  regionalJson: RealtimeDataJson,
-  suburbanSchedule: GtfsScheduleData,
-  regionalSchedule: GtfsScheduleData,
-  config: ReturnType<typeof formalizeConfig>,
-  errors: GtfsParsingError[],
-) {
-  fs.writeFileSync(
-    "realtime-suburban.json",
-    JSON.stringify(suburbanJson, null, 2),
-  );
-  fs.writeFileSync(
-    "realtime-regional.json",
-    JSON.stringify(regionalJson, null, 2),
-  );
-
-  const parser = new GtfsRealtimeDataParser(config.timezoneData.timezone, (e) =>
-    errors.push(e),
-  );
-  const suburbanRealtimeData = parser.parse(
-    suburbanJson,
-    suburbanSchedule,
-    config.suburbanStopGtfsIdMapping,
-  );
-  const regionalRealtimeData = parser.parse(
-    regionalJson,
-    regionalSchedule,
-    config.regionalStopGtfsIdMapping,
-  );
-
-  return { suburbanRealtimeData, regionalRealtimeData };
+  queryDepartures(ctx, suburbanFeed, regionalFeed);
 }
 
 function formatStats(
   ctx: Corequery,
-  suburbanSchedule: GtfsScheduleData,
-  regionalSchedule: GtfsScheduleData,
-  suburbanRealtimeData: GtfsRealtimeData,
-  regionalRealtimeData: GtfsRealtimeData,
+  suburbanFeed: GtfsSystem,
+  regionalFeed: GtfsSystem,
 ) {
   function lineNames({ lineIds }: { lineIds: readonly number[] }) {
     return listifyAnd(lineIds.map((id) => ctx.lines.require(id).name).sort());
   }
 
   const allTrips = [
-    ...suburbanSchedule.allTrips(),
-    ...regionalSchedule.allTrips(),
+    ...suburbanFeed.requireFeed().scheduleData.allTrips(),
+    ...regionalFeed.requireFeed().scheduleData.allTrips(),
   ];
   const allTripUpdates = [
-    ...suburbanRealtimeData.allTrips(),
-    ...regionalRealtimeData.allTrips(),
+    ...suburbanFeed.requireFeed().realtimeData.allTrips(),
+    ...regionalFeed.requireFeed().realtimeData.allTrips(),
   ];
 
   const stats = new Map<string, { trips: number; tripUpdates: number }>();
@@ -267,7 +113,14 @@ function formatStats(
   return output;
 }
 
-function formatErrors(errors: GtfsParsingError[]) {
+function formatErrors(suburbanFeed: GtfsSystem, regionalFeed: GtfsSystem) {
+  const errors = [
+    ...suburbanFeed.scheduleParsingErrors,
+    ...suburbanFeed.realtimeParsingErrors,
+    ...regionalFeed.scheduleParsingErrors,
+    ...regionalFeed.realtimeParsingErrors,
+  ];
+
   if (errors.length === 0) return "No errors!";
 
   const stats = new Map<string, number>();
@@ -287,41 +140,19 @@ function formatErrors(errors: GtfsParsingError[]) {
 
 function queryDepartures(
   ctx: Corequery,
-  data: TotalGtfsData,
-  config: ReturnType<typeof formalizeConfig>,
+  suburbanFeed: GtfsSystem,
+  regionalFeed: GtfsSystem,
 ) {
-  const {
-    suburbanSchedule,
-    suburbanRealtimeData,
-    regionalSchedule,
-    regionalRealtimeData,
-  } = data;
-
-  const { regionalIndex, suburbanIndex } = buildIndices(
-    regionalSchedule,
-    suburbanSchedule,
-  );
-
-  console.log("\n-----\n");
-
   console.log("Querying for departures...");
   const start = performance.now();
 
-  // TODO: We still need a multifeed departures iterator (implemented with a
-  // zipper iterator) to inject the subfeed ID into the result.
   const iterator = MultifeedDeparturesIterator.build({
-    regional: ZipperDeparturesIterator.forFeed(
-      QUERY.stopId,
-      regionalIndex,
-      regionalRealtimeData,
-      config.timezoneData,
-    ),
-    suburban: ZipperDeparturesIterator.forFeed(
-      QUERY.stopId,
-      suburbanIndex,
-      suburbanRealtimeData,
-      config.timezoneData,
-    ),
+    suburban: suburbanFeed
+      .requireFeed()
+      .createCorequeryDepartureIterator(QUERY.stopId),
+    regional: regionalFeed
+      .requireFeed()
+      .createCorequeryDepartureIterator(QUERY.stopId),
   });
 
   iterator.set(QUERY.time, QUERY.direction);
@@ -338,34 +169,16 @@ function queryDepartures(
 
   console.log(`Departures:\n`);
   for (const dep of result) {
-    console.log(formatDeparture(ctx, dep, config));
+    console.log(formatDeparture(ctx, dep));
   }
   if (result.length === 0) {
     console.log("None.");
   }
 }
 
-function buildIndices(
-  regionalSchedule: GtfsScheduleData,
-  suburbanSchedule: GtfsScheduleData,
-) {
-  console.log("Building indices...");
-  const start = performance.now();
-
-  const regionalIndex = GtfsScheduledMovementsIndex.build(regionalSchedule);
-  const suburbanIndex = GtfsScheduledMovementsIndex.build(suburbanSchedule);
-
-  const end = performance.now();
-  const diff = end - start;
-  console.log(`Done building indices! (${diff.toFixed(2)}ms)`);
-
-  return { regionalIndex, suburbanIndex };
-}
-
 function formatDeparture(
   ctx: Corequery,
   departure: MultifeedDeparturesIteratorResult,
-  config: ReturnType<typeof formalizeConfig>,
 ) {
   function getScheduledTripInfo(trip: GtfsScheduledTrip | GtfsUpdatedTrip) {
     if (trip instanceof GtfsScheduledTrip) {
@@ -398,7 +211,7 @@ function formatDeparture(
     } else {
       return movement.timeRelevantToDeparturesAlgorithm.toInstant(
         departure.serviceDay,
-        config.timezoneData.timezone,
+        "Australia/Melbourne",
       );
     }
   }
@@ -410,7 +223,7 @@ function formatDeparture(
     {
       timeStyle: "short",
       dateStyle: "short",
-      timeZone: config.timezoneData.timezone,
+      timeZone: "Australia/Melbourne",
     },
   );
   const terminus = ctx.stops.require(scheduledTrip.termination.stopId).name;

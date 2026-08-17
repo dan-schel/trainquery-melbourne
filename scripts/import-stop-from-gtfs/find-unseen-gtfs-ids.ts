@@ -1,5 +1,4 @@
-import type { GtfsConfig } from "../../src/gtfs/corequery-gtfs/config/index.js";
-import { StopGtfsIdMapping } from "../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
+import { type GtfsConfig, StopGtfsIdMapping } from "corequery-gtfs";
 import type {
   StopsCsvTree,
   StopsCsvTreeNode,

@@ -1,5 +1,5 @@
 import type { LineDiagramStopConfig } from "corequery";
-import type { RouteStopConfig } from "../../gtfs/corequery-gtfs/config/routes.js";
+import type { RouteStopConfig } from "corequery-gtfs";
 
 export type InformalLineDiagramStopConfig = number | LineDiagramStopConfig;
 export type InformalRouteStopConfig = number | RouteStopConfig;

@@ -3,9 +3,11 @@ import type { ComparisonOptions } from "./comparison-options.js";
 import { IssueCollector } from "./issue-collector.js";
 import { compareLines } from "./line/index.js";
 import { compareStops } from "./stop/index.js";
-import type { StopGtfsIdMapping } from "../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
-import type { LineGtfsIdMapping } from "../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
-import type { LineRoutesMappingConfig } from "../../src/gtfs/corequery-gtfs/config/routes.js";
+import type {
+  StopGtfsIdMapping,
+  LineGtfsIdMapping,
+  LineRoutesMappingConfig,
+} from "corequery-gtfs";
 import { getStopName } from "../../src/utils/get-stop-name.js";
 import type { FullGtfsFeedCsv } from "../../src/gtfs/retrieval/schedule/csv-schemas.js";
 

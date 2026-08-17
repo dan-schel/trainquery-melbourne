@@ -1,10 +1,9 @@
-import type { TripsCsv } from "../../../src/gtfs/corequery-gtfs/data/raw/schedule-csvs.js";
 import type { IndexedStopTimes } from "./utils/indexed-stop-times.js";
 import type { IssueCollector } from "../issue-collector.js";
-import type { StopGtfsIdMapping } from "../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
-import type { LineGtfsIdMapping } from "../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-mapping.js";
+import type { StopGtfsIdMapping, LineGtfsIdMapping } from "corequery-gtfs";
 import { Trip } from "./utils/trip.js";
 import { UniqueStoppingPatternTracker } from "./utils/unique-stopping-pattern-tracker.js";
+import type { FullTripsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 export function checkAllTripsAssignedToALine({
   gtfsTrips,
@@ -15,7 +14,7 @@ export function checkAllTripsAssignedToALine({
   issues,
   isTripNotAssignedToALineIgnored,
 }: {
-  gtfsTrips: TripsCsv;
+  gtfsTrips: FullTripsCsv;
   gtfsStopTimes: IndexedStopTimes;
   lineIdMapping: LineGtfsIdMapping;
   stopIdMapping: StopGtfsIdMapping;

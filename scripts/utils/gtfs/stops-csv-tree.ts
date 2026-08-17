@@ -1,12 +1,12 @@
 import { isPresent, unique } from "@dan-schel/js-utils";
-import type {
-  StopsCsv,
-  StopsCsvRow,
-} from "../../../src/gtfs/corequery-gtfs/data/raw/schedule-csvs.js";
 import type { Subfeed } from "../../../src/gtfs/subfeed.js";
 import type { MelbourneGtfsCsvData } from "../../../src/gtfs/retrieval/schedule/read-gtfs-csvs.js";
+import type {
+  FullStopsCsv,
+  FullStopsCsvRow,
+} from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
-export type StopsCsvTreeNode = StopsCsvRow & {
+export type StopsCsvTreeNode = FullStopsCsvRow & {
   readonly children: readonly StopsCsvTreeNode[];
   readonly subfeeds: readonly Subfeed[];
 };
@@ -27,8 +27,8 @@ export class StopsCsvTree {
     );
   }
 
-  static build(rows: StopsCsv): StopsCsvTree {
-    type MutableStopsCsvTreeNode = StopsCsvRow & {
+  static build(rows: FullStopsCsv): StopsCsvTree {
+    type MutableStopsCsvTreeNode = FullStopsCsvRow & {
       readonly children: MutableStopsCsvTreeNode[];
       readonly subfeeds: readonly Subfeed[];
     };

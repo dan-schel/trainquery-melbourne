@@ -5,9 +5,8 @@ import {
 } from "../../utils/gtfs/stops-csv-tree.js";
 import { compareArrays, nonNull } from "@dan-schel/js-utils";
 import type { IssueCollector } from "../issue-collector.js";
-import type { StopGtfsIdMapping } from "../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
-import type { StopGtfsIdCollection } from "../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-collection.js";
-import type { StopsCsv } from "../../../src/gtfs/corequery-gtfs/data/raw/schedule-csvs.js";
+import type { StopGtfsIdMapping, StopGtfsIdCollection } from "corequery-gtfs";
+import type { FullStopsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 type OnMatchCallback = (
   config: StopConfig,
@@ -26,7 +25,7 @@ export function compareStopItems({
 }: {
   stops: readonly StopConfig[];
   idMapping: StopGtfsIdMapping;
-  gtfsStops: StopsCsv;
+  gtfsStops: FullStopsCsv;
   issues: IssueCollector;
   onMatch: OnMatchCallback;
   isStopMissingFromConfigIgnored: (gtfsNode: StopsCsvTreeNode) => boolean;

@@ -1,10 +1,9 @@
 import type { IssueCollector } from "../issue-collector.js";
 import { flattenStopsCsvTree } from "./utils/flatten-stops-csv-tree.js";
 import type { StopConfig } from "corequery";
-import { StopGtfsIdCollection } from "../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-collection.js";
+import { StopGtfsIdCollection, type StopGtfsIdMetadata } from "corequery-gtfs";
 import type { StopsCsvTreeNode } from "../../utils/gtfs/stops-csv-tree.js";
 import { compareArrays } from "@dan-schel/js-utils";
-import type { StopGtfsIdMetadata } from "../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-metadata.js";
 
 export function compareStopGtfsIds({
   config,

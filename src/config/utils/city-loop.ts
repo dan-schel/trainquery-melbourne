@@ -1,5 +1,5 @@
 import type { Color, LoopLineDiagramShapeConfig } from "corequery";
-import type { RouteConfig } from "../../gtfs/corequery-gtfs/config/routes.js";
+import type { RouteConfig } from "corequery-gtfs";
 import {
   formalizeDiagramStops,
   formalizeRouteStops,

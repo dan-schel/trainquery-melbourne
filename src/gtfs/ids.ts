@@ -2,7 +2,7 @@ import { parseIntThrow } from "@dan-schel/js-utils";
 import type {
   LineGtfsIdCollectionConfig,
   StopGtfsIdCollectionConfig,
-} from "./corequery-gtfs/config/ids.js";
+} from "corequery-gtfs";
 
 export type MultifeedStopGtfsIdsConfig = Record<number, FeedStopGtfsIdsConfig>;
 export type MultifeedLineGtfsIdsConfig = Record<number, FeedLineGtfsIdsConfig>;

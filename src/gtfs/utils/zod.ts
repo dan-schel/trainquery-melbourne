@@ -1,6 +1,6 @@
 import z from "zod";
 import { createSchemaHelpers, buildZodTransform } from "@dan-schel/js-utils";
-import { GtfsStopTime } from "../corequery-gtfs/data/gtfs-stop-time.js";
+import { GtfsStopTime } from "corequery-gtfs";
 
 export const { intStringSchema, floatStringSchema } = createSchemaHelpers(z);
 

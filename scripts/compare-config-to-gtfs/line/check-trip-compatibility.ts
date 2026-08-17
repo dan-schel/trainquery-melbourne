@@ -1,16 +1,18 @@
 import type { LineConfig } from "corequery";
-import type { TripsCsv } from "../../../src/gtfs/corequery-gtfs/data/raw/schedule-csvs.js";
 import type { IndexedStopTimes } from "./utils/indexed-stop-times.js";
 import type { IssueCollector } from "../issue-collector.js";
-import type { LineGtfsIdCollection } from "../../../src/gtfs/corequery-gtfs/data/ids/line-gtfs-id-collection.js";
-import type { StopGtfsIdMapping } from "../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
 import { Trip } from "./utils/trip.js";
 import {
   UniqueStoppingPatternTracker,
   type UniqueStoppingPattern,
 } from "./utils/unique-stopping-pattern-tracker.js";
-import type { RouteConfig } from "../../../src/gtfs/corequery-gtfs/config/routes.js";
-import { Route } from "../../../src/gtfs/corequery-gtfs/data/route/route.js";
+import {
+  type RouteConfig,
+  Route,
+  type LineGtfsIdCollection,
+  type StopGtfsIdMapping,
+} from "corequery-gtfs";
+import type { FullTripsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 export function checkLineTripCompatibility({
   config,
@@ -26,7 +28,7 @@ export function checkLineTripCompatibility({
   config: LineConfig;
   mappedLineIds: LineGtfsIdCollection;
   routes: readonly RouteConfig[];
-  gtfsTrips: TripsCsv;
+  gtfsTrips: FullTripsCsv;
   gtfsStopTimes: IndexedStopTimes;
   stopIdMapping: StopGtfsIdMapping;
   getStopName: (stopId: number) => string | null;

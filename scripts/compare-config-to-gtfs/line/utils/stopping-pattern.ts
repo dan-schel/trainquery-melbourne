@@ -1,6 +1,6 @@
 import { nonNull } from "@dan-schel/js-utils";
-import type { StopGtfsIdMapping } from "../../../../src/gtfs/corequery-gtfs/data/ids/stop-gtfs-id-mapping.js";
-import type { StopTimesCsv } from "../../../../src/gtfs/corequery-gtfs/data/raw/schedule-csvs.js";
+import type { StopGtfsIdMapping } from "corequery-gtfs";
+import type { FullStopTimesCsv } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 export class StoppingPattern {
   constructor(readonly stops: number[]) {}
@@ -20,7 +20,7 @@ export class StoppingPattern {
     stopIdMapping,
     onUnmappedGtfsStopIdInUse,
   }: {
-    stopTimes: StopTimesCsv;
+    stopTimes: FullStopTimesCsv;
     stopIdMapping: StopGtfsIdMapping;
     onUnmappedGtfsStopIdInUse: (gtfsId: string) => void;
   }): StoppingPattern {
