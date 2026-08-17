@@ -45,7 +45,7 @@ export function expectDeparturesToMatchSnapshot({
     results.push(formatDeparture(departure, stopNameMapping, formatTimezone));
   }
 
-  const snapshot = `${stopName} at ${instant} (${direction}):\n\n${results.join("\n\n")}`;
+  const snapshot = `\n${results.join("\n")}\n`;
 
   expect(snapshot).toMatchSnapshot();
 }
