@@ -32,13 +32,15 @@ describe("[TESTNAME]", async () => {
 
   describe("Flinders Street, ${now}, forwards", () => {
     it("gives correct departures", () => {
-      expectDeparturesToMatchSnapshot(
+      expectDeparturesToMatchSnapshot({
         system,
         stopNameMapping,
-        "Flinders Street",
-        "${now}",
-        "forwards",
-      );
+        stopName: "Flinders Street",
+        instant: "${now}",
+        direction: "forwards",
+        maxResults: 10,
+        formatTimezone: "Australia/Melbourne",
+      });
     });
   });
 });

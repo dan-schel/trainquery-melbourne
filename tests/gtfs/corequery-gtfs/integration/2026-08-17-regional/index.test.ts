@@ -14,13 +14,15 @@ describe("2026-08-17-regional", async () => {
 
   describe("Flinders Street, 2026-08-17T11:34:00, forwards", () => {
     it("gives correct departures", () => {
-      expectDeparturesToMatchSnapshot(
+      expectDeparturesToMatchSnapshot({
         system,
         stopNameMapping,
-        "Flinders Street",
-        "2026-08-17T11:34:00",
-        "forwards",
-      );
+        stopName: "Flinders Street",
+        instant: "2026-08-17T11:34:00",
+        direction: "forwards",
+        maxResults: 10,
+        formatTimezone: "Australia/Melbourne",
+      });
     });
   });
 });

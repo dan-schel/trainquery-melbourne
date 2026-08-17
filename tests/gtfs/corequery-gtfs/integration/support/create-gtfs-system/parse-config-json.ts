@@ -1,6 +1,6 @@
 import z from "zod";
 import type { GtfsConfig } from "../../../../../../src/gtfs/corequery-gtfs/config/index.js";
-import { intStringSchema } from "./zod.js";
+import { intStringSchema } from "../zod.js";
 
 const lineGtfsIdsSchema = z.record(
   intStringSchema,

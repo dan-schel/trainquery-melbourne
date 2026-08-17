@@ -5,7 +5,7 @@ import {
   gtfsDateSchema,
   gtfsStopTimeSchema,
   intStringSchema,
-} from "./zod.js";
+} from "../zod.js";
 import type {
   CalendarCsvRow,
   CalendarDatesCsvRow,

@@ -3,7 +3,7 @@ import {
   floatStringSchema,
   gtfsDateSchema,
   gtfsStopTimeSchema,
-} from "./zod.js";
+} from "../zod.js";
 import type { RealtimeDataJson } from "../../../../../../src/gtfs/corequery-gtfs/data/raw/realtime-data-json.js";
 
 const tripDescriptorSchema = z
