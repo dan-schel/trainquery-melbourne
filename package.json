@@ -34,7 +34,8 @@
     "format-check": "prettier --check .",
     "compare-config-to-gtfs": "tsx scripts/compare-config-to-gtfs/main.ts",
     "download-gtfs": "tsx scripts/download-gtfs/main.ts",
-    "import-stop-from-gtfs": "tsx scripts/import-stop-from-gtfs/main.ts"
+    "import-stop-from-gtfs": "tsx scripts/import-stop-from-gtfs/main.ts",
+    "generate-gtfs-integration-test": "tsx scripts/generate-gtfs-integration-test/main.ts"
   },
   "corequeryDemoApp": {
     "scripts": {

@@ -18,10 +18,6 @@ import {
   GtfsRealtimeDataParser,
   type GtfsRealtimeDataParsingError,
 } from "./corequery-gtfs/parser/realtime/gtfs-realtime-data-parser.js";
-import {
-  GtfsRealtimeFeedSplitter,
-  type GtfsRealtimeFeedSplittingError,
-} from "./corequery-gtfs/parser/realtime/gtfs-realtime-feed-splitter.js";
 import type { RealtimeDataJson } from "./corequery-gtfs/data/raw/realtime-data-json.js";
 import type { GtfsScheduleData } from "./corequery-gtfs/data/gtfs-schedule-data.js";
 import type { GtfsRealtimeData } from "./corequery-gtfs/data/gtfs-realtime-data.js";
@@ -40,10 +36,7 @@ import {
 } from "./corequery-gtfs/departures/multifeed-departures-iterator.js";
 import fs from "fs";
 
-type GtfsParsingError =
-  | GtfsScheduleParsingError
-  | GtfsRealtimeFeedSplittingError
-  | GtfsRealtimeDataParsingError;
+type GtfsParsingError = GtfsScheduleParsingError | GtfsRealtimeDataParsingError;
 
 type TotalGtfsData = Awaited<ReturnType<typeof parse>>;
 
@@ -123,7 +116,8 @@ async function parse(
 ) {
   console.log("Downloading/reading...");
   const gtfsData = await withGtfsCsvs(env.RELAY_KEY, readGtfsCsvs);
-  const fullRealtimeData = await fetchGtfsRealtime(env.RELAY_KEY);
+  const suburbanJson = await fetchGtfsRealtime(env.RELAY_KEY, "suburban");
+  const regionalJson = await fetchGtfsRealtime(env.RELAY_KEY, "regional");
 
   console.log("Parsing...");
   const start = performance.now();
@@ -136,7 +130,8 @@ async function parse(
   );
 
   const { suburbanRealtimeData, regionalRealtimeData } = parseRealtime(
-    fullRealtimeData,
+    suburbanJson,
+    regionalJson,
     suburbanSchedule,
     regionalSchedule,
     formalConfig,
@@ -195,20 +190,13 @@ function parseSchedule(
 }
 
 function parseRealtime(
-  fullRealtimeData: RealtimeDataJson,
+  suburbanJson: RealtimeDataJson,
+  regionalJson: RealtimeDataJson,
   suburbanSchedule: GtfsScheduleData,
   regionalSchedule: GtfsScheduleData,
   config: ReturnType<typeof formalizeConfig>,
   errors: GtfsParsingError[],
 ) {
-  const splitter = new GtfsRealtimeFeedSplitter(
-    config.suburbanLineGtfsIdMapping,
-    config.regionalLineGtfsIdMapping,
-    (e) => errors.push(e),
-  );
-  const { suburban: suburbanJson, regional: regionalJson } =
-    splitter.split(fullRealtimeData);
-
   fs.writeFileSync(
     "realtime-suburban.json",
     JSON.stringify(suburbanJson, null, 2),

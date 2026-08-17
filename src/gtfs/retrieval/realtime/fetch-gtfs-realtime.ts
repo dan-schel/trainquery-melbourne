@@ -1,9 +1,13 @@
+import type { Subfeed } from "../../subfeed.js";
 import { realtimeFeedSchema } from "./realtime-json-schemas.js";
 
-const gtfsRealtimeUrl = "https://vtar.trainquery.com/gtfs-realtime.json";
+const urls = {
+  suburban: "https://vtar.trainquery.com/gtfs-realtime-suburban.json",
+  regional: "https://vtar.trainquery.com/gtfs-realtime-regional.json",
+};
 
-export async function fetchGtfsRealtimeRaw(relayKey: string) {
-  const res = await fetch(gtfsRealtimeUrl, {
+export async function fetchGtfsRealtimeRaw(relayKey: string, feed: Subfeed) {
+  const res = await fetch(urls[feed], {
     headers: { "relay-key": relayKey },
   });
 
@@ -12,6 +16,6 @@ export async function fetchGtfsRealtimeRaw(relayKey: string) {
   return await res.json();
 }
 
-export async function fetchGtfsRealtime(relayKey: string) {
-  return realtimeFeedSchema.parse(await fetchGtfsRealtimeRaw(relayKey));
+export async function fetchGtfsRealtime(relayKey: string, feed: Subfeed) {
+  return realtimeFeedSchema.parse(await fetchGtfsRealtimeRaw(relayKey, feed));
 }

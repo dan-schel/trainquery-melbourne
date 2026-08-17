@@ -8,13 +8,14 @@ import { fetchGtfsRealtimeRaw } from "../../src/gtfs/retrieval/realtime/fetch-gt
 const saveDirectory = "./local/gtfs";
 const saveSuburbanDirectory = path.join(saveDirectory, "suburban");
 const saveRegionalDirectory = path.join(saveDirectory, "regional");
-const realtimePath = path.join(saveDirectory, "realtime.json");
+const suburbanRealtimePath = path.join(saveSuburbanDirectory, "realtime.json");
+const regionalRealtimePath = path.join(saveRegionalDirectory, "realtime.json");
 
 async function main() {
   console.log(`Clearing "${saveDirectory}" folder...`);
   await fsp.rm(saveDirectory, { recursive: true, force: true });
 
-  console.log("Downloading/extracting GTFS data...");
+  console.log("Downloading/extracting GTFS schedule data...");
 
   await withGtfsCsvs(env.RELAY_KEY, async ({ suburban, regional }) => {
     console.log(`Copying files into "${saveDirectory}" folder...`);
@@ -29,8 +30,12 @@ async function main() {
   });
 
   console.log("Fetching GTFS Realtime data...");
-  const realtime = await fetchGtfsRealtimeRaw(env.RELAY_KEY);
-  await fsp.writeFile(realtimePath, JSON.stringify(realtime, null, 2), "utf-8");
+  const suburbanRtData = await fetchGtfsRealtimeRaw(env.RELAY_KEY, "suburban");
+  const regionalRtData = await fetchGtfsRealtimeRaw(env.RELAY_KEY, "regional");
+  const suburbanRealtimeJson = JSON.stringify(suburbanRtData, null, 2);
+  const regionalRealtimeJson = JSON.stringify(regionalRtData, null, 2);
+  await fsp.writeFile(suburbanRealtimePath, suburbanRealtimeJson);
+  await fsp.writeFile(regionalRealtimePath, regionalRealtimeJson);
 
   console.log("✅ Done!");
 }
