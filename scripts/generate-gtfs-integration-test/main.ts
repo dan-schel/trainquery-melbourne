@@ -14,14 +14,16 @@ import type { Subfeed } from "../../src/gtfs/subfeed.js";
 
 const outputDir = "./tests/gtfs/corequery-gtfs/integration";
 const today = Temporal.Now.plainDateISO("Australia/Melbourne").toString();
-const now = Temporal.Now.plainDateTimeISO("Australia/Melbourne").toString();
+const now = Temporal.Now.plainDateTimeISO("Australia/Melbourne")
+  .round({ smallestUnit: "minute", roundingMode: "floor" })
+  .toString();
 const suburbanOutputDir = path.join(outputDir, `${today}-suburban`);
 const regionalOutputDir = path.join(outputDir, `${today}-regional`);
 
 const testCode = `import { describe, it } from "vitest";
 
-describe("[TESTNAME]", () => {
-  const system = createGtfsSystemForIntegrationTest(import.meta.dirname);
+describe("[TESTNAME]", async () => {
+  const system = await createGtfsSystemForIntegrationTest(import.meta.dirname);
   const stopNameMapping = await createStopNameMapping(import.meta.dirname);
 
   it("parses with expected errors only", () => {

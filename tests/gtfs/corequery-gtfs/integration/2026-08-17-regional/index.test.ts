@@ -1,7 +1,7 @@
 import { describe, it } from "vitest";
 import { createGtfsSystemForIntegrationTest } from "../support/create-gtfs-system/index.js";
-import { expectParsingErrorsToMatchSnapshot } from "../support/expect-parsing-errors.js";
 import { createStopNameMapping } from "../support/create-stop-name-mapping.js";
+import { expectParsingErrorsToMatchSnapshot } from "../support/expect-parsing-errors.js";
 import { expectDeparturesToMatchSnapshot } from "../support/expect-departures.js";
 
 describe("2026-08-17-regional", async () => {
@@ -12,13 +12,13 @@ describe("2026-08-17-regional", async () => {
     expectParsingErrorsToMatchSnapshot(system);
   });
 
-  describe("Flinders Street, 2026-08-17T11:22:00+10:00, forwards", () => {
+  describe("Flinders Street, 2026-08-17T11:34:00, forwards", () => {
     it("gives correct departures", () => {
       expectDeparturesToMatchSnapshot(
         system,
         stopNameMapping,
         "Flinders Street",
-        "2026-08-17T11:22:00+10:00",
+        "2026-08-17T11:34:00",
         "forwards",
       );
     });
