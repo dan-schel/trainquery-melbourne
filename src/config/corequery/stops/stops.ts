@@ -325,7 +325,7 @@ export const BELL: StopConfig = {
   name: "Bell",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "bell",
-  location: { latitude: -37.74556212, longitude: 145.00015503 },
+  location: { latitude: -37.74595119, longitude: 145.0002467 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -755,7 +755,7 @@ export const COBURG: StopConfig = {
   name: "Coburg",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "coburg",
-  location: { latitude: -37.74234502, longitude: 144.96333634 },
+  location: { latitude: -37.74180457, longitude: 144.96335115 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -1802,7 +1802,7 @@ export const KEON_PARK: StopConfig = {
   name: "Keon Park",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "keonpark",
-  location: { latitude: -37.69487012, longitude: 145.01188382 },
+  location: { latitude: -37.69575022, longitude: 145.01170153 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -2272,7 +2272,7 @@ export const MORELAND: StopConfig = {
   name: "Moreland",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "moreland",
-  location: { latitude: -37.75448484, longitude: 144.96182303 },
+  location: { latitude: -37.75410653, longitude: 144.96183341 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
