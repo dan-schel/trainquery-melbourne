@@ -7,8 +7,8 @@ import {
   intStringSchema,
 } from "../../utils/zod.js";
 
-export type FullStopsCsvRow = z.infer<typeof stopsCsvSchema>;
-export type FullStopsCsv = readonly FullStopsCsvRow[];
+type FullStopsCsvRow = z.infer<typeof stopsCsvSchema>;
+type FullStopsCsv = readonly FullStopsCsvRow[];
 export const stopsCsvSchema = z
   .object({
     stop_id: z.string(),
@@ -24,8 +24,8 @@ export const stopsCsvSchema = z
   })
   .readonly();
 
-export type FullRoutesCsvRow = z.infer<typeof routesCsvSchema>;
-export type FullRoutesCsv = readonly FullRoutesCsvRow[];
+type FullRoutesCsvRow = z.infer<typeof routesCsvSchema>;
+type FullRoutesCsv = readonly FullRoutesCsvRow[];
 export const routesCsvSchema = z
   .object({
     route_id: z.string(),
@@ -38,8 +38,8 @@ export const routesCsvSchema = z
   })
   .readonly();
 
-export type FullTripsCsvRow = z.infer<typeof tripsCsvSchema>;
-export type FullTripsCsv = readonly FullTripsCsvRow[];
+type FullTripsCsvRow = z.infer<typeof tripsCsvSchema>;
+type FullTripsCsv = readonly FullTripsCsvRow[];
 export const tripsCsvSchema = z
   .object({
     route_id: z.string(),
@@ -54,8 +54,8 @@ export const tripsCsvSchema = z
   })
   .readonly();
 
-export type FullStopTimesCsvRow = z.infer<typeof stopTimesCsvSchema>;
-export type FullStopTimesCsv = readonly FullStopTimesCsvRow[];
+type FullStopTimesCsvRow = z.infer<typeof stopTimesCsvSchema>;
+type FullStopTimesCsv = readonly FullStopTimesCsvRow[];
 export const stopTimesCsvSchema = z
   .object({
     trip_id: z.string(),
@@ -70,8 +70,8 @@ export const stopTimesCsvSchema = z
   })
   .readonly();
 
-export type FullCalendarCsvRow = z.infer<typeof calendarCsvSchema>;
-export type FullCalendarCsv = readonly FullCalendarCsvRow[];
+type FullCalendarCsvRow = z.infer<typeof calendarCsvSchema>;
+type FullCalendarCsv = readonly FullCalendarCsvRow[];
 export const calendarCsvSchema = z
   .object({
     service_id: z.string(),
@@ -87,8 +87,8 @@ export const calendarCsvSchema = z
   })
   .readonly();
 
-export type FullCalendarDatesCsvRow = z.infer<typeof calendarDatesCsvSchema>;
-export type FullCalendarDatesCsv = readonly FullCalendarDatesCsvRow[];
+type FullCalendarDatesCsvRow = z.infer<typeof calendarDatesCsvSchema>;
+type FullCalendarDatesCsv = readonly FullCalendarDatesCsvRow[];
 export const calendarDatesCsvSchema = z
   .object({
     service_id: z.string(),
@@ -97,8 +97,8 @@ export const calendarDatesCsvSchema = z
   })
   .readonly();
 
-export type FullTransfersCsvRow = z.infer<typeof transfersCsvSchema>;
-export type FullTransfersCsv = readonly FullTransfersCsvRow[];
+type FullTransfersCsvRow = z.infer<typeof transfersCsvSchema>;
+type FullTransfersCsv = readonly FullTransfersCsvRow[];
 export const transfersCsvSchema = z
   .object({
     from_stop_id: z.string(),
