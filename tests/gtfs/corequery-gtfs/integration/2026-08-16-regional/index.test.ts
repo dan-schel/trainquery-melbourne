@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { createGtfsSystemForIntegrationTest } from "../support/create-gtfs-system-for-integration-test.js";
+import { createGtfsSystemForIntegrationTest } from "../support/create-gtfs-system/index.js";
 
 describe("2026-08-16-regional", () => {
   const system = createGtfsSystemForIntegrationTest(import.meta.dirname);
