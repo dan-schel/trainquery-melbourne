@@ -14,3 +14,34 @@ exports[`2026-08-17-regional > Flinders Street, 2026-08-17T12:25:00+10:00, forwa
 17/8/26, 3:32 pm     Southern Cross                                       No realtime data at this stop
 "
 `;
+
+exports[`2026-08-17-regional > parses with expected errors only 1`] = `
+"
+Schedule parsing errors:
+<none>
+
+Realtime parsing errors:
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- stop-time-update-entry-changes-platform
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- stop-time-update-entry-changes-platform
+- unsupported-stop-time-update-entry-schedule-relationship
+- stop-time-update-entry-changes-platform
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+- unsupported-stop-time-update-entry-schedule-relationship
+"
+`;

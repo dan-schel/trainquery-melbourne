@@ -79,6 +79,14 @@ export class GtfsSystem {
     return this._feed;
   }
 
+  get realtimeParsingErrors() {
+    return this._realtimeParsingErrors;
+  }
+
+  get scheduleParsingErrors() {
+    return this._scheduleParsingErrors;
+  }
+
   onNewScheduleData(scheduleCsvs: GtfsFeedCsv, realtimeJson: RealtimeDataJson) {
     this._scheduleParsingErrors = [];
     this._realtimeParsingErrors = [];
