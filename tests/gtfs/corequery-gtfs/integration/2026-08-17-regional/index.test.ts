@@ -12,13 +12,13 @@ describe("2026-08-17-regional", async () => {
     expectParsingErrorsToMatchSnapshot(system);
   });
 
-  describe("Flinders Street, 2026-08-17T11:34:00, forwards", () => {
+  describe("Flinders Street, 2026-08-17T12:25:00+10:00, forwards", () => {
     it("gives correct departures", () => {
       expectDeparturesToMatchSnapshot({
         system,
         stopNameMapping,
         stopName: "Flinders Street",
-        instant: "2026-08-17T11:34:00",
+        instant: "2026-08-17T12:25:00+10:00",
         direction: "forwards",
         maxResults: 10,
         formatTimezone: "Australia/Melbourne",
