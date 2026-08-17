@@ -51,8 +51,16 @@ async function main() {
 
   console.log("Fetching GTFS Realtime data...");
 
-  const suburbanRealtimePath = path.join(suburbanOutputDir, "realtime.json");
-  const regionalRealtimePath = path.join(suburbanOutputDir, "realtime.json");
+  const suburbanRealtimePath = path.join(
+    suburbanOutputDir,
+    "gtfs",
+    "realtime.json",
+  );
+  const regionalRealtimePath = path.join(
+    regionalOutputDir,
+    "gtfs",
+    "realtime.json",
+  );
   const suburbanRtData = await fetchGtfsRealtimeRaw(env.RELAY_KEY, "suburban");
   const regionalRtData = await fetchGtfsRealtimeRaw(env.RELAY_KEY, "regional");
   const suburbanRealtimeJson = JSON.stringify(suburbanRtData, null, 2);

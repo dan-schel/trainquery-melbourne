@@ -30,13 +30,13 @@ export async function createGtfsSystemForIntegrationTest(dirname: string) {
     return await readCsv(path.join(dirname, "gtfs", csvFileName), schema);
   }
   const scheduleData: GtfsFeedCsv = {
-    stops: await read("stops.csv", stopsCsvSchema),
-    routes: await read("routes.csv", routesCsvSchema),
-    trips: await read("trips.csv", tripsCsvSchema),
-    stopTimes: await read("stop_times.csv", stopTimesCsvSchema),
-    calendar: await read("calendar.csv", calendarCsvSchema),
-    calendarDates: await read("calendar_dates.csv", calendarDatesCsvSchema),
-    transfers: await read("transfers.csv", transfersCsvSchema),
+    stops: await read("stops.txt", stopsCsvSchema),
+    routes: await read("routes.txt", routesCsvSchema),
+    trips: await read("trips.txt", tripsCsvSchema),
+    stopTimes: await read("stop_times.txt", stopTimesCsvSchema),
+    calendar: await read("calendar.txt", calendarCsvSchema),
+    calendarDates: await read("calendar_dates.txt", calendarDatesCsvSchema),
+    transfers: await read("transfers.txt", transfersCsvSchema),
   };
 
   const system = GtfsSystem.build("test", config);
