@@ -1,13 +1,26 @@
-import { describe, it, expect } from "vitest";
+import { describe, it } from "vitest";
 import { createGtfsSystemForIntegrationTest } from "../support/create-gtfs-system/index.js";
+import { expectParsingErrorsToMatchSnapshot } from "../support/expect-parsing-errors.js";
+import { createStopNameMapping } from "../support/create-stop-name-mapping.js";
+import { expectDeparturesToMatchSnapshot } from "../support/expect-departures.js";
 
-describe("2026-08-17-regional", () => {
-  const system = createGtfsSystemForIntegrationTest(import.meta.dirname);
+describe("2026-08-17-regional", async () => {
+  const system = await createGtfsSystemForIntegrationTest(import.meta.dirname);
+  const stopNameMapping = await createStopNameMapping(import.meta.dirname);
 
-  // TODO: Or whatever.
-  describe("Flinders Street, 2026-08-15T21:03:00+10:00, no filtering", () => {
+  it("parses with expected errors only", () => {
+    expectParsingErrorsToMatchSnapshot(system);
+  });
+
+  describe("Flinders Street, 2026-08-17T11:22:00+10:00, forwards", () => {
     it("gives correct departures", () => {
-      expect(false).toBe(true);
+      expectDeparturesToMatchSnapshot(
+        system,
+        stopNameMapping,
+        "Flinders Street",
+        "2026-08-17T11:22:00+10:00",
+        "forwards",
+      );
     });
   });
 });

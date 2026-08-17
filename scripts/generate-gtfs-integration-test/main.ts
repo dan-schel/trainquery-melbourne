@@ -8,20 +8,37 @@ import {
   regionalGtfsConfig,
   suburbanGtfsConfig,
 } from "../../src/config/gtfs/index.js";
+import { stops } from "../../src/config/corequery/stops/index.js";
+import { getSubfeedsWithStop } from "../../src/gtfs/utils/get-subfeeds-with.js";
+import type { Subfeed } from "../../src/gtfs/subfeed.js";
 
 const outputDir = "./tests/gtfs/corequery-gtfs/integration";
 const today = Temporal.Now.plainDateISO("Australia/Melbourne").toString();
+const now = Temporal.Now.plainDateTimeISO("Australia/Melbourne").toString();
 const suburbanOutputDir = path.join(outputDir, `${today}-suburban`);
 const regionalOutputDir = path.join(outputDir, `${today}-regional`);
 
-// I don't want to make a search and think there's unfinished code in here ;)
-const wordThatShallNotBeNamed = "T*DO".replace("*", "O");
-const testCode = `import { describe, it, expect } from "vitest";
+const testCode = `import { describe, it } from "vitest";
 
 describe("[TESTNAME]", () => {
   const system = createGtfsSystemForIntegrationTest(import.meta.dirname);
+  const stopNameMapping = await createStopNameMapping(import.meta.dirname);
 
-  // ${wordThatShallNotBeNamed}: Implement.
+  it("parses with expected errors only", () => {
+    expectParsingErrorsToMatchSnapshot(system);
+  });
+
+  describe("Flinders Street, ${now}, forwards", () => {
+    it("gives correct departures", () => {
+      expectDeparturesToMatchSnapshot(
+        system,
+        stopNameMapping,
+        "Flinders Street",
+        "${now}",
+        "forwards",
+      );
+    });
+  });
 });
 `;
 
@@ -35,6 +52,11 @@ async function main() {
 
   console.log("Downloading/extracting GTFS schedule data...");
 
+  // TODO: withGtfsCsvs should probably only download one subfeed's CSVs at a
+  // time, but of course, that requires the relay to serve them as separate zip
+  // files. The benefit is resilience in case one subfeed has a mistake in it!
+  // Once done, this whole function can be refactored to only do one feed at a
+  // time, and reduce a whole lot of duplication.
   await withGtfsCsvs(env.RELAY_KEY, async ({ suburban, regional }) => {
     const suburbanGtfsDir = path.join(suburbanOutputDir, "gtfs");
     console.log(`Copying files into "${suburbanGtfsDir}" folder...`);
@@ -77,6 +99,15 @@ async function main() {
   await fsp.writeFile(suburbanConfigPath, suburbanConfigJson);
   await fsp.writeFile(regionalConfigPath, regionalConfigJson);
 
+  console.log("Writing stop name mapping files...");
+
+  const sbbnSnmPath = path.join(suburbanOutputDir, "stop-name-mapping.json");
+  const rgnlSnmPath = path.join(regionalOutputDir, "stop-name-mapping.json");
+  const suburbanMappingJson = createStopNameMappingJson("suburban");
+  const regionalMappingJson = createStopNameMappingJson("regional");
+  await fsp.writeFile(sbbnSnmPath, suburbanMappingJson);
+  await fsp.writeFile(rgnlSnmPath, regionalMappingJson);
+
   console.log("Writing test files...");
 
   const suburbanTestPath = path.join(suburbanOutputDir, "index.test.ts");
@@ -87,6 +118,18 @@ async function main() {
   await fsp.writeFile(regionalTestPath, regionalTestCode);
 
   console.log("✅ Done!");
+}
+
+function createStopNameMappingJson(feed: Subfeed) {
+  const mapping: Record<number, string> = {};
+
+  for (const stop of stops) {
+    if (getSubfeedsWithStop(stop)[feed]) {
+      mapping[stop.id] = stop.name;
+    }
+  }
+
+  return JSON.stringify(mapping, null, 2);
 }
 
 main().catch((error) => {
