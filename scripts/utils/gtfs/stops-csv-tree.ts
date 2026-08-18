@@ -1,12 +1,12 @@
 import { isPresent, unique } from "@dan-schel/js-utils";
+import type { Subfeed } from "../../../src/gtfs/subfeed.js";
+import type { MelbourneGtfsCsvData } from "../../../src/gtfs/retrieval/schedule/read-gtfs-csvs.js";
 import type {
-  StopsCsv,
-  StopsCsvRow,
-} from "../../../src/gtfs/schedule/csv-schemas.js";
-import type { Subfeed } from "../../../src/gtfs/schedule/utils/subfeed.js";
-import type { GtfsData } from "../../../src/gtfs/schedule/read-gtfs.js";
+  FullStopsCsv,
+  FullStopsCsvRow,
+} from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
-export type StopsCsvTreeNode = StopsCsvRow & {
+export type StopsCsvTreeNode = FullStopsCsvRow & {
   readonly children: readonly StopsCsvTreeNode[];
   readonly subfeeds: readonly Subfeed[];
 };
@@ -20,15 +20,15 @@ export class StopsCsvTree {
     );
   }
 
-  static buildCombined(data: GtfsData) {
+  static buildCombined(data: MelbourneGtfsCsvData) {
     return StopsCsvTree.merge(
       StopsCsvTree.build(data.suburban.stops).setSubfeed("suburban"),
       StopsCsvTree.build(data.regional.stops).setSubfeed("regional"),
     );
   }
 
-  static build(rows: StopsCsv): StopsCsvTree {
-    type MutableStopsCsvTreeNode = StopsCsvRow & {
+  static build(rows: FullStopsCsv): StopsCsvTree {
+    type MutableStopsCsvTreeNode = FullStopsCsvRow & {
       readonly children: MutableStopsCsvTreeNode[];
       readonly subfeeds: readonly Subfeed[];
     };

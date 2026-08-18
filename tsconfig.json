@@ -1,9 +1,9 @@
 {
-  "include": ["./src/**/*", "./scripts/**/*"],
+  "include": ["./src/**/*", "./scripts/**/*", "./tests/**/*"],
   "compilerOptions": {
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "target": "es2022",
+    "target": "es2025",
     "allowJs": true,
     "resolveJsonModule": true,
     "moduleDetection": "force",
@@ -16,6 +16,6 @@
     "outDir": "dist",
     "sourceMap": true,
     "declaration": true,
-    "lib": ["es2022"]
+    "lib": ["es2025", "ESNext.Temporal"]
   }
 }

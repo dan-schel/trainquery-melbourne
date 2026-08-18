@@ -4,7 +4,12 @@ import { lines } from "../../../src/config/corequery/lines/index.js";
 import { lineGtfsIds } from "../../../src/config/gtfs/line-gtfs-ids.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import { getSubfeedsWithLine } from "../../../src/gtfs/utils/get-subfeeds-with.js";
-import { LineGtfsIdMapping } from "../../../src/gtfs/ids/line-gtfs-id-mapping.js";
+import { LineGtfsIdMapping } from "corequery-gtfs";
+import { itsOk } from "@dan-schel/js-utils";
+import {
+  regionalGtfsConfig,
+  suburbanGtfsConfig,
+} from "../../../src/config/gtfs/index.js";
 
 const linesExemptedFromHavingGtfsId: number[] = [];
 
@@ -40,8 +45,12 @@ describe("lineGtfsIds", () => {
   });
 
   it("mapped lines all exist in the config", () => {
-    const suburbanMapping = LineGtfsIdMapping.build(lineGtfsIds, "suburban");
-    const regionalMapping = LineGtfsIdMapping.build(lineGtfsIds, "regional");
+    const suburbanMapping = LineGtfsIdMapping.build(
+      suburbanGtfsConfig.lineGtfsIds,
+    );
+    const regionalMapping = LineGtfsIdMapping.build(
+      regionalGtfsConfig.lineGtfsIds,
+    );
 
     for (const mapping of [suburbanMapping, regionalMapping]) {
       for (const gtfsId of mapping.allIds()) {
@@ -57,7 +66,7 @@ describe("lineGtfsIds", () => {
     await expectedSortedSourceCode(
       "src/config/gtfs/line-gtfs-ids.ts",
       /^  \[([^\]]+)\]:/,
-      (match) => match[1],
+      (match) => itsOk(match[1]),
     );
   });
 });

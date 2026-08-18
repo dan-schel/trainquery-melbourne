@@ -1,7 +1,7 @@
 {
   "type": "module",
   "dependencies": {
-    "@dan-schel/js-utils": "4.13.0",
+    "@dan-schel/js-utils": "4.14.1",
     "@eslint/js": "10.0.1",
     "@types/adm-zip": "0.5.8",
     "@types/node": "25.8.0",
@@ -9,6 +9,7 @@
     "adm-zip": "0.5.17",
     "chalk": "5.6.2",
     "corequery": "0.20.0",
+    "corequery-gtfs": "0.1.4",
     "csv-parser": "3.2.1",
     "dotenv": "17.4.2",
     "eslint": "10.4.0",
@@ -16,6 +17,7 @@
     "eslint-plugin-prettier": "5.5.5",
     "knip": "6.14.1",
     "prettier": "3.8.3",
+    "temporal-polyfill": "1.0.1",
     "tsx": "4.22.1",
     "typescript": "6.0.3",
     "typescript-eslint": "8.59.3",
@@ -33,7 +35,8 @@
     "format-check": "prettier --check .",
     "compare-config-to-gtfs": "tsx scripts/compare-config-to-gtfs/main.ts",
     "download-gtfs": "tsx scripts/download-gtfs/main.ts",
-    "import-stop-from-gtfs": "tsx scripts/import-stop-from-gtfs/main.ts"
+    "import-stop-from-gtfs": "tsx scripts/import-stop-from-gtfs/main.ts",
+    "generate-gtfs-integration-test": "tsx scripts/generate-gtfs-integration-test/main.ts"
   },
   "corequeryDemoApp": {
     "scripts": {

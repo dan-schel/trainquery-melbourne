@@ -1,16 +1,19 @@
-import type { StopTimesCsv, StopTimesCsvRow } from "../csv-schemas.js";
+import type {
+  FullStopTimesCsv,
+  FullStopTimesCsvRow,
+} from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 export class IndexedStopTimes {
-  constructor(private _stopTimesByTripId: Map<string, StopTimesCsv>) {}
+  constructor(private _stopTimesByTripId: Map<string, FullStopTimesCsv>) {}
 
-  forTrip(tripId: string): StopTimesCsv {
+  forTrip(tripId: string): FullStopTimesCsv {
     const stopTimes = this._stopTimesByTripId.get(tripId);
     if (stopTimes == null) throw new Error(`Nothing found for trip: ${tripId}`);
     return stopTimes;
   }
 
-  static build(stopTimes: StopTimesCsv): IndexedStopTimes {
-    const result = new Map<string, StopTimesCsvRow[]>();
+  static build(stopTimes: FullStopTimesCsv): IndexedStopTimes {
+    const result = new Map<string, FullStopTimesCsvRow[]>();
 
     for (const stopTime of stopTimes) {
       const existing = result.get(stopTime.trip_id) ?? [];

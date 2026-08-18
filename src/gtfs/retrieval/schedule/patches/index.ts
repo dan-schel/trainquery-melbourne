@@ -1,7 +1,7 @@
-import type { GtfsData } from "../read-gtfs.js";
+import type { MelbourneGtfsCsvData } from "../read-gtfs-csvs.js";
 // import { patchDuplicateStopTimes } from "./patch-duplicate-stop-times.js";
 
-type Patch = (gtfsData: GtfsData) => GtfsData;
+type Patch = (gtfsData: MelbourneGtfsCsvData) => MelbourneGtfsCsvData;
 
 // This "patch" mechanism is to be used SPARINGLY, and only for issues that
 // actually affect TrainQuery at runtime. Things which are purely linting/config
@@ -12,14 +12,13 @@ type Patch = (gtfsData: GtfsData) => GtfsData;
 // rule checking for the mismatch should be configurable to ignore the check for
 // Jolimont station.
 //
-// e.g. duplicate stop times appearing in stop_times.txt DOES get a patch,
-// because it runtime TrainQuery will fail to match the trip to any route, and
-// would presumably show double stops even if it could.
-const activePatches: Patch[] = [
-  // NOTE: Intentionally disabling this patch (see comments in patch file).
-  // patchDuplicateStopTimes
-];
+// e.g. a stop time being given in an invalid format SHOULD get a patch, because
+// PTV would be violating the GTFS spec and TrainQuery wouldn't be able to parse
+// the data at all.
+const activePatches: Patch[] = [];
 
-export function applyPatches(gtfsData: GtfsData): GtfsData {
+export function applyPatches(
+  gtfsData: MelbourneGtfsCsvData,
+): MelbourneGtfsCsvData {
   return activePatches.reduce((data, patch) => patch(data), gtfsData);
 }

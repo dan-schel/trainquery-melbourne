@@ -2,7 +2,12 @@ import type { KnipConfig } from "knip";
 
 const config: KnipConfig = {
   tags: ["-knipignore"],
-  ignoreFiles: ["src/gtfs/schedule/patches/patch-duplicate-stop-times.ts"],
+
+  // TODO: Remove this.
+  ignoreIssues: {
+    "src/gtfs/temp-script.ts": ["files"],
+    "src/gtfs/retrieval/realtime/fetch-gtfs-realtime.ts": ["exports"],
+  },
 };
 
 export default config;

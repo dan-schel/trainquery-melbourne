@@ -1,10 +1,9 @@
 import type { IssueCollector } from "../issue-collector.js";
 import { flattenStopsCsvTree } from "./utils/flatten-stops-csv-tree.js";
 import type { StopConfig } from "corequery";
-import { StopGtfsIdCollection } from "../../../src/gtfs/ids/stop-gtfs-id-collection.js";
+import { StopGtfsIdCollection, type StopGtfsIdMetadata } from "corequery-gtfs";
 import type { StopsCsvTreeNode } from "../../utils/gtfs/stops-csv-tree.js";
 import { compareArrays } from "@dan-schel/js-utils";
-import type { StopGtfsIdMetadata } from "../../../src/gtfs/ids/stop-gtfs-id-metadata.js";
 
 export function compareStopGtfsIds({
   config,
@@ -45,6 +44,9 @@ export function compareStopGtfsIds({
 
     // Note: We're not comparing the ID types, or the platform codes here. Just
     // checking that the list of IDs matches up.
+    //
+    // TODO: Checking platform_code should be implemented too though, maybe as
+    // a separate check.
     aKeyFunc: (a) => a.stop_id,
     bKeyFunc: (b) => b.id,
 

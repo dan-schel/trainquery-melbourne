@@ -1,5 +1,4 @@
-import type { StopGtfsIdsConfig } from "../../src/config/gtfs/types.js";
-import { StopGtfsIdMapping } from "../../src/gtfs/ids/stop-gtfs-id-mapping.js";
+import { type GtfsConfig, StopGtfsIdMapping } from "corequery-gtfs";
 import type {
   StopsCsvTree,
   StopsCsvTreeNode,
@@ -7,18 +6,23 @@ import type {
 
 export function findUnseenGtfsIds(
   stopsCsvTree: StopsCsvTree,
-  mappedGtfsIds: StopGtfsIdsConfig,
+  suburbanGtfsConfig: GtfsConfig,
+  regionalGtfsConfig: GtfsConfig,
 ): StopsCsvTreeNode[] {
   const result: StopsCsvTreeNode[] = [];
 
-  const suburbanGtfsIds = StopGtfsIdMapping.build(mappedGtfsIds, "suburban");
-  const regionalGtfsIds = StopGtfsIdMapping.build(mappedGtfsIds, "regional");
+  const suburbanGtfsIdMapping = StopGtfsIdMapping.build(
+    suburbanGtfsConfig.stopGtfsIds,
+  );
+  const regionalGtfsIdMapping = StopGtfsIdMapping.build(
+    regionalGtfsConfig.stopGtfsIds,
+  );
 
   for (const node of stopsCsvTree.nodes) {
-    const resolvesAsSuburban = suburbanGtfsIds.tryResolve(node.stop_id) != null;
-    const resolvesAsRegional = regionalGtfsIds.tryResolve(node.stop_id) != null;
+    const isSuburban = suburbanGtfsIdMapping.tryResolve(node.stop_id) != null;
+    const isRegional = regionalGtfsIdMapping.tryResolve(node.stop_id) != null;
 
-    if (!resolvesAsSuburban && !resolvesAsRegional) {
+    if (!isSuburban && !isRegional) {
       result.push(node);
     }
   }

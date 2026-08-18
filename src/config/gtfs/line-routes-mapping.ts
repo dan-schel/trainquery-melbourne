@@ -1,4 +1,4 @@
-import type { LineRoutesConfig } from "./types.js";
+import type { LineRoutesMappingConfig } from "corequery-gtfs";
 import * as line from "../corequery/lines/line-ids.js";
 import * as stop from "../corequery/stops/stop-ids.js";
 import * as tag from "../corequery/lines/service-tags.js";
@@ -9,7 +9,7 @@ import {
 import { formalizeRouteStops } from "../utils/formalize-stops.js";
 import { createCityLoopRoutes } from "../utils/city-loop.js";
 
-export const lineRoutes: LineRoutesConfig = {
+export const lineRoutesMapping: LineRoutesMappingConfig = {
   [line.ALAMEIN]: createCityLoopRoutes("blue", [
     stop.RICHMOND,
     stop.EAST_RICHMOND,
@@ -31,7 +31,12 @@ export const lineRoutes: LineRoutesConfig = {
       color: "purple",
       stops: formalizeRouteStops([
         stop.SOUTHERN_CROSS,
+        { stopId: stop.NORTH_MELBOURNE, collapseInStoppingPatterns: true },
+        { stopId: stop.SOUTH_KENSINGTON, collapseInStoppingPatterns: true },
         stop.FOOTSCRAY,
+        { stopId: stop.MIDDLE_FOOTSCRAY, collapseInStoppingPatterns: true },
+        { stopId: stop.WEST_FOOTSCRAY, collapseInStoppingPatterns: true },
+        { stopId: stop.TOTTENHAM, collapseInStoppingPatterns: true },
         stop.SUNSHINE,
         stop.ARDEER,
         stop.DEER_PARK,
@@ -106,9 +111,19 @@ export const lineRoutes: LineRoutesConfig = {
       color: "purple",
       stops: formalizeRouteStops([
         stop.SOUTHERN_CROSS,
+        { stopId: stop.NORTH_MELBOURNE, collapseInStoppingPatterns: true },
+        { stopId: stop.SOUTH_KENSINGTON, collapseInStoppingPatterns: true },
         stop.FOOTSCRAY,
+        { stopId: stop.MIDDLE_FOOTSCRAY, collapseInStoppingPatterns: true },
+        { stopId: stop.WEST_FOOTSCRAY, collapseInStoppingPatterns: true },
+        { stopId: stop.TOTTENHAM, collapseInStoppingPatterns: true },
         stop.SUNSHINE,
+        { stopId: stop.ALBION, collapseInStoppingPatterns: true },
+        { stopId: stop.GINIFER, collapseInStoppingPatterns: true },
+        { stopId: stop.ST_ALBANS, collapseInStoppingPatterns: true },
+        { stopId: stop.KEILOR_PLAINS, collapseInStoppingPatterns: true },
         stop.WATERGARDENS,
+        { stopId: stop.DIGGERS_REST, collapseInStoppingPatterns: true },
         stop.SUNBURY,
         stop.CLARKEFIELD,
         stop.RIDDELLS_CREEK,
@@ -558,8 +573,20 @@ export const lineRoutes: LineRoutesConfig = {
       stops: formalizeRouteStops([
         stop.SOUTHERN_CROSS,
         stop.NORTH_MELBOURNE,
+        { stopId: stop.KENSINGTON, collapseInStoppingPatterns: true },
+        { stopId: stop.NEWMARKET, collapseInStoppingPatterns: true },
+        { stopId: stop.ASCOT_VALE, collapseInStoppingPatterns: true },
+        { stopId: stop.MOONEE_PONDS, collapseInStoppingPatterns: true },
         stop.ESSENDON,
+        { stopId: stop.GLENBERVIE, collapseInStoppingPatterns: true },
+        { stopId: stop.STRATHMORE, collapseInStoppingPatterns: true },
+        { stopId: stop.PASCOE_VALE, collapseInStoppingPatterns: true },
+        { stopId: stop.OAK_PARK, collapseInStoppingPatterns: true },
+        { stopId: stop.GLENROY, collapseInStoppingPatterns: true },
+        { stopId: stop.JACANA, collapseInStoppingPatterns: true },
         stop.BROADMEADOWS,
+        { stopId: stop.COOLAROO, collapseInStoppingPatterns: true },
+        { stopId: stop.ROXBURGH_PARK, collapseInStoppingPatterns: true },
         stop.CRAIGIEBURN,
         stop.DONNYBROOK,
         stop.WALLAN,

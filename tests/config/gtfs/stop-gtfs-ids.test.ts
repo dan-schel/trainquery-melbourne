@@ -4,9 +4,14 @@ import { stops } from "../../../src/config/corequery/stops/index.js";
 import { stopGtfsIds } from "../../../src/config/gtfs/stop-gtfs-ids.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import { getSubfeedsWithStop } from "../../../src/gtfs/utils/get-subfeeds-with.js";
-import { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
+import { StopGtfsIdMapping } from "corequery-gtfs";
 import * as stop from "../../../src/config/corequery/stops/stop-ids.js";
 import * as position from "../../../src/config/corequery/stops/stop-position-ids.js";
+import { itsOk } from "@dan-schel/js-utils";
+import {
+  regionalGtfsConfig,
+  suburbanGtfsConfig,
+} from "../../../src/config/gtfs/index.js";
 
 const stopsExemptedFromHavingGtfsId: number[] = [];
 
@@ -106,8 +111,12 @@ describe("stopGtfsIds", () => {
   });
 
   it("mapped stops and positions all exist in the config", () => {
-    const suburbanMapping = StopGtfsIdMapping.build(stopGtfsIds, "suburban");
-    const regionalMapping = StopGtfsIdMapping.build(stopGtfsIds, "regional");
+    const suburbanMapping = StopGtfsIdMapping.build(
+      suburbanGtfsConfig.stopGtfsIds,
+    );
+    const regionalMapping = StopGtfsIdMapping.build(
+      regionalGtfsConfig.stopGtfsIds,
+    );
 
     for (const mapping of [suburbanMapping, regionalMapping]) {
       for (const gtfsId of mapping.allIds()) {
@@ -146,7 +155,7 @@ describe("stopGtfsIds", () => {
     await expectedSortedSourceCode(
       "src/config/gtfs/stop-gtfs-ids.ts",
       /^  \[([^\]]+)\]:/,
-      (match) => match[1],
+      (match) => itsOk(match[1]),
     );
   });
 });

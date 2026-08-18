@@ -3,12 +3,11 @@ import { compareStopNames } from "./compare-names.js";
 import { compareStopLocations } from "./compare-locations.js";
 import { compareStopGtfsIds } from "./compare-gtfs-ids.js";
 import type { StopConfig } from "corequery";
-import type { StopGtfsIdMapping } from "../../../src/gtfs/ids/stop-gtfs-id-mapping.js";
+import type { StopGtfsIdMapping, StopGtfsIdCollection } from "corequery-gtfs";
 import { compareStopItems } from "./compare-items.js";
 import type { StopLintOptions } from "../comparison-options.js";
-import type { StopGtfsIdCollection } from "../../../src/gtfs/ids/stop-gtfs-id-collection.js";
 import type { StopsCsvTreeNode } from "../../utils/gtfs/stops-csv-tree.js";
-import type { StopsCsv } from "../../../src/gtfs/schedule/csv-schemas.js";
+import type { FullStopsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 export function compareStops({
   stops,
@@ -20,7 +19,7 @@ export function compareStops({
 }: {
   stops: readonly StopConfig[];
   idMapping: StopGtfsIdMapping;
-  gtfsStops: StopsCsv;
+  gtfsStops: FullStopsCsv;
   issues: IssueCollector;
   getOptionsForStop: (stopId: number) => StopLintOptions;
   isStopMissingFromConfigIgnored: (gtfsNode: StopsCsvTreeNode) => boolean;
@@ -60,6 +59,9 @@ export function compareStops({
         (options.ignoredIdsMissingFromGtfs?.includes(gtfsId.id) ?? false) ||
         (options.ignoreIdMissingFromGtfs?.(gtfsId) ?? false),
     });
+
+    // TODO: Use the `https://transport.vic.gov.au/stop/...` urls to check that
+    // our PTV API mapping is correct.
   }
 
   compareStopItems({

@@ -4,6 +4,7 @@ import { lines } from "../../../src/config/corequery/lines/index.js";
 import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import * as line from "../../../src/config/corequery/lines/line-ids.js";
+import { itsOk } from "@dan-schel/js-utils";
 
 const linesExemptedFromHavingPtvId: number[] = [
   // I don't think it HAS a PTV API ID.
@@ -30,7 +31,7 @@ describe("linePtvApiIds", () => {
     await expectedSortedSourceCode(
       "src/config/ptv-api/line-ptv-api-ids.ts",
       /^  \[([^\]]+)\]:/,
-      (match) => match[1],
+      (match) => itsOk(match[1]),
     );
   });
 });

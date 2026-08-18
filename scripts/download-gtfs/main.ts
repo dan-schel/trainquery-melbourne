@@ -1,21 +1,23 @@
+import "temporal-polyfill/global";
 import fsp from "fs/promises";
 import path from "path";
-import { withGtfsFiles } from "../../src/gtfs/schedule/with-gtfs-files.js";
+import { withGtfsCsvs } from "../../src/gtfs/retrieval/schedule/with-gtfs-csvs.js";
 import { env } from "./env.js";
-import { fetchGtfsRealtime } from "../../src/gtfs/realtime/fetch-gtfs-realtime.js";
+import { fetchGtfsRealtimeRaw } from "../../src/gtfs/retrieval/realtime/fetch-gtfs-realtime.js";
 
 const saveDirectory = "./local/gtfs";
 const saveSuburbanDirectory = path.join(saveDirectory, "suburban");
 const saveRegionalDirectory = path.join(saveDirectory, "regional");
-const realtimePath = path.join(saveDirectory, "realtime.json");
+const suburbanRealtimePath = path.join(saveSuburbanDirectory, "realtime.json");
+const regionalRealtimePath = path.join(saveRegionalDirectory, "realtime.json");
 
 async function main() {
   console.log(`Clearing "${saveDirectory}" folder...`);
   await fsp.rm(saveDirectory, { recursive: true, force: true });
 
-  console.log("Downloading/extracting GTFS data...");
+  console.log("Downloading/extracting GTFS schedule data...");
 
-  await withGtfsFiles(env.RELAY_KEY, async ({ suburban, regional }) => {
+  await withGtfsCsvs(env.RELAY_KEY, async ({ suburban, regional }) => {
     console.log(`Copying files into "${saveDirectory}" folder...`);
 
     await fsp.mkdir(saveSuburbanDirectory, { recursive: true });
@@ -28,8 +30,12 @@ async function main() {
   });
 
   console.log("Fetching GTFS Realtime data...");
-  const realtime = await fetchGtfsRealtime(env.RELAY_KEY);
-  await fsp.writeFile(realtimePath, JSON.stringify(realtime, null, 2), "utf-8");
+  const suburbanRtData = await fetchGtfsRealtimeRaw(env.RELAY_KEY, "suburban");
+  const regionalRtData = await fetchGtfsRealtimeRaw(env.RELAY_KEY, "regional");
+  const suburbanRealtimeJson = JSON.stringify(suburbanRtData, null, 2);
+  const regionalRealtimeJson = JSON.stringify(regionalRtData, null, 2);
+  await fsp.writeFile(suburbanRealtimePath, suburbanRealtimeJson);
+  await fsp.writeFile(regionalRealtimePath, regionalRealtimeJson);
 
   console.log("✅ Done!");
 }

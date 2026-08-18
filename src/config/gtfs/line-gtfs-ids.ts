@@ -1,7 +1,7 @@
-import type { LineGtfsIdsConfig } from "./types.js";
+import type { MultifeedLineGtfsIdsConfig } from "../../gtfs/ids.js";
 import * as line from "../corequery/lines/line-ids.js";
 
-export const lineGtfsIds: LineGtfsIdsConfig = {
+export const lineGtfsIds: MultifeedLineGtfsIdsConfig = {
   [line.ALAMEIN]: {
     suburban: {
       primary: "aus:vic:vic-02-ALM:",

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { lintConfig, type LintOptions } from "corequery";
-import { lintableConfig } from "../../../src/config/corequery/index.js";
+import { lintableConfig } from "../../../src/config/corequery/lintable-config.js";
 import * as line from "../../../src/config/corequery/lines/line-ids.js";
 
 const options: LintOptions = {

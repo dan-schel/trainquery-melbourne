@@ -3,6 +3,7 @@ import { stopPtvApiIds } from "../../../src/config/ptv-api/stop-ptv-api-ids.js";
 import { stops } from "../../../src/config/corequery/stops/index.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import { expectedSortedSourceCode } from "../support/expect-sorted-source-code.js";
+import { itsOk } from "@dan-schel/js-utils";
 
 const stopsExemptedFromHavingPtvId: number[] = [];
 
@@ -26,7 +27,7 @@ describe("stopPtvApiIds", () => {
     await expectedSortedSourceCode(
       "src/config/ptv-api/stop-ptv-api-ids.ts",
       /^  \[([^\]]+)\]:/,
-      (match) => match[1],
+      (match) => itsOk(match[1]),
     );
   });
 });

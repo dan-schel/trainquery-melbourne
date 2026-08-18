@@ -4,10 +4,13 @@ import { lines } from "../../../src/config/corequery/lines/index.js";
 import { stops } from "../../../src/config/corequery/stops/index.js";
 import { lineTagSuccession } from "../../../src/config/corequery/lines/line-tag-succession.js";
 import { stopTagSuccession } from "../../../src/config/corequery/stops/stop-tag-succession.js";
-import { requireTagName, TagType } from "../../../src/utils/get-tag-name.js";
+import {
+  requireTagName,
+  type TagType,
+} from "../../../src/utils/get-tag-name.js";
 
-describe("tags", () => {
-  it("line tags", () => {
+describe("line tags", () => {
+  it("matches the snapshot", () => {
     let output = "";
 
     for (const line of sortedByName(lines)) {
@@ -18,8 +21,10 @@ describe("tags", () => {
 
     expect(`\n${output}`).toMatchSnapshot();
   });
+});
 
-  it("stop tags", () => {
+describe("stop tags", () => {
+  it("matches the snapshot", () => {
     let output = "";
 
     for (const stop of sortedByName(stops)) {

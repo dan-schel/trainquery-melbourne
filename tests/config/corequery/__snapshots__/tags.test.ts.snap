@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`tags > line tags 1`] = `
+exports[`line tags > matches the snapshot 1`] = `
 "
 Alamein (#8): FULL_TIME, SUBURBAN, SUBURBAN_FULL_TIME, SUBURBAN_GTFS_SUBFEED
 Ballarat (#19): FULL_TIME, REGIONAL, REGIONAL_GTFS_SUBFEED
@@ -28,7 +28,7 @@ Williamstown (#22): FULL_TIME, SUBURBAN, SUBURBAN_FULL_TIME, SUBURBAN_GTFS_SUBFE
 "
 `;
 
-exports[`tags > stop tags 1`] = `
+exports[`stop tags > matches the snapshot 1`] = `
 "
 Aircraft (#1): SUBURBAN_GTFS_SUBFEED
 Alamein (#2): SUBURBAN_GTFS_SUBFEED
