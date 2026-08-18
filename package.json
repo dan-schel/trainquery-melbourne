@@ -6,7 +6,7 @@
     "@types/adm-zip": "0.5.8",
     "@types/node": "25.9.5",
     "@vitest/coverage-v8": "4.1.10",
-    "adm-zip": "0.5.17",
+    "adm-zip": "0.6.0",
     "chalk": "6.0.0",
     "corequery": "0.20.0",
     "corequery-gtfs": "0.1.4",
