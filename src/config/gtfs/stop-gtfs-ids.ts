@@ -3227,6 +3227,13 @@ export const stopGtfsIds: MultifeedStopGtfsIdsConfig = {
     },
   },
 
+  [stop.WEST_TARNEIT]: {
+    regional: {
+      parent: "vic:rail:WET",
+      general: ["49937"],
+    },
+  },
+
   [stop.WESTALL]: {
     suburban: {
       parent: "vic:rail:WTL",

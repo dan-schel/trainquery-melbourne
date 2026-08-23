@@ -24,6 +24,9 @@ export async function printStopData(stop: StopsCsvTreeNode) {
 
   const stopIdsOutput = `export const ${constName} = ${id};`;
 
+  // TODO: It doesn't set tags! It also can't set positions for regional stops,
+  // because platform data isn't given for them in the GTFS data, so it should
+  // probably add a TODO comment in there if positions is empty.
   const stopsOutput = `export const ${constName}: StopConfig = {
   id: stop.${constName},
   name: ${JSON.stringify(name)},

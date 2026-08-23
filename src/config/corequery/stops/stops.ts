@@ -1120,7 +1120,7 @@ export const EPPING: StopConfig = {
   name: "Epping",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "epping",
-  location: { latitude: -37.65217784, longitude: 145.03107934 },
+  location: { latitude: -37.65218741, longitude: 145.03111309 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -1531,7 +1531,7 @@ export const HAWKSTOWE: StopConfig = {
   name: "Hawkstowe",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "hawkstowe",
-  location: { latitude: -37.62297489, longitude: 145.09729471 },
+  location: { latitude: -37.62266124, longitude: 145.09740468 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -1871,7 +1871,7 @@ export const LALOR: StopConfig = {
   name: "Lalor",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "lalor",
-  location: { latitude: -37.66585075, longitude: 145.01719317 },
+  location: { latitude: -37.66584307, longitude: 145.01727273 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -2097,7 +2097,7 @@ export const MERINDA_PARK: StopConfig = {
   name: "Merinda Park",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "merindapark",
-  location: { latitude: -38.07900048, longitude: 145.26351137 },
+  location: { latitude: -38.07892504, longitude: 145.26328514 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -2121,7 +2121,7 @@ export const MERNDA: StopConfig = {
   name: "Mernda",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "mernda",
-  location: { latitude: -37.60254907, longitude: 145.10095293 },
+  location: { latitude: -37.60249392, longitude: 145.10088636 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -2169,7 +2169,7 @@ export const MIDDLE_GORGE: StopConfig = {
   name: "Middle Gorge",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "middlegorge",
-  location: { latitude: -37.64403391, longitude: 145.09212201 },
+  location: { latitude: -37.64379655, longitude: 145.09249076 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -2471,7 +2471,7 @@ export const NORTH_WILLIAMSTOWN: StopConfig = {
   name: "North Williamstown",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "northwilliamstown",
-  location: { latitude: -37.85733348, longitude: 144.88906947 },
+  location: { latitude: -37.85755026, longitude: 144.88909738 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -2685,7 +2685,7 @@ export const RESERVOIR: StopConfig = {
   name: "Reservoir",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "reservoir",
-  location: { latitude: -37.71688492, longitude: 145.00699582 },
+  location: { latitude: -37.7166877, longitude: 145.00705783 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -2856,7 +2856,7 @@ export const RUTHVEN: StopConfig = {
   name: "Ruthven",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "ruthven",
-  location: { latitude: -37.70789754, longitude: 145.00951662 },
+  location: { latitude: -37.70786055, longitude: 145.00946089 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -3004,7 +3004,7 @@ export const SOUTH_MORANG: StopConfig = {
   name: "South Morang",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "southmorang",
-  location: { latitude: -37.64905033, longitude: 145.06701257 },
+  location: { latitude: -37.64902032, longitude: 145.06793143 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -3277,7 +3277,7 @@ export const THOMASTOWN: StopConfig = {
   name: "Thomastown",
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "thomastown",
-  location: { latitude: -37.68033809, longitude: 145.01427887 },
+  location: { latitude: -37.6803124, longitude: 145.01435893 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
@@ -3605,6 +3605,18 @@ export const WEST_RICHMOND: StopConfig = {
   tags: [tag.SUBURBAN_GTFS_SUBFEED],
   urlPath: "westrichmond",
   location: { latitude: -37.81494896, longitude: 144.99142278 },
+  positions: [
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+  ],
+};
+
+export const WEST_TARNEIT: StopConfig = {
+  id: stop.WEST_TARNEIT,
+  name: "West Tarneit",
+  tags: [tag.REGIONAL_GTFS_SUBFEED],
+  urlPath: "westtarneit",
+  location: { latitude: -37.82729437, longitude: 144.66279416 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },

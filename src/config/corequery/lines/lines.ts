@@ -327,6 +327,7 @@ export const GEELONG: LineConfig = {
     { stopId: stop.ARDEER, type: "always-express" },
     stop.DEER_PARK,
     stop.TARNEIT,
+    stop.WEST_TARNEIT,
     stop.WYNDHAM_VALE,
     stop.LITTLE_RIVER,
     stop.LARA,

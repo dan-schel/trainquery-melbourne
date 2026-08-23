@@ -307,6 +307,7 @@ export const stopPtvApiIds: StopPtvApiIdsConfig = {
   [stop.WERRIBEE]: ["1205"],
   [stop.WEST_FOOTSCRAY]: ["1206"],
   [stop.WEST_RICHMOND]: ["1207"],
+  [stop.WEST_TARNEIT]: ["1557"],
   [stop.WESTALL]: ["1208"],
   [stop.WESTGARTH]: ["1209"],
   [stop.WESTONA]: ["1210"],
