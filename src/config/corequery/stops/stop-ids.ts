@@ -320,5 +320,6 @@ export const TOWN_HALL = 319;
 export const STATE_LIBRARY = 320;
 export const PARKVILLE = 321;
 export const ARDEN = 322;
+export const WEST_TARNEIT = 323;
 
 // [NOTE] Run `npm run import-stop-from-gtfs` to make your life easier :)

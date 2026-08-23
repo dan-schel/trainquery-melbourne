@@ -3611,6 +3611,15 @@ export const WEST_RICHMOND: StopConfig = {
   ],
 };
 
+export const WEST_TARNEIT: StopConfig = {
+  id: stop.WEST_TARNEIT,
+  name: "West Tarneit",
+  tags: [],
+  urlPath: "westtarneit",
+  location: { latitude: -37.82729437, longitude: 144.66279416 },
+  positions: [],
+};
+
 export const WESTALL: StopConfig = {
   id: stop.WESTALL,
   name: "Westall",
