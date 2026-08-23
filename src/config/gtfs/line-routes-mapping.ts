@@ -312,6 +312,7 @@ export const lineRoutesMapping: LineRoutesMappingConfig = {
       stop.ARDEER,
       stop.DEER_PARK,
       stop.TARNEIT,
+      stop.WEST_TARNEIT,
       stop.WYNDHAM_VALE,
       stop.LITTLE_RIVER,
       stop.LARA,

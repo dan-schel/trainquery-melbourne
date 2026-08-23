@@ -3614,10 +3614,13 @@ export const WEST_RICHMOND: StopConfig = {
 export const WEST_TARNEIT: StopConfig = {
   id: stop.WEST_TARNEIT,
   name: "West Tarneit",
-  tags: [],
+  tags: [tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "westtarneit",
   location: { latitude: -37.82729437, longitude: 144.66279416 },
-  positions: [],
+  positions: [
+    { stopPositionId: position.PLATFORM_1, name: "1" },
+    { stopPositionId: position.PLATFORM_2, name: "2" },
+  ],
 };
 
 export const WESTALL: StopConfig = {
