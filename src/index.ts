@@ -11,6 +11,9 @@ async function main() {
     relayKey: env.RELAY_KEY,
     suburbanGtfs: GtfsSystem.build("gtfs-suburban", suburbanGtfsConfig),
     regionalGtfs: GtfsSystem.build("gtfs-regional", regionalGtfsConfig),
+
+    relayPollIntervalSeconds: 5,
+    initialRetryIntervalsSeconds: [5, 60],
   });
 
   const buildConfig = createConfigBuilder({
