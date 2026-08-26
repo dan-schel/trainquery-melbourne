@@ -27,8 +27,8 @@ export function createConfigBuilder({
     const relayManager = new RelayManager({
       ctx: ctx,
       relayKey: envRelayKey,
-      suburbanGtfs: GtfsSystem.build("gtfs-suburban", suburbanGtfsConfig),
-      regionalGtfs: GtfsSystem.build("gtfs-regional", regionalGtfsConfig),
+      suburbanGtfs: GtfsSystem.build(suburbanGtfsConfig),
+      regionalGtfs: GtfsSystem.build(regionalGtfsConfig),
       relayPollIntervalSeconds: 5,
       initialRetryIntervalsSeconds: [5, 60],
     });
