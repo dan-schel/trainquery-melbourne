@@ -1,4 +1,4 @@
-import type { GtfsSystem } from "corequery-gtfs";
+import { type GtfsSystem, GtfsFeed } from "corequery-gtfs";
 import z from "zod";
 import { withGtfsCsvs } from "../gtfs/retrieval/schedule/with-gtfs-csvs.js";
 import { readGtfsCsvs } from "../gtfs/retrieval/schedule/read-gtfs-csvs.js";
@@ -95,6 +95,13 @@ export class RelayManager {
 
     const relayStatus = await this._withRetries(() => this._fetchRelayStatus());
     await Promise.allSettled(this._hashWatcher.onStartup(relayStatus));
+
+    if (this.suburbanGtfs.getFeed() == null) {
+      this.suburbanGtfs.setFeed(GtfsFeed.empty);
+    }
+    if (this.regionalGtfs.getFeed() == null) {
+      this.regionalGtfs.setFeed(GtfsFeed.empty);
+    }
   }
 
   start() {
