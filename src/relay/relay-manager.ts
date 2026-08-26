@@ -4,8 +4,10 @@ import { withGtfsCsvs } from "../gtfs/retrieval/schedule/with-gtfs-csvs.js";
 import { readGtfsCsvs } from "../gtfs/retrieval/schedule/read-gtfs-csvs.js";
 import { fetchGtfsRealtime } from "../gtfs/retrieval/realtime/fetch-gtfs-realtime.js";
 import { itsOk, listifyAnd } from "@dan-schel/js-utils";
+import type { Trainquery } from "../index.js";
 
 type RelayManagerFields = {
+  ctx: Trainquery;
   relayKey: string;
 
   suburbanGtfs: GtfsSystem;
@@ -35,6 +37,7 @@ export class RelayManager {
   readonly suburbanGtfs: GtfsSystem;
   readonly regionalGtfs: GtfsSystem;
 
+  private readonly _ctx: Trainquery;
   private readonly _relayKey: string;
   private readonly _relayPollIntervalSeconds: number;
   private readonly _initialRetryIntervalsSeconds: number[];
@@ -46,6 +49,7 @@ export class RelayManager {
     this.suburbanGtfs = fields.suburbanGtfs;
     this.regionalGtfs = fields.regionalGtfs;
 
+    this._ctx = fields.ctx;
     this._relayKey = fields.relayKey;
     this._relayPollIntervalSeconds = fields.relayPollIntervalSeconds;
     this._initialRetryIntervalsSeconds = fields.initialRetryIntervalsSeconds;
@@ -81,6 +85,10 @@ export class RelayManager {
     this._timeoutId = null;
   }
 
+  private get _relayLogger() {
+    return this._ctx.custom.trainqueryLogger.relayManager;
+  }
+
   async init() {
     // TODO: Corequery will need to be configured to display a banner if
     // initialization fails.
@@ -107,27 +115,13 @@ export class RelayManager {
 
   private _onTick() {
     this._updateRelayStatus().catch((e) => {
-      // TODO: Use the logger. But how... RelayManager needs to access the ctx,
-      // which means we need to create RelayManager inside buildConfig, and
-      // therefore will need some way to hook into corequery itself to run the
-      // init() method before the web server starts. Then the logger is tricky,
-      // because the logger returned by Corequery#logger won't have anything we
-      // add specifically for TrainQuery Melbourne.
-      //
-      // Interesting solution to both problems: We could create a
-      // TrainqueryMelbourne class that extends/composes Corequery, and enables
-      // us to add properties to it so `logger` will be our specialised one, and
-      // expose a #relayManager property that we can call before
-      // Corequery#start() in index.ts.
-      //
-      // TODO: Add the lint rule for `console.log`.
-      console.error("Error updating relay status:", e);
+      this._relayLogger.updateRelayStatusError(e);
     });
   }
 
   private _onGtfsScheduleHashChanged() {
     void this._updateGtfsSchedule().catch((e) => {
-      console.error("Error updating GTFS schedule:", e);
+      this._relayLogger.updateGtfsScheduleError(e);
     });
   }
 
@@ -137,7 +131,7 @@ export class RelayManager {
 
   private _onSuburbanGtfsRealtimeHashChanged() {
     void this._updateSuburbanGtfsRealtime().catch((e) => {
-      console.error("Error updating suburban GTFS realtime:", e);
+      this._relayLogger.updateSuburbanGtfsRealtimeError(e);
     });
   }
 
@@ -147,7 +141,9 @@ export class RelayManager {
 
   private _onRegionalGtfsRealtimeHashChanged() {
     void this._updateRegionalGtfsRealtime().catch((e) => {
-      console.error("Error updating regional GTFS realtime:", e);
+      this._ctx.custom.trainqueryLogger.relayManager.updateRegionalGtfsRealtimeError(
+        e,
+      );
     });
   }
 
@@ -164,7 +160,6 @@ export class RelayManager {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`Got ${res.status} error fetching "${url}".`);
 
-    console.log("Ping.");
     return relayStatusSchema.parse(await res.json());
   }
 
@@ -173,26 +168,23 @@ export class RelayManager {
     const suburbanGtfs = await fetchGtfsRealtime(this._relayKey, "suburban");
     const regionalGtfs = await fetchGtfsRealtime(this._relayKey, "regional");
 
-    console.log("Supplying feeds with new GTFS data...");
     this.suburbanGtfs.onNewScheduleData(gtfsData.suburban, suburbanGtfs);
     this.regionalGtfs.onNewScheduleData(gtfsData.regional, regionalGtfs);
-    console.log("Parsed.");
+    this._relayLogger.refreshedGtfsSchedule();
   }
 
   private async _updateSuburbanGtfsRealtime() {
     const suburbanGtfs = await fetchGtfsRealtime(this._relayKey, "suburban");
 
-    console.log("Supplying suburban realtime data...");
     this.suburbanGtfs.onNewRealtimeData(suburbanGtfs);
-    console.log("Parsed.");
+    this._relayLogger.refreshedSuburbanGtfsRealtime();
   }
 
   private async _updateRegionalGtfsRealtime() {
     const regionalGtfs = await fetchGtfsRealtime(this._relayKey, "regional");
 
-    console.log("Supplying regional realtime data...");
     this.suburbanGtfs.onNewRealtimeData(regionalGtfs);
-    console.log("Parsed.");
+    this._relayLogger.refreshedRegionalGtfsRealtime();
   }
 
   private async _withRetries<T>(fn: () => Promise<T>): Promise<T> {
@@ -203,7 +195,7 @@ export class RelayManager {
         return await fn();
       } catch (e) {
         lastError = e;
-        console.error(`Error occurred, retrying in ${interval} seconds:`, e);
+        this._relayLogger.retryingInSeconds(interval, e);
         await new Promise((resolve) => setTimeout(resolve, interval * 1000));
       }
     }
