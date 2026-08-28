@@ -81,6 +81,7 @@ export const stopGtfsIds: MultifeedStopGtfsIdsConfig = {
         [position.PLATFORM_1]: ["26556"],
         [position.PLATFORM_2]: ["26557"],
       },
+      replacementBus: ["26325"],
     },
   },
 
