@@ -47,5 +47,5 @@ function createServiceSource(
     buildServiceTerminatingMovement: (x) => new ServiceTerminatingMovement(x),
     buildServicePassingMovement: (x) => new ServicePassingMovement(x),
     buildServiceConnection: (x) => new ServiceConnection(x),
-  }).asCorequeryServiceSource();
+  });
 }
