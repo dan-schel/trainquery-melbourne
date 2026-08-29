@@ -23,9 +23,9 @@ export function createConfigBuilder({
   envCommitHash: string | undefined;
   envRelayKey: string;
 }): CorequeryConfigBuilder<CustomContext> {
-  return (ctx) => {
+  return (app) => {
     const relayManager = new RelayManager({
-      ctx: ctx,
+      app: app,
       relayKey: envRelayKey,
       suburbanGtfs: GtfsSystem.build(suburbanGtfsConfig),
       regionalGtfs: GtfsSystem.build(regionalGtfsConfig),

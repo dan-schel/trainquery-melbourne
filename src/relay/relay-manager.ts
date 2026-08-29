@@ -7,7 +7,7 @@ import { itsOk, listifyAnd } from "@dan-schel/js-utils";
 import type { Trainquery } from "../index.js";
 
 type RelayManagerFields = {
-  ctx: Trainquery;
+  app: Trainquery;
   relayKey: string;
 
   suburbanGtfs: GtfsSystem;
@@ -37,7 +37,7 @@ export class RelayManager {
   readonly suburbanGtfs: GtfsSystem;
   readonly regionalGtfs: GtfsSystem;
 
-  private readonly _ctx: Trainquery;
+  private readonly _app: Trainquery;
   private readonly _relayKey: string;
   private readonly _relayPollIntervalSeconds: number;
   private readonly _initialRetryIntervalsSeconds: number[];
@@ -49,7 +49,7 @@ export class RelayManager {
     this.suburbanGtfs = fields.suburbanGtfs;
     this.regionalGtfs = fields.regionalGtfs;
 
-    this._ctx = fields.ctx;
+    this._app = fields.app;
     this._relayKey = fields.relayKey;
     this._relayPollIntervalSeconds = fields.relayPollIntervalSeconds;
     this._initialRetryIntervalsSeconds = fields.initialRetryIntervalsSeconds;
@@ -86,7 +86,7 @@ export class RelayManager {
   }
 
   private get _relayLogger() {
-    return this._ctx.custom.trainqueryLogger.relayManager;
+    return this._app.custom.trainqueryLogger.relayManager;
   }
 
   async init() {
@@ -148,7 +148,7 @@ export class RelayManager {
 
   private _onRegionalGtfsRealtimeHashChanged() {
     void this._updateRegionalGtfsRealtime().catch((e) => {
-      this._ctx.custom.trainqueryLogger.relayManager.updateRegionalGtfsRealtimeError(
+      this._app.custom.trainqueryLogger.relayManager.updateRegionalGtfsRealtimeError(
         e,
       );
     });
