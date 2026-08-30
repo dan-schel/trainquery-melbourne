@@ -190,7 +190,7 @@ export class RelayManager {
   private async _updateRegionalGtfsRealtime() {
     const regionalGtfs = await fetchGtfsRealtime(this._relayKey, "regional");
 
-    this.suburbanGtfs.onNewRealtimeData(regionalGtfs);
+    this.regionalGtfs.onNewRealtimeData(regionalGtfs);
     this._relayLogger.refreshedRegionalGtfsRealtime();
   }
 
