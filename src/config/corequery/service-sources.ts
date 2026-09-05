@@ -38,6 +38,7 @@ function createServiceSource(
   >({
     sourceId,
     gtfsSystem,
+    departureIterationLimitHours: 14 * 24, // 14 days
 
     buildDeparture: (x) => new Departure(x),
     buildService: (x) => new Service(x),
