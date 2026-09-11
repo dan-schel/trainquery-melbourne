@@ -3616,7 +3616,7 @@ export const WEST_TARNEIT: StopConfig = {
   name: "West Tarneit",
   tags: [tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "westtarneit",
-  location: { latitude: -37.82729437, longitude: 144.66279416 },
+  location: { latitude: -37.82728514, longitude: 144.66278309 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
