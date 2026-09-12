@@ -56,7 +56,7 @@ export function compareStops({
         (options.ignoreIdMissingFromConfig?.(id) ?? false),
 
       isIdMissingFromGtfsIgnored: (gtfsId) =>
-        (options.ignoredIdsMissingFromGtfs?.includes(gtfsId.id) ?? false) ||
+        (options.ignoredIdsMissingFromGtfs?.includes(gtfsId) ?? false) ||
         (options.ignoreIdMissingFromGtfs?.(gtfsId) ?? false),
     });
 

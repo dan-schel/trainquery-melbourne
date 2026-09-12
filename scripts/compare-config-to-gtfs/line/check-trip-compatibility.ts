@@ -40,9 +40,7 @@ export function checkLineTripCompatibility({
   // Find the trips which belong to this line. (Ignore replacement bus trips.
   // Right now TrainQuery is only attempting to model actual train trips.)
   const trips = gtfsTrips
-    .filter((t) =>
-      mappedLineIds.includes(t.route_id, { ignoreReplacementBusIds: true }),
-    )
+    .filter((t) => mappedLineIds.includes(t.route_id, { excludeIgnored: true }))
     .map((t) =>
       Trip.fromCsv({
         tripCsvRow: t,
