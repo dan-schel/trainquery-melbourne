@@ -4,14 +4,10 @@ import { stops } from "../../../src/config/corequery/stops/index.js";
 import { stopGtfsIds } from "../../../src/config/gtfs/stop-gtfs-ids.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import { getSubfeedsWithStop } from "../../../src/gtfs/utils/get-subfeeds-with.js";
-import { StopGtfsIdMapping } from "corequery-gtfs";
 import * as stop from "../../../src/config/corequery/stops/stop-ids.js";
 import * as position from "../../../src/config/corequery/stops/stop-position-ids.js";
-import { itsOk } from "@dan-schel/js-utils";
-import {
-  regionalGtfsConfig,
-  suburbanGtfsConfig,
-} from "../../../src/config/gtfs/index.js";
+import { itsOk, parseIntThrow } from "@dan-schel/js-utils";
+import type { MultifeedStopGtfsIdsConfig } from "../../../src/gtfs/ids.js";
 
 const stopsExemptedFromHavingGtfsId: number[] = [];
 
@@ -111,31 +107,27 @@ describe("stopGtfsIds", () => {
   });
 
   it("mapped stops and positions all exist in the config", () => {
-    const suburbanMapping = StopGtfsIdMapping.build(
-      suburbanGtfsConfig.stopGtfsIds,
-    );
-    const regionalMapping = StopGtfsIdMapping.build(
-      regionalGtfsConfig.stopGtfsIds,
-    );
+    const ids = getIdsMentionedIn(stopGtfsIds);
 
-    for (const mapping of [suburbanMapping, regionalMapping]) {
-      for (const gtfsId of mapping.allIds()) {
-        const mappedTo = `mapped to GTFS ID "${gtfsId.id}"`;
+    for (const stopId of ids.stopIds) {
+      const stop = stops.find((s) => s.id === stopId);
+      assert(
+        stop != null,
+        `Stop ID #${stopId} doesn't exist, but GTFS stop ID mapping thinks it does.`,
+      );
+    }
 
-        const stop = stops.find((s) => s.id === gtfsId.stopId);
-        assert(stop != null, `Stop #${gtfsId.stopId}, ${mappedTo}, not found.`);
+    for (const { stopId, positionId } of ids.positionIds) {
+      // Guaranteed to exist, given check above and structure of the mapping.
+      const stop = stops.find((s) => s.id === stopId);
 
-        if (gtfsId.type === "platform") {
-          const position = stop.positions.find((p) => {
-            return p.stopPositionId === gtfsId.positionId;
-          });
-
-          assert(
-            position != null,
-            `Position ID #${gtfsId.positionId}, ${mappedTo}, not found on stop #${gtfsId.stopId}.`,
-          );
-        }
-      }
+      const position = stop?.positions.find(
+        (p) => p.stopPositionId === positionId,
+      );
+      assert(
+        position != null,
+        `Stop #${stopId} does not have position #${positionId}, but GTFS stop ID mapping thinks it does.`,
+      );
     }
   });
 
@@ -159,3 +151,22 @@ describe("stopGtfsIds", () => {
     );
   });
 });
+
+function getIdsMentionedIn(config: MultifeedStopGtfsIdsConfig) {
+  const stopIds: number[] = [];
+  const positionIds: { stopId: number; positionId: number }[] = [];
+
+  for (const [stopIdStr, feedConfig] of Object.entries(config)) {
+    const stopId = parseIntThrow(stopIdStr);
+    stopIds.push(stopId);
+
+    positionIds.push(
+      ...Object.keys({
+        ...(feedConfig.suburban?.platforms ?? {}),
+        ...(feedConfig.regional?.platforms ?? {}),
+      }).map((x) => ({ stopId, positionId: parseIntThrow(x) })),
+    );
+  }
+
+  return { stopIds, positionIds };
+}
