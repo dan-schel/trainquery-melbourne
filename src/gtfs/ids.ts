@@ -8,13 +8,26 @@ export type MultifeedStopGtfsIdsConfig = Record<number, FeedStopGtfsIdsConfig>;
 export type MultifeedLineGtfsIdsConfig = Record<number, FeedLineGtfsIdsConfig>;
 
 type FeedStopGtfsIdsConfig = {
-  readonly suburban?: StopGtfsIdCollectionConfig;
-  readonly regional?: StopGtfsIdCollectionConfig;
+  readonly suburban?: TrainqueryStopGtfsIdCollectionConfig;
+  readonly regional?: TrainqueryStopGtfsIdCollectionConfig;
 };
 
 type FeedLineGtfsIdsConfig = {
-  readonly suburban?: LineGtfsIdCollectionConfig;
-  readonly regional?: LineGtfsIdCollectionConfig;
+  readonly suburban?: TrainqueryLineGtfsIdCollectionConfig;
+  readonly regional?: TrainqueryLineGtfsIdCollectionConfig;
+};
+
+type TrainqueryStopGtfsIdCollectionConfig = {
+  readonly parent: string;
+  readonly general?: readonly string[];
+  readonly platforms?: Readonly<Record<number, readonly string[]>>;
+  readonly replacementBus?: readonly string[];
+};
+
+type TrainqueryLineGtfsIdCollectionConfig = {
+  readonly primary: string;
+  readonly other?: readonly string[];
+  readonly replacementBus?: readonly string[];
 };
 
 export function splitMultifeedStopGtfsIdsConfig(
@@ -23,14 +36,23 @@ export function splitMultifeedStopGtfsIdsConfig(
   const suburban: Record<number, StopGtfsIdCollectionConfig> = {};
   const regional: Record<number, StopGtfsIdCollectionConfig> = {};
 
+  function convert(
+    input: TrainqueryStopGtfsIdCollectionConfig,
+  ): StopGtfsIdCollectionConfig {
+    return {
+      general: [input.parent, ...(input.general ?? [])],
+      positional: input.platforms,
+    };
+  }
+
   for (const [stopIdStr, feedConfig] of Object.entries(config)) {
     const stopId = parseIntThrow(stopIdStr);
 
     if (feedConfig.suburban != null) {
-      suburban[stopId] = feedConfig.suburban;
+      suburban[stopId] = convert(feedConfig.suburban);
     }
     if (feedConfig.regional != null) {
-      regional[stopId] = feedConfig.regional;
+      regional[stopId] = convert(feedConfig.regional);
     }
   }
 
@@ -43,14 +65,23 @@ export function splitMultifeedLineGtfsIdsConfig(
   const suburban: Record<number, LineGtfsIdCollectionConfig> = {};
   const regional: Record<number, LineGtfsIdCollectionConfig> = {};
 
+  function convert(
+    input: TrainqueryLineGtfsIdCollectionConfig,
+  ): LineGtfsIdCollectionConfig {
+    return {
+      general: [input.primary, ...(input.other ?? [])],
+      ignored: input.replacementBus,
+    };
+  }
+
   for (const [lineIdStr, feedConfig] of Object.entries(config)) {
     const lineId = parseIntThrow(lineIdStr);
 
     if (feedConfig.suburban != null) {
-      suburban[lineId] = feedConfig.suburban;
+      suburban[lineId] = convert(feedConfig.suburban);
     }
     if (feedConfig.regional != null) {
-      regional[lineId] = feedConfig.regional;
+      regional[lineId] = convert(feedConfig.regional);
     }
   }
 
