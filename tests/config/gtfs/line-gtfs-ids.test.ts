@@ -4,12 +4,7 @@ import { lines } from "../../../src/config/corequery/lines/index.js";
 import { lineGtfsIds } from "../../../src/config/gtfs/line-gtfs-ids.js";
 import { expectUniqueIds } from "../support/expect-unique-ids.js";
 import { getSubfeedsWithLine } from "../../../src/gtfs/utils/get-subfeeds-with.js";
-import { LineGtfsIdMapping } from "corequery-gtfs";
-import { itsOk } from "@dan-schel/js-utils";
-import {
-  regionalGtfsConfig,
-  suburbanGtfsConfig,
-} from "../../../src/config/gtfs/index.js";
+import { itsOk, parseIntThrow } from "@dan-schel/js-utils";
 
 const linesExemptedFromHavingGtfsId: number[] = [];
 
@@ -45,20 +40,14 @@ describe("lineGtfsIds", () => {
   });
 
   it("mapped lines all exist in the config", () => {
-    const suburbanMapping = LineGtfsIdMapping.build(
-      suburbanGtfsConfig.lineGtfsIds,
-    );
-    const regionalMapping = LineGtfsIdMapping.build(
-      regionalGtfsConfig.lineGtfsIds,
-    );
+    const lineIds = Object.keys(lineGtfsIds).map((x) => parseIntThrow(x));
 
-    for (const mapping of [suburbanMapping, regionalMapping]) {
-      for (const gtfsId of mapping.allIds()) {
-        const mappedTo = `mapped to GTFS ID "${gtfsId.id}"`;
-
-        const line = lines.find((s) => s.id === gtfsId.lineId);
-        assert(line != null, `Line #${gtfsId.lineId}, ${mappedTo}, not found.`);
-      }
+    for (const lineId of lineIds) {
+      const stop = lines.find((l) => l.id === lineId);
+      assert(
+        stop != null,
+        `Line ID #${lineId} doesn't exist, but GTFS line ID mapping thinks it does.`,
+      );
     }
   });
 
