@@ -4,55 +4,101 @@ import type {
   StopGtfsIdCollectionConfig,
 } from "corequery-gtfs";
 
-export type MultifeedStopGtfsIdsConfig = Record<number, FeedStopGtfsIdsConfig>;
-export type MultifeedLineGtfsIdsConfig = Record<number, FeedLineGtfsIdsConfig>;
+export type TrainqueryMultifeedStopGtfsIdsConfig = Record<
+  number,
+  {
+    readonly suburban?: TrainqueryStopGtfsIdCollectionConfig;
+    readonly regional?: TrainqueryStopGtfsIdCollectionConfig;
+  }
+>;
 
-type FeedStopGtfsIdsConfig = {
-  readonly suburban?: StopGtfsIdCollectionConfig;
-  readonly regional?: StopGtfsIdCollectionConfig;
+export type TrainqueryMultifeedLineGtfsIdsConfig = Record<
+  number,
+  {
+    readonly suburban?: TrainqueryLineGtfsIdCollectionConfig;
+    readonly regional?: TrainqueryLineGtfsIdCollectionConfig;
+  }
+>;
+
+export type TrainqueryStopGtfsIdsConfig = Record<
+  number,
+  TrainqueryStopGtfsIdCollectionConfig
+>;
+
+export type TrainqueryLineGtfsIdsConfig = Record<
+  number,
+  TrainqueryLineGtfsIdCollectionConfig
+>;
+
+export type TrainqueryStopGtfsIdCollectionConfig = {
+  readonly parent: string;
+  readonly general?: readonly string[];
+  readonly platforms?: Readonly<Record<number, readonly string[]>>;
+  readonly replacementBus?: readonly string[];
 };
 
-type FeedLineGtfsIdsConfig = {
-  readonly suburban?: LineGtfsIdCollectionConfig;
-  readonly regional?: LineGtfsIdCollectionConfig;
+export type TrainqueryLineGtfsIdCollectionConfig = {
+  readonly primary: string;
+  readonly other?: readonly string[];
+  readonly replacementBus?: readonly string[];
 };
 
-export function splitMultifeedStopGtfsIdsConfig(
-  config: MultifeedStopGtfsIdsConfig,
+export function splitMultifeedIdConfig<T>(
+  input: Record<number, { suburban?: T; regional?: T }>,
 ) {
-  const suburban: Record<number, StopGtfsIdCollectionConfig> = {};
-  const regional: Record<number, StopGtfsIdCollectionConfig> = {};
+  const suburban: Record<number, T> = {};
+  const regional: Record<number, T> = {};
 
-  for (const [stopIdStr, feedConfig] of Object.entries(config)) {
-    const stopId = parseIntThrow(stopIdStr);
+  for (const [idStr, feedConfig] of Object.entries(input)) {
+    const id = parseIntThrow(idStr);
 
     if (feedConfig.suburban != null) {
-      suburban[stopId] = feedConfig.suburban;
+      suburban[id] = feedConfig.suburban;
     }
     if (feedConfig.regional != null) {
-      regional[stopId] = feedConfig.regional;
+      regional[id] = feedConfig.regional;
     }
   }
 
   return { suburban, regional };
 }
 
-export function splitMultifeedLineGtfsIdsConfig(
-  config: MultifeedLineGtfsIdsConfig,
+export function convertToCorequeryGtfsStopIdsConfig(
+  input: TrainqueryStopGtfsIdsConfig,
 ) {
-  const suburban: Record<number, LineGtfsIdCollectionConfig> = {};
-  const regional: Record<number, LineGtfsIdCollectionConfig> = {};
-
-  for (const [lineIdStr, feedConfig] of Object.entries(config)) {
-    const lineId = parseIntThrow(lineIdStr);
-
-    if (feedConfig.suburban != null) {
-      suburban[lineId] = feedConfig.suburban;
-    }
-    if (feedConfig.regional != null) {
-      regional[lineId] = feedConfig.regional;
-    }
+  function convert(
+    input: TrainqueryStopGtfsIdCollectionConfig,
+  ): StopGtfsIdCollectionConfig {
+    return {
+      general: [input.parent, ...(input.general ?? [])],
+      positional: input.platforms,
+    };
   }
 
-  return { suburban, regional };
+  return Object.fromEntries(
+    Object.entries(input).map(([stopIdStr, stopConfig]) => [
+      parseIntThrow(stopIdStr),
+      convert(stopConfig),
+    ]),
+  );
+}
+
+export function convertToCorequeryGtfsLineIdsConfig(
+  input: TrainqueryLineGtfsIdsConfig,
+) {
+  function convert(
+    input: TrainqueryLineGtfsIdCollectionConfig,
+  ): LineGtfsIdCollectionConfig {
+    return {
+      general: [input.primary, ...(input.other ?? [])],
+      ignored: input.replacementBus,
+    };
+  }
+
+  return Object.fromEntries(
+    Object.entries(input).map(([lineIdStr, lineConfig]) => [
+      parseIntThrow(lineIdStr),
+      convert(lineConfig),
+    ]),
+  );
 }

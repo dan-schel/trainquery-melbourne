@@ -5,18 +5,21 @@ import {
 } from "../../utils/gtfs/stops-csv-tree.js";
 import { compareArrays, nonNull } from "@dan-schel/js-utils";
 import type { IssueCollector } from "../issue-collector.js";
-import type { StopGtfsIdMapping, StopGtfsIdCollection } from "corequery-gtfs";
 import type { FullStopsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+import type {
+  TrainqueryStopGtfsIdCollectionConfig,
+  TrainqueryStopGtfsIdsConfig,
+} from "../../../src/gtfs/ids.js";
 
 type OnMatchCallback = (
   config: StopConfig,
-  mappedIds: StopGtfsIdCollection,
+  mappedIds: TrainqueryStopGtfsIdCollectionConfig,
   gtfsNode: StopsCsvTreeNode,
 ) => void;
 
 export function compareStopItems({
   stops,
-  idMapping,
+  stopGtfsIdsConfig,
   gtfsStops,
   issues,
   onMatch,
@@ -24,7 +27,7 @@ export function compareStopItems({
   isStopMissingFromGtfsIgnored,
 }: {
   stops: readonly StopConfig[];
-  idMapping: StopGtfsIdMapping;
+  stopGtfsIdsConfig: TrainqueryStopGtfsIdsConfig;
   gtfsStops: FullStopsCsv;
   issues: IssueCollector;
   onMatch: OnMatchCallback;
@@ -33,7 +36,7 @@ export function compareStopItems({
 }) {
   function reportStopMissingFromGtfs(
     config: StopConfig,
-    mappedIds: StopGtfsIdCollection,
+    mappedIds: TrainqueryStopGtfsIdCollectionConfig,
   ) {
     if (isStopMissingFromGtfsIgnored(config)) return;
     issues.add({
@@ -51,28 +54,28 @@ export function compareStopItems({
   }
 
   const stopTree = StopsCsvTree.build(gtfsStops);
-  const stopsWithGtfsIds = mapToGtfsIds(stops, idMapping);
+  const stopsWithGtfsIds = mapToGtfsIds(stops, stopGtfsIdsConfig);
 
   compareArrays({
     a: stopsWithGtfsIds,
     b: stopTree.nodes,
-    aKeyFunc: (s) => s.gtfsId.parent,
+    aKeyFunc: (s) => s.gtfsIds.parent,
     bKeyFunc: (s) => s.stop_id,
-    onMatch: (a, b) => onMatch(a.stop, a.gtfsId, b),
+    onMatch: (a, b) => onMatch(a.stop, a.gtfsIds, b),
     onMissingFromA: (b) => reportStopMissingFromConfig(b),
-    onMissingFromB: (a) => reportStopMissingFromGtfs(a.stop, a.gtfsId),
+    onMissingFromB: (a) => reportStopMissingFromGtfs(a.stop, a.gtfsIds),
   });
 }
 
 function mapToGtfsIds(
   stops: readonly StopConfig[],
-  idMapping: StopGtfsIdMapping,
+  stopGtfsIdsConfig: TrainqueryStopGtfsIdsConfig,
 ) {
   return stops
     .map((stop) => {
-      const gtfsId = idMapping.getForStop(stop.id);
-      if (gtfsId == null) return null;
-      return { stop, gtfsId };
+      const gtfsIds = stopGtfsIdsConfig[stop.id] ?? null;
+      if (gtfsIds == null) return null;
+      return { stop, gtfsIds };
     })
     .filter(nonNull);
 }

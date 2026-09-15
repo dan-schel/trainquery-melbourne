@@ -3,6 +3,7 @@ import * as line from "../../src/config/corequery/lines/line-ids.js";
 import * as stop from "../../src/config/corequery/stops/stop-ids.js";
 import { isPresent } from "@dan-schel/js-utils";
 import { NONSENSE_GTFS_STOP_ID_REGEX } from "../utils/gtfs/magic-values.js";
+import { stopGtfsIds } from "../../src/config/gtfs/stop-gtfs-ids.js";
 
 export const suburbanSubfeedOptions: ComparisonOptions = {
   lines: {
@@ -25,7 +26,9 @@ export const suburbanSubfeedOptions: ComparisonOptions = {
       // The replacement bus IDs seem to come and go. As services actually serve
       // these IDs (and we might want to display replacement bus stuff someday),
       // I'm choosing to map them instead of ignoring them.
-      ignoreIdMissingFromGtfs: (id) => id.type === "replacement-bus",
+      ignoredIdsMissingFromGtfs: Object.values(stopGtfsIds).flatMap(
+        (x) => x.suburban?.replacementBus ?? [],
+      ),
     },
 
     [stop.JOLIMONT]: {
@@ -45,7 +48,11 @@ export const suburbanSubfeedOptions: ComparisonOptions = {
 
       // Sometimes Flemington Racecourse disappears from the GTFS data entirely,
       // and sometimes just the platforms do.
-      ignoredIdsMissingFromGtfs: ["15524", "15525"],
+      ignoredIdsMissingFromGtfs: [
+        ...getReplacementBusIdsFor(stop.FLEMINGTON_RACECOURSE),
+        "15524",
+        "15525",
+      ],
     },
 
     [stop.SHOWGROUNDS]: {
@@ -55,13 +62,23 @@ export const suburbanSubfeedOptions: ComparisonOptions = {
 
       // Sometimes Showgrounds disappears from the GTFS data entirely, and
       // sometimes just the platforms do.
-      ignoredIdsMissingFromGtfs: ["15526"],
+      ignoredIdsMissingFromGtfs: [
+        ...getReplacementBusIdsFor(stop.SHOWGROUNDS),
+        "15526",
+      ],
     },
 
     [stop.SOUTHERN_CROSS]: {
       // This is platform 8, which disappears with the Flemington Racecourse
       // line sometimes. I guess that makes sense.
-      ignoredIdsMissingFromGtfs: ["22187"],
+      ignoredIdsMissingFromGtfs: [
+        ...getReplacementBusIdsFor(stop.SOUTHERN_CROSS),
+        "22187",
+      ],
     },
   },
 };
+
+function getReplacementBusIdsFor(stopId: number) {
+  return stopGtfsIds[stopId]?.suburban?.replacementBus ?? [];
+}

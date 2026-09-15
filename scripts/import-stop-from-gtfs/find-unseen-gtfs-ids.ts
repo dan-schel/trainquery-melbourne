@@ -1,28 +1,20 @@
-import { type GtfsConfig, StopGtfsIdMapping } from "corequery-gtfs";
 import type {
   StopsCsvTree,
   StopsCsvTreeNode,
 } from "../utils/gtfs/stops-csv-tree.js";
+import type { TrainqueryMultifeedStopGtfsIdsConfig } from "../../src/gtfs/ids.js";
+import { extractAllStringValues } from "../utils/gtfs/extract-all-string-values.js";
 
 export function findUnseenGtfsIds(
   stopsCsvTree: StopsCsvTree,
-  suburbanGtfsConfig: GtfsConfig,
-  regionalGtfsConfig: GtfsConfig,
+  stopGtfsIds: TrainqueryMultifeedStopGtfsIdsConfig,
 ): StopsCsvTreeNode[] {
   const result: StopsCsvTreeNode[] = [];
 
-  const suburbanGtfsIdMapping = StopGtfsIdMapping.build(
-    suburbanGtfsConfig.stopGtfsIds,
-  );
-  const regionalGtfsIdMapping = StopGtfsIdMapping.build(
-    regionalGtfsConfig.stopGtfsIds,
-  );
+  const allMappedIds = extractAllStringValues(stopGtfsIds);
 
   for (const node of stopsCsvTree.nodes) {
-    const isSuburban = suburbanGtfsIdMapping.tryResolve(node.stop_id) != null;
-    const isRegional = regionalGtfsIdMapping.tryResolve(node.stop_id) != null;
-
-    if (!isSuburban && !isRegional) {
+    if (!allMappedIds.has(node.stop_id)) {
       result.push(node);
     }
   }

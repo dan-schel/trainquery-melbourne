@@ -5,27 +5,25 @@ import type { GtfsConfig } from "corequery-gtfs";
 import { bonusLinesMapping } from "./bonus-lines-mapping.js";
 import { timezoneData } from "./timezone-data.js";
 import {
-  splitMultifeedLineGtfsIdsConfig,
-  splitMultifeedStopGtfsIdsConfig,
+  convertToCorequeryGtfsLineIdsConfig,
+  convertToCorequeryGtfsStopIdsConfig,
+  splitMultifeedIdConfig,
 } from "../../gtfs/ids.js";
 
-const { suburban: suburbanLineGtfsIds, regional: regionalLineGtfsIds } =
-  splitMultifeedLineGtfsIdsConfig(lineGtfsIds);
-
-const { suburban: suburbanStopGtfsIds, regional: regionalStopGtfsIds } =
-  splitMultifeedStopGtfsIdsConfig(stopGtfsIds);
+const splitLineGtfsIds = splitMultifeedIdConfig(lineGtfsIds);
+const splitStopGtfsIds = splitMultifeedIdConfig(stopGtfsIds);
 
 export const suburbanGtfsConfig: GtfsConfig = {
-  lineGtfsIds: suburbanLineGtfsIds,
-  stopGtfsIds: suburbanStopGtfsIds,
+  lineGtfsIds: convertToCorequeryGtfsLineIdsConfig(splitLineGtfsIds.suburban),
+  stopGtfsIds: convertToCorequeryGtfsStopIdsConfig(splitStopGtfsIds.suburban),
   lineRoutesMapping: lineRoutesMapping,
   bonusLinesMapping: bonusLinesMapping,
   timezoneData: timezoneData,
 };
 
 export const regionalGtfsConfig: GtfsConfig = {
-  lineGtfsIds: regionalLineGtfsIds,
-  stopGtfsIds: regionalStopGtfsIds,
+  lineGtfsIds: convertToCorequeryGtfsLineIdsConfig(splitLineGtfsIds.regional),
+  stopGtfsIds: convertToCorequeryGtfsStopIdsConfig(splitStopGtfsIds.regional),
   lineRoutesMapping: lineRoutesMapping,
   bonusLinesMapping: bonusLinesMapping,
   timezoneData: timezoneData,

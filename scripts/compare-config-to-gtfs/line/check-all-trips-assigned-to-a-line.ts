@@ -1,14 +1,15 @@
 import type { IndexedStopTimes } from "./utils/indexed-stop-times.js";
 import type { IssueCollector } from "../issue-collector.js";
-import type { StopGtfsIdMapping, LineGtfsIdMapping } from "corequery-gtfs";
 import { Trip } from "./utils/trip.js";
 import { UniqueStoppingPatternTracker } from "./utils/unique-stopping-pattern-tracker.js";
 import type { FullTripsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+import { extractAllStringValues } from "../../utils/gtfs/extract-all-string-values.js";
+import type { TrainqueryLineGtfsIdsConfig } from "../../../src/gtfs/ids.js";
 
 export function checkAllTripsAssignedToALine({
   gtfsTrips,
   gtfsStopTimes,
-  lineIdMapping,
+  lineGtfsIdsConfig,
   stopIdMapping,
   getStopName,
   issues,
@@ -16,14 +17,16 @@ export function checkAllTripsAssignedToALine({
 }: {
   gtfsTrips: FullTripsCsv;
   gtfsStopTimes: IndexedStopTimes;
-  lineIdMapping: LineGtfsIdMapping;
-  stopIdMapping: StopGtfsIdMapping;
+  lineGtfsIdsConfig: TrainqueryLineGtfsIdsConfig;
+  stopIdMapping: Map<string, number>;
   getStopName: (stopId: number) => string | null;
   issues: IssueCollector;
   isTripNotAssignedToALineIgnored: (trip: Trip) => boolean;
 }) {
+  const mappedRouteIds = extractAllStringValues(lineGtfsIdsConfig);
+
   const trips = gtfsTrips
-    .filter((t) => lineIdMapping.tryResolve(t.route_id) == null)
+    .filter((t) => !mappedRouteIds.has(t.route_id))
     .map((t) =>
       Trip.fromCsv({
         tripCsvRow: t,

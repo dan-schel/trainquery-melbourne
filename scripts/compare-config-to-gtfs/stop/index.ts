@@ -3,22 +3,25 @@ import { compareStopNames } from "./compare-names.js";
 import { compareStopLocations } from "./compare-locations.js";
 import { compareStopGtfsIds } from "./compare-gtfs-ids.js";
 import type { StopConfig } from "corequery";
-import type { StopGtfsIdMapping, StopGtfsIdCollection } from "corequery-gtfs";
 import { compareStopItems } from "./compare-items.js";
 import type { StopLintOptions } from "../comparison-options.js";
 import type { StopsCsvTreeNode } from "../../utils/gtfs/stops-csv-tree.js";
 import type { FullStopsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+import type {
+  TrainqueryStopGtfsIdCollectionConfig,
+  TrainqueryStopGtfsIdsConfig,
+} from "../../../src/gtfs/ids.js";
 
 export function compareStops({
   stops,
-  idMapping,
+  stopGtfsIdsConfig,
   gtfsStops,
   issues,
   getOptionsForStop,
   isStopMissingFromConfigIgnored,
 }: {
   stops: readonly StopConfig[];
-  idMapping: StopGtfsIdMapping;
+  stopGtfsIdsConfig: TrainqueryStopGtfsIdsConfig;
   gtfsStops: FullStopsCsv;
   issues: IssueCollector;
   getOptionsForStop: (stopId: number) => StopLintOptions;
@@ -26,7 +29,7 @@ export function compareStops({
 }) {
   function compareStop(
     config: StopConfig,
-    mappedIds: StopGtfsIdCollection,
+    mappedIds: TrainqueryStopGtfsIdCollectionConfig,
     gtfsNode: StopsCsvTreeNode,
   ) {
     const options = getOptionsForStop(config.id);
@@ -56,7 +59,7 @@ export function compareStops({
         (options.ignoreIdMissingFromConfig?.(id) ?? false),
 
       isIdMissingFromGtfsIgnored: (gtfsId) =>
-        (options.ignoredIdsMissingFromGtfs?.includes(gtfsId.id) ?? false) ||
+        (options.ignoredIdsMissingFromGtfs?.includes(gtfsId) ?? false) ||
         (options.ignoreIdMissingFromGtfs?.(gtfsId) ?? false),
     });
 
@@ -66,7 +69,7 @@ export function compareStops({
 
   compareStopItems({
     stops,
-    idMapping,
+    stopGtfsIdsConfig,
     gtfsStops,
     issues,
     onMatch: compareStop,

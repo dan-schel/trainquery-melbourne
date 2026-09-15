@@ -1,4 +1,3 @@
-import type { StopGtfsIdMapping } from "corequery-gtfs";
 import { StoppingPattern } from "./stopping-pattern.js";
 import type {
   FullStopTimesCsv,
@@ -20,7 +19,7 @@ export class Trip {
   }: {
     tripCsvRow: FullTripsCsvRow;
     stopTimes: FullStopTimesCsv;
-    stopIdMapping: StopGtfsIdMapping;
+    stopIdMapping: Map<string, number>;
     onUnmappedGtfsStopIdInUse: (gtfsId: string) => void;
   }) {
     return new Trip(

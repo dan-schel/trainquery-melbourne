@@ -1,4 +1,3 @@
-import type { StopGtfsIdMetadata } from "corequery-gtfs";
 import type { StopsCsvTreeNode } from "../utils/gtfs/stops-csv-tree.js";
 import type { Trip } from "./line/utils/trip.js";
 import type { UniqueStoppingPattern } from "./line/utils/unique-stopping-pattern-tracker.js";
@@ -28,7 +27,7 @@ export type StopLintOptions = {
   readonly ignoreIdMissingFromConfig?: (id: StopsCsvTreeNode) => boolean;
 
   readonly ignoredIdsMissingFromGtfs?: string[];
-  readonly ignoreIdMissingFromGtfs?: (node: StopGtfsIdMetadata) => boolean;
+  readonly ignoreIdMissingFromGtfs?: (id: string) => boolean;
 };
 
 export type LineLintOptions = {
