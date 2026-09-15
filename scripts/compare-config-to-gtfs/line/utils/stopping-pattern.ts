@@ -1,5 +1,4 @@
 import { nonNull } from "@dan-schel/js-utils";
-import type { StopGtfsIdMapping } from "corequery-gtfs";
 import type { FullStopTimesCsv } from "../../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
 export class StoppingPattern {
@@ -21,12 +20,12 @@ export class StoppingPattern {
     onUnmappedGtfsStopIdInUse,
   }: {
     stopTimes: FullStopTimesCsv;
-    stopIdMapping: StopGtfsIdMapping;
+    stopIdMapping: Map<string, number>;
     onUnmappedGtfsStopIdInUse: (gtfsId: string) => void;
   }): StoppingPattern {
     const stops = stopTimes
       .map((x) => {
-        const stopId = stopIdMapping.tryResolve(x.stop_id)?.stopId ?? null;
+        const stopId = stopIdMapping.get(x.stop_id);
         if (stopId != null) return stopId;
 
         onUnmappedGtfsStopIdInUse(x.stop_id);

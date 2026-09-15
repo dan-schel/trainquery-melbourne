@@ -4,38 +4,68 @@ import type {
   StopGtfsIdCollectionConfig,
 } from "corequery-gtfs";
 
-export type MultifeedStopGtfsIdsConfig = Record<number, FeedStopGtfsIdsConfig>;
-export type MultifeedLineGtfsIdsConfig = Record<number, FeedLineGtfsIdsConfig>;
+export type TrainqueryMultifeedStopGtfsIdsConfig = Record<
+  number,
+  {
+    readonly suburban?: TrainqueryStopGtfsIdCollectionConfig;
+    readonly regional?: TrainqueryStopGtfsIdCollectionConfig;
+  }
+>;
 
-type FeedStopGtfsIdsConfig = {
-  readonly suburban?: TrainqueryStopGtfsIdCollectionConfig;
-  readonly regional?: TrainqueryStopGtfsIdCollectionConfig;
-};
+export type TrainqueryMultifeedLineGtfsIdsConfig = Record<
+  number,
+  {
+    readonly suburban?: TrainqueryLineGtfsIdCollectionConfig;
+    readonly regional?: TrainqueryLineGtfsIdCollectionConfig;
+  }
+>;
 
-type FeedLineGtfsIdsConfig = {
-  readonly suburban?: TrainqueryLineGtfsIdCollectionConfig;
-  readonly regional?: TrainqueryLineGtfsIdCollectionConfig;
-};
+export type TrainqueryStopGtfsIdsConfig = Record<
+  number,
+  TrainqueryStopGtfsIdCollectionConfig
+>;
 
-type TrainqueryStopGtfsIdCollectionConfig = {
+export type TrainqueryLineGtfsIdsConfig = Record<
+  number,
+  TrainqueryLineGtfsIdCollectionConfig
+>;
+
+export type TrainqueryStopGtfsIdCollectionConfig = {
   readonly parent: string;
   readonly general?: readonly string[];
   readonly platforms?: Readonly<Record<number, readonly string[]>>;
   readonly replacementBus?: readonly string[];
 };
 
-type TrainqueryLineGtfsIdCollectionConfig = {
+export type TrainqueryLineGtfsIdCollectionConfig = {
   readonly primary: string;
   readonly other?: readonly string[];
   readonly replacementBus?: readonly string[];
 };
 
-export function splitMultifeedStopGtfsIdsConfig(
-  config: MultifeedStopGtfsIdsConfig,
+export function splitMultifeedIdConfig<T>(
+  input: Record<number, { suburban?: T; regional?: T }>,
 ) {
-  const suburban: Record<number, StopGtfsIdCollectionConfig> = {};
-  const regional: Record<number, StopGtfsIdCollectionConfig> = {};
+  const suburban: Record<number, T> = {};
+  const regional: Record<number, T> = {};
 
+  for (const [idStr, feedConfig] of Object.entries(input)) {
+    const id = parseIntThrow(idStr);
+
+    if (feedConfig.suburban != null) {
+      suburban[id] = feedConfig.suburban;
+    }
+    if (feedConfig.regional != null) {
+      regional[id] = feedConfig.regional;
+    }
+  }
+
+  return { suburban, regional };
+}
+
+export function convertToCorequeryGtfsStopIdsConfig(
+  input: TrainqueryStopGtfsIdsConfig,
+) {
   function convert(
     input: TrainqueryStopGtfsIdCollectionConfig,
   ): StopGtfsIdCollectionConfig {
@@ -45,26 +75,17 @@ export function splitMultifeedStopGtfsIdsConfig(
     };
   }
 
-  for (const [stopIdStr, feedConfig] of Object.entries(config)) {
-    const stopId = parseIntThrow(stopIdStr);
-
-    if (feedConfig.suburban != null) {
-      suburban[stopId] = convert(feedConfig.suburban);
-    }
-    if (feedConfig.regional != null) {
-      regional[stopId] = convert(feedConfig.regional);
-    }
-  }
-
-  return { suburban, regional };
+  return Object.fromEntries(
+    Object.entries(input).map(([stopIdStr, stopConfig]) => [
+      parseIntThrow(stopIdStr),
+      convert(stopConfig),
+    ]),
+  );
 }
 
-export function splitMultifeedLineGtfsIdsConfig(
-  config: MultifeedLineGtfsIdsConfig,
+export function convertToCorequeryGtfsLineIdsConfig(
+  input: TrainqueryLineGtfsIdsConfig,
 ) {
-  const suburban: Record<number, LineGtfsIdCollectionConfig> = {};
-  const regional: Record<number, LineGtfsIdCollectionConfig> = {};
-
   function convert(
     input: TrainqueryLineGtfsIdCollectionConfig,
   ): LineGtfsIdCollectionConfig {
@@ -74,16 +95,10 @@ export function splitMultifeedLineGtfsIdsConfig(
     };
   }
 
-  for (const [lineIdStr, feedConfig] of Object.entries(config)) {
-    const lineId = parseIntThrow(lineIdStr);
-
-    if (feedConfig.suburban != null) {
-      suburban[lineId] = convert(feedConfig.suburban);
-    }
-    if (feedConfig.regional != null) {
-      regional[lineId] = convert(feedConfig.regional);
-    }
-  }
-
-  return { suburban, regional };
+  return Object.fromEntries(
+    Object.entries(input).map(([lineIdStr, lineConfig]) => [
+      parseIntThrow(lineIdStr),
+      convert(lineConfig),
+    ]),
+  );
 }

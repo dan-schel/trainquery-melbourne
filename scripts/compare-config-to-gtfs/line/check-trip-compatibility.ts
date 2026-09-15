@@ -6,13 +6,9 @@ import {
   UniqueStoppingPatternTracker,
   type UniqueStoppingPattern,
 } from "./utils/unique-stopping-pattern-tracker.js";
-import {
-  type RouteConfig,
-  Route,
-  type LineGtfsIdCollection,
-  type StopGtfsIdsConfig,
-} from "corequery-gtfs";
+import { type RouteConfig, Route } from "corequery-gtfs";
 import type { FullTripsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+import type { TrainqueryLineGtfsIdCollectionConfig } from "../../../src/gtfs/ids.js";
 
 export function checkLineTripCompatibility({
   config,
@@ -26,11 +22,11 @@ export function checkLineTripCompatibility({
   isIncompatibleStoppingPatternIgnored,
 }: {
   config: LineConfig;
-  mappedLineIds: LineGtfsIdCollection;
+  mappedLineIds: TrainqueryLineGtfsIdCollectionConfig;
   routes: readonly RouteConfig[];
   gtfsTrips: FullTripsCsv;
   gtfsStopTimes: IndexedStopTimes;
-  stopIdMapping: StopGtfsIdsConfig;
+  stopIdMapping: Map<string, number>;
   getStopName: (stopId: number) => string | null;
   issues: IssueCollector;
   isIncompatibleStoppingPatternIgnored: (
@@ -40,7 +36,11 @@ export function checkLineTripCompatibility({
   // Find the trips which belong to this line. (Ignore replacement bus trips.
   // Right now TrainQuery is only attempting to model actual train trips.)
   const trips = gtfsTrips
-    .filter((t) => mappedLineIds.includes(t.route_id, { excludeIgnored: true }))
+    .filter(
+      (t) =>
+        mappedLineIds.primary === t.route_id ||
+        (mappedLineIds.other ?? []).includes(t.route_id),
+    )
     .map((t) =>
       Trip.fromCsv({
         tripCsvRow: t,

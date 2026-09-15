@@ -7,7 +7,7 @@ import { getSubfeedsWithStop } from "../../../src/gtfs/utils/get-subfeeds-with.j
 import * as stop from "../../../src/config/corequery/stops/stop-ids.js";
 import * as position from "../../../src/config/corequery/stops/stop-position-ids.js";
 import { itsOk, parseIntThrow } from "@dan-schel/js-utils";
-import type { MultifeedStopGtfsIdsConfig } from "../../../src/gtfs/ids.js";
+import type { TrainqueryMultifeedStopGtfsIdsConfig } from "../../../src/gtfs/ids.js";
 
 const stopsExemptedFromHavingGtfsId: number[] = [];
 
@@ -152,7 +152,7 @@ describe("stopGtfsIds", () => {
   });
 });
 
-function getIdsMentionedIn(config: MultifeedStopGtfsIdsConfig) {
+function getIdsMentionedIn(config: TrainqueryMultifeedStopGtfsIdsConfig) {
   const stopIds: number[] = [];
   const positionIds: { stopId: number; positionId: number }[] = [];
 

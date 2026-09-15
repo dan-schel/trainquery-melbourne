@@ -3,19 +3,19 @@ import type { ComparisonOptions } from "./comparison-options.js";
 import { IssueCollector } from "./issue-collector.js";
 import { compareLines } from "./line/index.js";
 import { compareStops } from "./stop/index.js";
-import type {
-  LineRoutesMappingConfig,
-  StopGtfsIdsConfig,
-  LineGtfsIdsConfig,
-} from "corequery-gtfs";
+import type { LineRoutesMappingConfig } from "corequery-gtfs";
 import { getStopName } from "../../src/utils/get-stop-name.js";
 import type { FullGtfsFeedCsv } from "../../src/gtfs/retrieval/schedule/csv-schemas.js";
+import type {
+  TrainqueryLineGtfsIdsConfig,
+  TrainqueryStopGtfsIdsConfig,
+} from "../../src/gtfs/ids.js";
 
 export function compareSubfeed({
   stops,
   lines,
-  stopIdMapping,
-  lineIdMapping,
+  stopGtfsIdsConfig,
+  lineGtfsIdsConfig,
   routes,
   gtfsFeed,
   issues,
@@ -23,8 +23,8 @@ export function compareSubfeed({
 }: {
   stops: readonly StopConfig[];
   lines: readonly LineConfig[];
-  stopIdMapping: StopGtfsIdsConfig;
-  lineIdMapping: LineGtfsIdsConfig;
+  stopGtfsIdsConfig: TrainqueryStopGtfsIdsConfig;
+  lineGtfsIdsConfig: TrainqueryLineGtfsIdsConfig;
   routes: LineRoutesMappingConfig;
   gtfsFeed: FullGtfsFeedCsv;
   issues: IssueCollector;
@@ -32,7 +32,7 @@ export function compareSubfeed({
 }) {
   compareStops({
     stops,
-    idMapping: stopIdMapping,
+    stopGtfsIdsConfig,
     gtfsStops: gtfsFeed.stops,
     issues,
 
@@ -48,12 +48,12 @@ export function compareSubfeed({
 
   compareLines({
     lines,
-    idMapping: lineIdMapping,
+    lineGtfsIdsConfig,
     routes,
     gtfsRoutes: gtfsFeed.routes,
     gtfsTrips: gtfsFeed.trips,
     gtfsStopTimes: gtfsFeed.stopTimes,
-    stopIdMapping: stopIdMapping,
+    stopGtfsIdsConfig,
 
     getStopName: (stopId) => getStopName(stopId, stops),
 

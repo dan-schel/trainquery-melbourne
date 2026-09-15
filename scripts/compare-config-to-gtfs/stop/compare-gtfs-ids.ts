@@ -1,9 +1,10 @@
 import type { IssueCollector } from "../issue-collector.js";
 import { flattenStopsCsvTree } from "./utils/flatten-stops-csv-tree.js";
 import type { StopConfig } from "corequery";
-import { StopGtfsIdCollection, type StopGtfsIdMetadata } from "corequery-gtfs";
 import type { StopsCsvTreeNode } from "../../utils/gtfs/stops-csv-tree.js";
 import { compareArrays } from "@dan-schel/js-utils";
+import type { TrainqueryStopGtfsIdCollectionConfig } from "../../../src/gtfs/ids.js";
+import { extractAllStringValues } from "../../utils/gtfs/extract-all-string-values.js";
 
 export function compareStopGtfsIds({
   config,
@@ -14,7 +15,7 @@ export function compareStopGtfsIds({
   isIdMissingFromGtfsIgnored,
 }: {
   config: StopConfig;
-  mappedIds: StopGtfsIdCollection;
+  mappedIds: TrainqueryStopGtfsIdCollectionConfig;
   gtfsNode: StopsCsvTreeNode;
   issues: IssueCollector;
   isIdMissingFromConfigIgnored: (gtfsId: StopsCsvTreeNode) => boolean;
@@ -28,11 +29,11 @@ export function compareStopGtfsIds({
     });
   }
 
-  function reportMissingFromActualGtfs(mappedId: StopGtfsIdMetadata) {
-    if (isIdMissingFromGtfsIgnored(mappedId.id)) return;
+  function reportMissingFromActualGtfs(mappedId: string) {
+    if (isIdMissingFromGtfsIgnored(mappedId)) return;
     issues.add({
       category: "Mapped GTFS stop IDs not found in GTFS",
-      message: `GTFS ID "${mappedId.id}" mapped to ${config.name} (#${config.id}) not found in GTFS.`,
+      message: `GTFS ID "${mappedId}" mapped to ${config.name} (#${config.id}) not found in GTFS.`,
     });
   }
 
@@ -40,7 +41,7 @@ export function compareStopGtfsIds({
 
   compareArrays({
     a: actualGtfsIdList,
-    b: mappedIds.all(),
+    b: Array.from(extractAllStringValues(mappedIds)),
 
     // Note: We're not comparing the ID types, or the platform codes here. Just
     // checking that the list of IDs matches up.
@@ -48,7 +49,7 @@ export function compareStopGtfsIds({
     // TODO: Checking platform_code should be implemented too though, maybe as
     // a separate check.
     aKeyFunc: (a) => a.stop_id,
-    bKeyFunc: (b) => b.id,
+    bKeyFunc: (b) => b,
 
     onMissingFromA: reportMissingFromActualGtfs,
     onMissingFromB: reportMissingFromConfig,

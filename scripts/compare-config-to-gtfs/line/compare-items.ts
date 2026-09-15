@@ -2,24 +2,24 @@ import type { LineConfig } from "corequery";
 import { compareArrays, nonNull } from "@dan-schel/js-utils";
 import type { IssueCollector } from "../issue-collector.js";
 import type {
-  LineGtfsIdMapping,
-  LineGtfsIdCollection,
-  LineGtfsIdsConfig,
-} from "corequery-gtfs";
-import type {
   FullRoutesCsv,
   FullRoutesCsvRow,
 } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
+import type {
+  TrainqueryLineGtfsIdCollectionConfig,
+  TrainqueryLineGtfsIdsConfig,
+} from "../../../src/gtfs/ids.js";
+import { extractAllStringValues } from "../../utils/gtfs/extract-all-string-values.js";
 
 type OnMatchCallback = (
   config: LineConfig,
-  mappedIds: LineGtfsIdCollection,
+  mappedIds: TrainqueryLineGtfsIdCollectionConfig,
   gtfsRow: FullRoutesCsvRow,
 ) => void;
 
 export function compareLineItems({
   lines,
-  idMapping,
+  lineGtfsIdsConfig,
   gtfsRoutes,
   issues,
   onMatch,
@@ -27,16 +27,18 @@ export function compareLineItems({
   isLineMissingFromGtfsIgnored,
 }: {
   lines: readonly LineConfig[];
-  idMapping: LineGtfsIdsConfig;
+  lineGtfsIdsConfig: TrainqueryLineGtfsIdsConfig;
   gtfsRoutes: FullRoutesCsv;
   issues: IssueCollector;
   onMatch: OnMatchCallback;
   isLineMissingFromConfigIgnored: (gtfsId: FullRoutesCsvRow) => boolean;
   isLineMissingFromGtfsIgnored: (config: LineConfig) => boolean;
 }) {
+  const allMappedLineIds = extractAllStringValues(lineGtfsIdsConfig);
+
   function reportLineMissingFromGtfs(
     config: LineConfig,
-    mappedIds: LineGtfsIdCollection,
+    mappedIds: TrainqueryLineGtfsIdCollectionConfig,
   ) {
     if (isLineMissingFromGtfsIgnored(config)) return;
     issues.add({
@@ -49,7 +51,7 @@ export function compareLineItems({
     // The `compareArrays` below is only comparing against GTFS IDs mapped as
     // "primary" IDs, so let's check first if it's mapped as a non-primary ID
     // before declaring it "missing".
-    if (idMapping.tryResolve(line.route_id) != null) return;
+    if (allMappedLineIds.has(line.route_id)) return;
 
     if (isLineMissingFromConfigIgnored(line)) return;
 
@@ -59,28 +61,28 @@ export function compareLineItems({
     });
   }
 
-  const linesWithGtfsIds = mapToGtfsIds(lines, idMapping);
+  const linesWithGtfsIds = mapToGtfsIds(lines, lineGtfsIdsConfig);
 
   compareArrays({
     a: linesWithGtfsIds,
     b: gtfsRoutes,
-    aKeyFunc: (s) => s.gtfsId.primary,
+    aKeyFunc: (s) => s.gtfsIds.primary,
     bKeyFunc: (s) => s.route_id,
-    onMatch: (a, b) => onMatch(a.line, a.gtfsId, b),
+    onMatch: (a, b) => onMatch(a.line, a.gtfsIds, b),
     onMissingFromA: (b) => reportLineMissingFromConfig(b),
-    onMissingFromB: (a) => reportLineMissingFromGtfs(a.line, a.gtfsId),
+    onMissingFromB: (a) => reportLineMissingFromGtfs(a.line, a.gtfsIds),
   });
 }
 
 function mapToGtfsIds(
   lines: readonly LineConfig[],
-  idMapping: LineGtfsIdMapping,
+  lineGtfsIdsConfig: TrainqueryLineGtfsIdsConfig,
 ) {
   return lines
     .map((line) => {
-      const gtfsId = idMapping.getForLine(line.id);
-      if (gtfsId == null) return null;
-      return { line, gtfsId };
+      const gtfsIds = lineGtfsIdsConfig[line.id] ?? null;
+      if (gtfsIds == null) return null;
+      return { line, gtfsIds };
     })
     .filter(nonNull);
 }
