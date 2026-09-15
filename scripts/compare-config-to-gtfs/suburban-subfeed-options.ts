@@ -27,7 +27,7 @@ export const suburbanSubfeedOptions: ComparisonOptions = {
       // these IDs (and we might want to display replacement bus stuff someday),
       // I'm choosing to map them instead of ignoring them.
       ignoredIdsMissingFromGtfs: Object.values(stopGtfsIds).flatMap(
-        (x) => x.regional?.replacementBus ?? [],
+        (x) => x.suburban?.replacementBus ?? [],
       ),
     },
 

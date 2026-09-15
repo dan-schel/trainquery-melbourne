@@ -26,7 +26,7 @@ export function checkAllTripsAssignedToALine({
   const mappedRouteIds = extractAllStringValues(lineGtfsIdsConfig);
 
   const trips = gtfsTrips
-    .filter((t) => mappedRouteIds.has(t.route_id))
+    .filter((t) => !mappedRouteIds.has(t.route_id))
     .map((t) =>
       Trip.fromCsv({
         tripCsvRow: t,
