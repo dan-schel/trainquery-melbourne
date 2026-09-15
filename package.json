@@ -3,10 +3,9 @@
   "dependencies": {
     "@dan-schel/js-utils": "4.14.1",
     "@eslint/js": "10.0.1",
-    "@types/adm-zip": "0.5.8",
     "@types/node": "25.9.5",
     "@vitest/coverage-v8": "4.1.10",
-    "adm-zip": "0.5.17",
+    "adm-zip": "0.6.1",
     "chalk": "6.0.0",
     "corequery": "0.23.0",
     "corequery-gtfs": "0.10.1",
