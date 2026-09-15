@@ -1,7 +1,11 @@
 import type { LineConfig } from "corequery";
 import { compareArrays, nonNull } from "@dan-schel/js-utils";
 import type { IssueCollector } from "../issue-collector.js";
-import type { LineGtfsIdMapping, LineGtfsIdCollection } from "corequery-gtfs";
+import type {
+  LineGtfsIdMapping,
+  LineGtfsIdCollection,
+  LineGtfsIdsConfig,
+} from "corequery-gtfs";
 import type {
   FullRoutesCsv,
   FullRoutesCsvRow,
@@ -23,7 +27,7 @@ export function compareLineItems({
   isLineMissingFromGtfsIgnored,
 }: {
   lines: readonly LineConfig[];
-  idMapping: LineGtfsIdMapping;
+  idMapping: LineGtfsIdsConfig;
   gtfsRoutes: FullRoutesCsv;
   issues: IssueCollector;
   onMatch: OnMatchCallback;

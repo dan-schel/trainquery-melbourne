@@ -8,9 +8,9 @@ import { checkAllTripsAssignedToALine } from "./check-all-trips-assigned-to-a-li
 import type { Trip } from "./utils/trip.js";
 import type {
   LineRoutesMappingConfig,
-  StopGtfsIdMapping,
-  LineGtfsIdMapping,
   LineGtfsIdCollection,
+  LineGtfsIdsConfig,
+  StopGtfsIdsConfig,
 } from "corequery-gtfs";
 import type {
   FullRoutesCsv,
@@ -34,12 +34,12 @@ export function compareLines({
   isTripNotAssignedToALineIgnored,
 }: {
   lines: readonly LineConfig[];
-  idMapping: LineGtfsIdMapping;
+  idMapping: LineGtfsIdsConfig;
   routes: LineRoutesMappingConfig;
   gtfsRoutes: FullRoutesCsv;
   gtfsTrips: FullTripsCsv;
   gtfsStopTimes: FullStopTimesCsv;
-  stopIdMapping: StopGtfsIdMapping;
+  stopIdMapping: StopGtfsIdsConfig;
   getStopName: (stopId: number) => string | null;
   issues: IssueCollector;
   getOptionsForLine: (lineId: number) => LineLintOptions;

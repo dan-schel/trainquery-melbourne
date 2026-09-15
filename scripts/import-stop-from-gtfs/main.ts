@@ -5,10 +5,7 @@ import { askWhichStopToImport } from "./ask-which-stop-to-import.js";
 import { env } from "./env.js";
 import { findUnseenGtfsIds } from "./find-unseen-gtfs-ids.js";
 import { printStopData } from "./print-stop-data.js";
-import {
-  regionalGtfsConfig,
-  suburbanGtfsConfig,
-} from "../../src/config/gtfs/index.js";
+import { stopGtfsIds } from "../../src/config/gtfs/stop-gtfs-ids.js";
 
 async function main() {
   console.log("Downloading/parsing GTFS data...");
@@ -18,11 +15,7 @@ async function main() {
 
   console.log("Checking for unseen stops...");
 
-  const unseenStops = findUnseenGtfsIds(
-    allStops,
-    suburbanGtfsConfig,
-    regionalGtfsConfig,
-  );
+  const unseenStops = findUnseenGtfsIds(allStops, stopGtfsIds);
 
   if (unseenStops.length === 0) {
     console.log("🤷 Didn't find any new stops to import.");

@@ -3,7 +3,7 @@ import { compareStopNames } from "./compare-names.js";
 import { compareStopLocations } from "./compare-locations.js";
 import { compareStopGtfsIds } from "./compare-gtfs-ids.js";
 import type { StopConfig } from "corequery";
-import type { StopGtfsIdMapping, StopGtfsIdCollection } from "corequery-gtfs";
+import type { StopGtfsIdCollection, StopGtfsIdsConfig } from "corequery-gtfs";
 import { compareStopItems } from "./compare-items.js";
 import type { StopLintOptions } from "../comparison-options.js";
 import type { StopsCsvTreeNode } from "../../utils/gtfs/stops-csv-tree.js";
@@ -18,7 +18,7 @@ export function compareStops({
   isStopMissingFromConfigIgnored,
 }: {
   stops: readonly StopConfig[];
-  idMapping: StopGtfsIdMapping;
+  idMapping: StopGtfsIdsConfig;
   gtfsStops: FullStopsCsv;
   issues: IssueCollector;
   getOptionsForStop: (stopId: number) => StopLintOptions;

@@ -10,7 +10,7 @@ import {
   type RouteConfig,
   Route,
   type LineGtfsIdCollection,
-  type StopGtfsIdMapping,
+  type StopGtfsIdsConfig,
 } from "corequery-gtfs";
 import type { FullTripsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
 
@@ -30,7 +30,7 @@ export function checkLineTripCompatibility({
   routes: readonly RouteConfig[];
   gtfsTrips: FullTripsCsv;
   gtfsStopTimes: IndexedStopTimes;
-  stopIdMapping: StopGtfsIdMapping;
+  stopIdMapping: StopGtfsIdsConfig;
   getStopName: (stopId: number) => string | null;
   issues: IssueCollector;
   isIncompatibleStoppingPatternIgnored: (

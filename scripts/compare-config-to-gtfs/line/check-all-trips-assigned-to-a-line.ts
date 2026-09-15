@@ -1,6 +1,6 @@
 import type { IndexedStopTimes } from "./utils/indexed-stop-times.js";
 import type { IssueCollector } from "../issue-collector.js";
-import type { StopGtfsIdMapping, LineGtfsIdMapping } from "corequery-gtfs";
+import type { StopGtfsIdsConfig, LineGtfsIdsConfig } from "corequery-gtfs";
 import { Trip } from "./utils/trip.js";
 import { UniqueStoppingPatternTracker } from "./utils/unique-stopping-pattern-tracker.js";
 import type { FullTripsCsv } from "../../../src/gtfs/retrieval/schedule/csv-schemas.js";
@@ -16,8 +16,8 @@ export function checkAllTripsAssignedToALine({
 }: {
   gtfsTrips: FullTripsCsv;
   gtfsStopTimes: IndexedStopTimes;
-  lineIdMapping: LineGtfsIdMapping;
-  stopIdMapping: StopGtfsIdMapping;
+  lineIdMapping: LineGtfsIdsConfig;
+  stopIdMapping: StopGtfsIdsConfig;
   getStopName: (stopId: number) => string | null;
   issues: IssueCollector;
   isTripNotAssignedToALineIgnored: (trip: Trip) => boolean;

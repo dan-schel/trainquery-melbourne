@@ -4,9 +4,9 @@ import { IssueCollector } from "./issue-collector.js";
 import { compareLines } from "./line/index.js";
 import { compareStops } from "./stop/index.js";
 import type {
-  StopGtfsIdMapping,
-  LineGtfsIdMapping,
   LineRoutesMappingConfig,
+  StopGtfsIdsConfig,
+  LineGtfsIdsConfig,
 } from "corequery-gtfs";
 import { getStopName } from "../../src/utils/get-stop-name.js";
 import type { FullGtfsFeedCsv } from "../../src/gtfs/retrieval/schedule/csv-schemas.js";
@@ -23,8 +23,8 @@ export function compareSubfeed({
 }: {
   stops: readonly StopConfig[];
   lines: readonly LineConfig[];
-  stopIdMapping: StopGtfsIdMapping;
-  lineIdMapping: LineGtfsIdMapping;
+  stopIdMapping: StopGtfsIdsConfig;
+  lineIdMapping: LineGtfsIdsConfig;
   routes: LineRoutesMappingConfig;
   gtfsFeed: FullGtfsFeedCsv;
   issues: IssueCollector;
