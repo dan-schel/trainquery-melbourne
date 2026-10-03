@@ -21,7 +21,6 @@ const now = Temporal.Now.zonedDateTimeISO("Australia/Melbourne")
 const suburbanOutputDir = path.join(outputDir, `${today}-suburban`);
 const regionalOutputDir = path.join(outputDir, `${today}-regional`);
 
-// TODO: Need to update this code to match the recent integration test changes.
 const testCode = `import { describe, it } from "vitest";
 import { setupIntegrationTest } from "../support/setup/index.js";
 import { createStopNameMapping } from "../support/create-stop-name-mapping.js";
