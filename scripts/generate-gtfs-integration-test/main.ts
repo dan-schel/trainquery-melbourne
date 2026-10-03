@@ -23,13 +23,13 @@ const regionalOutputDir = path.join(outputDir, `${today}-regional`);
 
 // TODO: Need to update this code to match the recent integration test changes.
 const testCode = `import { describe, it } from "vitest";
-import { createGtfsSystemForIntegrationTest } from "../support/create-gtfs-system/index.js";
+import { setupIntegrationTest } from "../support/setup/index.js";
 import { createStopNameMapping } from "../support/create-stop-name-mapping.js";
 import { expectParsingErrorsToMatchSnapshot } from "../support/expect-parsing-errors.js";
 import { expectDeparturesToMatchSnapshot } from "../support/expect-departures.js";
 
 describe("[TESTNAME]", async () => {
-  const system = await createGtfsSystemForIntegrationTest(import.meta.dirname);
+  const { source, system } = await setupIntegrationTest(import.meta.dirname);
   const stopNameMapping = await createStopNameMapping(import.meta.dirname);
 
   it("parses with expected errors only", () => {
@@ -37,15 +37,16 @@ describe("[TESTNAME]", async () => {
   });
 
   describe("Flinders Street, ${now}, forwards", () => {
-    it("gives correct departures", () => {
-      expectDeparturesToMatchSnapshot({
-        system,
+    it("gives correct departures", async () => {
+      await expectDeparturesToMatchSnapshot({
+        source,
         stopNameMapping,
         stopName: "Flinders Street",
         instant: "${now}",
         direction: "forwards",
         maxResults: 10,
         formatTimezone: "Australia/Melbourne",
+        maxConnectionsToFollow: 1,
       });
     });
   });
