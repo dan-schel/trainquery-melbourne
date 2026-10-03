@@ -3,6 +3,7 @@ import { configDotenv } from "dotenv";
 
 const envSchema = z.object({
   RELAY_KEY: z.string(),
+  COREQUERY_GTFS_DIR: z.string(),
 });
 
 configDotenv({ quiet: true });

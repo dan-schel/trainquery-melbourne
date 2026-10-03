@@ -31,3 +31,6 @@ main().catch((error) => {
   console.error(error);
   process.exit(1);
 });
+
+// TODO: When doing disruption parsing, note that for local development I can experiment with ollama like so:
+// curl http://localhost:11434/api/generate -d '{"model":"gemma4-26b-8k:latest","prompt":"Hello","stream":false}'
