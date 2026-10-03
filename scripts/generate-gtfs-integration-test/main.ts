@@ -12,8 +12,7 @@ import { stops } from "../../src/config/corequery/stops/index.js";
 import { getSubfeedsWithStop } from "../../src/gtfs/utils/get-subfeeds-with.js";
 import type { Subfeed } from "../../src/gtfs/subfeed.js";
 
-// The location of the corequery-gtfs repo is provided via env var.
-const outputDir = path.join(env.COREQUERY_GTFS_DIR, "tests/integration");
+const outputDir = path.resolve(env.COREQUERY_GTFS_DIR, "tests/integration");
 
 const today = Temporal.Now.plainDateISO("Australia/Melbourne").toString();
 const now = Temporal.Now.zonedDateTimeISO("Australia/Melbourne")
