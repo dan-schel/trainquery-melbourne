@@ -3,7 +3,7 @@ import { lineRoutesMapping } from "./line-routes-mapping.js";
 import { stopGtfsIds } from "./stop-gtfs-ids.js";
 import type { GtfsConfig } from "corequery-gtfs";
 import { bonusLinesMapping } from "./bonus-lines-mapping.js";
-import { timezoneData } from "./timezone-data.js";
+import { timezoneConfig } from "./timezone-config.js";
 import {
   convertToCorequeryGtfsLineIdsConfig,
   convertToCorequeryGtfsStopIdsConfig,
@@ -18,7 +18,7 @@ export const suburbanGtfsConfig: GtfsConfig = {
   stopGtfsIds: convertToCorequeryGtfsStopIdsConfig(splitStopGtfsIds.suburban),
   lineRoutesMapping: lineRoutesMapping,
   bonusLinesMapping: bonusLinesMapping,
-  timezoneData: timezoneData,
+  timezoneConfig: timezoneConfig,
 };
 
 export const regionalGtfsConfig: GtfsConfig = {
@@ -26,5 +26,5 @@ export const regionalGtfsConfig: GtfsConfig = {
   stopGtfsIds: convertToCorequeryGtfsStopIdsConfig(splitStopGtfsIds.regional),
   lineRoutesMapping: lineRoutesMapping,
   bonusLinesMapping: bonusLinesMapping,
-  timezoneData: timezoneData,
+  timezoneConfig: timezoneConfig,
 };

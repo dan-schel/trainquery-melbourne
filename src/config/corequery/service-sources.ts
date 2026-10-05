@@ -1,7 +1,8 @@
 import {
   Departure,
+  EntireVehicleFormsServiceConnection,
+  GenericConnection,
   Service,
-  ServiceConnection,
   ServiceOriginatingMovement,
   ServicePassingMovement,
   ServiceRegularMovement,
@@ -34,7 +35,8 @@ function createServiceSource(
     ServiceRegularMovement,
     ServiceTerminatingMovement,
     ServicePassingMovement,
-    ServiceConnection
+    EntireVehicleFormsServiceConnection,
+    GenericConnection
   >({
     sourceId,
     gtfsSystem,
@@ -47,6 +49,8 @@ function createServiceSource(
     buildServiceRegularMovement: (x) => new ServiceRegularMovement(x),
     buildServiceTerminatingMovement: (x) => new ServiceTerminatingMovement(x),
     buildServicePassingMovement: (x) => new ServicePassingMovement(x),
-    buildServiceConnection: (x) => new ServiceConnection(x),
+    buildServiceEntireVehicleFormsConnection: (x) =>
+      new EntireVehicleFormsServiceConnection(x),
+    buildServiceGenericConnection: (x) => new GenericConnection(x),
   });
 }
