@@ -55,3 +55,5 @@ export const realtimeFeedSchema = z
     tripUpdates: tripUpdateSchema.array().default([]),
   })
   .readonly();
+
+export type RealtimeFeed = z.infer<typeof realtimeFeedSchema>;
