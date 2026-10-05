@@ -1,4 +1,5 @@
 import type { Subfeed } from "../../subfeed.js";
+import { applyPatches } from "./patches/index.js";
 import { realtimeFeedSchema } from "./realtime-json-schemas.js";
 
 // TODO: Extract `https://vtar.trainquery.com` as a constant somewhere.
@@ -19,5 +20,7 @@ export async function fetchGtfsRealtimeRaw(relayKey: string, feed: Subfeed) {
 }
 
 export async function fetchGtfsRealtime(relayKey: string, feed: Subfeed) {
-  return realtimeFeedSchema.parse(await fetchGtfsRealtimeRaw(relayKey, feed));
+  return applyPatches(
+    realtimeFeedSchema.parse(await fetchGtfsRealtimeRaw(relayKey, feed)),
+  );
 }
