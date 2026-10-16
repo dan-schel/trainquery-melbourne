@@ -3499,7 +3499,7 @@ export const WARRAGUL: StopConfig = {
   name: "Warragul",
   tags: [tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "warragul",
-  location: { latitude: -38.16483276, longitude: 145.93265719 },
+  location: { latitude: -38.16471178, longitude: 145.9322366 },
   positions: [
     { stopPositionId: position.PLATFORM_1, name: "1" },
     { stopPositionId: position.PLATFORM_2, name: "2" },
