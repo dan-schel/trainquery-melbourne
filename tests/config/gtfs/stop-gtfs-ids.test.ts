@@ -75,6 +75,17 @@ describe("stopGtfsIds", () => {
     }
   });
 
+  it("maps the Pakenham GTFS child stop in both subfeeds", () => {
+    assert.equal(
+      stopGtfsIds[stop.PAKENHAM]?.suburban?.general?.includes("3427"),
+      true,
+    );
+    assert.equal(
+      stopGtfsIds[stop.PAKENHAM]?.regional?.general?.includes("3427"),
+      true,
+    );
+  });
+
   it("has an entry for each platform of each suburban station", () => {
     for (const stop of stops) {
       const idConfig = stopGtfsIds[stop.id];
