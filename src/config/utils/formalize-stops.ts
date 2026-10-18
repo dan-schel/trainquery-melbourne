@@ -16,8 +16,6 @@ export function formalizeRouteStops(
   stops: readonly InformalRouteStopConfig[],
 ): RouteStopConfig[] {
   return stops.map((stop) =>
-    typeof stop === "number"
-      ? { stopId: stop, collapseInStoppingPatterns: false }
-      : stop,
+    typeof stop === "number" ? { stopId: stop, hideUnlessServed: false } : stop,
   );
 }
