@@ -2273,7 +2273,7 @@ export const stopGtfsIds: TrainqueryMultifeedStopGtfsIdsConfig = {
   [stop.PAKENHAM]: {
     suburban: {
       parent: "vic:rail:PKM",
-      general: ["22252"],
+      general: ["22252", "3427"],
       platforms: {
         [position.PLATFORM_1]: ["12172"],
         [position.PLATFORM_2]: ["12173"],
@@ -2282,7 +2282,7 @@ export const stopGtfsIds: TrainqueryMultifeedStopGtfsIdsConfig = {
     },
     regional: {
       parent: "vic:rail:PKM",
-      general: ["22252", "12172", "12173"],
+      general: ["22252", "12172", "12173", "3427"],
       replacementBus: ["26254"],
     },
   },
