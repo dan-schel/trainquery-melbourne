@@ -213,7 +213,7 @@ function getStopsInRoutes(
   return unique(
     routes.flatMap((r) =>
       r.stops
-        .filter((s) => includeCollasped || !s.collapseInStoppingPatterns)
+        .filter((s) => includeCollasped || !s.hideUnlessServed)
         .map((s) => s.stopId),
     ),
   );

@@ -46,12 +46,6 @@ export function createConfigBuilder({
       logger,
       getCanonicalLinesServingStop,
 
-      // TODO: Now that temp-script is gone, it would be good to do an audit of
-      // what corequery-gtfs is exposing, and see if we can reduce it to a
-      // minimum, and make it explicit. Once done, and other TODOs within
-      // corequery-gtfs are addressed (e.g. connecting transfers), then
-      // corequery-gtfs is essentially done, save for new features and migrating
-      // further logic to it, so update docs and publish v1.0.0?
       serviceSources: createServiceSources(relayManager),
 
       custom: {
