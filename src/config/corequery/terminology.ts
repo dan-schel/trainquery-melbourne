@@ -4,4 +4,5 @@ export const terminology: TerminologyConfig = {
   stop: "station",
   line: "line",
   stopPosition: "platform",
+  service: "train",
 };
