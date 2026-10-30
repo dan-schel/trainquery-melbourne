@@ -5,6 +5,9 @@ import { NONSENSE_GTFS_STOP_ID_REGEX } from "../utils/gtfs/magic-values.js";
 import { stopGtfsIds } from "../../src/config/gtfs/stop-gtfs-ids.js";
 
 export const regionalSubfeedOptions: ComparisonOptions = {
+  // The regional subfeed sometimes includes some Pakenham line trips,
+  // which obviously duplicate trips in the suburban subfeed, and
+  // therefore should be dropped.
   ignoredGtfsRouteIdsMissingFromConfig: ["aus:vic:vic-01-vPK:"],
   ignoreTripNotAssignedToALine: (trip) =>
     trip.routeId === "aus:vic:vic-01-vPK:",
