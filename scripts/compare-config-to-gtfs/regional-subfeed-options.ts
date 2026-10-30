@@ -5,6 +5,10 @@ import { NONSENSE_GTFS_STOP_ID_REGEX } from "../utils/gtfs/magic-values.js";
 import { stopGtfsIds } from "../../src/config/gtfs/stop-gtfs-ids.js";
 
 export const regionalSubfeedOptions: ComparisonOptions = {
+  ignoredGtfsRouteIdsMissingFromConfig: ["aus:vic:vic-01-vPK:"],
+  ignoreTripNotAssignedToALine: (trip) =>
+    trip.routeId === "aus:vic:vic-01-vPK:",
+
   stops: {
     all: {
       // We're not mapping the "vic:rail:ABC_[...]" codes at the moment. They're
