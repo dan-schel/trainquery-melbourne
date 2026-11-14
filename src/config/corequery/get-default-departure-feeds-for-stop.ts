@@ -7,9 +7,10 @@ import * as serviceTag from "./lines/service-tags.js";
 import * as lineTag from "./lines/line-tags.js";
 import * as stop from "./stops/stop-ids.js";
 import * as position from "./stops/stop-position-ids.js";
+import * as stopTag from "./stops/stop-tags.js";
 
 export const getDefaultDepartureFeedsForStop: GetDefaultDepartureFeedsForStopConfig =
-  (stopId) => {
+  (stopId, tags) => {
     if (stopId === stop.FLINDERS_STREET) {
       return [allTrains];
     }
@@ -18,29 +19,11 @@ export const getDefaultDepartureFeedsForStop: GetDefaultDepartureFeedsForStopCon
       return [regional, suburban];
     }
 
-    // TODO: Kinda feels like I should be able to check the stop tags, and say
-    // "do this for the CITY_LOOP_UNDERGROUND" stops. Isn't this type of thing
-    // why stop tags exist?
-    //
-    // I can't just pass app, since this function is called as stops are being
-    // instantiated, but I think I could pass the tags object without any
-    // worries.
-    if (
-      stopId === stop.FLAGSTAFF ||
-      stopId === stop.MELBOURNE_CENTRAL ||
-      stopId === stop.PARLIAMENT
-    ) {
+    if (tags.has(stopTag.CITY_LOOP_UNDERGROUND)) {
       return [platform1, platform2, platform3, platform4];
     }
 
-    // ...And then same for METRO_TUNNEL.
-    if (
-      stopId === stop.ANZAC ||
-      stopId === stop.TOWN_HALL ||
-      stopId === stop.STATE_LIBRARY ||
-      stopId === stop.PARKVILLE ||
-      stopId === stop.ARDEN
-    ) {
+    if (tags.has(stopTag.METRO_TUNNEL)) {
       return [eastbound, westbound];
     }
 
