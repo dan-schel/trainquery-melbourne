@@ -1,7 +1,7 @@
 import type { GetDepartureFiltersForStopConfig } from "corequery";
 
 export const getDepartureFiltersForStop: GetDepartureFiltersForStopConfig = (
-  stopId,
+  _stopId,
 ) => {
   // TODO: Do this properly!
   return {
