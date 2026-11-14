@@ -1,7 +1,6 @@
 import { parseIntThrow } from "@dan-schel/js-utils";
 import { type CorequeryConfigBuilder } from "corequery";
 import { assets } from "./assets.js";
-import { getCanonicalLinesServingStop } from "./get-canonical-lines-serving-stop.js";
 import { lintableConfig } from "./lintable-config.js";
 import { RelayManager } from "../../relay/relay-manager.js";
 import { createServiceSources } from "./service-sources.js";
@@ -44,7 +43,6 @@ export function createConfigBuilder({
 
       assets,
       logger,
-      getCanonicalLinesServingStop,
 
       serviceSources: createServiceSources(relayManager),
 

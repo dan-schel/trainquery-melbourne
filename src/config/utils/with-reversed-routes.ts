@@ -7,6 +7,8 @@ const reversedTags: Record<number, number> = {
   [tag.OUTBOUND]: tag.CITYBOUND,
   [tag.CITY_LOOP_CLOCKWISE]: tag.CITY_LOOP_ANTICLOCKWISE,
   [tag.CITY_LOOP_ANTICLOCKWISE]: tag.CITY_LOOP_CLOCKWISE,
+  [tag.EASTBOUND]: tag.WESTBOUND,
+  [tag.WESTBOUND]: tag.EASTBOUND,
 
   // Tags which intentionally don't change when reversed. Specified here to
   // differentiate from tags which are missing from this mapping by mistake.

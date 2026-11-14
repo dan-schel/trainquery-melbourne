@@ -232,7 +232,7 @@ export const lineRoutesMapping: LineRoutesMappingConfig = {
         stop.MERINDA_PARK,
         stop.CRANBOURNE,
       ]),
-      serviceTags: [tag.OUTBOUND],
+      serviceTags: [tag.OUTBOUND, tag.EASTBOUND],
     }),
     ...createCityLoopRoutes("cyan", [
       stop.RICHMOND,
@@ -514,7 +514,7 @@ export const lineRoutesMapping: LineRoutesMappingConfig = {
         stop.PAKENHAM,
         stop.EAST_PAKENHAM,
       ]),
-      serviceTags: [tag.OUTBOUND],
+      serviceTags: [tag.OUTBOUND, tag.EASTBOUND],
     }),
     ...createCityLoopRoutes("cyan", [
       stop.RICHMOND,
@@ -672,7 +672,7 @@ export const lineRoutesMapping: LineRoutesMappingConfig = {
         stop.DIGGERS_REST,
         stop.SUNBURY,
       ]),
-      serviceTags: [tag.OUTBOUND],
+      serviceTags: [tag.OUTBOUND, tag.WESTBOUND],
     }),
     ...createCityLoopRoutes("cyan", [
       stop.NORTH_MELBOURNE,

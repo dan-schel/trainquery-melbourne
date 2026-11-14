@@ -7,6 +7,9 @@ import { terminology } from "./terminology.js";
 import { landingPage } from "./landing-page.js";
 import { footer } from "./footer.js";
 import { aboutPage } from "./about-page.js";
+import { getCanonicalLinesServingStop } from "./get-canonical-lines-serving-stop.js";
+import { getDefaultDepartureFeedsForStop } from "./get-default-departure-feeds-for-stop.js";
+import { getDepartureFiltersForStop } from "./get-departure-filters-for-stop.js";
 
 // Required to be in a separate file from buildConfig so that it can be imported
 // by the unit tests without triggering .env to the read.
@@ -19,4 +22,8 @@ export const lintableConfig: LintableConfig = {
   aboutPage: aboutPage,
   linesPage: linesPage,
   tags: tags,
+
+  getCanonicalLinesServingStop: getCanonicalLinesServingStop,
+  getDefaultDepartureFeedsForStop: getDefaultDepartureFeedsForStop,
+  getDepartureFiltersForStop: getDepartureFiltersForStop,
 };
