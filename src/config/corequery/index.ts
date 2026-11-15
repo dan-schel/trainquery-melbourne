@@ -44,6 +44,8 @@ export function createConfigBuilder({
       assets,
       logger,
 
+      // TODO: Need some way to plug in Southern Cross platform data for
+      // regional services.
       serviceSources: createServiceSources(relayManager),
 
       custom: {
