@@ -7,7 +7,7 @@
     "@vitest/coverage-v8": "5.0.1",
     "adm-zip": "0.6.1",
     "chalk": "6.0.0",
-    "corequery": "0.34.0",
+    "corequery": "0.35.0",
     "corequery-gtfs": "2.0.0",
     "csv-parser": "3.2.1",
     "dotenv": "17.4.2",

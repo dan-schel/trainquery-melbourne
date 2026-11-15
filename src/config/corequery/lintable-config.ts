@@ -17,6 +17,7 @@ export const lintableConfig: LintableConfig = {
   stops: stops,
   lines: lines,
   terminology: terminology,
+  formatTimezone: "Australia/Melbourne",
   landingPage: landingPage,
   footer: footer,
   aboutPage: aboutPage,
