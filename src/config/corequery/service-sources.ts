@@ -45,7 +45,12 @@ function createServiceSource(
 
     buildDeparture: (x) => new Departure(x),
     buildService: (x) => new Service(x),
+
+    // TODO: It doesn't take tag succession into account, and I have a TODO in
+    // corequery-gtfs to address this. I shouldn't have to handle it here. It
+    // should be done during GTFS parsing, upfront.
     buildTags: (x) => new Tags(x),
+
     buildServiceOriginatingMovement: (x) => new ServiceOriginatingMovement(x),
     buildServiceRegularMovement: (x) => new ServiceRegularMovement(x),
     buildServiceTerminatingMovement: (x) => new ServiceTerminatingMovement(x),
