@@ -10,7 +10,7 @@
     "corequery": "0.38.0",
     "corequery-gtfs": "2.0.0",
     "csv-parser": "3.2.1",
-    "dotenv": "17.4.2",
+    "dotenv": "18.0.10",
     "eslint": "10.15.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.5.7",
