@@ -3576,7 +3576,7 @@ export const WENDOUREE: StopConfig = {
 export const WERRIBEE: StopConfig = {
   id: stop.WERRIBEE,
   name: "Werribee",
-  tags: [tag.SUBURBAN_GTFS_SUBFEED],
+  tags: [tag.SUBURBAN_GTFS_SUBFEED, tag.REGIONAL_GTFS_SUBFEED],
   urlPath: "werribee",
   location: { latitude: -37.89937805, longitude: 144.66111801 },
   positions: [

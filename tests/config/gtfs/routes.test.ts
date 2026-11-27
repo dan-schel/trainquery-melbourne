@@ -11,6 +11,7 @@ import {
 import { getStopName } from "../../../src/utils/get-stop-name.js";
 import * as line from "../../../src/config/corequery/lines/line-ids.js";
 import * as stop from "../../../src/config/corequery/stops/stop-ids.js";
+import * as serviceTag from "../../../src/config/corequery/lines/service-tags.js";
 import { Route } from "corequery-gtfs";
 
 const linesExemptedFromHavingRoutes: number[] = [];
@@ -60,6 +61,44 @@ const linesExemptedFromHavingReversedRoutes: number[] = [];
 const linesExemptedFromHavingCompatibleDiagrams: number[] = [];
 
 describe("lineRoutesMapping", () => {
+  it("supports Geelong services between Little River and Werribee in both directions", () => {
+    const routes = (lineRoutesMapping[line.GEELONG] ?? []).map((r) =>
+      Route.build(r),
+    );
+    const citybound = [
+      stop.WAURN_PONDS,
+      stop.GEELONG,
+      stop.LARA,
+      stop.LITTLE_RIVER,
+      stop.WERRIBEE,
+    ];
+    const outbound = [...citybound].reverse();
+
+    assert(
+      routes.some(
+        (r) =>
+          r.matchesStoppingOrder(citybound) &&
+          r.serviceTags.includes(serviceTag.CITYBOUND),
+      ),
+    );
+    assert(
+      routes.some(
+        (r) =>
+          r.matchesStoppingOrder(outbound) &&
+          r.serviceTags.includes(serviceTag.OUTBOUND),
+      ),
+    );
+    assert(
+      !routes.some((r) =>
+        r.matchesStoppingOrder([
+          stop.WERRIBEE,
+          stop.LITTLE_RIVER,
+          stop.WYNDHAM_VALE,
+        ]),
+      ),
+    );
+  });
+
   it("has an entry for each line", () => {
     for (const line of lines) {
       if (linesExemptedFromHavingRoutes.includes(line.id)) continue;
