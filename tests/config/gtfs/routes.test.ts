@@ -28,7 +28,6 @@ const routeStopsExemptedFromBeingInDiagrams: Record<number, number[]> = {
     stop.SOUTH_YARRA,
   ],
 
-  // Disruption services can terminate at Werribee instead of running to the city.
   [line.GEELONG]: [stop.WERRIBEE],
 
   [line.PAKENHAM]: [
