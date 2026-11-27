@@ -3203,6 +3203,11 @@ export const stopGtfsIds: TrainqueryMultifeedStopGtfsIdsConfig = {
       },
       replacementBus: ["26307"],
     },
+    regional: {
+      parent: "vic:rail:WER",
+      general: ["22246", "13731", "13732", "13733"],
+      replacementBus: ["26307"],
+    },
   },
 
   [stop.WEST_FOOTSCRAY]: {

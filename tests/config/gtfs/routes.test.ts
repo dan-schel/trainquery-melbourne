@@ -28,6 +28,8 @@ const routeStopsExemptedFromBeingInDiagrams: Record<number, number[]> = {
     stop.SOUTH_YARRA,
   ],
 
+  [line.GEELONG]: [stop.WERRIBEE],
+
   [line.PAKENHAM]: [
     stop.FLINDERS_STREET,
     stop.SOUTHERN_CROSS,
