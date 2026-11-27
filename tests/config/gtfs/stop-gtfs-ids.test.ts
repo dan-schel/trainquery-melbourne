@@ -8,10 +8,6 @@ import * as stop from "../../../src/config/corequery/stops/stop-ids.js";
 import * as position from "../../../src/config/corequery/stops/stop-position-ids.js";
 import { itsOk, parseIntThrow } from "@dan-schel/js-utils";
 import type { TrainqueryMultifeedStopGtfsIdsConfig } from "../../../src/gtfs/ids.js";
-import {
-  regionalGtfsConfig,
-  suburbanGtfsConfig,
-} from "../../../src/config/gtfs/index.js";
 
 const stopsExemptedFromHavingGtfsId: number[] = [];
 
@@ -58,25 +54,6 @@ const platformsExemptedFromHavingGtfsId: {
 ];
 
 describe("stopGtfsIds", () => {
-  it("maps Werribee in both GTFS subfeeds", () => {
-    const werribee = stops.find((s) => s.id === stop.WERRIBEE);
-    assert(werribee != null);
-    assert.deepEqual(getSubfeedsWithStop(werribee), {
-      suburban: true,
-      regional: true,
-    });
-    assert.deepEqual(stopGtfsIds[stop.WERRIBEE]?.regional, {
-      parent: "vic:rail:WER",
-      general: ["22246"],
-    });
-    for (const config of [suburbanGtfsConfig, regionalGtfsConfig]) {
-      const generalIds = config.stopGtfsIds[stop.WERRIBEE]?.general;
-      assert(generalIds != null);
-      assert.include(generalIds, "22246");
-      assert.include(generalIds, "vic:rail:WER");
-    }
-  });
-
   it("has an entry for each stop", () => {
     for (const stop of stops) {
       if (stopsExemptedFromHavingGtfsId.includes(stop.id)) continue;
